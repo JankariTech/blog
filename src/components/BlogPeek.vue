@@ -127,9 +127,10 @@ export default {
 </script>
 <style lang="scss" scoped>
 .py-2 {
-  padding-top: .5rem;
-  padding-bottom: .5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
+
 .blog-peek {
   margin: 1.6rem;
   border: 1px solid grey;
