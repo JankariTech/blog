@@ -102,22 +102,28 @@ import { getPeekData } from "@/helpers/markdown"
 
 const { currentRoute, push } = useRouter()
 
-const filterBy = currentRoute.value.params.filterBy
-const sortBy = currentRoute.value.params?.sortBy
-
-onMounted(() => {
-  sortPeekData(sortBy)
-})
-
 const peekData = ref([])
 const search = ref("")
 const filterMenu = ref(false)
 const sortMenu = ref(false)
 const loading = ref(false)
+const filterBy = ref(null)
+const sortBy = ref(null)
+
+onMounted(async () => {
+  init()
+})
+
+const init = () => {
+  loading.value = true
+  filterBy.value = currentRoute.value.params.filterBy
+  sortBy.value = currentRoute.value.params?.sortBy
+  peekData.value = getPeekData()
+  sortPeekData(sortBy.value)
+  loading.value = false
+}
 
 const loadingImage = new URL("../imgs/loading.png", import.meta.url).href
-
-peekData.value = getPeekData()
 
 const goToBlogDetail = (item) => {
   const series = item.seriesTitle
@@ -129,9 +135,9 @@ const makeSearch = () => {
   loading.value = true
   const searchResult = []
   const searchVal = search.value.toLowerCase()
-  if (filterBy) {
+  if (filterBy.value) {
     peekData.value.forEach(item => {
-      if (filterBy === "tag") {
+      if (filterBy.value === "tag") {
         if (item.tags && item.tags.join(" ").toLowerCase().includes(searchVal)) {
           searchResult.push(item)
         }
@@ -139,6 +145,12 @@ const makeSearch = () => {
         if (item.authorName.toLowerCase().includes(searchVal)) {
           searchResult.push(item)
         }
+      }
+    })
+  } else if (sortBy.value) {
+    peekData.value.forEach(item => {
+      if (item.title.toLowerCase().includes(searchVal)) {
+        searchResult.push(item)
       }
     })
   } else {
@@ -172,28 +184,47 @@ const toggleSortMenu = () => {
   sortMenu.value = !sortMenu.value
 }
 
-const setSortKey = (key) => {
-  push({
-    name: "Sort",
-    params: {
-      sortBy: key
-    }
-  }).then(() => {
-    sortMenu.value = false
+const toHome = () => {
+  push({ name: "Home" })
+    .then(() => {
+      sortPeekData(sortBy.value)
+      filterMenu.value = false
+      sortMenu.value = false
+    })
+}
 
-    sortPeekData(key)
-  })
+const setSortKey = (key) => {
+  if (currentRoute.value.params.sortBy === key) {
+    toHome()
+  } else {
+    push({
+      name: "Sort",
+      params: {
+        sortBy: key
+      }
+    }).then(() => {
+      filterBy.value = key
+      sortMenu.value = false
+
+      sortPeekData(key)
+    })
+  }
 }
 
 const setFilterKey = (key) => {
-  push({
-    name: "Filter",
-    params: {
-      filterBy: key
-    }
-  }).then(() => {
-    filterMenu.value = false
-  })
+  if (currentRoute.value.params.filterBy === key) {
+    toHome()
+  } else {
+    push({
+      name: "Filter",
+      params: {
+        filterBy: key
+      }
+    }).then(() => {
+      filterBy.value = key
+      filterMenu.value = false
+    })
+  }
 }
 
 const sortPeekData = (key) => {

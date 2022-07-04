@@ -23,6 +23,11 @@
             {{ item.name }}
           </button>
         </div>
+          <button class="appbar--icon icon-button to-github"
+            @click="toGithub"
+          >
+            <mdi-github class="one-rem"/>
+          </button>
       </div>
     </div>
   </nav>
@@ -43,6 +48,7 @@ const FONT_MAP = [
   { name: "Open Sans", class: "font-open-sans" },
   { name: "Lato", class: "font-lato" }
 ]
+
 const fontMenu = ref(false)
 const toggleFontMenu = () => {
   fontMenu.value = !fontMenu.value
@@ -54,9 +60,10 @@ watch(font, () => {
 onBeforeMount(() => {
   document.body.classList.add(font.value)
 })
-// const closeFontMenu = () => {
-//   fontMenu.value = false
-// }
+
+const toGithub = () => {
+  window.open("https://github.com/JankariTech/blog", "_blank")
+}
 </script>
 <style lang="scss" scoped>
 .appbar {
