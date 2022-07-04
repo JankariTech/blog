@@ -1,0 +1,42 @@
+on:
+  push:
+    branches:
+      - 'master'
+  pull_request:
+
+name: CI
+
+jobs:
+  lint:
+    name: lint-markdowns
+    runs-on: ubuntu-latest
+    steps:
+      - name: Cancel previous runs
+        uses: styfle/cancel-workflow-action@0.9.1
+        with:
+          all_but_latest: true
+          access_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+
+      - name: Markdown lint
+        run: pnpm markdown:lint
+
+      - name: EsLint
+        run: pnpm lint
+
+      - name: Stylelint
+        run: pnpm stylelint
+
+
