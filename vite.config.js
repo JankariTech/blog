@@ -9,7 +9,7 @@ import Components from "unplugin-vue-components/vite"
 export default defineConfig({
   build: {
     // github pages uses docs dir from the root of the repository
-    outDir: "./../docs"
+    outDir: "docs"
   },
   plugins: [
     vue(),

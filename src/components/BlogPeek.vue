@@ -5,16 +5,6 @@
       'small-shadow-dark': !detailView && dark,
     }"
   >
-    <div v-if="!detailView"
-      class="blog-peek--banner"
-    >
-      <img
-        :src="banner || fallBackBanner"
-        class="banner-image"
-        :class="{ 'py-2 image-contain': !banner }"
-        alt="Card Banner"
-      />
-    </div>
     <div class="blog-peek--author">
       <img
         :src="authorAvatar"
@@ -135,7 +125,6 @@ export default {
   margin: 1.6rem;
   border: 1px solid grey;
   border-radius: 24px;
-  flex-grow: 1;
 
   &--banner {
     margin: 0;
@@ -151,7 +140,7 @@ export default {
   }
 
   &--author {
-    padding: 0.5rem 1rem;
+    padding: 1rem;
     display: flex;
     align-items: center;
 
