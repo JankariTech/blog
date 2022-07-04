@@ -1,0 +1,58 @@
+{
+    "name": "jankaritech-blog",
+    "description": "A simple blogging platform with markdown files.",
+    "private": true,
+    "version": "0.0.1",
+    "keywords": [
+        "blog",
+        "markdown",
+        "vue"
+    ],
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Kiran Parajuli",
+            "email": "kiran@jankaritech.com"
+        },
+        {
+            "name": "Prarup Gurung",
+            "email": "prarup@jankaritech.com"
+        }
+    ],
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview",
+        "lint": "eslint src --ext .js,.vue",
+        "lint:fix": "eslint src --fix --ext .js,.vue",
+        "stylelint": "stylelint src --config stylelint.conf.js",
+        "stylelint:fix": "stylelint src --config stylelint.conf.js --fix",
+        "markdown:lint": "node lint/check.js"
+    },
+    "dependencies": {
+        "@iconify-json/mdi": "^1.1.24",
+        "dompurify": "^2.3.8",
+        "marked": "^4.0.17",
+        "moment": "^2.29.3",
+        "pinia": "^2.0.14",
+        "vue": "^3.2.0",
+        "vue-router": "^4.0.16"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-vue": "^2.3.3",
+        "eslint": "^8.18.0",
+        "eslint-config-standard": "^17.0.0",
+        "eslint-plugin-import": "^2.26.0",
+        "eslint-plugin-n": "^15.2.3",
+        "eslint-plugin-promise": "^6.0.0",
+        "eslint-plugin-vue": "^9.1.1",
+        "sass": "^1.53.0",
+        "stylelint": "^14.9.1",
+        "stylelint-config-recommended-scss": "^6.0.0",
+        "stylelint-config-recommended-vue": "^1.4.0",
+        "stylelint-config-standard": "^26.0.0",
+        "unplugin-icons": "^0.14.6",
+        "unplugin-vue-components": "^0.20.1",
+        "vite": "^2.9.13"
+    }
+}
