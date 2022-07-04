@@ -1,5 +1,5 @@
 <template>
-  <div class="blog">
+  <div class="blog" v-if="peekData">
     <div class="blog--content">
       <img
         v-if="peekData.banner"
@@ -34,6 +34,7 @@
   </div>
 </template>
 <script setup>
+import { onMounted, watch, ref } from "vue"
 import DOMPurify from "dompurify"
 import { useRouter } from "vue-router"
 import useMarkdown from "../composables/markdown"
@@ -44,21 +45,31 @@ const { currentRoute } = useRouter()
 const { sidebarList } = useMarkdown()
 let sourcePath
 
-const fileTitle = decodeURIComponent(currentRoute.value.params.name)
-const seriesTitle = decodeURIComponent(currentRoute.value.params.series)
+const content = ref(null)
+const tableOfContent = ref(null)
+const peekData = ref(null)
 
-if (seriesTitle && seriesTitle !== "undefined") {
-  sourcePath = sidebarList.value[seriesTitle][fileTitle]
-} else {
-  sourcePath = sidebarList.value[fileTitle]
+onMounted(() => {
+  loadMarkdown()
+})
+
+const loadMarkdown = () => {
+  const fileTitle = decodeURIComponent(currentRoute.value.params.name)
+  const seriesTitle = decodeURIComponent(currentRoute.value.params.series)
+
+  if (seriesTitle && seriesTitle !== "undefined") {
+    sourcePath = sidebarList.value[seriesTitle][fileTitle]
+  } else {
+    sourcePath = sidebarList.value[fileTitle]
+  }
+
+  peekData.value = getPeekDataFor(sourcePath)
+  const contentHtml = getContentHtml(sourcePath)
+  content.value = DOMPurify.sanitize(contentHtml)
+  tableOfContent.value = getTableOfContent(sourcePath)
+
+  document.title = `Blog | ${peekData.value.title}`
 }
-
-const peekData = getPeekDataFor(sourcePath)
-const contentHtml = getContentHtml(sourcePath)
-const content = DOMPurify.sanitize(contentHtml)
-const tableOfContent = getTableOfContent(sourcePath)
-
-document.title = `Blog | ${peekData.title}`
 
 const scrollToHeading = (headingText) => {
   const punctuation = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
@@ -76,6 +87,10 @@ const scrollToHeading = (headingText) => {
     block: "center"
   })
 }
+
+watch(currentRoute, () => {
+  loadMarkdown()
+})
 </script>
 <style lang="scss">
 @import "@/styles/post";
