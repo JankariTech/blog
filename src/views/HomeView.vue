@@ -121,8 +121,8 @@ peekData.value = getPeekData()
 
 const goToBlogDetail = (item) => {
   const series = item.seriesTitle
-  if (series) window.location.href = `/blog/${encodeURIComponent(series)}/${encodeURIComponent(item.title)}`
-  else window.location.href = `/blog/${encodeURIComponent(item.title)}`
+  if (series) window.location.href = `/#/blog/${encodeURIComponent(series)}/${encodeURIComponent(item.title)}`
+  else window.location.href = `/#/blog/${encodeURIComponent(item.title)}`
 }
 
 const makeSearch = () => {

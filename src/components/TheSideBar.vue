@@ -16,7 +16,7 @@
           >
             <a
               :title="subItem.title"
-              :href="`/blog/${encodeURIComponent(item)}/${encodeURIComponent(subItem)}`"
+              :href="`/#/blog/${encodeURIComponent(item)}/${encodeURIComponent(subItem)}`"
             >
               {{ subItem }}
             </a>
@@ -25,7 +25,7 @@
         <div v-else class="sidebar--item">
           <a
             :title="item"
-            :href="`/blog/${encodeURIComponent(item)}`"
+            :href="`/#/blog/${encodeURIComponent(item)}`"
           >
             {{ item }}
           </a>
