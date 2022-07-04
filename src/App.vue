@@ -9,11 +9,18 @@
       }"
     >
       <router-view />
+      <button
+        v-if="scrollButtonVisibility"
+        class="scroll-to-top small-shadow"
+        @click="scrollToTop"
+      >
+        <mdi-chevron-up />
+      </button>
     </div>
   </div>
 </template>
 <script setup>
-import { watch } from "vue"
+import { watch, onMounted, ref } from "vue"
 
 import TheAppBar from "@/components/TheAppBar"
 import TheSideBar from "@/components/TheSideBar"
@@ -35,6 +42,26 @@ const { filePaths, fileModules } = readAssets()
 setList(filePaths)
 setModules(fileModules)
 setSidebarList(prepareSidebarList())
+
+const scrollButtonVisibility = ref(false)
+
+onMounted(() => {
+  window.addEventListener("scroll", onScroll)
+})
+
+const onScroll = (e) => {
+  if (typeof window === "undefined") return
+  const top = window.pageYOffset || e.target.scrollTop
+  console.log(top)
+  scrollButtonVisibility.value = top > 150
+}
+
+const scrollToTop = () => {
+  window.scroll({
+    top: 0,
+    behavior: "smooth"
+  })
+};
 </script>
 <style lang="scss">
 @import "styles/util";

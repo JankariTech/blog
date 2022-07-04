@@ -12,6 +12,21 @@
     &.without-sidebar {
       margin-left: 0;
     }
+    .scroll-to-top {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      z-index: 1;
+      border-radius: 50%;
+      height: 42px;
+      width: 42px;
+      outline: none;
+      background: inherit;
+      border: 1px solid grey;
+      svg {
+        font-size: 1.2rem;
+      }
+    }
   }
 }
 
@@ -25,5 +40,10 @@ body[theme-dark] {
 
   #app .content {
     background: rgb(26 26 26);
+    .scroll-to-top {
+      svg {
+        color: white;
+      }
+    }
   }
 }
