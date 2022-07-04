@@ -2,6 +2,22 @@
 
 A beautiful blogging platform for the JankariTech peoples.
 
+## Installation
+1. Requirements
+   - [NodeJS (>16.0.0)](https://nodejs.org/en/download/)
+   - [pnpm (>7.0.0)](https://pnpm.io/installation)
+
+2. Install Dependencies
+    ```bash
+    pnpm install
+    ```
+
+3. Serve
+    ```bash
+    pnpm dev
+    ```
+   This should start a development server on port 3000.
+
 ## Publish a Blog
 1. Create a md file inside `src/assets` folder
 2. Add meta information at the top
