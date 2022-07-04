@@ -12,6 +12,7 @@
     &.without-sidebar {
       margin-left: 0;
     }
+
     .scroll-to-top {
       position: fixed;
       bottom: 1rem;
@@ -23,6 +24,7 @@
       outline: none;
       background: inherit;
       border: 1px solid grey;
+
       svg {
         font-size: 1.2rem;
       }
@@ -40,6 +42,7 @@ body[theme-dark] {
 
   #app .content {
     background: rgb(26 26 26);
+
     .scroll-to-top {
       svg {
         color: white;

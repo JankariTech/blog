@@ -52,7 +52,6 @@ onMounted(() => {
 const onScroll = (e) => {
   if (typeof window === "undefined") return
   const top = window.pageYOffset || e.target.scrollTop
-  console.log(top)
   scrollButtonVisibility.value = top > 150
 }
 
@@ -61,7 +60,7 @@ const scrollToTop = () => {
     top: 0,
     behavior: "smooth"
   })
-};
+}
 </script>
 <style lang="scss">
 @import "styles/util";

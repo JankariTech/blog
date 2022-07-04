@@ -101,8 +101,6 @@ defineProps({
   }
 })
 
-const fallBackBanner = "https://www.jankaritech.com/images/Logo-colour.png"
-
 const { dark } = useTheme()
 </script>
 <script>
