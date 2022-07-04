@@ -77,9 +77,20 @@ log.info("-------------------------------------")
 
 for (let i = 0; i < Object.keys(markdownFiles).length; i++) {
   const key = Object.keys(markdownFiles)[i]
+  const mTokens = marked.lexer(markdownFiles[key])
+
+  // must have 1 line hr, 2nd line paragraph and 3rd line hr
+  if (mTokens.length < 3) {
+    log.error(`${key} has less than 3 lines`)
+    continue
+  }
+
+  if (mTokens[0].type !== "hr" && mTokens[1].type !== "paragraph" && mTokens[2].type !== "hr") {
+    log.error(`${key} has no meta information at the top.`)
+    continue
+  }
 
   // must have 7 or 9 lines
-  const mTokens = marked.lexer(markdownFiles[key])
   const metaPart = mTokens[1].text.split("\n")
 
   if (metaPart.length !== 7 && metaPart.length !== 9) {

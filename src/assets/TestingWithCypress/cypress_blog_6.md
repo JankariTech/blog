@@ -5,7 +5,7 @@ authorAvatar: https://avatars.githubusercontent.com/u/39373750?v=4
 authorLink: https://github.com/kiranparajuli589/
 createdAt: Feb 2, 2021
 tags: cypress, gherkin, parallelization, testing
-banner: /src/assets/ci_cd_gitlab_parallel.jpg
+banner: /src/assets/TestingWithCypress/images/ci_cd_gitlab_parallel.jpg
 seriesTitle: E2E Testing with Cypress
 episode: 6
 ---
