@@ -1,10 +1,20 @@
+---
+title: Testing with Jest and Puppeteer
+authorName: Talank Baral
+authorAvatar: https://www.jankaritech.com/images/2021/12/29/p1110976-crop-col-800.jpg
+authorLink: https://github.com/Talank
+createdAt: Jul 22, 2020
+tags: testing, javascript, jest, puppeteer
+banner: https://res.cloudinary.com/practicaldev/image/fetch/s--sXh42dKN--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/i/raxyo382jgx8tvfpnxc4.png
+---
+
 "In Jest, there is truth" -William Shakespeare.
 
 By using Jest, you will know the truth about your application. The `Jest` is a javascript testing tool that is installed via NPM or Yarn and run via the command line. It is a great testing library and many react team members are involved building it, so it happens to work very well for testing react applications. Jest is built on top of Jasmine and Mocha but some additional features like snapshot testing and parallel test execution are provided by Jest. It also comes with built-in mocking and assertion abilities.
 
 Puppeteer is a Node library that is used for browser automation. Puppeteer provides a high-level API to control the browser. It can work with Chrome, Chromium or Firefox. By default this library runs the browser in headless mode, but it can be also configured to run Chrome or Chromium fully (non-headless).
 
-# Installation And Requirements
+## Installation And Requirements
 This guide is based on Ubuntu 18.04. Some commands will be different if you have another OS installed on your computer. Before getting started with Jest, You need to have `npm` and an app for which you will be writing tests.
 
 If your app is not yet ready for testing then you can just clone this basic [todo app](https://github.com/Talank/todo-react) and follow along.
@@ -25,7 +35,7 @@ Now, its time to configure the NPM script for running a test from the command li
   },
 ```
 
-Tests are run by using the Jest CLI (typing `jest` followed by arguments in the command line). 
+Tests are run by using the Jest CLI (typing `jest` followed by arguments in the command line).
 
 For example, in the [todo app](https://github.com/Talank/todo-react) in my github, you can run the test with the command `npm run test` since I have added `"test": "jest"` in the script of my `package.json`
 
@@ -55,9 +65,9 @@ Puppeteer will download the latest version of chrome. If you need to work with f
 
 By the end of the installation of jest and puppeteer, you should have the following dependencies in the `devDependencies` section of your `package.json`.
 ```
-"devDependencies": {   
-  "jest": "^24.9.0",   
-  "puppeteer": "^4.0.1" 
+"devDependencies": {
+  "jest": "^24.9.0",
+  "puppeteer": "^4.0.1"
 }
 ```
 
@@ -81,7 +91,7 @@ In addition to `it()` and `describe()` methods, you might need the following met
 
 These functions are executed before and after the test scenarios. You can define these functions inside the `describe()` method to make it applicable for all tests in the scope of that particular `describe()` method.
 
-# Demo:
+## Demo:
 Here I have added a test for adding a task in my react ToDo app.
 ```
 const puppeteer = require('puppeteer');
@@ -97,7 +107,7 @@ describe('Todo React', () => {
   afterEach(async () => {
       await page.close()
     })
-  
+
   afterAll(async () => {
     await browser.close()
   })
@@ -111,7 +121,7 @@ describe('Todo React', () => {
     it('should be possible to add task to the list', async () => {
       const taskInputField = await page.$x('//input[@placeholder="Enter task"]')
       const taskToAdd = "New Task"
-      await taskInputField[0].click() 
+      await taskInputField[0].click()
       await taskInputField[0].type(taskToAdd)
 
       await page.keyboard.press('Enter')
@@ -123,7 +133,7 @@ describe('Todo React', () => {
       for( let list of lists ) {
         toDo = await page.evaluate(el => el.getAttribute("value"), list);
       }
-      
+
       expect(toDo).toBe(taskToAdd)
     })
   })
@@ -143,7 +153,7 @@ In Jest, there are plenty of functions to simulate UI activities. For example, i
 Similarly, for assert operation, you can use `expect()`. Many other matcher functions can be used with expect() such as `.toContain(item)` , `toBeTruthy()` etc. You can find more of these `jest matchers` in the [jest documentation](https://jestjs.io/docs/en/expect).
 
 ### Gherkin with Jest
-In Jest, you do not have to write a feature file for your test cases. If you need to write features in a separate file then you can use [jest-cucumber](https://github.com/bencompton/jest-cucumber) library. By using this library, you can replace `describe` and `it` blocks by `Given`, `When`, and `Then` step definitions. The step definitions are linked with the respective steps in the feature files. 
+In Jest, you do not have to write a feature file for your test cases. If you need to write features in a separate file then you can use [jest-cucumber](https://github.com/bencompton/jest-cucumber) library. By using this library, you can replace `describe` and `it` blocks by `Given`, `When`, and `Then` step definitions. The step definitions are linked with the respective steps in the feature files.
 
 However, I would prefer `Codecept.js` or `nightwatch.js` instead of `jest` if I need to use features of `Cucumber.js` while testing my application. Because, with jest-cucumber, you need to specify which feature file is linked with a particular step definition file. While Codecept.js or nightwatch.js, you can write the step definition of a `given` step in one file and the `when` step of the same scenario in some other file. You might lose this kind of freedom if you are using jest-cucumber.
 

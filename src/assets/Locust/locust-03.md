@@ -1,3 +1,14 @@
+---
+title: Setup Your System
+authorName: Artur Neumann
+authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800.jpg
+authorLink: https://github.com/individual-it
+createdAt: Nov 27, 2019
+tags: qa, performance, python, automation
+banner:
+seriesTitle: Performance Testing with Locust
+episode: 3
+---
 
 In the [last part of this series](https://dev.to/jankaritech/performance-testing-with-locust-02-multiple-tasks-4ckn) we created multiple tasks to be able to simulate more realistically uploading and downloading files.
 
@@ -53,39 +64,39 @@ Now lets see what happens.
     [2019-11-29 08:55:19,213] artur-OptiPlex-3050/INFO/locust.main: Starting Locust 0.13.2
    ```
 
-2. Starting the test from the webUI with 2 users  
+2. Starting the test from the webUI with 2 users
 
    ```
     [2019-11-29 08:55:22,932] artur-OptiPlex-3050/INFO/locust.runners: Hatching and swarming 2 clients at the rate 1 clients/s...
     [2019-11-29 08:55:22,932] artur-OptiPlex-3050/INFO/stdout: setup of Locust class
-    [2019-11-29 08:55:22,932] artur-OptiPlex-3050/INFO/stdout: 
+    [2019-11-29 08:55:22,932] artur-OptiPlex-3050/INFO/stdout:
     [2019-11-29 08:55:22,933] artur-OptiPlex-3050/INFO/stdout: setup of TaskSet
-    [2019-11-29 08:55:22,933] artur-OptiPlex-3050/INFO/stdout: 
+    [2019-11-29 08:55:22,933] artur-OptiPlex-3050/INFO/stdout:
     [2019-11-29 08:55:22,933] artur-OptiPlex-3050/INFO/stdout: running one task
-    [2019-11-29 08:55:22,933] artur-OptiPlex-3050/INFO/stdout: 
+    [2019-11-29 08:55:22,933] artur-OptiPlex-3050/INFO/stdout:
     [2019-11-29 08:55:23,933] artur-OptiPlex-3050/INFO/stdout: running another task
-    [2019-11-29 08:55:23,933] artur-OptiPlex-3050/INFO/stdout: 
+    [2019-11-29 08:55:23,933] artur-OptiPlex-3050/INFO/stdout:
     [2019-11-29 08:55:23,934] artur-OptiPlex-3050/INFO/stdout: running one task
-    [2019-11-29 08:55:23,934] artur-OptiPlex-3050/INFO/stdout: 
+    [2019-11-29 08:55:23,934] artur-OptiPlex-3050/INFO/stdout:
     [2019-11-29 08:55:24,934] artur-OptiPlex-3050/INFO/locust.runners: All locusts hatched: User: 2
     [2019-11-29 08:55:24,934] artur-OptiPlex-3050/INFO/stdout: running one task
-    [2019-11-29 08:55:24,934] artur-OptiPlex-3050/INFO/stdout: 
+    [2019-11-29 08:55:24,934] artur-OptiPlex-3050/INFO/stdout:
     [2019-11-29 08:55:24,934] artur-OptiPlex-3050/INFO/stdout: running another task
-    [2019-11-29 08:55:24,935] artur-OptiPlex-3050/INFO/stdout: 
+    [2019-11-29 08:55:24,935] artur-OptiPlex-3050/INFO/stdout:
     [2019-11-29 08:55:25,935] artur-OptiPlex-3050/INFO/stdout: running one task
-    [2019-11-29 08:55:25,935] artur-OptiPlex-3050/INFO/stdout: 
+    [2019-11-29 08:55:25,935] artur-OptiPlex-3050/INFO/stdout:
     [2019-11-29 08:55:25,935] artur-OptiPlex-3050/INFO/stdout: running one task
-    [2019-11-29 08:55:25,935] artur-OptiPlex-3050/INFO/stdout: 
-    
+    [2019-11-29 08:55:25,935] artur-OptiPlex-3050/INFO/stdout:
+
     ...
-    
-    [2019-11-29 08:55:31,939] artur-OptiPlex-3050/INFO/stdout: 
+
+    [2019-11-29 08:55:31,939] artur-OptiPlex-3050/INFO/stdout:
     [2019-11-29 08:55:32,939] artur-OptiPlex-3050/INFO/stdout: running another task
-    [2019-11-29 08:55:32,939] artur-OptiPlex-3050/INFO/stdout: 
+    [2019-11-29 08:55:32,939] artur-OptiPlex-3050/INFO/stdout:
     [2019-11-29 08:55:32,939] artur-OptiPlex-3050/INFO/stdout: running one task
-    [2019-11-29 08:55:32,939] artur-OptiPlex-3050/INFO/stdout: 
+    [2019-11-29 08:55:32,939] artur-OptiPlex-3050/INFO/stdout:
     [2019-11-29 08:55:33,940] artur-OptiPlex-3050/INFO/stdout: running one task
-    [2019-11-29 08:55:33,940] artur-OptiPlex-3050/INFO/stdout: 
+    [2019-11-29 08:55:33,940] artur-OptiPlex-3050/INFO/stdout:
     [2019-11-29 08:55:33,940] artur-OptiPlex-3050/INFO/stdout: running another task
     [2019-11-29 08:55:33,940] artur-OptiPlex-3050/INFO/stdout:
    ```
@@ -97,12 +108,12 @@ Now lets see what happens.
     ```
     ^C[2019-11-29 08:55:57,191] artur-OptiPlex-3050/ERROR/stderr: KeyboardInterrupt
     [2019-11-29 08:55:57,191] artur-OptiPlex-3050/ERROR/stderr: 2019-11-29T03:10:57Z
-    [2019-11-29 08:55:57,191] artur-OptiPlex-3050/ERROR/stderr: 
+    [2019-11-29 08:55:57,191] artur-OptiPlex-3050/ERROR/stderr:
     [2019-11-29 08:55:57,191] artur-OptiPlex-3050/INFO/locust.main: Shutting down (exit code 0), bye.
     [2019-11-29 08:55:57,191] artur-OptiPlex-3050/INFO/locust.main: Cleaning up runner...
     [2019-11-29 08:55:57,191] artur-OptiPlex-3050/INFO/locust.main: Running teardowns...
     [2019-11-29 08:55:57,191] artur-OptiPlex-3050/INFO/stdout: teardown of TaskSet
-    [2019-11-29 08:55:57,191] artur-OptiPlex-3050/INFO/stdout: 
+    [2019-11-29 08:55:57,191] artur-OptiPlex-3050/INFO/stdout:
     [2019-11-29 08:55:57,191] artur-OptiPlex-3050/INFO/stdout: teardown of Locust class
     [2019-11-29 08:55:57,191] artur-OptiPlex-3050/INFO/stdout:
     ```
@@ -164,21 +175,21 @@ class User(HttpLocust):
 
 So what is new here?
 
-The `on_start` method first constructs a ownCloud username out of "locust" & a number. The `userNo` variable has to be defined globally, so that it survives when locust initialize the next instance of the `User` class. Remember: the `Locust` class (`HttpLocust` inherits from `Locust`) represents one simulated user that accesses your application.  
+The `on_start` method first constructs a ownCloud username out of "locust" & a number. The `userNo` variable has to be defined globally, so that it survives when locust initialize the next instance of the `User` class. Remember: the `Locust` class (`HttpLocust` inherits from `Locust`) represents one simulated user that accesses your application.
 
 Next a `POST` request is send with the username as userid and password. That requests needs to be authenticated as the admin-user. ([Check the ownCloud docu if you are interested to learn more about those requests.](https://doc.owncloud.com/server/10.0/admin_manual/configuration/user/user_provisioning_api.html))
 
 At last there is the `davEndpoint`, now it needs the specific username, so that information has been moved into the specific `GET` and `PUT` method.
 
 If you run that script now with locust and start a test with, lets say 3 users, you should see something like that:
-![users created in locust](locust-03-images/createUsersLocust.png)
+![users created in locust](/src/assets/Locust/images/locust-03-images/createUsersLocust.png)
 
 The first line tells us that 3 `POST` requests have been sent to `/ocs/v2.php/cloud/users`, that looks promising.
 And in the `PUT` ans `GET` requests, the usernames "locust0" till "locust2" are mentioned, very good!
 
 Now lets look into the users list of ownCloud. For that login with "admin" / "admin" to http://localhost:8080/ and in the top right corner click on "admin" and then on "Users".
 
-![owncloud users list](locust-03-images/owncloudListUsers.png)
+![owncloud users list](/src/assets/Locust/images/locust-03-images/owncloudListUsers.png)
 
 Those three users were created and used. If you want to double check use them to login to ownCloud, you should see the uploaded file.
 
@@ -234,7 +245,7 @@ Here we import the locust `HttpSession` class and use it to create a new session
 
 And here we go, when starting and stopping the tests we have successful `DELETE` requests. One per hatched locust user.
 
-![successfull user deletion](locust-03-images/deleteSuccess.png)
+![successfull user deletion](/src/assets/Locust/images/locust-03-images/deleteSuccess.png)
 
 ## what's next?
 We have now some basic tests, now it's time to look closer into the metrics and try to understand the meaning of all the numbers locust throws at us.

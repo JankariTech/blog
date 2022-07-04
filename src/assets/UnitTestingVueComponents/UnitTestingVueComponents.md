@@ -1,8 +1,17 @@
-# Unit Testing Vue Components
+---
+title: Unit Testing with VueJS
+authorName: Kiran Parajuli
+authorAvatar: https://avatars.githubusercontent.com/u/39373750?v=4
+authorLink: https://github.com/kiranparajuli589/
+createdAt: May 6, 2022
+tags: vue, jest, unit, testing
+banner: https://res.cloudinary.com/practicaldev/image/fetch/s--t1Oxkc_O--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ffkifasq4al1c75uculu.png
+---
+## Unit Testing Vue Components
 
 > This post only covers unit testing information for Vue.js v2 and earlier. If you're trying with VueJS v3, this post would not be helpful.
 
-## Why Unit Testing?
+### Why Unit Testing?
 When it comes to building reliable applications, tests can play a critical role in an individual or team's ability to build new features, refactor code, fix bugs, and much more.
 
 Unit testing is a software testing technique in which a collection of software components or modules are individually tested.
@@ -13,15 +22,15 @@ Benefits:
 - early bug detection and easier to spot issues
 - saves time with automation and avoids manual testing
 
-## Vue Test Utils (VTU)
+### Vue Test Utils (VTU)
 The [VTU](https://github.com/vuejs/vue-test-utils/ "VTU") is a set of utilities that simplifies testing VueJS components. The package exposes APIs for mounting and interacting with the Vue components independently.
 
-### Installation
+#### Installation
 There are various options for the installation of VTU. Please refer to the [official VTU docs](https://vue-test-utils.vuejs.org/installation/#installation "official VTU docs") for detailed information on how to install and configure VTU.
 
 VueJS projects will already have a bundler set up for the development. So one thing I would suggest for the installation is please do not set up a different compiler or transformer system for the tests and the source code. This will only increase the project complexity and packages dependency. For example: if you're using `babel` for the source code, use the same for the tests too.
 
-### Writing Tests
+#### Writing Tests
 With VTU, we can write our tests using `describe`, `it`, `test`. Similarly, hooks can be implemented under `before`, `beforeEach`, `after` and `afterEach`. And, for assertions, `expect` is also already bundled. Great!
 
 ```js
@@ -42,7 +51,7 @@ describe("Fab button component", () => {
           text: "My Button"
         }
       })
-      
+
       // assertions after loading the component
       expect(wrapper.attributes('type').toBe('button'))
       expect(wrapper.attributes('disabled').toBe('disabled'))
@@ -52,7 +61,7 @@ describe("Fab button component", () => {
 })
 ```
 
-#### Knowing what to test
+##### Knowing what to test
 There can be multiple logic involved in our test files. However, not everything needs to be tested during unit testing.
 
 Don't forget we're only writing tests for a specific component. So we should only test the features provided by that specific unit.
@@ -82,10 +91,10 @@ Some points to remember:
 - do not test static values as they remain static in any situation
 - do not focus on complete line-based coverage, as it tends to focus on the internal implementation details of the components, which could lead to brittle tests
 
-#### `mount` and `shallowMount`
+##### `mount` and `shallowMount`
 I mostly use `shallowMount` for unit testing because it does not bother about the other imported or external components used within the component being tested. Additional to that, it does allow us to assert the props provided to those external components. But, if we want to test the component's functionality, we can use `mount` instead. For example, if we have to click some element inside the component, we can choose `mount` instead of `shallowMount`.
 
-#### Stubs
+##### Stubs
 I try to stub the component when I'm testing as much as possible. For example, if I'm writing a unit test for a component that uses some other component, I can stub that dependency and then test the component.
 
 While working with `shallowMount`, sometimes I get props or attributes set as `[Object][Object]`. I cannot parse this to object and further assertions cannot be made. In order to solve this, I use stubs more precisely. Provide the actual component for the stubs rather than just a boolean value.
@@ -115,7 +124,7 @@ shallowMount(Component, {
 })
 ```
 
-#### Mocks
+##### Mocks
 Mocks are very useful while unit testing. Our components usually use various methods from other components, mixins, libraries, etc. These are not our responsibility. So, we need to mock them.
 
 Mocking is very easy. We have to remember a few things:
@@ -140,13 +149,13 @@ console.log(myMockFn(), myMockFn(), myMockFn(), myMockFn());
 // mock external library
 jest.mock('@nextcloud/axios')
 // mock external library methods
-jest.mock('lodash', () => ({ 
+jest.mock('lodash', () => ({
   ...jest.requireActual('lodash'),
-  debounce: fn => { fn.cancel = jest.fn(); return fn } 
+  debounce: fn => { fn.cancel = jest.fn(); return fn }
 }))
 ```
 
-#### Spying
+##### Spying
 It creates a mock function similar to `jest.fn` but also records calls to the mock function.
 
 By default, `jest.spyOn` also calls the spied method. But if we want to overwrite the original function, we can use:
@@ -154,7 +163,7 @@ By default, `jest.spyOn` also calls the spied method. But if we want to overwrit
 jest.spyOn(object, methodName).mockImplementations(() => customImplementation)
 ```
 
-#### User Interactions
+##### User Interactions
 These are well described in the documentation for the [vue-test-utils](https://v1.test-utils.vuejs.org).
 
 Some points I want to mention:
@@ -190,7 +199,7 @@ Some points I want to mention:
   expect(content.exists()).toBeTruthy()
   ```
 
-#### Snapshots
+##### Snapshots
 Snapshots are very useful while writing tests. We can use them to check the DOM structure of the component or any other data like objects, arrays, etc.
 
 For example, let's say we have a component like this:
@@ -210,7 +219,7 @@ For example, let's say we have a component like this:
 export default {
   props: {
     card: {
-      type: Object, 
+      type: Object,
       required: true
     }
   }
@@ -244,12 +253,12 @@ it('should render the card correctly', () => {
 ```
 That's it. All the card data is now checked, and it is much easier to maintain. If something changes in the component, we just need to update the snapshot.
 
-> #### Curious how snapshots are saved and maintained?
-> 
+> ##### Curious how snapshots are saved and maintained?
+>
 > When we introduce any test cases that make use of snapshots, at the first time of the test run, the test runner will generate and save the screenshot(s) in a folder `__snapshots__` just where the test file is located.
-> 
+>
 > Now, when we run the test again, the test runner compares the saved snapshot with the current DOM structure and fails if the two are different.
-> 
+>
 > To update the current snapshot, we can use the `--updateSnapshot` flag or just use the jest interactive mode.
 > ```shell
 > jest --updateSnapshot
@@ -269,5 +278,5 @@ expect(response).toMatchSnapshot()
 ```
 This will save the response object as a snapshot, and our test will look neater. Also, if something changes in the response, we just need to update the snapshot.
 
-### Final Thoughts
-In a nutshell, unit testing with Vue components with Jest and vue-test-utils is fun. Do not try to get 100% coverage, rather try to test the actual features of the component. The Vue community has good documentation and guides on how to test Vue components. Thus, you're likely to have fewer problems testing your components and securing your path forward. 
+#### Final Thoughts
+In a nutshell, unit testing with Vue components with Jest and vue-test-utils is fun. Do not try to get 100% coverage, rather try to test the actual features of the component. The Vue community has good documentation and guides on how to test Vue components. Thus, you're likely to have fewer problems testing your components and securing your path forward.

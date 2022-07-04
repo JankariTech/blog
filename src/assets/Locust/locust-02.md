@@ -1,4 +1,16 @@
-# Preparations
+---
+title: Multiple Tasks
+authorName: Artur Neumann
+authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800.jpg
+authorLink: https://github.com/individual-it
+createdAt: Oct 30, 2019
+tags: testing, performance, python, infrastructure
+banner:
+seriesTitle: Performance Testing with Locust
+episode: 2
+---
+
+## Preparations
 
 In [the first part of this series](https://dev.to/jankaritech/performance-testing-with-locust-01-get-started-pkk) we talked about creating a very basic locust performance test. Now we want to create some more realistic and interesting tests. For that we better have a real App to test. We could test any App that has an HTTP API. For simplicity and because I'm familiar with it I've chosen [ownCloud](https://owncloud.org/), a file hosting and sharing solution similar to Dropbox.
 
@@ -7,7 +19,7 @@ OK, after having played a bit with ownCloud itself, let's get back to the perfor
 
 You should now be able to run the locust test from the first part via `locust --host=http://localhost:8080`, but as we said there, that is not a very realistic test. What would a user do with ownCloud? A main action would be download and upload files. Let's tests the performance of that.
 
-# Test downloading a file
+## Test downloading a file
 
 For file-operations ownCloud uses the [WebDAV](https://en.wikipedia.org/wiki/WebDAV) API. Starting from the locustfile we already have, we create a test for a file download.
 
@@ -34,7 +46,7 @@ Nice, and not much different from the first attempt.
 
 Remember: when you change the locustfile, you have to stop and start locust to make sure the file is read again.
 
-# Test uploading a file
+## Test uploading a file
 
 Every TestSet can have multiple tasks, so adding an upload task should be easy:
 
@@ -70,7 +82,7 @@ Here we have a second task `uploadFile`, it's simply does a `PUT` request with a
 
 Locust will now run every task the same amount of times. But if you run that with enough locust-users (e.g. try 100) you will see the numbers in the `# Fails` column increase
 
-![increased upload failures](locust-02-images/failureCountIncrease.png)
+![increased upload failures](/src/assets/Locust/images/locust-02-images/failureCountIncrease.png)
 
 To see what happens, lets look into the "Failures Tab"
 There we see the Failure "Type" `HTTPError('423 Client Error: Locked for url: http://localhost:8080/remote.php/dav/files/admin/locust-perfomance-test-file.txt',)`
@@ -113,9 +125,9 @@ class User(HttpLocust):
 Here we just set the fileName to a random string, but only if it has not been set before.
 
 In the locust UI you should now see one `PUT` request per locust-user and hopefully no failures.
-![single request per locust user](locust-02-images/requestPerUser.png)
+![single request per locust user](/src/assets/Locust/images/locust-02-images/requestPerUser.png)
 
-# Weight of a task
+## Weight of a task
 
 Now we run every task equally often. But do users upload files as often as they download them?
 Maybe, but maybe not - it depends on your situation and on what you want to test. Luckily locust gives your the freedom to choose.
@@ -147,6 +159,6 @@ Now most of your requests should be `GET`s.
 
 Remember: when testing we try to be as close to reality as possible. [If your test is significantly different to reality, bad things might happen.](https://people.cs.clemson.edu/~steve/Spiro/arianesiam.htm)
 
-# whats next?
+## whats next?
 
 We are still only using a single ownCloud user. The application might perform differently when using multiple users. We should create specific test-users before we run the test and ideally delete them at the end of the test run.

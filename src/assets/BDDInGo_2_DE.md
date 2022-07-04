@@ -1,3 +1,13 @@
+---
+title: BDD (Behavior-driven development) mit Go
+authorName: Artur Neumann
+authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800.jpg
+authorLink: https://github.com/individual-it
+createdAt: May 18, 2021
+tags: testing, go, bdd, test
+banner: https://res.cloudinary.com/practicaldev/image/fetch/s--JeC9Hmh4--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/brg6zf6ifa9fpru9e7yh.png
+---
+
 In [Einstieg in BDD (Behavior-driven development)](https://dev.to/jankaritech/einstieg-in-bdd-behavior-driven-development-1m8h) habe ich die Grundzüge von BDD erklärt und ihren Einsatz, um die Funktionen einer Anwendung zu beschreiben. Im Grunde genommen ist BDD dazu gedacht, alle Beteiligten zusammenzubringen und klar zu beschreiben, wie sich die "Features" einer Anwendung in verschiedenen Situationen zu verhalten haben.
 
 ## Automatische Tests
@@ -35,7 +45,7 @@ go 1.13
 ```
 und dann `go get github.com/cucumber/godog/cmd/godog@v0.11.0` ausführen.
 
-Um mit `$GOPATH` arbeiten zu können, muss zusätzlich noch die Umgebungsvariable `GO111MODULE=on` gesetzt sein, also:       
+Um mit `$GOPATH` arbeiten zu können, muss zusätzlich noch die Umgebungsvariable `GO111MODULE=on` gesetzt sein, also:
   `GO111MODULE=on go get github.com/cucumber/godog/cmd/godog@v0.11.0`
 
 (Die Versionsnummer `@v0.11.0` ist optional; ohne sie wird die neueste vorhandene Version installiert. Damit dieser Artikel aber länger verwendbar bleibt und ich ihn nicht ständig anpassen muss, gebe ich hier eine Versionsnummer an.)
@@ -146,14 +156,14 @@ index c8b0144..f7ee56d 100644
 +++ b/bsdateServer_test.go
 @@ -1,11 +1,26 @@
  package main
- 
+
  import (
 +    "fmt"
      "github.com/cucumber/godog"
 +    "net/http"
 +    "strings"
  )
- 
+
 -func aRequestIsSentToTheEndpoint(arg1, arg2 string) error {
 -    return godog.ErrPending
 +var host = "http://localhost:10000"
@@ -171,7 +181,7 @@ index c8b0144..f7ee56d 100644
 +    }
 +    return nil
  }
- 
+
  func theHTTPresponseCodeShouldBe(arg1 string) error {
 ```
 
@@ -217,7 +227,7 @@ func handleRequests() {
 func main() {
     handleRequests()
 }
-```  
+```
 
 Wenn wir jetzt die Tests laufen lassen, während der Server läuft, sieht man, dass wir einen Schritt weiter gekommen sind:
 ```
@@ -254,7 +264,7 @@ Die `When` Schritte funktionieren jetzt wie gewünscht. Als Nächstes müssen di
 @@ -23,16 +24,23 @@ func aRequestIsSentToTheEndpoint(method, endpoint string) error {
      return nil
  }
- 
+
 -func theHTTPresponseCodeShouldBe(arg1 string) error {
 -    return godog.ErrPending
 +func theHTTPresponseCodeShouldBe(expectedCode int) error {
@@ -263,7 +273,7 @@ Die `When` Schritte funktionieren jetzt wie gewünscht. Als Nächstes müssen di
 +    }
 +    return nil
  }
- 
+
 -func theResponseContentShouldBe(arg1 string) error {
 -    return godog.ErrPending
 +func theResponseContentShouldBe(expectedContent string) error {
@@ -273,7 +283,7 @@ Die `When` Schritte funktionieren jetzt wie gewünscht. Als Nächstes müssen di
 +    }
 +    return nil
  }
- 
+
  func InitializeScenario(ctx *godog.ScenarioContext) {
      ctx.Step(`^a "([^"]*)" request is sent to the endpoint "([^"]*)"$`, aRequestIsSentToTheEndpoint)
 -    ctx.Step(`^the HTTP-response code should be "([^"]*)"$`, theHTTPresponseCodeShouldBe)
@@ -314,7 +324,7 @@ index ae01ed0..06299b0 100644
 --- a/main.go
 +++ b/main.go
 @@ -2,18 +2,34 @@ package main
- 
+
  import (
         "fmt"
 +       "github.com/JankariTech/GoBikramSambat"
@@ -324,7 +334,7 @@ index ae01ed0..06299b0 100644
 +       "strconv"
 +       "strings"
  )
- 
+
 +func getAdFromBs(w http.ResponseWriter, r *http.Request) {
 +       vars := mux.Vars(r)
 +       dateString := vars["date"]
@@ -398,7 +408,7 @@ index b731d6d..9871219 100644
 --- a/bsdateServer_test.go
 +++ b/bsdateServer_test.go
 @@ -33,7 +33,7 @@ func theHTTPresponseCodeShouldBe(expectedCode int) error {
- 
+
  func theResponseContentShouldBe(expectedContent string) error {
      body, _ := ioutil.ReadAll(res.Body)
 -    if expectedContent != string(body) {
@@ -434,7 +444,7 @@ Feature: convert dates from BS to AD using an API
 
 ## Beispiel-Tabellen (Examples)
 Um sicherzustellen, dass die Konvertierung richtig funktioniert, sollten wir noch mehr verschiedene Daten testen. Grundsätzlich sind beim Testen oft diese Dinge interessant:
-- höchste und niedrigste möglichen Werte - da die [Umrechnung zwischen BS und AD auf Tabellen beruht](https://dev.to/jankaritech/demonstrating-tdd-test-driven-development-in-go-27b0), haben wir ein erstes Datum, das wir konvertieren können, und ein letztes; darüber hinaus ist keine Umrechnung möglich 
+- höchste und niedrigste möglichen Werte - da die [Umrechnung zwischen BS und AD auf Tabellen beruht](https://dev.to/jankaritech/demonstrating-tdd-test-driven-development-in-go-27b0), haben wir ein erstes Datum, das wir konvertieren können, und ein letztes; darüber hinaus ist keine Umrechnung möglich
 - Übergänge - zwischen Monaten und Jahren
 - andere besondere Fälle - Schaltjahre
 - falsche Eingaben - dreizehnter Monat, 32ter Tag, usw.
@@ -449,7 +459,7 @@ index 33f5d6c..9003cff 100644
 @@ -3,10 +3,15 @@ Feature: convert dates from BS to AD using an API
    I want to be able to send BS dates to an API endpoint and receive the corresponding AD dates
    So that I have a simple way to convert BS to AD dates, that can be used in different apps
- 
+
 -  Scenario: converting a valid BS date
 -    When a "GET" request is sent to the endpoint "/ad-from-bs/2060-04-01"
 +  Scenario Outline: converting a valid BS date

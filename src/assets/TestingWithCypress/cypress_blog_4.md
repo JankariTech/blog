@@ -1,4 +1,14 @@
-# Cypress Cucumber / Gherkin Integration
+---
+title: Cucumber - Gherkin Integration
+authorName: Kiran Parajuli
+authorAvatar: https://avatars.githubusercontent.com/u/39373750?v=4
+authorLink: https://github.com/kiranparajuli589/
+createdAt: Feb 2, 2021
+tags: vue, jest, unit, testing
+banner: https://res.cloudinary.com/practicaldev/image/fetch/s--t1Oxkc_O--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ffkifasq4al1c75uculu.png
+seriesTitle: E2E Testing with Cypress
+episode: 4
+---
 
 There is no official `gherkin` support available for Cypress, but there are nice libraries that add support for using feature files when testing with Cypress. Among them, we’re using `cypress-cucumber-preprocessor` in our project for automation testing.
 
@@ -193,10 +203,8 @@ Then click on a `.feature` file on the list of specs, and see the magic happenin
       "env": {
           "TAGS": "not @ignore"
       },
-      //rest of configuration options
       "baseUrl": "yourBaseUrl",
       "ignoreTestFiles": "*.js"
-      //etc
   }
   ```
 

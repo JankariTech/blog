@@ -1,9 +1,19 @@
-# Demonstrating TDD (Test-driven development) in Go
+---
+    title: TDD in Go
+    authorName: Kiran Parajuli
+    authorAvatar: https://avatars.githubusercontent.com/u/39373750?v=4
+    authorLink: https://github.com/kiranparajuli589/
+    createdAt: 02/10/2022
+    tags: vue, jest, unit, testing
+    banner: https://res.cloudinary.com/practicaldev/image/fetch/s--t1Oxkc_O--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ffkifasq4al1c75uculu.png
+---
+
+## Demonstrating TDD (Test-driven development) in Go
 
 TDD is the practice to write tests before code and it should reduce failure rates and defects in your software.
 In this blog-post I want to demonstrate how it can work.
 
-## starting point
+### starting point
 I'm writing an application in Go that should convert Bikram Sambat (BS) (also called Vikram Samvat) dates to Gregorian dates and vice-versa. [Vikram Samvat](https://en.wikipedia.org/wiki/Vikram_Samvat) is a calendar used mostly in Nepal and India. But even if you don't use it, this demonstration might be useful for you to understand TDD.
 
 So far I have done a bit of work that makes it possible to create a BS (Bikram Sambat) date instance, to get its details and to convert it to a Gregorian date. See: https://github.com/JankariTech/GoBikramSambat/blob/b99c510b22faf8395becda9a6dec1d0239504bb1/bsdate.go
@@ -14,7 +24,7 @@ Now I want to add the possibility to convert a Gregorian date to a Bikram Sambat
 
 Something like `nepaliDate, err := NewFromGregorian(gregorianDay, gregorianMonth, gregorianYear)` would be great and then simply use the existing `nepaliDate.GetDay()` `nepaliDate.GetMonth()` and `nepaliDate.GetYear()`
 
-## 1. create the test
+### 1. create the test
 According to TDD I first have to create a test.
 So in the file `bsdate_test.go` I create a new function called `TestCreateFromGregorian()`.
 As I already have a table of test-dates that are used for the conversion from Nepali to Gregorian I will use that data also to test the reverse conversion.
@@ -61,14 +71,14 @@ func TestCreateFromGregorian(t *testing.T) {
 
 The function takes entries from the `convertedDates` list, splits them, tries to create a BS date out of the particular gregorian test-case and then asserts that the BS date (day, month, year) is as expected.
 
-## 2. run the tests
+### 2. run the tests
 The test is done, according to TDD I have to run it.
 
 `go test -v`
 
 results in:
 
-```
+```console
 # NepaliCalendar/bsdate [NepaliCalendar/bsdate.test]
 ./bsdate_test.go:171:23: undefined: NewFromGregorian
 FAIL	NepaliCalendar/bsdate [build failed]
@@ -77,7 +87,7 @@ FAIL	NepaliCalendar/bsdate [build failed]
 That was expected, the function does not exist, no wonder my tests fail. What to do next? Guess what: implement the function.
 That makes TDD so easy, you just do what the tests tell you to fix.
 
-## 3. fix it
+### 3. fix it
 That's easy, add to `bsdate.go` a new function:
 ```
 func NewFromGregorian(gregorianDay, gregorianMonth, gregorianYear int) (Date, error) {
@@ -85,7 +95,7 @@ func NewFromGregorian(gregorianDay, gregorianMonth, gregorianYear int) (Date, er
 }
 ```
 
-## 4. repeat
+### 4. repeat
 running the tests again I get:
 
 `./bsdate.go:195:1: missing return at end of function`
@@ -101,7 +111,7 @@ That is true, let's return something, but what? Hey let's just create a BS date 
 You are saying that will not work? I don't care, I do TDD, the test tells me to return something, and I do return, I even return the correct type of value.
 
 lets run the tests again:
-```
+```console
 === RUN   TestCreateFromGregorian/2068-04-01
 	assert.go:24: got '17' want '1'
 
@@ -221,7 +231,7 @@ lets put it into code:
 ```
 
 and now? You guessed it! Run the tests:
-```
+```console
 === RUN   TestCreateFromGregorian
 === RUN   TestCreateFromGregorian/2068-04-01
 	assert.go:24: got '17' want '1'
@@ -249,7 +259,7 @@ So many words to describe it, so little effort to write it in code:
 ```
 
 I hear you shouting: "Run the tests, run the tests!" Don't worry, I will:
-```
+```console
 === RUN   TestCreateFromGregorian
 === RUN   TestCreateFromGregorian/2068-04-01
 === RUN   TestCreateFromGregorian/2068-01-01

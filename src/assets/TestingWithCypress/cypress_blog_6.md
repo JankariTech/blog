@@ -1,6 +1,14 @@
-# Cypress - Gherkin / Parallelization
-
-![header][headerImage]
+---
+title: Cypress - Gherkin / Parallelization
+authorName: Kiran Parajuli
+authorAvatar: https://avatars.githubusercontent.com/u/39373750?v=4
+authorLink: https://github.com/kiranparajuli589/
+createdAt: Feb 2, 2021
+tags: cypress, gherkin, parallelization, testing
+banner: /src/assets/ci_cd_gitlab_parallel.jpg
+seriesTitle: E2E Testing with Cypress
+episode: 6
+---
 
 In the previous part of the series we have disused how Cypress is so flexible with multiple CI providers, how it manages balanced strategies on parallel runs, and an example of a CircleCi configuration file. As long as tests are written in Cypress file/folder structure, the configuration of parallel tests run is simple as documented. But if you use feature files in your e2e tests, then your a bit unlucky using Cypress.
 
@@ -57,6 +65,5 @@ Here are screenshots of the GitLab CI test runner with Cypress-Gherkin-Paralleli
 ![ErrorLog][errorLog]
 
 <!-- asset -->
-[headerImage]: assets/ci_cd_gitlab_parallel.jpg 'Cypress - Gherkin / Parallelization'
-[successLog]: assets/cypress_success_log_gitlab_ci.jpg 'Success Log'
-[errorLog]: assets/cypress_error_log_gitlab_ci.jpg 'Error Log'
+[successLog]: /src/assets/TestingWithCypress/images/cypress_success_log_gitlab_ci.jpg 'Success Log'
+[errorLog]: /src/assets/TestingWithCypress/images/cypress_error_log_gitlab_ci.jpg 'Error Log'

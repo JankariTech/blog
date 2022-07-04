@@ -1,4 +1,14 @@
-# Organize your company the geek-way
+---
+title: Organize your company the geek-way
+authorName: Artur Neumann
+authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800.jpg
+authorLink: https://github.com/individual-it
+createdAt: Oct 23, 2019
+tags: startup, git, documents, organizing
+banner: https://res.cloudinary.com/practicaldev/image/fetch/s--Kf8L6kUm--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://thepracticaldev.s3.amazonaws.com/i/l8hil2nyr3jz5ujpljyp.jpg
+---
+
+## Organize your company the geek-way
 
 How do you organize your documents in your department / company / startup ? Your policies, your minutes of meetings, your contracts, etc.?
 
@@ -20,20 +30,20 @@ OK, OK, there are also disadvantages:
 
 But overall it works pretty good for us. And here are the rules we are working with:
 
-## Commandments
+### Commandments
 
-### 1. use GIT
+#### 1. use GIT
 For official work (proposals, policy, procedures, etc.) use GIT  where-ever possible.
 We like to use git as it makes it easy to know where the latest documents are and to track all changes.
 
-### 2. use text only
+#### 2. use text only
 Where-ever possible use "text only" formats.
 So use [Markup](https://guides.github.com/features/mastering-markdown/)
 instead of DOC.
 
 This makes it easier to compare files and track changes.
 
-### 3. master is law
+#### 3. master is law
   - Documents in the "master" branch are considered "official"
   - All changes to master need to be reviewed. The master branch is
   protected against direct edits, a change can only be merged after a review.
@@ -41,20 +51,20 @@ This makes it easier to compare files and track changes.
   **An approved review is considered the same as a signature**
   - Do not have "Work in Process" in master
 
-### 4. use branches, create Pull Requests
+#### 4. use branches, create Pull Requests
 Work in branches and make Pull Requests to the master branch. **You can work together with others in a branch if you need.**
 
-### 5. write good commit messages
+#### 5. write good commit messages
 The commit message has to explain what you have changed, in just a few words
 
-### 6. discuss Pull Requests
+#### 6. discuss Pull Requests
 If you are asked for your opinion on a change or a review is requested use the GitHub comment function to express yourself.
 
-### 7. use GitHub Issues function for ToDos
+#### 7. use GitHub Issues function for ToDos
 The Issue function is great to write ToDos, assign work and discuss & track
 progress.
 
-### 8. use Labels
+#### 8. use Labels
 The labels in GitHub should be used to tag different work staged.
 
 **For Pull Requests**
@@ -68,7 +78,7 @@ The labels in GitHub should be used to tag different work staged.
 - *priority:normal*
 - *priority:low*
 
-### 9. review and approve
+#### 9. review and approve
 If asked for a review, check the changes carefully and if you are happy
 with them approve the Pull Request, other-wise request a change and/or
 write a comment.
@@ -79,15 +89,15 @@ As collaborators cannot review their own work, making a commit, starting a new P
 
 This does not matter a great deal for a lot of work but occasionally might be very important. E.g. If you review&approve the Minutes of a meeting on GitHub it is the same as if you would approve and sign them during the next meeting.
 
-### 10. use squash & rebase
+#### 10. use squash & rebase
 When merging a branch into master choose between "Squash & merge" and "Rebase & merge"
 - If there are a lot of small changes choose "Squash" to put all changes into one big commit
 - If there are changes where you care about the author use "Rebase"
 - do not use "Merge & commit" as this creates unnecessary commit messages
 
-## Workflow
+### Workflow
 
-### If you want to make a change
+#### If you want to make a change
 1. pull the current master branch
 2. create a new branch
 3. work in your branch
@@ -100,6 +110,6 @@ Pull Request as "To Review"
 6. after everybody who needs to give their approval has done so, merge your work into the master branch
 7. delete your work-branch
 
-### If you are asked for a review
+#### If you are asked for a review
 1. check the changes carefully
 2. comment, ask for changes and/or approve

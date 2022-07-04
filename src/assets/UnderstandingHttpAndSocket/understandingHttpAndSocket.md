@@ -1,22 +1,30 @@
-# Serving your cat video using the Internet - A basic understanding of HTTP and socket programming (in Java)
+---
+title: Serving your cat video using the Internet - A basic understanding of HTTP and socket programming (in Java)
+authorName: Saksham Gurung
+authorAvatar: https://avatars.githubusercontent.com/u/41365307?v=4
+authorLink: https://github.com/sakshamgurung
+createdAt: Dec 6, 2021
+tags: socket, java, http, video
+banner: https://res.cloudinary.com/practicaldev/image/fetch/s--t1Oxkc_O--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ffkifasq4al1c75uculu.png
+---
 
 This blog explains the basic understanding of HTTP, client-server model, network layers, and some socket programming in Java.
 
-## **Roles on the Internet:**
+## Roles on the Internet
 Developers and designers can select different arrangements and architecture for their computers to develop an internet service. In this article, we are talking about the most commonly used `client-server` model. There are mainly two roles in this model:
 - client: A client computer initiates a request for the resources and the information from the server computer.
 - server: A server computer processes the client request and responds with appropriate information.
 
 <figure align="center">
-    <img alt="client server model" width="383.7" height="357.7" src="./understandingHttpAndSocket-images/clientServerModel.png" />
+    <img alt="client server model" width="383.7" height="357.7" src="/src/assets/UnderstandingHttpAndSocket/images/clientServerModel.png" />
     <figcaption>Fig.1: Client-Server model</figcaption>
 </figure>
 
-## **A common language:**
+## A common language
 To conduct communication between a client and a server a common language is necessary. We can develop and use any language we desire to make these computers communicate with each other. But to make it usable, compatible, and widely accessible we need a standardized language (aka protocol). This is where the HTTP protocol comes in.
 
 - HTTP protocol defines the structure for request and response messages. It is like sending a parcel to your friend with an address structured as street name, city name, state name, zip code, and country code.
-- HTTP defines operations that can be performed on a given resource. These are called HTTP request methods. They are also referred to as HTTP verbs. Some examples are: 
+- HTTP defines operations that can be performed on a given resource. These are called HTTP request methods. They are also referred to as HTTP verbs. Some examples are:
     - The GET method requests a representation/state of the specified resource/data. It should only retrieve data.
     - The POST method submits an entity to the specified resource, often causing a change in the server.
 - HTTP protocol also defines different sets of status codes to indicate different states that may occur during communication like successful responses (200-299), client error responses (400-499), server error responses (500-599), etc.
@@ -27,24 +35,24 @@ To conduct communication between a client and a server a common language is nece
     - An optional body containing data associated with the request (like the content of an HTML form) or the document associated with a response. The presence of the body and its size is specified by the start-line and HTTP headers.
 
 <figure align="center">
-    <img alt="HTTP message structure" width="1035" height="369.75" src="./understandingHttpAndSocket-images/httpMsgStructure.png" />
+    <img alt="HTTP message structure" width="1035" height="369.75" src="/src/assets/UnderstandingHttpAndSocket/images/httpMsgStructure.png" />
     <figcaption>Fig.2: Structure of HTTP message</figcaption>
 </figure>
 
-## **Soft layers:**
+## Soft layers
 The software model of the Internet can be defined by two types of layered models: **OSI model** (for reference only) and **Internet Protocol Suite** (practically implemented and used by the Internet). Without going into much depth the main points are:
-- Every computer (client or server), and network device that supports the Internet implements the IP suite model. 
+- Every computer (client or server), and network device that supports the Internet implements the IP suite model.
 - These models are structured as layers so we say the model has a layered structure
 - Each layer has its responsibility and hides its implementation (inner working) from other layers
 - Each layer provides an interface to layers immediately above or below itself
 
-> Note:  
-In the IP suite model, the *Application* layer combines all three layers from the OSI model i.e *Application* + *Presentation* + *Session*  
-In the IP suite model, the *Link* layer combines the lower two layers from the OSI model i.e *Physical* + *Datalink*  
+> Note:
+In the IP suite model, the *Application* layer combines all three layers from the OSI model i.e *Application* + *Presentation* + *Session*
+In the IP suite model, the *Link* layer combines the lower two layers from the OSI model i.e *Physical* + *Datalink*
 The lowermost layer from each model connects with physical network devices like routers, switches, etc.
 
 <figure align="center">
-    <img alt="network layered model" width="744" height="393" src="./understandingHttpAndSocket-images/networkLayeredModel.png" />
+    <img alt="network layered model" width="744" height="393" src="/src/assets/UnderstandingHttpAndSocket/images/networkLayeredModel.png" />
     <figcaption>Fig.3: Layered Model of a network</figcaption>
 </figure>
 
@@ -53,15 +61,15 @@ HTTP comes under the *Application* layer which is accessible to the user process
 
 A socket is like the two ends of a water pipe that handles the flow of water. But the only difference is that the information flows in both directions in a socket. A socket can be identified by a socket address which combines protocol type, IP address, and port number. The Socket API makes it easy to use different protocols and develop communication in a network. The following figure shows a general flow of communication using the socket API. We will understand more about these socket functions later in our coding part.
 
-> Note:  
+> Note:
 This figure shows the socket functions implemented in the C language. In this article, we will be using socket functions from Java.
 
 <figure align="center">
-    <img alt="TCP socket workflow" width="623.25" height="697.5" src="./understandingHttpAndSocket-images/tcpSocket.png" />
+    <img alt="TCP socket workflow" width="623.25" height="697.5" src="/src/assets/UnderstandingHttpAndSocket/images/tcpSocket.png" />
     <figcaption>Fig.4: Flow of communication between client-server socket using TCP (in C)</figcaption>
 </figure>
 
-## **Coding:**
+## Coding
 ### Basic files and project structure
 > Note:
 > Please first install `java JDK` for this project, setup your environment variables, and check everything is working well.
@@ -108,7 +116,7 @@ This figure shows the socket functions implemented in the C language. In this ar
 - The project structure should look something like this.
 
 <figure align="center">
-    <img alt="Project structure" src="./understandingHttpAndSocket-images/projectStructure.png" />
+    <img alt="Project structure" src="/src/assets/UnderstandingHttpAndSocket/images/projectStructure.png" />
     <figcaption>Fig.5: Project Structure</figcaption>
 </figure>
 
@@ -132,7 +140,7 @@ import java.util.regex.Pattern;
 
 ```java
 // Inside WebServer.java file
-public class WebServer{
+public class WebServer {
     public static void main (String args[]) throws IOException NoSuchAlgorithmException {
         int serverPort = 9090;
         // allocating resources for server's socket and assigning a port number
@@ -146,7 +154,7 @@ public class WebServer{
                 Socket clientSocket = listenSocket.accept();
                 System.out.println("\nA client is connected.....");
 
-                // Initializing 'Connection' class with 
+                // Initializing 'Connection' class with
                 // client's socket address
                 Connection c = new Connection(clientSocket);
             }
@@ -204,7 +212,7 @@ The above code does the following things:
         // Initializing a Scanner class to read stream input from the
         // socket connection between server and client
         Scanner scan = new Scanner(this.in, "UTF-8");
-        try{ 
+        try{
             // separating the HTTP request header from rest of the HTTP message
             // "\\r\\n\\r\\n" below refers to the 'empty line' from fig.1
             String requestHeader = scan.useDelimiter("\\r\\n\\r\\n").next();
@@ -227,26 +235,26 @@ The above code does the following things:
                 // calling helper method to search and get the path that
                 // leads to the resource client is looking for
                 Path filePath = getFilePath(path);
-                
+
                 System.out.println("file path: " + filePath);
                 // checking if resource path exists
                 if (Files.exists(filePath)) {
                     // file exist
-                    // calling helper method to guess the file extension 
+                    // calling helper method to guess the file extension
                     // type like .html, .mp4, etc
                     String contentType = guessContentType(filePath);
 
                     System.out.println("file exist");
                     System.out.println("content type:" + contentType);
-                    
-                    // calling helper method and setting standard HTTP 
+
+                    // calling helper method and setting standard HTTP
                     // status code, response type, and response content
                     sendResponse("200 OK", contentType, "", Files.readAllBytes(filePath));
-                    
+
                 } else {
                     // file not found
                     System.out.println("File not found");
-                    
+
                     byte[] notFoundContent = "<h1> File not found :( </h1>".getBytes("UTF-8");
 
                     sendResponse("404 Not Found", "text/html", "", notFoundContent);
@@ -302,7 +310,7 @@ The above code does the following things:
         byte[] response = (
             "HTTP/1.1 " + status + "\r\n"
             + "Content-Type: " + contentType + "\r\n"
-            + additional_header 
+            + additional_header
             + "\r\n").getBytes("UTF-8");
         out.write(response, 0, response.length);
         out.write(content, 0, content.length);

@@ -1,3 +1,13 @@
+---
+title: Einstieg in BDD (Behavior-driven development)
+authorName: Artur Neumann
+authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800.jpg
+authorLink: https://github.com/individual-it
+createdAt: March 31, 2021
+tags: testing, bdd, test
+banner: https://res.cloudinary.com/practicaldev/image/fetch/s--9V07u59B--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/kwqa0mzc2gp33o3rhbg5.png
+---
+
 In [Demonstrating TDD (Test-driven development) in Go](https://dev.to/jankaritech/demonstrating-tdd-test-driven-development-in-go-27b0) habe ich über TDD geschrieben und jetzt möchte ich zeigen wie BDD (Behavior-driven development) mit Go funktionieren kann.
 In diesem Artikel gehe ich auf die Grundlagen von BDD ein und darauf, wie die Funktionen einer Applikation beschrieben werden. Der nächste Artikel wird dann technischer sein und sich darum drehen, wie man BDD Tests automatisch in einer Golang Umgebung laufen lässt.
 
@@ -27,7 +37,7 @@ Wenn es schief läuft, werden viele Ressourcen verschwendet, Konflikte und Missv
 2. Als Entwickler will man genau das entwickeln, was gefordert ist (um Zeit zu sparen), und am Ende will man bezahlt werden.
 3. Als Tester möchte man genau wissen, was zu testen ist und ob ein Verhalten ein Bug oder ein Feature ist.
 
-Im Grunde genommen will man alle beteiligten Parteien (und es können mehr als die drei genannten sein) dazu bringen, ihre Erwartungen zu kommunizieren und sich auf das akzeptable Verhalten der Anwendung zu einigen. Und das ist die grundlegende Idee hinter BDD: die Kommunikation zwischen allen Beteiligten zu verbessern, um sicherzustellen, dass jeder weiß, worüber geredet wird. 
+Im Grunde genommen will man alle beteiligten Parteien (und es können mehr als die drei genannten sein) dazu bringen, ihre Erwartungen zu kommunizieren und sich auf das akzeptable Verhalten der Anwendung zu einigen. Und das ist die grundlegende Idee hinter BDD: die Kommunikation zwischen allen Beteiligten zu verbessern, um sicherzustellen, dass jeder weiß, worüber geredet wird.
 
 Aber wie erreicht man das? Der Kunde könnte denken, dass eine Zeile zur Erklärung reicht: "API um Daten von BS zu AD und AD zu BS zu konvertieren". Der Manager möchte einen wasserdichten Vertrag und der Entwickler sagt: "Der Quellcode genügt als Dokumentation."
 Eine gute Möglichkeit, das gemeinsame Verständnis zu verbessern, ist das Aufschreiben der Anforderungen in der Gherkin-Sprache. Gherkin ist eine teilstrukturierte Sprache, die so einfach ist, dass sogar eine Gurke sie verstehen kann.
@@ -38,7 +48,7 @@ Jede Funktion sollte in einer eigenen Datei beschrieben werden.
 
 _Randnotiz: es wird immer wieder darüber diskutiert, was eine Funktion / ein Feature ist. Konkret in unsrem Beispiel: Ist die Konvertierung in beide Richtungen ein oder zwei Features? Ist die Behandlung von Fehlern ein separates Feature oder ein Teil der Konvertierung? Wenn ich mir nicht sicher bin, ist die Lösung für mich oft einfach pragmatisch: Die Datei sollte nicht zu lang sein._
 
-Wir fangen mit einer allgemeinen Beschreibung der Funktion an: 
+Wir fangen mit einer allgemeinen Beschreibung der Funktion an:
 (Ich werde den Quellcode und die Feature-Dateien nicht übersetzen, sondern so zeigen, wie sie in GitHub abgespeichert sind. Aber Gherkin kann in jeder beliebigen Sprache verwendet werden. Je nachdem, was die gemeinsame Sprache der Beteiligten ist.)
 ```
 Feature: convert dates from BS to AD using an API
@@ -70,7 +80,7 @@ In Gherkin fängt jedes Szenario mit Schlüsselwort `Scenario` an und es folgt e
 ```
 
 ## Given, When, Then
-Als Nächstes müssen wir das gewünschte Verhalten der Anwendung in diesem Szenario beschreiben. Dafür kennt Gherkin drei Schlüsselwörter: 
+Als Nächstes müssen wir das gewünschte Verhalten der Anwendung in diesem Szenario beschreiben. Dafür kennt Gherkin drei Schlüsselwörter:
 - **Given** - die Voraussetzungen für das Szenario
 - **When** - die Aktion, die getestet werden soll
 - **Then** - das gewünschte Ergebnis

@@ -1,3 +1,15 @@
+---
+title: Interpret the Result
+authorName: Artur Neumann
+authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800.jpg
+authorLink: https://github.com/individual-it
+createdAt: Jan 14, 2020
+tags: qa, performance, python, testing
+banner:
+seriesTitle: Performance Testing with Locust
+episode: 4
+---
+
 In the last posts of this series we setup locust and made some basic performance tests to test the ownCloud WebDAV-API. This time we will try to make some sense of the locust output.
 
 Here is the locust file we are using:
@@ -62,10 +74,10 @@ and then started locust with: `locust --host=http://localhost:8080`
 
 When I now run both ownCloud and locust on my workstation (i5-7500 CPU @ 3.40GHz; 8GB RAM) and hatch 100 locust-users I get this graph:
 
-![locust output when running app and locust on same computer](locust-04-images/locust-running-on-same-computer.png)
+![locust output when running app and locust on same computer](/src/assets/Locust/images/locust-04-images/locust-running-on-same-computer.png)
 
 But now have a look at the CPU usage (on Linux the easiest way to see it is to use the `top` command)
-![CPU usage when running app and locust on same computer](locust-04-images/top-locust-uses-resources.png)
+![CPU usage when running app and locust on same computer](/src/assets/Locust/images/locust-04-images/top-locust-uses-resources.png)
 
 WOW, 61.7% CPU is used by locust itself. I'm not really testing the performance of ownCloud (or not alone). Beside locust gnome, X and Firefox are eating up a significant amount of resources, so the results will never be accurate. Better get some dedicated hardware to run ownCloud on.
 
@@ -81,10 +93,10 @@ In the response-time graph the green line shows the median response time and the
 To calculate the *current* response time a sliding window of (approximately) the last 10 seconds is used see: [get_current_response_time_percentile function](https://github.com/locustio/locust/blob/6ba31c83acae6d26297a23de0eaaef34b3838330/locust/stats.py#L504).
 
 As you can see, the median response time goes up as we add more users. And there is a "bump" in the 95th percentile line every time new users are created. So it looks like user creation is "expensive". (The "bump" is also visible in the median-line, but not that obvious).
-![response time vs users](locust-04-images/increasing-users-increased-response-time.png)
+![response time vs users](/src/assets/Locust/images/locust-04-images/increasing-users-increased-response-time.png)
 
 Rerunning the tests shows a similar result.
- 
+
 BTW: Because there is always other stuff happening on the server its always good to run performance tests multiple times and see if you get similar results.
 
 So from that information, how many users can our system handle? Maybe the better question is how long do you want your user to wait? In our test-scenario the user sends one request every second, either a download or an upload request. The download request appears 3 times more often than the upload (see "Weight of a task" in the [multiple tasks](https://dev.to/jankaritech/performance-testing-with-locust-02-multiple-tasks-4ckn) part).
@@ -94,9 +106,9 @@ Would it be acceptable for your application to let the user wait for 3sec or mor
 
 To see more details and maybe make more analysis download the CSV data and open in a spreadsheets app.
 These files have one line per request type & URL, because we have the username in the URL, there will be a lot of lines.
- 
+
 In the request statistics CSV file we have the median/average/min/max response time for all uploads user0 has done, and all uploads user1 has done and so on. We can e.g. calculate the average response time of all uploads with the formula `=AVERAGEIF(A2:A301;"PUT";F2:F301)` (tested with [LibreOffice](https://www.libreoffice.org)). Column A holds the method name, column F is the average response time and in my table there are 301 lines.
- 
+
 Be aware that this list will now hold ALL the results, from the time when we had 20 users, 50 users and 100 users, so if we want to know the average response time of uploads with a particular amount of users, we would have to rerun the test with a fixed amount of users and not change it in between.
 
 ## optimization
@@ -117,7 +129,7 @@ Looking at the graph I see that up to ~10 users the median time does not change 
 
 Also have a look at the "Total Requests per Second" graph. Up to 15 users it steadily climbs up, but then there are valleys and hills, but the system struggles to serve more requests/s.
 
-![slowly increasing the number of users](locust-04-images/slowly-increasing-num-of-users.png)
+![slowly increasing the number of users](/src/assets/Locust/images/locust-04-images/slowly-increasing-num-of-users.png)
 
 ## conclusion
 

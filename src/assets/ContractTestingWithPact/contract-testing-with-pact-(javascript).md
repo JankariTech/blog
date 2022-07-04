@@ -1,3 +1,12 @@
+---
+title: Contract testing with Pact (JavaScript)
+authorName: Sajan Gurung
+authorAvatar: https://www.jankaritech.com/images/2021/12/29/p1110923-crop-col-800.jpg
+authorLink: https://github.com/saw-jan
+createdAt: Aug 24, 2021
+tags: pactjs, testing, javascript
+banner: https://res.cloudinary.com/practicaldev/image/fetch/s--rgD9-Oz9--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/tj9nr0r3wfgchgbpa7d5.png
+---
 Contract testing is a software testing technique which is used to test the integration points and interfaces between different software applications. The main goal of contract testing is to test each application in isolation and ensure that they are compatible with a shared contract.
 
 Consumer driven contract testing is simply a contract testing approach in which a consumer sets the list of expectations as a contract and expects a provider to be compatible with that contract.
@@ -10,7 +19,7 @@ For more information see [docs.pact.io](https://docs.pact.io/)
 
 In this blog post, I will focus on how to test HTTP integrations using Pact. The following diagram shows the overview of how Pact works:
 
-![Pact Workflow](./contract-testing-images/pactworkflow.png)
+![Pact Workflow](/src/assets/ContractTestingWithPact/images/pactworkflow.png)
 
 _Overview of How Pact Works_
 
@@ -156,7 +165,7 @@ npx jest tests/client.spec.js
 ```
 
 Result:
-![Consumer test result](./contract-testing-images/consumer_test.png)
+![Consumer test result](/src/assets/ContractTestingWithPact/images/consumer_test.png)
 
 When a test run exits with success, it will generate a json file (i.e. pact or contract file) inside the _pacts_ folder which is later used to verify the provider.
 
@@ -249,6 +258,6 @@ npx jest tests/server.spec.js
 ```
 
 Result:
-![Provider test result](./contract-testing-images/provider_test.png)
+![Provider test result](/src/assets/ContractTestingWithPact/images/provider_test.png)
 
 Congratulations! You have successfully written your first consumer driven contract test and provider verification test using _Pact_.

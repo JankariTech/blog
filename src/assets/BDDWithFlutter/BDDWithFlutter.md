@@ -1,5 +1,16 @@
+---
+title: BDD (Behavior Driven Development) with Flutter
+authorName: Artur Neumann
+authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800.jpg
+authorLink: https://github.com/individual-it
+createdAt: June 3, 2020
+tags: bdd, testing, flutter, dart
+banner:
+seriesTitle: Behaviour Driven Development
+episode: 2
+---
 
-This tutorial will first show how to test a flutter app using the Gherkin language and in the second part walk through an example of BDD (Behavior Driven Development) in the same App. 
+This tutorial will first show how to test a flutter app using the Gherkin language and in the second part walk through an example of BDD (Behavior Driven Development) in the same App.
 
 Flutter uses different types of tests [(unit, widget, integration)](https://flutter.dev/docs/testing). You should have all types of tests in your app, most of your tests should be unit tests, less widget and a few integration tests. The [test pyramid](https://martinfowler.com/bliki/TestPyramid.html) explains the principle well (using different words for the test-types).
 
@@ -16,7 +27,7 @@ Here are some readings about BDD and Gherkin:
 
 But enough theory, lets get our hands dirty. (You can find all the code of this tutorial here: https://github.com/JankariTech/flutterBDDexample)
 
-# The feature files
+## The feature files
 
 For the start you should have installed the flutter-tools stack and create a flutter test-drive app as explained in the [get-started document](https://flutter.dev/docs/get-started/test-drive?tab=androidstudio)
 
@@ -50,7 +61,7 @@ Later we will add more scenarios to the app, the feature might be the same, but 
 
 Now we can start the app and use our behaviour description to check if it works as it should.
 
-# Test-automation
+## Test-automation
 
 Running manual tests from a description is nice, but not enough for us, we want to save time and reduce possible mistakes by running the tests automatically.
 
@@ -160,7 +171,7 @@ Additionally every class we add in the steps definitions we also have to registe
 
 Remember: The step `Then I expect the "counter" to be "10"` is a built-in-step. So we don't need to write any code for it, it will look for a text-widget with the key `counter` and assert its value.
 
-# run the tests
+## run the tests
 1. connect your phone or start the emulator
 2. run `dart test_driver/app_test.dart`
 
@@ -179,13 +190,13 @@ Restarting Flutter app under test
 
 and the app working on the phone screen.
 
-![first test run](BDDWithFlutter/flutter-run1.gif)
+![first test run](/src/assets/BDDWithFlutter/images/flutter-run1.gif)
 
-# BDD (this time for real)
+## BDD (this time for real)
 
 We know now how to write feature files and how to run automated tests from them, but that hasn't been BDD yet. We have only written a test for an existing feature in the app. To do BDD we have first to write the expected behaviour and then start coding.
 
-## 1. write down the expected behaviour
+### 1. write down the expected behaviour
 
 Let's say we not only want to have a button to increment the counter, but also be able to decrement it. So in `features` create a file called `decrement_counter.feature` with this content:
 
@@ -206,7 +217,7 @@ Trying to run this test we will have multiple issues:
 2. the regex will not match the `When` step because it says `time` and not `times`
 3. there is no functionality and no button to decrement the counter
 
-## 2. make the tests pass
+### 2. make the tests pass
 
 For the first issue we would need to pre-set the counter with a value, but as we are doing end-to-end tests and acting as a user, the only way for the user to get the counter up to a specific value is to press the (+) button. Our test-code will do the same. (Side note: that will take time during test-execution, the faster option would be to have a back-channel to pre-set the value e.g. `Data Handlers`, but I could not make it work).
 
@@ -216,7 +227,7 @@ index e4eea51..e2e1a38 100644
 --- a/myapp/test_driver/steps/tap_button_n_times_step.dart
 +++ b/myapp/test_driver/steps/tap_button_n_times_step.dart
 @@ -8,6 +8,7 @@ class GivenCounterIsSetTo extends Given1WithWorld<String, FlutterWorld> {
- 
+
    @override
    Future<void> executeStep(String expectedCounter) async {
 +    await tapButton(world, timeout, "increment", int.parse(expectedCounter));
@@ -224,7 +235,7 @@ index e4eea51..e2e1a38 100644
      final actualCount = await FlutterDriverUtils.getText(world.driver, locator);
      expectMatch(actualCount, expectedCounter);
 @@ -20,9 +21,13 @@ class TapButtonNTimesStep extends When2WithWorld<String, int, FlutterWorld> {
- 
+
    @override
    Future<void> executeStep(String buttonKey, int amount) async {
 -    final locator = find.byValueKey(buttonKey);
@@ -255,7 +266,7 @@ index 8795daa..068f558 100644
 @@ -63,6 +63,12 @@ class _MyHomePageState extends State<MyHomePage> {
      });
    }
- 
+
 +  void _decrementCounter() {
 +    setState(() {
 +      _counter--;
@@ -326,7 +337,7 @@ Restarting Flutter app under test
 0:00:22.451000
 ```
 
-## 3. multiply the scenarios by using an example table
+### 3. multiply the scenarios by using an example table
 Now we might want to test more cases than only tapping the (-) button once. For that we can just copy and paste the existing scenario, or more elegantly we add an example table:
 ```
   Scenario Outline: Counter decreases when the (-) button is pressed
@@ -366,7 +377,7 @@ Running scenario: Counter decreases when the (-) button is pressed (Example 3) #
 PASSED: Scenario Counter decreases when the (-) button is pressed (Example 3) # ./test_driver/features/decrement_counter.feature:5
 ```
 
-## 4. repeat
+### 4. repeat
 
 What about negative values? If a shepherd is using this app to count the sheep, there is no point to have a negative counter. To say it in Gherkin:
 ```
@@ -380,7 +391,7 @@ You also could add that to the previous table, but I would argue that it is anot
 
 Running this test fails with:
 ```
-   × Then I expect the "counter" to be "0" # ./test_driver/features/decrement_counter.feature:18 took 97ms 
+   × Then I expect the "counter" to be "0" # ./test_driver/features/decrement_counter.feature:18 took 97ms
       Expected: '0'
   Actual: '-1'
    Which: is different.
@@ -396,7 +407,7 @@ index 068f558..5e0d8d0 100644
 --- a/myapp/lib/main.dart
 +++ b/myapp/lib/main.dart
 @@ -65,7 +65,9 @@ class _MyHomePageState extends State<MyHomePage> {
- 
+
    void _decrementCounter() {
      setState(() {
 -      _counter--;
@@ -407,7 +418,7 @@ index 068f558..5e0d8d0 100644
    }
 ```
 
-# conclusion
+## conclusion
 
 You have seen how to write Gherkin files and how to run them as automated tests for a flutter application.
 I personally find flutter_gherkin a bit more complicated than other BDD frameworks, but it's possible, and I believe using BDD will improve the quality of your project greatly.
