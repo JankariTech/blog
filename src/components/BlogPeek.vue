@@ -11,7 +11,7 @@
       <img
         :src="banner || fallBackBanner"
         class="banner-image"
-        :class="{'image-contain': !banner}"
+        :class="{ 'py-2 image-contain': !banner }"
         alt="Card Banner"
       />
     </div>
@@ -94,7 +94,7 @@ defineProps({
     default: null
   },
   createdAt: {
-    type: Date,
+    type: [Date, String],
     required: true
   },
   contentLength: {
@@ -107,7 +107,7 @@ defineProps({
   },
   banner: {
     type: String,
-    required: true
+    default: null
   }
 })
 
@@ -126,6 +126,10 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+.py-2 {
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+}
 .blog-peek {
   margin: 1.6rem;
   border: 1px solid grey;
@@ -235,7 +239,6 @@ body[theme-dark] {
 
 .image-contain {
   object-fit: contain;
-  padding: 0.6rem 0 1rem;
   border-bottom: 1px solid #dedddd;
 }
 </style>
