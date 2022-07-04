@@ -23,11 +23,11 @@
             {{ item.name }}
           </button>
         </div>
-          <button class="appbar--icon icon-button to-github"
-            @click="toGithub"
-          >
-            <mdi-github class="one-rem"/>
-          </button>
+        <button class="appbar--icon icon-button to-github"
+          @click="toGithub"
+        >
+          <mdi-github class="one-rem"/>
+        </button>
       </div>
     </div>
   </nav>
