@@ -7,13 +7,13 @@ createdAt: April 6, 2020
 tags: testing, bdd, robotframework, python
 banner:
 ---
-# Robot Framework
+## Robot Framework
 
 Robot framework is a generic open source test automation framework for acceptance testing. It is a keyword-driven testing framework that uses tabular test data syntax. It has easy syntax, using human-readable keywords. This framework is independent of operating system and application. The core framework is implemented using Python and also runs on Jython(JVM) and IronPython(.NET). This framework provides support for external libraries, tools which are open source and can be used for test automation.
 
 The test data is in simple tabular format. When started, the robot framework processes the data, executes the test cases, and generates logs and reports.
 
- ## Installation and setup of robot framework
+ ### Installation and setup of robot framework
 1. Preconditions:
    * Python installation
    * Pip
@@ -52,7 +52,7 @@ The test data is in simple tabular format. When started, the robot framework pro
 
 8. Make a robot file inside a test folder eg: `robotBDDExample/test/login.robot`
 
-## Test Data Sections
+### Test Data Sections
 The data used is defined in different sections in robot framework. These sections are often called tables.
 
  1. Settings: This section is used for importing test libraries, resource files and variable files.
@@ -115,38 +115,38 @@ From the above examples, it is clear that the test cases are created in the test
 Let us now see a practical example where a user logs in.
 
 ```
- *** Settings ***
- Documentation       Test for user login
- Library             SeleniumLibrary
- Library             PageObjectLibrary
+*** Settings ***
+Documentation       Test for user login
+Library             SeleniumLibrary
+Library             PageObjectLibrary
 
 
 Test Setup           Open test browser
 Test Teardown        Close all test browsers
 
- *** Variables ***
- ${SERVER}           localhost:8080
- ${ROOT}             http://${SERVER}/myApp
- ${BROWSER}          chrome
- ${SELENIUM_URL}     http://localhost:4444
- ${PLATFORM}         linux
- ${VERSION}          latest
- ${USERNAME}         admin
- ${PASSWORD}         password
- ${username_field}   id=usernametext
- ${password_field}   id=passwordtext
- ${signIn_Button}    id=submit
- ${LOGIN_URL}        http://${SERVER}/myApp/login
- ${WELCOME_URL}      http://${SERVER}/myApp/welcome.html
+*** Variables ***
+${SERVER}           localhost:8080
+${ROOT}             http://${SERVER}/myApp
+${BROWSER}          chrome
+${SELENIUM_URL}     http://localhost:4444
+${PLATFORM}         linux
+${VERSION}          latest
+${USERNAME}         admin
+${PASSWORD}         password
+${username_field}   id=usernametext
+${password_field}   id=passwordtext
+${signIn_Button}    id=submit
+${LOGIN_URL}        http://${SERVER}/myApp/login
+${WELCOME_URL}      http://${SERVER}/myApp/welcome.html
 
- *** Test Cases ***
- Valid Login
-    [Documentation]       Test valid login
-    Open Login Page
-    Input Username        ${USERNAME}
-    Input Password        ${PASSWORD}
-    Submit Credentials
-    Welcome page is open
+*** Test Cases ***
+Valid Login
+  [Documentation]       Test valid login
+  Open Login Page
+  Input Username        ${USERNAME}
+  Input Password        ${PASSWORD}
+  Submit Credentials
+  Welcome page is open
 
 *** Keywords ***
 Open test browser
@@ -183,12 +183,12 @@ Now, let us understand the above example. The test case has a scenario for valid
 
 The keyword 'Title Should Be' uses the page title such as 'Welcome Page' and 'Login Page' as in example above. These page titles are defined in the page object classes, which will be discussed below.
 
-## Using page objects in robot framework
+### Using page objects in robot framework
 Page objects provide an additional layer of abstraction for test case creation. Using page objects results in easier maintenance of the tests.
 
 PageObjectLibrary is a Robot Framework keyword library that makes it possible to use the Page Object pattern when testing web pages with the keyword based approach of robot framework. Page Object classes are implemented as standard robot keyword libraries. When you use PageObjectLibrary keywords to go to a page or assert you are on a specific page, the keyword will automatically load the library for that page and put it at the front of the library search order, guaranteeing that the Page Object keywords are available to your test case.
 
-### Writing a page object class
+#### Writing a page object class
 Page Objects are simple python classes that inherit from `PageObjectLibrary.PageObject`. There are only a couple of requirements for the class:
 
  1. The class should define a variable named `PAGE_TITLE`
@@ -205,7 +205,7 @@ By inheriting from `PageObjectLibrary.PageObject`, methods have access to the fo
 
 The above tests can be easy to understand when written in gherkin format. Let's get familiar with gherkin syntax and how the test can be written in this format.
 
-## Gherkin Syntax
+### Gherkin Syntax
 Gherkin format focuses on describing a feature to be implemented using the "Given", "When", "Then", "And", and "But" keywords. Writing requirements in this manner makes tests easier to understand, specially for non-technical people, as natural language is used to describe the test cases. Moreover, this format focuses on a clear separation between test-setup, test-actions, and test-results.
 
 Given < some initial state or preconditions >
@@ -213,42 +213,41 @@ When < the action taken which triggers the scenario >
 Then < the expected outcome >
 
 for e.g.
- ```
- *** Settings ***
- Documentation       Test for user login
- Library             SeleniumLibrary
- Library             PageObjectLibrary
+```
+*** Settings ***
+Documentation       Test for user login
+Library             SeleniumLibrary
+Library             PageObjectLibrary
 
 Test Setup           Open test browser
 Test Teardown        Close all test browsers
 
- *** Variables ***
- ${SERVER}           localhost:8080
- ${ROOT}             http://${SERVER}/myApp
- ${BROWSER}          chrome
- ${SELENIUM_URL}     http://localhost:4444
- ${PLATFORM}         linux
- ${VERSION}          latest
- ${USERNAME}         admin
- ${PASSWORD}         password
- ${LOGIN_URL}        http://${SERVER}/myApp/login
- ${WELCOME_URL}      http://${SERVER}/myApp/welcome.html
+*** Variables ***
+${SERVER}           localhost:8080
+${ROOT}             http://${SERVER}/myApp
+${BROWSER}          chrome
+${SELENIUM_URL}     http://localhost:4444
+${PLATFORM}         linux
+${VERSION}          latest
+${USERNAME}         admin
+${PASSWORD}         password
+${LOGIN_URL}        http://${SERVER}/myApp/login
+${WELCOME_URL}      http://${SERVER}/myApp/welcome.html
 
- *** Test Cases ***
- Valid Login
-    [Documentation]                                     Test valid login
-    Given the user has browsed to the login page
-    When the user enters the username                   ${USERNAME}
-    And the user enters the password                    ${PASSWORD}
-    And the user submits the credentials
-    Then the current page should be  FilesPage
-
- ```
+*** Test Cases ***
+Valid Login
+  [Documentation]                                     Test valid login
+  Given the user has browsed to the login page
+  When the user enters the username                   ${USERNAME}
+  And the user enters the password                    ${PASSWORD}
+  And the user submits the credentials
+  Then the current page should be  FilesPage
+```
  For clear separations and abstraction layers, we make context files for the test steps. Let us now create a `contexts` directory where all the context files are located. For the login step, let us create a login context file `contexts/LoginContext.py`.
 
  Note that: Prefixes `Given`, `When`, `Then`, `And` and `But` are dropped when matching keywords are searched, if no match with the full name is found. This works for both user keywords and library keywords
 
-```
+```py
 from robot.api.deco import keyword
 
 from LoginPage import LoginPage
@@ -275,7 +274,7 @@ class LoginContext:
 ```
 The login context file uses the methods of the login page. So, we must write every needed functions in the login page. Let us create a page objects directory 'page_objects' and then a login page 'page_objects/LoginPage'.
 
-```
+```py
 from PageObjectLibrary import PageObject, PageObjectLibraryKeywords
 
 
@@ -315,7 +314,7 @@ We create all other context files and page objects as per requirements. All the 
 
 FilesPage can be created in a similar manner as follows:
 
-```
+```PY
 from PageObjectLibrary import PageObject
 
 
@@ -324,4 +323,4 @@ class FilesPage(PageObject):
     PAGE_TITLE = "Files - myApp"
 ```
 
-  ## Go to : https://github.com/JankariTech/robotBDDExample for example test cases.
+### Go to : https://github.com/JankariTech/robotBDDExample for example test cases.

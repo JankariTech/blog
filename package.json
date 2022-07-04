@@ -23,8 +23,8 @@
         "dev": "vite",
         "build": "vite build",
         "preview": "vite preview",
-        "lint": "eslint src --ext .js,.vue",
-        "lint:fix": "eslint src --fix --ext .js,.vue",
+        "lint": "eslint lint --ext .js,.vue",
+        "lint:fix": "eslint lint --fix --ext .js,.vue",
         "stylelint": "stylelint src --config stylelint.conf.js",
         "stylelint:fix": "stylelint src --config stylelint.conf.js --fix",
         "markdown:lint": "node lint/check.js"

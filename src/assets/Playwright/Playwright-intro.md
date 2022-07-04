@@ -179,7 +179,7 @@ Now assuming you've got some knowledge of feature files and how to write them we
 
 The application that I'm going to be testing is a todo app and the UI looks like this.
 
-![Homepage of the app](src/assets/Playwright/images/todo1.png "Todo application")
+![Homepage of the app](/src/assets/Playwright/images/todo1.png "Todo application")
 
 I want to test if the item I've added is displayed on the UI or not. And the feature file looks like this.
 

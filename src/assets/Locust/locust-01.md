@@ -19,12 +19,12 @@ The cool thing about locust is that you write your tests in plain python, so you
 
 Read [here](https://docs.locust.io/en/stable/what-is-locust.html#background) why locust was created in the first place
 
- # Installation
+## Installation
  as simple as `pip install locustio` or `pip3 install locustio`
 
  (The rest of the blog I will assume you are using Python3)
 
-# create your first test
+## create your first test
 
 create a file called `locustfile.py` with the content
 
@@ -45,7 +45,7 @@ The class `User` represents users of your app. The class `UserBehaviour` is a co
 Every user will rerun the tasks every 1s till 10s `wait_time = between(1, 10)` The exact time between the requests will be chosen randomly.
 Inside of the `UserBehaviour` class you define tasks, currently we have only one task, to send a `GET` request.
 
-# run the tests
+## run the tests
 
 so lets start the beast:
 `/home/<your user>/.local/bin/locust --host=http://<host-to-test>`
@@ -64,6 +64,6 @@ Choose e.g. 20 users to simulate and 2 users/s as hatch rate and click "Start Sw
 
 In the main screen you will now see some statistics about the amount of requests, and how long they took. In the "Charts" tab you will find the same data over time in a nice graph. "Failures" and "Exceptions" should be empty, because all of the requests should have succeeded. And last under "Download Data", you get the data as nice CSV files.
 
-# what's next?
+## what's next?
 
 That all was nice and easy, but not very realistic. Does not matter if you want to test a web frontend or an API, just sending `GET` requests to `/` does not simulate what your users or clients will do. But we want to test what we fly and fly what we test. So in the next parts of this series we will extend the script to test an API in a more realistic way.

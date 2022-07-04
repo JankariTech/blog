@@ -165,7 +165,7 @@ npx jest tests/client.spec.js
 ```
 
 Result:
-![Consumer test result](src/assets/ContractTestingWithPact/images/consumer_test.png)
+![Consumer test result](/src/assets/ContractTestingWithPact/images/consumer_test.png)
 
 When a test run exits with success, it will generate a json file (i.e. pact or contract file) inside the _pacts_ folder which is later used to verify the provider.
 
@@ -258,6 +258,6 @@ npx jest tests/server.spec.js
 ```
 
 Result:
-![Provider test result](src/assets/ContractTestingWithPact/images/provider_test.png)
+![Provider test result](/src/assets/ContractTestingWithPact/images/provider_test.png)
 
 Congratulations! You have successfully written your first consumer driven contract test and provider verification test using _Pact_.

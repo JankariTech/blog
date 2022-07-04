@@ -10,7 +10,7 @@ banner:
 
 `Nightwatch.js` is an open-source automated testing framework that aims at providing complete E2E (end to end) solutions to automate testing with `Selenium Javascript` for web-based applications, browser applications, and websites. It is written in `Node.js` and uses the `W3C WebDriver API` (formerly Selenium WebDriver) for interacting with various browsers.
 
-# Installation And Requirements
+## Installation And Requirements
 This guide is based on Ubuntu 18.04. Some commands will be different if you have another OS installed on your computer. Also, we will be following the BDD approach in this blog. So, if you want to learn more about BDD first then please read our blog on [Demonstrating BDD (Behavior-driven development) in Go](https://dev.to/jankaritech/demonstrating-bdd-behavior-driven-development-in-go-1eci). Before getting started with Nightwatch we need to have the following installed on our computer.
 
 ### 1. Node.js:
@@ -48,9 +48,9 @@ unzip chromedriver_linux64.zip
 ```
 Once you have unzipped it, you need to move the chromedriver(shared library) and place it inside the <u>same folder</u> where you have placed the Selenium standalone server file.
 
-# Setting up Nightwatch.js
+## Setting up Nightwatch.js
 Make a configuration file and name it `nightwatch.conf.js` inside the root directory of your project and inside the configuration file add the following content.
-```
+```js
 module.exports = {
     src_folders: ['test'],
     test_settings: {
@@ -127,7 +127,7 @@ Before starting the Selenium server you need to change your directory to where t
 java -jar selenium-server-standalone-3.141.59.jar -port 4444
 ```
 
-# Testing your Project
+## Testing your Project
 Create feature files inside `[root_dir]/test/acceptance/features` with an extension `.feature` for each feature of your project. Follow the [Gherkin reference](https://cucumber.io/docs/gherkin/reference/) to write your feature file.
 
 We do not need to use gherkin language but I am using it because this is the same language that user and domain experts use while they talk about the domain. Also, it is easy to understand for both technical and non-technical personnel involved in the project.

@@ -108,7 +108,7 @@ Cypress.config('pageLoadTimeout', 10000) // set value
 Cypress.config('pageLoadTimeout') // => 100000 (get value)
 ```
 
-# Run in CI
+## Run in CI
 
 You can easily integrate Cypress with your current CI provider. According to the official documentation, Cypress works with any CI Provider.
 
@@ -153,7 +153,6 @@ Detailed test run information conveniently posted as PR comments that include te
 
 
 <!-- assets -->
-=======
 [parallelization]: /src/assets/TestingWithCypress/images/cypress_parallelization.png "Parallelization in Cypress!"
 [gitHubIntegration]: /src/assets/TestingWithCypress/images/cypress_github_comment.png "Cypress bot comment in a GitHub PR."
 [slackIntegration]: /src/assets/TestingWithCypress/images/cypress_slack_integration.png "Cypress channel inside Slack Application."

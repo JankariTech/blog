@@ -14,7 +14,7 @@ By using Jest, you will know the truth about your application. The `Jest` is a j
 
 Puppeteer is a Node library that is used for browser automation. Puppeteer provides a high-level API to control the browser. It can work with Chrome, Chromium or Firefox. By default this library runs the browser in headless mode, but it can be also configured to run Chrome or Chromium fully (non-headless).
 
-# Installation And Requirements
+## Installation And Requirements
 This guide is based on Ubuntu 18.04. Some commands will be different if you have another OS installed on your computer. Before getting started with Jest, You need to have `npm` and an app for which you will be writing tests.
 
 If your app is not yet ready for testing then you can just clone this basic [todo app](https://github.com/Talank/todo-react) and follow along.
@@ -91,7 +91,7 @@ In addition to `it()` and `describe()` methods, you might need the following met
 
 These functions are executed before and after the test scenarios. You can define these functions inside the `describe()` method to make it applicable for all tests in the scope of that particular `describe()` method.
 
-# Demo:
+## Demo:
 Here I have added a test for adding a task in my react ToDo app.
 ```
 const puppeteer = require('puppeteer');
