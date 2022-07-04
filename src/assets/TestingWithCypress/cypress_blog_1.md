@@ -1,3 +1,15 @@
+---
+title: Introduction
+authorName: Kiran Parajuli
+authorAvatar: https://avatars.githubusercontent.com/u/39373750?v=4
+authorLink: https://github.com/kiranparajuli589/
+createdAt: Feb 2, 2021
+tags: vue, jest, unit, testing
+banner: https://res.cloudinary.com/practicaldev/image/fetch/s--hbLLUL0d--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/i/9amku7k0nxfs6vx9p8tk.jpg
+seriesTitle: E2E Testing with Cypress
+episode: 1
+---
+
 # Testing with Cypress
 
 The web has evolved. Finally, testing has too. `Cypress` provides fast, easy and reliable testing for anything that runs in a browser.
@@ -71,7 +83,7 @@ Cypress can test anything that runs in a browser.
 - **Cross Browser Testing:**
 
   ![Cross Browser Testing Platforms for Cypress][cypressCrossBrowserPlatforms]
-  
+
   Run tests within `Firefox` and `Chrome-family` browsers (including `Edge` and `Electron`) locally and optimally in a continuous integration pipeline.
 
   ![Cross Browser Testing with Cypress][cypressCrossBrowserTesting]
@@ -86,27 +98,27 @@ Cypress can test anything that runs in a browser.
 
         - **macOS**: 10.9 and above (64-bit only)
         - **Linux**: `Ubuntu` 12.04 and above, Fedora 21 and `Debian` 8 (64-bit only)
-          
+
             - For `Ubuntu`/`Debian`
                 ```bash
                 sudo apt-get install libgtk2.0-0 libgtk-3-0 libgbm-dev libnotify-dev libgconf-2-4 libnss3 libxss1 libasound2 libxtst6 xauth xvfb
                 ```
-                
+
             - For `CentOS`
-            
+
                 ```bash
                 yum install -y xorg-x11-server-Xvfb gtk2-devel gtk3-devel libnotify-devel GConf2 nss libXScrnSaver alsa-lib
                 ```
-            
+
         - **Windows**: 7 and above
-    
+
 - #### Node.js
-  
+
     If you're using `npm` to install Cypress, then
         ```
         Node.js 10 or 12 and above
         ```
-    
+
 - ### Installing
 
     The recommended approach is to install Cypress with `npm` because :
@@ -135,11 +147,11 @@ Cypress can test anything that runs in a browser.
         ```sh
         $(npm bin)/cypress open
         ```
-        
+
     - Adding npm scripts
-      
+
         Inside your `package.json` file:
-        
+
         ```json
         {
             "scripts": {
@@ -147,15 +159,15 @@ Cypress can test anything that runs in a browser.
             }
         }
         ```
-        
+
         Now you can invoke the command from your project root like so:
-        
+
         ```shell
         npm run cypress:open
         ```
-        
+
     - You can always use other options like `yarn` or `npx` to open Cypress.
-    
+
         ```bash
         # using yarn
         yarn run cypress open
@@ -166,6 +178,6 @@ Cypress can test anything that runs in a browser.
 🎉 Great job! You can now write and run your test using Cypress Desktop Test Runner.  🥳 🙌
 
 <!-- assets -->
-[architecture]: assets/cypres_architecture.png "How cypress is different from existing selenium based tools?"
-[cypressCrossBrowserPlatforms]: assets/cypress_cross_browser_platforms.png "Cross Browser Testing platforms supported by Cypress."
-[cypressCrossBrowserTesting]: assets/cypress_cross_browser_testing.png "Cypress test runner provides dropdown to switch between browsers for test."
+[architecture]: /src/assets/TestingWithCypress/images/cypres_architecture.png "How cypress is different from existing selenium based tools?"
+[cypressCrossBrowserPlatforms]: /src/assets/TestingWithCypress/images/cypress_cross_browser_platforms.png "Cross Browser Testing platforms supported by Cypress."
+[cypressCrossBrowserTesting]: /src/assets/TestingWithCypress/images/cypress_cross_browser_testing.png "Cypress test runner provides dropdown to switch between browsers for test."

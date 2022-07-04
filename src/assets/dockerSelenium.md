@@ -1,4 +1,14 @@
-#### What is docker?
+---
+title: How to use selenium in docker?
+authorName: Hari Bhandari
+authorAvatar: https://avatars.githubusercontent.com/u/34328907?v=4
+authorLink: https://github.com/HariBhandari07
+createdAt: April 23, 2020
+tags: docker, selenium, automation
+banner:
+---
+
+## What is docker?
 ![not_working](https://user-images.githubusercontent.com/34328907/78120341-7b56f900-7429-11ea-9b3f-1a5e17b813da.png)
 
 Can you recall how many times you face an issue where code runs in another developer's machine but doesn't work on yours? Docker
@@ -10,7 +20,7 @@ installed and running. A docker container is basically a software package that c
 application.
 
 
-#### Why docker?
+## Why docker?
 Let’s say you have three different nodejs applications that you plan to host on a single server.
 
 Each of these applications makes use of a different version of nodejs and mongodb, as well as the associated libraries and dependencies, which differ from one application to another.
@@ -23,12 +33,12 @@ But both solutions are quite cumbersome. In this case, docker is an efficient an
 
 ![Screenshot from 2020-04-01 15-48-54](https://user-images.githubusercontent.com/34328907/78125190-6336a800-7430-11ea-91f6-644ca63d9e54.png)
 
-#### Docker Installation
+## Docker Installation
 Follow the installation instructions given in https://docs.docker.com/install/ to install docker according to your operating system. But, I suggest you use Linux, preferably Ubuntu for this blog/tutorial as later we will use a docker network command that works only on Linux.
 
 And follow docker post-install instructions given usually at the end of the "installation instructions" page to create a docker group.
 
-#### Selenium
+## Selenium
 
 Usually, for running tests using selenium we download `selenium standalone server JAR` file and `chrome driver` and start selenium server with a command which usually looks like:
 
@@ -50,7 +60,7 @@ Here
 
 Once you run the command, Docker will download the selenium image and run the container straight away (port: `4444`).
 
-#### Networking using the host network
+## Networking using the host network
 When the docker container is running it has its own `localhost` which is relative to its container and it has no awareness of `localhost` running on the host OS. Because of this, we cannot access the selenium container at `localhost:4444`. Also, the selenium container won't be able to access the apps running on `localhost` of the host OS.
 
 How do we solve this problem?
@@ -63,11 +73,11 @@ Now, the `docker run` command should basically look like:
 
                         OR
 
-`docker run -d --network host -v /dev/shm:/dev/shm selenium/standalone-chrome-debug`    
+`docker run -d --network host -v /dev/shm:/dev/shm selenium/standalone-chrome-debug`
 
-The host networking driver only works on Linux hosts, and is not supported on Docker Desktop for Mac, Docker Desktop for Windows, or Docker EE for Windows Server.                    
+The host networking driver only works on Linux hosts, and is not supported on Docker Desktop for Mac, Docker Desktop for Windows, or Docker EE for Windows Server.
 
-#### Run test from the docker host, using selenium within a docker container
+## Run test from the docker host, using selenium within a docker container
 Requirements:
 1. chrome
 2. nodejs and yarn

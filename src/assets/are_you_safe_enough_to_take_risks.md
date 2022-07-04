@@ -1,4 +1,16 @@
+<<<<<<< HEAD
 # Are you safe enough to take risks?
+=======
+---
+title: Are you safe enough to take risk?
+authorName: Artur Neumann
+authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800.jpg
+authorLink: https://github.com/individual-it
+createdAt: Oct 23, 2019
+tags: startup, git, documents, organizing
+banner: 
+---
+>>>>>>> cefe620 (Added lockfile with gitignore)
 
 Company values are great, but if they are only saved away in a document they are useless. The values need to be saved in peoples heads and hearts. To achieve that, we discuss them on a regular basis.
 Today we had a special guest to lead the discussion: Paurakh Sharma Humagain. He is the first programmer JankariTech ever employed, and even though he left the company a while ago, we stay in a good contact.

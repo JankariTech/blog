@@ -1,3 +1,12 @@
+---
+title: CodeceptJs Setup & BDD
+authorName: Hari Bhandari
+authorAvatar: https://avatars.githubusercontent.com/u/34328907?v=4
+authorLink: https://github.com/HariBhandari07
+createdAt: June 2, 2020
+tags: k6, load, performance, testing
+banner:
+---
 
 CodeceptJS is a modern end to end testing framework. In this tutorial we will setup BDD end-to-end testing using CodeceptJS along with Puppeteer.
 
@@ -161,7 +170,11 @@ In the above screenshot, I am creating a page object with the name `dashboardPag
         Page: './pages/dashboardPage.js'  // page object location
       },
       .....
-  }    
+<<<<<<< HEAD
+  }
+=======
+  }
+>>>>>>> cefe620 (Added lockfile with gitignore)
   ```
 
 Edit `pages/dashboardPage.js` so that it looks like:

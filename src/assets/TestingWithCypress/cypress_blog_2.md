@@ -1,4 +1,14 @@
-# Writing Your First Test
+---
+title: Writing Tests
+authorName: Kiran Parajuli
+authorAvatar: https://avatars.githubusercontent.com/u/39373750?v=4
+authorLink: https://github.com/kiranparajuli589/
+createdAt: Feb 2, 2021
+tags: testing, javascript, automation, cypress
+banner: https://res.cloudinary.com/practicaldev/image/fetch/s--wD1Dk_BA--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/i/472k6ih1n456rtvn4xb3.png
+seriesTitle: E2E Testing with Cypress
+episode: 2
+---
 
 ## Setting up test
 
@@ -60,9 +70,9 @@ describe('My First Test', () => {
 
 Once you save again, you’ll see Cypress display the failing test in red since `true` does not equal `false`.
 
-Cypress also displays the `stack trace` and the `code frame` where the assertion failed (when available). You can click on the blue `file` link to open the file where the error occurred in your preferred file opener. 
+Cypress also displays the `stack trace` and the `code frame` where the assertion failed (when available). You can click on the blue `file` link to open the file where the error occurred in your preferred file opener.
 
-Cypress provides a nice `Test Runner` that gives you a visual structure of `suites`, `tests`, and `assertions`. 
+Cypress provides a nice `Test Runner` that gives you a visual structure of `suites`, `tests`, and `assertions`.
 
 ## Dig Deeper Into Cypress World
 
@@ -110,7 +120,7 @@ specify(name, config, fn)
   })
   ```
 
-  
+
 
 - You can run a specified `suite` or `test`. [Excluding and including tests][excludeIncludeTest] is made easier. To skip a specified suite or test, append `.skip()` to the function. All nested suites will also be skipped.
 
@@ -120,7 +130,7 @@ specify(name, config, fn)
   })
   ```
 
-  
+
 
 ### Cypress Commands
 
@@ -445,7 +455,7 @@ cy.get('@comments').should((response) => {
 - [Cypress Documentation][documentationLink]
 
 <!-- assets -->
-[noTestsFound]: assets/cypress_no_test_found.png "This is a test runner preview while there is no any tests file to run."
+[noTestsFound]: src/assets/TestingWithCypress/images/cypress_no_test_found.png "This is a test runner preview while there is no any tests file to run."
 <!-- links -->
 [assertionLink]: https://docs.cypress.io/guides/references/assertions.html 'Assertions in Cypress'
 [chaiLink]: https://github.com/chaijs/chai 'GitHub Homepage Chai'

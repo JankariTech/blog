@@ -1,4 +1,14 @@
-# BDD on Software Rewrite
+---
+title: BDD on Software Rewrite
+authorName: Artur Neumann
+authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800.jpg
+authorLink: https://github.com/individual-it
+createdAt: Feb 15, 2021
+tags: bdd, testing
+banner: https://dev-to-uploads.s3.amazonaws.com/i/23qvc2yp1fx00fnkpjb3.jpg
+seriesTitle: Behaviour Driven Development
+episode: 3
+---
 
 Imagine you have an application, it works great, but you need to rewrite it, maybe because the architecture is hitting some ceiling. There will be new features, but first, you need to make sure all the existing clients work with the new system. How do you make sure they do? It's simple: You need tests, tests that check the external behavior of the application. So if you have invested in a good UI and API test infrastructure in the first place it's a relatively easy task, and you can even do Behaviour Driven Development while writing the new system without having to write new tests.
 

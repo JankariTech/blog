@@ -1,4 +1,14 @@
-# Configure Cypress
+---
+title: Configure Cypress
+authorName: Kiran Parajuli
+authorAvatar: https://avatars.githubusercontent.com/u/39373750?v=4
+authorLink: https://github.com/kiranparajuli589/
+createdAt: Feb 2, 2021
+tags: testing, javaScript, cypress, automation
+banner: https://res.cloudinary.com/practicaldev/image/fetch/s--Tj6xmJa8--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/i/u5fey1ilksgx8uz6qdrk.jpg
+seriesTitle: E2E Testing with Cypress
+episode: 3
+---
 
 When a project is added to Cypress, a `cypress.json` file is created in the project. This file is used to store the `projectId` (after configuring your tests to record) and any configuration values you supply.
 
@@ -27,7 +37,7 @@ The default behavior of Cypress can be modified by supplying any of the followin
   | `pageLoadTimeout`       | `6000`  | Time, in milliseconds, to wait for page transition events or `cy.visit()`, `cy.go()`, `cy.reload()` commands to fire their page load events. |
   | `requestTimeout`        | `5000`  | Time, in milliseconds to wait for an XHR request to go out in a `cy.wait()` command |
 
-  
+
 
 - Folders / Files
 
@@ -143,9 +153,10 @@ Detailed test run information conveniently posted as PR comments that include te
 
 
 <!-- assets -->
-[parallelization]: assets/cypress_parallelization.png "Parallelization in Cypress!"
-[gitHubIntegration]: assets/cypress_github_comment.png "Cypress bot comment in a GitHub PR."
-[slackIntegration]: assets/cypress_slack_integration.png "Cypress channel inside Slack Application."
+=======
+[parallelization]: /src/assets/TestingWithCypress/images/cypress_parallelization.png "Parallelization in Cypress!"
+[gitHubIntegration]: /src/assets/TestingWithCypress/images/cypress_github_comment.png "Cypress bot comment in a GitHub PR."
+[slackIntegration]: /src/assets/TestingWithCypress/images/cypress_slack_integration.png "Cypress channel inside Slack Application."
 <!-- links -->
 [envVarsInCypress]: https://docs.cypress.io/guides/guides/environment-variables.html#Setting "Environment Variables in Cypress"
 [testRetriesInCypress]: https://docs.cypress.io/guides/guides/test-retries.html "Retrying test with Cypress"

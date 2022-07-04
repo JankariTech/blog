@@ -1,3 +1,15 @@
+---
+title: Demonstrating BDD (Behavior-driven development) in Go
+authorName: Artur Neumann
+authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800.jpg
+authorLink: https://github.com/individual-it
+createdAt: Feb 5, 2020
+tags: testing, bdd, go, qa
+banner:
+seriesTitle: Behaviour Driven Development
+episode: 1
+---
+
 In [Demonstrating TDD (Test-driven development) in Go](https://dev.to/jankaritech/demonstrating-tdd-test-driven-development-in-go-27b0) I've written about TDD and this time I want to demonstrate BDD (Behavior-driven development) with Go.
 
 I will not explain all principles of BDD upfront, but explain some of them as I use them in the example. You can read more about them here:
@@ -241,14 +253,14 @@ index c8b0144..f7ee56d 100644
 +++ b/bsdateServer_test.go
 @@ -1,11 +1,26 @@
  package main
- 
+
  import (
 +    "fmt"
      "github.com/cucumber/godog"
 +    "net/http"
 +    "strings"
  )
- 
+
 -func aRequestIsSentToTheEndpoint(arg1, arg2 string) error {
 -    return godog.ErrPending
 +var host = "http://localhost:10000"
@@ -266,7 +278,7 @@ index c8b0144..f7ee56d 100644
 +    }
 +    return nil
  }
- 
+
  func theHTTPresponseCodeShouldBe(arg1 string) error {
 ```
 
@@ -310,7 +322,7 @@ func handleRequests() {
 func main() {
 	handleRequests()
 }
-```  
+```
 
 Now we are a step further:
 ```
@@ -348,7 +360,7 @@ Let's do that:
 @@ -23,16 +24,23 @@ func aRequestIsSentToTheEndpoint(method, endpoint string) error {
      return nil
  }
- 
+
 -func theHTTPresponseCodeShouldBe(arg1 string) error {
 -    return godog.ErrPending
 +func theHTTPresponseCodeShouldBe(expectedCode int) error {
@@ -357,7 +369,7 @@ Let's do that:
 +    }
 +    return nil
  }
- 
+
 -func theResponseContentShouldBe(arg1 string) error {
 -    return godog.ErrPending
 +func theResponseContentShouldBe(expectedContent string) error {
@@ -367,7 +379,7 @@ Let's do that:
 +    }
 +    return nil
  }
- 
+
  func InitializeScenario(ctx *godog.ScenarioContext) {
      ctx.Step(`^a "([^"]*)" request is sent to the endpoint "([^"]*)"$`, aRequestIsSentToTheEndpoint)
 -    ctx.Step(`^the HTTP-response code should be "([^"]*)"$`, theHTTPresponseCodeShouldBe)
@@ -405,7 +417,7 @@ index ae01ed0..06299b0 100644
 --- a/main.go
 +++ b/main.go
 @@ -2,18 +2,34 @@ package main
- 
+
  import (
         "fmt"
 +       "github.com/JankariTech/GoBikramSambat"
@@ -415,7 +427,7 @@ index ae01ed0..06299b0 100644
 +       "strconv"
 +       "strings"
  )
- 
+
 +func getAdFromBs(w http.ResponseWriter, r *http.Request) {
 +       vars := mux.Vars(r)
 +       dateString := vars["date"]
@@ -489,7 +501,7 @@ index 3156498..16c48ab 100644
 --- a/bsdateServer_test.go
 +++ b/bsdateServer_test.go
 @@ -35,7 +35,7 @@ func theHTTPresponseCodeShouldBe(expectedCode int) error {
- 
+
  func theResponseContentShouldBe(expectedContent string) error {
      body, _ := ioutil.ReadAll(res.Body)
 -    if expectedContent != string(body) {
@@ -533,7 +545,7 @@ index 5a00814..18db1ed 100644
 @@ -3,12 +3,25 @@ Feature: convert dates from BS to AD using an API
    I want to be able to send BS dates to an API endpoint and receive the corresponding AD dates
    So that I have a simple way to convert BS to AD dates, that can be used in other apps
- 
+
 -  Scenario: converting a valid BS date
 -  When a "GET" request is sent to the endpoint "/ad-from-bs/2060-04-01"
 +  Scenario Outline: converting a valid BS date

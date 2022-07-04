@@ -1,3 +1,12 @@
+---
+title: Setup and run tests with robot framework
+authorName: Jasmine Baral
+authorAvatar: https://avatars.githubusercontent.com/u/40829116?v=4
+authorLink: https://github.com/jasson99/
+createdAt: April 6, 2020
+tags: testing, bdd, robotframework, python
+banner:
+---
 # Robot Framework
 
 Robot framework is a generic open source test automation framework for acceptance testing. It is a keyword-driven testing framework that uses tabular test data syntax. It has easy syntax, using human-readable keywords. This framework is independent of operating system and application. The core framework is implemented using Python and also runs on Jython(JVM) and IronPython(.NET). This framework provides support for external libraries, tools which are open source and can be used for test automation.
@@ -5,12 +14,12 @@ Robot framework is a generic open source test automation framework for acceptanc
 The test data is in simple tabular format. When started, the robot framework processes the data, executes the test cases, and generates logs and reports.
 
  ## Installation and setup of robot framework
-1. Preconditions:                                                          
+1. Preconditions:
    * Python installation
    * Pip
    * make virtual environment
 
-2. Installing robot framework with pip                                    
+2. Installing robot framework with pip
     * `python -m pip install robotframework`
     * `python3 -m pip install  robotframework`
 
@@ -30,13 +39,13 @@ The test data is in simple tabular format. When started, the robot framework pro
    Starting from Robot Framework 3.0, tests are executed using the robot script and results post-processed with the rebot script:
 
         robot tests.robot
-        rebot output.xml                                                    
-5. Installing required libraries                                           
-    * `pip install requests robotframework-selenium2library robotframework-pageobjectlibrary`  
+        rebot output.xml
+5. Installing required libraries
+    * `pip install requests robotframework-selenium2library robotframework-pageobjectlibrary`
 
 6. Installation of IDE
     * Install pycharm or any preferred IDE
-  
+
 7. Import required libraries in the IDE. In pycharm,
     * To add the project interpreter, Go to `Files` => `Settings` => `Project: <your_Project>` => `Project Interpreter` and then add the python version available through your virtual environment.
     * Also add the required libraries such as : `Selenium`, `robotframework-seleniumLibrary`, `robotframework-pageObjectLibrary`.
@@ -106,7 +115,7 @@ From the above examples, it is clear that the test cases are created in the test
 Let us now see a practical example where a user logs in.
 
 ```
- *** Settings *** 
+ *** Settings ***
  Documentation       Test for user login
  Library             SeleniumLibrary
  Library             PageObjectLibrary
@@ -115,7 +124,7 @@ Let us now see a practical example where a user logs in.
 Test Setup           Open test browser
 Test Teardown        Close all test browsers
 
- *** Variables ***  
+ *** Variables ***
  ${SERVER}           localhost:8080
  ${ROOT}             http://${SERVER}/myApp
  ${BROWSER}          chrome
@@ -130,14 +139,14 @@ Test Teardown        Close all test browsers
  ${LOGIN_URL}        http://${SERVER}/myApp/login
  ${WELCOME_URL}      http://${SERVER}/myApp/welcome.html
 
- *** Test Cases ***                       
- Valid Login      
-    [Documentation]       Test valid login  
-    Open Login Page      
-    Input Username        ${USERNAME} 
-    Input Password        ${PASSWORD} 
-    Submit Credentials   
-    Welcome page is open 
+ *** Test Cases ***
+ Valid Login
+    [Documentation]       Test valid login
+    Open Login Page
+    Input Username        ${USERNAME}
+    Input Password        ${PASSWORD}
+    Submit Credentials
+    Welcome page is open
 
 *** Keywords ***
 Open test browser
@@ -161,7 +170,7 @@ Input Password
    Input Text    ${password_field}    ${PASSWORD}
 
 Submit Credentials
-   Click Button    ${signIn_Button}   
+   Click Button    ${signIn_Button}
 
 Welcome Page Is Open
    Location Should Be    ${WELCOME_URL}
@@ -170,7 +179,7 @@ Welcome Page Is Open
 Close all test browsers
     Close all browsers
 ```
-Now, let us understand the above example. The test case has a scenario for valid user login. This test case uses a number of keywords, which can be either the predefined keywords imported from the libraries, or can be self created using available low-level keywords. In the keyword section, all the self created keywords are defined using available keywords. For example: 'Input Username' is a user created keyword which uses an existing keyword 'Input Text'. Similarly, 'Welcome Page Is Open' is a user created keyword which is created using pre-existing keywords 'Location Should Be' and 'Title Should Be'. 
+Now, let us understand the above example. The test case has a scenario for valid user login. This test case uses a number of keywords, which can be either the predefined keywords imported from the libraries, or can be self created using available low-level keywords. In the keyword section, all the self created keywords are defined using available keywords. For example: 'Input Username' is a user created keyword which uses an existing keyword 'Input Text'. Similarly, 'Welcome Page Is Open' is a user created keyword which is created using pre-existing keywords 'Location Should Be' and 'Title Should Be'.
 
 The keyword 'Title Should Be' uses the page title such as 'Welcome Page' and 'Login Page' as in example above. These page titles are defined in the page object classes, which will be discussed below.
 
@@ -199,13 +208,13 @@ The above tests can be easy to understand when written in gherkin format. Let's 
 ## Gherkin Syntax
 Gherkin format focuses on describing a feature to be implemented using the "Given", "When", "Then", "And", and "But" keywords. Writing requirements in this manner makes tests easier to understand, specially for non-technical people, as natural language is used to describe the test cases. Moreover, this format focuses on a clear separation between test-setup, test-actions, and test-results.
 
-Given < some initial state or preconditions >                         
-When < the action taken which triggers the scenario >     
+Given < some initial state or preconditions >
+When < the action taken which triggers the scenario >
 Then < the expected outcome >
 
 for e.g.
  ```
- *** Settings *** 
+ *** Settings ***
  Documentation       Test for user login
  Library             SeleniumLibrary
  Library             PageObjectLibrary
@@ -213,7 +222,7 @@ for e.g.
 Test Setup           Open test browser
 Test Teardown        Close all test browsers
 
- *** Variables ***  
+ *** Variables ***
  ${SERVER}           localhost:8080
  ${ROOT}             http://${SERVER}/myApp
  ${BROWSER}          chrome
@@ -225,13 +234,13 @@ Test Teardown        Close all test browsers
  ${LOGIN_URL}        http://${SERVER}/myApp/login
  ${WELCOME_URL}      http://${SERVER}/myApp/welcome.html
 
- *** Test Cases ***                       
- Valid Login      
-    [Documentation]                                     Test valid login  
-    Given the user has browsed to the login page      
-    When the user enters the username                   ${USERNAME} 
-    And the user enters the password                    ${PASSWORD} 
-    And the user submits the credentials  
+ *** Test Cases ***
+ Valid Login
+    [Documentation]                                     Test valid login
+    Given the user has browsed to the login page
+    When the user enters the username                   ${USERNAME}
+    And the user enters the password                    ${PASSWORD}
+    And the user submits the credentials
     Then the current page should be  FilesPage
 
  ```
@@ -254,15 +263,15 @@ class LoginContext:
 
     @keyword(name="the user enters the password '${PASSWORD}'")
     def enter_password(self, password):
-        self.loginPage.enter_password(password)    
-        
+        self.loginPage.enter_password(password)
+
     @keyword(name="the user has browsed to the login page")
     def browse_to_login_page(self):
         self.loginPage.browse_to_page()
 
-    @keyword(name="the user submits the credentials")  
+    @keyword(name="the user submits the credentials")
     def submit_credentials(self):
-        self.loginPage.submit_credentials()  
+        self.loginPage.submit_credentials()
 ```
 The login context file uses the methods of the login page. So, we must write every needed functions in the login page. Let us create a page objects directory 'page_objects' and then a login page 'page_objects/LoginPage'.
 
@@ -304,7 +313,7 @@ class LoginPage(PageObject):
 ```
 We create all other context files and page objects as per requirements. All the methods and elements related to a certain page are included in a specific page object and its own context file. This makes tests easier to understand and maintain.
 
-FilesPage can be created in a similar manner as follows: 
+FilesPage can be created in a similar manner as follows:
 
 ```
 from PageObjectLibrary import PageObject
@@ -316,4 +325,3 @@ class FilesPage(PageObject):
 ```
 
   ## Go to : https://github.com/JankariTech/robotBDDExample for example test cases.
- 

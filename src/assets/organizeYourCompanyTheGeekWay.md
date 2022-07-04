@@ -1,3 +1,13 @@
+---
+title: Organize your company the geek-way
+authorName: Artur Neumann
+authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800.jpg
+authorLink: https://github.com/individual-it
+createdAt: Oct 23, 2019
+tags: startup, git, documents, organizing
+banner: https://res.cloudinary.com/practicaldev/image/fetch/s--Kf8L6kUm--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://thepracticaldev.s3.amazonaws.com/i/l8hil2nyr3jz5ujpljyp.jpg
+---
+
 # Organize your company the geek-way
 
 How do you organize your documents in your department / company / startup ? Your policies, your minutes of meetings, your contracts, etc.?

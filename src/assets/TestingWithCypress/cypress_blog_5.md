@@ -1,6 +1,14 @@
-## Cypress: TradeOffs
-
-![Cypress Vs Selenium Architecture][cypressVsSeleniumArchitecture]
+---
+title: Trade-offs In Cypress
+authorName: Kiran Parajuli
+authorAvatar: https://avatars.githubusercontent.com/u/39373750?v=4
+authorLink: https://github.com/kiranparajuli589/
+createdAt: Feb 2, 2021
+tags: cypress, selenium, comparision, testing
+banner: /src/assets/TestingWithCypress/images/cypress_selenium_v_cypress.png
+seriesTitle: E2E Testing with Cypress
+episode: 5
+---
 
 ### Key differences with other testing frameworks
 
@@ -52,7 +60,7 @@ IMO, Cypress has a pretty responsive issues section on GitHub. Many issues that 
 - Cypress says, the browser XHRs are properly tracked, and we can wait for them too. But it is not true for me. The test-runner does not log about the XHR requests triggered by the browser interaction, and I cannot wait dynamically for some time-consuming requests.
 
     ![NoXHRRecorded][noXHRRecordedImage]
-    
+
     At this point i.e clicking the `Sign In` button should start a XHR request. But alas, no luck here.
 
 - Testing inside iframes? Well, it's gonna bother you. I am working on a project which uses iframes with large contents and takes some time to load properly. Following the documentation and [cypress blogs][workingWithIframes] were also not quite helpful. For now, I'm using static wait before diving inside any iframes. If somebody has a better idea, well, please share!
@@ -65,9 +73,8 @@ IMO, Cypress has a pretty responsive issues section on GitHub. Many issues that 
 
 
 <!-- assets -->
-[cypressVsSeleniumArchitecture]: assets/cypress_selenium_v_cypress.png "Cypress Vs Selenium Architecture"
-[halfRunPassedScenario]: assets/cypress_incomplete_run_passed_scenario.png "Incomplete but passed scenario"
-[noXHRRecordedImage]: assets/cypress_no_xhr_recorded.png "No XHR request is recorded."
+[halfRunPassedScenario]: /src/assets/TestingWithCypress/images/cypress_incomplete_run_passed_scenario.png "Incomplete but passed scenario"
+[noXHRRecordedImage]: /src/assets/TestingWithCypress/images/cypress_no_xhr_recorded.png "No XHR request is recorded."
 
 <!-- links -->
 [CypressTradeOffs]: https://docs.cypress.io/guides/references/trade-offs.html#Permanent-trade-offs-1 "Cypress Permanent Trade-offs"
