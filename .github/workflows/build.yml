@@ -32,3 +32,4 @@ jobs:
         with:
           commit_message: update the build code
           file_pattern: 'docs/**/*'
+          branch: dist
