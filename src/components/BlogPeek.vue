@@ -159,12 +159,14 @@ export default {
   &--banner {
     text-align: center;
     height: 150px;
+
     img {
       height: 100%;
       width: 100%;
       border-top-left-radius: 24px;
       border-top-right-radius: 24px;
     }
+
     border-bottom: 1px solid grey;
   }
 

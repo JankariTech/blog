@@ -90,13 +90,12 @@
   to { transform: rotate(360deg); }
 }
 
-
 body[theme-dark] {
-  .home-view--search {
-    button {
+  .home-view {
+    &--search button {
       &.filtering,
       &.sorting {
-        border: 1px solid rgb(149, 149, 149);
+        border: 1px solid rgb(149 149 149);
       }
     }
   }
