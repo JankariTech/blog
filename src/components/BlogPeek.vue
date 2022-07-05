@@ -5,6 +5,20 @@
       'small-shadow-dark': !detailView && dark,
     }"
   >
+    <div class="blog-peek--banner"
+      :class="{'detail-view-banner': detailView}"
+    >
+      <img
+        v-if="banner || fallbackBanner"
+        :src="banner || fallbackBanner"
+        alt="Blog Banner"
+        :class="{
+          'fallback-banner': !detailView && !banner,
+          'fallback-detail-banner': detailView && !banner
+        }"
+
+      >
+    </div>
     <div class="blog-peek--author">
       <img
         :src="authorAvatar"
@@ -106,6 +120,10 @@ const { dark } = useTheme()
 <script>
 export default {
   computed: {
+    fallbackBanner () {
+      const url = (this.dark) ? "../imgs/fallback_banner_dark.png" : "../imgs/fallback_banner.png"
+      return new URL(url, import.meta.url).href
+    },
     minutesToRead () {
       // assumed: 100 words in a minute with average 6 chars per word
       return Math.round(this.contentLength / (100 * 6))
@@ -124,17 +142,30 @@ export default {
   border: 1px solid grey;
   border-radius: 24px;
 
-  &--banner {
-    margin: 0;
-    display: flex;
-    align-items: center;
+  .detail-view-banner {
+    height: 300px !important;
+    border-bottom: none !important;
+  }
 
-    .banner-image {
+  .fallback-detail-banner {
+    max-width: 450px !important;
+  }
+
+  .fallback-banner {
+    max-width: 300px;
+    margin: auto;
+  }
+
+  &--banner {
+    text-align: center;
+    height: 150px;
+    img {
+      height: 100%;
+      width: 100%;
       border-top-left-radius: 24px;
       border-top-right-radius: 24px;
-      height: 120px;
-      width: 100%;
     }
+    border-bottom: 1px solid grey;
   }
 
   &--author {

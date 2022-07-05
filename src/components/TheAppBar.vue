@@ -67,6 +67,7 @@ const toGithub = () => {
 </script>
 <style lang="scss" scoped>
 .appbar {
+  z-index: 999;
   position: sticky;
   top: 0;
   background-color: #fff;

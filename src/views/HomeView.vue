@@ -187,9 +187,11 @@ const toggleSortMenu = () => {
 const toHome = () => {
   push({ name: "Home" })
     .then(() => {
+      peekData.value = getPeekData()
       sortPeekData(sortBy.value)
       filterMenu.value = false
       sortMenu.value = false
+      search.value = ""
     })
 }
 

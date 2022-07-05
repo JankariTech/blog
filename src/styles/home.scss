@@ -4,11 +4,12 @@
   min-height: calc(100vh - 9.3vh);
 
   &--list {
-    //display: flex;
-    //flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
 
     .blog-peek {
       cursor: pointer;
+      flex-grow: 1;
     }
   }
 
