@@ -4,9 +4,14 @@ on:
       - closed
 
 jobs:
-  if_merged:
+  build:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-      - run: |
+      - name: Check for git
+        run: |
           echo The PR was merged
+          pwd
+          ls -la
+          git status
+          git diff --name-only

@@ -1,17 +1,12 @@
 <template>
   <div class="blog" v-if="peekData">
     <div class="blog--content">
-      <img
-        v-if="peekData.banner"
-        :src="peekData.banner"
-        alt="Blog Banner"
-        class="blog--banner"
-      >
       <BlogPeek
         :title="peekData.title"
         :authorAvatar="peekData.authorAvatar"
         :authorName="peekData.authorName"
         :authorLink="peekData.authorLink"
+        :banner="peekData.banner"
         createdAt="June 2022, 07"
         :tags="peekData.tags"
         detailView
