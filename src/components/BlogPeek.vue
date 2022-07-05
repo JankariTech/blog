@@ -73,8 +73,11 @@
 </template>
 <script setup>
 import moment from "moment"
-import { defineProps } from "vue"
+import { defineProps, computed } from "vue"
 import useTheme from "../composables/theme"
+
+const fallBackBannerDark = new URL("../imgs/fallback_banner_dark.png", import.meta.url).href
+const fallBackBanner = new URL("../imgs/fallback_banner.png", import.meta.url).href
 
 defineProps({
   title: {
@@ -116,14 +119,14 @@ defineProps({
 })
 
 const { dark } = useTheme()
+
+const fallbackBanner = computed(() => {
+  return dark.value ? fallBackBannerDark : fallBackBanner
+})
 </script>
 <script>
 export default {
   computed: {
-    fallbackBanner () {
-      const url = (this.dark) ? "../imgs/fallback_banner_dark.png" : "../imgs/fallback_banner.png"
-      return new URL(url, import.meta.url).href
-    },
     minutesToRead () {
       // assumed: 100 words in a minute with average 6 chars per word
       return Math.round(this.contentLength / (100 * 6))
