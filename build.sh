@@ -1,21 +1,25 @@
 #!/usr/bin/env sh
 
-REPO_DIR="/home/runner/work/blog/blog"
+BASE_DIR="home/runner/work/blog"
 DIST_BRANCH="dist"
 
 pnpm build
 
-mv docs /home/runner/work/blog/temp -r
+mkdir -p "${BASE_DIR}""/temp"
+mv docs "${BASE_DIR}""/temp"
 
-git chekout $DIST_BRANCH
+git checkout $DIST_BRANCH
 
 rm -rf docs
-mv /home/runner/work/blog/temp/docs . -r
+mv "${BASE_DIR}"/temp/docs .
 
 if [ -n "$(git status --porcelain)" ]; then
+  echo "blog.jankaritech.com" > docs/CNAME
   git config user.name "GitHub Actions Bot"
   git config user.email "<>"
   git add .
   git commit -m "Update the build code"
   git push origin $DIST_BRANCH
 fi
+
+rm -rf "${BASE_DIR}""/temp"
