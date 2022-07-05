@@ -26,8 +26,10 @@ jobs:
       - name: Check if there are changes
         id: changes
         uses: UnicornGlobal/has-changes-action@v1.0.11
-      - name: Publish
+      - name: Add cname
         if: steps.changes.outputs.changed === 1
+        run: echo "blog.jankaritech.com" > docs/CNAME
+      - name: Commit
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: update the build code
