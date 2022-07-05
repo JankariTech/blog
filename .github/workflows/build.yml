@@ -8,11 +8,27 @@ jobs:
     if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Check for git
-        run: |
-          echo The PR was merged
-          pwd
-          ls -la
-          git status
-          git diff --name-only
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'pnpm'
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2.2.2
+        with:
+          version: 7.x.x
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Build
+        run: pnpm build
+      - name: Check if there are changes
+        id: changes
+        uses: UnicornGlobal/has-changes-action@v1.0.11
+      - name: Publish
+        if: steps.changes.outputs.changed === 1
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: update the build code
+          file_pattern: 'docs/**/*'
