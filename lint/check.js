@@ -90,7 +90,7 @@ for (let i = 0; i < Object.keys(markdownFiles).length; i++) {
     continue
   }
 
-  // must have 7 or 9 lines
+  // must have 7 or 9 lines inside meta information
   const metaPart = mTokens[1].text.split("\n")
 
   if (metaPart.length !== 7 && metaPart.length !== 9) {
@@ -118,19 +118,6 @@ for (let i = 0; i < Object.keys(markdownFiles).length; i++) {
     log.error(`${key} has no "episode" meta`)
   }
 }
-log.info("-------------------------------------")
-
-// first element after the meta informations must not be a first heading
-log.info("Checking first element type after meta informations...")
-log.info("-------------------------------------")
-Object.keys(markdownFiles).forEach((item) => {
-  const tokens = marked.lexer(markdownFiles[item])
-  // const peekData = getPeekDataFor(markdownFiles[item])
-  if (tokens[3].type === "heading" && tokens[3].depth === 1) {
-    success = false
-    log.error(`${item} has the first heading as the first element after the meta informations`)
-  }
-})
 log.info("-------------------------------------")
 
 // no use of 1st heading tag inside the content (reserved for the blog title)
