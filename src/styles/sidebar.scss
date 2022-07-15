@@ -9,6 +9,7 @@
   max-width: var(--sidebar-width);
   height: 100vh;
   overflow-y: scroll;
+  box-shadow: 0 0.5rem 1rem grey;
 
   &--content {
     display: flex;
@@ -50,6 +51,7 @@
 
 body[theme-dark] {
   .sidebar {
+    box-shadow: 0 0.5rem 1rem #3f3f3f;
     background: #1c1c1c;
 
     &--item {

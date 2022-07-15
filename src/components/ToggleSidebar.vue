@@ -52,7 +52,7 @@ const { open, toggle } = useSidebar()
   .top-line {
     transition: all 0.5s ease-in-out;
     top: 5px;
-    left: 5px;
+    left: 0;
     transform: rotate(226deg);
   }
 
@@ -63,7 +63,7 @@ const { open, toggle } = useSidebar()
   .base-line {
     transition: all 0.5s ease-in-out;
     top: 5px;
-    left: 5px;
+    left: 0;
     transform: rotate(133deg);
   }
 }
