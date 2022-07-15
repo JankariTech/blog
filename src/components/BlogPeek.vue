@@ -168,7 +168,7 @@ export default {
   &--banner {
     text-align: center;
     height: 150px;
-    display:flex;
+    display: flex;
     background: #dadada;
     border-top-left-radius: 24px;
     border-top-right-radius: 24px;
@@ -267,6 +267,7 @@ body[theme-dark] {
         color: rgb(197 255 197);
       }
     }
+
     &--banner {
       background: black;
     }

@@ -1,6 +1,6 @@
 <template>
   <nav class="appbar">
-    <div style="display: flex; align-items: center">
+    <div style="display: flex; align-items: center;">
       <toggle-sidebar v-if="$route.name !== '404'" />
       <a href="/" v-if="xs">
         <img class="appbar--logo-small" :src="jtSmallLogo"
@@ -95,6 +95,7 @@ const toGithub = () => {
   height: var(--appbar-height);
   padding: 0 1rem;
   border-bottom: 1px solid rgb(221 221 221);
+
   &--logo-small {
     height: 50px;
     margin: 4px 4px 4px 20px;
