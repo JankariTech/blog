@@ -10,8 +10,8 @@ export default function useScreen () {
   const xs = computed(() => screenWidth.value < 360)
   const sm = computed(() => screenWidth.value < 600 && screenWidth.value >= 360)
   const md = computed(() => screenWidth.value < 960 && screenWidth.value >= 600)
-  const lg = computed(() => screenWidth.value < 1200 && screenWidth.value >= 960)
-  const xl = computed(() => screenWidth.value >= 1200)
+  const lg = computed(() => screenWidth.value < 1400 && screenWidth.value >= 960)
+  const xl = computed(() => screenWidth.value >= 1400)
 
   return {
     screenWidth, xs, sm, md, lg, xl

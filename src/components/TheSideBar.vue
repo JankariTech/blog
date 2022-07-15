@@ -39,18 +39,23 @@ import { watch, onMounted } from "vue"
 import { gsap } from "gsap"
 import useSidebar from "@/composables/sidebar"
 import useMarkdown from "@/composables/markdown"
+import useScreen from "@/composables/screen"
 
-const { open } = useSidebar()
+const { open, setSidebarState } = useSidebar()
 const { sidebarList } = useMarkdown()
+const { screenWidth, xl } = useScreen()
 
-const getWindowWidth = () => window.innerWidth
-
-onMounted(() => {
-  sidebarAnimation(getWindowWidth() > 768)
+onMounted(async () => {
+  await setSidebarState(xl.value)
+  await sidebarAnimation(xl.value)
 })
 
 watch(open, (val) => {
   sidebarAnimation(val)
+})
+
+watch(screenWidth, (v) => {
+  setSidebarState(xl.value)
 })
 
 const sidebarAnimation = (val) => {

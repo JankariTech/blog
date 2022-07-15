@@ -19,13 +19,11 @@ import { watch, onMounted, ref } from "vue"
 
 import TheAppBar from "@/components/TheAppBar"
 import TheSideBar from "@/components/TheSideBar"
-import useSidebar from "@/composables/sidebar"
 import useTheme from "@/composables/theme"
 import useMarkdown from "@/composables/markdown"
 import { readAssets, prepareSidebarList } from "@/helpers/markdown"
 
 const { dark } = useTheme()
-const { open, setSidebarState } = useSidebar()
 const { setList, setModules, setSidebarList } = useMarkdown()
 
 watch(dark, () => {
@@ -42,25 +40,7 @@ const scrollButtonVisibility = ref(false)
 
 onMounted(() => {
   window.addEventListener("scroll", onScroll)
-  setResizeEventListener()
 })
-
-const setResizeEventListener = () => {
-  if (window.addEventListener) {
-    window.addEventListener("resize", onResize, true)
-  } else {
-    console.error("The browser does not support Javascript event binding")
-  }
-}
-
-const onResize = (e) => {
-  const currentWindowWidth = e.target.window.innerWidth || window.innerWidth
-  if (currentWindowWidth < 1400) {
-    setSidebarState(false)
-  } else {
-    setSidebarState(true)
-  }
-}
 
 const onScroll = (e) => {
   if (typeof window === "undefined") return
