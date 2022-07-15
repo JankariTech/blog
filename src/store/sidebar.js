@@ -8,7 +8,7 @@ export const useSidebarStore = defineStore("sidebar", {
     toggle () {
       this.open = !this.open
     },
-    setSidebarState(v) {
+    setSidebarState (v) {
       this.open = v
     }
   }

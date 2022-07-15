@@ -2,17 +2,17 @@
   <div class="sidebar">
     <div class="sidebar--content" v-if="sidebarList">
       <div v-for="(item, index) in Object.keys(sidebarList)"
-           :key="index"
+        :key="index"
       >
         <div v-if="typeof (sidebarList[item]) === 'object'"
-             class="sidebar--series"
+          class="sidebar--series"
         >
           <div class="sidebar--series--title">
             {{ item }}
           </div>
           <div class="sidebar--item"
-               v-for="(subItem, subIndex) in Object.keys(sidebarList[item])"
-               :key="subIndex"
+            v-for="(subItem, subIndex) in Object.keys(sidebarList[item])"
+            :key="subIndex"
           >
             <a
               :title="subItem.title"
@@ -35,15 +35,25 @@
   </div>
 </template>
 <script setup>
-import {watch} from "vue"
-import {gsap} from "gsap"
+import { watch, onMounted } from "vue"
+import { gsap } from "gsap"
 import useSidebar from "@/composables/sidebar"
 import useMarkdown from "@/composables/markdown"
 
-const {open} = useSidebar()
-const {sidebarList} = useMarkdown()
+const { open } = useSidebar()
+const { sidebarList } = useMarkdown()
+
+const getWindowWidth = () => window.innerWidth
+
+onMounted(() => {
+  sidebarAnimation(getWindowWidth() > 768)
+})
 
 watch(open, (val) => {
+  sidebarAnimation(val)
+})
+
+const sidebarAnimation = (val) => {
   const $drawer = document.querySelector(".sidebar")
   const $drawerItems = document.querySelectorAll(".sidebar--item")
   const $seriesTitles = document.querySelectorAll(".sidebar--series--title")
@@ -55,19 +65,19 @@ watch(open, (val) => {
       maxWidth: "250px",
       opacity: 1,
       ease: "circ.out",
-      duration: .5
+      duration: 0.5
     })
       .to($seriesTitles, {
         opacity: 1,
         scale: 1,
         ease: "circ.out",
-        duration: .3
+        duration: 0.3
       }, "<+=.2")
       .to($drawerItems, {
         opacity: 1,
         scale: 1,
         ease: "circ.out",
-        duration: .3
+        duration: 0.3
       }, "<+=.05")
   } else {
     tl.to($drawer, {
@@ -76,22 +86,22 @@ watch(open, (val) => {
       maxWidth: 0,
       opacity: 0,
       ease: "power3.out",
-      duration: .3
+      duration: 0.3
     })
       .to($drawerItems, {
         opacity: 0,
-        scale: .5,
+        scale: 0.5,
         ease: "power3.out",
-        duration: .3
+        duration: 0.3
       }, 0)
       .to($seriesTitles, {
         opacity: 0,
-        scale: .5,
+        scale: 0.5,
         ease: "power3.out",
-        duration: .3
+        duration: 0.3
       }, 0)
   }
-})
+}
 </script>
 <style lang="scss" scoped>
 @import "@/styles/sidebar";

@@ -12,7 +12,9 @@
         v-if="banner || fallbackBanner"
         :src="banner || fallbackBanner"
         alt="Blog Banner"
+        class="image-contain"
         :class="{
+          'fallback-banner-xs': xs,
           'fallback-banner': !detailView && !banner,
           'fallback-detail-banner': detailView && !banner
         }"
@@ -75,9 +77,11 @@
 import moment from "moment"
 import { defineProps, computed } from "vue"
 import useTheme from "../composables/theme"
+import getImageUrl from "../helpers/images"
+import useScreen from "../composables/screen"
 
-const fallBackBannerDark = new URL("../imgs/fallback_banner_dark.png", import.meta.url).href
-const fallBackBanner = new URL("../imgs/fallback_banner.png", import.meta.url).href
+const fallBackBannerDark = getImageUrl("../imgs/fallback_banner_dark.png")
+const fallBackBanner = getImageUrl("../imgs/fallback_banner.png")
 
 defineProps({
   title: {
@@ -119,8 +123,10 @@ defineProps({
 })
 
 const { dark } = useTheme()
+const { xs } = useScreen()
 
 const fallbackBanner = computed(() => {
+  if (xs.value) return getImageUrl("../imgs/jt_logo_small.png")
   return dark.value ? fallBackBannerDark : fallBackBanner
 })
 </script>
@@ -162,12 +168,15 @@ export default {
   &--banner {
     text-align: center;
     height: 150px;
+    display:flex;
+    background: #dadada;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    overflow: hidden;
 
     img {
-      height: 100%;
+      height: 150px;
       width: 100%;
-      border-top-left-radius: 24px;
-      border-top-right-radius: 24px;
     }
 
     border-bottom: 1px solid grey;
@@ -258,11 +267,19 @@ body[theme-dark] {
         color: rgb(197 255 197);
       }
     }
+    &--banner {
+      background: black;
+    }
   }
 }
 
 .image-contain {
   object-fit: contain;
   border-bottom: 1px solid #dedddd;
+}
+
+.fallback-banner-xs {
+  max-width: 100px !important;
+  max-height: 100px !important;
 }
 </style>

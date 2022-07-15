@@ -1,8 +1,17 @@
 <template>
   <nav class="appbar">
-    <toggle-sidebar v-if="$route.name !== '404'" />
-    <a href="/">
-      <img class="appbar--logo" :src="dark ? jtLogoWithNameDark: jtLogoWithName" alt="" width="200" >
+    <div style="display: flex; align-items: center">
+      <toggle-sidebar v-if="$route.name !== '404'" />
+      <a href="/" v-if="xs">
+        <img class="appbar--logo-small" :src="jtSmallLogo"
+          alt="JankariTech Logo Small" width="50"
+        >
+      </a>
+    </div>
+    <a href="/" v-if="!xs">
+      <img class="appbar--logo" :src="logo"
+        alt="JankariTech Logo" width="200"
+      >
     </a>
     <div class="appbar--actions">
       <button class="appbar--icon icon-button toggle-theme" @click="toggle">
@@ -33,14 +42,22 @@
   </nav>
 </template>
 <script setup>
-import { ref, watch, onBeforeMount } from "vue"
+import { ref, watch, onBeforeMount, computed } from "vue"
 import useTheme from "@/composables/theme"
 import ToggleSidebar from "@/components/ToggleSidebar"
+import useScreen from "../composables/screen"
+import getImageUrl from "../helpers/images"
 
 const { dark, toggle, font, setFont } = useTheme()
+const { xs } = useScreen()
 
-const jtLogoWithName = new URL("../imgs/jt_logo_with_name.png", import.meta.url).href
-const jtLogoWithNameDark = new URL("../imgs/jt_logo_with_name_dark.png", import.meta.url).href
+const jtSmallLogo = getImageUrl("../imgs/jt_logo_small.png")
+const jtLogoWithName = getImageUrl("../imgs/jt_logo_with_name.png")
+const jtLogoWithNameDark = getImageUrl("../imgs/jt_logo_with_name_dark.png")
+
+const logo = computed(() => {
+  return (dark.value) ? jtLogoWithNameDark : jtLogoWithName
+})
 
 const FONT_MAP = [
   { name: "Roboto", class: "font-roboto" },
@@ -78,6 +95,10 @@ const toGithub = () => {
   height: var(--appbar-height);
   padding: 0 1rem;
   border-bottom: 1px solid rgb(221 221 221);
+  &--logo-small {
+    height: 50px;
+    margin: 4px 4px 4px 20px;
+  }
 
   &--icon {
     height: 2rem;

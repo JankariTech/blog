@@ -46,11 +46,10 @@ onMounted(() => {
 })
 
 const setResizeEventListener = () => {
-  if(window.addEventListener) {
-    window.addEventListener('resize', onResize, true);
-  }
-  else {
-    console.error('The browser does not support Javascript event binding');
+  if (window.addEventListener) {
+    window.addEventListener("resize", onResize, true)
+  } else {
+    console.error("The browser does not support Javascript event binding")
   }
 }
 
