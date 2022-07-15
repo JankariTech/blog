@@ -32,6 +32,7 @@
     "dependencies": {
         "@iconify-json/mdi": "^1.1.24",
         "dompurify": "^2.3.8",
+        "gsap": "^3.10.4",
         "marked": "^4.0.17",
         "moment": "^2.29.3",
         "pinia": "^2.0.14",

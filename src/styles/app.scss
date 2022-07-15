@@ -5,14 +5,6 @@
     background: #f5f4f4;
     min-height: calc(100vh - var(--appbar-height));
 
-    &.with-sidebar {
-      margin-left: var(--sidebar-width);
-    }
-
-    &.without-sidebar {
-      margin-left: 0;
-    }
-
     .scroll-to-top {
       position: fixed;
       bottom: 1rem;

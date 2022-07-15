@@ -2,12 +2,7 @@
   <div>
     <TheAppBar />
     <TheSideBar v-if="$route.name !== '404'" />
-    <div class="content"
-      :class="{
-        'with-sidebar': open & $route.name !== '404',
-        'without-sidebar': !open & $route.name !== '404'
-      }"
-    >
+    <div class="content">
       <router-view />
       <button
         v-if="scrollButtonVisibility"
@@ -30,7 +25,7 @@ import useMarkdown from "@/composables/markdown"
 import { readAssets, prepareSidebarList } from "@/helpers/markdown"
 
 const { dark } = useTheme()
-const { open } = useSidebar()
+const { open, setSidebarState } = useSidebar()
 const { setList, setModules, setSidebarList } = useMarkdown()
 
 watch(dark, () => {
@@ -47,7 +42,26 @@ const scrollButtonVisibility = ref(false)
 
 onMounted(() => {
   window.addEventListener("scroll", onScroll)
+  setResizeEventListener()
 })
+
+const setResizeEventListener = () => {
+  if(window.addEventListener) {
+    window.addEventListener('resize', onResize, true);
+  }
+  else {
+    console.error('The browser does not support Javascript event binding');
+  }
+}
+
+const onResize = (e) => {
+  const currentWindowWidth = e.target.window.innerWidth || window.innerWidth
+  if (currentWindowWidth < 1400) {
+    setSidebarState(false)
+  } else {
+    setSidebarState(true)
+  }
+}
 
 const onScroll = (e) => {
   if (typeof window === "undefined") return
