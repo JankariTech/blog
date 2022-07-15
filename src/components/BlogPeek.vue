@@ -275,7 +275,7 @@ body[theme-dark] {
 }
 
 .image-contain {
-  object-fit: contain;
+  object-fit: cover;
   border-bottom: 1px solid #dedddd;
 }
 
