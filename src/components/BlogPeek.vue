@@ -73,7 +73,7 @@
 </template>
 <script setup>
 import moment from "moment"
-import { defineProps, computed } from "vue"
+import { computed } from "vue"
 import useTheme from "../composables/theme"
 
 const fallBackBannerDark = new URL("../imgs/fallback_banner_dark.png", import.meta.url).href
