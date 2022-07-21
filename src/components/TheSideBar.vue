@@ -1,5 +1,5 @@
 <template>
-  <div class="sidebar">
+  <aside class="sidebar">
     <div class="sidebar--content" v-if="sidebarList">
       <div v-for="(item, index) in Object.keys(sidebarList)"
         :key="index"
@@ -7,10 +7,12 @@
         <div v-if="typeof (sidebarList[item]) === 'object'"
           class="sidebar--series"
         >
-          <div class="sidebar--series--title">
+          <div class="sidebar--item sidebar--series--title"
+            @click="toggleSeriesItemVisibility"
+          >
             {{ item }}
           </div>
-          <div class="sidebar--item"
+          <div class="sidebar--item sidebar--series--item"
             v-for="(subItem, subIndex) in Object.keys(sidebarList[item])"
             :key="subIndex"
           >
@@ -32,7 +34,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </aside>
 </template>
 <script setup>
 import { watch, onMounted } from "vue"
@@ -48,6 +50,7 @@ const { screenWidth, xl } = useScreen()
 onMounted(async () => {
   await setSidebarState(xl.value)
   await sidebarAnimation(xl.value)
+  await closeAllSidebarSeriesItems()
 })
 
 watch(open, (val) => {
@@ -61,7 +64,7 @@ watch(screenWidth, (v) => {
 const sidebarAnimation = (val) => {
   const $drawer = document.querySelector(".sidebar")
   const $drawerItems = document.querySelectorAll(".sidebar--item")
-  const $seriesTitles = document.querySelectorAll(".sidebar--series--title")
+  const $seriesTitles = document.querySelectorAll(".sidebar--item--sub")
   const tl = gsap.timeline()
   if (val) {
     tl.to($drawer, {
@@ -106,6 +109,49 @@ const sidebarAnimation = (val) => {
         duration: 0.3
       }, 0)
   }
+}
+
+const toggleSeriesItemVisibility = (val) => {
+  const seriesBox = val.target.parentElement
+  const seriesItems = seriesBox.querySelectorAll(".sidebar--series--item")
+  const isOpened = seriesItems[0].classList.contains("sidebar--series--item--opened")
+  const tl = gsap.timeline()
+  if (isOpened) {
+    tl.to(seriesItems, {
+      opacity: 0,
+      ease: "power3.out",
+      height: 0,
+      padding: 0,
+      duration: 0.6
+    })
+    seriesItems.forEach((item) => {
+      item.classList.remove("sidebar--series--item--opened")
+    })
+  } else {
+    tl.to(seriesItems, {
+      opacity: 1,
+      ease: "power3.out",
+      height: "100%",
+      padding: "0.5rem",
+      duration: 0.6
+    })
+    seriesItems.forEach((item) => {
+      item.classList.add("sidebar--series--item--opened")
+    })
+  }
+}
+
+const closeAllSidebarSeriesItems = () => {
+  const seriesItems = document.querySelectorAll(".sidebar--series--item")
+  const tl = gsap.timeline()
+  tl.to(seriesItems, {
+    opacity: 0,
+    ease: "power3.out",
+    duration: 0.3,
+    height: 0,
+    padding: 0,
+    overflow: "hidden"
+  })
 }
 </script>
 <style lang="scss" scoped>

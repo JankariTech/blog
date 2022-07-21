@@ -4,7 +4,7 @@
       <toggle-sidebar v-if="$route.name !== '404'" />
       <a href="/" v-if="xs">
         <img class="appbar--logo-small" :src="jtSmallLogo"
-          alt="JankariTech Logo Small" width="50"
+          alt="JankariTech Logo Small" width="35"
         >
       </a>
     </div>
@@ -97,7 +97,7 @@ const toGithub = () => {
   border-bottom: 1px solid rgb(221 221 221);
 
   &--logo-small {
-    height: 50px;
+    height: 35px;
     margin: 4px 4px 4px 20px;
   }
 
@@ -125,7 +125,7 @@ const toGithub = () => {
     right: 0;
     background: #fff;
     border: 1px solid #ccc;
-    border-radius: 8px;
+    border-radius: var(--default-border-radius);
     overflow: hidden;
     width: 100px;
 

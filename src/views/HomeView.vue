@@ -20,7 +20,7 @@
         class="clear-button"
         @click="clearSearch"
       >
-        <mdi-close />
+        <mdi-close :color="(dark) ? 'white' : 'black'" />
       </button>
       <button class="icon-button" title="Search"
         @click="makeSearch"
@@ -99,8 +99,11 @@ import { ref, watch, onMounted } from "vue"
 import { useRouter } from "vue-router"
 import BlogPeek from "@/components/BlogPeek"
 import { getPeekData } from "@/helpers/markdown"
+import useTheme from "@/composables/theme"
+import getImageUrl from "../helpers/images"
 
 const { currentRoute, push } = useRouter()
+const { dark } = useTheme()
 
 const peekData = ref([])
 const search = ref("")
@@ -123,7 +126,7 @@ const init = () => {
   loading.value = false
 }
 
-const loadingImage = new URL("../imgs/loading.png", import.meta.url).href
+const loadingImage = getImageUrl("../imgs/loading.png")
 
 const goToBlogDetail = (item) => {
   const series = item.seriesTitle

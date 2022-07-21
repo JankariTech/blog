@@ -1,8 +1,8 @@
 <template>
   <div class="blog-peek"
     :class="{
-      'small-shadow': !detailView && !dark,
-      'small-shadow-dark': !detailView && dark,
+      'small-shadow-hover': !detailView && !dark,
+      'small-shadow-dark-hover': !detailView && dark,
     }"
   >
     <div class="blog-peek--banner"
@@ -148,8 +148,9 @@ export default {
 
 .blog-peek {
   margin: 1.6rem;
+  padding-bottom: .5rem;
   border: 1px solid grey;
-  border-radius: 24px;
+  border-radius: var(--default-border-radius);
 
   .detail-view-banner {
     height: 300px !important;
@@ -170,8 +171,8 @@ export default {
     height: 150px;
     display: flex;
     background: #dadada;
-    border-top-left-radius: 24px;
-    border-top-right-radius: 24px;
+    border-top-left-radius: var(--default-border-radius);
+    border-top-right-radius: var(--default-border-radius);
     overflow: hidden;
 
     img {

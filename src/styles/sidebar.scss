@@ -14,37 +14,38 @@
   &--content {
     display: flex;
     flex-direction: column;
+    padding-top: 1rem;
+    margin: 0 6px;
   }
 
   &--item {
-    padding: 0.6rem 0.8rem;
-
+    padding: .5rem;
+    font-size: 1rem !important;
+    border-radius: var(--default-border-radius);
     a {
-      font-size: 1rem;
-      color: black;
-      font-weight: 500;
+      color: #343434;
+      text-decoration: none;
     }
-
     &:hover {
-      background-color: #fff;
+      background: #d9d9d9;
     }
   }
-
   &--series {
-    &--title {
-      font-size: 1.1rem;
-      font-weight: 600;
-      padding: 0.6rem 0 0.2rem 0.6rem;
-    }
-
-    .sidebar {
-      &--item {
-        padding-left: 1.2rem;
-
-        a {
-          font-weight: 400 !important;
-        }
+    &--title:hover {
+      padding-right: 2.7rem;
+      &::before {
+        content: "Series";
+        font-size: .6rem;
+        position: absolute;
+        right: .5rem;
+        top: .5rem;
+        border: 1px solid grey;
+        padding: 0 .1rem;
+        border-radius: var(--default-border-radius);
       }
+    }
+    &--item {
+      margin-left: 10px;
     }
   }
 }
@@ -58,9 +59,17 @@ body[theme-dark] {
       a {
         color: #fff !important;
       }
+      &--sub {
+        a {
+          color: #fff !important;
+        }
+      }
     }
 
     &--item:hover {
+      background-color: #000;
+    }
+    &--item--sub:hover {
       background-color: #000;
     }
   }

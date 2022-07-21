@@ -23,10 +23,11 @@
     input {
       width: 85%;
       height: 40px;
-      border-radius: 24px;
+      border-radius: var(--default-border-radius);
       padding: 0 1rem;
       border: 1px solid grey;
       margin-right: 0.2rem;
+      font-family: inherit;
     }
 
     input:focus {
@@ -45,6 +46,7 @@
     button {
       height: 36px;
       width: 36px;
+      min-width: 36px;
       padding-top: 3px;
 
       &.filtering,
@@ -92,6 +94,9 @@
 
 body[theme-dark] {
   .home-view {
+    #search {
+      color: white;
+    }
     &--search button {
       &.filtering,
       &.sorting {
