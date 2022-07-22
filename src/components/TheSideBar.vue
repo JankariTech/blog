@@ -1,36 +1,31 @@
 <template>
   <aside class="sidebar">
+    <!-- sidebar top space for logo and sidebar toggle button -->
+    <div class="sidebar--top-space" />
     <div class="sidebar--content" v-if="sidebarList">
       <div v-for="(item, index) in Object.keys(sidebarList)"
         :key="index"
       >
         <div v-if="typeof (sidebarList[item]) === 'object'"
-          class="sidebar--series"
+          class="series"
         >
-          <div class="sidebar--item sidebar--series--title"
-            @click="toggleSeriesItemVisibility"
-          >
-            {{ item }}
-          </div>
-          <div class="sidebar--item sidebar--series--item"
-            v-for="(subItem, subIndex) in Object.keys(sidebarList[item])"
-            :key="subIndex"
-          >
-            <a
-              :title="subItem.title"
-              :href="`/#/blog/${encodeURIComponent(item)}/${encodeURIComponent(subItem)}`"
+            <div class="series--title s-anim">{{ item }}</div>
+            <div
+              class="series--blog blog s-anim"
+              :title="item"
+              v-for="(subItem, subIndex) in Object.keys(sidebarList[item])"
+              :key="subIndex"
+              @click="push(`/blog/${encodeURIComponent(item)}/${encodeURIComponent(subItem)}`)"
             >
               {{ subItem }}
-            </a>
-          </div>
+            </div>
         </div>
-        <div v-else class="sidebar--item">
-          <a
-            :title="item"
-            :href="`/#/blog/${encodeURIComponent(item)}`"
-          >
-            {{ item }}
-          </a>
+        <div
+          v-else class="blog s-anim"
+          @click="push(`/blog/${encodeURIComponent(item)}`)"
+          :title="item"
+        >
+          {{ item }}
         </div>
       </div>
     </div>
@@ -38,19 +33,22 @@
 </template>
 <script setup>
 import { watch, onMounted } from "vue"
+import { useRouter } from "vue-router"
 import { gsap } from "gsap"
 import useSidebar from "@/composables/sidebar"
 import useMarkdown from "@/composables/markdown"
 import useScreen from "@/composables/screen"
+import useTheme from "@/composables/theme"
 
 const { open, setSidebarState } = useSidebar()
 const { sidebarList } = useMarkdown()
-const { screenWidth, xl } = useScreen()
+const { screenWidth, xl, sm } = useScreen()
+const {push} = useRouter()
+const {dark} = useTheme()
 
 onMounted(async () => {
   await setSidebarState(xl.value)
   await sidebarAnimation(xl.value)
-  await closeAllSidebarSeriesItems()
 })
 
 watch(open, (val) => {
@@ -63,95 +61,68 @@ watch(screenWidth, (v) => {
 
 const sidebarAnimation = (val) => {
   const $drawer = document.querySelector(".sidebar")
-  const $drawerItems = document.querySelectorAll(".sidebar--item")
-  const $seriesTitles = document.querySelectorAll(".sidebar--item--sub")
+  const $mainContent = document.querySelector("main.content")
+  const $drawerItems = document.querySelectorAll(".s-anim")
+  const $drawerImage = document.querySelector(".sidebar--image")
+  let mainMargin
+  if (sm.value) {
+    mainMargin = "0"
+  } else {
+    mainMargin = "300"
+  }
   const tl = gsap.timeline()
   if (val) {
-    tl.to($drawer, {
-      width: "250px",
-      minWidth: "150px",
-      maxWidth: "250px",
-      opacity: 1,
-      ease: "circ.out",
-      duration: 0.5
-    })
-      .to($seriesTitles, {
+    tl
+      .to($drawer, {
+        width: "300",
+        minWidth: "300",
         opacity: 1,
+        ease: "circ.out",
+        duration: .5
+      })
+      .to($mainContent, {
+        marginLeft: mainMargin,
+        ease: "circ.out",
+        duration: .5
+      }, "-=.5")
+      .to($drawerImage, {
         scale: 1,
         ease: "circ.out",
-        duration: 0.3
-      }, "<+=.2")
+        duration: .2
+      }, "-=.3")
       .to($drawerItems, {
+        x: 0,
         opacity: 1,
-        scale: 1,
-        ease: "circ.out",
-        duration: 0.3
-      }, "<+=.05")
+        ease: "ease.in",
+        duration: .2,
+        stagger: .03
+      })
   } else {
-    tl.to($drawer, {
-      width: 0,
-      minWidth: 0,
-      maxWidth: 0,
-      opacity: 0,
-      ease: "power3.out",
-      duration: 0.3
-    })
+    tl
       .to($drawerItems, {
+        x: -20,
         opacity: 0,
-        scale: 0.5,
+        ease: "east.in",
+        duration: .2,
+      })
+      .to($drawerImage, {
+        scale: 0,
         ease: "power3.out",
-        duration: 0.3
-      }, 0)
-      .to($seriesTitles, {
-        opacity: 0,
-        scale: 0.5,
+        duration: .3
+      }, "-=.1")
+      .to($drawer, {
+        width: "0",
+        minWidth: "0",
         ease: "power3.out",
-        duration: 0.3
-      }, 0)
-  }
-}
+        duration: 0.4
+      }, "-=.1")
+      .to($mainContent, {
+        marginLeft: "0",
+        ease: "power3.out",
+        duration: 0.4
+      }, "-=.4")
 
-const toggleSeriesItemVisibility = (val) => {
-  const seriesBox = val.target.parentElement
-  const seriesItems = seriesBox.querySelectorAll(".sidebar--series--item")
-  const isOpened = seriesItems[0].classList.contains("sidebar--series--item--opened")
-  const tl = gsap.timeline()
-  if (isOpened) {
-    tl.to(seriesItems, {
-      opacity: 0,
-      ease: "power3.out",
-      height: 0,
-      padding: 0,
-      duration: 0.6
-    })
-    seriesItems.forEach((item) => {
-      item.classList.remove("sidebar--series--item--opened")
-    })
-  } else {
-    tl.to(seriesItems, {
-      opacity: 1,
-      ease: "power3.out",
-      height: "100%",
-      padding: "0.5rem",
-      duration: 0.6
-    })
-    seriesItems.forEach((item) => {
-      item.classList.add("sidebar--series--item--opened")
-    })
   }
-}
-
-const closeAllSidebarSeriesItems = () => {
-  const seriesItems = document.querySelectorAll(".sidebar--series--item")
-  const tl = gsap.timeline()
-  tl.to(seriesItems, {
-    opacity: 0,
-    ease: "power3.out",
-    duration: 0.3,
-    height: 0,
-    padding: 0,
-    overflow: "hidden"
-  })
 }
 </script>
 <style lang="scss" scoped>

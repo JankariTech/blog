@@ -1,25 +1,31 @@
-#app {
+.app {
+  .company-name {
+    position: fixed;
+    top: 1rem;
+    left: 3.8rem;
+    z-index: 9999;
+    height: 2rem;
+    img {
+      height: 100%;
+    }
+  }
   .content {
-    right: 0;
-    padding: 1rem;
     background: #f5f4f4;
-    min-height: calc(100vh - var(--appbar-height));
+  }
+  .scroll-to-top {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 1;
+    border-radius: 50%;
+    height: 42px;
+    width: 42px;
+    outline: none;
+    background: inherit;
+    border: 1px solid grey;
 
-    .scroll-to-top {
-      position: fixed;
-      bottom: 1rem;
-      right: 1rem;
-      z-index: 1;
-      border-radius: 50%;
-      height: 42px;
-      width: 42px;
-      outline: none;
-      background: inherit;
-      border: 1px solid grey;
-
-      svg {
-        font-size: 1.2rem;
-      }
+    svg {
+      font-size: 1.2rem;
     }
   }
 }
