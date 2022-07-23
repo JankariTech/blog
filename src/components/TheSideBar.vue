@@ -9,7 +9,9 @@
         <div v-if="typeof (sidebarList[item]) === 'object'"
           class="series"
         >
-            <div class="series--title s-anim">{{ item }}</div>
+            <div class="series--title s-anim"
+              @click="toggleSeriesList"
+            >{{ item }}</div>
             <div
               class="series--blog blog s-anim"
               :title="item"
@@ -49,6 +51,7 @@ const {dark} = useTheme()
 onMounted(async () => {
   await setSidebarState(xl.value)
   await sidebarAnimation(xl.value)
+  await hideAllSeriesItems()
 })
 
 watch(open, (val) => {
@@ -90,21 +93,21 @@ const sidebarAnimation = (val) => {
         ease: "circ.out",
         duration: .2
       }, "-=.3")
-      .to($drawerItems, {
-        x: 0,
-        opacity: 1,
-        ease: "ease.in",
-        duration: .2,
-        stagger: .03
-      })
+      // .to($drawerItems, {
+      //   x: 0,
+      //   opacity: 1,
+      //   ease: "ease.in",
+      //   duration: .2,
+      //   // stagger: .05
+      // }, "-=.1")
   } else {
     tl
-      .to($drawerItems, {
-        x: -20,
-        opacity: 0,
-        ease: "east.in",
-        duration: .2,
-      })
+      // .to($drawerItems, {
+      //   x: -20,
+      //   opacity: 0,
+      //   ease: "east.in",
+      //   duration: .2,
+      // })
       .to($drawerImage, {
         scale: 0,
         ease: "power3.out",
@@ -121,7 +124,54 @@ const sidebarAnimation = (val) => {
         ease: "power3.out",
         duration: 0.4
       }, "-=.4")
+  }
+}
 
+const sidebarBlogCloseTransition = {
+  opacity: 0,
+  height: 0,
+  padding: 0,
+  x: -80,
+  ease: "east.out",
+  stagger: .05
+}
+
+const hideAllSeriesItems = () => {
+  const $series = document.querySelectorAll(".series")
+  const $seriesItems = document.querySelectorAll(".series--blog")
+  gsap.to($seriesItems, {
+    ...sidebarBlogCloseTransition
+  })
+  $series.forEach(($item) => {
+    $item.classList.remove("open")
+  })
+}
+
+const toggleSeriesList = (e) => {
+  const $clickedTarget = e.target
+  const $nearestSeries = $clickedTarget.closest(".series")
+  const $seriesItems = $nearestSeries.querySelectorAll(".series--blog")
+  const isAlreadyOpen = $nearestSeries.classList.contains("open")
+  if (!isAlreadyOpen) {
+    // find if there are already opened series
+    const $openedSeries = document.querySelector(".series.open")
+    if ($openedSeries) {
+      $openedSeries.classList.remove("open")
+      gsap.to($openedSeries.querySelectorAll(".series--blog"), {
+        ...sidebarBlogCloseTransition
+      })
+    }
+    gsap.to($seriesItems, {
+      opacity: 1,
+      height: "40",
+      padding: "0.5rem",
+      x: 0,
+      ease: "east.in",
+      stagger: .05
+    }, "-=.1")
+    $nearestSeries.classList.add("open")
+  } else {
+    hideAllSeriesItems()
   }
 }
 </script>
