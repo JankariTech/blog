@@ -1,52 +1,61 @@
 <template>
   <nav class="appbar">
-    <toggle-sidebar v-if="$route.name !== '404'" />
-    <a href="/">
-      <img class="appbar--logo" :src="dark ? jtLogoWithNameDark: jtLogoWithName" alt="" width="200" >
-    </a>
-    <div class="appbar--actions">
-      <button class="appbar--icon icon-button toggle-theme" @click="toggle">
-        <mdi-brightness-6 class="one-rem"/>
+    <button
+      class="appbar--icon icon-button toggle-theme"
+      title="Toggle Theme"
+      @click="toggle"
+    >
+      <mdi-brightness-6 class="one-rem"/>
+    </button>
+    <div class="font-drop">
+      <button class="appbar--icon icon-button toggle-font"
+        title="Font Menu"
+        @click="toggleFontMenu"
+      >
+        <mdi-format-font class="one-rem"/>
       </button>
-      <div class="font-drop">
-        <button class="appbar--icon icon-button toggle-font" @click="toggleFontMenu">
-          <mdi-format-font class="one-rem"/>
-        </button>
-        <div v-if="fontMenu" class="font-drop--menu">
-          <button
-            class="font-drop--menu--item"
-            v-for="(item, index) in FONT_MAP"
-            :key="index"
-            :class="{ 'font-drop--menu--item--active': font === item.class}"
-            @click="setFont(item.class)"
-          >
-            {{ item.name }}
-          </button>
-        </div>
-        <button class="appbar--icon icon-button to-github"
-          @click="toGithub"
+      <div v-if="fontMenu" class="font-drop--menu">
+        <button
+          class="font-drop--menu--item"
+          v-for="(item, index) in FONT_MAP"
+          :key="index"
+          :class="{ 'font-drop--menu--item--active': font === item.className}"
+          @click="setFont(item.className)"
         >
-          <mdi-github class="one-rem"/>
+          {{ item.name }}
         </button>
       </div>
     </div>
+    <button class="appbar--icon icon-button to-github"
+      title="GitHub Repository"
+      @click="toGithub"
+    >
+      <mdi-github class="one-rem"/>
+    </button>
   </nav>
 </template>
 <script setup>
-import { ref, watch, onBeforeMount } from "vue"
+import { ref, watch, onBeforeMount, computed } from "vue"
 import useTheme from "@/composables/theme"
-import ToggleSidebar from "@/components/ToggleSidebar"
+import useScreen from "@/composables/screen"
+import getImageUrl from "@/helpers/images"
 
 const { dark, toggle, font, setFont } = useTheme()
+const { xs } = useScreen()
 
-const jtLogoWithName = new URL("../imgs/jt_logo_with_name.png", import.meta.url).href
-const jtLogoWithNameDark = new URL("../imgs/jt_logo_with_name_dark.png", import.meta.url).href
+const jtSmallLogo = getImageUrl("../imgs/jt_logo_small.png")
+const jtLogoWithName = getImageUrl("../imgs/jt_logo_with_name.png")
+const jtLogoWithNameDark = getImageUrl("../imgs/jt_logo_with_name_dark.png")
+
+const logo = computed(() => {
+  return (dark.value) ? jtLogoWithNameDark : jtLogoWithName
+})
 
 const FONT_MAP = [
-  { name: "Roboto", class: "font-roboto" },
-  { name: "Poppins", class: "font-poppins" },
-  { name: "Open Sans", class: "font-open-sans" },
-  { name: "Lato", class: "font-lato" }
+  { name: "Roboto", className: "font-roboto" },
+  { name: "Poppins", className: "font-poppins" },
+  { name: "Open Sans", className: "font-open-sans" },
+  { name: "Lato", className: "font-lato" }
 ]
 
 const fontMenu = ref(false)
@@ -54,7 +63,7 @@ const toggleFontMenu = () => {
   fontMenu.value = !fontMenu.value
 }
 watch(font, () => {
-  document.body.classList.remove(...FONT_MAP.map(item => item.class))
+  document.body.classList.remove(...FONT_MAP.map(item => item.className))
   document.body.classList.add(font.value)
 })
 onBeforeMount(() => {
@@ -67,17 +76,22 @@ const toGithub = () => {
 </script>
 <style lang="scss" scoped>
 .appbar {
-  z-index: 999;
-  position: sticky;
-  top: 0;
+  z-index: 998;
+  position: sticky; top: 0;
   background-color: #fff;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: end;
   align-items: center;
   height: var(--appbar-height);
-  padding: 0 1rem;
+  padding: 0 1rem 0 4rem;
+  margin-bottom: 1rem;
   border-bottom: 1px solid rgb(221 221 221);
+
+  &--logo-small {
+    height: 35px;
+    margin: 4px 4px 4px 20px;
+  }
 
   &--icon {
     height: 2rem;
@@ -103,7 +117,7 @@ const toGithub = () => {
     right: 0;
     background: #fff;
     border: 1px solid #ccc;
-    border-radius: 8px;
+    border-radius: var(--default-border-radius);
     overflow: hidden;
     width: 100px;
 

@@ -50,6 +50,18 @@ button {
   box-shadow: var(--small-shadow-dark);
 }
 
+.small-shadow-hover {
+  &:hover {
+    box-shadow: var(--small-shadow);
+  }
+}
+
+.small-shadow-dark-hover {
+  &:hover {
+    box-shadow: var(--small-shadow-dark);
+  }
+}
+
 .icon-button {
   border-radius: 50%;
   outline: none;
@@ -71,7 +83,7 @@ button {
   .menu-drop {
     position: absolute;
     border: 1px solid grey;
-    border-radius: 8px;
+    border-radius: var(--default-border-radius);
     padding: 0.4rem;
     background-color: white;
     margin-top: 0.5rem;
@@ -80,7 +92,7 @@ button {
     .menu-drop-item {
       padding: 0.5rem;
       cursor: pointer;
-      border-radius: 8px;
+      border-radius: var(--default-border-radius);
       margin: 2px 0;
 
       &:hover {
