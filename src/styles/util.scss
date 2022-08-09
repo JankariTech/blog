@@ -65,35 +65,6 @@ button {
   }
 }
 
-.menu {
-  position: relative;
-
-  .menu-drop {
-    position: absolute;
-    border: 1px solid grey;
-    border-radius: 8px;
-    padding: 0.4rem;
-    background-color: white;
-    margin-top: 0.5rem;
-    right: -0.5rem;
-
-    .menu-drop-item {
-      padding: 0.5rem;
-      cursor: pointer;
-      border-radius: 8px;
-      margin: 2px 0;
-
-      &:hover {
-        background-color: rgb(0 0 0 / 10%);
-      }
-
-      &.item-active {
-        background-color: rgb(0 0 0 / 10%);
-      }
-    }
-  }
-}
-
 body[theme-dark] {
   input {
     background: inherit;
@@ -117,20 +88,4 @@ body[theme-dark] {
     }
   }
 
-  .menu {
-    .menu-drop {
-      background-color: black;
-      color: white;
-
-      .menu-drop-item {
-        &:hover {
-          background-color: rgb(255 255 255 / 5%);
-        }
-
-        &.item-active {
-          background-color: rgb(255 255 255 / 10%);
-        }
-      }
-    }
-  }
 }

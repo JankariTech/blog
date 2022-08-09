@@ -7,32 +7,35 @@
       <button class="appbar--icon icon-button toggle-theme" @click="toggle">
         <mdi-brightness-6 class="one-rem"/>
       </button>
-      <div class="font-drop">
-        <button class="appbar--icon icon-button toggle-font" @click="toggleFontMenu">
-          <mdi-format-font class="one-rem"/>
-        </button>
-        <div v-if="fontMenu" class="font-drop--menu">
-          <button
-            class="font-drop--menu--item"
+      <DropMenu>
+        <template #trigger>
+          <button class="appbar--icon icon-button">
+            <mdi-format-font class="one-rem"/>
+          </button>
+        </template>
+        <template #drop>
+          <div
+            class="menu-drop-item"
             v-for="(item, index) in FONT_MAP"
             :key="index"
-            :class="{ 'font-drop--menu--item--active': font === item.class}"
+            :class="{ 'item--active': font === item.class}"
             @click="setFont(item.class)"
           >
             {{ item.name }}
-          </button>
-        </div>
-        <button class="appbar--icon icon-button to-github"
-          @click="toGithub"
-        >
-          <mdi-github class="one-rem"/>
-        </button>
-      </div>
+          </div>
+        </template>
+      </DropMenu>
+      <button class="appbar--icon icon-button to-github"
+        @click="toGithub"
+      >
+        <mdi-github class="one-rem"/>
+      </button>
     </div>
   </nav>
 </template>
 <script setup>
-import { ref, watch, onBeforeMount } from "vue"
+import DropMenu from "./DropMenu.vue"
+import { watch, onBeforeMount } from "vue"
 import useTheme from "@/composables/theme"
 
 const { dark, toggle, font, setFont } = useTheme()
@@ -41,16 +44,12 @@ const jtLogoWithName = new URL("../imgs/jt_logo_with_name.png", import.meta.url)
 const jtLogoWithNameDark = new URL("../imgs/jt_logo_with_name_dark.png", import.meta.url).href
 
 const FONT_MAP = [
+  { name: "Lato", class: "font-lato" },
   { name: "Roboto", class: "font-roboto" },
   { name: "Poppins", class: "font-poppins" },
-  { name: "Open Sans", class: "font-open-sans" },
-  { name: "Lato", class: "font-lato" }
+  { name: "Open Sans", class: "font-open-sans" }
 ]
 
-const fontMenu = ref(false)
-const toggleFontMenu = () => {
-  fontMenu.value = !fontMenu.value
-}
 watch(font, () => {
   document.body.classList.remove(...FONT_MAP.map(item => item.class))
   document.body.classList.add(font.value)
@@ -90,56 +89,10 @@ const toGithub = () => {
   }
 }
 
-.font-drop {
-  position: relative;
-
-  &--menu {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    top: 2.5rem;
-    right: 0;
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    overflow: hidden;
-    width: 100px;
-
-    &--item {
-      border: none;
-      padding: 0.5rem;
-      background: inherit;
-
-      &--active {
-        background-color: var(--jankaritech);
-        pointer-events: none;
-      }
-
-      &:hover {
-        background-color: #ccc;
-      }
-    }
-  }
-}
-
 body[theme-dark] {
   .appbar {
     background: #313131;
     border-bottom: none;
-  }
-
-  .font-drop {
-    &--menu {
-      background-color: #171717;
-
-      &--item {
-        color: white;
-
-        &:hover {
-          background-color: #434343;
-        }
-      }
-    }
   }
 }
 </style>
