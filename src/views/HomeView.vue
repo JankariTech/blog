@@ -41,7 +41,7 @@
             v-for="item in filterItems"
             :key="item.key"
             class="menu-drop-item" @click="setFilterKey(item.key)"
-            :class="{'item--active': $route.params.filterBy === item.key}"
+            :class="{'item-active': $route.params.filterBy === item.key}"
           >
             {{ item.label }}
           </div>
@@ -60,9 +60,10 @@
         <template #drop>
           <div
             v-for="item in sortItems"
+            :key="item.key"
             class="menu-drop-item"
             @click="setSortKey(item.key)"
-            :class="{'item--active': $route.params.sortBy === item.key}"
+            :class="{'item-active': $route.params.sortBy === item.key}"
           >
             {{ item.label }}
           </div>
@@ -203,7 +204,6 @@ const toHome = () => {
 }
 
 const setSortKey = (key) => {
-  console.log("here")
   if (currentRoute.value.params.sortBy === key) {
     toHome()
   } else {

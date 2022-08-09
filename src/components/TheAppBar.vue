@@ -18,7 +18,7 @@
             class="menu-drop-item"
             v-for="(item, index) in FONT_MAP"
             :key="index"
-            :class="{ 'item--active': font === item.class}"
+            :class="{ 'item-active': font === item.class}"
             @click="setFont(item.class)"
           >
             {{ item.name }}

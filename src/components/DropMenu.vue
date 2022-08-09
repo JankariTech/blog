@@ -60,14 +60,14 @@ export default {
     position: absolute;
     border: 1px solid grey;
     border-radius: 8px;
-    padding: .2rem .4rem;
+    padding: 0.3rem 0.4rem;
     background-color: white;
     margin-top: 0.5rem;
     right: -0.5rem;
     width: max-content;
 
     &-item {
-      padding: .3rem .5rem;
+      padding: 0.5rem;
       cursor: pointer;
       border-radius: 8px;
       margin: 2px 0;
@@ -78,12 +78,13 @@ export default {
         background-color: rgb(0 0 0 / 10%);
       }
 
-      &.item--active {
+      &.item-active {
         background-color: var(--jankaritech);
       }
     }
   }
 }
+
 body[theme-dark] {
   .menu {
     .menu-drop {
