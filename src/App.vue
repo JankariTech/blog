@@ -20,18 +20,18 @@ import TheAppBar from "@/components/TheAppBar"
 import useTheme from "@/composables/theme"
 import useMarkdown from "@/composables/markdown"
 import { readAssets } from "@/helpers/markdown"
+import { getPeekInfoForModules } from "./helpers/markdown"
 
 const { dark } = useTheme()
-const { setList, setModules } = useMarkdown()
+const { setModules } = useMarkdown()
 
 watch(dark, () => {
   document.body.toggleAttribute("theme-dark")
 })
 
-const { filePaths, fileModules } = readAssets()
+const { fileModules } = readAssets()
 
-setList(filePaths)
-setModules(fileModules)
+setModules(getPeekInfoForModules(fileModules))
 
 const scrollButtonVisibility = ref(false)
 

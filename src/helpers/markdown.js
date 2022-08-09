@@ -10,74 +10,80 @@ export const getHref = (sourcePath) => {
 }
 
 export const readAssets = () => {
-  const filePaths = []
   const fileModules = import.meta.glob(
     "/src/assets/**/*.md",
     { as: "raw" }
   )
 
-  for (const path in fileModules) {
-    filePaths.push(path)
-  }
-
   return {
-    filePaths,
     fileModules
   }
 }
 
-export const getPeekDataFor = (sourcePath) => {
-  const { modules } = useMarkdown()
-  const tokens = marked.lexer(modules.value[sourcePath])
+export const getPeekInfoForModules = (modules) => {
+  const peekInfo = []
+  Object.keys(modules).forEach((key) => {
+    const module = modules[key]
+    peekInfo.push({
+      raw: module,
+      sourcePath: key,
+      meta: getPeekDataFor(key, modules)
+    })
+  })
+  return peekInfo
+}
 
-  const metaDetails = tokens.slice(1, 2)[0].text?.split("\n")?.map(line => line.split(": "))
-  const title = metaDetails[0][1] // first line in meta
-  const authorName = metaDetails[1][1] // second line in meta
-  const authorAvatar = metaDetails[2][1] // third line in meta
-  const authorLink = metaDetails[3][1] // fourth line in meta
+export const extractMeta = (lexer) => {
+  const metaDetails = {}
+  const metaLexer = lexer.slice(1, 2)[0].text?.split("\n")?.map(line => line.split(": "))
 
-  let createdAt = metaDetails[4][1] // fifth line in meta
-  createdAt = createdAt ? new Date(createdAt) : "-"
+  // TODO: enhance the parsing with the key name
+  metaDetails.title = metaLexer[0][1] // first line in meta
+  metaDetails.authorName = metaLexer[1][1] // second line in meta
+  metaDetails.authorAvatar = metaLexer[2][1] // third line in meta
+  metaDetails.authorLink = metaLexer[3][1] // fourth line in meta
 
-  const tags = metaDetails[5][1].split(", ") // sixth line in meta
-  const banner = metaDetails[6][1] // seventh line in meta
+  const createdAt = metaLexer[4][1] // fifth line in meta
+  metaDetails.createdAt = createdAt ? new Date(createdAt) : "-"
 
-  const contentLength = modules.value[sourcePath].length
+  metaDetails.tags = metaLexer[5][1].split(", ") // sixth line in meta
+  metaDetails.banner = metaLexer[6][1] // seventh line in meta
 
-  const metaInformation = {
-    title, contentLength, authorName, authorAvatar, authorLink, createdAt, tags, banner, sourcePath
+  if (metaLexer.length === 9) {
+    metaDetails.seriesTitle = metaLexer[7][1] // eighth line in meta
+    metaDetails.episode = metaLexer[8][1] // ninth line in meta
   }
-  if (metaDetails.length === 9) {
-    const seriesTitle = metaDetails[7][1] // eight line in meta
-    const episode = metaDetails[8][1] // ninth line in meta
-    return {
-      ...metaInformation,
-      seriesTitle,
-      episode
-    }
-  }
-  return metaInformation
+
+  return metaDetails
+}
+
+export const getPeekDataFor = (sourcePath, modules) => {
+  const lexer = marked.lexer(modules[sourcePath], { sanitize: true })
+
+  const metaInformation = extractMeta(lexer)
+
+  const contentLength = modules[sourcePath].length
+
+  return { ...metaInformation, contentLength, sourcePath }
 }
 
 export const getPeekData = () => {
   const peekData = []
-  const { list } = useMarkdown()
+  const { modules } = useMarkdown()
 
-  list.value.forEach(sourcePath => {
-    peekData.push(getPeekDataFor(sourcePath))
+  modules.value.forEach(module => {
+    peekData.push(module.meta)
   })
   return peekData
 }
 
-export const getContentHtml = (sourcePath) => {
-  const { modules } = useMarkdown()
-  const tokens = marked.lexer(modules.value[sourcePath])
-  return marked.parser(tokens.slice(3))
+export const getContentHtml = (source) => {
+  const tokens = marked.lexer(source, { sanitize: true })
+  return marked.parser(tokens.slice(3), { sanitize: true })
 }
 
-export const getTableOfContent = (sourcePath) => {
-  const { modules } = useMarkdown()
-  const tokens = marked.lexer(modules.value[sourcePath])
+export const getTableOfContent = (source) => {
+  const lexer = marked.lexer(source, { sanitize: true })
   // get all heading tokens
-  return tokens.filter(token => token.type === "heading")
+  return lexer.filter(token => token.type === "heading")
 }

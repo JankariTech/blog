@@ -33,10 +33,11 @@ import { onMounted, watch, ref } from "vue"
 import DOMPurify from "dompurify"
 import { useRouter } from "vue-router"
 import BlogPeek from "@/components/BlogPeek"
-import { getContentHtml, getPeekDataFor, getTableOfContent } from "@/helpers/markdown"
+import { getContentHtml, getTableOfContent } from "@/helpers/markdown"
+import useMarkdown from "../composables/markdown"
 
 const { currentRoute } = useRouter()
-let sourcePath
+const { modules } = useMarkdown()
 
 const content = ref(null)
 const tableOfContent = ref(null)
@@ -51,19 +52,18 @@ watch(currentRoute, () => {
 })
 
 const loadMarkdown = () => {
-  const fileTitle = decodeURIComponent(currentRoute.value.params.name)
-  const seriesTitle = decodeURIComponent(currentRoute.value.params.series)
-
-  if (seriesTitle && seriesTitle !== "undefined") {
-    sourcePath = sidebarList.value[seriesTitle][fileTitle]
+  let title
+  if (currentRoute.value.params.series) {
+    title = decodeURIComponent(currentRoute.value.params.series.toString())
   } else {
-    sourcePath = sidebarList.value[fileTitle]
+    title = decodeURIComponent(currentRoute.value.params.name.toString())
   }
 
-  peekData.value = getPeekDataFor(sourcePath)
-  const contentHtml = getContentHtml(sourcePath)
-  content.value = DOMPurify.sanitize(contentHtml)
-  tableOfContent.value = getTableOfContent(sourcePath)
+  const module = modules.value.find(item => item.meta.title === title)
+
+  peekData.value = module.meta
+  content.value = DOMPurify.sanitize(getContentHtml(module.raw))
+  tableOfContent.value = getTableOfContent(module.raw)
 
   document.title = `Blog | ${peekData.value.title}`
 }
