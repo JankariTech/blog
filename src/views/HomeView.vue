@@ -37,15 +37,13 @@
           </button>
         </template>
         <template #drop>
-          <div class="menu-drop-item" @click="setFilterKey('author')"
-            :class="{'item--active': $route.params.filterBy === 'author'}"
+          <div
+            v-for="item in filterItems"
+            :key="item.key"
+            class="menu-drop-item" @click="setFilterKey(item.key)"
+            :class="{'item--active': $route.params.filterBy === item.key}"
           >
-            Author
-          </div>
-          <div class="menu-drop-item" @click="setFilterKey('tag')"
-            :class="{'item--active': $route.params.filterBy === 'tag'}"
-          >
-            Tags
+            {{ item.label }}
           </div>
         </template>
       </DropMenu>
@@ -60,15 +58,13 @@
         </template>
 
         <template #drop>
-          <div class="menu-drop-item" @click="setSortKey('alpha')"
-            :class="{'item--active': $route.params.sortBy === 'alpha'}"
+          <div
+            v-for="item in sortItems"
+            class="menu-drop-item"
+            @click="setSortKey(item.key)"
+            :class="{'item--active': $route.params.sortBy === item.key}"
           >
-            Alphabetically
-          </div>
-          <div class="menu-drop-item" @click="setSortKey('date')"
-            :class="{'item--active': $route.params.sortBy === 'date'}"
-          >
-            Date Created
+            {{ item.label }}
           </div>
         </template>
       </DropMenu>
@@ -110,6 +106,28 @@ const search = ref("")
 const loading = ref(false)
 const filterBy = ref(null)
 const sortBy = ref(null)
+
+const sortItems = [
+  {
+    key: "alpha",
+    label: "Alphabetically"
+  },
+  {
+    key: "date",
+    label: "Date Created"
+  }
+]
+
+const filterItems = [
+  {
+    key: "author",
+    label: "Author"
+  },
+  {
+    key: "tag",
+    label: "Tags"
+  }
+]
 
 onMounted(async () => {
   init()
