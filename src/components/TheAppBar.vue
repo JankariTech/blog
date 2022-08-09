@@ -1,6 +1,5 @@
 <template>
   <nav class="appbar">
-    <toggle-sidebar v-if="$route.name !== '404'" />
     <a href="/">
       <img class="appbar--logo" :src="dark ? jtLogoWithNameDark: jtLogoWithName" alt="" width="200" >
     </a>
@@ -35,7 +34,6 @@
 <script setup>
 import { ref, watch, onBeforeMount } from "vue"
 import useTheme from "@/composables/theme"
-import ToggleSidebar from "@/components/ToggleSidebar"
 
 const { dark, toggle, font, setFont } = useTheme()
 

@@ -31,11 +31,9 @@ assetDir.forEach(item => {
 })
 
 const getPeekDataFor = (rawMarkdown) => {
-  const tokens = marked.lexer(rawMarkdown)
+  const lexer = marked.lexer(rawMarkdown, { sanitize: true })
+  const metaDetails = lexer.slice(1, 2)[0].text?.split("\n")?.map(line => line.split(": "))
 
-  const metaDetails = tokens.slice(1, 2)[0].text?.split("\n")?.map(line => line.split(": "))
-
-  // TODO: enhance parsing with the key name in each line
   const title = metaDetails[0][1] // first line in meta
   const authorName = metaDetails[1][1] // second line in meta
   const authorAvatar = metaDetails[2][1] // third line in meta
@@ -47,28 +45,18 @@ const getPeekDataFor = (rawMarkdown) => {
   const tags = metaDetails[5][1].split(", ") // sixth line in meta
   const banner = metaDetails[6][1] // seventh line in meta
 
-  const metaInformation = {
-    title,
-    authorName,
-    authorAvatar,
-    authorLink,
-    createdAt,
-    tags,
-    banner
-  }
+  let seriesTitle, episode
   if (metaDetails.length === 9) {
-    const seriesTitle = metaDetails[7][1] // eight line in meta
-    const episode = metaDetails[8][1] // ninth line in meta
-    return {
-      ...metaInformation,
-      seriesTitle,
-      episode
-    }
+    seriesTitle = metaDetails[7][1] // eighth line in meta
+    episode = metaDetails[8][1] // ninth line in meta
   }
-  return metaInformation
+
+  return {
+    title, authorName, authorAvatar, authorLink, createdAt, tags, banner, seriesTitle, episode
+  }
 }
 
-// check the meta informations in the markdown files
+// check the meta information in the markdown files
 // must have 7 or 9 lines
 // required fields: title, author*, createdAt
 // if series, episode is required
@@ -77,7 +65,7 @@ log.info("-------------------------------------")
 
 for (let i = 0; i < Object.keys(markdownFiles).length; i++) {
   const key = Object.keys(markdownFiles)[i]
-  const mTokens = marked.lexer(markdownFiles[key])
+  const mTokens = marked.lexer(markdownFiles[key], { sanitize: true })
 
   // must have 1 line hr, 2nd line paragraph and 3rd line hr
   if (mTokens.length < 3) {
