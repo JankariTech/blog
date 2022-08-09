@@ -52,14 +52,13 @@ watch(currentRoute, () => {
 })
 
 const loadMarkdown = () => {
-  let title
+  let sTitle
   if (currentRoute.value.params.series) {
-    title = decodeURIComponent(currentRoute.value.params.series.toString())
-  } else {
-    title = decodeURIComponent(currentRoute.value.params.name.toString())
+    sTitle = decodeURIComponent(currentRoute.value.params.series.toString())
   }
+  const title = decodeURIComponent(currentRoute.value.params.name.toString())
 
-  const module = modules.value.find(item => item.meta.title === title)
+  const module = modules.value.find(item => item.meta.title === title && item.meta.seriesTitle === sTitle)
 
   peekData.value = module.meta
   content.value = DOMPurify.sanitize(getContentHtml(module.raw))
