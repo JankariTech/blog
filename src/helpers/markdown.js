@@ -69,23 +69,6 @@ export const getPeekData = () => {
   return peekData
 }
 
-export const prepareSidebarList = () => {
-  const sidebarList = {}
-  const peekData = getPeekData()
-  for (let i = 0; i < peekData.length; i++) {
-    const item = peekData[i]
-    if (item.seriesTitle) {
-      if (!Object.hasOwn(sidebarList, item.seriesTitle)) {
-        sidebarList[item.seriesTitle] = {}
-      }
-      sidebarList[item.seriesTitle][item.title] = item.sourcePath
-    } else {
-      sidebarList[item.title] = item.sourcePath
-    }
-  }
-  return sidebarList
-}
-
 export const getContentHtml = (sourcePath) => {
   const { modules } = useMarkdown()
   const tokens = marked.lexer(modules.value[sourcePath])

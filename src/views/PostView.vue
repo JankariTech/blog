@@ -32,12 +32,10 @@
 import { onMounted, watch, ref } from "vue"
 import DOMPurify from "dompurify"
 import { useRouter } from "vue-router"
-import useMarkdown from "../composables/markdown"
 import BlogPeek from "@/components/BlogPeek"
 import { getContentHtml, getPeekDataFor, getTableOfContent } from "@/helpers/markdown"
 
 const { currentRoute } = useRouter()
-const { sidebarList } = useMarkdown()
 let sourcePath
 
 const content = ref(null)
@@ -45,6 +43,10 @@ const tableOfContent = ref(null)
 const peekData = ref(null)
 
 onMounted(() => {
+  loadMarkdown()
+})
+
+watch(currentRoute, () => {
   loadMarkdown()
 })
 
@@ -82,10 +84,6 @@ const scrollToHeading = (headingText) => {
     block: "center"
   })
 }
-
-watch(currentRoute, () => {
-  loadMarkdown()
-})
 </script>
 <style lang="scss">
 @import "@/styles/post";

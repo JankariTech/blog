@@ -1,13 +1,7 @@
 <template>
   <div>
     <TheAppBar />
-    <TheSideBar v-if="$route.name !== '404'" />
-    <div class="content"
-      :class="{
-        'with-sidebar': open & $route.name !== '404',
-        'without-sidebar': !open & $route.name !== '404'
-      }"
-    >
+    <div class="content">
       <router-view />
       <button
         v-if="scrollButtonVisibility"
@@ -23,15 +17,12 @@
 import { watch, onMounted, ref } from "vue"
 
 import TheAppBar from "@/components/TheAppBar"
-import TheSideBar from "@/components/TheSideBar"
-import useSidebar from "@/composables/sidebar"
 import useTheme from "@/composables/theme"
 import useMarkdown from "@/composables/markdown"
-import { readAssets, prepareSidebarList } from "@/helpers/markdown"
+import { readAssets } from "@/helpers/markdown"
 
 const { dark } = useTheme()
-const { open } = useSidebar()
-const { setList, setModules, setSidebarList } = useMarkdown()
+const { setList, setModules } = useMarkdown()
 
 watch(dark, () => {
   document.body.toggleAttribute("theme-dark")
@@ -41,7 +32,6 @@ const { filePaths, fileModules } = readAssets()
 
 setList(filePaths)
 setModules(fileModules)
-setSidebarList(prepareSidebarList())
 
 const scrollButtonVisibility = ref(false)
 

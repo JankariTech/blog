@@ -1,7 +1,7 @@
 ---
 title: Resumable file upload with TUS protocol
 authorName: Swoichha Adhikari
-authorAvatar: https://scontent-xsp1-2.xx.fbcdn.net/v/t31.18172-8/18216685_1214675605324860_6379567891116845889_o.jpg?_nc_cat=101&ccb=1-7&_nc_sid=ad2b24&_nc_ohc=FedXXX5gB6wAX_xEIRR&_nc_ht=scontent-xsp1-2.xx&oh=00_AT9-hBJ2X2pOm30O8EeTMz9cqDy0nBtuuAoKExX90t6lWA&oe=62E22721
+authorAvatar: https://harunmudak.com/wp-content/uploads/2020/12/girl-cartoon-characters-3-724x1024.jpg
 authorLink: https://github.com/swoichha
 createdAt: 02/10/2022
 tags: tus, upload, resumable
