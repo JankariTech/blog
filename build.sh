@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+git status
+
 if git diff master --name-only | grep 'src' > /dev/null
 then
     echo "Build starting..."
