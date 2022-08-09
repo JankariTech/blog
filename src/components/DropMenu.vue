@@ -29,10 +29,11 @@ export default {
     onMouseUp (e) {
       const $closestMenuItem = e.target.closest(".menu-drop-item")
       if ($closestMenuItem) {
-        // call the click method assigned for the menu item
+        // find the menu drop item clicked
         $closestMenuItem.click()
         // and then close the menu drop for this menu
         this.toggle = false
+        e.preventDefault()
         return
       }
       const $closestMenuDrop = e.target.closest(`.menu-drop-${this.randomKey}`)
