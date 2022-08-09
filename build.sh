@@ -1,15 +1,5 @@
 #!/usr/bin/env sh
 
-git status
-
-if git diff master --name-only | grep 'src' > /dev/null
-then
-    echo "Build starting..."
-else
-    echo "No changes detected, skipping build..."
-    exit 0
-fi
-
 BASE_DIR="home/runner/work/blog"
 DIST_BRANCH="dist"
 
