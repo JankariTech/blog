@@ -1,6 +1,11 @@
 import { marked } from "marked"
 import useMarkdown from "@/composables/markdown"
 
+marked.setOptions({
+  sanitize: true,
+  headerIds: true
+})
+
 export const getFileName = (sourcePath) => {
   return sourcePath.split("/src/assets/").at(-1).split(".md")[0]
 }
@@ -14,7 +19,6 @@ export const readAssets = () => {
     "/src/assets/**/*.md",
     { as: "raw" }
   )
-
   return {
     fileModules
   }
@@ -78,12 +82,12 @@ export const getPeekData = () => {
 }
 
 export const getContentHtml = (source) => {
-  const tokens = marked.lexer(source, { sanitize: true })
-  return marked.parser(tokens.slice(3), { sanitize: true })
+  const tokens = marked.lexer(source)
+  return marked.parser(tokens.slice(3))
 }
 
 export const getTableOfContent = (source) => {
-  const lexer = marked.lexer(source, { sanitize: true })
-  // get all heading tokens
-  return lexer.filter(token => token.type === "heading")
+  const tokens = marked.lexer(source)
+  // return all heading tokens
+  return tokens.filter(token => token.type === "heading")
 }
