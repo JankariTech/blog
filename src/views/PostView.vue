@@ -20,7 +20,7 @@
           :key="index"
           class="blog--sidebar--item"
           :class="`heading-${item.depth}`"
-          @click="scrollToHeading(item.text)"
+          @click="scrollToHeading(item.text, item.depth)"
         >
           {{ item.text }}
         </div>
@@ -67,21 +67,21 @@ const loadMarkdown = () => {
   document.title = `Blog | ${peekData.value.title}`
 }
 
-const scrollToHeading = (headingText) => {
-  const punctuation = "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"
-  const regex = new RegExp("[" + punctuation + "]", "g")
-
-  const id = headingText
-    .toLowerCase()
-    .replace(regex, "")
-    .split(" ")
-    .join("-")
-
-  const heading = document.querySelector(`.blog--content #${id}`)
-  heading.scrollIntoView({
-    behavior: "smooth",
-    block: "center"
-  })
+const scrollToHeading = (headingText, headingDepth) => {
+  const xpath = `//h${headingDepth}[contains(text(), '${headingText.trim()}')]`
+  const heading = document.evaluate(
+    xpath,
+    document,
+    null,
+    XPathResult.FIRST_ORDERED_NODE_TYPE,
+    null
+  ).singleNodeValue
+  if (heading) {
+    heading.scrollIntoView({
+      behavior: "smooth",
+      block: "center"
+    })
+  }
 }
 </script>
 <style lang="scss">
