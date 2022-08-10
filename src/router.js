@@ -36,7 +36,10 @@ const routes = [
 const router = createRouter({
   // https://router.vuejs.org/guide/essentials/history-mode.html
   history: createWebHashHistory(),
-  routes // short for `routes: routes`
+  routes, // short for `routes: routes`
+  scrollBehavior (to, from, savedPosition) {
+    return { top: savedPosition?.top || 0 }
+  }
 })
 
 export default router
