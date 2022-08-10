@@ -28,48 +28,47 @@
         <mdi-search class="one-rem" />
       </button>
 
-      <div class="menu">
-        <button class="icon-button" title="Filter"
-          @click="toggleFilterMenu"
-          :class="{ 'filtering' : $route.name === 'Filter' }"
-        >
-          <mdi-filter class="one-rem" />
-        </button>
-        <div class="menu-drop" v-if="filterMenu">
-          <div class="menu-drop-item" @click="setFilterKey('author')"
-            :class="{'item-active': $route.params.filterBy === 'author'}"
+      <DropMenu>
+        <template #trigger>
+          <button class="icon-button" title="Filter"
+            :class="{ 'filtering' : $route.name === 'Filter' }"
           >
-            Author
-          </div>
-          <div class="menu-drop-item" @click="setFilterKey('tag')"
-            :class="{'item-active': $route.params.filterBy === 'tag'}"
+            <mdi-filter class="one-rem" />
+          </button>
+        </template>
+        <template #drop>
+          <div
+            v-for="item in filterItems"
+            :key="item.key"
+            class="menu-drop-item" @click="setFilterKey(item.key)"
+            :class="{'item-active': $route.params.filterBy === item.key}"
           >
-            Tags
+            {{ item.label }}
           </div>
-        </div>
-      </div>
+        </template>
+      </DropMenu>
 
-      <div class="menu">
-        <button class="icon-button" title="Sort"
-          @click="toggleSortMenu"
-          :class="{ 'sorting' : $route.name === 'Sort' }"
-        >
-          <mdi-sort class="one-rem" />
-        </button>
+      <DropMenu class="menu">
+        <template #trigger>
+          <button class="icon-button" title="Sort"
+            :class="{ 'sorting' : $route.name === 'Sort' }"
+          >
+            <mdi-sort class="one-rem" />
+          </button>
+        </template>
 
-        <div class="menu-drop" v-if="sortMenu">
-          <div class="menu-drop-item" @click="setSortKey('alpha')"
-            :class="{'item-active': $route.params.sortBy === 'alpha'}"
+        <template #drop>
+          <div
+            v-for="item in sortItems"
+            :key="item.key"
+            class="menu-drop-item"
+            @click="setSortKey(item.key)"
+            :class="{'item-active': $route.params.sortBy === item.key}"
           >
-            Alphabetically
+            {{ item.label }}
           </div>
-          <div class="menu-drop-item" @click="setSortKey('date')"
-            :class="{'item-active': $route.params.sortBy === 'date'}"
-          >
-            Date Created
-          </div>
-        </div>
-      </div>
+        </template>
+      </DropMenu>
     </div>
     <div class="home-view--list">
       <blog-peek
@@ -98,17 +97,38 @@
 import { ref, watch, onMounted } from "vue"
 import { useRouter } from "vue-router"
 import BlogPeek from "@/components/BlogPeek"
+import DropMenu from "../components/DropMenu"
 import { getPeekData } from "@/helpers/markdown"
 
 const { currentRoute, push } = useRouter()
 
 const peekData = ref([])
 const search = ref("")
-const filterMenu = ref(false)
-const sortMenu = ref(false)
 const loading = ref(false)
 const filterBy = ref(null)
 const sortBy = ref(null)
+
+const sortItems = [
+  {
+    key: "alpha",
+    label: "Alphabetically"
+  },
+  {
+    key: "date",
+    label: "Date Created"
+  }
+]
+
+const filterItems = [
+  {
+    key: "author",
+    label: "Author"
+  },
+  {
+    key: "tag",
+    label: "Tags"
+  }
+]
 
 onMounted(async () => {
   init()
@@ -174,23 +194,11 @@ watch(search, () => {
   }
 })
 
-const toggleFilterMenu = () => {
-  sortMenu.value = false
-  filterMenu.value = !filterMenu.value
-}
-
-const toggleSortMenu = () => {
-  filterMenu.value = false
-  sortMenu.value = !sortMenu.value
-}
-
 const toHome = () => {
   push({ name: "Home" })
     .then(() => {
       peekData.value = getPeekData()
       sortPeekData(sortBy.value)
-      filterMenu.value = false
-      sortMenu.value = false
       search.value = ""
     })
 }
@@ -206,7 +214,6 @@ const setSortKey = (key) => {
       }
     }).then(() => {
       filterBy.value = key
-      sortMenu.value = false
 
       sortPeekData(key)
     })
@@ -224,7 +231,6 @@ const setFilterKey = (key) => {
       }
     }).then(() => {
       filterBy.value = key
-      filterMenu.value = false
     })
   }
 }
