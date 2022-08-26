@@ -74,6 +74,10 @@ button {
   border-radius: 50%;
 }
 
+.contain {
+  object-fit: contain;
+}
+
 body[theme-dark] {
   input {
     background: inherit;

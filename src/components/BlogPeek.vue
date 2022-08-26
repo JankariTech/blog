@@ -10,6 +10,7 @@
         v-if="banner || fallbackBanner"
         :src="banner || fallbackBanner"
         alt="Blog Banner"
+        class="sharp-border"
         :class="{
           'fallback-banner': !banner,
           'regular-banner': banner
@@ -158,7 +159,6 @@ export default {
     img {
       height: 100%;
       object-fit: cover;
-      border-radius: var(--border-radius) var(--border-radius) 0 0;
     }
   }
 

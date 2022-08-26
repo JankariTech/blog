@@ -1,43 +1,80 @@
 <template>
   <div class="blog" v-if="peekData">
-    <div class="blog--content">
-      <BlogPeek
-        :title="peekData.title"
-        :authorAvatar="peekData.authorAvatar"
-        :authorName="peekData.authorName"
-        :authorLink="peekData.authorLink"
-        :banner="peekData.banner"
-        createdAt="June 2022, 07"
-        :tags="peekData.tags"
-        detailView
-      />
-      <div class="blog--content--data" v-html="content"></div>
-    </div>
-    <div class="blog--sidebar">
-      <div class="blog--sidebar--wrapper">
-        <div class="toc">Table of content</div>
-        <div v-for="(item, index) in tableOfContent"
-          :key="index"
-          class="blog--sidebar--item"
-          :class="`heading-${item.depth}`"
-          @click="scrollToHeading(item.text, item.depth)"
-        >
-          {{ item.text }}
+    <div class="blog--head">
+      <img :src="peekData.banner || fallbackBanner"
+        alt="Blog Banner"
+        class="banner sharp-border"
+        :class="{'contain': !peekData.banner}"
+      >
+      <div class="blog--head--content">
+        <div class="title">{{ peekData.title }}</div>
+        <div class="author-info">
+          <the-avatar :src="peekData.authorAvatar"
+            alt="Author Avatar"
+            class="author-avatar"
+            size="140"
+          />
+          <a class="author-name"
+            :href="peekData.authorLink"
+            :title="peekData.authorName"
+            target="_blank"
+          >
+            {{ peekData.authorName }}
+          </a>
+          <div class="created-at">
+            <mdi-clock />
+            <span>{{ $moment(peekData.createdAt).format("LLLL") }}</span>
+          </div>
         </div>
       </div>
+    </div>
+    <div class="blog--content">
+      <div class="blog--content--info">
+        <hr>
+        <br>
+        <div class="title">The Blog Project</div>
+        <br>
+        <p class="subtitle">amplifies the voices of the open source community: the maintainers, developers, and teams whose contibutions move the world forward everyday.</p>
+        <br>
+        <div class="wrapper">
+          <div class="title">Share</div>
+          <div class="share-items">
+            <mdi-twitter class="share-icon twitter" />
+            <mdi-facebook class="share-icon facebook" />
+            <mdi-linkedin class="share-icon linkedin" />
+          </div>
+        </div>
+      </div>
+      <div class="blog--content--data" v-html="content"></div>
+      <div class="blog--content--sidebar">
+        <div class="wrapper">
+          <div class="toc sharp-border">Table of content</div>
+          <div v-for="(item, index) in tableOfContent"
+            :key="index"
+            class="sidebar--item"
+            :class="`heading-${item.depth}`"
+            @click="scrollToHeading(item.text, item.depth)"
+          >
+            {{ item.text }}
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </template>
 <script setup>
-import { onMounted, watch, ref } from "vue"
 import DOMPurify from "dompurify"
+import { onMounted, watch, ref, computed } from "vue"
 import { useRouter } from "vue-router"
-import BlogPeek from "@/components/BlogPeek"
-import { getContentHtml, getTableOfContent } from "@/helpers/markdown"
+import { getContentHtml, getTableOfContent } from "../helpers/markdown"
 import useMarkdown from "../composables/markdown"
+import TheAvatar from "../components/TheAvatar"
+import useTheme from "../composables/theme"
 
 const { currentRoute } = useRouter()
 const { modules } = useMarkdown()
+const { dark } = useTheme()
 
 const content = ref(null)
 const tableOfContent = ref(null)
@@ -83,7 +120,15 @@ const scrollToHeading = (headingText, headingDepth) => {
     })
   }
 }
+
+const fallbackBanner = computed(() => {
+  if (dark.value) {
+    return "/src/imgs/fallback_banner_dark.png"
+  } else {
+    return "/src/imgs/fallback_banner.png"
+  }
+})
 </script>
 <style lang="scss">
-@import "@/styles/post";
+@import "../styles/post";
 </style>
