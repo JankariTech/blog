@@ -12,6 +12,7 @@
         v-if="banner || fallbackBanner"
         :src="banner || fallbackBanner"
         alt="Blog Banner"
+        class="sharp-border"
         :class="{
           'fallback-banner': !detailView && !banner,
           'fallback-detail-banner': detailView && !banner
@@ -22,8 +23,8 @@
     <div class="blog-peek--author">
       <img
         :src="authorAvatar"
-        class="author-avatar"
-        alt="author avatar"
+        class="author-avatar circle"
+        alt="Author Avatar"
       />
       <div class="author-info">
         <a
@@ -143,7 +144,6 @@ export default {
 .blog-peek {
   margin: 1.6rem;
   border: 1px solid grey;
-  border-radius: 24px;
 
   .detail-view-banner {
     height: 300px !important;
@@ -166,8 +166,6 @@ export default {
     img {
       height: 100%;
       width: 100%;
-      border-top-left-radius: 24px;
-      border-top-right-radius: 24px;
     }
 
     border-bottom: 1px solid grey;
@@ -179,7 +177,6 @@ export default {
     align-items: center;
 
     .author-avatar {
-      border-radius: 50%;
       height: 36px;
       width: 36px;
     }
@@ -219,7 +216,6 @@ export default {
         font-style: italic;
         margin: 0 0.2rem;
         padding: 0.2rem;
-        border-radius: 4px;
         background-color: rgb(233 233 233);
       }
     }

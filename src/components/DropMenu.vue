@@ -59,7 +59,6 @@ export default {
   &-drop {
     position: absolute;
     border: 1px solid grey;
-    border-radius: 8px;
     padding: 0.3rem 0.4rem;
     background-color: white;
     margin-top: 0.5rem;
@@ -69,7 +68,6 @@ export default {
     &-item {
       padding: 0.5rem;
       cursor: pointer;
-      border-radius: 8px;
       margin: 2px 0;
       width: 100%;
       text-align: start;
