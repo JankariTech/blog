@@ -12,14 +12,22 @@
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #868686;
-  border-radius: 24px;
-  margin: 1px;
-  border: 2px solid #d2d2d2;
+  border-radius: var(--border-radius);
+  border: 1px solid #d2d2d2;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #727272;
+}
+
+.blog {
+  &--sidebar {
+    ::-webkit-scrollbar-track {
+      border-top-right-radius: var(--border-radius);
+      border-bottom-right-radius: var(--border-radius);
+    }
+  }
 }
 
 body[theme-dark] {

@@ -38,7 +38,6 @@ document.title = "Page Not Found"
     justify-content: center;
     padding: 1rem;
     width: 200px;
-    border-radius: 8px;
     outline: none;
     border: 1px solid grey;
     font-size: 1rem;

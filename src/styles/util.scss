@@ -6,6 +6,7 @@
 * {
   margin: 0;
   padding: 0;
+  border-radius: var(--border-radius);
   box-sizing: border-box;
 }
 
@@ -63,6 +64,14 @@ button {
 
     background: #3a3a3a;
   }
+}
+
+.sharp-border {
+  border-radius: 0 !important;
+}
+
+.circle {
+  border-radius: 50%;
 }
 
 body[theme-dark] {

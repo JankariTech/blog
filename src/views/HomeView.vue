@@ -96,9 +96,9 @@
 <script setup>
 import { ref, watch, onMounted } from "vue"
 import { useRouter } from "vue-router"
-import BlogPeek from "@/components/BlogPeek"
+import BlogPeek from "../components/BlogPeek"
 import DropMenu from "../components/DropMenu"
-import { getPeekData } from "@/helpers/markdown"
+import { getPeekData } from "../helpers/markdown"
 
 const { currentRoute, push } = useRouter()
 

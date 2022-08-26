@@ -5,7 +5,7 @@
       <router-view />
       <button
         v-if="scrollButtonVisibility"
-        class="scroll-to-top small-shadow"
+        class="scroll-to-top circle small-shadow"
         @click="scrollToTop"
       >
         <mdi-chevron-up />
