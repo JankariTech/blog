@@ -5,21 +5,19 @@
       'small-shadow-dark': !detailView && dark,
     }"
   >
-    <div class="blog-peek--banner"
-      :class="{'detail-view-banner': detailView}"
-    >
+    <div class="blog-peek--banner">
       <img
         v-if="banner || fallbackBanner"
         :src="banner || fallbackBanner"
         alt="Blog Banner"
-        class="sharp-border"
         :class="{
-          'fallback-banner': !detailView && !banner,
-          'fallback-detail-banner': detailView && !banner
+          'fallback-banner': !banner,
+          'regular-banner': banner
         }"
 
       >
     </div>
+    <div class="blog-peek--divider" />
     <div class="blog-peek--author">
       <img
         :src="authorAvatar"
@@ -145,30 +143,27 @@ export default {
   margin: 1.6rem;
   border: 1px solid grey;
 
-  .detail-view-banner {
-    height: 300px !important;
-    border-bottom: none !important;
-  }
-
-  .fallback-detail-banner {
-    max-width: 450px !important;
-  }
-
-  .fallback-banner {
-    max-width: 300px;
-    margin: auto;
-  }
-
   &--banner {
     text-align: center;
-    height: 150px;
+    height: 180px;
 
-    img {
-      height: 100%;
+    .fallback-banner {
+      scale: 0.8;
+    }
+
+    .regular-banner {
       width: 100%;
     }
 
-    border-bottom: 1px solid grey;
+    img {
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--border-radius) var(--border-radius) 0 0;
+    }
+  }
+
+  &--divider {
+    border-top: 1px solid grey;
   }
 
   &--author {
@@ -245,6 +240,10 @@ body[theme-dark] {
   }
 
   .blog-peek {
+    &--banner {
+      background: black;
+    }
+
     .tag-item {
       background-color: rgb(66 66 66);
     }
