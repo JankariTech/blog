@@ -74,7 +74,8 @@ const toGithub = () => {
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid rgb(221 221 221);
-  background-color: rgb(255 255 255 / 95%);
+  background-color: rgb(255 255 255 / 70%);
+  backdrop-filter: blur(3px);
 
   &--icon {
     height: 2rem;
@@ -91,7 +92,7 @@ const toGithub = () => {
 
 body[theme-dark] {
   .appbar {
-    background-color: rgb(30 30 30 / 95%);
+    background-color: rgb(30 30 30 / 85%);
     border-bottom: none;
   }
 }
