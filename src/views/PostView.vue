@@ -114,9 +114,12 @@ const scrollToHeading = (headingText, headingDepth) => {
     null
   ).singleNodeValue
   if (heading) {
-    heading.scrollIntoView({
-      behavior: "smooth",
-      block: "center"
+    const position = heading.getBoundingClientRect()
+    // scrolls to 100px above element
+    window.scrollTo({
+      left: position.left,
+      top: position.top + window.scrollY - 100,
+      behavior: "smooth"
     })
   }
 }
