@@ -17,7 +17,7 @@ defineProps({
   padding: 0 2rem;
 
   @media only screen and (max-width: 768px) {
-    flex: 100%
+    flex: 100%;
   }
 
   p {

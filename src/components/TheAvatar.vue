@@ -9,7 +9,7 @@
   >
 </template>
 <script setup>
-import { computed, ref } from "vue"
+import { computed } from "vue"
 
 const props = defineProps({
   src: {
@@ -44,8 +44,7 @@ const bStyle = computed(() => {
       return `border: ${props.bordered}px ${props.borderStyle} ${props.borderColor}`
     }
   }
-  return ''
+  return ""
 })
-
 
 </script>

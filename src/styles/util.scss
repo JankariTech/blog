@@ -10,8 +10,8 @@
   box-sizing: border-box;
 }
 
-p, heading {
-  color: var(--text--light)
+p {
+  color: var(--text-light);
 }
 
 .font-roboto {
@@ -83,9 +83,10 @@ button {
 }
 
 body[theme-dark] {
-  p, heading {
-    color: var(--text--dark)
+  p {
+    color: var(--text-dark);
   }
+
   input {
     background: inherit;
 

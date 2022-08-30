@@ -21,7 +21,7 @@
 <style lang="scss">
 .blog-content-info {
   flex: 15%;
-  padding-top: .6rem;
+  padding-top: 0.6rem;
 
   .wrapper {
     position: sticky;
@@ -44,14 +44,14 @@
       font-size: 2rem;
       margin-block: 1rem;
     }
+
     .facebook {
       margin-inline: 1rem;
-
     }
   }
 
   @media only screen and (max-width: 768px) {
-    flex: 100%
+    flex: 100%;
   }
 }
 

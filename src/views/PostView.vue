@@ -56,8 +56,7 @@ const loadMarkdown = () => {
 .blog {
   &--content {
     display: flex;
-    gap: .5rem;
-
+    gap: 0.5rem;
     margin-top: 2rem;
     margin-inline: auto;
     max-width: 1550px;

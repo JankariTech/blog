@@ -30,7 +30,7 @@
 <script setup>
 import useTheme from "../composables/theme"
 
-const {dark} = useTheme()
+const { dark } = useTheme()
 </script>
 <style lang="scss" scoped>
 footer {
@@ -38,24 +38,30 @@ footer {
   color: #000;
   padding: 1rem;
   background-color: rgb(136 176 75);
+
   .f-content {
     padding-top: 4rem;
     text-align: center;
+
     div {
       font-size: 1rem;
       font-weight: 500;
-      margin-bottom: .5rem;
+      margin-bottom: 0.5rem;
       color: #fff;
+
       span {
-        color: rgb(68, 68, 68);
-        padding-inline: .1rem;
+        color: rgb(68 68 68);
+        padding-inline: 0.1rem;
       }
     }
+
     .logo-av {
       margin-bottom: 3rem;
     }
+
     .connects {
-      a {color: rgb(68, 68, 68);}
+      a { color: rgb(68 68 68); }
+
       svg {
         font-size: 1.4rem;
         margin: 2rem;
@@ -66,9 +72,10 @@ footer {
 
 body[theme-dark] footer {
   background-color: #101010;
+
   .content {
     span {
-      color: var(--jankaritech)
+      color: var(--jankaritech);
     }
   }
 }

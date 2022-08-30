@@ -69,6 +69,7 @@ const scrollToHeading = (headingText, headingDepth) => {
     position: sticky;
     top: calc(var(--appbar-height) + 20px);
   }
+
   @media only screen and (max-width: 960px) {
     flex: 100%;
     width: 93%;
@@ -98,6 +99,7 @@ const scrollToHeading = (headingText, headingDepth) => {
       &:hover {
         color: black;
       }
+
       &:not(:last-child) {
         padding-bottom: 1rem;
       }
@@ -108,17 +110,20 @@ const scrollToHeading = (headingText, headingDepth) => {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    gap: .5rem;
+    gap: 0.5rem;
+
     .tag {
       display: flex;
       align-items: center;
       font-size: 1rem;
       width: fit-content;
+
       svg {
-        margin-right: .2rem;
+        margin-right: 0.2rem;
       }
+
       border: 1px solid grey;
-      padding: .5rem;
+      padding: 0.5rem;
     }
   }
 }
