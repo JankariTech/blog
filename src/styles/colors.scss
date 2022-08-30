@@ -5,6 +5,8 @@
   --error: red;
   --info: #2196f3;
   --jankaritech: #88b04b;
+  --text--light: #2d2d2d;
+  --text--dark: #bcbcbc;
 }
 
 .primary {
@@ -45,4 +47,16 @@
   &--text {
     color: var(--info);
   }
+}
+
+.twitter {
+  color: rgb(29 155 240);
+}
+
+.facebook {
+  color: rgb(7 122 233);
+}
+
+.linkedin {
+  color: rgb(10 102 194);
 }

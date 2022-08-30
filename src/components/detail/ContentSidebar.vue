@@ -43,26 +43,29 @@ const scrollToHeading = (headingText, headingDepth) => {
 </script>
 <style lang="scss">
 .blog-content-sidebar {
-  margin: 0 2rem;
-  max-width: 320px;
-  min-width: 320px;
+  flex: 20%;
 
-  position: sticky;
-  top: calc(var(--appbar-height) + 20px);
+  @media only screen and (min-width: 960px) {
+    position: sticky;
+    top: calc(var(--appbar-height) + 20px);
+  }
+  @media only screen and (max-width: 960px) {
+    flex: 100%;
+    width: 93%;
+    margin-inline: auto;
+    margin-bottom: 2rem;
+  }
+
   height: fit-content;
+  width: 100%;
   padding: 1rem;
   border: 1px solid grey;
   overflow-y: auto;
 
-  @media only screen and (max-width: 960px) {
-    margin: 1rem;
-    min-width: 95%;
-    position: static;
-  }
-
   .toc {
-    font-size: 1.8rem;
-    font-weight: 400;
+    font-size: 1.4rem;
+    font-weight: 300;
+    width: fit-content;
     margin-bottom: 1rem;
     padding-block: 0.4rem;
     border-bottom: 1px solid grey;
@@ -70,17 +73,17 @@ const scrollToHeading = (headingText, headingDepth) => {
 
   .heading-1 {
     font-size: 1.4rem;
-    font-weight: 700;
+    font-weight: 600;
   }
 
   .heading-2 {
     font-size: 1.2rem;
-    font-weight: 600;
+    font-weight: 500;
   }
 
   .heading-3 {
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 400;
   }
 
   .heading-4 {

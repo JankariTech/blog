@@ -6,6 +6,16 @@
       <ContentData :data="content" />
       <ContentSidebar :toc="toc" />
     </div>
+    <div class="blog--footer">
+      <hr>
+      <div class="title">
+        🎉 Thank you for reading the blog!
+      </div>
+
+      <div class="subtitle">
+        Please, come back to us for more quality content. 👋
+      </div>
+    </div>
   </div>
 </template>
 <script setup>
@@ -54,13 +64,23 @@ const loadMarkdown = () => {
 .blog {
   &--content {
     display: flex;
-    margin: 2rem auto;
+    margin-top: 2rem;
+    margin-inline: auto;
     max-width: 1550px;
     padding-inline: 1rem;
 
     @media only screen and (max-width: (960px)) {
       flex-direction: column-reverse;
     }
+  }
+  &--footer {
+    padding: 2rem;
+    hr {
+      margin-bottom: 2rem;
+    }
+    text-align: center;
+    .title { font-size: 2rem }
+    .subtitle { font-size: 1.2rem }
   }
 }
 </style>

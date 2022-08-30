@@ -22,9 +22,9 @@
 <style lang="scss">
 .blog-content-info {
   padding-top: 0.5rem;
-
-  @media only screen and (min-width: 960px) {
-    min-width: 200px;
+  flex: 15%;
+  @media only screen and (max-width: 768px) {
+    flex: 100%
   }
 
   .wrapper {
@@ -48,18 +48,8 @@
       font-size: 2rem;
       margin-block: 1rem;
     }
-
-    .twitter {
-      color: rgb(29 155 240);
-    }
-
     .facebook {
-      color: rgb(7 122 233);
       margin-inline: 1rem;
-    }
-
-    .linkedin {
-      color: rgb(10 102 194);
     }
   }
 }
