@@ -57,8 +57,6 @@ const loadMarkdown = () => {
     margin: 2rem auto;
     max-width: 1550px;
     padding-inline: 1rem;
-    align-items: start;
-    justify-content: center;
 
     @media only screen and (max-width: (960px)) {
       flex-direction: column-reverse;

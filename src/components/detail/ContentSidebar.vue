@@ -49,7 +49,7 @@ const scrollToHeading = (headingText, headingDepth) => {
 
   position: sticky;
   top: calc(var(--appbar-height) + 20px);
-  max-height: 85vh;
+  height: fit-content;
   padding: 1rem;
   border: 1px solid grey;
   overflow-y: auto;
@@ -66,7 +66,6 @@ const scrollToHeading = (headingText, headingDepth) => {
     margin-bottom: 1rem;
     padding-block: 0.4rem;
     border-bottom: 1px solid grey;
-    //width: fit-content;
   }
 
   .heading-1 {
