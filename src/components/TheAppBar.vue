@@ -74,7 +74,7 @@ const toGithub = () => {
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid rgb(221 221 221);
-  background-color: rgb(255 255 255 / 70%);
+  background-color: rgb(255 255 255 / 80%);
   backdrop-filter: blur(3px);
 
   &--icon {

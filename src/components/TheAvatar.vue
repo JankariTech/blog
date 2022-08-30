@@ -23,6 +23,3 @@ defineProps({
   }
 })
 </script>
-<style>
-
-</style>
