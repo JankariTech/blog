@@ -1,14 +1,13 @@
 <template>
   <div class="blog-content-info">
-    <hr>
-    <br>
+    <hr><br>
     <div class="title">The Blog Project</div>
     <br>
     <p class="subtitle">
       amplifies the voices of the open source community: the maintainers, developers,
       and teams whose contributions move the world forward everyday.
     </p>
-    <br>
+    <br><br>
     <div class="wrapper">
       <div class="title">Share</div>
       <div class="share-items">
@@ -21,15 +20,12 @@
 </template>
 <style lang="scss">
 .blog-content-info {
-  padding-top: 0.5rem;
   flex: 15%;
-  @media only screen and (max-width: 768px) {
-    flex: 100%
-  }
+  padding-top: .6rem;
 
   .wrapper {
     position: sticky;
-    top: calc(var(--appbar-height) + 10px);
+    top: calc(var(--appbar-height) + 30px);
   }
 
   .title {
@@ -50,7 +46,12 @@
     }
     .facebook {
       margin-inline: 1rem;
+
     }
+  }
+
+  @media only screen and (max-width: 768px) {
+    flex: 100%
   }
 }
 

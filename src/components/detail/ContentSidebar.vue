@@ -1,13 +1,27 @@
 <template>
   <div class="blog-content-sidebar">
-    <div class="toc sharp-border">Table of content</div>
-    <div v-for="(item, index) in toc"
-      :key="index"
-      class="sidebar--item"
-      :class="`heading-${item.depth}`"
-      @click="scrollToHeading(item.text, item.depth)"
-    >
-      {{ item.text }}
+    <div class="toc">
+      <div class="title sharp-border">Table of content</div>
+      <div v-for="(item, index) in toc"
+        :key="index"
+        class="toc--item"
+        @click="scrollToHeading(item.text, item.depth)"
+      >
+        {{ item.text }}
+      </div>
+    </div>
+    <br>
+    <div class="title sharp-border">Tags</div>
+    <div class="tags">
+      <a href="tag"
+        v-for="tag in tags"
+        :key="tag"
+        :title="tag"
+        target="_blank"
+        class="tag"
+      >
+        <mdi-hashtag /> {{ tag }}
+      </a>
     </div>
   </div>
 </template>
@@ -18,6 +32,12 @@ defineProps({
   toc: {
     type: Array,
     required: true
+  },
+  tags: {
+    type: Array,
+    default: () => {
+      return []
+    }
   }
 })
 
@@ -58,11 +78,9 @@ const scrollToHeading = (headingText, headingDepth) => {
 
   height: fit-content;
   width: 100%;
-  padding: 1rem;
-  border: 1px solid grey;
   overflow-y: auto;
 
-  .toc {
+  .title {
     font-size: 1.4rem;
     font-weight: 300;
     width: fit-content;
@@ -71,53 +89,36 @@ const scrollToHeading = (headingText, headingDepth) => {
     border-bottom: 1px solid grey;
   }
 
-  .heading-1 {
-    font-size: 1.4rem;
-    font-weight: 600;
-  }
+  .toc {
+    &--item {
+      color: #414141;
+      text-transform: capitalize;
+      cursor: pointer;
 
-  .heading-2 {
-    font-size: 1.2rem;
-    font-weight: 500;
-  }
-
-  .heading-3 {
-    font-size: 1rem;
-    font-weight: 400;
-  }
-
-  .heading-4 {
-    font-weight: 400;
-  }
-
-  .heading-5 {
-    font-size: 0.875rem;
-    font-weight: 300;
-  }
-
-  .heading-6 {
-    font-size: 0.5rem;
-    font-weight: 300;
-  }
-
-  .heading-1,
-  .heading-2,
-  .heading-3,
-  .heading-4,
-  .heading-5,
-  .heading-6 {
-    color: #414141;
-    text-transform: capitalize;
-    cursor: pointer;
-
-    &:hover {
-      color: black;
+      &:hover {
+        color: black;
+      }
+      &:not(:last-child) {
+        padding-bottom: 1rem;
+      }
     }
   }
 
-  .sidebar {
-    &--item:not(:last-child) {
-      padding-bottom: 1rem;
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: .5rem;
+    .tag {
+      display: flex;
+      align-items: center;
+      font-size: 1rem;
+      width: fit-content;
+      svg {
+        margin-right: .2rem;
+      }
+      border: 1px solid grey;
+      padding: .5rem;
     }
   }
 }

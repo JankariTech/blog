@@ -4,18 +4,9 @@
     <div class="blog--content">
       <ContentInfo />
       <ContentData :data="content" />
-      <ContentSidebar :toc="toc" />
+      <ContentSidebar :toc="toc" :tags="peekData.tags" />
     </div>
-    <div class="blog--footer">
-      <hr>
-      <div class="title">
-        🎉 Thank you for reading the blog!
-      </div>
-
-      <div class="subtitle">
-        Please, come back to us for more quality content. 👋
-      </div>
-    </div>
+    <FootSection />
   </div>
 </template>
 <script setup>
@@ -28,6 +19,7 @@ import HeadSection from "../components/detail/HeadSection"
 import ContentInfo from "../components/detail/ContentInfo"
 import ContentData from "../components/detail/ContentData"
 import ContentSidebar from "../components/detail/ContentSidebar"
+import FootSection from "../components/detail/FootSection"
 
 const { currentRoute } = useRouter()
 const { modules } = useMarkdown()
@@ -64,23 +56,15 @@ const loadMarkdown = () => {
 .blog {
   &--content {
     display: flex;
+    gap: .5rem;
+
     margin-top: 2rem;
     margin-inline: auto;
     max-width: 1550px;
-    padding-inline: 1rem;
 
     @media only screen and (max-width: (960px)) {
       flex-direction: column-reverse;
     }
-  }
-  &--footer {
-    padding: 2rem;
-    hr {
-      margin-bottom: 2rem;
-    }
-    text-align: center;
-    .title { font-size: 2rem }
-    .subtitle { font-size: 1.2rem }
   }
 }
 </style>
