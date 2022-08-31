@@ -13,8 +13,8 @@ episode: 4
 In the last posts of this series we setup locust and made some basic performance tests to test the ownCloud WebDAV-API. This time we will try to make some sense of the locust output.
 
 Here is the locust file we are using:
-```
- from locust import HttpLocust, TaskSet, task, constant
+```py
+from locust import HttpLocust, TaskSet, task, constant
 import uuid
 
 userNo = 0
@@ -70,7 +70,7 @@ To start ownCloud we have used docker: `docker run -p 8080:8080 --name owncloud 
 
 and then started locust with: `locust --host=http://localhost:8080`
 
-## test the right thing
+## Test the right thing
 
 When I now run both ownCloud and locust on my workstation (i5-7500 CPU @ 3.40GHz; 8GB RAM) and hatch 100 locust-users I get this graph:
 
@@ -83,7 +83,7 @@ WOW, 61.7% CPU is used by locust itself. I'm not really testing the performance 
 
 I have here an old Lenovo X201 Laptop (i5 M 540 CPU @ 2.53GHz; 4GB RAM). Not really fast, but should be OK for this example. I will run ownCloud on that Laptop and locust on my workstation. That way hatching 100 users still eats up the same amount of resources on the workstation, but because its fast enough that should not be the limiting factor. We really don't want the test-runner computer to limit our performance tests. If you don't have a computer that is fast enough to fully load your SUT (System Under Test), you can run [locus distributed](https://docs.locust.io/en/stable/running-locust-distributed.html) and that way utilize multiple computers to fully load your SUT.
 
-## interpret the results
+## Interpret the results
 
 Lets start the tests and increase the amount of users.
 I started the test with 20 users and 1 user/s hatch rate, then increased the users to 50 with 2 users/s hatch rate and finally to 100 users with 4 users/s hatch rate.
@@ -111,7 +111,7 @@ In the request statistics CSV file we have the median/average/min/max response t
 
 Be aware that this list will now hold ALL the results, from the time when we had 20 users, 50 users and 100 users, so if we want to know the average response time of uploads with a particular amount of users, we would have to rerun the test with a fixed amount of users and not change it in between.
 
-## optimization
+## Optimization
 
 When we have started the ownCloud docker container, it created an database and for that it used SQlite database, that is good for quick testing and evaluation, but its soooo slow. Have a look at the [documentation](https://doc.owncloud.com/server/10.3/admin_manual/installation/system_requirements.html#server), ownCloud says SQLite is not for production and recommends to use MySQL or MariaDB.
 The simplest way to start ownCloud with MariaDB is to use [docker-compose](https://docs.docker.com/compose/) as described [here](https://doc.owncloud.com/server/admin_manual/installation/docker/). In addition you also receive a Redis server, to do some caching.
@@ -121,7 +121,7 @@ Running that proposed setup on my system shows that it improves the response tim
 More tests showed that with 15 concurrent users there is still 20-30% CPU time left most of the time, but with 20+ users the CPU is basically flat out.
 Another interesting finding is, that in the area around 15 users the CPU is still not fully utilized, but the hard-drive works already pretty hard (see `iotop`). My guess is that when running with <= 15 users a faster hard-drive, e.g. a SSD would improve the performance, but with more than 20 users an SSD would be a waste of money, because even if the data would arrive faster at the CPU, it struggles to do its calculation.
 
-## cross-check
+## Cross-check
 
 Let's see if we can prove our assumption that ~15 users should be the max for our system. I'm simmulating 30 users, but with a hatch-rate of 0.025 users/sec (I want to give the system enough time to create the user and to refresh the sliding window for the chart after user-creation).
 
@@ -131,7 +131,7 @@ Also have a look at the "Total Requests per Second" graph. Up to 15 users it ste
 
 ![slowly increasing the number of users](/src/assets/Locust/images/locust-04-images/slowly-increasing-num-of-users.png)
 
-## conclusion
+## Conclusion
 
 1. The system scales well up to 15 users, meaning the single user would not experience any performance issues up to 15 concurrent users. Also the user would not experience any faster system if she is the only user on the system.
 2. Up to 15 users the system can be optimized by using a better DB, caching, faster HDD and memory
