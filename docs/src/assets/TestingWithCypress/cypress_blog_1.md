@@ -32,7 +32,7 @@ Cypress can test anything that runs in a browser.
 
 ####  How Cypress is different ?
 
-![Cypress Architecture][architecture]
+![Cypress Architecture]
 
 - ###### Cypress does not use Selenium
 
@@ -177,7 +177,6 @@ Cypress can test anything that runs in a browser.
 
 🎉 Great job! You can now write and run your test using Cypress Desktop Test Runner.  🥳 🙌
 
-<!-- assets -->
-[architecture]: /src/assets/TestingWithCypress/images/cypres_architecture.png "How cypress is different from existing selenium based tools?"
+[Cypress Architecture]: /src/assets/TestingWithCypress/images/cypres_architecture.png "How cypress is different from existing selenium based tools?"
 [cypressCrossBrowserPlatforms]: /src/assets/TestingWithCypress/images/cypress_cross_browser_platforms.png "Cross Browser Testing platforms supported by Cypress."
 [cypressCrossBrowserTesting]: /src/assets/TestingWithCypress/images/cypress_cross_browser_testing.png "Cypress test runner provides dropdown to switch between browsers for test."
