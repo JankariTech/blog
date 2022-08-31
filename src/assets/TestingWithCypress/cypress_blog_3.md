@@ -25,8 +25,8 @@ The default behavior of Cypress can be modified by supplying any of the followin
   | OPTION                  | DEFAULT                        | DESCRIPTION                                                  |
   | ----------------------- | ------------------------------ | ------------------------------------------------------------ |
   | `baseUrl`               | `null`                         | URL used as prefix for `cy.visit()` or `cy.request()` command. |
-  | `env`                   | `{}`                           | Any values to be set as [environment variables][envVarsInCypress] |
-  | `retries`               | `{“runMode”: 0, “openMode: 0}` | The number of times to retry a failing test.  See [Test Retries][testRetriesInCypress] for more information. |
+  | `env`                   | `{}`                           | Any values to be set as [environment variables] |
+  | `retries`               | `{“runMode”: 0, “openMode: 0}` | The number of times to retry a failing test.  See [Test Retries] for more information. |
   | `defaultCommandTimeout` | `4000`                         | Time, in milliseconds, to wait until most DOM based commands are considered timed out. |
 
 - Timeouts
@@ -123,7 +123,7 @@ You can easily integrate Cypress with your current CI provider. According to the
 
   Split your tests across multiple CI machines and drastically reduce your run times
 
-  ![Parallelization in Cypress][parallelization]
+  ![Parallelization in Cypress]
 
 
 
@@ -135,7 +135,7 @@ The Cypress Slack application provides real-time results for your Cypress tests,
 - Confirm that key tests pass prior to launching new products or features
 - Reduce the time it takes to catch failed tests
 
-![Cypress Slack Integration!][slackIntegration]
+![Cypress Slack Integration]
 
 ## Github Integration
 
@@ -149,13 +149,12 @@ Cypress Dashboard will report status of test runs as `GitHub` commit status chec
 
 Detailed test run information conveniently posted as PR comments that include tests run statistics, specific test failures, related screenshots and deep links to the Cypress Dashboard to help you quickly resolve problems.
 
-![GitHub Integration][gitHubIntegration]
+![GitHub Integration]
 
 
-<!-- assets -->
-[parallelization]: /src/assets/TestingWithCypress/images/cypress_parallelization.png "Parallelization in Cypress!"
-[gitHubIntegration]: /src/assets/TestingWithCypress/images/cypress_github_comment.png "Cypress bot comment in a GitHub PR."
-[slackIntegration]: /src/assets/TestingWithCypress/images/cypress_slack_integration.png "Cypress channel inside Slack Application."
-<!-- links -->
-[envVarsInCypress]: https://docs.cypress.io/guides/guides/environment-variables.html#Setting "Environment Variables in Cypress"
-[testRetriesInCypress]: https://docs.cypress.io/guides/guides/test-retries.html "Retrying test with Cypress"
+
+[Parallelization in Cypress]: /src/assets/TestingWithCypress/images/cypress_parallelization.png "Parallelization in Cypress!"
+[GitHub Integration]: /src/assets/TestingWithCypress/images/cypress_github_comment.png "Cypress bot comment in a GitHub PR."
+[Cypress Slack Integration]: /src/assets/TestingWithCypress/images/cypress_slack_integration.png "Cypress channel inside Slack Application."
+[environment variables]: https://docs.cypress.io/guides/guides/environment-variables.html#Setting "Environment Variables in Cypress"
+[Test Retries]: https://docs.cypress.io/guides/guides/test-retries.html "Retrying test with Cypress"

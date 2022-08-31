@@ -454,9 +454,7 @@ cy.get('@comments').should((response) => {
 - [Error Messages][errorMessagesLink]
 - [Cypress Documentation][documentationLink]
 
-<!-- assets -->
 [noTestsFound]: /src/assets/TestingWithCypress/images/cypress_no_test_found.png "This is a test runner preview while there is no any tests file to run."
-<!-- links -->
 [assertionLink]: https://docs.cypress.io/guides/references/assertions.html 'Assertions in Cypress'
 [chaiLink]: https://github.com/chaijs/chai 'GitHub Homepage Chai'
 [addAssertionLink]: https://docs.cypress.io/guides/references/assertions.html#Adding-New-Assertions 'Adding New Assertions in Cypress'

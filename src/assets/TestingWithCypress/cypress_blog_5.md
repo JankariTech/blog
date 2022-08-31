@@ -4,7 +4,7 @@ authorName: Kiran Parajuli
 authorAvatar: https://avatars.githubusercontent.com/u/39373750?v=4
 authorLink: https://github.com/kiranparajuli589/
 createdAt: Feb 2, 2021
-tags: cypress, selenium, comparision, testing
+tags: cypress, selenium, comparison, testing
 banner: /src/assets/TestingWithCypress/images/cypress_selenium_v_cypress.png
 seriesTitle: E2E Testing with Cypress
 episode: 5
@@ -36,7 +36,7 @@ But, there are some serious downsides to these architectural changes.
     There are other excellent tools that are optimized for doing each item listed above.
 
 - Inside the browser:
-    In case you missed it before - Cypress tests run inside of the browser! It makes it a little harder to communicate with the back end - like your server or database. You will not be able to connect or import those server-side libraries or modules directly.
+    In case you missed it before - Cypress tests run inside the browser! It makes it a little harder to communicate with the back end - like your server or database. You will not be able to connect or import those server-side libraries or modules directly.
 
 - It will never have multi-tabs support.
 
@@ -59,25 +59,21 @@ IMO, Cypress has a pretty responsive issues section on GitHub. Many issues that 
 ### Problems I faced with my project's tests
 - Cypress says, the browser XHRs are properly tracked, and we can wait for them too. But it is not true for me. The test-runner does not log about the XHR requests triggered by the browser interaction, and I cannot wait dynamically for some time-consuming requests.
 
-    ![NoXHRRecorded][noXHRRecordedImage]
+    ![NoXHRRecorded]
 
     At this point i.e clicking the `Sign In` button should start a XHR request. But alas, no luck here.
 
-- Testing inside iframes? Well, it's gonna bother you. I am working on a project which uses iframes with large contents and takes some time to load properly. Following the documentation and [cypress blogs][workingWithIframes] were also not quite helpful. For now, I'm using static wait before diving inside any iframes. If somebody has a better idea, well, please share!
+- Testing inside iframes? Well, it's gonna bother you. I am working on a project which uses iframes with large contents and takes some time to load properly. Following the documentation and [cypress blogs] were also not quite helpful. For now, I'm using static wait before diving inside any iframes. If somebody has a better idea, well, please share!
 
-- I feel like why we choose Cypress while testing dropdown fields 😂. I find most of the official tips for dropdown testing is with `<select>...</select>`. But the recent web is mostly based on frameworks like `VueJs`, `ReactJs`, etc. which uses a different mechanism to render dropdowns (using classes rather than using `select` tag). Options are extracted from some API requests and may also have abilities like autocompletion. With these features included the browser elements keeps on changing (some get in, and some are removed out completely). Running tests with such form fields interactions, you'll surely encounter the `Element is detached from the DOM` error [ref][DetachedFromDOMErr]. I suggest [do-not-get-too-detached][doNotGetTooDetached] blog to handle this type of errors.
+- I feel like why we choose Cypress while testing dropdown fields 😂. I find most of the official tips for dropdown testing is with `<select>...</select>`. But the recent web is mostly based on frameworks like `VueJs`, `ReactJs`, etc. which uses a different mechanism to render dropdowns (using classes rather than using `select` tag). Options are extracted from some API requests and may also have abilities like autocompletion. With these features included the browser elements keeps on changing (some get in, and some are removed out completely). Running tests with such form fields interactions, you'll surely encounter the `Element is detached from the DOM` error [ref] blog to handle this type of errors.
 
 - Test just terminates when it likes: Only half of the test runs and that particular test is marked as passed (sometimes, but can litter test result accuracy).
 
-    ![HalfRunPassedScenario][halfRunPassedScenario]
+    ![HalfRunPassedScenario]
 
 
-<!-- assets -->
-[halfRunPassedScenario]: /src/assets/TestingWithCypress/images/cypress_incomplete_run_passed_scenario.png "Incomplete but passed scenario"
-[noXHRRecordedImage]: /src/assets/TestingWithCypress/images/cypress_no_xhr_recorded.png "No XHR request is recorded."
+[HalfRunPassedScenario]: /src/assets/TestingWithCypress/images/cypress_incomplete_run_passed_scenario.png "Incomplete but passed scenario"
+[NoXHRRecorded]: /src/assets/TestingWithCypress/images/cypress_no_xhr_recorded.png "No XHR request is recorded."
 
-<!-- links -->
-[CypressTradeOffs]: https://docs.cypress.io/guides/references/trade-offs.html#Permanent-trade-offs-1 "Cypress Permanent Trade-offs"
-[workingWithIframes]: https://www.cypress.io/blog/2020/02/12/working-with-iframes-in-cypress/ "Working with iframes in Cypress"
-[doNotGetTooDetached]: https://www.cypress.io/blog/2020/07/22/do-not-get-too-detached/ "Do Not Get Too Detached"
-[DetachedFromDOMErr]: https://docs.cypress.io/guides/references/error-messages.html#cy-failed-because-the-element-you-are-chaining-off-of-has-become-detached-or-removed-from-the-dom "Explained error message for elements that has been detached or removed from the dom."
+[cypress blogs]: https://www.cypress.io/blog/2020/02/12/working-with-iframes-in-cypress/ "Working with iframes in Cypress"
+[ref]: https://docs.cypress.io/guides/references/error-messages.html#cy-failed-because-the-element-you-are-chaining-off-of-has-become-detached-or-removed-from-the-dom "Explained error message for elements that has been detached or removed from the dom."
