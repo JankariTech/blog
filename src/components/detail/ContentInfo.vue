@@ -29,8 +29,12 @@
   }
 
   .title {
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 500;
+    border-radius: 0;
+    width: fit-content;
+    padding-bottom: 0.2rem;
+    color: var(--text-light);
   }
 
   .subtitle {
@@ -57,8 +61,12 @@
 
 body[theme-dark] {
   .blog-content-info {
+    .title {
+      color: var(--text-dark);
+    }
+
     .subtitle {
-      color: rgb(206 206 206);
+      color: rgb(144 144 144);
     }
   }
 }

@@ -14,7 +14,7 @@ defineProps({
 <style lang="scss">
 .blog-content-data {
   flex: 65%;
-  padding: 0 2rem;
+  padding: 0 0.5rem;
 
   @media only screen and (max-width: 768px) {
     flex: 100%;
@@ -33,8 +33,10 @@ defineProps({
   h6,
   p,
   pre,
-  ul {
+  ul,
+  ol {
     margin-bottom: 1rem;
+    color: var(--text-light);
   }
 
   li {
@@ -64,17 +66,64 @@ defineProps({
     width: 100%;
     height: auto;
   }
+
+  h2 {
+    font-size: clamp(1.6rem, 6vw, 2.6rem);
+    line-height: 2.6rem;
+    font-weight: 500;
+    margin-top: 2rem;
+  }
+
+  h3 {
+    font-size: clamp(1.4rem, 6vw, 2.2rem);
+    line-height: 2.2rem;
+    font-weight: 500;
+    margin-top: 1.6rem;
+  }
+
+  h4 {
+    font-size: clamp(1.2rem, 6vw, 2rem);
+    line-height: 2rem;
+    font-weight: 500;
+    margin-top: 1.4rem;
+  }
+
+  h5 {
+    font-size: clamp(1rem, 6vw, 1.6rem);
+    line-height: 1.6rem;
+    font-weight: 500;
+    margin-top: 1.4rem;
+  }
+
+  h6 {
+    font-size: clamp(0.875rem, 6vw, 1.2rem);
+    line-height: 1.2rem;
+    font-weight: 500;
+    margin-top: 1.2rem;
+  }
 }
 
 body[theme-dark] {
   .blog-content-data {
     code {
-      color: white;
       background-color: rgb(54 54 54);
     }
 
     pre {
       background-color: rgb(54 54 54);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    code,
+    ul,
+    li {
+      color: var(--text-dark);
     }
   }
 }

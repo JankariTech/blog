@@ -7,6 +7,7 @@
         class="toc--item"
         @click="scrollToHeading(item.text, item.depth)"
       >
+        <mdi-menu-right class="mdi-circle" />
         {{ item.text }}
       </div>
     </div>
@@ -64,6 +65,7 @@ const scrollToHeading = (headingText, headingDepth) => {
 <style lang="scss">
 .blog-content-sidebar {
   flex: 20%;
+  padding: 0.5rem;
 
   @media only screen and (min-width: 960px) {
     position: sticky;
@@ -72,22 +74,21 @@ const scrollToHeading = (headingText, headingDepth) => {
 
   @media only screen and (max-width: 960px) {
     flex: 100%;
-    width: 93%;
-    margin-inline: auto;
+    // margin-inline: auto;
     margin-bottom: 2rem;
   }
 
   height: fit-content;
-  width: 100%;
   overflow-y: auto;
 
   .title {
-    font-size: 1.4rem;
-    font-weight: 300;
+    font-size: 1.6rem;
+    font-weight: 400;
     width: fit-content;
     margin-bottom: 1rem;
     padding-block: 0.4rem;
     border-bottom: 1px solid grey;
+    color: var(--jankaritech);
   }
 
   .toc {
@@ -95,6 +96,16 @@ const scrollToHeading = (headingText, headingDepth) => {
       color: #414141;
       text-transform: capitalize;
       cursor: pointer;
+      font-weight: 300;
+      // margin-left: .1rem;
+
+      display: flex;
+      align-items: center;
+
+      svg {
+        margin-right: 0.4rem;
+        font-size: 1.2rem;
+      }
 
       &:hover {
         color: black;
@@ -117,9 +128,11 @@ const scrollToHeading = (headingText, headingDepth) => {
       align-items: center;
       font-size: 1rem;
       width: fit-content;
+      color: #6ea51c;
 
       svg {
         margin-right: 0.2rem;
+        font-size: 12px;
       }
 
       border: 1px solid grey;
@@ -130,16 +143,13 @@ const scrollToHeading = (headingText, headingDepth) => {
 
 body[theme-dark] {
   .blog-content-sidebar {
-    .heading-1,
-    .heading-2,
-    .heading-3,
-    .heading-4,
-    .heading-5,
-    .heading-6 {
-      color: #cacaca;
+    .toc {
+      &--item {
+        color: #cacaca;
 
-      &:hover {
-        color: white;
+        &:hover {
+          color: white;
+        }
       }
     }
   }

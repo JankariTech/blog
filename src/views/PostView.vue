@@ -59,11 +59,14 @@ const loadMarkdown = () => {
     gap: 0.5rem;
     margin-top: 2rem;
     margin-inline: auto;
+    padding: 0.5rem;
     max-width: 1550px;
 
     @media only screen and (max-width: (960px)) {
       flex-direction: column-reverse;
     }
+
+    padding-bottom: 7rem;
   }
 }
 </style>
