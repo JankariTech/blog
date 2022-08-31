@@ -1,9 +1,12 @@
 #app {
   .content {
     right: 0;
-    padding: 1rem;
     background: #f5f4f4;
     min-height: calc(100vh - var(--appbar-height));
+
+    .app-bar-space {
+      height: calc(var(--appbar-height) + 1rem);
+    }
 
     .scroll-to-top {
       position: fixed;

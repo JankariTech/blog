@@ -1,7 +1,9 @@
 <template>
   <div>
     <TheAppBar />
-    <div class="content">
+    <div class="content sharp-border">
+      <div v-if="homeRoute"
+        class="app-bar-space" />
       <router-view />
       <button
         v-if="scrollButtonVisibility"
@@ -11,19 +13,22 @@
         <mdi-chevron-up />
       </button>
     </div>
+    <TheFooter />
   </div>
 </template>
 <script setup>
-import { watch, onMounted, ref } from "vue"
+import { watch, onMounted, ref, computed } from "vue"
 
-import TheAppBar from "@/components/TheAppBar"
-import useTheme from "@/composables/theme"
-import useMarkdown from "@/composables/markdown"
-import { readAssets } from "@/helpers/markdown"
-import { getPeekInfoForModules } from "./helpers/markdown"
+import TheAppBar from "./components/TheAppBar"
+import TheFooter from "./components/TheFooter"
+import useTheme from "./composables/theme"
+import useMarkdown from "./composables/markdown"
+import { readAssets, getPeekInfoForModules } from "./helpers/markdown"
+import { useRouter } from "vue-router"
 
 const { dark } = useTheme()
 const { setModules } = useMarkdown()
+const { currentRoute } = useRouter()
 
 watch(dark, () => {
   document.body.toggleAttribute("theme-dark")
@@ -51,6 +56,10 @@ const scrollToTop = () => {
     behavior: "smooth"
   })
 }
+
+const homeRoute = computed(() => {
+  return ["Home", "Filter", "Sort"].includes(currentRoute?.value.name)
+})
 </script>
 <style lang="scss">
 @import "styles/util";

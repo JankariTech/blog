@@ -10,6 +10,10 @@
   box-sizing: border-box;
 }
 
+p {
+  color: var(--text-light);
+}
+
 .font-roboto {
   font-family: Roboto, sans-serif;
 }
@@ -74,7 +78,15 @@ button {
   border-radius: 50%;
 }
 
+.contain {
+  object-fit: contain;
+}
+
 body[theme-dark] {
+  p {
+    color: var(--text-dark);
+  }
+
   input {
     background: inherit;
 

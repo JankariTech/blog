@@ -5,6 +5,11 @@
   --error: red;
   --info: #2196f3;
   --jankaritech: #88b04b;
+  --text-light: #2d2d2d;
+  --text-dark: #bcbcbc;
+  --facebook: rgb(7 122 233);
+  --linkedin: rgb(10 102 194);
+  --twitter: rgb(29 155 240);
 }
 
 .primary {
@@ -45,4 +50,36 @@
   &--text {
     color: var(--info);
   }
+}
+
+.twitter {
+  color: var(--twitter);
+}
+
+.twitter-hover:hover {
+  color: var(--twitter);
+}
+
+.facebook {
+  color: var(--facebook);
+}
+
+.facebook-hover:hover {
+  color: var(--facebook) !important;
+}
+
+.linkedin {
+  color: var(--linkedin) !important;
+}
+
+.linkedin-hover:hover {
+  color: var(--linkedin) !important;
+}
+
+.blue-hover:hover {
+  color: #0070f3 !important;
+}
+
+.orange-hover:hover {
+  color: #bf7c02 !important;
 }

@@ -1,5 +1,5 @@
 <template>
-  <nav class="appbar">
+  <nav class="appbar sharp-border">
     <a href="/">
       <img class="appbar--logo" :src="dark ? jtLogoWithNameDark: jtLogoWithName" alt="" width="200" >
     </a>
@@ -65,16 +65,17 @@ const toGithub = () => {
 <style lang="scss" scoped>
 .appbar {
   z-index: 999;
-  position: sticky;
-  top: 0;
-  background-color: #fff;
+  position: fixed;
+  width: 100%;
+  height: var(--appbar-height);
+  padding: 0 1rem;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  height: var(--appbar-height);
-  padding: 0 1rem;
   border-bottom: 1px solid rgb(221 221 221);
+  background-color: rgb(255 255 255 / 80%);
+  backdrop-filter: blur(3px);
 
   &--icon {
     height: 2rem;
@@ -91,7 +92,7 @@ const toGithub = () => {
 
 body[theme-dark] {
   .appbar {
-    background: #313131;
+    background-color: rgb(30 30 30 / 85%);
     border-bottom: none;
   }
 }
