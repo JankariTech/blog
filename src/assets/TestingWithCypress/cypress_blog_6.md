@@ -64,6 +64,5 @@ Here are screenshots of the GitLab CI test runner with Cypress-Gherkin-Paralleli
 - Error log sample
 ![ErrorLog][errorLog]
 
-<!-- asset -->
 [successLog]: /src/assets/TestingWithCypress/images/cypress_success_log_gitlab_ci.jpg 'Success Log'
 [errorLog]: /src/assets/TestingWithCypress/images/cypress_error_log_gitlab_ci.jpg 'Error Log'
