@@ -11,7 +11,7 @@
         <the-avatar :src="peek.authorAvatar"
           alt="Author Avatar"
           class="author-avatar"
-          size="140"
+          :size="140"
         />
         <a class="author-name"
           :href="peek.authorLink"

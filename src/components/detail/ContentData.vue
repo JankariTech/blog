@@ -56,10 +56,16 @@ defineProps({
     white-space: pre-wrap;
     background-color: rgb(225 225 225);
     overflow-x: auto;
-    padding: 1rem;
+    padding: 0.7rem 1rem;
     max-height: 400px;
     width: 100%;
     overflow-y: auto;
+
+    code {
+      padding: 0;
+      margin: 0;
+      background-color: transparent;
+    }
   }
 
   img {
@@ -107,10 +113,19 @@ body[theme-dark] {
   .blog-content-data {
     code {
       background-color: rgb(54 54 54);
+      color: var(--text-dark);
     }
 
     pre {
-      background-color: rgb(54 54 54);
+      background-color: #111;
+
+      code {
+        background-color: transparent;
+
+        * {
+          border-radius: 0;
+        }
+      }
     }
 
     h1,
@@ -120,7 +135,6 @@ body[theme-dark] {
     h5,
     h6,
     p,
-    code,
     ul,
     li {
       color: var(--text-dark);

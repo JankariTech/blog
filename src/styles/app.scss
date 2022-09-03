@@ -1,3 +1,5 @@
+@use "sass:meta";
+
 #app {
   .content {
     right: 0;
@@ -26,7 +28,13 @@
   }
 }
 
+body:not([theme-dark]) {
+  @include meta.load-css("highlight.js/styles/github.css");
+}
+
 body[theme-dark] {
+  @include meta.load-css("highlight.js/styles/github-dark.css");
+
   border-color: grey;
   color: #fff;
 

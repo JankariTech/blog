@@ -13,4 +13,5 @@ app.config.globalProperties.$moment = moment
 
 app.use(pinia)
 app.use(router)
+
 app.mount("#app")

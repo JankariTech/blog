@@ -34,7 +34,7 @@ For the start you should have installed the flutter-tools stack and create a flu
 Inside the app folder create a folder called `test_driver` and inside another one called `features`. In `features` we will place all the Gherkin descriptions of the expected app behavior. So create here a file called: `increment_counter.feature`
 
 We start the feature file with a very general description of the feature:
-```
+```gherkin
 Feature: Increment Counter
 
   As the good shepherd
@@ -50,11 +50,11 @@ Next we have to describe the specific behavior of the app. For that Gherkin prov
 - **Then** - the desired observable outcome
 
 Add a scenario to the feature file.
-```
-  Scenario: Counter increases when the button is pressed
-    Given the counter is set to "0"
-    When I tap the "increment" button 10 times
-    Then I expect the "counter" to be "10"
+```gherkin
+Scenario: Counter increases when the button is pressed
+  Given the counter is set to "0"
+  When I tap the "increment" button 10 times
+  Then I expect the "counter" to be "10"
 ```
 
 Later we will add more scenarios to the app, the feature might be the same, but in different scenarios it might have to react differently.
@@ -66,7 +66,7 @@ Now we can start the app and use our behaviour description to check if it works 
 Running manual tests from a description is nice, but not enough for us, we want to save time and reduce possible mistakes by running the tests automatically.
 
 To interpret the Gherkin file and interact with the app we are using the `flutter_gherkin` package. Install it by placing `flutter_gherkin:` in the `pubspec.yaml` inside the `dev_depencencies` section.
-```
+```yaml
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -78,7 +78,7 @@ and run `flutter pub get`.
 Now we also need some glue-code and configuration.
 
 Inside `test_driver` create a file called `app.dart` with the content
-```
+```dart
 import '../lib/main.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_driver/driver_extension.dart';
@@ -90,7 +90,7 @@ void main() {
 ```
 
 and a file called `app_test.dart` with the content:
-```
+```dart
 import 'dart:async';
 import 'package:flutter_gherkin/flutter_gherkin.dart';
 import 'package:gherkin/gherkin.dart';
@@ -116,7 +116,7 @@ Future<void> main() {
 That was all we need to do for the installation, now we have to tell the test-software what actually to do with our Given, When and Then steps.
 The library gives us some built-in steps, that should work "out-of-the-box" but others we need to implement ourself.
 In our example the Then step is a built-in step but the Given and the When step have to be implemented. So let's do that. Inside `test_driver` create a folder called `steps` and in there create a file called `tap_button_n_times_step.dart` with the content:
-```
+```dart
 import 'package:flutter_driver/flutter_driver.dart';
 import 'package:flutter_gherkin/flutter_gherkin.dart';
 import 'package:gherkin/gherkin.dart';
@@ -156,7 +156,7 @@ Next there is a variable called `pattern` with a regular expression, that is use
 Last there is a function `executeStep`. This function receives the parameters from the feature file and finally does all the hard work.
 In both cases it finds the element on the screen we want to interact with by using the `find.byValueKey()` method and then in the case of the Given step, gets the text of the element and checks if its as expected or, in the case of the When step, taps the button.
 
-Similarly our Then step (remember it's a built-in step) will use the same `find.byValueKey()` method to get the value and assert the content. If you are interested in the implementation, the step is defined in `flutter_gherkin-<version>/lib/src/flutter/steps/then_expect_element_to_have_value_step.dart`.
+Similarly, our Then step (remember it's a built-in step) will use the same `find.byValueKey()` method to get the value and assert the content. If you are interested in the implementation, the step is defined in `flutter_gherkin-<version>/lib/src/flutter/steps/then_expect_element_to_have_value_step.dart`.
 
 The issue now is that the example code does not have any keys defined in the widgets. The test-code would not be able to locate the elements.
 So edit the `main.dart` file and add `key: Key('counter'),` to the counter widget and `key: Key('increment'),` to the button widget.
@@ -176,7 +176,7 @@ Remember: The step `Then I expect the "counter" to be "10"` is a built-in-step. 
 2. run `dart test_driver/app_test.dart`
 
 after a while you should see an output like:
-```
+```console
 Running scenario: Counter increases when the button is pressed # ./test_driver/features/increment_counter.feature:5
    √ Given the counter is set to "0" # ./test_driver/features/increment_counter.feature:6 took 146ms
    √ When I tap the "increment" button 10 times # ./test_driver/features/increment_counter.feature:7 took 6420ms
@@ -200,7 +200,7 @@ We know now how to write feature files and how to run automated tests from them,
 
 Let's say we not only want to have a button to increment the counter, but also be able to decrement it. So in `features` create a file called `decrement_counter.feature` with this content:
 
-```
+```gherkin
 Feature: Decrement Counter
   As the good shepherd
   I want to be able to decrement the count of my sheep when one is lost
@@ -318,7 +318,8 @@ index 8795daa..068f558 100644
 ```
 
 Now the tests should pass:
-```
+
+```console
 Running scenario: Counter decreases when the (-) button is pressed # ./test_driver/features/decrement_counter.feature:5
    √ Given the counter is set to "10" # ./test_driver/features/decrement_counter.feature:6 took 2877ms
    √ When I tap the "decrement" button 1 time # ./test_driver/features/decrement_counter.feature:7 took 255ms
@@ -339,21 +340,21 @@ Restarting Flutter app under test
 
 ### 3. multiply the scenarios by using an example table
 Now we might want to test more cases than only tapping the (-) button once. For that we can just copy and paste the existing scenario, or more elegantly we add an example table:
-```
-  Scenario Outline: Counter decreases when the (-) button is pressed
-    Given the counter is set to "<initial-counter>"
-    When I tap the "decrement" button <decrement> time
-    Then I expect the "counter" to be "<final-counter>"
-    Examples:
-      | initial-counter | decrement | final-counter |
-      | 10              | 1         | 9             |
-      | 10              | 9         | 1             |
-      | 3               | 3         | 0             |
+```gherkin
+Scenario Outline: Counter decreases when the (-) button is pressed
+  Given the counter is set to "<initial-counter>"
+  When I tap the "decrement" button <decrement> time
+  Then I expect the "counter" to be "<final-counter>"
+  Examples:
+    | initial-counter | decrement | final-counter |
+    | 10              | 1         | 9             |
+    | 10              | 9         | 1             |
+    | 3               | 3         | 0             |
 ```
 
 This will run the same scenario three different times with the values in the table substituted into the steps.
 
-```
+```console
 Running scenario: Counter decreases when the (-) button is pressed (Example 1) # ./test_driver/features/decrement_counter.feature:5
    √ Given the counter is set to "10" # ./test_driver/features/decrement_counter.feature:6 took 2658ms
    √ When I tap the "decrement" button 1 time # ./test_driver/features/decrement_counter.feature:7 took 243ms
@@ -380,28 +381,30 @@ PASSED: Scenario Counter decreases when the (-) button is pressed (Example 3) # 
 ### 4. repeat
 
 What about negative values? If a shepherd is using this app to count the sheep, there is no point to have a negative counter. To say it in Gherkin:
-```
-  Scenario: Counter should not be negative
-    Given the counter is set to "0"
-    When I tap the "decrement" button 1 time
-    Then I expect the "counter" to be "0"
+```gherkin
+Scenario: Counter should not be negative
+  Given the counter is set to "0"
+  When I tap the "decrement" button 1 time
+  Then I expect the "counter" to be "0"
 ```
 
 You also could add that to the previous table, but I would argue that it is another requirement and its easier to understand the feature file if its written out in a separate Scenario.
 
 Running this test fails with:
-```
-   × Then I expect the "counter" to be "0" # ./test_driver/features/decrement_counter.feature:18 took 97ms
-      Expected: '0'
-  Actual: '-1'
-   Which: is different.
-          Expected: 0
-            Actual: -1
-                    ^
-           Differ at offset 0
+
+```console
+ × Then I expect the "counter" to be "0" # ./test_driver/features/decrement_counter.feature:18 took 97ms
+    Expected: '0'
+Actual: '-1'
+ Which: is different.
+        Expected: 0
+          Actual: -1
+                  ^
+         Differ at offset 0
 ```
 
 The counter becomes negative. Let's fix it:
+
 ```diff
 index 068f558..5e0d8d0 100644
 --- a/myapp/lib/main.dart
