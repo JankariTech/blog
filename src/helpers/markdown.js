@@ -1,9 +1,16 @@
 import { marked } from "marked"
 import useMarkdown from "@/composables/markdown"
+import hljs from "highlight.js"
 
 marked.setOptions({
   sanitize: true,
-  headerIds: true
+  headerIds: true,
+  langPrefix: "language-",
+  highlight: (code, lang) => {
+    if (lang) {
+      return hljs.highlight(lang, code).value
+    } else return hljs.highlightAuto(code).value
+  }
 })
 
 export const getFileName = (sourcePath) => {
