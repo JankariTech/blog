@@ -8,18 +8,14 @@ marked.setOptions({
   langPrefix: "language-",
   highlight: (code, lang) => {
     if (lang) {
-      return hljs.highlight(lang, code).value
+      try {
+        return hljs.highlight(lang, code).value
+      } catch (error) {
+        return hljs.highlightAuto(code).value
+      }
     } else return hljs.highlightAuto(code).value
   }
 })
-
-export const getFileName = (sourcePath) => {
-  return sourcePath.split("/src/assets/").at(-1).split(".md")[0]
-}
-
-export const getHref = (sourcePath) => {
-  return `/blog/${getFileName(sourcePath)}`
-}
 
 export const readAssets = () => {
   const fileModules = import.meta.glob(

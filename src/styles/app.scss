@@ -1,9 +1,11 @@
 @use "sass:meta";
 
 #app {
+  background: #f5f4f4;
+
   .content {
+    background: inherit;
     right: 0;
-    background: #f5f4f4;
     min-height: calc(100vh - var(--appbar-height));
 
     .app-bar-space {
@@ -42,7 +44,7 @@ body[theme-dark] {
     color: var(--jankaritech) !important;
   }
 
-  #app .content {
+  #app {
     background: rgb(26 26 26);
 
     .scroll-to-top {

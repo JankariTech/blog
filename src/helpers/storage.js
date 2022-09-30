@@ -1,4 +1,11 @@
-import { DEFAULT_FONT, DEFAULT_THEME, FONT_MAP, THEME_ARRAY } from "./constants"
+import {
+  DEFAULT_FONT,
+  DEFAULT_HOME_VIEW_MODE,
+  DEFAULT_THEME,
+  FONT_MAP,
+  HOME_VIEW_MODES,
+  THEME_ARRAY
+} from "./constants"
 
 export class Storage {
   static saveTheme (theme) {
@@ -6,13 +13,12 @@ export class Storage {
       localStorage.setItem("theme", theme)
     } else {
       console.error("Invalid theme is provided.")
-      // fallback to default theme
-      localStorage.setItem("theme", DEFAULT_THEME)
+      localStorage.setItem("theme", Storage.getTheme())
     }
   }
 
   static getTheme () {
-    return localStorage.getItem("theme") || "light"
+    return localStorage.getItem("theme") || DEFAULT_THEME
   }
 
   static saveFont (font) {
@@ -20,12 +26,24 @@ export class Storage {
       localStorage.setItem("font", font)
     } else {
       console.error("Invalid font is provided.")
-      // fallback to default font
-      localStorage.setItem("font", DEFAULT_FONT)
+      localStorage.setItem("font", Storage.getFont())
     }
   }
 
   static getFont () {
     return localStorage.getItem("font") || DEFAULT_FONT
+  }
+
+  static saveHomeViewMode (mode) {
+    if (HOME_VIEW_MODES.includes(mode)) {
+      localStorage.setItem("home-view-mode", mode)
+    } else {
+      console.error("Invalid home view mode is provided.")
+      localStorage.setItem("home-view-mode", Storage.getHomeViewMode())
+    }
+  }
+
+  static getHomeViewMode () {
+    return localStorage.getItem("home-view-mode") || DEFAULT_HOME_VIEW_MODE
   }
 }
