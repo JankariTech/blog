@@ -1,14 +1,17 @@
 .home-view {
   margin: auto;
-  max-width: 1400px;
+  max-width: 1200px;
   min-height: calc(100vh - 9.3vh);
 
-  &--list {
+  .blog-peek {
+    cursor: pointer;
+  }
+
+  &--grid {
     display: flex;
     flex-wrap: wrap;
 
     .blog-peek {
-      cursor: pointer;
       flex-grow: 1;
     }
   }

@@ -5,12 +5,15 @@
       'small-shadow-dark': !detailView && dark,
     }"
   >
-    <div class="blog-peek--banner">
+    <div class="blog-peek--banner"
+      :class="{
+        'fallback-banner-w': !banner
+      }"
+    >
       <img
         v-if="banner || fallbackBanner"
         :src="banner || fallbackBanner"
         alt="Blog Banner"
-        class="sharp-border"
         :class="{
           'fallback-banner': !banner,
           'regular-banner': banner
@@ -19,54 +22,56 @@
       >
     </div>
     <div class="blog-peek--divider" />
-    <div class="blog-peek--author">
-      <img
-        :src="authorAvatar"
-        class="author-avatar circle"
-        alt="Author Avatar"
-      />
-      <div class="author-info">
-        <a
-          v-if="!!authorLink"
-          :href="authorLink"
-          target="_blank"
-          :title="authorName"
-          class="author-link"
-        >
-          {{ authorName }}
-        </a>
-        <div v-else class="author-name">{{ authorName }}</div>
-        <div class="created-at" title="Created Timestamp">
-          {{ moment(createdAt).format("MMM DD, YYYY") }}
-          ({{ moment(createdAt).fromNow() }})
+    <div class="blog-peek--auth-wrapper">
+      <div class="blog-peek--author">
+        <img
+          :src="authorAvatar"
+          class="author-avatar circle"
+          alt="Author Avatar"
+        />
+        <div class="author-info">
+          <a
+            v-if="!!authorLink"
+            :href="authorLink"
+            target="_blank"
+            :title="authorName"
+            class="author-link"
+          >
+            {{ authorName }}
+          </a>
+          <div v-else class="author-name">{{ authorName }}</div>
+          <div class="created-at" title="Created Timestamp">
+            {{ moment(createdAt).format("MMM DD, YYYY") }}
+            ({{ moment(createdAt).fromNow() }})
+          </div>
         </div>
       </div>
-    </div>
-    <div class="blog-peek--content">
-      <component class="blog-title"
-        :is="detailView ? 'h1' : 'h3'"
-      >
-        {{ title }}
-      </component>
-      <div class="tags">
-        <span v-for="(item, index) in tags"
-          :key="index"
-          class="tag-item"
+      <div class="blog-peek--content">
+        <component class="blog-title"
+          :is="detailView ? 'h1' : 'h3'"
         >
-          #{{item}}
-        </span>
+          {{ title }}
+        </component>
+        <div class="tags">
+          <span v-for="(item, index) in tags"
+            :key="index"
+            class="tag-item"
+          >
+            #{{item}}
+          </span>
+        </div>
       </div>
-    </div>
-    <div v-if="!detailView" class="blog-peek--footer">
-      <button
-        aria-label="Share"
-        title="Share Post"
-        class="icon-button"
-      >
-        <mdi-share-variant class="one-rem" />
-      </button>
-      <div class="read-time">
-        {{ minutesToRead }} minutes of read
+      <div v-if="!detailView" class="blog-peek--footer">
+        <button
+          aria-label="Share"
+          title="Share Post"
+          class="icon-button"
+        >
+          <mdi-share-variant class="one-rem" />
+        </button>
+        <div class="read-time">
+          {{ minutesToRead }} minutes of read
+        </div>
       </div>
     </div>
   </div>
@@ -134,12 +139,7 @@ export default {
   }
 }
 </script>
-<style lang="scss" scoped>
-.py-2 {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-}
-
+<style lang="scss">
 .blog-peek {
   margin: 1.6rem;
   border: 1px solid grey;
@@ -147,6 +147,8 @@ export default {
   &--banner {
     text-align: center;
     height: 180px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
 
     .fallback-banner {
       scale: 0.8;
@@ -159,11 +161,14 @@ export default {
     img {
       height: 100%;
       object-fit: cover;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
     }
   }
 
   &--divider {
     border-top: 1px solid grey;
+    border-radius: 0;
   }
 
   &--author {
@@ -259,5 +264,25 @@ body[theme-dark] {
 .image-contain {
   object-fit: contain;
   border-bottom: 1px solid #dedddd;
+}
+
+.home-view--list {
+  .blog-peek {
+    &--banner {
+      height: 100%;
+      img {
+        border-bottom: 1px solid #dedddd;
+        width: 100%;
+        height: auto;
+        max-height: 350px;
+      }
+    }
+    .fallback-banner-w {
+      display: none;
+    }
+    &--divider {
+      display: none;
+    }
+  }
 }
 </style>

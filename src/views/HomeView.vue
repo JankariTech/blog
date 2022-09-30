@@ -69,8 +69,20 @@
           </div>
         </template>
       </DropMenu>
+      <button class="icon-button" :title="homeViewMode === 'list' ? 'List View' : 'Grid View'"
+        :class="{ 'sorting' : $route.name === 'Sort' }"
+        @click="toggleHomeViewMode()"
+      >
+        <mdi-view-compact v-if="homeViewMode === 'list'" class="one-rem" />
+        <mdi-view-sequential v-else class="one-rem" />
+      </button>
     </div>
-    <div class="home-view--list">
+    <div
+      :class="{
+        'home-view--list': homeViewMode === 'list',
+        'home-view--grid': homeViewMode !== 'list'
+      }"
+    >
       <blog-peek
         v-for="(item, index) in peekData"
         :key="index"
@@ -100,6 +112,7 @@ import BlogPeek from "../components/BlogPeek"
 import DropMenu from "../components/DropMenu"
 import { getPeekData } from "../helpers/markdown"
 import getImageUrl from "../helpers/images"
+import { Storage } from "../helpers/storage"
 import { SORT_OPTIONS, FILTER_OPTIONS } from "../helpers/constants"
 
 const { currentRoute, push } = useRouter()
@@ -109,6 +122,7 @@ const search = ref("")
 const loading = ref(false)
 const filterBy = ref(null)
 const sortBy = ref(null)
+const homeViewMode = ref(null)
 
 onMounted(async () => {
   init()
@@ -121,9 +135,21 @@ const init = () => {
   peekData.value = getPeekData()
   sortPeekData(sortBy.value)
   loading.value = false
+  homeViewMode.value = Storage.getHomeViewMode()
 }
 
 const loadingImage = getImageUrl("../imgs/loading.png")
+
+watch(search, () => {
+  if (!search.value) {
+    peekData.value = getPeekData()
+  }
+})
+
+const toggleHomeViewMode = () => {
+  homeViewMode.value = homeViewMode.value === "list" ? "grid" : "list"
+  Storage.saveHomeViewMode(homeViewMode.value)
+}
 
 const goToBlogDetail = (item) => {
   const series = item.seriesTitle
@@ -167,12 +193,6 @@ const makeSearch = () => {
 const clearSearch = () => {
   search.value = ""
 }
-
-watch(search, () => {
-  if (!search.value) {
-    peekData.value = getPeekData()
-  }
-})
 
 const toHome = () => {
   push({ name: "Home" })

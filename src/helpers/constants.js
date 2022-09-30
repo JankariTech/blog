@@ -7,6 +7,10 @@ export const FONT_MAP = [
 
 export const THEME_ARRAY = ["light", "dark"]
 
+export const HOME_VIEW_MODES = ["grid", "list"]
+
+export const DEFAULT_HOME_VIEW_MODE = "list"
+
 export const DEFAULT_FONT = FONT_MAP[0].name
 
 export const DEFAULT_THEME = THEME_ARRAY[0]
