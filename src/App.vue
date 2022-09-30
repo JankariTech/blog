@@ -17,7 +17,7 @@
   </div>
 </template>
 <script setup>
-import { watch, onMounted, ref, computed } from "vue"
+import { watch, onMounted, ref, computed, onBeforeMount } from "vue"
 
 import TheAppBar from "./components/TheAppBar"
 import TheFooter from "./components/TheFooter"
@@ -25,8 +25,10 @@ import useTheme from "./composables/theme"
 import useMarkdown from "./composables/markdown"
 import { readAssets, getPeekInfoForModules } from "./helpers/markdown"
 import { useRouter } from "vue-router"
+import { Storage } from "./helpers/storage"
+import { FONT_MAP } from "./helpers/constants"
 
-const { dark } = useTheme()
+const { dark, setFont, setDark, font } = useTheme()
 const { setModules } = useMarkdown()
 const { currentRoute } = useRouter()
 
@@ -43,6 +45,19 @@ const scrollButtonVisibility = ref(false)
 onMounted(() => {
   window.addEventListener("scroll", onScroll)
 })
+
+onBeforeMount(() => {
+  getThemeAndFont()
+})
+
+const getThemeAndFont = () => {
+  const savedFontName = Storage.getFont()
+  const fontValue = FONT_MAP.find(item => item.name === savedFontName)?.class || FONT_MAP[0].class
+
+  setFont(fontValue)
+  setDark(Storage.getTheme() === "dark")
+  document.body.classList.add(font.value)
+}
 
 const onScroll = (e) => {
   if (typeof window === "undefined") return

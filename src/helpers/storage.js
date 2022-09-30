@@ -1,11 +1,13 @@
-import { FONT_MAP } from "./constants"
+import { DEFAULT_FONT, DEFAULT_THEME, FONT_MAP, THEME_ARRAY } from "./constants"
 
 export class Storage {
   static saveTheme (theme) {
-    if (["light", "dark"].includes(theme)) {
+    if (THEME_ARRAY.includes(theme)) {
       localStorage.setItem("theme", theme)
     } else {
-      console.error("Invalid theme")
+      console.error("Invalid theme is provided.")
+      // fallback to default theme
+      localStorage.setItem("theme", DEFAULT_THEME)
     }
   }
 
@@ -17,11 +19,13 @@ export class Storage {
     if (FONT_MAP.map(font => font.name).includes(font)) {
       localStorage.setItem("font", font)
     } else {
-      console.error("Invalid font")
+      console.error("Invalid font is provided.")
+      // fallback to default font
+      localStorage.setItem("font", DEFAULT_FONT)
     }
   }
 
   static getFont () {
-    return localStorage.getItem("font") || "Lato"
+    return localStorage.getItem("font") || DEFAULT_FONT
   }
 }
