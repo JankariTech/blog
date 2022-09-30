@@ -5,77 +5,78 @@
       :src="loadingImage"
       height="30"
       width="30"
-      alt="loading"
+      alt="Loading Spinner"
       class="spinner"
     />
 
     <div class="home-view--search">
       <input
         id="search"
+        class="home-view--search--input"
         v-model="search"
         placeholder="Search..."
         @keyup.enter="makeSearch"
       >
-      <button v-if="search.length > 0"
-        class="clear-button"
-        @click="clearSearch"
-      >
-        <mdi-close />
-      </button>
-      <button class="icon-button" title="Search"
-        @click="makeSearch"
-      >
-        <mdi-search class="one-rem" />
-      </button>
+      <div class="home-view--search--actions">
+        <button v-if="search.length > 0"
+          class="clear-button"
+          @click="clearSearch"
+        >
+          <mdi-close />
+        </button>
+        <button class="icon-button" title="Search"
+          @click="makeSearch"
+        >
+          <mdi-search class="one-rem" />
+        </button>
+        <DropMenu>
+          <template #trigger>
+            <button class="icon-button" title="Filter"
+              :class="{ 'filtering' : $route.name === 'Filter' }"
+            >
+              <mdi-filter class="one-rem"/>
+            </button>
+          </template>
+          <template #drop>
+            <div
+              v-for="item in FILTER_OPTIONS"
+              :key="item.key"
+              class="menu-drop-item" @click="setFilterKey(item.key)"
+              :class="{'item-active': $route.params.filterBy === item.key}"
+            >
+              {{ item.label }}
+            </div>
+          </template>
+        </DropMenu>
+        <DropMenu class="menu">
+          <template #trigger>
+            <button class="icon-button" title="Sort"
+              :class="{ 'sorting' : $route.name === 'Sort' }"
+            >
+              <mdi-sort class="one-rem" />
+            </button>
+          </template>
 
-      <DropMenu>
-        <template #trigger>
-          <button class="icon-button" title="Filter"
-            :class="{ 'filtering' : $route.name === 'Filter' }"
-          >
-            <mdi-filter class="one-rem"/>
-          </button>
-        </template>
-        <template #drop>
-          <div
-            v-for="item in FILTER_OPTIONS"
-            :key="item.key"
-            class="menu-drop-item" @click="setFilterKey(item.key)"
-            :class="{'item-active': $route.params.filterBy === item.key}"
-          >
-            {{ item.label }}
-          </div>
-        </template>
-      </DropMenu>
-
-      <DropMenu class="menu">
-        <template #trigger>
-          <button class="icon-button" title="Sort"
-            :class="{ 'sorting' : $route.name === 'Sort' }"
-          >
-            <mdi-sort class="one-rem" />
-          </button>
-        </template>
-
-        <template #drop>
-          <div
-            v-for="item in SORT_OPTIONS"
-            :key="item.key"
-            class="menu-drop-item"
-            @click="setSortKey(item.key)"
-            :class="{'item-active': $route.params.sortBy === item.key}"
-          >
-            {{ item.label }}
-          </div>
-        </template>
-      </DropMenu>
-      <button class="icon-button" :title="homeViewMode === 'list' ? 'List View' : 'Grid View'"
-        :class="{ 'sorting' : $route.name === 'Sort' }"
-        @click="toggleHomeViewMode()"
-      >
-        <mdi-view-compact v-if="homeViewMode === 'list'" class="one-rem" />
-        <mdi-view-sequential v-else class="one-rem" />
-      </button>
+          <template #drop>
+            <div
+              v-for="item in SORT_OPTIONS"
+              :key="item.key"
+              class="menu-drop-item"
+              @click="setSortKey(item.key)"
+              :class="{'item-active': $route.params.sortBy === item.key}"
+            >
+              {{ item.label }}
+            </div>
+          </template>
+        </DropMenu>
+        <button class="icon-button" :title="homeViewMode === 'list' ? 'Grid View' : 'List View'"
+          :class="{ 'sorting' : $route.name === 'Sort' }"
+          @click="toggleHomeViewMode()"
+        >
+          <mdi-view-compact v-if="homeViewMode === 'list'" class="one-rem" />
+          <mdi-view-sequential v-else class="one-rem" />
+        </button>
+      </div>
     </div>
     <div
       :class="{
