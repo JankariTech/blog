@@ -7,7 +7,7 @@
   >
     <div class="blog-peek--banner"
       :class="{
-        'fallback-banner-w': !banner
+        'blog-peek--banner--fallback': !banner
       }"
     >
       <img
@@ -22,56 +22,54 @@
       >
     </div>
     <div class="blog-peek--divider" />
-    <div class="blog-peek--auth-wrapper">
-      <div class="blog-peek--author">
-        <img
-          :src="authorAvatar"
-          class="author-avatar circle"
-          alt="Author Avatar"
-        />
-        <div class="author-info">
-          <a
-            v-if="!!authorLink"
-            :href="authorLink"
-            target="_blank"
-            :title="authorName"
-            class="author-link"
-          >
-            {{ authorName }}
-          </a>
-          <div v-else class="author-name">{{ authorName }}</div>
-          <div class="created-at" title="Created Timestamp">
-            {{ moment(createdAt).format("MMM DD, YYYY") }}
-            ({{ moment(createdAt).fromNow() }})
-          </div>
+    <div class="blog-peek--author">
+      <img
+        :src="authorAvatar"
+        class="author-avatar circle"
+        alt="Author Avatar"
+      />
+      <div class="author-info">
+        <a
+          v-if="!!authorLink"
+          :href="authorLink"
+          target="_blank"
+          :title="authorName"
+          class="author-link"
+        >
+          {{ authorName }}
+        </a>
+        <div v-else class="author-name">{{ authorName }}</div>
+        <div class="created-at" title="Created Timestamp">
+          {{ moment(createdAt).format("MMM DD, YYYY") }}
+          ({{ moment(createdAt).fromNow() }})
         </div>
       </div>
-      <div class="blog-peek--content">
-        <component class="blog-title"
-          :is="detailView ? 'h1' : 'h3'"
+    </div>
+    <div class="blog-peek--content">
+      <component class="blog-title"
+        :is="detailView ? 'h1' : 'h3'"
+      >
+        {{ title }}
+      </component>
+      <div class="tags">
+        <span v-for="(item, index) in tags"
+          :key="index"
+          class="tag-item"
         >
-          {{ title }}
-        </component>
-        <div class="tags">
-          <span v-for="(item, index) in tags"
-            :key="index"
-            class="tag-item"
-          >
-            #{{item}}
-          </span>
-        </div>
+          #{{item}}
+        </span>
       </div>
-      <div v-if="!detailView" class="blog-peek--footer">
-        <button
-          aria-label="Share"
-          title="Share Post"
-          class="icon-button"
-        >
-          <mdi-share-variant class="one-rem" />
-        </button>
-        <div class="read-time">
-          {{ minutesToRead }} minutes of read
-        </div>
+    </div>
+    <div v-if="!detailView" class="blog-peek--footer">
+      <button
+        aria-label="Share"
+        title="Share Post"
+        class="icon-button"
+      >
+        <mdi-share-variant class="one-rem" />
+      </button>
+      <div class="read-time">
+        {{ minutesToRead }} minutes of read
       </div>
     </div>
   </div>
@@ -140,149 +138,5 @@ export default {
 }
 </script>
 <style lang="scss">
-.blog-peek {
-  margin: 1.6rem;
-  border: 1px solid grey;
-
-  &--banner {
-    text-align: center;
-    height: 180px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-
-    .fallback-banner {
-      scale: 0.8;
-    }
-
-    .regular-banner {
-      width: 100%;
-    }
-
-    img {
-      height: 100%;
-      object-fit: cover;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
-    }
-  }
-
-  &--divider {
-    border-top: 1px solid grey;
-    border-radius: 0;
-  }
-
-  &--author {
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-
-    .author-avatar {
-      height: 36px;
-      width: 36px;
-    }
-
-    .author-info {
-      padding-left: 0.5rem;
-    }
-
-    .author-name {
-      font-size: 0.95rem;
-      font-weight: 500;
-    }
-
-    .created-at {
-      font-size: 0.75rem;
-    }
-
-    .author-link {
-      font-weight: 500;
-    }
-  }
-
-  &--content {
-    padding: 0.5rem 1rem;
-
-    .blog-title {
-      &:hover {
-        color: rgb(28 75 28);
-      }
-    }
-
-    .tags {
-      padding-top: 0.5rem;
-
-      .tag-item {
-        font-size: 0.875rem;
-        font-style: italic;
-        margin: 0 0.2rem;
-        padding: 0.2rem;
-        background-color: rgb(233 233 233);
-      }
-    }
-  }
-
-  &--footer {
-    padding: 0.5rem 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    .read-time {
-      font-size: 0.7rem;
-      padding: 0.5rem;
-    }
-
-    .icon-button {
-      height: 32px;
-      width: 32px;
-    }
-  }
-}
-
-body[theme-dark] {
-  .author-link {
-    color: #fff;
-  }
-
-  .blog-peek {
-    &--banner {
-      background: black;
-    }
-
-    .tag-item {
-      background-color: rgb(66 66 66);
-    }
-
-    .blog-title {
-      &:hover {
-        color: rgb(197 255 197);
-      }
-    }
-  }
-}
-
-.image-contain {
-  object-fit: contain;
-  border-bottom: 1px solid #dedddd;
-}
-
-.home-view--list {
-  .blog-peek {
-    &--banner {
-      height: 100%;
-      img {
-        border-bottom: 1px solid #dedddd;
-        width: 100%;
-        height: auto;
-        max-height: 350px;
-      }
-    }
-    .fallback-banner-w {
-      display: none;
-    }
-    &--divider {
-      display: none;
-    }
-  }
-}
+@import "../styles/blogPeek";
 </style>
