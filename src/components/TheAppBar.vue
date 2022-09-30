@@ -1,10 +1,14 @@
 <template>
   <nav class="appbar sharp-border">
     <a href="/">
-      <img class="appbar--logo" :src="dark ? jtLogoWithNameDark: jtLogoWithName" alt="" width="200" >
+      <img width="200"
+        class="appbar--logo"
+        alt="JankariTech Logo"
+        :src="dark ? logoWithNameDark: logoWithName"
+      >
     </a>
     <div class="appbar--actions">
-      <button class="appbar--icon icon-button toggle-theme" @click="toggle">
+      <button class="appbar--icon icon-button toggle-theme" @click="toggleTheme()">
         <mdi-brightness-6 class="one-rem"/>
       </button>
       <DropMenu>
@@ -34,29 +38,28 @@
   </nav>
 </template>
 <script setup>
+import { watch } from "vue"
+import useTheme from "../composables/theme"
+import { FONT_MAP } from "../helpers/constants"
+import getImageUrl from "../helpers/images"
 import DropMenu from "./DropMenu.vue"
-import { watch, onBeforeMount } from "vue"
-import useTheme from "@/composables/theme"
+import { Storage } from "../helpers/storage"
 
 const { dark, toggle, font, setFont } = useTheme()
 
-const jtLogoWithName = new URL("../imgs/jt_logo_with_name.png", import.meta.url).href
-const jtLogoWithNameDark = new URL("../imgs/jt_logo_with_name_dark.png", import.meta.url).href
-
-const FONT_MAP = [
-  { name: "Lato", class: "font-lato" },
-  { name: "Roboto", class: "font-roboto" },
-  { name: "Poppins", class: "font-poppins" },
-  { name: "Open Sans", class: "font-open-sans" }
-]
+const logoWithName = getImageUrl("../imgs/jt_logo_with_name.png")
+const logoWithNameDark = getImageUrl("../imgs/jt_logo_with_name_dark.png")
 
 watch(font, () => {
   document.body.classList.remove(...FONT_MAP.map(item => item.class))
   document.body.classList.add(font.value)
+  Storage.saveFont(FONT_MAP.find(item => item.class === font.value).name)
 })
-onBeforeMount(() => {
-  document.body.classList.add(font.value)
-})
+
+const toggleTheme = () => {
+  toggle()
+  Storage.saveTheme(dark.value ? "dark" : "light")
+}
 
 const toGithub = () => {
   window.open("https://github.com/JankariTech/blog", "_blank")

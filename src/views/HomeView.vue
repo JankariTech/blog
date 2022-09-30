@@ -33,12 +33,12 @@
           <button class="icon-button" title="Filter"
             :class="{ 'filtering' : $route.name === 'Filter' }"
           >
-            <mdi-filter class="one-rem" />
+            <mdi-filter class="one-rem"/>
           </button>
         </template>
         <template #drop>
           <div
-            v-for="item in filterItems"
+            v-for="item in FILTER_OPTIONS"
             :key="item.key"
             class="menu-drop-item" @click="setFilterKey(item.key)"
             :class="{'item-active': $route.params.filterBy === item.key}"
@@ -59,7 +59,7 @@
 
         <template #drop>
           <div
-            v-for="item in sortItems"
+            v-for="item in SORT_OPTIONS"
             :key="item.key"
             class="menu-drop-item"
             @click="setSortKey(item.key)"
@@ -87,7 +87,7 @@
       <div v-if="peekData.length === 0"
         class="home-view--no-results"
       >
-        <div class="message">Sorry, no results found for "{{search}}"</div>
+        <div class="message">Sorry, no results found for "{{ search }}"</div>
         <button @click="clearSearch">Reset Search</button>
       </div>
     </div>
@@ -99,6 +99,8 @@ import { useRouter } from "vue-router"
 import BlogPeek from "../components/BlogPeek"
 import DropMenu from "../components/DropMenu"
 import { getPeekData } from "../helpers/markdown"
+import getImageUrl from "../helpers/images"
+import { SORT_OPTIONS, FILTER_OPTIONS } from "../helpers/constants"
 
 const { currentRoute, push } = useRouter()
 
@@ -107,28 +109,6 @@ const search = ref("")
 const loading = ref(false)
 const filterBy = ref(null)
 const sortBy = ref(null)
-
-const sortItems = [
-  {
-    key: "alpha",
-    label: "Alphabetically"
-  },
-  {
-    key: "date",
-    label: "Date Created"
-  }
-]
-
-const filterItems = [
-  {
-    key: "author",
-    label: "Author"
-  },
-  {
-    key: "tag",
-    label: "Tags"
-  }
-]
 
 onMounted(async () => {
   init()
@@ -143,7 +123,7 @@ const init = () => {
   loading.value = false
 }
 
-const loadingImage = new URL("../imgs/loading.png", import.meta.url).href
+const loadingImage = getImageUrl("../imgs/loading.png")
 
 const goToBlogDetail = (item) => {
   const series = item.seriesTitle

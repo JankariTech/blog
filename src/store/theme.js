@@ -11,6 +11,9 @@ export const useThemeStore = defineStore("theme", {
     },
     setFont (font) {
       this.font = font
+    },
+    setDark (isDark) {
+      this.dark = isDark
     }
   }
 })
