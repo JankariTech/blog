@@ -1,11 +1,11 @@
 ---
-title: Multiple Tasks
+title: Locust - 02 - Multiple Tasks
 authorName: Artur Neumann
 authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800.jpg
 authorLink: https://github.com/individual-it
 createdAt: Oct 30, 2019
 tags: testing, performance, python, infrastructure
-banner:
+banner: https://images.theconversation.com/files/362378/original/file-20201008-20-g8soll.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=926&
 seriesTitle: Performance Testing with Locust
 episode: 2
 ---
