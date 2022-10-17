@@ -1,11 +1,11 @@
 ---
-title: CodeceptJs Setup & BDD
+title: CodeceptJs: Setup & BDD
 authorName: Hari Bhandari
 authorAvatar: https://avatars.githubusercontent.com/u/34328907?v=4
 authorLink: https://github.com/HariBhandari07
 createdAt: June 2, 2020
 tags: k6, load, performance, testing
-banner:
+banner: https://www.comakeit.com/blog/wp-content/uploads/2020/05/Embracing-CodeceptJS-01-scaled.jpg
 ---
 
 CodeceptJS is a modern end to end testing framework. In this tutorial we will setup BDD end-to-end testing using CodeceptJS along with Puppeteer.

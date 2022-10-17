@@ -57,8 +57,9 @@ const fallbackBanner = computed(() => {
       height: auto;
       width: 100%;
       margin-bottom: 2rem;
-      max-height: 80vh !important;
+      max-height: 80vh;
       min-height: 30vh !important;
+      object-fit: cover;
     }
 
     .contain {

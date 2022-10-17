@@ -5,7 +5,7 @@ authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800
 authorLink: https://github.com/individual-it
 createdAt: Feb 5, 2020
 tags: testing, bdd, go, qa
-banner:
+banner: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800.jpg
 seriesTitle: Behaviour Driven Development
 episode: 1
 ---
@@ -52,7 +52,7 @@ Feature: convert dates from BS to AD using an API
   So that I have a simple way to convert BS to AD dates, that can be used in different apps
 ```
 
-These lines are very important. They answer the question WHO wants to achieve WHAT with that feature and WHY. If you don't know who will use that feature, why do you implement it? If there is nothing to achieve with that feature, you actually don't have a feature. And if there is no reason to use that feature, it doesn't have a business value. So if the stakeholders (developer, customer, manager, QA, etc.) cannot answer these 3 questions, nobody really should spend time and money to implement it.
+These lines are very important. They answer the question of WHO wants to achieve WHAT with that feature and WHY. If you don't know who will use that feature, why do you implement it? If there is nothing to achieve with that feature, you actually don't have a feature. And if there is no reason to use that feature, it doesn't have a business value. So if the stakeholders (developer, customer, manager, QA, etc.) cannot answer these 3 questions, nobody really should spend time and money to implement it.
 
 ## Scenarios
 Every feature has different scenarios. A "add item to shopping basket"-feature in an online-shop could have scenarios like:
@@ -79,7 +79,7 @@ Now we want to describe the specific behavior of the app in that scenario. For t
 - **When** - the action to be tested
 - **Then** - the desired observable outcome
 
-Additionally there is **And**, if you have multiple of one of the above, you don't need to write
+Additionally, there is **And**, if you have multiple of one of the above, you don't need to write
 ```
 When doing A
 When doing B
@@ -95,7 +95,7 @@ For a complex application there will be most-likely some steps to bring the appl
 For our app, I cannot really think of anything. So I skip over to the `When` keyword.
 
 The `When` keyword is for the action (or multiple) you really want to test.
-```
+```gherkin
   Scenario: converting a valid BS date
     When a "GET" request is sent to the endpoint "/ad-from-bs/2060-04-01"
 
@@ -105,7 +105,7 @@ The `When` keyword is for the action (or multiple) you really want to test.
 
 Now, what should happen in those specific scenarios? What is the observable outcome? Use the `Then` keyword to describe that (if there are different outcomes connect multiple `Then`s with `And`s)
 
-```
+```gherkin
   Scenario: converting a valid BS date
     When a "GET" request is sent to the endpoint "/ad-from-bs/2060-04-01"
     Then the HTTP-response code should be "200"
@@ -141,15 +141,22 @@ module github.com/JankariTech/bsDateServer
 go 1.13
 ```
 
-and then run `go get github.com/cucumber/godog/cmd/godog@v0.11.0`
+and then run
+
+```shell
+go get github.com/cucumber/godog/cmd/godog@v0.11.0
+```
 
 If you are running within $GOPATH, you will need to set `GO111MODULE=on`, as:
-  `GO111MODULE=on go get github.com/cucumber/godog/cmd/godog@v0.11.0`
+```shell
+GO111MODULE=on go get github.com/cucumber/godog/cmd/godog@v0.11.0
+```
 
 (The version number `@v0.11.0` is optional, if it's not given the latest version will be installed. I set the version here to make sure this blog-post stays valid also when s.th. changes in godog)
 
 Now you should be able to run godog with `$GOPATH/godog *.feature` and the output would be something like:
-```
+
+```gherkin
 Feature: convert dates from BS to AD using an API
   As an app-developer in Nepal
   I want to be able to send BS dates to an API endpoint and receive the corresponding AD dates
@@ -194,7 +201,7 @@ Godog lists all the scenarios we want to run and tells us that it has no idea wh
 
 For that create a file with the name `bsdateServer_test.go` and the content:
 
-```
+```go
 package main
 
 import (
@@ -221,7 +228,7 @@ func InitializeScenario(ctx *godog.ScenarioContext) {
 ```
 
 In the `InitializeScenario` function we have the link between the human-readable Gherkin, and the function that the computer has to execute for that step. The output of `$GOPATH/godog` now looks a bit different:
-```
+```gherkin
 Feature: convert dates from BS to AD using an API
   As an app-developer in Nepal
   I want to be able to send BS dates to an API endpoint and receive the corresponding AD dates
@@ -287,7 +294,7 @@ Here we create a request and send it using the `net/http` package. The trick in 
 BTW: the `res` variable is defined outside the function because we need to access it from other steps also.
 
 Running godog now gives us this result
-```
+```gherkin
 ...
   Scenario: converting a valid BS date                                    # bs-to-ad-conversion.feature:6
     When a "GET" request is sent to the endpoint "/ad-from-bs/2060-04-01" # bsdateServer_test.go:13 -> aRequestIsSentToTheEndpoint
@@ -299,7 +306,7 @@ Running godog now gives us this result
 ```
 
 It cannot connect to the server, because nothing is listening on that port. Let's change that. For a minimal implementation of a server waiting on the port put this code into `main.go` and run it with `go run main.go`
-```
+```go
 package main
 
 import (
@@ -325,7 +332,7 @@ func main() {
 ```
 
 Now we are a step further:
-```
+```gherkin
   Scenario: converting a valid BS date                                    # bs-to-ad-conversion.feature:6
     When a "GET" request is sent to the endpoint "/ad-from-bs/2060-04-01" # bsdateServer_test.go:13 -> aRequestIsSentToTheEndpoint
     Then the HTTP-response code should be "200"                           # bsdateServer_test.go:27 -> theHTTPresponseCodeShouldBe

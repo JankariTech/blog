@@ -21,7 +21,7 @@ import ContentData from "../components/detail/ContentData"
 import ContentSidebar from "../components/detail/ContentSidebar"
 import FootSection from "../components/detail/FootSection"
 
-const { currentRoute } = useRouter()
+const { currentRoute, push } = useRouter()
 const { modules } = useMarkdown()
 
 const content = ref(null)
@@ -33,7 +33,12 @@ onMounted(() => {
 })
 
 watch(currentRoute, () => {
-  loadMarkdown()
+  if (currentRoute?.value?.params?.name === undefined) {
+    window.location.href = "/#/"
+    push({ name: "Home" })
+  } else {
+    loadMarkdown()
+  }
 })
 
 const loadMarkdown = () => {
@@ -59,14 +64,12 @@ const loadMarkdown = () => {
     gap: 0.5rem;
     margin-top: 2rem;
     margin-inline: auto;
-    padding: 0.5rem;
+    padding: 0.5rem 0.5rem 7rem;
     max-width: 1550px;
 
     @media only screen and (max-width: (960px)) {
       flex-direction: column-reverse;
     }
-
-    padding-bottom: 7rem;
   }
 }
 </style>

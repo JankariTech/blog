@@ -1,11 +1,11 @@
 ---
-    title: TDD in Go
-    authorName: Kiran Parajuli
-    authorAvatar: https://avatars.githubusercontent.com/u/39373750?v=4
-    authorLink: https://github.com/kiranparajuli589/
-    createdAt: 02/10/2022
-    tags: vue, jest, unit, testing
-    banner: https://res.cloudinary.com/practicaldev/image/fetch/s--t1Oxkc_O--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ffkifasq4al1c75uculu.png
+title: TDD in Go
+authorName: Artur Neumann
+authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800.jpg
+authorLink: https://github.com/individual-it
+createdAt: Oct 30, 2019
+tags: testing, performance, python, infrastructure
+banner: https://cdn-images-1.medium.com/max/768/1*WJ-o9buxhxzVK18iEW-eRg.png
 ---
 
 ## Demonstrating TDD (Test-driven development) in Go

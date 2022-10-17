@@ -30,30 +30,33 @@ assetDir.forEach(item => {
   }
 })
 
-const getPeekDataFor = (rawMarkdown) => {
+const requiredMeta = [
+  "title",
+  "authorName",
+  "authorAvatar",
+  "authorLink",
+  "createdAt",
+  "tags",
+  "banner"
+]
+
+const optionalMeta = [
+  "seriesTitle",
+  "episode"
+]
+
+const extractMeta = (rawMarkdown) => {
   const lexer = marked.lexer(rawMarkdown, { sanitize: true })
-  const metaDetails = lexer.slice(1, 2)[0].text?.split("\n")?.map(line => line.split(": "))
+  const meta = {}
 
-  const title = metaDetails[0][1] // first line in meta
-  const authorName = metaDetails[1][1] // second line in meta
-  const authorAvatar = metaDetails[2][1] // third line in meta
-  const authorLink = metaDetails[3][1] // fourth line in meta
+  const metaLexer = lexer.slice(1, 2)[0].text.split("\n")
+    ?.map(line => line.split(": "))
 
-  let createdAt = metaDetails[4][1] // fifth line in meta
-  createdAt = createdAt ? new Date(createdAt) : "-"
+  metaLexer?.forEach((line) => {
+    meta[line[0]] = line[1]
+  })
 
-  const tags = metaDetails[5][1].split(", ") // sixth line in meta
-  const banner = metaDetails[6][1] // seventh line in meta
-
-  let seriesTitle, episode
-  if (metaDetails.length === 9) {
-    seriesTitle = metaDetails[7][1] // eighth line in meta
-    episode = metaDetails[8][1] // ninth line in meta
-  }
-
-  return {
-    title, authorName, authorAvatar, authorLink, createdAt, tags, banner, seriesTitle, episode
-  }
+  return meta
 }
 
 // check the meta information in the markdown files
@@ -63,9 +66,51 @@ const getPeekDataFor = (rawMarkdown) => {
 log.info("Checking meta...")
 log.info("-------------------------------------")
 
+function lintMeta (key) {
+  const peekData = extractMeta(markdownFiles[key])
+  // check if every meta is valid
+  Object.keys(peekData).forEach((meta) => {
+    if (!requiredMeta.includes(meta) && !optionalMeta.includes(meta)) {
+      log.error(`Invalid meta: ${meta} in ${key}`)
+      success = false
+    }
+  })
+
+  // check for every required meta inside the peek data
+  requiredMeta.forEach((meta) => {
+    if (!peekData[meta]) {
+      log.error(`Missing required meta: ${meta} in ${key}`)
+      success = false
+    }
+  })
+  // check if series has episodes
+  if (peekData.seriesTitle && !peekData.episode) {
+    log.error(`Missing episode number in ${key}`)
+    success = false
+  }
+
+  // check if episode has series
+  if (peekData.episode && !peekData.seriesTitle) {
+    log.error(`Missing series title in ${key}`)
+    success = false
+  }
+  if (peekData.banner) {
+    // url validation
+    try {
+      // eslint-disable-next-line no-new
+      new URL(peekData.banner)
+    } catch (err) {
+      log.error(`Invalid banner url in ${key}. Found: ${peekData.banner}`)
+      success = false
+    }
+  }
+}
+
 for (let i = 0; i < Object.keys(markdownFiles).length; i++) {
   const key = Object.keys(markdownFiles)[i]
   const mTokens = marked.lexer(markdownFiles[key], { sanitize: true })
+
+  lintMeta(key)
 
   // must have 1 line hr, 2nd line paragraph and 3rd line hr
   if (mTokens.length < 3) {
@@ -75,35 +120,7 @@ for (let i = 0; i < Object.keys(markdownFiles).length; i++) {
 
   if (mTokens[0].type !== "hr" && mTokens[1].type !== "paragraph" && mTokens[2].type !== "hr") {
     log.error(`${key} has no meta information at the top.`)
-    continue
-  }
-
-  // must have 7 or 9 lines inside meta information
-  const metaPart = mTokens[1].text.split("\n")
-
-  if (metaPart.length !== 7 && metaPart.length !== 9) {
-    log.error(`${key} has incomplete meta information`)
     success = false
-    continue
-  }
-
-  const peekData = getPeekDataFor(markdownFiles[key])
-
-  if (!peekData.title) {
-    success = false
-    log.error(`${key} has no "title" meta`)
-  }
-  if (!peekData.authorName) {
-    success = false
-    log.error(`${key} has no "authorName" meta`)
-  }
-  if (!peekData.createdAt) {
-    success = false
-    log.error(`${key} has no "createdAt" meta`)
-  }
-  if (peekData.seriesTitle && !peekData.episode) {
-    success = false
-    log.error(`${key} has no "episode" meta`)
   }
 }
 log.info("-------------------------------------")

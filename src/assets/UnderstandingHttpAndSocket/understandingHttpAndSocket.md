@@ -5,7 +5,7 @@ authorAvatar: https://avatars.githubusercontent.com/u/41365307?v=4
 authorLink: https://github.com/sakshamgurung
 createdAt: Dec 6, 2021
 tags: socket, java, http, video
-banner: https://res.cloudinary.com/practicaldev/image/fetch/s--t1Oxkc_O--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ffkifasq4al1c75uculu.png
+banner: https://journaldev.nyc3.digitaloceanspaces.com/2012/11/java-socket-programming.jpg
 ---
 
 This blog explains the basic understanding of HTTP, client-server model, network layers, and some socket programming in Java.

@@ -5,7 +5,7 @@ authorAvatar: https://avatars.githubusercontent.com/u/34328907?v=4
 authorLink: https://github.com/HariBhandari07
 createdAt: April 23, 2020
 tags: docker, selenium, automation
-banner:
+banner: https://miro.medium.com/max/1074/1*jLET2Lxo6m_9_Wv4EgQubA.png
 ---
 
 ## What is docker?
