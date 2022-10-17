@@ -5,7 +5,7 @@ authorAvatar: https://avatars.githubusercontent.com/u/40829116?v=4
 authorLink: https://github.com/jasson99/
 createdAt: April 6, 2020
 tags: testing, bdd, robotframework, python
-banner:
+banner: https://blog.testproject.io/wp-content/uploads/2020/06/23-06-A.jpg
 ---
 ## Robot Framework
 

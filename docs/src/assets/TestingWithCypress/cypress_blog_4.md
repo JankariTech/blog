@@ -4,8 +4,8 @@ authorName: Kiran Parajuli
 authorAvatar: https://avatars.githubusercontent.com/u/39373750?v=4
 authorLink: https://github.com/kiranparajuli589/
 createdAt: Feb 2, 2021
-tags: vue, jest, unit, testing
-banner: https://res.cloudinary.com/practicaldev/image/fetch/s--t1Oxkc_O--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ffkifasq4al1c75uculu.png
+tags: cypress, cucumber, gherkin, testing
+banner: https://www.sipios.com/hubfs/e2E-tuto-full-mage-white.png
 seriesTitle: E2E Testing with Cypress
 episode: 4
 ---
