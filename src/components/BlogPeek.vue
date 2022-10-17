@@ -78,9 +78,10 @@
 import moment from "moment"
 import { computed } from "vue"
 import useTheme from "../composables/theme"
+import getImageUrl from "../helpers/images"
 
-const fallBackBannerDark = new URL("../imgs/fallback_banner_dark.png", import.meta.url).href
-const fallBackBanner = new URL("../imgs/fallback_banner.png", import.meta.url).href
+const fallBackBannerDark = getImageUrl("../imgs/fallback_banner_dark.png")
+const fallBackBanner = getImageUrl("../imgs/fallback_banner.png")
 
 defineProps({
   title: {

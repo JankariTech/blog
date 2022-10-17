@@ -42,24 +42,17 @@ export const getPeekInfoForModules = (modules) => {
 
 export const extractMeta = (lexer) => {
   const metaDetails = {}
-  const metaLexer = lexer.slice(1, 2)[0].text?.split("\n")?.map(line => line.split(": "))
+  const metaLexer = lexer.slice(1, 2)[0]
+    .text?.split("\n")
+    ?.map(line => line.split(": "))
 
-  // TODO: enhance the parsing with the key name
-  metaDetails.title = metaLexer[0][1] // first line in meta
-  metaDetails.authorName = metaLexer[1][1] // second line in meta
-  metaDetails.authorAvatar = metaLexer[2][1] // third line in meta
-  metaDetails.authorLink = metaLexer[3][1] // fourth line in meta
+  metaLexer?.forEach((line) => {
+    metaDetails[line[0]] = line[1]
+  })
 
-  const createdAt = metaLexer[4][1] // fifth line in meta
+  const createdAt = metaDetails["createdAt"]
   metaDetails.createdAt = createdAt ? new Date(createdAt) : "-"
-
-  metaDetails.tags = metaLexer[5][1].split(", ") // sixth line in meta
-  metaDetails.banner = metaLexer[6][1] // seventh line in meta
-
-  if (metaLexer.length === 9) {
-    metaDetails.seriesTitle = metaLexer[7][1] // eighth line in meta
-    metaDetails.episode = metaLexer[8][1] // ninth line in meta
-  }
+  metaDetails.tags = metaDetails.tags ? metaDetails.tags.split(", ") : []
 
   return metaDetails
 }
