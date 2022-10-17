@@ -36,10 +36,6 @@ watch(dark, () => {
   document.body.toggleAttribute("theme-dark")
 })
 
-const { fileModules } = readAssets()
-
-setModules(getPeekInfoForModules(fileModules))
-
 const scrollButtonVisibility = ref(false)
 
 onMounted(() => {
@@ -47,12 +43,16 @@ onMounted(() => {
 })
 
 onBeforeMount(() => {
+  const { fileModules } = readAssets()
   getThemeAndFont()
+  setModules(getPeekInfoForModules(fileModules))
 })
 
 const getThemeAndFont = () => {
   const savedFontName = Storage.getFont()
-  const fontValue = FONT_MAP.find(item => item.name === savedFontName)?.class || FONT_MAP[0].class
+  const fontValue = FONT_MAP
+    .find(item => item.name === savedFontName)
+    ?.class || FONT_MAP[0].class
 
   setFont(fontValue)
   setDark(Storage.getTheme() === "dark")

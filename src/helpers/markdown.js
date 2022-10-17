@@ -19,7 +19,7 @@ marked.setOptions({
 
 export const readAssets = () => {
   const fileModules = import.meta.glob(
-    "/src/assets/**/*.md",
+    "/src/assets/**/**.md",
     { as: "raw" }
   )
   return {
@@ -44,7 +44,10 @@ export const extractMeta = (lexer) => {
   const metaDetails = {}
   const metaLexer = lexer.slice(1, 2)[0]
     .text?.split("\n")
-    ?.map(line => line.split(": "))
+    ?.map(line => [
+      line.substring(0, line.indexOf(": ")),
+      line.substring(line.indexOf(": ") + 2)]
+    )
 
   metaLexer?.forEach((line) => {
     metaDetails[line[0]] = line[1]
