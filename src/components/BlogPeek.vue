@@ -80,8 +80,8 @@ import { computed } from "vue"
 import useTheme from "../composables/theme"
 import getImageUrl from "../helpers/images"
 
-const fallBackBannerDark = getImageUrl("../imgs/fallback_banner_dark.png")
-const fallBackBanner = getImageUrl("../imgs/fallback_banner.png")
+const fallBackBannerDark = getImageUrl("fallback_banner_dark")
+const fallBackBanner = getImageUrl("fallback_banner")
 
 defineProps({
   title: {

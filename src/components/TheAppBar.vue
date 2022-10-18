@@ -47,8 +47,8 @@ import { Storage } from "../helpers/storage"
 
 const { dark, toggle, font, setFont } = useTheme()
 
-const logoWithName = getImageUrl("../imgs/jt_logo_with_name.png")
-const logoWithNameDark = getImageUrl("../imgs/jt_logo_with_name_dark.png")
+const logoWithName = getImageUrl("jt_logo_with_name")
+const logoWithNameDark = getImageUrl("jt_logo_with_name_dark")
 
 watch(font, () => {
   document.body.classList.remove(...FONT_MAP.map(item => item.class))
