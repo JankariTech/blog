@@ -39,8 +39,11 @@ defineProps({
     color: var(--text-light);
   }
 
-  p, ul, ol, blockquote {
-    letter-spacing: .3px;
+  p,
+  ul,
+  ol,
+  blockquote {
+    letter-spacing: 0.3px;
     font-size: 1rem;
     line-height: 1.5rem;
   }
@@ -52,7 +55,7 @@ defineProps({
 
   code {
     width: 100% !important;
-    font-size: .95rem;
+    font-size: 0.95rem;
     line-height: 1.3rem;
     background-color: rgb(225 225 225);
     border: 1px solid #bebebe;
@@ -121,7 +124,7 @@ defineProps({
 body[theme-dark] {
   .blog-content-data {
     code {
-      background-color: rgb(42, 42, 42);
+      background-color: rgb(42 42 42);
       color: var(--text-dark);
     }
 
