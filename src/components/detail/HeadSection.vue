@@ -32,6 +32,7 @@
 import TheAvatar from "../TheAvatar"
 import { computed, defineProps } from "vue"
 import useTheme from "../../composables/theme"
+import getImageUrl from "../../helpers/images"
 
 const { dark } = useTheme()
 
@@ -44,9 +45,9 @@ defineProps({
 
 const fallbackBanner = computed(() => {
   if (dark.value) {
-    return "/src/imgs/fallback_banner_dark.png"
+    return getImageUrl("fallback_banner_dark")
   } else {
-    return "/src/imgs/fallback_banner.png"
+    return getImageUrl("fallback_banner")
   }
 })
 </script>

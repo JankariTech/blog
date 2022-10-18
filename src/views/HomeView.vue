@@ -139,7 +139,7 @@ const init = () => {
   homeViewMode.value = Storage.getHomeViewMode()
 }
 
-const loadingImage = getImageUrl("../imgs/loading.png")
+const loadingImage = getImageUrl("loading")
 
 watch(search, () => {
   if (!search.value) {

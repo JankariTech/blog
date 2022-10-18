@@ -1,3 +1,3 @@
-export default function getImageUrl (imagePath) {
-  return new URL(imagePath, import.meta.url).href
+export default function getImageUrl (name) {
+  return new URL(`../imgs/${name}.png`, import.meta.url).href
 }
