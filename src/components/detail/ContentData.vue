@@ -21,8 +21,8 @@ defineProps({
   }
 
   p {
-    font-size: 1rem;
-    line-height: 1.6rem;
+    text-align: justify;
+    text-justify: inter-word;
   }
 
   h1,
@@ -35,8 +35,17 @@ defineProps({
   pre,
   ul,
   ol {
-    margin-bottom: 1rem;
+    margin-bottom: 1.8rem;
     color: var(--text-light);
+  }
+
+  p,
+  ul,
+  ol,
+  blockquote {
+    letter-spacing: 0.3px;
+    font-size: 1rem;
+    line-height: 1.5rem;
   }
 
   li {
@@ -46,10 +55,12 @@ defineProps({
 
   code {
     width: 100% !important;
-    font-size: 0.875rem;
+    font-size: 0.95rem;
     line-height: 1.3rem;
     background-color: rgb(225 225 225);
-    padding: 4px;
+    border: 1px solid #bebebe;
+    padding-inline: 4px;
+    padding-block: 1px;
   }
 
   pre {
@@ -65,6 +76,7 @@ defineProps({
       padding: 0;
       margin: 0;
       background-color: transparent;
+      border: none;
     }
   }
 
@@ -112,7 +124,7 @@ defineProps({
 body[theme-dark] {
   .blog-content-data {
     code {
-      background-color: rgb(54 54 54);
+      background-color: rgb(42 42 42);
       color: var(--text-dark);
     }
 

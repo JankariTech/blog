@@ -61,6 +61,9 @@
     padding: 0.5rem 1rem;
 
     .blog-title {
+      font-size: 1.2rem;
+      font-weight: 500;
+
       &:hover {
         color: rgb(28 75 28);
       }
@@ -71,10 +74,10 @@
 
       .tag-item {
         font-size: 0.875rem;
-        font-style: italic;
         margin: 0 0.2rem;
         padding: 0.2rem;
-        background-color: rgb(233 233 233);
+        background-color: rgb(223 223 223);
+        letter-spacing: 0.5px;
       }
     }
   }

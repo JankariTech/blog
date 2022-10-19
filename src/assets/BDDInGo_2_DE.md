@@ -16,7 +16,7 @@ Die Kommunikation und damit die Erfolgschancen der Entwicklung einer Anwendung z
 (Wie schon im ersten Artikel werde ich den Quellcode und die Feature-Dateien nicht übersetzen, sondern so zeigen, wie sie in [GitHub](https://github.com/JankariTech/bsDateServer) abgespeichert sind.)
 
 Nach ["Einstieg in BDD (Behavior-driven development)"](https://dev.to/jankaritech/einstieg-in-bdd-behavior-driven-development-1m8h) haben wir ein Feature-File, das so aussieht:
-```
+```gherkin
 Feature: convert dates from BS to AD using an API
   As an app-developer in Nepal
   I want to be able to send BS dates to an API endpoint and receive the corresponding AD dates
@@ -38,7 +38,7 @@ Um aus den Feature-Files automatische Tests zu machen, brauchen wir zunächst ei
 Solche Interpreter gibt es für die verschiedensten Programmiersprachen. In diesem Artikel demonstriere ich, wie es mit [godog package](https://github.com/cucumber/godog) für Go funktioniert.
 
 Um godog zu [installieren](https://github.com/cucumber/godog#install), müssen wir zunächst eine einfache `go.mod` Datei anlegen
-```
+```golang
 module github.com/JankariTech/bsDateServer
 
 go 1.13
@@ -51,7 +51,7 @@ Um mit `$GOPATH` arbeiten zu können, muss zusätzlich noch die Umgebungsvariabl
 (Die Versionsnummer `@v0.11.0` ist optional; ohne sie wird die neueste vorhandene Version installiert. Damit dieser Artikel aber länger verwendbar bleibt und ich ihn nicht ständig anpassen muss, gebe ich hier eine Versionsnummer an.)
 
 Jetzt können wir godog mit `$GOPATH/godog *.feature` ausführen. Die Ausgabe sollte in etwa so aussehen:
-```
+```gherkin
 Feature: convert dates from BS to AD using an API
   As an app-developer in Nepal
   I want to be able to send BS dates to an API endpoint and receive the corresponding AD dates
@@ -94,7 +94,7 @@ func InitializeScenario(ctx *godog.ScenarioContext) {
 
 Godog listet alle Szenarien, die wir ausführen wollen, und sagt uns, dass es keine Ahnung hat, was es machen soll. Das ist keine Überraschung - schließlich haben wir noch keine Test-Schritte implementiert. Um das zu tun, erstellen wir eine Datei mit dem Namen `bsdateServer_test.go` und dem Inhalt:
 
-```
+```go
 package main
 
 import (
@@ -124,7 +124,7 @@ Die `InitializeScenario` Funktion ist die Verbindung zwischen der menschenlesbar
 Aus `When a "GET" request is sent to the endpoint "/ad-from-bs/2060-04-01"` wird der Funktionsaufruf: `aRequestIsSentToTheEndpoint("GET", "/ad-from-bs/2060-04-01")`
 
 Wenn wir wieder `$GOPATH/godog *.feature` ausführen, sieht die Ausgabe schon anders aus:
-```
+```gherkin
 Feature: convert dates from BS to AD using an API
   As an app-developer in Nepal
   I want to be able to send BS dates to an API endpoint and receive the corresponding AD dates
@@ -190,7 +190,7 @@ Wir benutzen das `net/http` Go packet, um eine einfache HTTP Anfrage zu versende
 Randbemerkung: die `res` Variable ist außerhalb der Funktion definiert, weil wir auf sie noch von anderen Funktionen zugreifen müssen.
 
 Die Ausgabe von `$GOPATH/godog *.feature` ist jetzt:
-```
+```gherkin
 ...
   Scenario: converting a valid BS date                                    # bs-to-ad-conversion.feature:6
     When a "GET" request is sent to the endpoint "/ad-from-bs/2060-04-01" # bsdateServer_test.go:13 -> aRequestIsSentToTheEndpoint
@@ -204,7 +204,7 @@ Die Ausgabe von `$GOPATH/godog *.feature` ist jetzt:
 Die HTTP Anfrage, die der Test sendet, schlägt fehl, weil nichts auf dem entsprechenden Port lauscht. Ganz Ähnlich wie bei TDD (Test Driven Development) haben wir erst den Test gebaut (oder einen Teil davon), bevor die Software implementiert wurde.
 
 Deswegen implementieren wir jetzt einen minimal-Server, der praktisch nur den Port `10000` öffnet. Dafür kommt der folgende code in die Datei `main.go` und dann wird der Server mit `go run main.go` gestartet
-```
+```go
 package main
 
 import (
@@ -230,7 +230,7 @@ func main() {
 ```
 
 Wenn wir jetzt die Tests laufen lassen, während der Server läuft, sieht man, dass wir einen Schritt weiter gekommen sind:
-```
+```gherkin
   Scenario: converting a valid BS date                                    # bs-to-ad-conversion.feature:6
     When a "GET" request is sent to the endpoint "/ad-from-bs/2060-04-01" # bsdateServer_test.go:13 -> aRequestIsSentToTheEndpoint
     Then the HTTP-response code should be "200"                           # bsdateServer_test.go:27 -> theHTTPresponseCodeShouldBe
@@ -299,7 +299,7 @@ _Randnotiz: Es ist wichtig, gute Fehlermeldungen auszugeben. Das Ziel einer Fehl
 Die kleine Änderung in der Regular-Expression in `InitializeScenario` stellt sicher, dass nur Zahlen als HTTP Status Code akzeptiert werden.
 
 Die Ausgabe der Tests ist jetzt:
-```
+```feature
 ...
   Scenario: converting a valid BS date # bs-to-ad-conversion.feature:6
     Then the HTTP-response code should be "200" # bs-to-ad-conversion.feature:8
@@ -358,7 +358,7 @@ index ae01ed0..06299b0 100644
 Die Änderung ist eigentlich recht simpel: das BS Datum in Tag, Monat und Jahr aufspalten und es an die fertige `GoBikramSambat` Bibliothek übergeben. (Die Bibliothek wird mit `go get github.com/JankariTech/GoBikramSambat` installiert)
 
 Und damit funktioniert schon das erste Szenario:
-```
+```feature
 ...
   Scenario: converting a valid BS date                                    # bs-to-ad-conversion.feature:6
     When a "GET" request is sent to the endpoint "/ad-from-bs/2060-04-01" # bsdateServer_test.go:14 -> aRequestIsSentToTheEndpoint
@@ -421,7 +421,7 @@ index b731d6d..9871219 100644
 Sollte die Konvertierung nicht funktionieren, wird jetzt in `main.go` ein Fehler ausgegeben. In den Tests benutzen wir `TrimSpace`, weil `http.Error` ein `\n` an den Fehlertext hängt.
 
 Nun sollten beide Szenarien grün sein:
-```
+```feature
 Feature: convert dates from BS to AD using an API
   As an app-developer in Nepal
   I want to be able to send BS dates to an API endpoint and receive the corresponding AD dates

@@ -46,17 +46,15 @@
       </div>
     </div>
     <div class="blog-peek--content">
-      <component class="blog-title"
-        :is="detailView ? 'h1' : 'h3'"
-      >
+      <div class="blog-title">
         {{ title }}
-      </component>
+      </div>
       <div class="tags">
         <span v-for="(item, index) in tags"
           :key="index"
           class="tag-item"
         >
-          #{{item}}
+          #&nbsp;{{item}}
         </span>
       </div>
     </div>

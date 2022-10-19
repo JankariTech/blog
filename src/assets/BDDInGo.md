@@ -45,7 +45,7 @@ In the project folder we create a new file called `bs-to-ad-conversion.feature`.
 _Side note: there is always the discussion what is a "feature"? In our example: is the conversion in both directions one or two features? Is the error-handling a separate feature or a part of the conversion feature? If you are not sure, be practical and simply make sure the file does not get too long._
 
 We start the feature file with a very general description of the feature:
-```
+```gherkin
 Feature: convert dates from BS to AD using an API
   As an app-developer in Nepal
   I want to be able to send BS dates to an API endpoint and receive the corresponding AD dates
@@ -67,7 +67,7 @@ In every scenario your app might behave differently. If that specific behavior i
 
 In Gherkin we have to start the scenario description with the `Scenario:` keyword and a short free-text sentence:
 
-```
+```gherkin
   Scenario: converting a valid BS date
 
   Scenario: converting an invalid BS date
@@ -80,13 +80,13 @@ Now we want to describe the specific behavior of the app in that scenario. For t
 - **Then** - the desired observable outcome
 
 Additionally, there is **And**, if you have multiple of one of the above, you don't need to write
-```
+```gherkin
 When doing A
 When doing B
 ```
 
 but you can use `And` (it just sounds and reads nicer)
- ```
+ ```gherkin
  When doing A
  And doing B
  ```
@@ -135,7 +135,7 @@ We could stop there, but there is a great bonus-point: let's use these descripti
 For that we need software that interprets the Gherkin language and runs code that executes the tests. For Go there is the [godog package](https://github.com/DATA-DOG/godog).
 
 To install godog we fist have to create a simple `go.mod` file with the content
-```
+```golang
 module github.com/JankariTech/bsDateServer
 
 go 1.13
@@ -400,7 +400,7 @@ Here we simply get the status code and the result body and compare it with the e
 The regular-expression change in the `FeatureContext` just makes sure that we only accept decimal numbers in that step.
 
 Now the tests fail with:
-```
+```gherkin
 ...
   Scenario: converting a valid BS date # bs-to-ad-conversion.feature:6
     Then the HTTP-response code should be "200" # bs-to-ad-conversion.feature:8
@@ -458,7 +458,7 @@ index ae01ed0..06299b0 100644
 Basically: split the incoming string, send it to the `GoBikramSambat` lib and return the formatted result.
 
 And with that the first scenario passes:
-```
+```gherkin
 ...
   Scenario: converting a valid BS date                                    # bs-to-ad-conversion.feature:6
     When a "GET" request is sent to the endpoint "/ad-from-bs/2060-04-01" # bsdateServer_test.go:14 -> aRequestIsSentToTheEndpoint
@@ -521,7 +521,7 @@ index 3156498..16c48ab 100644
 In `main.go` we now spit out an Error if the conversion does not work and in the tests we trim the body, because `http.Error` likes to send an `\n` at the end of the body.
 
 Finally, the scenarios pass:
-```
+```gherkin
 Feature: convert dates from BS to AD using an API
   As an app-developer in Nepal
   I want to be able to send BS dates to an API endpoint and receive the corresponding AD dates
