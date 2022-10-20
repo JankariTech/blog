@@ -119,6 +119,44 @@ defineProps({
     font-weight: 500;
     margin-top: 1.2rem;
   }
+  table, th, td {
+    border: 1px solid black;
+    border-radius: 0;
+  }
+  
+  table {
+    td ,th {
+      padding: .5rem;
+    }
+    
+  }
+
+//   table {
+
+//     padding: 3px;
+//     border: 1px solid black;
+
+//     thead {
+//         border-top: 2px solid black !important;
+//         border-bottom: 2px solid black !important;
+      
+//     }
+//     tbody {
+//         tr {
+//             border-bottom: 1px solid #F1F1F1;
+            
+//             td {
+//                 padding: 10px;
+//                 border: 1px solid #F1F1F1;
+//             }
+//             th {
+//                 padding-left: 10px;
+//                 border: 1px solid #F1F1F1;
+//             }
+//         }
+//     }
+
+//   }
 }
 
 body[theme-dark] {
