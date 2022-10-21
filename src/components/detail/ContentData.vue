@@ -119,6 +119,22 @@ defineProps({
     font-weight: 500;
     margin-top: 1.2rem;
   }
+
+  table {
+    border: 1px solid black;
+
+    td,
+    th {
+      border: 1px solid black;
+      border-radius: 0;
+      padding: 0.5rem;
+    }
+
+    thead,
+    tr:nth-child(even) {
+      background-color: #e2e0e0b4;
+    }
+  }
 }
 
 body[theme-dark] {
@@ -150,6 +166,20 @@ body[theme-dark] {
     ul,
     li {
       color: var(--text-dark);
+    }
+
+    table {
+      border-color: grey;
+
+      td,
+      th {
+        border-color: grey;
+      }
+
+      thead,
+      tr:nth-child(even) {
+        background-color: rgb(39 38 38);
+      }
     }
   }
 }
