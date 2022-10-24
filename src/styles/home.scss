@@ -67,8 +67,7 @@
       width: 36px;
       padding-top: 3px;
 
-      &.filtering,
-      &.sorting {
+      &.filtering, &.sorting {
         border: 1px solid rgb(53 53 53);
       }
     }
@@ -123,8 +122,7 @@ body[theme-dark] {
     }
 
     &--search button {
-      &.filtering,
-      &.sorting {
+      &.filtering, &.sorting {
         border: 1px solid rgb(149 149 149);
       }
     }

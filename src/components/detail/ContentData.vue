@@ -25,24 +25,12 @@ defineProps({
     text-justify: inter-word;
   }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p,
-  pre,
-  ul,
-  ol {
+  h1, h2, h3, h4, h5, h6, p, pre, ul, ol {
     margin-bottom: 1.8rem;
     color: var(--text-light);
   }
 
-  p,
-  ul,
-  ol,
-  blockquote {
+  p, ul, ol, blockquote {
     letter-spacing: 0.3px;
     font-size: 1rem;
     line-height: 1.5rem;
@@ -123,15 +111,13 @@ defineProps({
   table {
     border: 1px solid black;
 
-    td,
-    th {
+    td, th {
       border: 1px solid black;
       border-radius: 0;
       padding: 0.5rem;
     }
 
-    thead,
-    tr:nth-child(even) {
+    thead, tr:nth-child(even) {
       background-color: #e2e0e0b4;
     }
   }
@@ -156,28 +142,18 @@ body[theme-dark] {
       }
     }
 
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6,
-    p,
-    ul,
-    li {
+    h1, h2, h3, h4, h5, h6, p, ul, li {
       color: var(--text-dark);
     }
 
     table {
       border-color: grey;
 
-      td,
-      th {
+      td, th {
         border-color: grey;
       }
 
-      thead,
-      tr:nth-child(even) {
+      thead, tr:nth-child(even) {
         background-color: rgb(39 38 38);
       }
     }
