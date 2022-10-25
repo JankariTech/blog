@@ -24,14 +24,14 @@
         >
           <mdi-close />
         </button>
-        <button class="icon-button" title="Search"
-          @click="makeSearch"
+        <button class="icon-button search-button"
+          title="Search" @click="makeSearch"
         >
           <mdi-search class="one-rem" />
         </button>
         <DropMenu>
           <template #trigger>
-            <button class="icon-button" title="Filter"
+            <button class="icon-button filter-button" title="Filter"
               :class="{ 'filtering' : $route.name === 'Filter' }"
             >
               <mdi-filter class="one-rem"/>

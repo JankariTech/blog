@@ -47,11 +47,11 @@ After this, `devDependencies` in your `package.json` should look something like 
 ```
 
 ## Configuration
-We are going to use `Cucumber` to run our tests so we need to have a configuration file for it. At the root level of your project create a file `cucumber.conf.js`
+We are going to use `Cucumber` to run our tests so we need to have a configuration file for it. At the root level of your project create a file `cucumber.config.js`
 
 First of all, we are going to require the following:
 ```js
-// cucumber.conf.js file
+// cucumber.config.js file
 
 const { Before, BeforeAll, AfterAll, After, setDefaultTimeout } = require("@cucumber/cucumber");
 // you can choose other browsers like webkit or firefox according to your requirement
@@ -60,14 +60,14 @@ const { chromium } = require("playwright");
 
 Set default timeout to some reasonable amount of time
 ```js
-// cucumber.conf.js file
+// cucumber.config.js file
 
 // in milliseconds
 setDefaultTimeout(60000)
 ```
 Add the following code snippet to your file
 ```js
-// cucumber.conf.js file
+// cucumber.config.js file
 
 // launch the browser
 BeforeAll(async function () {
@@ -87,7 +87,7 @@ AfterAll(async function () {
 In the above snippet of code, we launch a `chrome` browser where our tests will be automated. You can launch a different one as per your requirement, just make sure you import the correct browser. We run the browser in the headed mode which can be done by setting `headless:false`, this means that when the test is running we can see it being automated in the browser. You can set it to `true` if you don't want to see the test running but where is the fun in that? Another option is `slowMo` which slows down Playwright operations by the specified amount of milliseconds and can be helpful to watch the test run. There are various options that can be set while launching the browser, you can go through all of them [here](https://playwright.dev/docs/api/class-browsertype#browser-type-launch). After we've finished our operations we will close the browser. This configuration is for before/after all of the tests are run. Now we need to configure what happens when each test scenario is run. For this look at the snippet below:
 
 ```js
-// cucumber.conf.js file
+// cucumber.config.js file
 
 // Create a new browser context and page per scenario
 Before(async function () {
@@ -104,9 +104,9 @@ After(async function () {
 ```
 After we've launched our browser we need to create a new browser context. Playwright allows creating `incognito` browser contexts with `browser.newContext([options])` method. Each browser context has its page that provides methods to interact with a single tab in a browser. We can create a page with `context.newPage()` method. Similar to launching a browser we can set a lot of options while creating a `browser context` as well like screenshots, record video,  geolocation, and more, you can go through all of them [here](https://playwright.dev/docs/api/class-browser#browser-new-context). After we've finished with our operations we close the `page` and `context`.
 
-*Voila*, we're done with the configuration part. The whole `cucumber.conf.js` file looks like this :
+*Voila*, we're done with the configuration part. The whole `cucumber.config.js` file looks like this :
 ```js
-// cucumber.conf.js file
+// cucumber.config.js file
 
 const { Before, BeforeAll, AfterAll, After, setDefaultTimeout } = require("@cucumber/cucumber");
 const { chromium } = require("playwright");
@@ -200,7 +200,7 @@ Feature: todo
 Now we implement each step of the scenario using Playwright! Create a context file `tests/acceptance/stepDefinitions/todoContext.js`. We can get a boilerplate for each step in the scenario where we can provide our implementation. For that add the following script in your `package.json` file.
 
 ```json
-"test:e2e": "cucumber-js --require cucumber.conf.js --require tests/acceptance/stepDefinitions/**/*.js --format @cucumber/pretty-formatter"
+"test:e2e": "cucumber-js --require cucumber.config.js --require tests/acceptance/stepDefinitions/**/*.js --format @cucumber/pretty-formatter"
 
 ```
 We will be using the `test:e2e` script for running the test. Now go to your terminal and run the script

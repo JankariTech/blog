@@ -1,0 +1,18 @@
+{
+  "name": "e2e",
+  "version": "1.0.0",
+  "description": "e2e tests for the app",
+  "type": "module",
+  "scripts": {
+    "test:e2e": "cucumber-js -c ./cucumber.config.js -t ${TEST_TAGS_STRING:-'not @notImplementedYet and not @skip'}"
+  },
+  "keywords": ["playwright", "cucumber", "gherkin"],
+  "author": "Kiran Parajuli",
+  "license": "ISC",
+  "devDependencies": {
+    "@cucumber/cucumber": "^8.7.0",
+    "@cucumber/pretty-formatter": "^1.0.0",
+    "@playwright/test": "^1.27.1",
+    "v8-to-istanbul": "^9.0.1"
+  }
+}

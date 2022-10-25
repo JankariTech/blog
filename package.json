@@ -1,13 +1,8 @@
 {
   "name": "jankaritech-blog",
   "description": "A simple blogging platform with markdown files.",
-  "private": true,
   "version": "0.0.1",
-  "keywords": [
-    "blog",
-    "markdown",
-    "vue"
-  ],
+  "keywords": ["blog", "markdown", "vue"],
   "license": "GPL-3.0-or-later",
   "authors": [
     {
@@ -27,9 +22,7 @@
     "lint:fix": "eslint src lint --fix --ext .js,.vue",
     "stylelint": "stylelint src --config stylelint.conf.js",
     "stylelint:fix": "stylelint src --config stylelint.conf.js --fix",
-    "markdown:lint": "node lint/check.js",
-    "test:e2e": "npx playwright test --project chromium --headed",
-    "test:e2e:coverage": "NODE_ENV=test npx nyc report --reporter=html"
+    "markdown:lint": "node lint/check.js"
   },
   "dependencies": {
     "@iconify-json/mdi": "^1.1.24",
@@ -42,17 +35,14 @@
     "vue-router": "^4.0.16"
   },
   "devDependencies": {
-    "@playwright/test": "^1.27.1",
     "@vitejs/plugin-vue": "^2.3.3",
-    "babel-plugin-istanbul": "^6.1.1",
+    "dotenv": "^16.0.3",
     "eslint": "^8.18.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-n": "^15.2.3",
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-vue": "^9.1.1",
-    "nyc": "^15.1.0",
-    "playwright-test-coverage": "^1.2.0",
     "postcss-html": "^1.4.1",
     "sass": "^1.53.0",
     "stylelint": "^14.9.1",

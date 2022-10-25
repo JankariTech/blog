@@ -2,6 +2,10 @@
   margin: 1.6rem;
   border: 1px solid grey;
 
+  &:hover {
+    box-shadow: var(--small-shadow);
+  }
+
   &--banner {
     text-align: center;
     height: 180px;
