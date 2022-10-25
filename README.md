@@ -3,6 +3,7 @@
 A beautiful blogging platform for the JankariTech peoples.
 
 ## Installation
+
 1. Requirements
    - [NodeJS (>16.0.0)](https://nodejs.org/en/download/)
    - [pnpm (>7.0.0)](https://pnpm.io/installation)
@@ -19,7 +20,8 @@ A beautiful blogging platform for the JankariTech peoples.
    This should start a development server on port 3000.
 
 ## Publish a Blog
-1. Create a md file inside `src/assets` folder
+
+1. Create a markdown file inside `src/assets` folder
 2. Add meta information at the top
     ```md
     ---
@@ -34,8 +36,8 @@ A beautiful blogging platform for the JankariTech peoples.
     episode: 1 (episode number of the series, optional)
     ---
     ```
-3. Wrap meta information with two horizontal lines
-4. Add the main content below the last horizontal line
+3. Wrap **meta** information with two horizontal lines
+4. Add the **main** content below the last horizontal line from the **meta** block
     ```md
     ---
     meta information...
@@ -51,7 +53,7 @@ A beautiful blogging platform for the JankariTech peoples.
     pnpm markdown:lint
     ```
    This will check the markdown files inside `src/assets` folder for the following:
-   - Missing meta information
-   - No use of 1st heading tag (`#`) inside the main content
-   - Dead/Insecure image links
-6. If these all checks are good, make the PR with a new markdown file as a brand-new blog post.
+   - Missing **meta** information
+   - Usage of the first heading tag (`#`) inside the **main** content
+   - Usage of dead or insecure image links
+6. If these all checks are good, make a PR with a new markdown file as a brand-new blog post.
