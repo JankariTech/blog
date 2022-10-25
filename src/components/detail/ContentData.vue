@@ -30,7 +30,7 @@ defineProps({
     color: var(--text-light);
   }
 
-  p, ul, ol, blockquote {
+  p, ul, ol, blockquote, td, th {
     letter-spacing: 0.3px;
     font-size: 1rem;
     line-height: 1.5rem;
