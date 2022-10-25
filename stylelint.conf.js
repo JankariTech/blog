@@ -9,6 +9,10 @@ module.exports = {
     files: ["**/*.scss"],
     customSyntax: "postcss-scss"
   }],
+  rules: {
+    "selector-list-comma-space-after": "always",
+    "selector-list-comma-newline-after": null
+  },
   ignoreFiles: [
     "**/*.js",
     "**/*.md",
