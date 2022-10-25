@@ -3,8 +3,10 @@
 BASE_DIR="home/runner/work/blog"
 DIST_BRANCH="dist"
 
+echo "Building Started...."
 pnpm build
-
+echo "Building Completed."
+echo "Deploying Started...."
 mkdir -p "${BASE_DIR}""/temp"
 mv docs "${BASE_DIR}""/temp"
 mkdir -p "${BASE_DIR}""/temp/docs/src"
@@ -25,3 +27,4 @@ if [ -n "$(git status --porcelain)" ]; then
 fi
 
 rm -rf "${BASE_DIR}""/temp"
+echo "Deploying Completed"

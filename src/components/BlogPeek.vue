@@ -1,10 +1,5 @@
 <template>
-  <div class="blog-peek"
-    :class="{
-      'small-shadow': !detailView && !dark,
-      'small-shadow-dark': !detailView && dark,
-    }"
-  >
+  <div class="blog-peek">
     <div class="blog-peek--banner"
       :class="{
         'blog-peek--banner--fallback': !banner
