@@ -25,3 +25,6 @@ dist-ssr
 
 # Build output
 docs
+/test-results/
+/playwright-report/
+/playwright/.cache/
