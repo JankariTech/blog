@@ -38,8 +38,8 @@ defineProps({
 
   & > p:first-child {
     &::first-letter {
-      padding: 1.2rem 1rem;
-      font-size: 3.5rem;
+      padding: 0.7rem 0.5rem;
+      font-size: 2rem;
       line-height: 4rem;
       color: var(--jankaritech);
       border: 4px double var(--jankaritech);
