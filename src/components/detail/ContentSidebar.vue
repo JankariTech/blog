@@ -85,6 +85,7 @@ const scrollToHeading = (headingText, headingDepth) => {
     font-size: 1.6rem;
     font-weight: 400;
     width: fit-content;
+    margin-top: -1rem;
     margin-bottom: 1rem;
     padding-block: 0.4rem;
     border-bottom: 1px solid grey;
