@@ -14,7 +14,7 @@ defineProps({
 <style lang="scss">
 .blog-content-data {
   flex: 65%;
-  padding: 0 0.5rem;
+  padding: 0 1rem;
 
   @media only screen and (max-width: 768px) {
     flex: 100%;
@@ -34,6 +34,19 @@ defineProps({
     letter-spacing: 0.3px;
     font-size: 1rem;
     line-height: 1.5rem;
+  }
+
+  & > p:first-child {
+    &::first-letter {
+      padding: 0.7rem 0.5rem;
+      font-size: 2rem;
+      line-height: 4rem;
+      color: var(--jankaritech);
+      border: 4px double var(--jankaritech);
+      margin-right: 0.6rem;
+      margin-top: 0.3rem;
+      float: left;
+    }
   }
 
   li {
