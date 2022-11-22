@@ -8,7 +8,7 @@ tags: browser automation, testing, playwright, nightwatch, selenium, webdriver, 
 banner: https://some.link.jpg
 ---
 
-**TLDR**: _W3C WebDriver_ and _Chrome DevTools Protocol_ are the two main protocols that are used to automate the browser and most of the browser automation tools are based on one of them.
+**TLDR**: _W3C WebDriver_ and _Chrome DevTools Protocol_ are the two main protocols that are used to automate the browser and most of the browser automation tools are based on one of them. WebDriver BiDi is said to be the future of cross-browser automation.
 
 > 💡 Your browser is an automation tool in itself.
 
@@ -37,4 +37,26 @@ In order to automate the browser, there are mainly three protocols or let's say 
 
 ### W3C WebDriver
 
-WebDriver is a standard remote control interface formulated by W3C for controlling the browsers. It provides platform and language neutral interface and supports almost all the major browsers such as Chrome, Firefox, Safari, Edge, Opera, etc. Communication with the browser is done through the JSON Wire protocol, a RESTful web service using JSON over HTTP. The server side implementation of this protocol is known as the webdriver (aka browser driver); examples are chromedriver, geckodriver, etc. And the client side implementation can be done in any preferred languages and patterns. Some examples of webdriver client are selenium, nightwatch, webdriverio, etc.
+WebDriver is a standard remote control interface formulated by W3C for controlling the browsers. It provides platform and language neutral interface and supports almost all the major browsers such as Chrome, Firefox, Safari, Edge, Opera, etc.
+
+Communication with the browser is done through the JSON Wire protocol, a RESTful web service using JSON over HTTP. The server side implementation of this protocol is known as the webdriver (aka browser driver); examples are chromedriver, geckodriver, etc. And the client side implementation can be done in any preferred languages and patterns. Some examples of webdriver client are selenium, nightwatch, webdriverio, etc.
+
+![WebDriver Protocol](/src/assets/BrowserAutomationProtocol/images/webdriver_ill.jpg)
+
+### Chrome DevTools Protocol
+
+The Chrome DevTools Protocol (CDP) is a debugging protocol used by Chromium based browsers such as Chrome, Edge, Opera, etc. Although it is not designed for testing purpose, it is a great tool for automating the browser and some automation tools such as puppeteer and playwright have proven that.
+
+There is no middleman like webdriver server (browser driver) between client and the browser in this approach. Instead, the browser is directly controlled by the client using CDP. The communication with the browser is done through the socket connection and hence also enables the bi-directional communcation.
+
+![Chrome DevTools Protocol](/src/assets/BrowserAutomationProtocol/images/cdp_ill.jpg)
+
+### Native Scripting
+
+This approach is different from above two protocols. In the above two approaches, the automation script (client) and the browser are separated and run in different processes. In contrast, in this approach, the automation script is embedded in the browser itself and hence the browser is directly controlled by the injected script.
+
+This comes with some trade-offs such as unable to support multiple browser tabs and more than one browser cannot be controlled at a time. But it has its own uniqueness and strengths.
+
+Automation tools like Cypress and TestCafe use this pattern.
+
+![Native Scripting Approach](/src/assets/BrowserAutomationProtocol/images/native_ill.jpg)
