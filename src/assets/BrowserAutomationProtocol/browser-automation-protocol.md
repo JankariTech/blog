@@ -1,14 +1,14 @@
 ---
-title: Different Ways to Automate the Browser
+title: Different Approaches (Protocols) to Automate the Browser
 authorName: Sawjan Gurung
 authorAvatar: https://www.jankaritech.com/images/2021/12/29/p1110923-crop-col-800.jpg
 authorLink: https://github.com/saw-jan
 createdAt: 22/11/2022
-tags: browser automation, testing, playwright, nightwatch, selenium, webdriver, cypress
+tags: browser automation, testing, playwright, selenium, webdriver, cypress, protocols, chrome devtools
 banner: https://some.link.jpg
 ---
 
-**TLDR**: _W3C WebDriver_ and _Chrome DevTools Protocol_ are the two main protocols that are used to automate the browser and most of the browser automation tools are based on one of them. WebDriver BiDi is said to be the future of cross-browser automation.
+**TLDR**: _WebDriver_ and _Chrome DevTools Protocol_ are the two main protocols that are used to automate the browser and most of the browser automation tools are based on one of them. WebDriver BiDi is said to be the future of cross-browser automation.
 
 > 💡 Your browser is an automation tool in itself.
 
@@ -31,13 +31,13 @@ The simplest way to automate any browser is to use the available automation libr
 
 In order to automate the browser, there are mainly three protocols or let's say approaches in practice.
 
-1. W3C WebDriver
+1. WebDriver (Selenium WebDriver)
 2. Chrome DevTools Protocol
 3. Native Scripting (Embedded JavaScript)
 
-### W3C WebDriver
+### WebDriver
 
-WebDriver is a standard remote control interface formulated by W3C for controlling the browsers. It provides platform and language neutral interface and supports almost all the major browsers such as Chrome, Firefox, Safari, Edge, Opera, etc.
+WebDriver is a remote control interface for controlling the browsers, developed by Selenium HQ and later standarized by W3C. It provides platform and language neutral interface and supports almost all the major browsers such as Chrome, Firefox, Safari, Edge, Opera, etc.
 
 Communication with the browser is done through the JSON Wire protocol, a RESTful web service using JSON over HTTP. The server side implementation of this protocol is known as the webdriver (aka browser driver); examples are chromedriver, geckodriver, etc. And the client side implementation can be done in any preferred languages and patterns. Some examples of webdriver client are selenium, nightwatch, webdriverio, etc.
 
