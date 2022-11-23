@@ -43,6 +43,8 @@ Communication with the browser is done through the JSON Wire protocol, a RESTful
 
 ![WebDriver Protocol](/src/assets/BrowserAutomationProtocol/images/webdriver_ill.jpg)
 
+Learn more about the protocol at [W3C WebDriver](https://w3c.github.io/webdriver/)
+
 ### Chrome DevTools Protocol
 
 The Chrome DevTools Protocol (CDP) is a debugging protocol used by Chromium based browsers such as Chrome, Edge, Opera, etc. Although it is not designed for testing purpose, it is a great tool for automating the browser and some automation tools such as puppeteer and playwright have proven that.
@@ -50,6 +52,8 @@ The Chrome DevTools Protocol (CDP) is a debugging protocol used by Chromium base
 There is no middleman like webdriver server (browser driver) between client and the browser in this approach. Instead, the browser is directly controlled by the client using CDP. The communication with the browser is done through the socket connection and hence also enables the bi-directional communcation.
 
 ![Chrome DevTools Protocol](/src/assets/BrowserAutomationProtocol/images/cdp_ill.jpg)
+
+Learn more about the protocol at [CDP](https://chromedevtools.github.io/devtools-protocol/)
 
 ### Native Scripting
 
@@ -69,6 +73,7 @@ WebDriver is a unidirectional but a standard protocol to control the army of bro
 
 WebDriver BiDi is basically an extension to the WebDriver protocol which is still under development at the time of writing this blogpost. And it is said to be the future of cross-browser automation because most of the key playsers such as Google, Apple, Mozilla, Microsoft, BrowserStack, etc. are involved in the development of this protocol.
 
-\
+If you want to learn more about WebDriver BiDi, you can read the [WebDriver BiDi](https://w3c.github.io/webdriver-bidi/) specification.
+
 \
 I hope this blogpost was helpful. Thank you for reading. 😊
