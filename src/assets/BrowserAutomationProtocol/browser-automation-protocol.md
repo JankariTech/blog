@@ -60,3 +60,15 @@ This comes with some trade-offs such as unable to support multiple browser tabs 
 Automation tools like Cypress and TestCafe use this pattern.
 
 ![Native Scripting Approach](/src/assets/BrowserAutomationProtocol/images/native_ill.jpg)
+
+## 🎊 Bonus Point 🎊
+
+### WebDriver BiDi
+
+WebDriver is a unidirectional but a standard protocol to control the army of browsers. Whereas, CDP is a bidirectional but neither a testing nor a standard protocol which means the browser choices with CDP is limited and the protocol is likely to change rapidly. This is where WebDriver BiDi comes into the picture. The main concept of WebDriver BiDi is to combine the best of both worlds. It is a new standard protocol which is based on a bi-directional communication over WebSocket or Pipes.
+
+WebDriver BiDi is basically an extension to the WebDriver protocol which is still under development at the time of writing this blogpost. And it is said to be the future of cross-browser automation because most of the key playsers such as Google, Apple, Mozilla, Microsoft, BrowserStack, etc. are involved in the development of this protocol.
+
+\
+\
+I hope this blogpost was helpful. Thank you for reading. 😊
