@@ -5,7 +5,7 @@ authorAvatar: https://www.jankaritech.com/images/2021/12/29/p1110923-crop-col-80
 authorLink: https://github.com/saw-jan
 createdAt: 22/11/2022
 tags: browser automation, testing, playwright, selenium, webdriver, cypress, protocols, chrome devtools
-banner: https://some.link.jpg
+banner: /src/assets/BrowserAutomationProtocol/images/cover.jpg
 ---
 
 **TLDR**: _WebDriver_ and _Chrome DevTools Protocol_ are the two main protocols that are used to automate the browser and most of the browser automation tools are based on one of them. WebDriver BiDi is said to be the future of cross-browser automation.
