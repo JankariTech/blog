@@ -83,6 +83,17 @@ function lintMeta (key) {
       success = false
     }
   })
+
+  // check if the createdAt is set with proper format
+  if (peekData.createdAt) {
+    const regex = /[A-Za-z]+\s\d{1,2},\s\d{4}/g
+
+    if (!regex.test(peekData.createdAt)) {
+      log.error(`Invalid date format in ${key}`)
+      success = false
+    }
+  }
+
   // check if series has episodes
   if (peekData.seriesTitle && !peekData.episode) {
     log.error(`Missing episode number in ${key}`)
