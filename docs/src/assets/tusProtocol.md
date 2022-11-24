@@ -3,7 +3,7 @@ title: Resumable file upload with TUS protocol
 authorName: Swoichha Adhikari
 authorAvatar: https://harunmudak.com/wp-content/uploads/2020/12/girl-cartoon-characters-3-724x1024.jpg
 authorLink: https://github.com/swoichha
-createdAt: 02/10/2022
+createdAt: Feb 10, 2022
 tags: tus, upload, resumable
 banner: https://tus.io/assets/img/tus1--no-io.png
 ---
