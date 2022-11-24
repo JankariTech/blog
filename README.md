@@ -22,18 +22,18 @@ A beautiful blogging platform for the JankariTech peoples.
 ## Publish a Blog
 
 1. Create a markdown file inside `src/assets` folder
-2. Add meta information at the top
+2. Add meta information at the top as shown below
     ```md
     ---
-    title: Unit Testing with VueJS
+    title: Very Interesting Blog (**required**)
     authorName: John Doe
-    authorAvatar: https://some.link.jpg (must be an image URL)
+    authorAvatar: https://some.link.jpg (must be an image URL, **required**)
     authorLink: https://github.com/John
-    createdAt: 02/10/2022 (must be in format dd/mm/yyyy)
-    tags: vue, jest, unit, testing (separate multiple items with a comma `,` character)
-    banner: https://some.link.jpg (must be an image URL)
-    seriesTitle: Unit Testing is Fun (if only this post belongs to a series, optional)
-    episode: 1 (episode number of the series, optional)
+    createdAt: Oct 30, 2019 (must be in the format `MM dd, yyyy`, **required**)
+    tags: vue, jest, unit, testing (separate multiple items with a comma `,` character, **required**)
+    banner: https://some.link.jpg (must be an image URL, **required**)
+    seriesTitle: Unit Testing is Fun (if only this post belongs to a series, **optional**)
+    episode: 1 (episode number of the series, **optional**, required if the seriesTitle is set)
     ---
     ```
 3. Wrap **meta** information with two horizontal lines
