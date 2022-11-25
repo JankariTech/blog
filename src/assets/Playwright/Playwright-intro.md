@@ -6,6 +6,8 @@ authorLink: https://github.com/SwikritiT
 createdAt: Feb 7, 2022
 tags: playwright, testing, e2e, javascript
 banner: https://res.cloudinary.com/practicaldev/image/fetch/s--M3gPfKHX--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/swetkwdnkxp39lkevjea.png
+seriesTitle: E2E Testing using BBD with Playwright
+episode: 1
 ---
 Playwright is an open-source NodeJS framework for browser automation. It is developed by Microsoft and the development team has members that were involved in developing [Puppeteer](https://github.com/puppeteer/puppeteer) for Google.
 
