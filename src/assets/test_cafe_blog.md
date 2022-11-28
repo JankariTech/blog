@@ -1,5 +1,5 @@
 ---
-title: Start E2E testing using test-cafe
+title: E2E Testing using TestCafe
 authorName: Sagar Gurung
 authorAvatar: https://avatars.githubusercontent.com/u/46086950?v=4
 authorLink: https://github.com/SagarGi
@@ -9,31 +9,31 @@ banner: https://raw.githubusercontent.com/DevExpress/testcafe-gh-page-assets/mas
 ---
 ## Background
 
-Are you one of those who is still struggling to write your first End-to-End (E2E) test for your web application ?
+Are you one of those who is still struggling to write your first End-to-End (E2E) test for your web application?
 
-So what may be the reasons that you are struggling ?
+So what may be the reasons that you are struggling?
 
-- difficult to set up test framework with your web application ?
-- difficult to learn ?
-- lengthy implementation of code ?
+- difficult to set up test framework with your web application?
+- difficult to learn?
+- lengthy implementation of code?
 
-If above points are exactly of your concern then `test-cafe` can be your goto test automation framework for testing your web application.
+If the above points are exactly of your concern then `test-cafe` can be your go-to test automation framework for testing your web application.
 
-In this blog post we will look into the concept of `test-cafe`, a modern solution to sort out E2E testing for your web application. At the end of this blog hopefully you will be able to set up `test-cafe` for your web application and run your first end-to-end test.
+In this blog post, we will look into the concept of `test-cafe`, a modern solution to sort out E2E testing for your web application. At the end of this blog hopefully, you will be able to set up `test-cafe` for your web application and run your first end-to-end test.
 
 ## Brief about TestCafe
-Let's start this blog by understanding a brief about `test-cafe`. It is an open-source test automation framework or tool built with Node Js. This framework basically supports 2 programming languages i.e javascript and Typescript. So you are required to have at least basics of Javascript to use this tool. [DevExpress](https://www.devexpress.com/) is in charge of managing TestCafe, which is made available under an open-source MIT license.
+Let's start this blog with a brief understanding of `test-cafe`. It is an open-source test automation framework or tool built with Node Js. This framework basically supports two programming languages i.e Javascript and Typescript. So you are required to have at least the basics of Javascript to use this tool. [DevExpress](https://www.devexpress.com/) is in charge of managing TestCafe, which is made available under an open-source MIT license.
 
-## Why to use TestCafe ?
+## Why to use TestCafe?
 Before moving to installation and set-up, lets understand some points why to use `test-cafe`.
 
 - It is very easy to set up
 - No dependencies (with other libraries)
-- writing test is easy and with less code
+- Writing test is easy and with less code
 - Cross-browser testing is made easy
 - Free and Open Source
 
-*Note: I will doing the whole setup with Ubuntu 20.04.3 LTS, but it will be similar for other OS too*
+*Note: I will be doing the whole setup with Ubuntu 20.04.3 LTS, but it will be similar for other OS too*
 
 ## Prerequisites
 
@@ -57,9 +57,9 @@ After this, your `package.json` file should contain `dependencies` as
 }
 ```
 
-## What to test ?
+## What to test?
 
-For this blog we will be writing E2E test for this `https://devexpress.github.io/testcafe/example` website (provided by devexpress). You can go to this website and check what does it look like. We will automate a simple form submit scenarios using `test-cafe`
+For this blog, we will be writing E2E test for this `https://devexpress.github.io/testcafe/example` website (provided by devexpress). You can go to this website and check what it looks like. We will automate a simple form submit scenarios using `test-cafe`
 
 ##  Writing Test
 
@@ -86,7 +86,7 @@ The configuration should look like this:
 
 ```
 
-I assume that you have checked `https://devexpress.github.io/testcafe/example` website. In that website if we fill up the username and submit the form, it redirects us to another page saying thank you. So this will be our simple testcase, and we will be automating it with `test-cafe`
+I assume that you have checked `https://devexpress.github.io/testcafe/example` website. On that website, if we fill up the username and submit the form, it redirects us to another page saying thank you. So this will be our simple test case, and we will be automating it with `test-cafe`
 I have implemented the test code And it looks like this.
 
 ```js
@@ -114,11 +114,11 @@ test("Submiting a form should browse to thank you page", async (t) => {
 
 ```
 
-I will not be explaining the whole implementation But I have put comments on each action in the code. And probably the code is easy to understand which is exactly `test-cafe` has aimed for.
+I will not be explaining the whole implementation but I have put comments on each action in the code. And probably the code is easy to understand which is exactly what `test-cafe` has aimed for.
 
 ## Running Test
 
-Huh, now finally the time has come to run our test script and see it magically running. To run our test we need some adjustment to do in `package.json` file. Put the test scripts as
+Huh, now finally the time has come to run our test script and see it magically running. To run our test we need some adjustments in the `package.json` file. Put the test scripts as
 
 ```json
 // package.json file
@@ -135,7 +135,7 @@ Now one final command needed to run our test i.e.
 npm run test
 ```
 
-With the above command being executed, you should see browser (chrome) automating the actions that we have implemented. (submitting a form with name which redirects to Thank You page)
+With the above command being executed, you should see the browser (chrome) automating the actions that we have implemented. (submitting a form with a name that redirects to Thank You page)
 
 And your output in the console should look like this
 
@@ -149,7 +149,7 @@ And your output in the console should look like this
  - Chrome 105.0.0.0 / Ubuntu 20.04
 
  My First E2E test with test-cafe
- ✓ Submiting a form should browse to thank you page
+ ✓ Submitting a form should browse to thank you page
 
 
  1 passed (8s)
@@ -158,5 +158,5 @@ And your output in the console should look like this
 
 ## Conclusion
 
-So far I have used `test-cafe`, it is definitely a goto automation tool for modern web End-To-End testing.
+So far I have used `test-cafe`, it is definitely a go-to automation tool for modern web End-To-End testing.
 You can use it on your own project quickly with ease and less code. Also, it has many more features to explore. You can start exploring [test-cafe](https://testcafe.io/) now.
