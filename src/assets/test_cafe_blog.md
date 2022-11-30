@@ -3,7 +3,7 @@ title: E2E Testing using TestCafe
 authorName: Sagar Gurung
 authorAvatar: https://avatars.githubusercontent.com/u/46086950?v=4
 authorLink: https://github.com/SagarGi
-createdAt: Nov 20, 2022
+createdAt: Nov 30, 2022
 tags: test-cafe, testing, webUI-testing, javascript, automation
 banner: https://raw.githubusercontent.com/DevExpress/testcafe-gh-page-assets/master/src/images/testcafe-ogp-icon.png
 ---
@@ -29,7 +29,7 @@ Before moving to installation and set-up, lets understand some points why to use
 
 - It is very easy to set up
 - No dependencies (with other libraries)
-- Writing test is easy and with less code
+- Writing tests is easy and with less code
 - Cross-browser testing is made easy
 - Free and Open Source
 
@@ -59,7 +59,7 @@ After this, your `package.json` file should contain `dependencies` as
 
 ## What to test?
 
-For this blog, we will be writing E2E test for this `https://devexpress.github.io/testcafe/example` website (provided by devexpress). You can go to this website and check what it looks like. We will automate a simple form submit scenarios using `test-cafe`
+For this blog, we will be writing an E2E test for this `https://devexpress.github.io/testcafe/example` website (provided by devexpress). You can go to this website and check what it looks like. We will automate a simple form submit scenario using `test-cafe`
 
 ##  Writing Test
 
@@ -95,18 +95,18 @@ I have implemented the test code And it looks like this.
 import { Selector, t } from "testcafe";
 fixture`My First E2E test with test-cafe`.page;
 
-const inputNameFiledSelector = Selector("#developer-name");
+const inputNameFieldSelector = Selector("#developer-name");
 const submitButtonSelector = Selector("#submit-button");
 const headingSelector = Selector("#article-header");
 
-test("Submiting a form should browse to thank you page", async (t) => {
+test("Submitting a form should browse to thank you page", async (t) => {
   const yourName = "JankariTech";
-  // fills name input filed
-  await t.typeText(inputNameFiledSelector, yourName);
-  // clicks to sumit button
+  // fills name input field
+  await t.typeText(inputNameFieldSelector, yourName);
+  // clicks the submit button
   await t.click(submitButtonSelector);
 
-  // check for the thankyou page after form has been submiited with name
+  // check for the thankyou page after form has been submitted with name
   const actualThankyouMessage = await headingSelector.innerText;
   await t.expect("Thank you, " + yourName + "!").eql(actualThankyouMessage);
 });
