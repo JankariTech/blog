@@ -24,7 +24,7 @@
       <div class="f-line">
         <i>
           <span><mdi-format-quote-open class="quote-icon" /></span>
-          We develop <span>SOFTWARE</span> that matters. We develop <span>STAFF</span> to reach their peek potential.
+          We develop <span>SOFTWARE</span> that matters. We develop <span>STAFF</span> so they reach their peak potential.
           <span><mdi-format-quote-close class="quote-icon" /></span>
         </i>
       </div>
