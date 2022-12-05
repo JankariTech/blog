@@ -3,7 +3,7 @@ title: Playwright debugging and error tracing
 authorName: Swikriti Tripathi
 authorAvatar: https://avatars.githubusercontent.com/u/41103328?v=4
 authorLink: https://github.com/SwikritiT
-createdAt: Feb 7, 2022
+createdAt: Dec 5, 2022
 tags: playwright, testing, e2e, javascript , debugging
 banner: https://res.cloudinary.com/practicaldev/image/fetch/s--M3gPfKHX--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/swetkwdnkxp39lkevjea.png
 seriesTitle: E2E Testing using BBD with Playwright
