@@ -10,7 +10,7 @@ seriesTitle: E2E Testing using BBD with Playwright
 episode: 2
 ---
 
-How many times has it happened, that you wrote blocks of code thinking they work but the reality was otherwise? I think it's safe to assume that this has happened quite a lot. Sometimes it might be easy to find the mistake but it's not always the case, so in this blog I'm going to try to explain some of the debugging methods in playwright that we can incorporate in our project to make our life a little bit easier. This might be the right time to mention that you might want to read part one of the series <link here> as we are going to use the same code here.
+How many times has it happened, that you wrote blocks of code thinking they work but the reality was otherwise? I think it's safe to assume that this has happened quite a lot. Sometimes it might be easy to find the mistake but it's not always the case, so in this blog I'm going to try to explain some of the debugging methods in playwright that we can incorporate in our project to make our life a little bit easier. This might be the right time to mention that you might want to read [part one of the series](https://blog.jankaritech.com/#/blog/Behavior%20Driven%20Development%20(BDD)%20using%20Playwright) as we are going to use the same code here.
 
 
 ## Headed mode
