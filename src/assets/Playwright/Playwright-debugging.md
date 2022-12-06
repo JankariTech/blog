@@ -1,5 +1,5 @@
 ---
-title: Playwright debugging and error tracing
+title: Debugging and Error Tracing in Playwright
 authorName: Swikriti Tripathi
 authorAvatar: https://avatars.githubusercontent.com/u/41103328?v=4
 authorLink: https://github.com/SwikritiT
@@ -83,7 +83,7 @@ Let's see how we can set it up in our end-to-end tests. In the `cucumber.conf.js
 Before(async function () {
    global.context = await global.browser.newContext();
    // start tracing the test execution by enabling the screenshots and snapshots
-   await context.tracing.start({ screenshots: true, snapshots: true });
+   await global.context.tracing.start({ screenshots: true, snapshots: true });
    global.page = await global.context.newPage();
 });
 ```
@@ -96,7 +96,7 @@ Now, in the `after hook` we can add the following code to stop tracing and store
 After(async function () {
    await global.page.close();
    // stop tracing and store it in the given path
-   await context.tracing.stop({ path: 'tests/acceptance/report/trace.zip' });
+   await global.context.tracing.stop({ path: 'tests/acceptance/report/trace.zip' });
    await global.context.close();
 });
  
