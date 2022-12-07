@@ -115,6 +115,7 @@ import { getPeekData } from "../helpers/markdown"
 import getImageUrl from "../helpers/images"
 import { Storage } from "../helpers/storage"
 import { SORT_OPTIONS, FILTER_OPTIONS } from "../helpers/constants"
+import { tracker } from "../helpers/tracker"
 
 const { currentRoute, push } = useRouter()
 
@@ -127,6 +128,7 @@ const homeViewMode = ref(null)
 
 onMounted(async () => {
   init()
+  tracker.trackPageView()
 })
 
 const init = () => {

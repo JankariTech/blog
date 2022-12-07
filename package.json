@@ -31,6 +31,7 @@
     },
     "dependencies": {
         "@iconify-json/mdi": "^1.1.24",
+        "@jonkoops/matomo-tracker": "^0.7.0",
         "dompurify": "^2.3.8",
         "highlight.js": "^11.6.0",
         "marked": "^4.0.17",

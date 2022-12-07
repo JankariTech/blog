@@ -20,6 +20,7 @@ import ContentInfo from "../components/detail/ContentInfo"
 import ContentData from "../components/detail/ContentData"
 import ContentSidebar from "../components/detail/ContentSidebar"
 import FootSection from "../components/detail/FootSection"
+import { tracker } from "../helpers/tracker"
 
 const { currentRoute, push } = useRouter()
 const { modules } = useMarkdown()
@@ -30,6 +31,7 @@ const peekData = ref(null)
 
 onMounted(() => {
   loadMarkdown()
+  tracker.trackPageView()
 })
 
 watch(currentRoute, () => {
