@@ -2,6 +2,7 @@ lockfileVersion: 5.4
 
 specifiers:
   '@iconify-json/mdi': ^1.1.24
+  '@jonkoops/matomo-tracker': ^0.7.0
   '@vitejs/plugin-vue': ^2.3.3
   dompurify: ^2.3.8
   eslint: ^8.18.0
@@ -28,6 +29,7 @@ specifiers:
 
 dependencies:
   '@iconify-json/mdi': 1.1.24
+  '@jonkoops/matomo-tracker': 0.7.0
   dompurify: 2.3.8
   highlight.js: 11.6.0
   marked: 4.0.17
@@ -165,6 +167,10 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /@jonkoops/matomo-tracker/0.7.0:
+    resolution: {integrity: sha512-ppCXiDaVytTQOP6hNZIBwjUph5IrGgDoQw4IF5sBoA3PBpMAc5tWtPExbVWTR5pJWpTcp11dv2M83n9pm7LpeQ==}
+    dev: false
 
   /@nodelib/fs.scandir/2.1.5:
     resolution: {integrity: sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==}
