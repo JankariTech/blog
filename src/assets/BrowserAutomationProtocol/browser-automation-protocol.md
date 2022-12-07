@@ -1,7 +1,7 @@
 ---
 title: Different Approaches (Protocols) to Automate the Browser
 authorName: Sawjan Gurung
-authorAvatar: https://www.jankaritech.com/images/2021/12/29/p1110923-crop-col-800.jpg
+authorAvatar: https://avatars.githubusercontent.com/u/52366632?v=4
 authorLink: https://github.com/saw-jan
 createdAt: Nov 22, 2022
 tags: browser automation, testing, playwright, selenium, webdriver, cypress, protocols, chrome devtools
