@@ -1,7 +1,7 @@
 ---
 title: Contract testing with Pact (JavaScript)
-authorName: Sajan Gurung
-authorAvatar: https://www.jankaritech.com/images/2021/12/29/p1110923-crop-col-800.jpg
+authorName: Sawjan Gurung
+authorAvatar: https://avatars.githubusercontent.com/u/52366632?v=4
 authorLink: https://github.com/saw-jan
 createdAt: Aug 24, 2021
 tags: pactjs, testing, javascript
