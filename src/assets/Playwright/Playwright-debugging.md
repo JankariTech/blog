@@ -16,7 +16,7 @@ How many times has it happened that you wrote blocks of code thinking they work 
 The first method would be to run the tests in headed mode. Playwright by default runs in headless mode. Use `headless:false` while launching the browser. Additionally, you can also use the `slowMo` option to slow down the test execution process.
  
 ```js
-await chromium.launch({ headless: false, slowMo: 100 }); // or firefox, WebKit
+await chromium.launch({ headless: false, slowMo: 100 });
 ```
  
  
