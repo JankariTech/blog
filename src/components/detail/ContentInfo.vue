@@ -12,12 +12,23 @@
       <div class="title">Share</div>
       <div class="share-items">
         <mdi-twitter class="share-icon twitter" />
-        <mdi-facebook class="share-icon facebook" />
+        <mdi-facebook class="share-icon facebook" @click="shareOnFb" />
         <mdi-linkedin class="share-icon linkedin" />
       </div>
     </div>
   </div>
 </template>
+<script setup>
+const shareOnFb = () => {
+  // eslint-disable-next-line no-undef
+  FB.ui({
+    display: "popup",
+    method: "share",
+    href: window.location.href,
+    redirect_uri: window.location.href
+  }, function (response) {})
+}
+</script>
 <style lang="scss">
 .blog-content-info {
   flex: 15%;
