@@ -45,12 +45,12 @@
         {{ title }}
       </div>
       <div class="tags">
-        <span v-for="(item, index) in tags"
+        <div v-for="(item, index) in tags"
           :key="index"
           class="tag-item"
         >
           #&nbsp;{{item}}
-        </span>
+        </div>
       </div>
     </div>
     <div v-if="!detailView" class="blog-peek--footer">
