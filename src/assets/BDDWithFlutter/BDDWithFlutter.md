@@ -421,7 +421,7 @@ index 068f558..5e0d8d0 100644
    }
 ```
 
-## conclusion
+## Conclusion
 
 You have seen how to write Gherkin files and how to run them as automated tests for a flutter application.
 I personally find flutter_gherkin a bit more complicated than other BDD frameworks, but it's possible, and I believe using BDD will improve the quality of your project greatly.

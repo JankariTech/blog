@@ -81,12 +81,13 @@ export const getPeekData = () => {
 }
 
 export const getContentHtml = (source) => {
-  const tokens = marked.lexer(source)
-  return marked.parser(tokens.slice(3))
+  const tokens = marked.lexer(source, null)
+  return marked.parser(tokens.slice(3), null)
 }
 
 export const getTableOfContent = (source) => {
   const tokens = marked.lexer(source)
-  // return all heading tokens
-  return tokens.filter(token => token.type === "heading")
+  // remove the first 3 tokens to avoid meta information
+  // and then return every token that is of header type
+  return tokens.slice(3).filter(token => token.type === "heading")
 }
