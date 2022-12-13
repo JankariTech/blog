@@ -75,11 +75,13 @@
 
     .tags {
       padding-top: 0.5rem;
+      display: flex;
+      flex-wrap: wrap;
 
       .tag-item {
         font-size: 0.875rem;
-        margin: 0 0.2rem;
-        padding: 0.2rem;
+        margin: 0.2rem;
+        padding: 0.2rem 0.3rem;
         background-color: rgb(223 223 223);
         letter-spacing: 0.5px;
       }
