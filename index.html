@@ -7,7 +7,18 @@
     <title>Blog | JankariTech</title>
   </head>
   <body>
-    <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId            : '576148587656631',
+        autoLogAppEvents : true,
+        xfbml            : true,
+        version          : 'v15.0'
+      });
+    };
+  </script>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+  <div id="app"></div>
+  <script type="module" src="/src/main.js"></script>
   </body>
 </html>
