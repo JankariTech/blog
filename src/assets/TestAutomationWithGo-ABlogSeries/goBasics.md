@@ -5,7 +5,7 @@ authorAvatar: https://www.jankaritech.com/images/2021/12/29/p1110938-crop-colour
 authorLink: https://github.com/grgprarup
 createdAt: Dec 10, 2022
 tags: golang, gopher, go, test automation, testing, bdd, godog
-banner: 
+banner: https://camo.githubusercontent.com/2b507540e2681c1a25698f246b9dca69c30548ed66a7323075b0224cbb1bf058/68747470733a2f2f676f6c616e672e6f72672f646f632f676f706865722f6669766579656172732e6a7067
 seriesTitle: Journey With Go - A Blog Series
 episode: 1
 ---
@@ -224,3 +224,5 @@ In this blog, we have learned how to install Go and how to initialize a Go proje
 - [Go Documentation](https://go.dev/doc/)
 - [Go Playground](https://play.golang.org/)
 - [Go Tour](https://tour.golang.org/welcome/1)
+
+**PC:** **Banner Image by [Renee French](https://reneefrench.blogspot.com/), licensed under [Creative Commons 4.0 Attributions license](https://creativecommons.org/licenses/by/4.0/).**
