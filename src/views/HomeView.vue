@@ -156,8 +156,10 @@ const toggleHomeViewMode = () => {
 
 const goToBlogDetail = (item) => {
   const series = item.seriesTitle
-  if (series) window.location.href = `/#/blog/${encodeURIComponent(series)}/${encodeURIComponent(item.title)}`
-  else window.location.href = `/#/blog/${encodeURIComponent(item.title)}`
+  if (series) {
+    window.location.href = `/#/blog/${encodeURIComponent(series)}/` +
+      `${encodeURIComponent(item.title)}`
+  } else window.location.href = `/#/blog/${encodeURIComponent(item.title)}`
 }
 
 const makeSearch = () => {
@@ -239,13 +241,13 @@ const setFilterKey = (key) => {
 }
 
 const sortPeekData = (key) => {
-  if (key === "date") {
+  if (key === "alpha") {
     peekData.value.sort((a, b) => {
-      return b["createdAt"] - a["createdAt"]
+      return a["title"].localeCompare(b["title"])
     })
   } else {
     peekData.value.sort((a, b) => {
-      return a["title"].localeCompare(b["title"])
+      return b["createdAt"] - a["createdAt"]
     })
   }
 }
