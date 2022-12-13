@@ -10,12 +10,12 @@ seriesTitle: Journey With Go - A Blog Series
 episode: 1
 ---
 
-**गो** **"Journey With Go - A Blog Series"** about the basics of Go `Go Basic`, advanced concepts in Go `Go Beyond Basics`, testing with go `Godog as Test Framework` and many more. This is the first blog of the series. In this blog, we will learn about the installation of Go, initializing a Go project. We will also learn about the basic data types, variables, constants in Go. So, let's get started.
+**गो** **"Journey With Go - A Blog Series"** about the basics of Go `Go Basic`, advanced concepts in Go `Go Beyond Basics`, testing with go `Godog as Test Framework` and many more. This is the first blog in the series. In this blog, we will learn about installing Go, and initializing a Go project. We will also learn about the basic data types, variables, and constants in Go. So, let's get started.
 
 ## Introduction
 - Designed and Developed at Google by Robert Griesemer, Rob Pike, and Ken Thompson
-- Go is an open source programming language supported by Google
-- Go is a statically typed i.e. you need to declare type of variable before using it
+- Go is an open-source programming language backed by Google
+- Go is statically typed i.e. you need to declare the type of a variable before using it
 - Go is compiled programming language i.e. you need to compile your code before running it
 
 ## Why Go?
@@ -25,7 +25,7 @@ episode: 1
 - Richer built-in types
 - Robust standard library
 - Built-in support for concurrency
-- Support function multiple return values
+- Support function with multiple return values
 - Beautiful error handling
 - CSP-style concurrency
 
@@ -33,7 +33,7 @@ episode: 1
 
 **Go** is available for any OS platform i.e. Windows, Linux, and Mac OS X. The installation is very simple. You can download the latest version of Go from [here](https://go.dev/doc/install). The latest version of Go at the time of writing this article is 1.19.4.
 
-Note: From here the overall setup will be done for Ubuntu 22.04. If you are using any other OS, please follow the [official documentation](https://go.dev/doc/install).
+Note: From here the overall setup will be done in Ubuntu 22.04. If you are using any other OS, please follow the [official documentation](https://go.dev/doc/install).
 
 ### Installing Go
 ```bash
@@ -69,7 +69,7 @@ go version
 You can see the version of Go as shown in the image. Here, the version of Go is 1.19.4.
 
 ### Initializing a Go Project
-Go uses the `go mod` command to initialize a Go project. The `go mod` command creates a go.mod file in the current directory. The go.mod file contains the information about the project and its dependencies.
+Go uses the `go mod` command to initialize a Go project. The `go mod` command creates a `go.mod` file in the current directory. The `go.mod` file contains information about the project and its dependencies.
 
 ```go
 // go-basics is the name of the project/module
@@ -155,13 +155,13 @@ The following code declares a variable named `number` and assigns a value to it.
 ```go
 var number int = 10
 ```
-The similar code can be written as follows.
+A similar code can be written as follows:
 ```go
 var number = 10
 ```
 In such type of declaration Go automatically infers the type of the variable from the value assigned to it.
 
-The variable can be declared without the `var` keyword as follows.
+The variable can be declared without the `var` keyword as follows:
 ```go
 number := 10
 ```
@@ -170,11 +170,11 @@ The following code declares two variables named `firstNumber` and `secondNumber`
 ```go
 var firstNumber, secondNumber int = 10, 20
 ```
-The similar code can be written as follows.
+A similar code can be written as follows:
 ```go
 var firstNumber, secondNumber = 10, 20
 ```
-The variable can be declared without the `var` keyword as follows.
+The variable can be declared without the `var` keyword as follows:
 ```go
 firstNumber, secondNumber := 10, 20
 ```
@@ -187,11 +187,11 @@ var name string
 
 name = "Prarup Gurung"
 ```
-But we cannot declare a variable with the `:=` syntax and assign a value to it later. Also, we cannot declare a variable without keyword `var` and assign a value to it later.
+But we cannot declare a variable with the `:=` syntax and assign a value to it later. Also, we cannot declare a variable without the keyword `var` and assign a value to it later.
 
 ### Constants
 
-Constants are declared like variables, but with the `const` keyword. Constants can be character, string, boolean, or numeric values. Constants cannot be declared using the := syntax.
+Constants are declared like variables, but with the `const` keyword. Constants can be a character, string, boolean, or numeric values. Constants cannot be declared using the := syntax.
 
 #### Declaring a Constant
 
@@ -201,7 +201,7 @@ const name string = "Prarup Gurung"
 ```
 #### Declaring Multiple Constants
 
-You can declare multiple constants in a single line. The following code declares two constants named name, address.
+You can declare multiple constants in a single line. The following code declares two constants named name, and address.
 ```go
 const name, address string = "Prarup Gurung", "Pokhara"
 ```
