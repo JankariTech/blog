@@ -1,16 +1,16 @@
 ---
 title: Go Basics - The Starting Point
-authorName: Prarup Gurung(प्रारुप गुरुङ्ग)
+authorName: Prarup Gurung (प्रारुप गुरुङ्ग)
 authorAvatar: https://www.jankaritech.com/images/2021/12/29/p1110938-crop-colour-800.jpg
 authorLink: https://github.com/grgprarup
-createdAt: Dec 10, 2022
+createdAt: Dec 6, 2022
 tags: golang, gopher, go, test automation, testing, bdd, godog
 banner: https://camo.githubusercontent.com/2b507540e2681c1a25698f246b9dca69c30548ed66a7323075b0224cbb1bf058/68747470733a2f2f676f6c616e672e6f72672f646f632f676f706865722f6669766579656172732e6a7067
 seriesTitle: Journey With Go - A Blog Series
 episode: 1
 ---
 
-**गो** **"Journey With Go - A Blog Series"** about the basics of Go `Go Basic`, advanced concepts in Go `Go Beyond Basics`, testing with go `Godog as Test Framework` and many more. This is the first blog in the series. In this blog, we will learn about installing Go, and initializing a Go project. We will also learn about the basic data types, variables, and constants in Go. So, let's get started.
+**[गो](https://go.dev "Go in Nepali")** **"Journey With Go - A Blog Series"** about the basics of Go `Go Basic`, advanced concepts in Go `Go Beyond Basics`, testing with go `Godog as Test Framework` and many more. This is the first blog in the series. In this blog, we will learn about installing Go, and initializing a Go project. We will also learn about the basic data types, variables, and constants in Go. So, let's get started.
 
 ## Introduction
 - Designed and Developed at Google by Robert Griesemer, Rob Pike, and Ken Thompson
@@ -31,9 +31,9 @@ episode: 1
 
 ## Installation
 
-**Go** is available for any OS platform i.e. Windows, Linux, and Mac OS X. The installation is very simple. You can download the latest version of Go from [here](https://go.dev/doc/install). The latest version of Go at the time of writing this article is 1.19.4.
+**[Go](https://go.dev "Go")** is available for any OS platform i.e. Windows, Linux, and Mac OS X. The installation is very simple. You can download the latest version of Go from [here](https://go.dev/doc/install "Here"). The latest version of Go at the time of writing this article is 1.19.4.
 
-Note: From here the overall setup will be done in Ubuntu 22.04. If you are using any other OS, please follow the [official documentation](https://go.dev/doc/install).
+Note: From here the overall setup will be done in Ubuntu 22.04. If you are using any other OS, please follow the [official documentation](https://go.dev/doc/install "Official Documentation").
 
 ### Installing Go
 ```bash
@@ -65,7 +65,7 @@ To verify the installation, you can run the following command to check the versi
 ```go
 go version
 ```
-![image](/src/assets/TestAutomationWithGo-ABlogSeries/images/go-version.png)
+![image](/src/assets/TestAutomationWithGo-ABlogSeries/images/go-version.png "Go Version Check")
 You can see the version of Go as shown in the image. Here, the version of Go is 1.19.4.
 
 ### Initializing a Go Project
@@ -75,7 +75,7 @@ Go uses the `go mod` command to initialize a Go project. The `go mod` command cr
 // go-basics is the name of the project/module
 go mod init go-basics
 ```
-![image](/src/assets/TestAutomationWithGo-ABlogSeries/images/go-mod-init.png)
+![image](/src/assets/TestAutomationWithGo-ABlogSeries/images/go-mod-init.png "Go Project Initialization")
 
 ### Running the Program
 To run the program, you need to create a file with the extension `.go`. The `go run` command compiles and runs the program.
@@ -207,22 +207,21 @@ const name, address string = "Prarup Gurung", "Pokhara"
 ```
 
 ## What we have learned so far
-In this blog, we have learned the following:
-- How to install Go
-- How to initialize a Go project
-- How to run the program
-- Basic building blocks of Go
-- How to declare variables
-- How to declare constants
+- How to **install Go**
+- How to **initialize a Go project**
+- How to **run the program**
+- **Basic building blocks of Go**
+- How to declare **variables**
+- How to declare **constants**
 
 ## Conclusion
 In this blog, we have learned how to install Go and how to initialize a Go project. We have also learned the basic building blocks of Go. In the next blog, we will learn about the control flow statements in Go. Stay tuned!!!
 
 ## References
-- [Go Programming Language](https://go.dev/)
-- [Go by Example](https://gobyexample.com/)
-- [Go Documentation](https://go.dev/doc/)
-- [Go Playground](https://play.golang.org/)
-- [Go Tour](https://tour.golang.org/welcome/1)
+- [Go Programming Language](https://go.dev/ "Go Programming Language")
+- [Go by Example](https://gobyexample.com/ "Go by Example")
+- [Go Documentation](https://go.dev/doc/ "Go Documentation")
+- [Go Playground](https://play.golang.org/ "Go Playground")
+- [Go Tour](https://tour.golang.org/welcome/1 "Go Tour")
 
-**PC:** **Banner Image by [Renee French](https://reneefrench.blogspot.com/), licensed under [Creative Commons 4.0 Attributions license](https://creativecommons.org/licenses/by/4.0/).**
+**PC:** **Banner Image by [Renee French](https://reneefrench.blogspot.com/ "Renee French"), licensed under [Creative Commons 4.0 Attributions license](https://creativecommons.org/licenses/by/4.0/ "Creative Commons 4.0 Attributions license").**
