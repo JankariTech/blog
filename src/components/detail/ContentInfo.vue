@@ -56,6 +56,7 @@ const shareOnFb = () => {
     display: flex;
 
     .share-icon {
+      cursor: pointer;
       font-size: 2rem;
       margin-block: 1rem;
     }
