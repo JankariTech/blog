@@ -4,7 +4,7 @@
     <div class="title">The Blog Project</div>
     <br>
     <p class="subtitle">
-      amplifies the voices of the open source community: the maintainers, developers,
+      Amplifies the voices of the open source community: the maintainers, developers,
       and teams whose contributions move the world forward everyday.
     </p>
     <br><br>
@@ -50,6 +50,7 @@ const shareOnFb = () => {
 
   .subtitle {
     color: rgb(77 76 76);
+    text-align: justify;
   }
 
   .share-items {
