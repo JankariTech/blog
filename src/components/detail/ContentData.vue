@@ -25,7 +25,7 @@ defineProps({
     text-justify: inter-word;
   }
 
-  h1, h2, h3, h4, h5, h6, p, pre, ul, ol {
+  h1, h2, h3, h4, h5, h6, p, pre, ul, ol, table {
     margin-bottom: 1.8rem;
     color: var(--text-light);
   }
