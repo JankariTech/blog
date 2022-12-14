@@ -110,35 +110,35 @@ Go is a statically typed language. You need to give type to the variable before 
 - **Numeric Types**
   - **Integer Type** is used to represent a whole number
 
-  | Datatype  | Description                                   |
-  | --------- | --------------------------------------------- |
-  | `int`     | Either 32 or 64 bit signed integer            |
-  | `int8`    | 8-bit signed integer                          |
-  | `int16`   | 16-bit signed integer                         |
-  | `int32`   | 32-bit signed integer                         |
-  | `int64`   | 32-bit signed integer                         |
-  | `uint`    | Either 32 or 64 bit unsigned integer          |
-  | `uint8`   | 8-bit unsigned integer                        |
-  | `uint16`  | 16-bit unsigned integer                       |
-  | `uint32`  | 32-bit unsigned integer                       |
-  | `uint64`  | 64-bit unsigned integer                       |
-  | `uintptr` | Unsigned integer type, can hold pointer value |
-  | `byte`    | Same as of uint8                              |
-  | `rune`    | Same as of int32                              |
+      | Datatype  | Description                                   |
+      | --------- | --------------------------------------------- |
+      | `int`     | Either 32 or 64 bit signed integer            |
+      | `int8`    | 8-bit signed integer                          |
+      | `int16`   | 16-bit signed integer                         |
+      | `int32`   | 32-bit signed integer                         |
+      | `int64`   | 64-bit signed integer                         |
+      | `uint`    | Either 32 or 64 bit unsigned integer          |
+      | `uint8`   | 8-bit unsigned integer                        |
+      | `uint16`  | 16-bit unsigned integer                       |
+      | `uint32`  | 32-bit unsigned integer                       |
+      | `uint64`  | 64-bit unsigned integer                       |
+      | `uintptr` | Unsigned integer type, can hold pointer value |
+      | `byte`    | Same as of uint8                              |
+      | `rune`    | Same as of int32                              |
 
   - **Floating Point Type** is used to represent a fractional number
   
-  | Datatype  | Description                           |
-  | --------- | ------------------------------------- |
-  | `float32` | 32-bit IEEE 754 floating-point number |
-  | `float64` | 64-bit IEEE 754 floating-point number |
+      | Datatype  | Description                           |
+      | --------- | ------------------------------------- |
+      | `float32` | 32-bit IEEE 754 floating-point number |
+      | `float64` | 64-bit IEEE 754 floating-point number |
   
   - **Complex Type** is used to represent a complex number
 
-  | Datatype     | Description                                                             |
-  | ------------ | ----------------------------------------------------------------------- |
-  | `complex64`  | Complex numbers which contain float32 as a real and imaginary component |
-  | `complex128` | Complex numbers which contain float64 as a real and imaginary component |
+      | Datatype     | Description                                                             |
+      | ------------ | ----------------------------------------------------------------------- |
+      | `complex64`  | Complex numbers which contain float32 as a real and imaginary component |
+      | `complex128` | Complex numbers which contain float64 as a real and imaginary component |
 
 ### Variables
 Variable is the storage unit in every programming language. It is used to store data. In Go, you need to declare a variable before using it. You can declare a variable using the `var` keyword.
@@ -151,6 +151,7 @@ Go supports two ways of declaring variables.
 ##### Declaring and Assigning a Value to a Variable
 
 **1. Declaring single variable**
+
 The following code declares a variable named `number` and assigns a value to it.
 ```go
 var number int = 10
@@ -166,6 +167,7 @@ The variable can be declared without the `var` keyword as follows:
 number := 10
 ```
 **2. Declaring multiple variables**
+
 The following code declares two variables named `firstNumber` and `secondNumber`
 ```go
 var firstNumber, secondNumber int = 10, 20
