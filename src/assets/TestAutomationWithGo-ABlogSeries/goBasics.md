@@ -116,7 +116,7 @@ Go is a statically typed language. You need to give type to the variable before 
       | `int8`    | 8-bit signed integer                          |
       | `int16`   | 16-bit signed integer                         |
       | `int32`   | 32-bit signed integer                         |
-      | `int64`   | 32-bit signed integer                         |
+      | `int64`   | 64-bit signed integer                         |
       | `uint`    | Either 32 or 64 bit unsigned integer          |
       | `uint8`   | 8-bit unsigned integer                        |
       | `uint16`  | 16-bit unsigned integer                       |
