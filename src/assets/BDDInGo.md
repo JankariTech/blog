@@ -132,7 +132,7 @@ After specifying one feature (or even one scenario) the developer could start de
 ## Test it automatically
 We could stop there, but there is a great bonus-point: let's use these descriptions to run automatic tests.
 
-For that we need software that interprets the Gherkin language and runs code that executes the tests. For Go there is the [godog package](https://github.com/DATA-DOG/godog).
+For that we need software that interprets the Gherkin language and runs code that executes the tests. For Go there is the [godog package](https://github.com/cucumber/godog).
 
 To install godog we fist have to create a simple `go.mod` file with the content
 ```golang
