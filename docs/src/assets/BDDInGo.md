@@ -132,29 +132,30 @@ After specifying one feature (or even one scenario) the developer could start de
 ## Test it automatically
 We could stop there, but there is a great bonus-point: let's use these descriptions to run automatic tests.
 
-For that we need software that interprets the Gherkin language and runs code that executes the tests. For Go there is the [godog package](https://github.com/DATA-DOG/godog).
+For that we need software that interprets the Gherkin language and runs code that executes the tests. For Go there is the [godog package](https://github.com/cucumber/godog).
 
 To install godog we fist have to create a simple `go.mod` file with the content
 ```golang
 module github.com/JankariTech/bsDateServer
 
-go 1.13
+go 1.19
 ```
 
 and then run
 
 ```shell
-go get github.com/cucumber/godog/cmd/godog@v0.11.0
+go get github.com/cucumber/godog@v0.12.6
 ```
 
-If you are running within $GOPATH, you will need to set `GO111MODULE=on`, as:
+(The version number `@v0.12.6` is optional, if it's not given the latest version will be installed. I set the version here to make sure this blog-post stays valid also when s.th. changes in godog)
+
+We also, need the godog cli command to run our tests. Run the following command to add the godog cli to `$GOPATH/bin`
+
 ```shell
-GO111MODULE=on go get github.com/cucumber/godog/cmd/godog@v0.11.0
+go install github.com/cucumber/godog/cmd/godog@v0.12.6
 ```
 
-(The version number `@v0.11.0` is optional, if it's not given the latest version will be installed. I set the version here to make sure this blog-post stays valid also when s.th. changes in godog)
-
-Now you should be able to run godog with `$GOPATH/godog *.feature` and the output would be something like:
+Now you should be able to run godog with `$GOPATH/bin/godog *.feature` and the output would be something like:
 
 ```gherkin
 Feature: convert dates from BS to AD using an API
