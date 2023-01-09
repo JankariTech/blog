@@ -228,7 +228,7 @@ func InitializeScenario(ctx *godog.ScenarioContext) {
 }
 ```
 
-In the `InitializeScenario` function we have the link between the human-readable Gherkin, and the function that the computer has to execute for that step. The output of `$GOPATH/godog` now looks a bit different:
+In the `InitializeScenario` function we have the link between the human-readable Gherkin, and the function that the computer has to execute for that step. The output of `$GOPATH/bin/godog` now looks a bit different:
 ```gherkin
 Feature: convert dates from BS to AD using an API
   As an app-developer in Nepal
