@@ -144,17 +144,12 @@ go 1.13
 and then run
 
 ```shell
-go get github.com/cucumber/godog/cmd/godog@v0.11.0
+go install github.com/cucumber/godog/cmd/godog@v0.12.6
 ```
 
-If you are running within $GOPATH, you will need to set `GO111MODULE=on`, as:
-```shell
-GO111MODULE=on go get github.com/cucumber/godog/cmd/godog@v0.11.0
-```
+(The version number `@v0.12.6` is optional, if it's not given the latest version will be installed. I set the version here to make sure this blog-post stays valid also when s.th. changes in godog)
 
-(The version number `@v0.11.0` is optional, if it's not given the latest version will be installed. I set the version here to make sure this blog-post stays valid also when s.th. changes in godog)
-
-Now you should be able to run godog with `$GOPATH/godog *.feature` and the output would be something like:
+Now you should be able to run godog with `$GOPATH/bin/godog *.feature` and the output would be something like:
 
 ```gherkin
 Feature: convert dates from BS to AD using an API
