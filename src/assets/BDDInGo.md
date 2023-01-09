@@ -149,13 +149,12 @@ go get github.com/cucumber/godog/cmd/godog@v0.12.6
 
 (The version number `@v0.12.6` is optional, if it's not given the latest version will be installed. I set the version here to make sure this blog-post stays valid also when s.th. changes in godog)
 
-Also, we need godog cli to run our tests.
-Run the following to add godog cli to $GOPATH/bin
-
+We also, need the godog cli command to run our tests.
+Run the following to add godog cli to `$GOPATH/bin`
 
 ```shell
 go install github.com/cucumber/godog/cmd/godog@v0.12.6
-
+```
 
 Now you should be able to run godog with `$GOPATH/bin/godog *.feature` and the output would be something like:
 
