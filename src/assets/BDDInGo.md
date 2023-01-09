@@ -144,7 +144,7 @@ go 1.19
 and then run
 
 ```shell
-go get github.com/cucumber/godog/godog@v0.12.6
+go get github.com/cucumber/godog@v0.12.6
 ```
 
 (The version number `@v0.12.6` is optional, if it's not given the latest version will be installed. I set the version here to make sure this blog-post stays valid also when s.th. changes in godog)
