@@ -1,5 +1,5 @@
 ---
-title: Control Flow Statements - Control your Go
+title: Control Statements - Control Your Go
 authorName: Prarup Gurung (प्रारुप गुरुङ्ग)
 authorAvatar: https://www.jankaritech.com/images/2021/12/29/p1110938-crop-colour-800.jpg
 authorLink: https://github.com/grgprarup
@@ -10,20 +10,48 @@ seriesTitle: Journey With Go - A Blog Series
 episode: 2
 ---
 
+**[गो](https://go.dev "Go in Nepali")** **"Journey With Go - A Blog Series"** about the basics of Go `Go Basic`, advanced concepts in Go `Go Beyond Basics`, testing with go `Godog as Test Framework` and many more.
 
-**[गो](https://go.dev "Go in Nepali")** **"Journey With Go - A Blog Series"** about the basics of Go `Go Basic`, advanced concepts in Go `Go Beyond Basics`, testing with go `Godog as Test Framework` and many more. This is the second installment of the series. You are reading this blog because you have already read the first blog of the series. If you haven't read the first blog, please read it first. It is available [here](https://blog.jankaritech.com/#/blog/Journey%20With%20Go%20-%20A%20Blog%20Series/Go%20Basics%20-%20The%20Starting%20Point "here"). In this blog, we will learn about the control flow statements in Go. So, let's get started.
+This is the second installment of the series. You are here that means you have already read the first blog of the series. If you haven't read the first blog, please read it first. It is available [here](https://blog.jankaritech.com/#/blog/Journey%20With%20Go%20-%20A%20Blog%20Series/Go%20Basics%20-%20The%20Starting%20Point "here"). In this blog, we will learn about the `Control Flow Statements in Go`. **So, let's get started.**
 
-## Control Flow Statements
+## **Control Flow Statements**
 
-Control flow statements are the statements that control the flow of the program. In other words, they control the execution of the program. There are two types of control flow statements in Go. They are branching statements and looping statements.
+These statements are used to control the flow of the program. In other words, they control the execution of the program. There are two types of control flow statements in Go.
 
-## Branching Statements
+1. Branching Statements
+2. Looping Statements
 
-Branching statements are the statements that control the flow of the program based on the condition. There are two types of branching statements in Go. They are `if-else` and `switch`.
+### **A. Branching Statements**
 
-### if-else
+Branching statements divides the program into different branches on the basis of given condition. Some blocks of code might execute and some might not. In Go, we have `if-else` and `switch` to control the flow of program.
 
-`if-else` is the branching statement that executes the code based on the condition. If the condition is true, it executes the code inside the `if` block. If the condition is false, it executes the code inside the `else` block. If there is no `else` block, it executes the code after the `if` block. The syntax of `if-else` is as follows.
+#### 1. if-else
+
+If the condition is true, it executes the code inside the `if` block otherwise (i.e. the condition is false), it executes the code inside the `else` block. There are different forms of `if-else` pairs such as, `if`, `if-else`, `nested if-else`, and `else-if ladder`.
+
+##### _a. if_
+
+This can be use if you want to execute the code only if the condition is true. The code inside of the `if` block gets executed if the condition is true. The syntax of `if` is as follows.
+
+```go
+if condition {
+    // code to execute if the condition is true
+}
+```
+
+Example:
+
+![image](/src/assets/JourneyWithGo-ABlogSeries/images/if-example.png "If Example")
+
+Output:
+
+```go
+You are eligible to receive a Citizenship
+```
+
+##### _b. if-else_
+
+When you want to execute codes either for true or false case then `if-else` can be used. `if-else` executes the code inside of the `if` block if the condition is true otherwise, it executes the code inside of the `else` block. The syntax of `if-else` is as follows.
 
 ```go
 if condition {
@@ -33,106 +61,129 @@ if condition {
 }
 ```
 
-The `if-else` statement can be used as a single statement. The syntax of the single statement `if-else` is as follows.
+Example:
+
+![image](/src/assets/JourneyWithGo-ABlogSeries/images/if-else-example.png "If-Else Example")
+
+Output:
 
 ```go
-if condition; condition {
+You are eligible to vote.
+```
+
+##### _c. nested if-else_
+
+If the if-else statement is inside another if-else statement, it is called a nested if-else statement. We can use nested if-else statements to check another conditions if previous condition is met. We have different variation of nested if-else statements. We will discuss only one of them.
+The syntax of `nested if-else` is as follows.
+
+```go
+if condition {
+    // code to execute if the condition is true
+    if condition {
+        // code to execute if the condition is true
+    } else {
+        // code to execute if the condition is false
+    }
+} else {
+    if condition {
+        // code to execute if the condition is true
+    } else {
+        // code to execute if the condition is false
+    }
+}
+```
+
+Example:
+
+![image](/src/assets/JourneyWithGo-ABlogSeries/images/nested-if-example.png "Nested If-Else Example")
+
+Output:
+
+```go
+The greatest number is: 566
+```
+
+##### _d. else-if ladder_
+
+Else-if ladder is a series of if-else statements. It is used when we have multiple conditions to check, when the previous condition is not met. The syntax of `else-if ladder` is as follows.
+
+```go
+if condition {
+    // code to execute if the condition is true
+} else if condition {
+    // code to execute if the condition is true
+} else if condition {
     // code to execute if the condition is true
 } else {
-    // code to execute if the condition is false
-}
-```
-
-The `if-else` statement can be used as a single statement without the `else` block. The syntax of the single statement `if-else` without the `else` block is as follows.
-
-```go
-if condition; condition {
-    // code to execute if the condition is true
-}
-```
-
-The `if-else` statement can be used as a single statement without the `else` block and the `if` block. The syntax of the single statement `if-else` without the `else` block and the `if` block is as follows.
-
-```go
-if condition; condition
-```
-
-The `if-else` statement can be used as a single statement without the `else` block and the `if` block and the condition. The syntax of the single statement `if-else` without the `else` block and the `if` block and the condition is as follows.
-
-```go
-if condition
-```
-
-The `if-else` statement can be used as a single statement without the `else` block and the `if` block and the condition and the semicolon. The syntax of the single statement `if-else` without the `else` block and the `if` block and the condition and the semicolon is as follows.
-
-```go
-if
-```
-
-### switch
-
-`switch` is the branching statement that executes the code based on the condition. It is similar to the `if-else` statement. The syntax of `switch` is as follows.
-
-```go
-switch condition {
-case condition1:
-    // code to execute if the condition1 is true
-case condition2:
-    // code to execute if the condition2 is true
-default:
     // code to execute if none of the conditions are true
 }
 ```
 
-The `switch` statement can be used as a single statement. The syntax of the single statement `switch` is as follows.
+Example:
+
+![image](/src/assets/JourneyWithGo-ABlogSeries/images/else-if-ladder-example.png "Else-If Ladder Example")
+
+Output:
 
 ```go
-switch condition; condition {
-case condition1:
-    // code to execute if the condition1 is true
-case condition2:
-    // code to execute if the condition2 is true
-default:
-    // code to execute if none of the conditions are true
+It is Negative number
+```
+
+### 2. Switch
+
+`switch` allows to execute one block of codes among several cases based on the value of a given expression. It can be used as alternative to the `if-else` statement, when you have lots of condition to be checked. If none of the cases match with the expression, the code inside of the `default` block gets executed. The syntax of `switch` is as follows.
+
+```go
+switch expression {
+    case value1:
+        // code to execute if the expression match with value1
+    case value2:
+        // code to execute if the expression match with value2
+    case value3:
+        // code to execute if the expression match with value3
+    default:
+        // code to execute if none of the cases match with the expression
+}
+```
+Example:
+
+![image](/src/assets/JourneyWithGo-ABlogSeries/images/switch-example.png "Switch Example")
+
+Output:
+
+```go
+Tuesday
+```
+
+### **B. Looping Statements**
+
+If we want to execute block of codes repeatedly, we can use looping statements. The blocks of codes executes repeatedly until the condition is met. In Go, we have two ways to use loop the codes. They are `for` and `range`.
+
+#### 1. for
+
+`for` loop allows program to execute a block of code repeatedly until the condition is true. The syntax of `for` is as follows.
+
+```go
+for initialization; condition; increment/decrement {
+  // code to execute if the condition is true
 }
 ```
 
-The `switch` statement can be used as a single statement without the `default` block. The syntax of the single statement `switch` without the `default` block is as follows.
+Example:
+
+![image](/src/assets/JourneyWithGo-ABlogSeries/images/for-example.png "For Example")
+
+Output:
 
 ```go
-switch condition; condition {
-case condition1:
-    // code to execute if the condition1 is true
-case condition2:
-    // code to execute if the condition2 is true
-}
+1
+2
+3
+4
+5
 ```
 
-The `switch` statement can be used as a single statement without the `default` block and the `case` blocks. The syntax of the single statement `switch` without the `default` block and the `case` blocks is as follows.
-
-```go
-switch condition; condition
-```
-
-The `switch` statement can be used as a single statement without the `default` block and the `case` blocks and the condition. The syntax of the single statement `switch` without the `default` block and the `case` blocks and the condition is as follows.
-
-```go
-switch condition
-```
-
-The `switch` statement can be used as a single statement without the `default` block and the `case` blocks and the condition and the semicolon. The syntax of the single statement `switch` without the `default` block and the `case` blocks and the condition and the semicolon is as follows.
-
-```go
-switch
-```
-
-## Looping Statements
-
-Looping statements are the statements that control the flow of the program based on the condition. There are two types of looping statements in Go. They are `for` and `range`.
-
-### for
-
-`for` is the looping statement that executes the code based on the condition. It is similar to the `if-else` statement. The syntax of `for` is as follows.
+We don't have separate `while` loop in Go like other programming languages. We can use `for` loop as a `while` loop as follows.
 
 ```go
 for condition {
@@ -140,131 +191,188 @@ for condition {
 }
 ```
 
-The `for` statement can be used as a single statement. The syntax of the single statement `for` is as follows.
+Example:
+
+![image](/src/assets/JourneyWithGo-ABlogSeries/images/while-example.png "While Example")
+
+Output:
 
 ```go
-for condition; condition {
-    // code to execute if the condition is true
-}
+1
+2
+3
+4
+5
 ```
 
-The `for` statement can be used as a single statement without the condition. The syntax of the single statement `for` without the condition is as follows.
+#### 2. range
 
-```go
-for condition
-```
-
-The `for` statement can be used as a single statement without the condition and the semicolon. The syntax of the single statement `for` without the condition and the semicolon is as follows.
-
-```go
-for
-```
-
-### range
-
-`range` is the looping statement that executes the code based on the condition. It is similar to the `for` statement. The syntax of `range` is as follows.
+`range` in Go language is used to iterate over arrays, slices, maps, and strings. The `range` is used along with the `for` loop. The syntax of `range` is as follows.
 
 ```go
 for index, value := range collection {
-    // code to execute if the condition is true
+    // code to execute until every element of the collection is iterated
 }
 ```
 
-The `range` statement can be used as a single statement. The syntax of the single statement `range` is as follows.
+Example:
+
+![image](/src/assets/JourneyWithGo-ABlogSeries/images/range-example.png "Range Example")
+
+Output:
 
 ```go
-for index, value := range collection; index, value := range collection {
-    // code to execute if the condition is true
+Fruit at index 0 is Apple
+Fruit at index 1 is Mango
+Fruit at index 2 is Grape
+Fruit at index 3 is Lichi
+Fruit at index 4 is Strawberry
+```
+### **C. Other Statements**
+
+Beside, if, switch, for, and range, Go language also provides some other statements. They are `break`, `continue`, `defer`, and `panic`.
+#### 1. Break Statement
+
+`break` statements terminates the loop or switch statement and transfers execution to the code immediately after the loop or switch. The keyword `break` is used.
+
+Example:
+
+![image](/src/assets/JourneyWithGo-ABlogSeries/images/break-example.png "Break Example")
+
+In the above example, the `break` statement terminates the `for` loop when the value of `i` is equal to 5. So, the output will be as follows.
+
+Output:
+
+```go
+0
+1
+2
+3
+4
+Done
+```
+
+#### 2. Continue Statement
+
+`continue` statements skip the current iteration of the loop and continues with the next iteration. The keyword `continue` is used.
+
+Example:
+
+![image](/src/assets/JourneyWithGo-ABlogSeries/images/continue-example.png "Continue Example")
+
+In the above example, the `continue` statement skips the current iteration of the loop when the value of `i` is equal to 5. So, the output will be as follows.
+
+Output:
+
+```go
+0
+1
+2
+3
+4
+6
+7
+8
+9
+Done
+```
+
+#### 3. Defer Statement
+
+`defer` statement invokes the function after the surrounding function returns. This delays the execution of the function. If there are multiple `defer` statements, they are executed in the last-in-first-out order. This statement might be useful for cleanup task after the function has been executed. The syntax of `defer` is as follows.
+
+```go
+func functionToDoSomething() {
+    defer deferFunction()
+    // code to execute
+}
+
+func deferFunction(){
+    // code to execute
 }
 ```
 
-The `range` statement can be used as a single statement without the collection. The syntax of the single statement `range` without the collection is as follows.
+Example:
+
+![image](/src/assets/JourneyWithGo-ABlogSeries/images/defer-example.png "Defer Example")
+
+In the above example, the defer statements are pushed into the stack. And the last defer statement is popped out first. The output will be as follows.
+
+Output:
 
 ```go
-for index, value := range collection
+Hello World, I am From Nepal.
 ```
 
-The `range` statement can be used as a single statement without the collection and the semicolon. The syntax of the single statement `range` without the collection and the semicolon is as follows.
+#### 4. Panic Statement
 
-```go
-for index, value := range
-```
-
-## Jump Statements
-
-Jump statements are the statements that control the flow of the program based on the condition. There are three types of jump statements in Go. They are `break`, `continue`, and `goto`.
-
-### break
-
-`break` is the jump statement that executes the code based on the condition. It is similar to the `switch` statement. The syntax of `break` is as follows.
-
-```go
-break
-```
-
-### continue
-
-`continue` is the jump statement that executes the code based on the condition. It is similar to the `break` statement. The syntax of `continue` is as follows.
-
-```go
-continue
-```
-
-### goto
-
-`goto` is the jump statement that executes the code based on the condition. It is similar to the `continue` statement. The syntax of `goto` is as follows.
-
-```go
-goto label
-```
-
-## Defer Statement
-
-`defer` is the statement that executes the code based on the condition. It is similar to the `goto` statement. The syntax of `defer` is as follows.
-
-```go
-defer function()
-```
-
-## Panic Statement
-
-`panic` is the statement that executes the code based on the condition. It is similar to the `defer` statement. The syntax of `panic` is as follows.
+`panic` statement in Go is used to stop the normal flow of the program and start panicking. The `panic` statement is used to throw an exception. `panic()` is either raised by the Go runtime or can be raised by the user. The syntax of `panic` is as follows.
 
 ```go
 panic("error message")
 ```
 
-## Recover Statement
+Example:
 
-`recover` is the statement that executes the code based on the condition. It is similar to the `panic` statement. The syntax of `recover` is as follows.
+![image](/src/assets/JourneyWithGo-ABlogSeries/images/panic-example.png "Panic Example")
+
+In the above example, the `panic` statement is raised by the user. The program terminates as panic is raised. The output will be as follows.
+
+Output:
+
+```go
+panic: Something went wrong
+
+goroutine 1 [running]:
+main.main()
+	/home/prarup/JankariTech/playground/go-code/panic.go:7 +0x27
+exit status 2
+```
+
+#### 5. Recover Statement
+
+`recover` statement recovers from the `panic` state and resumes normal execution of the program if possible. The `recover` statement is used to catch the `panic` statement. The syntax of `recover` is as follows.
 
 ```go
 recover()
 ```
 
+Example:
+
+![image](/src/assets/JourneyWithGo-ABlogSeries/images/recover-example.png "Recover Example")
+
+In the above example, the `recover` statement is used to catch the `panic` statement. The output will be as follows.
+
+Output:
+
+```go
+Something went wrong
+```
+
 
 ## What we have learned so far
+
 - Control Flow
-    - Branching Statements
-        - if
-        - switch
-    - Looping Statements
-        - for
-        - range
-    - Jump Statements
-        - break
-        - continue
-        - goto
-    - Defer Statement
-    - Panic Statement
-    - Recover Statement
+  - Branching Statements
+    - if-else
+    - switch
+  - Looping Statements
+    - for
+    - range
+  - Break Statement
+  - Continue Statement
+  - Defer Statement
+  - Panic Statement
+  - Recover Statement
 
 ## Conclusion
 
+In this blog, we have learned about the control flow in Go language. We have learned about the branching statements, and looping statements. We have also learned about the `break`, `continue`, `defer`, `panic`, and `recover` statements. In he next blog, we will learn about the functions, Arrays, Strings, Structures in Go language. *Keep learning and keep practicing*. **Stay tuned!!!**.
+
 ## References
+
 - [Go Programming Language](https://go.dev/ "Go Programming Language")
 - [Go by Example](https://gobyexample.com/ "Go by Example")
 - [Go Documentation](https://go.dev/doc/ "Go Documentation")
 - [Go Playground](https://play.golang.org/ "Go Playground")
 - [Go Tour](https://tour.golang.org/welcome/1 "Go Tour")
-
