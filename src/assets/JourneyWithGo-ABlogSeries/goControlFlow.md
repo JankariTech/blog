@@ -5,7 +5,7 @@ authorAvatar: https://www.jankaritech.com/images/2021/12/29/p1110938-crop-colour
 authorLink: https://github.com/grgprarup
 createdAt: Dec 13, 2022
 tags: branching statement, if-else, switch, looping statement, control flow statement
-banner: https://camo.githubusercontent.com/2b507540e2681c1a25698f246b9dca69c30548ed66a7323075b0224cbb1bf058/68747470733a2f2f676f6c616e672e6f72672f646f632f676f706865722f6669766579656172732e6a7067
+banner: https://blog.jankaritech.com/src/assets/JourneyWithGo-ABlogSeries/images/control-statements-banner.svg
 seriesTitle: Journey With Go - A Blog Series
 episode: 2
 ---
@@ -39,7 +39,7 @@ if condition {
 }
 ```
 
-![If Flowchart](/src/assets/JourneyWithGo-ABlogSeries/images/if.svg "If Flowchart")
+![If Flowchart](/src/assets/JourneyWithGo-ABlogSeries/images/if.svg "If Flowchart")[{:width="200px" height="300px"}]
 
 **Example:**
 
@@ -385,18 +385,17 @@ Something went wrong
 
 ## What we have learned so far
 
-- Control Flow
-  - Branching Statements
-    - if-else
-    - switch
-  - Looping Statements
-    - for
-    - range
-  - Break Statement
-  - Continue Statement
-  - Defer Statement
-  - Panic Statement
-  - Recover Statement
+- Branching Statements
+  - if-else
+  - switch
+- Looping Statements
+  - for
+  - range
+- Break Statement
+- Continue Statement
+- Defer Statement
+- Panic Statement
+- Recover Statement
 
 ## Conclusion
 
