@@ -12,7 +12,7 @@ episode: 2
 
 **[गो](https://go.dev "Go in Nepali")** **"Journey With Go - A Blog Series"** about the basics of Go `Go Basic`, advanced concepts in Go `Go Beyond Basics`, testing with go `Godog as Test Framework` and many more.
 
-This is the second installment of the series. You are here that means you have already read the first blog of the series. If you haven't read the first blog, please read it first. It is available [here](https://blog.jankaritech.com/#/blog/Journey%20With%20Go%20-%20A%20Blog%20Series/Go%20Basics%20-%20The%20Starting%20Point "here"). In this blog, we will learn about the `Control Flow Statements in Go`. **So, let's get started.**
+This is the second installment of the series. You are here which means you have already read the first blog of the series. If you haven't read the first blog, please read it first. It is available [here](https://blog.jankaritech.com/#/blog/Journey%20With%20Go%20-%20A%20Blog%20Series/Go%20Basics%20-%20The%20Starting%20Point "here"). In this blog, we will learn about the `Control Flow Statements in Go`. **So, let's get started.**
 
 ## **Control Flow Statements**
 
@@ -23,7 +23,7 @@ These statements are used to control the flow of the program. In other words, th
 
 ### **A. Branching Statements**
 
-Branching statements divides the program into different branches on the basis of given condition. Some blocks of code might execute and some might not. In Go, we have `if-else` and `switch` to control the flow of program.
+Branching statements divide the program into different branches on the basis of a given condition. Some blocks of code might execute and some might not. In Go, we have `if-else` and `switch` to control the flow of the program.
 
 #### 1. if-else
 
@@ -31,7 +31,7 @@ If the condition is true, it executes the code inside the `if` block otherwise (
 
 ##### _a. if_
 
-This can be use if you want to execute the code only if the condition is true. The code inside of the `if` block gets executed if the condition is true. The syntax of `if` is as follows.
+This can be used if you want to execute the code only if the condition is true. The syntax of `if` is as follows.
 
 ```go
 if condition {
@@ -51,7 +51,7 @@ You are eligible to receive a Citizenship
 
 ##### _b. if-else_
 
-When you want to execute codes either for true or false case then `if-else` can be used. `if-else` executes the code inside of the `if` block if the condition is true otherwise, it executes the code inside of the `else` block. The syntax of `if-else` is as follows.
+When you want to execute codes either for true or false cases then `if-else` can be used. `if-else` executes the code inside of the `if` block if the condition is true otherwise, it executes the code inside of the `else` block. The syntax of `if-else` is as follows.
 
 ```go
 if condition {
@@ -73,7 +73,7 @@ You are eligible to vote.
 
 ##### _c. nested if-else_
 
-If the if-else statement is inside another if-else statement, it is called a nested if-else statement. We can use nested if-else statements to check another conditions if previous condition is met. We have different variation of nested if-else statements. We will discuss only one of them.
+If the if-else statement is inside another if-else statement, it is called a nested if-else statement. We can use nested if-else statements to check other conditions if the previous condition is met. We have different variations of nested if-else statements. We will discuss only one of them.
 The syntax of `nested if-else` is as follows.
 
 ```go
@@ -131,7 +131,7 @@ It is Negative number
 
 ### 2. Switch
 
-`switch` allows to execute one block of codes among several cases based on the value of a given expression. It can be used as alternative to the `if-else` statement, when you have lots of condition to be checked. If none of the cases match with the expression, the code inside of the `default` block gets executed. The syntax of `switch` is as follows.
+`switch` allows us to execute one block of code among several cases based on the value of a given expression. It can be used as an alternative to the `if-else` statement, when you have lots of conditions to be checked. If none of the cases match with the expression, the code inside of the `default` block gets executed. The syntax of `switch` is as follows.
 
 ```go
 switch expression {
@@ -145,6 +145,25 @@ switch expression {
         // code to execute if none of the cases match with the expression
 }
 ```
+
+The `break` keyword is not required, as the `switch` statement automatically breaks the execution of the code as soon as the first case is matched.
+
+But, we can use `fallthrough` keyword to execute the code inside of the next case. The syntax of `fallthrough` is as follows.
+
+```go
+switch expression {
+    case value1:
+        // code to execute if the expression match with value1
+        fallthrough
+    case value2:
+        // code to execute if the expression match with value2
+    case value3:
+        // code to execute if the expression match with value3
+    default:
+        // code to execute if none of the cases match with the expression
+}
+```
+
 Example:
 
 ![image](/src/assets/JourneyWithGo-ABlogSeries/images/switch-example.png "Switch Example")
@@ -157,11 +176,11 @@ Tuesday
 
 ### **B. Looping Statements**
 
-If we want to execute block of codes repeatedly, we can use looping statements. The blocks of codes executes repeatedly until the condition is met. In Go, we have two ways to use loop the codes. They are `for` and `range`.
+If we want to execute the block of codes repeatedly, we can use looping statements. The block of codes executes repeatedly until the condition is met. In Go, we have two ways to use a loop in the codes. They are `for` and `range`.
 
 #### 1. for
 
-`for` loop allows program to execute a block of code repeatedly until the condition is true. The syntax of `for` is as follows.
+`for` loop allows a program to execute a block of code repeatedly if the condition is true. The syntax of `for` is as follows.
 
 ```go
 for initialization; condition; increment/decrement {
@@ -233,7 +252,7 @@ Fruit at index 4 is Strawberry
 Beside, if, switch, for, and range, Go language also provides some other statements. They are `break`, `continue`, `defer`, and `panic`.
 #### 1. Break Statement
 
-`break` statements terminates the loop or switch statement and transfers execution to the code immediately after the loop or switch. The keyword `break` is used.
+`break` statement terminates the loop or switch statement and transfers execution to the code immediately after the loop or switch. The keyword `break` is used.
 
 Example:
 
@@ -254,7 +273,7 @@ Done
 
 #### 2. Continue Statement
 
-`continue` statements skip the current iteration of the loop and continues with the next iteration. The keyword `continue` is used.
+`continue` statement skips the current iteration of the loop and continues with the next iteration. The keyword `continue` is used.
 
 Example:
 
@@ -367,7 +386,7 @@ Something went wrong
 
 ## Conclusion
 
-In this blog, we have learned about the control flow in Go language. We have learned about the branching statements, and looping statements. We have also learned about the `break`, `continue`, `defer`, `panic`, and `recover` statements. In he next blog, we will learn about the functions, Arrays, Strings, Structures in Go language. *Keep learning and keep practicing*. **Stay tuned!!!**.
+In this blog, we have learned about the control flow in Go language. We have learned about the branching statements, and looping statements. We have also learned about the `break`, `continue`, `defer`, `panic`, and `recover` statements. In the next blog, we will learn about the functions, Arrays, Strings, Structures in Go language. *Keep learning and keep practicing*. **Stay tuned!!!**.
 
 ## References
 
