@@ -39,11 +39,13 @@ if condition {
 }
 ```
 
-Example:
+![If Flowchart](/src/assets/JourneyWithGo-ABlogSeries/images/if.svg "If Flowchart")
 
-![image](/src/assets/JourneyWithGo-ABlogSeries/images/if-example.png "If Example")
+**Example:**
 
-Output:
+![If Example](/src/assets/JourneyWithGo-ABlogSeries/images/if-example.png "If Example")
+
+**Output:**
 
 ```go
 You are eligible to receive a Citizenship
@@ -61,11 +63,13 @@ if condition {
 }
 ```
 
-Example:
+![If-Else Flowchart](/src/assets/JourneyWithGo-ABlogSeries/images/if-else.svg "If-Else Flowchart")
 
-![image](/src/assets/JourneyWithGo-ABlogSeries/images/if-else-example.png "If-Else Example")
+**Example:**
 
-Output:
+![If-Else Example](/src/assets/JourneyWithGo-ABlogSeries/images/if-else-example.png "If-Else Example")
+
+**Output:**
 
 ```go
 You are eligible to vote.
@@ -93,11 +97,13 @@ if condition {
 }
 ```
 
-Example:
+![Nested If-Else Flowchart](/src/assets/JourneyWithGo-ABlogSeries/images/nested-if.svg "Nested If-Else Flowchart")
 
-![image](/src/assets/JourneyWithGo-ABlogSeries/images/nested-if-example.png "Nested If-Else Example")
+**Example:**
 
-Output:
+![Nested If-Else Example](/src/assets/JourneyWithGo-ABlogSeries/images/nested-if-example.png "Nested If-Else Example")
+
+**Output:**
 
 ```go
 The greatest number is: 566
@@ -119,11 +125,13 @@ if condition {
 }
 ```
 
-Example:
+![Else-If Ladder Flowchart](/src/assets/JourneyWithGo-ABlogSeries/images/else-if-ladder.svg "Else-If Ladder Flowchart")
 
-![image](/src/assets/JourneyWithGo-ABlogSeries/images/else-if-ladder-example.png "Else-If Ladder Example")
+**Example:**
 
-Output:
+![Else-If Ladder Example](/src/assets/JourneyWithGo-ABlogSeries/images/else-if-ladder-example.png "Else-If Ladder Example")
+
+**Output:**
 
 ```go
 It is Negative number
@@ -146,6 +154,8 @@ switch expression {
 }
 ```
 
+![Switch Flowchart](/src/assets/JourneyWithGo-ABlogSeries/images/switch.svg "Switch Flowchart")
+
 The `break` keyword is not required, as the `switch` statement automatically breaks the execution of the code as soon as the first case is matched.
 
 But, we can use `fallthrough` keyword to execute the code inside of the next case. The syntax of `fallthrough` is as follows.
@@ -164,11 +174,13 @@ switch expression {
 }
 ```
 
-Example:
+![Switch Fallthrough Flowchart](/src/assets/JourneyWithGo-ABlogSeries/images/switch-fallthrough.svg "Switch Fallthrough Flowchart")
 
-![image](/src/assets/JourneyWithGo-ABlogSeries/images/switch-example.png "Switch Example")
+**Example:**
 
-Output:
+![Switch Example](/src/assets/JourneyWithGo-ABlogSeries/images/switch-example.png "Switch Example")
+
+**Output:**
 
 ```go
 Tuesday
@@ -188,11 +200,13 @@ for initialization; condition; increment/decrement {
 }
 ```
 
-Example:
+![For Loop Flowchart](/src/assets/JourneyWithGo-ABlogSeries/images/for.svg "For Loop Flowchart")
 
-![image](/src/assets/JourneyWithGo-ABlogSeries/images/for-example.png "For Example")
+**Example:**
 
-Output:
+![For Example](/src/assets/JourneyWithGo-ABlogSeries/images/for-example.png "For Example")
+
+**Output:**
 
 ```go
 1
@@ -210,11 +224,11 @@ for condition {
 }
 ```
 
-Example:
+**Example:**
 
-![image](/src/assets/JourneyWithGo-ABlogSeries/images/while-example.png "While Example")
+![While Example](/src/assets/JourneyWithGo-ABlogSeries/images/while-example.png "While Example")
 
-Output:
+**Output:**
 
 ```go
 1
@@ -234,11 +248,11 @@ for index, value := range collection {
 }
 ```
 
-Example:
+**Example:**
 
-![image](/src/assets/JourneyWithGo-ABlogSeries/images/range-example.png "Range Example")
+![Range Example](/src/assets/JourneyWithGo-ABlogSeries/images/range-example.png "Range Example")
 
-Output:
+**Output:**
 
 ```go
 Fruit at index 0 is Apple
@@ -254,13 +268,13 @@ Beside, if, switch, for, and range, Go language also provides some other stateme
 
 `break` statement terminates the loop or switch statement and transfers execution to the code immediately after the loop or switch. The keyword `break` is used.
 
-Example:
+**Example:**
 
-![image](/src/assets/JourneyWithGo-ABlogSeries/images/break-example.png "Break Example")
+![Break Example](/src/assets/JourneyWithGo-ABlogSeries/images/break-example.png "Break Example")
 
 In the above example, the `break` statement terminates the `for` loop when the value of `i` is equal to 5. So, the output will be as follows.
 
-Output:
+**Output:**
 
 ```go
 0
@@ -275,13 +289,13 @@ Done
 
 `continue` statement skips the current iteration of the loop and continues with the next iteration. The keyword `continue` is used.
 
-Example:
+**Example:**
 
-![image](/src/assets/JourneyWithGo-ABlogSeries/images/continue-example.png "Continue Example")
+![Continue Example](/src/assets/JourneyWithGo-ABlogSeries/images/continue-example.png "Continue Example")
 
 In the above example, the `continue` statement skips the current iteration of the loop when the value of `i` is equal to 5. So, the output will be as follows.
 
-Output:
+**Output:**
 
 ```go
 0
@@ -311,13 +325,13 @@ func deferFunction(){
 }
 ```
 
-Example:
+**Example:**
 
-![image](/src/assets/JourneyWithGo-ABlogSeries/images/defer-example.png "Defer Example")
+![Defer Example](/src/assets/JourneyWithGo-ABlogSeries/images/defer-example.png "Defer Example")
 
 In the above example, the defer statements are pushed into the stack. And the last defer statement is popped out first. The output will be as follows.
 
-Output:
+**Output:**
 
 ```go
 Hello World, I am From Nepal.
@@ -331,13 +345,13 @@ Hello World, I am From Nepal.
 panic("error message")
 ```
 
-Example:
+**Example:**
 
-![image](/src/assets/JourneyWithGo-ABlogSeries/images/panic-example.png "Panic Example")
+![Panic Example](/src/assets/JourneyWithGo-ABlogSeries/images/panic-example.png "Panic Example")
 
 In the above example, the `panic` statement is raised by the user. The program terminates as panic is raised. The output will be as follows.
 
-Output:
+**Output:**
 
 ```go
 panic: Something went wrong
@@ -356,13 +370,13 @@ exit status 2
 recover()
 ```
 
-Example:
+**Example:**
 
-![image](/src/assets/JourneyWithGo-ABlogSeries/images/recover-example.png "Recover Example")
+![Recover Example](/src/assets/JourneyWithGo-ABlogSeries/images/recover-example.png "Recover Example")
 
 In the above example, the `recover` statement is used to catch the `panic` statement. The output will be as follows.
 
-Output:
+**Output:**
 
 ```go
 Something went wrong
