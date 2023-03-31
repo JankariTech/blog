@@ -3,7 +3,7 @@ title: Control Statements - Control Your Go
 authorName: Prarup Gurung (प्रारुप गुरुङ्ग)
 authorAvatar: https://www.jankaritech.com/images/2021/12/29/p1110938-crop-colour-800.jpg
 authorLink: https://github.com/grgprarup
-createdAt: Dec 13, 2022
+createdAt: Mar 29, 2023
 tags: branching statement, if-else, switch, looping statement, control flow statement
 banner: https://blog.jankaritech.com/src/assets/JourneyWithGo-ABlogSeries/images/control-statements-banner.svg
 seriesTitle: Journey With Go - A Blog Series
