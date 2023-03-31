@@ -156,6 +156,16 @@ switch expression {
 
 ![Switch Flowchart](/src/assets/JourneyWithGo-ABlogSeries/images/switch.svg "Switch Flowchart")
 
+**Example:**
+
+![Switch Example](/src/assets/JourneyWithGo-ABlogSeries/images/switch-example.png "Switch Example")
+
+**Output:**
+
+```go
+Tuesday
+```
+
 The `break` keyword is not required, as the `switch` statement automatically breaks the execution of the code as soon as the first case is matched.
 
 But, we can use `fallthrough` keyword to execute the code inside of the next case. The syntax of `fallthrough` is as follows.
@@ -178,12 +188,12 @@ switch expression {
 
 **Example:**
 
-![Switch Example](/src/assets/JourneyWithGo-ABlogSeries/images/switch-example.png "Switch Example")
+![Switch Fallthrough Example](/src/assets/JourneyWithGo-ABlogSeries/images/switch-fallthrough-example.png "Switch Fallthrough Example")
 
 **Output:**
 
 ```go
-Tuesday
+It's Weekday
 ```
 
 ### **B. Looping Statements**
