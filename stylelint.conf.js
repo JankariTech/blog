@@ -18,6 +18,7 @@ module.exports = {
     "**/*.md",
     "**/*.png",
     "**/*.jpg",
-    "**/*.gif"
+    "**/*.gif",
+    "**/*.svg"
   ]
 }

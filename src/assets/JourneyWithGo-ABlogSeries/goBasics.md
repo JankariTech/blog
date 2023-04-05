@@ -4,7 +4,7 @@ authorName: Prarup Gurung (प्रारुप गुरुङ्ग)
 authorAvatar: https://www.jankaritech.com/images/2021/12/29/p1110938-crop-colour-800.jpg
 authorLink: https://github.com/grgprarup
 createdAt: Dec 6, 2022
-tags: golang, gopher, go, test automation, testing, bdd, godog
+tags: golang, introduction, go variables, go datatypes, constants
 banner: https://camo.githubusercontent.com/2b507540e2681c1a25698f246b9dca69c30548ed66a7323075b0224cbb1bf058/68747470733a2f2f676f6c616e672e6f72672f646f632f676f706865722f6669766579656172732e6a7067
 seriesTitle: Journey With Go - A Blog Series
 episode: 1
@@ -65,7 +65,7 @@ To verify the installation, you can run the following command to check the versi
 ```go
 go version
 ```
-![image](/src/assets/TestAutomationWithGo-ABlogSeries/images/go-version.png "Go Version Check")
+![image](/src/assets/JourneyWithGo-ABlogSeries/images/go-version.png "Go Version Check")
 You can see the version of Go as shown in the image. Here, the version of Go is 1.19.4.
 
 ### Initializing a Go Project
@@ -75,7 +75,7 @@ Go uses the `go mod` command to initialize a Go project. The `go mod` command cr
 // go-basics is the name of the project/module
 go mod init go-basics
 ```
-![image](/src/assets/TestAutomationWithGo-ABlogSeries/images/go-mod-init.png "Go Project Initialization")
+![image](/src/assets/JourneyWithGo-ABlogSeries/images/go-mod-init.png "Go Project Initialization")
 
 ### Running the Program
 To run the program, you need to create a file with the extension `.go`. The `go run` command compiles and runs the program.
@@ -127,12 +127,12 @@ Go is a statically typed language. You need to give type to the variable before 
       | `rune`    | Same as of int32                              |
 
   - **Floating Point Type** is used to represent a fractional number
-  
+
       | Datatype  | Description                           |
       | --------- | ------------------------------------- |
       | `float32` | 32-bit IEEE 754 floating-point number |
       | `float64` | 64-bit IEEE 754 floating-point number |
-  
+
   - **Complex Type** is used to represent a complex number
 
       | Datatype     | Description                                                             |
