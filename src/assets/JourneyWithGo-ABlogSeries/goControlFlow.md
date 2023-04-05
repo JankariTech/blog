@@ -39,7 +39,7 @@ if condition {
 }
 ```
 
-![If Flowchart](/src/assets/JourneyWithGo-ABlogSeries/images/if.svg "If Flowchart")[{:width="200px" height="300px"}]
+![If Flowchart](/src/assets/JourneyWithGo-ABlogSeries/images/if.svg "If Flowchart")
 
 **Example:**
 
@@ -139,7 +139,7 @@ It is Negative number
 
 ### 2. Switch
 
-`switch` allows us to execute one block of code among several cases based on the value of a given expression. It can be used as an alternative to the `if-else` statement, when you have lots of conditions to be checked. If none of the cases match with the expression, the code inside of the `default` block gets executed. The syntax of `switch` is as follows.
+`switch` allows us to execute one block of code among several cases based on the value of a given expression. It can be used as an alternative to the `else-if ladder` statement, when you have lots of conditions to be checked. If none of the cases match with the expression, the code inside of the `default` block gets executed. The syntax of `switch` is as follows.
 
 ```go
 switch expression {
@@ -157,6 +157,10 @@ switch expression {
 ![Switch Flowchart](/src/assets/JourneyWithGo-ABlogSeries/images/switch.svg "Switch Flowchart")
 
 **Example:**
+
+![Switch Alternative](/src/assets/JourneyWithGo-ABlogSeries/images/else-if-alternative.png "Switch Alternative")
+
+In the above example, we can see `else-if ladder` is used to check the day of the week. But there are lots of conditions to be checked. So, it is better to use `switch` statement instead of `else-if ladder` to achieve the same result.
 
 ![Switch Example](/src/assets/JourneyWithGo-ABlogSeries/images/switch-example.png "Switch Example")
 
