@@ -41,16 +41,19 @@ Um godog zu [installieren](https://github.com/cucumber/godog#install), müssen w
 ```golang
 module github.com/JankariTech/bsDateServer
 
-go 1.13
+go 1.19
 ```
-und dann `go get github.com/cucumber/godog/cmd/godog@v0.11.0` ausführen.
+und dann `go get github.com/cucumber/godog@v0.12.6` ausführen.
 
-Um mit `$GOPATH` arbeiten zu können, muss zusätzlich noch die Umgebungsvariable `GO111MODULE=on` gesetzt sein, also:
-  `GO111MODULE=on go get github.com/cucumber/godog/cmd/godog@v0.11.0`
+(Die Versionsnummer `@v0.12.6` ist optional; ohne sie wird die neueste vorhandene Version installiert. Damit dieser Artikel aber länger verwendbar bleibt und ich ihn nicht ständig anpassen muss, gebe ich hier eine Versionsnummer an.)
 
-(Die Versionsnummer `@v0.11.0` ist optional; ohne sie wird die neueste vorhandene Version installiert. Damit dieser Artikel aber länger verwendbar bleibt und ich ihn nicht ständig anpassen muss, gebe ich hier eine Versionsnummer an.)
+Wir brauchen auch das godog Kommandozeilenwerkzeug, um das zu installieren muss
 
-Jetzt können wir godog mit `$GOPATH/godog *.feature` ausführen. Die Ausgabe sollte in etwa so aussehen:
+`go install github.com/cucumber/godog/cmd/godog@v0.12.6` 
+
+ausgeführt werden
+
+Jetzt können wir godog mit `$GOPATH/bin/godog *.feature` ausführen. Die Ausgabe sollte in etwa so aussehen:
 ```gherkin
 Feature: convert dates from BS to AD using an API
   As an app-developer in Nepal
@@ -123,7 +126,7 @@ func InitializeScenario(ctx *godog.ScenarioContext) {
 Die `InitializeScenario` Funktion ist die Verbindung zwischen der menschenlesbaren Gherkin Sprache und dem Code, den der Computer ausführen soll. Mithilfe von RegularExpressions werden Teile der Sätze aus der Gherkin Zeile extrahiert und als Argumente an die jeweilige Funktion gesendet.
 Aus `When a "GET" request is sent to the endpoint "/ad-from-bs/2060-04-01"` wird der Funktionsaufruf: `aRequestIsSentToTheEndpoint("GET", "/ad-from-bs/2060-04-01")`
 
-Wenn wir wieder `$GOPATH/godog *.feature` ausführen, sieht die Ausgabe schon anders aus:
+Wenn wir wieder `$GOPATH/bin/godog *.feature` ausführen, sieht die Ausgabe schon anders aus:
 ```gherkin
 Feature: convert dates from BS to AD using an API
   As an app-developer in Nepal
