@@ -5,7 +5,7 @@ authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800
 authorLink: https://www.linkedin.com/in/artur-neumann/
 createdAt: May 22, 2023
 tags: go, API, testing, microservice
-banner: https://github.com/JankariTech/blog/blob/master/src/assets/ocisWrapper/banner.png
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/assets/ocisWrapper/banner.png
 ---
 oCIS is the new generation open source file-sync and sharing platform, built by [ownCloud GmbH](https://www.owncloud.com), who also created the ownCloud 10 server based on the LAMP stack. The team of [JankariTech](https://www.jankaritech.com) is part of that development and mainly writes and maintains the automated tests.
 
