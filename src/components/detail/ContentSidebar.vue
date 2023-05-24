@@ -5,7 +5,7 @@
       <div v-for="(item, index) in toc"
         :key="index"
         class="toc--item"
-        @click="scrollToHeading(item.text, item.depth)"
+        @click="scrollToHeading(item.raw, item.depth)"
       >
         <mdi-menu-right class="mdi-circle" />
         {{ item.text }}
@@ -43,7 +43,7 @@ defineProps({
 })
 
 const scrollToHeading = (headingText, headingDepth) => {
-  const xpath = `//h${headingDepth}[contains(text(), '${headingText.trim()}')]`
+  const xpath = getXpath(headingText, headingDepth)
   const heading = document.evaluate(
     xpath,
     document,
@@ -61,6 +61,27 @@ const scrollToHeading = (headingText, headingDepth) => {
     })
   }
 }
+
+const getXpath = (headingText, headingDepth) => {
+  // regex bellow parses the heading so it matches the id of heading in content section
+  const id = headingText
+    .replace(/^#+/g, "") // removes '#' that are at the start
+    .replace(/[`~!@$%^&*()\-+=[\]{};:"\\|/,<>?\s]/g, " ") // remove special char that are used in marks
+    .replace(/^\s+|\s+$/gm, "") // removes ending hyphen
+    .replace(/\s+/g, "-") // replaces spaces with hyphen
+    .toLowerCase()
+    .trim()
+  let xpath
+  // emojis have weird behaviour so the code below
+  if (id.match(/\p{Emoji}/gu)) {
+    xpath = `//h${headingDepth}[contains(text(),"${headingText
+      .replace(/[`#*[\]"|\\/<>\s]/g, " ")
+      .trim()}")]`
+  } else {
+    xpath = `//*[@id="${id.replace(/['’.]+/g, "")}"]` // replacing special characters
+  }
+  return xpath
+}
 </script>
 <style lang="scss">
 .blog-content-sidebar {
@@ -74,7 +95,6 @@ const scrollToHeading = (headingText, headingDepth) => {
 
   @media only screen and (max-width: 960px) {
     flex: 100%;
-    // margin-inline: auto;
     margin-bottom: 2rem;
   }
 
@@ -98,8 +118,6 @@ const scrollToHeading = (headingText, headingDepth) => {
       text-transform: capitalize;
       cursor: pointer;
       font-weight: 300;
-      // margin-left: .1rem;
-
       display: flex;
       align-items: center;
 

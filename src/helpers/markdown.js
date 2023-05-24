@@ -91,5 +91,12 @@ export const getTableOfContent = (source) => {
   const tokens = marked.lexer(source)
   // remove the first 2 tokens to avoid meta information
   // and then return every tokens that is of header type
-  return tokens.slice(2).filter(token => token.type === "heading")
+  const headers = tokens.slice(2).filter((token) => token.type === "heading")
+  headers.forEach((header) => {
+    header.text = header.raw
+      .trim()
+      .replace(/^#+/g, "")// removes '#' that are at the start
+      .replace(/[`*_\s]/g, " ")// remove special char that are used in markdown
+  })
+  return headers
 }

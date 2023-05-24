@@ -50,12 +50,10 @@ const loadMarkdown = () => {
   }
   const title = decodeURIComponent(currentRoute.value.params.name.toString())
 
-  const module = modules.value.find(item => item.meta.title === title && item.meta.seriesTitle === sTitle)
-
+  const module = modules.value.find((item) => item.meta.title === title && item.meta.seriesTitle === sTitle)
   peekData.value = module.meta
   content.value = DOMPurify.sanitize(getContentHtml(module.raw))
   toc.value = getTableOfContent(module.raw)
-
   document.title = `Blog | ${peekData.value.title}`
 }
 </script>
