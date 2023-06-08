@@ -5,7 +5,7 @@ authorAvatar: https://www.jankaritech.com/images/2021/12/29/p1110976-crop-col-80
 authorLink: https://github.com/Talank
 createdAt: Nov 3, 2021
 tags: vrt, testing, image-processing
-banner: https://bs-uploads.toptal.io/blackfish-uploads/components/blog_post_page/content/cover_image_file/cover_image/690065/retina_1708x683_image_0-a3538a5354b21df65a923cabccf9e404-614ac96b7fda78df5593880bac65b1a1.png
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
 seriesTitle: Visual Regression Testing (VRT)
 episode: 1
 ---

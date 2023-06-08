@@ -5,7 +5,7 @@ authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800
 authorLink: https://github.com/individual-it
 createdAt: Oct 23, 2019
 tags: startup, git, documents, organizing
-banner: https://www.gannett-cdn.com/-mm-/c46c1e89ec02b505b89f6d0dbc3e82c81eb08243/c=0-0-3863-2182/local/-/media/2017/05/24/IAGroup/DesMoines/636312225086507546-GettyImages-120636972.jpg
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/assets/are_you_safe_enough_to_take_risks/are_you_safe_enough_to_take_risks.png
 ---
 
 Company values are great, but if they are only saved away in a document they are useless. The values need to be saved in peoples heads and hearts. To achieve that, we discuss them on a regular basis.

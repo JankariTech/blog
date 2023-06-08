@@ -65,14 +65,2033 @@ https://github.com/highlightjs/highlight.js/issues/2277`),de=A,ee=D),U===void 0&
 ]*?"'`},{begin:`"[^\r
 "]*"`}]},{className:"built_in",variants:[{begin:"\\b(abs|acos|asin|atan|atan2|atanh|ceil|cloglog|comb|cos|digamma|exp|floor|invcloglog|invlogit|ln|lnfact|lnfactorial|lngamma|log|log10|max|min|mod|reldif|round|sign|sin|sqrt|sum|tan|tanh|trigamma|trunc|betaden|Binomial|binorm|binormal|chi2|chi2tail|dgammapda|dgammapdada|dgammapdadx|dgammapdx|dgammapdxdx|F|Fden|Ftail|gammaden|gammap|ibeta|invbinomial|invchi2|invchi2tail|invF|invFtail|invgammap|invibeta|invnchi2|invnFtail|invnibeta|invnorm|invnormal|invttail|nbetaden|nchi2|nFden|nFtail|nibeta|norm|normal|normalden|normd|npnchi2|tden|ttail|uniform|abbrev|char|index|indexnot|length|lower|ltrim|match|plural|proper|real|regexm|regexr|regexs|reverse|rtrim|string|strlen|strlower|strltrim|strmatch|strofreal|strpos|strproper|strreverse|strrtrim|strtrim|strupper|subinstr|subinword|substr|trim|upper|word|wordcount|_caller|autocode|byteorder|chop|clip|cond|e|epsdouble|epsfloat|group|inlist|inrange|irecode|matrix|maxbyte|maxdouble|maxfloat|maxint|maxlong|mi|minbyte|mindouble|minfloat|minint|minlong|missing|r|recode|replay|return|s|scalar|d|date|day|dow|doy|halfyear|mdy|month|quarter|week|year|d|daily|dofd|dofh|dofm|dofq|dofw|dofy|h|halfyearly|hofd|m|mofd|monthly|q|qofd|quarterly|tin|twithin|w|weekly|wofd|y|yearly|yh|ym|yofd|yq|yw|cholesky|colnumb|colsof|corr|det|diag|diag0cnt|el|get|hadamard|I|inv|invsym|issym|issymmetric|J|matmissing|matuniform|mreldif|nullmat|rownumb|rowsof|sweep|syminv|trace|vec|vecdiag)(?=\\()"}]},e.COMMENT("^[ 	]*\\*.*$",!1),e.C_LINE_COMMENT_MODE,e.C_BLOCK_COMMENT_MODE]}}var bI=SI;function TI(e){return{name:"STEP Part 21",aliases:["p21","step","stp"],case_insensitive:!0,keywords:{$pattern:"[A-Z_][A-Z0-9_.]*",keyword:["HEADER","ENDSEC","DATA"]},contains:[{className:"meta",begin:"ISO-10303-21;",relevance:10},{className:"meta",begin:"END-ISO-10303-21;",relevance:10},e.C_LINE_COMMENT_MODE,e.C_BLOCK_COMMENT_MODE,e.COMMENT("/\\*\\*!","\\*/"),e.C_NUMBER_MODE,e.inherit(e.APOS_STRING_MODE,{illegal:null}),e.inherit(e.QUOTE_STRING_MODE,{illegal:null}),{className:"string",begin:"'",end:"'"},{className:"symbol",variants:[{begin:"#",end:"\\d+",illegal:"\\W"}]}]}}var yI=TI;const vI=e=>({IMPORTANT:{scope:"meta",begin:"!important"},BLOCK_COMMENT:e.C_BLOCK_COMMENT_MODE,HEXCOLOR:{scope:"number",begin:/#(([0-9a-fA-F]{3,4})|(([0-9a-fA-F]{2}){3,4}))\b/},FUNCTION_DISPATCH:{className:"built_in",begin:/[\w-]+(?=\()/},ATTRIBUTE_SELECTOR_MODE:{scope:"selector-attr",begin:/\[/,end:/\]/,illegal:"$",contains:[e.APOS_STRING_MODE,e.QUOTE_STRING_MODE]},CSS_NUMBER_MODE:{scope:"number",begin:e.NUMBER_RE+"(%|em|ex|ch|rem|vw|vh|vmin|vmax|cm|mm|in|pt|pc|px|deg|grad|rad|turn|s|ms|Hz|kHz|dpi|dpcm|dppx)?",relevance:0},CSS_VARIABLE:{className:"attr",begin:/--[A-Za-z][A-Za-z0-9_-]*/}}),RI=["a","abbr","address","article","aside","audio","b","blockquote","body","button","canvas","caption","cite","code","dd","del","details","dfn","div","dl","dt","em","fieldset","figcaption","figure","footer","form","h1","h2","h3","h4","h5","h6","header","hgroup","html","i","iframe","img","input","ins","kbd","label","legend","li","main","mark","menu","nav","object","ol","p","q","quote","samp","section","span","strong","summary","sup","table","tbody","td","textarea","tfoot","th","thead","time","tr","ul","var","video"],CI=["any-hover","any-pointer","aspect-ratio","color","color-gamut","color-index","device-aspect-ratio","device-height","device-width","display-mode","forced-colors","grid","height","hover","inverted-colors","monochrome","orientation","overflow-block","overflow-inline","pointer","prefers-color-scheme","prefers-contrast","prefers-reduced-motion","prefers-reduced-transparency","resolution","scan","scripting","update","width","min-width","max-width","min-height","max-height"],NI=["active","any-link","blank","checked","current","default","defined","dir","disabled","drop","empty","enabled","first","first-child","first-of-type","fullscreen","future","focus","focus-visible","focus-within","has","host","host-context","hover","indeterminate","in-range","invalid","is","lang","last-child","last-of-type","left","link","local-link","not","nth-child","nth-col","nth-last-child","nth-last-col","nth-last-of-type","nth-of-type","only-child","only-of-type","optional","out-of-range","past","placeholder-shown","read-only","read-write","required","right","root","scope","target","target-within","user-invalid","valid","visited","where"],wI=["after","backdrop","before","cue","cue-region","first-letter","first-line","grammar-error","marker","part","placeholder","selection","slotted","spelling-error"],OI=["align-content","align-items","align-self","all","animation","animation-delay","animation-direction","animation-duration","animation-fill-mode","animation-iteration-count","animation-name","animation-play-state","animation-timing-function","backface-visibility","background","background-attachment","background-blend-mode","background-clip","background-color","background-image","background-origin","background-position","background-repeat","background-size","block-size","border","border-block","border-block-color","border-block-end","border-block-end-color","border-block-end-style","border-block-end-width","border-block-start","border-block-start-color","border-block-start-style","border-block-start-width","border-block-style","border-block-width","border-bottom","border-bottom-color","border-bottom-left-radius","border-bottom-right-radius","border-bottom-style","border-bottom-width","border-collapse","border-color","border-image","border-image-outset","border-image-repeat","border-image-slice","border-image-source","border-image-width","border-inline","border-inline-color","border-inline-end","border-inline-end-color","border-inline-end-style","border-inline-end-width","border-inline-start","border-inline-start-color","border-inline-start-style","border-inline-start-width","border-inline-style","border-inline-width","border-left","border-left-color","border-left-style","border-left-width","border-radius","border-right","border-right-color","border-right-style","border-right-width","border-spacing","border-style","border-top","border-top-color","border-top-left-radius","border-top-right-radius","border-top-style","border-top-width","border-width","bottom","box-decoration-break","box-shadow","box-sizing","break-after","break-before","break-inside","caption-side","caret-color","clear","clip","clip-path","clip-rule","color","column-count","column-fill","column-gap","column-rule","column-rule-color","column-rule-style","column-rule-width","column-span","column-width","columns","contain","content","content-visibility","counter-increment","counter-reset","cue","cue-after","cue-before","cursor","direction","display","empty-cells","filter","flex","flex-basis","flex-direction","flex-flow","flex-grow","flex-shrink","flex-wrap","float","flow","font","font-display","font-family","font-feature-settings","font-kerning","font-language-override","font-size","font-size-adjust","font-smoothing","font-stretch","font-style","font-synthesis","font-variant","font-variant-caps","font-variant-east-asian","font-variant-ligatures","font-variant-numeric","font-variant-position","font-variation-settings","font-weight","gap","glyph-orientation-vertical","grid","grid-area","grid-auto-columns","grid-auto-flow","grid-auto-rows","grid-column","grid-column-end","grid-column-start","grid-gap","grid-row","grid-row-end","grid-row-start","grid-template","grid-template-areas","grid-template-columns","grid-template-rows","hanging-punctuation","height","hyphens","icon","image-orientation","image-rendering","image-resolution","ime-mode","inline-size","isolation","justify-content","left","letter-spacing","line-break","line-height","list-style","list-style-image","list-style-position","list-style-type","margin","margin-block","margin-block-end","margin-block-start","margin-bottom","margin-inline","margin-inline-end","margin-inline-start","margin-left","margin-right","margin-top","marks","mask","mask-border","mask-border-mode","mask-border-outset","mask-border-repeat","mask-border-slice","mask-border-source","mask-border-width","mask-clip","mask-composite","mask-image","mask-mode","mask-origin","mask-position","mask-repeat","mask-size","mask-type","max-block-size","max-height","max-inline-size","max-width","min-block-size","min-height","min-inline-size","min-width","mix-blend-mode","nav-down","nav-index","nav-left","nav-right","nav-up","none","normal","object-fit","object-position","opacity","order","orphans","outline","outline-color","outline-offset","outline-style","outline-width","overflow","overflow-wrap","overflow-x","overflow-y","padding","padding-block","padding-block-end","padding-block-start","padding-bottom","padding-inline","padding-inline-end","padding-inline-start","padding-left","padding-right","padding-top","page-break-after","page-break-before","page-break-inside","pause","pause-after","pause-before","perspective","perspective-origin","pointer-events","position","quotes","resize","rest","rest-after","rest-before","right","row-gap","scroll-margin","scroll-margin-block","scroll-margin-block-end","scroll-margin-block-start","scroll-margin-bottom","scroll-margin-inline","scroll-margin-inline-end","scroll-margin-inline-start","scroll-margin-left","scroll-margin-right","scroll-margin-top","scroll-padding","scroll-padding-block","scroll-padding-block-end","scroll-padding-block-start","scroll-padding-bottom","scroll-padding-inline","scroll-padding-inline-end","scroll-padding-inline-start","scroll-padding-left","scroll-padding-right","scroll-padding-top","scroll-snap-align","scroll-snap-stop","scroll-snap-type","scrollbar-color","scrollbar-gutter","scrollbar-width","shape-image-threshold","shape-margin","shape-outside","speak","speak-as","src","tab-size","table-layout","text-align","text-align-all","text-align-last","text-combine-upright","text-decoration","text-decoration-color","text-decoration-line","text-decoration-style","text-emphasis","text-emphasis-color","text-emphasis-position","text-emphasis-style","text-indent","text-justify","text-orientation","text-overflow","text-rendering","text-shadow","text-transform","text-underline-position","top","transform","transform-box","transform-origin","transform-style","transition","transition-delay","transition-duration","transition-property","transition-timing-function","unicode-bidi","vertical-align","visibility","voice-balance","voice-duration","voice-family","voice-pitch","voice-range","voice-rate","voice-stress","voice-volume","white-space","widows","width","will-change","word-break","word-spacing","word-wrap","writing-mode","z-index"].reverse();function II(e){const t=vI(e),n="and or not only",a={className:"variable",begin:"\\$"+e.IDENT_RE},r=["charset","css","debug","extend","font-face","for","import","include","keyframes","media","mixin","page","warn","while"],i="(?=[.\\s\\n[:,(])";return{name:"Stylus",aliases:["styl"],case_insensitive:!1,keywords:"if else for in",illegal:"("+["\\?","(\\bReturn\\b)","(\\bEnd\\b)","(\\bend\\b)","(\\bdef\\b)",";","#\\s","\\*\\s","===\\s","\\|","%"].join("|")+")",contains:[e.QUOTE_STRING_MODE,e.APOS_STRING_MODE,e.C_LINE_COMMENT_MODE,e.C_BLOCK_COMMENT_MODE,t.HEXCOLOR,{begin:"\\.[a-zA-Z][a-zA-Z0-9_-]*"+i,className:"selector-class"},{begin:"#[a-zA-Z][a-zA-Z0-9_-]*"+i,className:"selector-id"},{begin:"\\b("+RI.join("|")+")"+i,className:"selector-tag"},{className:"selector-pseudo",begin:"&?:("+NI.join("|")+")"+i},{className:"selector-pseudo",begin:"&?:(:)?("+wI.join("|")+")"+i},t.ATTRIBUTE_SELECTOR_MODE,{className:"keyword",begin:/@media/,starts:{end:/[{;}]/,keywords:{$pattern:/[a-z-]+/,keyword:n,attribute:CI.join(" ")},contains:[t.CSS_NUMBER_MODE]}},{className:"keyword",begin:"@((-(o|moz|ms|webkit)-)?("+r.join("|")+"))\\b"},a,t.CSS_NUMBER_MODE,{className:"function",begin:"^[a-zA-Z][a-zA-Z0-9_-]*\\(.*\\)",illegal:"[\\n]",returnBegin:!0,contains:[{className:"title",begin:"\\b[a-zA-Z][a-zA-Z0-9_-]*"},{className:"params",begin:/\(/,end:/\)/,contains:[t.HEXCOLOR,a,e.APOS_STRING_MODE,t.CSS_NUMBER_MODE,e.QUOTE_STRING_MODE]}]},t.CSS_VARIABLE,{className:"attribute",begin:"\\b("+OI.join("|")+")\\b",starts:{end:/;|$/,contains:[t.HEXCOLOR,a,e.APOS_STRING_MODE,e.QUOTE_STRING_MODE,t.CSS_NUMBER_MODE,e.C_BLOCK_COMMENT_MODE,t.IMPORTANT,t.FUNCTION_DISPATCH],illegal:/\./,relevance:0}},t.FUNCTION_DISPATCH]}}var AI=II;function DI(e){return{name:"SubUnit",case_insensitive:!0,contains:[{className:"string",begin:`\\[
 (multipart)?`,end:`\\]
-`},{className:"string",begin:"\\d{4}-\\d{2}-\\d{2}(\\s+)\\d{2}:\\d{2}:\\d{2}.\\d+Z"},{className:"string",begin:"(\\+|-)\\d+"},{className:"keyword",relevance:10,variants:[{begin:"^(test|testing|success|successful|failure|error|skip|xfail|uxsuccess)(:?)\\s+(test)?"},{begin:"^progress(:?)(\\s+)?(pop|push)?"},{begin:"^tags:"},{begin:"^time:"}]}]}}var xI=DI;function au(e){return e?typeof e=="string"?e:e.source:null}function or(e){return ke("(?=",e,")")}function ke(...e){return e.map(n=>au(n)).join("")}function kI(e){const t=e[e.length-1];return typeof t=="object"&&t.constructor===Object?(e.splice(e.length-1,1),t):{}}function st(...e){const t=kI(e);return"("+(t.capture?"":"?:")+e.map(a=>au(a)).join("|")+")"}const eo=e=>ke(/\b/,e,/\w$/.test(e)?/\b/:/\B/),MI=["Protocol","Type"].map(eo),dl=["init","self"].map(eo),LI=["Any","Self"],Ci=["actor","any","associatedtype","async","await",/as\?/,/as!/,"as","break","case","catch","class","continue","convenience","default","defer","deinit","didSet","distributed","do","dynamic","else","enum","extension","fallthrough",/fileprivate\(set\)/,"fileprivate","final","for","func","get","guard","if","import","indirect","infix",/init\?/,/init!/,"inout",/internal\(set\)/,"internal","in","is","isolated","nonisolated","lazy","let","mutating","nonmutating",/open\(set\)/,"open","operator","optional","override","postfix","precedencegroup","prefix",/private\(set\)/,"private","protocol",/public\(set\)/,"public","repeat","required","rethrows","return","set","some","static","struct","subscript","super","switch","throws","throw",/try\?/,/try!/,"try","typealias",/unowned\(safe\)/,/unowned\(unsafe\)/,"unowned","var","weak","where","while","willSet"],ul=["false","nil","true"],PI=["assignment","associativity","higherThan","left","lowerThan","none","right"],UI=["#colorLiteral","#column","#dsohandle","#else","#elseif","#endif","#error","#file","#fileID","#fileLiteral","#filePath","#function","#if","#imageLiteral","#keyPath","#line","#selector","#sourceLocation","#warn_unqualified_access","#warning"],_l=["abs","all","any","assert","assertionFailure","debugPrint","dump","fatalError","getVaList","isKnownUniquelyReferenced","max","min","numericCast","pointwiseMax","pointwiseMin","precondition","preconditionFailure","print","readLine","repeatElement","sequence","stride","swap","swift_unboxFromSwiftValueWithType","transcode","type","unsafeBitCast","unsafeDowncast","withExtendedLifetime","withUnsafeMutablePointer","withUnsafePointer","withVaList","withoutActuallyEscaping","zip"],ru=st(/[/=\-+!*%<>&|^~?]/,/[\u00A1-\u00A7]/,/[\u00A9\u00AB]/,/[\u00AC\u00AE]/,/[\u00B0\u00B1]/,/[\u00B6\u00BB\u00BF\u00D7\u00F7]/,/[\u2016-\u2017]/,/[\u2020-\u2027]/,/[\u2030-\u203E]/,/[\u2041-\u2053]/,/[\u2055-\u205E]/,/[\u2190-\u23FF]/,/[\u2500-\u2775]/,/[\u2794-\u2BFF]/,/[\u2E00-\u2E7F]/,/[\u3001-\u3003]/,/[\u3008-\u3020]/,/[\u3030]/),iu=st(ru,/[\u0300-\u036F]/,/[\u1DC0-\u1DFF]/,/[\u20D0-\u20FF]/,/[\uFE00-\uFE0F]/,/[\uFE20-\uFE2F]/),Ni=ke(ru,iu,"*"),su=st(/[a-zA-Z_]/,/[\u00A8\u00AA\u00AD\u00AF\u00B2-\u00B5\u00B7-\u00BA]/,/[\u00BC-\u00BE\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u00FF]/,/[\u0100-\u02FF\u0370-\u167F\u1681-\u180D\u180F-\u1DBF]/,/[\u1E00-\u1FFF]/,/[\u200B-\u200D\u202A-\u202E\u203F-\u2040\u2054\u2060-\u206F]/,/[\u2070-\u20CF\u2100-\u218F\u2460-\u24FF\u2776-\u2793]/,/[\u2C00-\u2DFF\u2E80-\u2FFF]/,/[\u3004-\u3007\u3021-\u302F\u3031-\u303F\u3040-\uD7FF]/,/[\uF900-\uFD3D\uFD40-\uFDCF\uFDF0-\uFE1F\uFE30-\uFE44]/,/[\uFE47-\uFEFE\uFF00-\uFFFD]/),Dr=st(su,/\d/,/[\u0300-\u036F\u1DC0-\u1DFF\u20D0-\u20FF\uFE20-\uFE2F]/),Wt=ke(su,Dr,"*"),wi=ke(/[A-Z]/,Dr,"*"),FI=["autoclosure",ke(/convention\(/,st("swift","block","c"),/\)/),"discardableResult","dynamicCallable","dynamicMemberLookup","escaping","frozen","GKInspectable","IBAction","IBDesignable","IBInspectable","IBOutlet","IBSegueAction","inlinable","main","nonobjc","NSApplicationMain","NSCopying","NSManaged",ke(/objc\(/,Wt,/\)/),"objc","objcMembers","propertyWrapper","requires_stored_property_inits","resultBuilder","testable","UIApplicationMain","unknown","usableFromInline"],BI=["iOS","iOSApplicationExtension","macOS","macOSApplicationExtension","macCatalyst","macCatalystApplicationExtension","watchOS","watchOSApplicationExtension","tvOS","tvOSApplicationExtension","swift"];function GI(e){const t={match:/\s+/,relevance:0},n=e.COMMENT("/\\*","\\*/",{contains:["self"]}),a=[e.C_LINE_COMMENT_MODE,n],r={match:[/\./,st(...MI,...dl)],className:{2:"keyword"}},i={match:ke(/\./,st(...Ci)),relevance:0},s=Ci.filter(Z=>typeof Z=="string").concat(["_|0"]),o=Ci.filter(Z=>typeof Z!="string").concat(LI).map(eo),l={variants:[{className:"keyword",match:st(...o,...dl)}]},c={$pattern:st(/\b\w+/,/#\w+/),keyword:s.concat(UI),literal:ul},d=[r,i,l],_={match:ke(/\./,st(..._l)),relevance:0},u={className:"built_in",match:ke(/\b/,st(..._l),/(?=\()/)},p=[_,u],h={match:/->/,relevance:0},f={className:"operator",relevance:0,variants:[{match:Ni},{match:`\\.(\\.|${iu})+`}]},b=[h,f],S="([0-9]_*)+",v="([0-9a-fA-F]_*)+",T={className:"number",relevance:0,variants:[{match:`\\b(${S})(\\.(${S}))?([eE][+-]?(${S}))?\\b`},{match:`\\b0x(${v})(\\.(${v}))?([pP][+-]?(${S}))?\\b`},{match:/\b0o([0-7]_*)+\b/},{match:/\b0b([01]_*)+\b/}]},C=(Z="")=>({className:"subst",variants:[{match:ke(/\\/,Z,/[0\\tnr"']/)},{match:ke(/\\/,Z,/u\{[0-9a-fA-F]{1,8}\}/)}]}),I=(Z="")=>({className:"subst",match:ke(/\\/,Z,/[\t ]*(?:[\r\n]|\r\n)/)}),H=(Z="")=>({className:"subst",label:"interpol",begin:ke(/\\/,Z,/\(/),end:/\)/}),G=(Z="")=>({begin:ke(Z,/"""/),end:ke(/"""/,Z),contains:[C(Z),I(Z),H(Z)]}),L=(Z="")=>({begin:ke(Z,/"/),end:ke(/"/,Z),contains:[C(Z),H(Z)]}),K={className:"string",variants:[G(),G("#"),G("##"),G("###"),L(),L("#"),L("##"),L("###")]},W={match:ke(/`/,Wt,/`/)},oe={className:"variable",match:/\$\d+/},he={className:"variable",match:`\\$${Dr}+`},be=[W,oe,he],fe={match:/(@|#(un)?)available/,className:"keyword",starts:{contains:[{begin:/\(/,end:/\)/,keywords:BI,contains:[...b,T,K]}]}},Te={className:"keyword",match:ke(/@/,st(...FI))},A={className:"meta",match:ke(/@/,Wt)},D=[fe,Te,A],U={match:or(/\b[A-Z]/),relevance:0,contains:[{className:"type",match:ke(/(AV|CA|CF|CG|CI|CL|CM|CN|CT|MK|MP|MTK|MTL|NS|SCN|SK|UI|WK|XC)/,Dr,"+")},{className:"type",match:wi,relevance:0},{match:/[?!]+/,relevance:0},{match:/\.\.\./,relevance:0},{match:ke(/\s+&\s+/,or(wi)),relevance:0}]},ee={begin:/</,end:/>/,keywords:c,contains:[...a,...d,...D,h,U]};U.contains.push(ee);const de={match:ke(Wt,/\s*:/),keywords:"_|0",relevance:0},me={begin:/\(/,end:/\)/,relevance:0,keywords:c,contains:["self",de,...a,...d,...p,...b,T,K,...be,...D,U]},ge={begin:/</,end:/>/,contains:[...a,U]},Ve={begin:st(or(ke(Wt,/\s*:/)),or(ke(Wt,/\s+/,Wt,/\s*:/))),end:/:/,relevance:0,contains:[{className:"keyword",match:/\b_\b/},{className:"params",match:Wt}]},Ae={begin:/\(/,end:/\)/,keywords:c,contains:[Ve,...a,...d,...b,T,K,...D,U,me],endsParent:!0,illegal:/["']/},N={match:[/func/,/\s+/,st(W.match,Wt,Ni)],className:{1:"keyword",3:"title.function"},contains:[ge,Ae,t],illegal:[/\[/,/%/]},V={match:[/\b(?:subscript|init[?!]?)/,/\s*(?=[<(])/],className:{1:"keyword"},contains:[ge,Ae,t],illegal:/\[|%/},Y={match:[/operator/,/\s+/,Ni],className:{1:"keyword",3:"title"}},te={begin:[/precedencegroup/,/\s+/,wi],className:{1:"keyword",3:"title"},contains:[U],keywords:[...PI,...ul],end:/}/};for(const Z of K.variants){const Ce=Z.contains.find(m=>m.label==="interpol");Ce.keywords=c;const le=[...d,...p,...b,T,K,...be];Ce.contains=[...le,{begin:/\(/,end:/\)/,contains:["self",...le]}]}return{name:"Swift",keywords:c,contains:[...a,N,V,{beginKeywords:"struct protocol class extension enum actor",end:"\\{",excludeEnd:!0,keywords:c,contains:[e.inherit(e.TITLE_MODE,{className:"title.class",begin:/[A-Za-z$_][\u00C0-\u02B80-9A-Za-z$_]*/}),...d]},Y,te,{beginKeywords:"import",end:/$/,contains:[...a],relevance:0},...d,...p,...b,T,K,...be,...D,U,me]}}var YI=GI;function HI(e){return{name:"Tagger Script",contains:[{className:"comment",begin:/\$noop\(/,end:/\)/,contains:[{begin:/\\[()]/},{begin:/\(/,end:/\)/,contains:[{begin:/\\[()]/},"self"]}],relevance:10},{className:"keyword",begin:/\$[_a-zA-Z0-9]+(?=\()/},{className:"variable",begin:/%[_a-zA-Z0-9:]+%/},{className:"symbol",begin:/\\[\\nt$%,()]/},{className:"symbol",begin:/\\u[a-fA-F0-9]{4}/}]}}var WI=HI;function VI(e){const t="true false yes no null",n="[\\w#;/?:@&=+$,.~*'()[\\]]+",a={className:"attr",variants:[{begin:"\\w[\\w :\\/.-]*:(?=[ 	]|$)"},{begin:'"\\w[\\w :\\/.-]*":(?=[ 	]|$)'},{begin:"'\\w[\\w :\\/.-]*':(?=[ 	]|$)"}]},r={className:"template-variable",variants:[{begin:/\{\{/,end:/\}\}/},{begin:/%\{/,end:/\}/}]},i={className:"string",relevance:0,variants:[{begin:/'/,end:/'/},{begin:/"/,end:/"/},{begin:/\S+/}],contains:[e.BACKSLASH_ESCAPE,r]},s=e.inherit(i,{variants:[{begin:/'/,end:/'/},{begin:/"/,end:/"/},{begin:/[^\s,{}[\]]+/}]}),o="[0-9]{4}(-[0-9][0-9]){0,2}",l="([Tt \\t][0-9][0-9]?(:[0-9][0-9]){2})?",c="(\\.[0-9]*)?",d="([ \\t])*(Z|[-+][0-9][0-9]?(:[0-9][0-9])?)?",_={className:"number",begin:"\\b"+o+l+c+d+"\\b"},u={end:",",endsWithParent:!0,excludeEnd:!0,keywords:t,relevance:0},p={begin:/\{/,end:/\}/,contains:[u],illegal:"\\n",relevance:0},h={begin:"\\[",end:"\\]",contains:[u],illegal:"\\n",relevance:0},f=[a,{className:"meta",begin:"^---\\s*$",relevance:10},{className:"string",begin:"[\\|>]([1-9]?[+-])?[ ]*\\n( +)[^ ][^\\n]*\\n(\\2[^\\n]+\\n?)*"},{begin:"<%[%=-]?",end:"[%-]?%>",subLanguage:"ruby",excludeBegin:!0,excludeEnd:!0,relevance:0},{className:"type",begin:"!\\w+!"+n},{className:"type",begin:"!<"+n+">"},{className:"type",begin:"!"+n},{className:"type",begin:"!!"+n},{className:"meta",begin:"&"+e.UNDERSCORE_IDENT_RE+"$"},{className:"meta",begin:"\\*"+e.UNDERSCORE_IDENT_RE+"$"},{className:"bullet",begin:"-(?=[ ]|$)",relevance:0},e.HASH_COMMENT_MODE,{beginKeywords:t,keywords:{literal:t}},_,{className:"number",begin:e.C_NUMBER_RE+"\\b",relevance:0},p,h,i],b=[...f];return b.pop(),b.push(s),u.contains=b,{name:"YAML",case_insensitive:!0,aliases:["yml"],contains:f}}var qI=VI;function zI(e){return{name:"Test Anything Protocol",case_insensitive:!0,contains:[e.HASH_COMMENT_MODE,{className:"meta",variants:[{begin:"^TAP version (\\d+)$"},{begin:"^1\\.\\.(\\d+)$"}]},{begin:/---$/,end:"\\.\\.\\.$",subLanguage:"yaml",relevance:0},{className:"number",begin:" (\\d+) "},{className:"symbol",variants:[{begin:"^ok"},{begin:"^not ok"}]}]}}var $I=zI;function KI(e){const t=e.regex,n=/[a-zA-Z_][a-zA-Z0-9_]*/,a={className:"number",variants:[e.BINARY_NUMBER_MODE,e.C_NUMBER_MODE]};return{name:"Tcl",aliases:["tk"],keywords:["after","append","apply","array","auto_execok","auto_import","auto_load","auto_mkindex","auto_mkindex_old","auto_qualify","auto_reset","bgerror","binary","break","catch","cd","chan","clock","close","concat","continue","dde","dict","encoding","eof","error","eval","exec","exit","expr","fblocked","fconfigure","fcopy","file","fileevent","filename","flush","for","foreach","format","gets","glob","global","history","http","if","incr","info","interp","join","lappend|10","lassign|10","lindex|10","linsert|10","list","llength|10","load","lrange|10","lrepeat|10","lreplace|10","lreverse|10","lsearch|10","lset|10","lsort|10","mathfunc","mathop","memory","msgcat","namespace","open","package","parray","pid","pkg::create","pkg_mkIndex","platform","platform::shell","proc","puts","pwd","read","refchan","regexp","registry","regsub|10","rename","return","safe","scan","seek","set","socket","source","split","string","subst","switch","tcl_endOfWord","tcl_findLibrary","tcl_startOfNextWord","tcl_startOfPreviousWord","tcl_wordBreakAfter","tcl_wordBreakBefore","tcltest","tclvars","tell","time","tm","trace","unknown","unload","unset","update","uplevel","upvar","variable","vwait","while"],contains:[e.COMMENT(";[ \\t]*#","$"),e.COMMENT("^[ \\t]*#","$"),{beginKeywords:"proc",end:"[\\{]",excludeEnd:!0,contains:[{className:"title",begin:"[ \\t\\n\\r]+(::)?[a-zA-Z_]((::)?[a-zA-Z0-9_])*",end:"[ \\t\\n\\r]",endsWithParent:!0,excludeEnd:!0}]},{className:"variable",variants:[{begin:t.concat(/\$/,t.optional(/::/),n,"(::",n,")*")},{begin:"\\$\\{(::)?[a-zA-Z_]((::)?[a-zA-Z0-9_])*",end:"\\}",contains:[a]}]},{className:"string",contains:[e.BACKSLASH_ESCAPE],variants:[e.inherit(e.QUOTE_STRING_MODE,{illegal:null})]},a]}}var QI=KI;function jI(e){const t=["bool","byte","i16","i32","i64","double","string","binary"];return{name:"Thrift",keywords:{keyword:["namespace","const","typedef","struct","enum","service","exception","void","oneway","set","list","map","required","optional"],type:t,literal:"true false"},contains:[e.QUOTE_STRING_MODE,e.NUMBER_MODE,e.C_LINE_COMMENT_MODE,e.C_BLOCK_COMMENT_MODE,{className:"class",beginKeywords:"struct enum service exception",end:/\{/,illegal:/\n/,contains:[e.inherit(e.TITLE_MODE,{starts:{endsWithParent:!0,excludeEnd:!0}})]},{begin:"\\b(set|list|map)\\s*<",keywords:{type:[...t,"set","list","map"]},end:">",contains:["self"]}]}}var XI=jI;function ZI(e){const t={className:"number",begin:"[1-9][0-9]*",relevance:0},n={className:"symbol",begin:":[^\\]]+"},a={className:"built_in",begin:"(AR|P|PAYLOAD|PR|R|SR|RSR|LBL|VR|UALM|MESSAGE|UTOOL|UFRAME|TIMER|TIMER_OVERFLOW|JOINT_MAX_SPEED|RESUME_PROG|DIAG_REC)\\[",end:"\\]",contains:["self",t,n]},r={className:"built_in",begin:"(AI|AO|DI|DO|F|RI|RO|UI|UO|GI|GO|SI|SO)\\[",end:"\\]",contains:["self",t,e.QUOTE_STRING_MODE,n]};return{name:"TP",keywords:{keyword:["ABORT","ACC","ADJUST","AND","AP_LD","BREAK","CALL","CNT","COL","CONDITION","CONFIG","DA","DB","DIV","DETECT","ELSE","END","ENDFOR","ERR_NUM","ERROR_PROG","FINE","FOR","GP","GUARD","INC","IF","JMP","LINEAR_MAX_SPEED","LOCK","MOD","MONITOR","OFFSET","Offset","OR","OVERRIDE","PAUSE","PREG","PTH","RT_LD","RUN","SELECT","SKIP","Skip","TA","TB","TO","TOOL_OFFSET","Tool_Offset","UF","UT","UFRAME_NUM","UTOOL_NUM","UNLOCK","WAIT","X","Y","Z","W","P","R","STRLEN","SUBSTR","FINDSTR","VOFFSET","PROG","ATTR","MN","POS"],literal:["ON","OFF","max_speed","LPOS","JPOS","ENABLE","DISABLE","START","STOP","RESET"]},contains:[a,r,{className:"keyword",begin:"/(PROG|ATTR|MN|POS|END)\\b"},{className:"keyword",begin:"(CALL|RUN|POINT_LOGIC|LBL)\\b"},{className:"keyword",begin:"\\b(ACC|CNT|Skip|Offset|PSPD|RT_LD|AP_LD|Tool_Offset)"},{className:"number",begin:"\\d+(sec|msec|mm/sec|cm/min|inch/min|deg/sec|mm|in|cm)?\\b",relevance:0},e.COMMENT("//","[;$]"),e.COMMENT("!","[;$]"),e.COMMENT("--eg:","$"),e.QUOTE_STRING_MODE,{className:"string",begin:"'",end:"'"},e.C_NUMBER_MODE,{className:"variable",begin:"\\$[A-Za-z0-9_]+"}]}}var JI=ZI;function eA(e){const t=e.regex,n=["absolute_url","asset|0","asset_version","attribute","block","constant","controller|0","country_timezones","csrf_token","cycle","date","dump","expression","form|0","form_end","form_errors","form_help","form_label","form_rest","form_row","form_start","form_widget","html_classes","include","is_granted","logout_path","logout_url","max","min","parent","path|0","random","range","relative_path","render","render_esi","source","template_from_string","url|0"],a=["abs","abbr_class","abbr_method","batch","capitalize","column","convert_encoding","country_name","currency_name","currency_symbol","data_uri","date","date_modify","default","escape","file_excerpt","file_link","file_relative","filter","first","format","format_args","format_args_as_text","format_currency","format_date","format_datetime","format_file","format_file_from_text","format_number","format_time","html_to_markdown","humanize","inky_to_html","inline_css","join","json_encode","keys","language_name","last","length","locale_name","lower","map","markdown","markdown_to_html","merge","nl2br","number_format","raw","reduce","replace","reverse","round","slice","slug","sort","spaceless","split","striptags","timezone_name","title","trans","transchoice","trim","u|0","upper","url_encode","yaml_dump","yaml_encode"];let r=["apply","autoescape","block","cache","deprecated","do","embed","extends","filter","flush","for","form_theme","from","if","import","include","macro","sandbox","set","stopwatch","trans","trans_default_domain","transchoice","use","verbatim","with"];r=r.concat(r.map(h=>`end${h}`));const i={scope:"string",variants:[{begin:/'/,end:/'/},{begin:/"/,end:/"/}]},s={scope:"number",match:/\d+/},o={begin:/\(/,end:/\)/,excludeBegin:!0,excludeEnd:!0,contains:[i,s]},l={beginKeywords:n.join(" "),keywords:{name:n},relevance:0,contains:[o]},c={match:/\|(?=[A-Za-z_]+:?)/,beginScope:"punctuation",relevance:0,contains:[{match:/[A-Za-z_]+:?/,keywords:a}]},d=(h,{relevance:f})=>({beginScope:{1:"template-tag",3:"name"},relevance:f||2,endScope:"template-tag",begin:[/\{%/,/\s*/,t.either(...h)],end:/%\}/,keywords:"in",contains:[c,l,i,s]}),_=/[a-z_]+/,u=d(r,{relevance:2}),p=d([_],{relevance:1});return{name:"Twig",aliases:["craftcms"],case_insensitive:!0,subLanguage:"xml",contains:[e.COMMENT(/\{#/,/#\}/),u,p,{className:"template-variable",begin:/\{\{/,end:/\}\}/,contains:["self",c,l,i,s]}]}}var tA=eA;const xr="[A-Za-z$_][0-9A-Za-z$_]*",ou=["as","in","of","if","for","while","finally","var","new","function","do","return","void","else","break","catch","instanceof","with","throw","case","default","try","switch","continue","typeof","delete","let","yield","const","class","debugger","async","await","static","import","from","export","extends"],lu=["true","false","null","undefined","NaN","Infinity"],cu=["Object","Function","Boolean","Symbol","Math","Date","Number","BigInt","String","RegExp","Array","Float32Array","Float64Array","Int8Array","Uint8Array","Uint8ClampedArray","Int16Array","Int32Array","Uint16Array","Uint32Array","BigInt64Array","BigUint64Array","Set","Map","WeakSet","WeakMap","ArrayBuffer","SharedArrayBuffer","Atomics","DataView","JSON","Promise","Generator","GeneratorFunction","AsyncFunction","Reflect","Proxy","Intl","WebAssembly"],du=["Error","EvalError","InternalError","RangeError","ReferenceError","SyntaxError","TypeError","URIError"],uu=["setInterval","setTimeout","clearInterval","clearTimeout","require","exports","eval","isFinite","isNaN","parseFloat","parseInt","decodeURI","decodeURIComponent","encodeURI","encodeURIComponent","escape","unescape"],_u=["arguments","this","super","console","window","document","localStorage","module","global"],pu=[].concat(uu,cu,du);function nA(e){const t=e.regex,n=(D,{after:U})=>{const ee="</"+D[0].slice(1);return D.input.indexOf(ee,U)!==-1},a=xr,r={begin:"<>",end:"</>"},i=/<[A-Za-z0-9\\._:-]+\s*\/>/,s={begin:/<[A-Za-z0-9\\._:-]+/,end:/\/[A-Za-z0-9\\._:-]+>|\/>/,isTrulyOpeningTag:(D,U)=>{const ee=D[0].length+D.index,de=D.input[ee];if(de==="<"||de===","){U.ignoreMatch();return}de===">"&&(n(D,{after:ee})||U.ignoreMatch());let me;const ge=D.input.substring(ee);if(me=ge.match(/^\s*=/)){U.ignoreMatch();return}if((me=ge.match(/^\s+extends\s+/))&&me.index===0){U.ignoreMatch();return}}},o={$pattern:xr,keyword:ou,literal:lu,built_in:pu,"variable.language":_u},l="[0-9](_?[0-9])*",c=`\\.(${l})`,d="0|[1-9](_?[0-9])*|0[0-7]*[89][0-9]*",_={className:"number",variants:[{begin:`(\\b(${d})((${c})|\\.)?|(${c}))[eE][+-]?(${l})\\b`},{begin:`\\b(${d})\\b((${c})\\b|\\.)?|(${c})\\b`},{begin:"\\b(0|[1-9](_?[0-9])*)n\\b"},{begin:"\\b0[xX][0-9a-fA-F](_?[0-9a-fA-F])*n?\\b"},{begin:"\\b0[bB][0-1](_?[0-1])*n?\\b"},{begin:"\\b0[oO][0-7](_?[0-7])*n?\\b"},{begin:"\\b0[0-7]+n?\\b"}],relevance:0},u={className:"subst",begin:"\\$\\{",end:"\\}",keywords:o,contains:[]},p={begin:"html`",end:"",starts:{end:"`",returnEnd:!1,contains:[e.BACKSLASH_ESCAPE,u],subLanguage:"xml"}},h={begin:"css`",end:"",starts:{end:"`",returnEnd:!1,contains:[e.BACKSLASH_ESCAPE,u],subLanguage:"css"}},f={className:"string",begin:"`",end:"`",contains:[e.BACKSLASH_ESCAPE,u]},b=e.COMMENT(/\/\*\*(?!\/)/,"\\*/",{relevance:0,contains:[{begin:"(?=@[A-Za-z]+)",relevance:0,contains:[{className:"doctag",begin:"@[A-Za-z]+"},{className:"type",begin:"\\{",end:"\\}",excludeEnd:!0,excludeBegin:!0,relevance:0},{className:"variable",begin:a+"(?=\\s*(-)|$)",endsParent:!0,relevance:0},{begin:/(?=[^\n])\s/,relevance:0}]}]}),S={className:"comment",variants:[b,e.C_BLOCK_COMMENT_MODE,e.C_LINE_COMMENT_MODE]},v=[e.APOS_STRING_MODE,e.QUOTE_STRING_MODE,p,h,f,{match:/\$\d+/},_];u.contains=v.concat({begin:/\{/,end:/\}/,keywords:o,contains:["self"].concat(v)});const T=[].concat(S,u.contains),C=T.concat([{begin:/\(/,end:/\)/,keywords:o,contains:["self"].concat(T)}]),I={className:"params",begin:/\(/,end:/\)/,excludeBegin:!0,excludeEnd:!0,keywords:o,contains:C},H={variants:[{match:[/class/,/\s+/,a,/\s+/,/extends/,/\s+/,t.concat(a,"(",t.concat(/\./,a),")*")],scope:{1:"keyword",3:"title.class",5:"keyword",7:"title.class.inherited"}},{match:[/class/,/\s+/,a],scope:{1:"keyword",3:"title.class"}}]},G={relevance:0,match:t.either(/\bJSON/,/\b[A-Z][a-z]+([A-Z][a-z]*|\d)*/,/\b[A-Z]{2,}([A-Z][a-z]+|\d)+([A-Z][a-z]*)*/,/\b[A-Z]{2,}[a-z]+([A-Z][a-z]+|\d)*([A-Z][a-z]*)*/),className:"title.class",keywords:{_:[...cu,...du]}},L={label:"use_strict",className:"meta",relevance:10,begin:/^\s*['"]use (strict|asm)['"]/},K={variants:[{match:[/function/,/\s+/,a,/(?=\s*\()/]},{match:[/function/,/\s*(?=\()/]}],className:{1:"keyword",3:"title.function"},label:"func.def",contains:[I],illegal:/%/},W={relevance:0,match:/\b[A-Z][A-Z_0-9]+\b/,className:"variable.constant"};function oe(D){return t.concat("(?!",D.join("|"),")")}const he={match:t.concat(/\b/,oe([...uu,"super","import"]),a,t.lookahead(/\(/)),className:"title.function",relevance:0},be={begin:t.concat(/\./,t.lookahead(t.concat(a,/(?![0-9A-Za-z$_(])/))),end:a,excludeBegin:!0,keywords:"prototype",className:"property",relevance:0},fe={match:[/get|set/,/\s+/,a,/(?=\()/],className:{1:"keyword",3:"title.function"},contains:[{begin:/\(\)/},I]},Te="(\\([^()]*(\\([^()]*(\\([^()]*\\)[^()]*)*\\)[^()]*)*\\)|"+e.UNDERSCORE_IDENT_RE+")\\s*=>",A={match:[/const|var|let/,/\s+/,a,/\s*/,/=\s*/,/(async\s*)?/,t.lookahead(Te)],keywords:"async",className:{1:"keyword",3:"title.function"},contains:[I]};return{name:"Javascript",aliases:["js","jsx","mjs","cjs"],keywords:o,exports:{PARAMS_CONTAINS:C,CLASS_REFERENCE:G},illegal:/#(?![$_A-z])/,contains:[e.SHEBANG({label:"shebang",binary:"node",relevance:5}),L,e.APOS_STRING_MODE,e.QUOTE_STRING_MODE,p,h,f,S,{match:/\$\d+/},_,G,{className:"attr",begin:a+t.lookahead(":"),relevance:0},A,{begin:"("+e.RE_STARTERS_RE+"|\\b(case|return|throw)\\b)\\s*",keywords:"return throw case",relevance:0,contains:[S,e.REGEXP_MODE,{className:"function",begin:Te,returnBegin:!0,end:"\\s*=>",contains:[{className:"params",variants:[{begin:e.UNDERSCORE_IDENT_RE,relevance:0},{className:null,begin:/\(\s*\)/,skip:!0},{begin:/\(/,end:/\)/,excludeBegin:!0,excludeEnd:!0,keywords:o,contains:C}]}]},{begin:/,/,relevance:0},{match:/\s+/,relevance:0},{variants:[{begin:r.begin,end:r.end},{match:i},{begin:s.begin,"on:begin":s.isTrulyOpeningTag,end:s.end}],subLanguage:"xml",contains:[{begin:s.begin,end:s.end,skip:!0,contains:["self"]}]}]},K,{beginKeywords:"while if switch catch for"},{begin:"\\b(?!function)"+e.UNDERSCORE_IDENT_RE+"\\([^()]*(\\([^()]*(\\([^()]*\\)[^()]*)*\\)[^()]*)*\\)\\s*\\{",returnBegin:!0,label:"func.def",contains:[I,e.inherit(e.TITLE_MODE,{begin:a,className:"title.function"})]},{match:/\.\.\./,relevance:0},be,{match:"\\$"+a,relevance:0},{match:[/\bconstructor(?=\s*\()/],className:{1:"title.function"},contains:[I]},he,W,H,fe,{match:/\$[(.]/}]}}function aA(e){const t=nA(e),n=xr,a=["any","void","number","boolean","string","object","never","symbol","bigint","unknown"],r={beginKeywords:"namespace",end:/\{/,excludeEnd:!0,contains:[t.exports.CLASS_REFERENCE]},i={beginKeywords:"interface",end:/\{/,excludeEnd:!0,keywords:{keyword:"interface extends",built_in:a},contains:[t.exports.CLASS_REFERENCE]},s={className:"meta",relevance:10,begin:/^\s*['"]use strict['"]/},o=["type","namespace","interface","public","private","protected","implements","declare","abstract","readonly","enum","override"],l={$pattern:xr,keyword:ou.concat(o),literal:lu,built_in:pu.concat(a),"variable.language":_u},c={className:"meta",begin:"@"+n},d=(u,p,h)=>{const f=u.contains.findIndex(b=>b.label===p);if(f===-1)throw new Error("can not find mode to replace");u.contains.splice(f,1,h)};Object.assign(t.keywords,l),t.exports.PARAMS_CONTAINS.push(c),t.contains=t.contains.concat([c,r,i]),d(t,"shebang",e.SHEBANG()),d(t,"use_strict",s);const _=t.contains.find(u=>u.label==="func.def");return _.relevance=0,Object.assign(t,{name:"TypeScript",aliases:["ts","tsx"]}),t}var rA=aA;function iA(e){return{name:"Vala",keywords:{keyword:"char uchar unichar int uint long ulong short ushort int8 int16 int32 int64 uint8 uint16 uint32 uint64 float double bool struct enum string void weak unowned owned async signal static abstract interface override virtual delegate if while do for foreach else switch case break default return try catch public private protected internal using new this get set const stdout stdin stderr var",built_in:"DBus GLib CCode Gee Object Gtk Posix",literal:"false true null"},contains:[{className:"class",beginKeywords:"class interface namespace",end:/\{/,excludeEnd:!0,illegal:"[^,:\\n\\s\\.]",contains:[e.UNDERSCORE_TITLE_MODE]},e.C_LINE_COMMENT_MODE,e.C_BLOCK_COMMENT_MODE,{className:"string",begin:'"""',end:'"""',relevance:5},e.APOS_STRING_MODE,e.QUOTE_STRING_MODE,e.C_NUMBER_MODE,{className:"meta",begin:"^#",end:"$"}]}}var sA=iA;function oA(e){const t=e.regex,n={className:"string",begin:/"(""|[^/n])"C\b/},a={className:"string",begin:/"/,end:/"/,illegal:/\n/,contains:[{begin:/""/}]},r=/\d{1,2}\/\d{1,2}\/\d{4}/,i=/\d{4}-\d{1,2}-\d{1,2}/,s=/(\d|1[012])(:\d+){0,2} *(AM|PM)/,o=/\d{1,2}(:\d{1,2}){1,2}/,l={className:"literal",variants:[{begin:t.concat(/# */,t.either(i,r),/ *#/)},{begin:t.concat(/# */,o,/ *#/)},{begin:t.concat(/# */,s,/ *#/)},{begin:t.concat(/# */,t.either(i,r),/ +/,t.either(s,o),/ *#/)}]},c={className:"number",relevance:0,variants:[{begin:/\b\d[\d_]*((\.[\d_]+(E[+-]?[\d_]+)?)|(E[+-]?[\d_]+))[RFD@!#]?/},{begin:/\b\d[\d_]*((U?[SIL])|[%&])?/},{begin:/&H[\dA-F_]+((U?[SIL])|[%&])?/},{begin:/&O[0-7_]+((U?[SIL])|[%&])?/},{begin:/&B[01_]+((U?[SIL])|[%&])?/}]},d={className:"label",begin:/^\w+:/},_=e.COMMENT(/'''/,/$/,{contains:[{className:"doctag",begin:/<\/?/,end:/>/}]}),u=e.COMMENT(null,/$/,{variants:[{begin:/'/},{begin:/([\t ]|^)REM(?=\s)/}]});return{name:"Visual Basic .NET",aliases:["vb"],case_insensitive:!0,classNameAliases:{label:"symbol"},keywords:{keyword:"addhandler alias aggregate ansi as async assembly auto binary by byref byval call case catch class compare const continue custom declare default delegate dim distinct do each equals else elseif end enum erase error event exit explicit finally for friend from function get global goto group handles if implements imports in inherits interface into iterator join key let lib loop me mid module mustinherit mustoverride mybase myclass namespace narrowing new next notinheritable notoverridable of off on operator option optional order overloads overridable overrides paramarray partial preserve private property protected public raiseevent readonly redim removehandler resume return select set shadows shared skip static step stop structure strict sub synclock take text then throw to try unicode until using when where while widening with withevents writeonly yield",built_in:"addressof and andalso await directcast gettype getxmlnamespace is isfalse isnot istrue like mod nameof new not or orelse trycast typeof xor cbool cbyte cchar cdate cdbl cdec cint clng cobj csbyte cshort csng cstr cuint culng cushort",type:"boolean byte char date decimal double integer long object sbyte short single string uinteger ulong ushort",literal:"true false nothing"},illegal:"//|\\{|\\}|endif|gosub|variant|wend|^\\$ ",contains:[n,a,l,c,d,_,u,{className:"meta",begin:/[\t ]*#(const|disable|else|elseif|enable|end|externalsource|if|region)\b/,end:/$/,keywords:{keyword:"const disable else elseif enable end externalsource if region then"},contains:[u]}]}}var lA=oA;function cA(e){const t=e.regex,n=["lcase","month","vartype","instrrev","ubound","setlocale","getobject","rgb","getref","string","weekdayname","rnd","dateadd","monthname","now","day","minute","isarray","cbool","round","formatcurrency","conversions","csng","timevalue","second","year","space","abs","clng","timeserial","fixs","len","asc","isempty","maths","dateserial","atn","timer","isobject","filter","weekday","datevalue","ccur","isdate","instr","datediff","formatdatetime","replace","isnull","right","sgn","array","snumeric","log","cdbl","hex","chr","lbound","msgbox","ucase","getlocale","cos","cdate","cbyte","rtrim","join","hour","oct","typename","trim","strcomp","int","createobject","loadpicture","tan","formatnumber","mid","split","cint","sin","datepart","ltrim","sqr","time","derived","eval","date","formatpercent","exp","inputbox","left","ascw","chrw","regexp","cstr","err"],a=["server","response","request","scriptengine","scriptenginebuildversion","scriptengineminorversion","scriptenginemajorversion"],r={begin:t.concat(t.either(...n),"\\s*\\("),relevance:0,keywords:{built_in:n}};return{name:"VBScript",aliases:["vbs"],case_insensitive:!0,keywords:{keyword:["call","class","const","dim","do","loop","erase","execute","executeglobal","exit","for","each","next","function","if","then","else","on","error","option","explicit","new","private","property","let","get","public","randomize","redim","rem","select","case","set","stop","sub","while","wend","with","end","to","elseif","is","or","xor","and","not","class_initialize","class_terminate","default","preserve","in","me","byval","byref","step","resume","goto"],built_in:a,literal:["true","false","null","nothing","empty"]},illegal:"//",contains:[r,e.inherit(e.QUOTE_STRING_MODE,{contains:[{begin:'""'}]}),e.COMMENT(/'/,/$/,{relevance:0}),e.C_NUMBER_MODE]}}var dA=cA;function uA(e){return{name:"VBScript in HTML",subLanguage:"xml",contains:[{begin:"<%",end:"%>",subLanguage:"vbscript"}]}}var _A=uA;function pA(e){const t=e.regex,n={$pattern:/\$?[\w]+(\$[\w]+)*/,keyword:["accept_on","alias","always","always_comb","always_ff","always_latch","and","assert","assign","assume","automatic","before","begin","bind","bins","binsof","bit","break","buf|0","bufif0","bufif1","byte","case","casex","casez","cell","chandle","checker","class","clocking","cmos","config","const","constraint","context","continue","cover","covergroup","coverpoint","cross","deassign","default","defparam","design","disable","dist","do","edge","else","end","endcase","endchecker","endclass","endclocking","endconfig","endfunction","endgenerate","endgroup","endinterface","endmodule","endpackage","endprimitive","endprogram","endproperty","endspecify","endsequence","endtable","endtask","enum","event","eventually","expect","export","extends","extern","final","first_match","for","force","foreach","forever","fork","forkjoin","function","generate|5","genvar","global","highz0","highz1","if","iff","ifnone","ignore_bins","illegal_bins","implements","implies","import","incdir","include","initial","inout","input","inside","instance","int","integer","interconnect","interface","intersect","join","join_any","join_none","large","let","liblist","library","local","localparam","logic","longint","macromodule","matches","medium","modport","module","nand","negedge","nettype","new","nexttime","nmos","nor","noshowcancelled","not","notif0","notif1","or","output","package","packed","parameter","pmos","posedge","primitive","priority","program","property","protected","pull0","pull1","pulldown","pullup","pulsestyle_ondetect","pulsestyle_onevent","pure","rand","randc","randcase","randsequence","rcmos","real","realtime","ref","reg","reject_on","release","repeat","restrict","return","rnmos","rpmos","rtran","rtranif0","rtranif1","s_always","s_eventually","s_nexttime","s_until","s_until_with","scalared","sequence","shortint","shortreal","showcancelled","signed","small","soft","solve","specify","specparam","static","string","strong","strong0","strong1","struct","super","supply0","supply1","sync_accept_on","sync_reject_on","table","tagged","task","this","throughout","time","timeprecision","timeunit","tran","tranif0","tranif1","tri","tri0","tri1","triand","trior","trireg","type","typedef","union","unique","unique0","unsigned","until","until_with","untyped","use","uwire","var","vectored","virtual","void","wait","wait_order","wand","weak","weak0","weak1","while","wildcard","wire","with","within","wor","xnor","xor"],literal:["null"],built_in:["$finish","$stop","$exit","$fatal","$error","$warning","$info","$realtime","$time","$printtimescale","$bitstoreal","$bitstoshortreal","$itor","$signed","$cast","$bits","$stime","$timeformat","$realtobits","$shortrealtobits","$rtoi","$unsigned","$asserton","$assertkill","$assertpasson","$assertfailon","$assertnonvacuouson","$assertoff","$assertcontrol","$assertpassoff","$assertfailoff","$assertvacuousoff","$isunbounded","$sampled","$fell","$changed","$past_gclk","$fell_gclk","$changed_gclk","$rising_gclk","$steady_gclk","$coverage_control","$coverage_get","$coverage_save","$set_coverage_db_name","$rose","$stable","$past","$rose_gclk","$stable_gclk","$future_gclk","$falling_gclk","$changing_gclk","$display","$coverage_get_max","$coverage_merge","$get_coverage","$load_coverage_db","$typename","$unpacked_dimensions","$left","$low","$increment","$clog2","$ln","$log10","$exp","$sqrt","$pow","$floor","$ceil","$sin","$cos","$tan","$countbits","$onehot","$isunknown","$fatal","$warning","$dimensions","$right","$high","$size","$asin","$acos","$atan","$atan2","$hypot","$sinh","$cosh","$tanh","$asinh","$acosh","$atanh","$countones","$onehot0","$error","$info","$random","$dist_chi_square","$dist_erlang","$dist_exponential","$dist_normal","$dist_poisson","$dist_t","$dist_uniform","$q_initialize","$q_remove","$q_exam","$async$and$array","$async$nand$array","$async$or$array","$async$nor$array","$sync$and$array","$sync$nand$array","$sync$or$array","$sync$nor$array","$q_add","$q_full","$psprintf","$async$and$plane","$async$nand$plane","$async$or$plane","$async$nor$plane","$sync$and$plane","$sync$nand$plane","$sync$or$plane","$sync$nor$plane","$system","$display","$displayb","$displayh","$displayo","$strobe","$strobeb","$strobeh","$strobeo","$write","$readmemb","$readmemh","$writememh","$value$plusargs","$dumpvars","$dumpon","$dumplimit","$dumpports","$dumpportson","$dumpportslimit","$writeb","$writeh","$writeo","$monitor","$monitorb","$monitorh","$monitoro","$writememb","$dumpfile","$dumpoff","$dumpall","$dumpflush","$dumpportsoff","$dumpportsall","$dumpportsflush","$fclose","$fdisplay","$fdisplayb","$fdisplayh","$fdisplayo","$fstrobe","$fstrobeb","$fstrobeh","$fstrobeo","$swrite","$swriteb","$swriteh","$swriteo","$fscanf","$fread","$fseek","$fflush","$feof","$fopen","$fwrite","$fwriteb","$fwriteh","$fwriteo","$fmonitor","$fmonitorb","$fmonitorh","$fmonitoro","$sformat","$sformatf","$fgetc","$ungetc","$fgets","$sscanf","$rewind","$ftell","$ferror"]},a=["__FILE__","__LINE__"],r=["begin_keywords","celldefine","default_nettype","default_decay_time","default_trireg_strength","define","delay_mode_distributed","delay_mode_path","delay_mode_unit","delay_mode_zero","else","elsif","end_keywords","endcelldefine","endif","ifdef","ifndef","include","line","nounconnected_drive","pragma","resetall","timescale","unconnected_drive","undef","undefineall"];return{name:"Verilog",aliases:["v","sv","svh"],case_insensitive:!1,keywords:n,contains:[e.C_BLOCK_COMMENT_MODE,e.C_LINE_COMMENT_MODE,e.QUOTE_STRING_MODE,{scope:"number",contains:[e.BACKSLASH_ESCAPE],variants:[{begin:/\b((\d+'([bhodBHOD]))[0-9xzXZa-fA-F_]+)/},{begin:/\B(('([bhodBHOD]))[0-9xzXZa-fA-F_]+)/},{begin:/\b[0-9][0-9_]*/,relevance:0}]},{scope:"variable",variants:[{begin:"#\\((?!parameter).+\\)"},{begin:"\\.\\w+",relevance:0}]},{scope:"variable.constant",match:t.concat(/`/,t.either(...a))},{scope:"meta",begin:t.concat(/`/,t.either(...r)),end:/$|\/\/|\/\*/,returnEnd:!0,keywords:r}]}}var mA=pA;function gA(e){const t="\\d(_|\\d)*",n="[eE][-+]?"+t,a=t+"(\\."+t+")?("+n+")?",r="\\w+",i=t+"#"+r+"(\\."+r+")?#("+n+")?",s="\\b("+i+"|"+a+")";return{name:"VHDL",case_insensitive:!0,keywords:{keyword:["abs","access","after","alias","all","and","architecture","array","assert","assume","assume_guarantee","attribute","begin","block","body","buffer","bus","case","component","configuration","constant","context","cover","disconnect","downto","default","else","elsif","end","entity","exit","fairness","file","for","force","function","generate","generic","group","guarded","if","impure","in","inertial","inout","is","label","library","linkage","literal","loop","map","mod","nand","new","next","nor","not","null","of","on","open","or","others","out","package","parameter","port","postponed","procedure","process","property","protected","pure","range","record","register","reject","release","rem","report","restrict","restrict_guarantee","return","rol","ror","select","sequence","severity","shared","signal","sla","sll","sra","srl","strong","subtype","then","to","transport","type","unaffected","units","until","use","variable","view","vmode","vprop","vunit","wait","when","while","with","xnor","xor"],built_in:["boolean","bit","character","integer","time","delay_length","natural","positive","string","bit_vector","file_open_kind","file_open_status","std_logic","std_logic_vector","unsigned","signed","boolean_vector","integer_vector","std_ulogic","std_ulogic_vector","unresolved_unsigned","u_unsigned","unresolved_signed","u_signed","real_vector","time_vector"],literal:["false","true","note","warning","error","failure","line","text","side","width"]},illegal:/\{/,contains:[e.C_BLOCK_COMMENT_MODE,e.COMMENT("--","$"),e.QUOTE_STRING_MODE,{className:"number",begin:s,relevance:0},{className:"string",begin:"'(U|X|0|1|Z|W|L|H|-)'",contains:[e.BACKSLASH_ESCAPE]},{className:"symbol",begin:"'[A-Za-z](_?[A-Za-z0-9])*",contains:[e.BACKSLASH_ESCAPE]}]}}var hA=gA;function fA(e){return{name:"Vim Script",keywords:{$pattern:/[!#@\w]+/,keyword:"N|0 P|0 X|0 a|0 ab abc abo al am an|0 ar arga argd arge argdo argg argl argu as au aug aun b|0 bN ba bad bd be bel bf bl bm bn bo bp br brea breaka breakd breakl bro bufdo buffers bun bw c|0 cN cNf ca cabc caddb cad caddf cal cat cb cc ccl cd ce cex cf cfir cgetb cgete cg changes chd che checkt cl cla clo cm cmapc cme cn cnew cnf cno cnorea cnoreme co col colo com comc comp con conf cope cp cpf cq cr cs cst cu cuna cunme cw delm deb debugg delc delf dif diffg diffo diffp diffpu diffs diffthis dig di dl dell dj dli do doautoa dp dr ds dsp e|0 ea ec echoe echoh echom echon el elsei em en endfo endf endt endw ene ex exe exi exu f|0 files filet fin fina fini fir fix fo foldc foldd folddoc foldo for fu go gr grepa gu gv ha helpf helpg helpt hi hid his ia iabc if ij il im imapc ime ino inorea inoreme int is isp iu iuna iunme j|0 ju k|0 keepa kee keepj lN lNf l|0 lad laddb laddf la lan lat lb lc lch lcl lcs le lefta let lex lf lfir lgetb lgete lg lgr lgrepa lh ll lla lli lmak lm lmapc lne lnew lnf ln loadk lo loc lockv lol lope lp lpf lr ls lt lu lua luad luaf lv lvimgrepa lw m|0 ma mak map mapc marks mat me menut mes mk mks mksp mkv mkvie mod mz mzf nbc nb nbs new nm nmapc nme nn nnoreme noa no noh norea noreme norm nu nun nunme ol o|0 om omapc ome on ono onoreme opt ou ounme ow p|0 profd prof pro promptr pc ped pe perld po popu pp pre prev ps pt ptN ptf ptj ptl ptn ptp ptr pts pu pw py3 python3 py3d py3f py pyd pyf quita qa rec red redi redr redraws reg res ret retu rew ri rightb rub rubyd rubyf rund ru rv sN san sa sal sav sb sbN sba sbf sbl sbm sbn sbp sbr scrip scripte scs se setf setg setl sf sfir sh sim sig sil sl sla sm smap smapc sme sn sni sno snor snoreme sor so spelld spe spelli spellr spellu spellw sp spr sre st sta startg startr star stopi stj sts sun sunm sunme sus sv sw sy synti sync tN tabN tabc tabdo tabe tabf tabfir tabl tabm tabnew tabn tabo tabp tabr tabs tab ta tags tc tcld tclf te tf th tj tl tm tn to tp tr try ts tu u|0 undoj undol una unh unl unlo unm unme uns up ve verb vert vim vimgrepa vi viu vie vm vmapc vme vne vn vnoreme vs vu vunme windo w|0 wN wa wh wi winc winp wn wp wq wqa ws wu wv x|0 xa xmapc xm xme xn xnoreme xu xunme y|0 z|0 ~ Next Print append abbreviate abclear aboveleft all amenu anoremenu args argadd argdelete argedit argglobal arglocal argument ascii autocmd augroup aunmenu buffer bNext ball badd bdelete behave belowright bfirst blast bmodified bnext botright bprevious brewind break breakadd breakdel breaklist browse bunload bwipeout change cNext cNfile cabbrev cabclear caddbuffer caddexpr caddfile call catch cbuffer cclose center cexpr cfile cfirst cgetbuffer cgetexpr cgetfile chdir checkpath checktime clist clast close cmap cmapclear cmenu cnext cnewer cnfile cnoremap cnoreabbrev cnoremenu copy colder colorscheme command comclear compiler continue confirm copen cprevious cpfile cquit crewind cscope cstag cunmap cunabbrev cunmenu cwindow delete delmarks debug debuggreedy delcommand delfunction diffupdate diffget diffoff diffpatch diffput diffsplit digraphs display deletel djump dlist doautocmd doautoall deletep drop dsearch dsplit edit earlier echo echoerr echohl echomsg else elseif emenu endif endfor endfunction endtry endwhile enew execute exit exusage file filetype find finally finish first fixdel fold foldclose folddoopen folddoclosed foldopen function global goto grep grepadd gui gvim hardcopy help helpfind helpgrep helptags highlight hide history insert iabbrev iabclear ijump ilist imap imapclear imenu inoremap inoreabbrev inoremenu intro isearch isplit iunmap iunabbrev iunmenu join jumps keepalt keepmarks keepjumps lNext lNfile list laddexpr laddbuffer laddfile last language later lbuffer lcd lchdir lclose lcscope left leftabove lexpr lfile lfirst lgetbuffer lgetexpr lgetfile lgrep lgrepadd lhelpgrep llast llist lmake lmap lmapclear lnext lnewer lnfile lnoremap loadkeymap loadview lockmarks lockvar lolder lopen lprevious lpfile lrewind ltag lunmap luado luafile lvimgrep lvimgrepadd lwindow move mark make mapclear match menu menutranslate messages mkexrc mksession mkspell mkvimrc mkview mode mzscheme mzfile nbclose nbkey nbsart next nmap nmapclear nmenu nnoremap nnoremenu noautocmd noremap nohlsearch noreabbrev noremenu normal number nunmap nunmenu oldfiles open omap omapclear omenu only onoremap onoremenu options ounmap ounmenu ownsyntax print profdel profile promptfind promptrepl pclose pedit perl perldo pop popup ppop preserve previous psearch ptag ptNext ptfirst ptjump ptlast ptnext ptprevious ptrewind ptselect put pwd py3do py3file python pydo pyfile quit quitall qall read recover redo redir redraw redrawstatus registers resize retab return rewind right rightbelow ruby rubydo rubyfile rundo runtime rviminfo substitute sNext sandbox sargument sall saveas sbuffer sbNext sball sbfirst sblast sbmodified sbnext sbprevious sbrewind scriptnames scriptencoding scscope set setfiletype setglobal setlocal sfind sfirst shell simalt sign silent sleep slast smagic smapclear smenu snext sniff snomagic snoremap snoremenu sort source spelldump spellgood spellinfo spellrepall spellundo spellwrong split sprevious srewind stop stag startgreplace startreplace startinsert stopinsert stjump stselect sunhide sunmap sunmenu suspend sview swapname syntax syntime syncbind tNext tabNext tabclose tabedit tabfind tabfirst tablast tabmove tabnext tabonly tabprevious tabrewind tag tcl tcldo tclfile tearoff tfirst throw tjump tlast tmenu tnext topleft tprevious trewind tselect tunmenu undo undojoin undolist unabbreviate unhide unlet unlockvar unmap unmenu unsilent update vglobal version verbose vertical vimgrep vimgrepadd visual viusage view vmap vmapclear vmenu vnew vnoremap vnoremenu vsplit vunmap vunmenu write wNext wall while winsize wincmd winpos wnext wprevious wqall wsverb wundo wviminfo xit xall xmapclear xmap xmenu xnoremap xnoremenu xunmap xunmenu yank",built_in:"synIDtrans atan2 range matcharg did_filetype asin feedkeys xor argv complete_check add getwinposx getqflist getwinposy screencol clearmatches empty extend getcmdpos mzeval garbagecollect setreg ceil sqrt diff_hlID inputsecret get getfperm getpid filewritable shiftwidth max sinh isdirectory synID system inputrestore winline atan visualmode inputlist tabpagewinnr round getregtype mapcheck hasmapto histdel argidx findfile sha256 exists toupper getcmdline taglist string getmatches bufnr strftime winwidth bufexists strtrans tabpagebuflist setcmdpos remote_read printf setloclist getpos getline bufwinnr float2nr len getcmdtype diff_filler luaeval resolve libcallnr foldclosedend reverse filter has_key bufname str2float strlen setline getcharmod setbufvar index searchpos shellescape undofile foldclosed setqflist buflisted strchars str2nr virtcol floor remove undotree remote_expr winheight gettabwinvar reltime cursor tabpagenr finddir localtime acos getloclist search tanh matchend rename gettabvar strdisplaywidth type abs py3eval setwinvar tolower wildmenumode log10 spellsuggest bufloaded synconcealed nextnonblank server2client complete settabwinvar executable input wincol setmatches getftype hlID inputsave searchpair or screenrow line settabvar histadd deepcopy strpart remote_peek and eval getftime submatch screenchar winsaveview matchadd mkdir screenattr getfontname libcall reltimestr getfsize winnr invert pow getbufline byte2line soundfold repeat fnameescape tagfiles sin strwidth spellbadword trunc maparg log lispindent hostname setpos globpath remote_foreground getchar synIDattr fnamemodify cscope_connection stridx winbufnr indent min complete_add nr2char searchpairpos inputdialog values matchlist items hlexists strridx browsedir expand fmod pathshorten line2byte argc count getwinvar glob foldtextresult getreg foreground cosh matchdelete has char2nr simplify histget searchdecl iconv winrestcmd pumvisible writefile foldlevel haslocaldir keys cos matchstr foldtext histnr tan tempname getcwd byteidx getbufvar islocked escape eventhandler remote_send serverlist winrestview synstack pyeval prevnonblank readfile cindent filereadable changenr exp"},illegal:/;/,contains:[e.NUMBER_MODE,{className:"string",begin:"'",end:"'",illegal:"\\n"},{className:"string",begin:/"(\\"|\n\\|[^"\n])*"/},e.COMMENT('"',"$"),{className:"variable",begin:/[bwtglsav]:[\w\d_]+/},{begin:[/\b(?:function|function!)/,/\s+/,e.IDENT_RE],className:{1:"keyword",3:"title"},end:"$",relevance:0,contains:[{className:"params",begin:"\\(",end:"\\)"}]},{className:"symbol",begin:/<[\w-]+>/}]}}var EA=fA;function SA(e){e.regex;const t=e.COMMENT(/\(;/,/;\)/);t.contains.push("self");const n=e.COMMENT(/;;/,/$/),a=["anyfunc","block","br","br_if","br_table","call","call_indirect","data","drop","elem","else","end","export","func","global.get","global.set","local.get","local.set","local.tee","get_global","get_local","global","if","import","local","loop","memory","memory.grow","memory.size","module","mut","nop","offset","param","result","return","select","set_global","set_local","start","table","tee_local","then","type","unreachable"],r={begin:[/(?:func|call|call_indirect)/,/\s+/,/\$[^\s)]+/],className:{1:"keyword",3:"title.function"}},i={className:"variable",begin:/\$[\w_]+/},s={match:/(\((?!;)|\))+/,className:"punctuation",relevance:0},o={className:"number",relevance:0,match:/[+-]?\b(?:\d(?:_?\d)*(?:\.\d(?:_?\d)*)?(?:[eE][+-]?\d(?:_?\d)*)?|0x[\da-fA-F](?:_?[\da-fA-F])*(?:\.[\da-fA-F](?:_?[\da-fA-D])*)?(?:[pP][+-]?\d(?:_?\d)*)?)\b|\binf\b|\bnan(?::0x[\da-fA-F](?:_?[\da-fA-D])*)?\b/},l={match:/(i32|i64|f32|f64)(?!\.)/,className:"type"},c={className:"keyword",match:/\b(f32|f64|i32|i64)(?:\.(?:abs|add|and|ceil|clz|const|convert_[su]\/i(?:32|64)|copysign|ctz|demote\/f64|div(?:_[su])?|eqz?|extend_[su]\/i32|floor|ge(?:_[su])?|gt(?:_[su])?|le(?:_[su])?|load(?:(?:8|16|32)_[su])?|lt(?:_[su])?|max|min|mul|nearest|neg?|or|popcnt|promote\/f32|reinterpret\/[fi](?:32|64)|rem_[su]|rot[lr]|shl|shr_[su]|store(?:8|16|32)?|sqrt|sub|trunc(?:_[su]\/f(?:32|64))?|wrap\/i64|xor))\b/};return{name:"WebAssembly",keywords:{$pattern:/[\w.]+/,keyword:a},contains:[n,t,{match:[/(?:offset|align)/,/\s*/,/=/],className:{1:"keyword",3:"operator"}},i,s,r,e.QUOTE_STRING_MODE,l,c,o]}}var bA=SA;function TA(e){const t=e.regex,n=/[a-zA-Z]\w*/,a=["as","break","class","construct","continue","else","for","foreign","if","import","in","is","return","static","var","while"],r=["true","false","null"],i=["this","super"],s=["Bool","Class","Fiber","Fn","List","Map","Null","Num","Object","Range","Sequence","String","System"],o=["-","~",/\*/,"%",/\.\.\./,/\.\./,/\+/,"<<",">>",">=","<=","<",">",/\^/,/!=/,/!/,/\bis\b/,"==","&&","&",/\|\|/,/\|/,/\?:/,"="],l={relevance:0,match:t.concat(/\b(?!(if|while|for|else|super)\b)/,n,/(?=\s*[({])/),className:"title.function"},c={match:t.concat(t.either(t.concat(/\b(?!(if|while|for|else|super)\b)/,n),t.either(...o)),/(?=\s*\([^)]+\)\s*\{)/),className:"title.function",starts:{contains:[{begin:/\(/,end:/\)/,contains:[{relevance:0,scope:"params",match:n}]}]}},d={variants:[{match:[/class\s+/,n,/\s+is\s+/,n]},{match:[/class\s+/,n]}],scope:{2:"title.class",4:"title.class.inherited"},keywords:a},_={relevance:0,match:t.either(...o),className:"operator"},u={className:"string",begin:/"""/,end:/"""/},p={className:"property",begin:t.concat(/\./,t.lookahead(n)),end:n,excludeBegin:!0,relevance:0},h={relevance:0,match:t.concat(/\b_/,n),scope:"variable"},f={relevance:0,match:/\b[A-Z]+[a-z]+([A-Z]+[a-z]+)*/,scope:"title.class",keywords:{_:s}},b=e.C_NUMBER_MODE,S={match:[n,/\s*/,/=/,/\s*/,/\(/,n,/\)\s*\{/],scope:{1:"title.function",3:"operator",6:"params"}},v=e.COMMENT(/\/\*\*/,/\*\//,{contains:[{match:/@[a-z]+/,scope:"doctag"},"self"]}),T={scope:"subst",begin:/%\(/,end:/\)/,contains:[b,f,l,h,_]},C={scope:"string",begin:/"/,end:/"/,contains:[T,{scope:"char.escape",variants:[{match:/\\\\|\\["0%abefnrtv]/},{match:/\\x[0-9A-F]{2}/},{match:/\\u[0-9A-F]{4}/},{match:/\\U[0-9A-F]{8}/}]}]};T.contains.push(C);const I=[...a,...i,...r],H={relevance:0,match:t.concat("\\b(?!",I.join("|"),"\\b)",/[a-zA-Z_]\w*(?:[?!]|\b)/),className:"variable"};return{name:"Wren",keywords:{keyword:a,"variable.language":i,literal:r},contains:[{scope:"comment",variants:[{begin:[/#!?/,/[A-Za-z_]+(?=\()/],beginScope:{},keywords:{literal:r},contains:[],end:/\)/},{begin:[/#!?/,/[A-Za-z_]+/],beginScope:{},end:/$/}]},b,C,u,v,e.C_LINE_COMMENT_MODE,e.C_BLOCK_COMMENT_MODE,f,d,S,c,l,_,h,p,H]}}var yA=TA;function vA(e){return{name:"Intel x86 Assembly",case_insensitive:!0,keywords:{$pattern:"[.%]?"+e.IDENT_RE,keyword:"lock rep repe repz repne repnz xaquire xrelease bnd nobnd aaa aad aam aas adc add and arpl bb0_reset bb1_reset bound bsf bsr bswap bt btc btr bts call cbw cdq cdqe clc cld cli clts cmc cmp cmpsb cmpsd cmpsq cmpsw cmpxchg cmpxchg486 cmpxchg8b cmpxchg16b cpuid cpu_read cpu_write cqo cwd cwde daa das dec div dmint emms enter equ f2xm1 fabs fadd faddp fbld fbstp fchs fclex fcmovb fcmovbe fcmove fcmovnb fcmovnbe fcmovne fcmovnu fcmovu fcom fcomi fcomip fcomp fcompp fcos fdecstp fdisi fdiv fdivp fdivr fdivrp femms feni ffree ffreep fiadd ficom ficomp fidiv fidivr fild fimul fincstp finit fist fistp fisttp fisub fisubr fld fld1 fldcw fldenv fldl2e fldl2t fldlg2 fldln2 fldpi fldz fmul fmulp fnclex fndisi fneni fninit fnop fnsave fnstcw fnstenv fnstsw fpatan fprem fprem1 fptan frndint frstor fsave fscale fsetpm fsin fsincos fsqrt fst fstcw fstenv fstp fstsw fsub fsubp fsubr fsubrp ftst fucom fucomi fucomip fucomp fucompp fxam fxch fxtract fyl2x fyl2xp1 hlt ibts icebp idiv imul in inc incbin insb insd insw int int01 int1 int03 int3 into invd invpcid invlpg invlpga iret iretd iretq iretw jcxz jecxz jrcxz jmp jmpe lahf lar lds lea leave les lfence lfs lgdt lgs lidt lldt lmsw loadall loadall286 lodsb lodsd lodsq lodsw loop loope loopne loopnz loopz lsl lss ltr mfence monitor mov movd movq movsb movsd movsq movsw movsx movsxd movzx mul mwait neg nop not or out outsb outsd outsw packssdw packsswb packuswb paddb paddd paddsb paddsiw paddsw paddusb paddusw paddw pand pandn pause paveb pavgusb pcmpeqb pcmpeqd pcmpeqw pcmpgtb pcmpgtd pcmpgtw pdistib pf2id pfacc pfadd pfcmpeq pfcmpge pfcmpgt pfmax pfmin pfmul pfrcp pfrcpit1 pfrcpit2 pfrsqit1 pfrsqrt pfsub pfsubr pi2fd pmachriw pmaddwd pmagw pmulhriw pmulhrwa pmulhrwc pmulhw pmullw pmvgezb pmvlzb pmvnzb pmvzb pop popa popad popaw popf popfd popfq popfw por prefetch prefetchw pslld psllq psllw psrad psraw psrld psrlq psrlw psubb psubd psubsb psubsiw psubsw psubusb psubusw psubw punpckhbw punpckhdq punpckhwd punpcklbw punpckldq punpcklwd push pusha pushad pushaw pushf pushfd pushfq pushfw pxor rcl rcr rdshr rdmsr rdpmc rdtsc rdtscp ret retf retn rol ror rdm rsdc rsldt rsm rsts sahf sal salc sar sbb scasb scasd scasq scasw sfence sgdt shl shld shr shrd sidt sldt skinit smi smint smintold smsw stc std sti stosb stosd stosq stosw str sub svdc svldt svts swapgs syscall sysenter sysexit sysret test ud0 ud1 ud2b ud2 ud2a umov verr verw fwait wbinvd wrshr wrmsr xadd xbts xchg xlatb xlat xor cmove cmovz cmovne cmovnz cmova cmovnbe cmovae cmovnb cmovb cmovnae cmovbe cmovna cmovg cmovnle cmovge cmovnl cmovl cmovnge cmovle cmovng cmovc cmovnc cmovo cmovno cmovs cmovns cmovp cmovpe cmovnp cmovpo je jz jne jnz ja jnbe jae jnb jb jnae jbe jna jg jnle jge jnl jl jnge jle jng jc jnc jo jno js jns jpo jnp jpe jp sete setz setne setnz seta setnbe setae setnb setnc setb setnae setcset setbe setna setg setnle setge setnl setl setnge setle setng sets setns seto setno setpe setp setpo setnp addps addss andnps andps cmpeqps cmpeqss cmpleps cmpless cmpltps cmpltss cmpneqps cmpneqss cmpnleps cmpnless cmpnltps cmpnltss cmpordps cmpordss cmpunordps cmpunordss cmpps cmpss comiss cvtpi2ps cvtps2pi cvtsi2ss cvtss2si cvttps2pi cvttss2si divps divss ldmxcsr maxps maxss minps minss movaps movhps movlhps movlps movhlps movmskps movntps movss movups mulps mulss orps rcpps rcpss rsqrtps rsqrtss shufps sqrtps sqrtss stmxcsr subps subss ucomiss unpckhps unpcklps xorps fxrstor fxrstor64 fxsave fxsave64 xgetbv xsetbv xsave xsave64 xsaveopt xsaveopt64 xrstor xrstor64 prefetchnta prefetcht0 prefetcht1 prefetcht2 maskmovq movntq pavgb pavgw pextrw pinsrw pmaxsw pmaxub pminsw pminub pmovmskb pmulhuw psadbw pshufw pf2iw pfnacc pfpnacc pi2fw pswapd maskmovdqu clflush movntdq movnti movntpd movdqa movdqu movdq2q movq2dq paddq pmuludq pshufd pshufhw pshuflw pslldq psrldq psubq punpckhqdq punpcklqdq addpd addsd andnpd andpd cmpeqpd cmpeqsd cmplepd cmplesd cmpltpd cmpltsd cmpneqpd cmpneqsd cmpnlepd cmpnlesd cmpnltpd cmpnltsd cmpordpd cmpordsd cmpunordpd cmpunordsd cmppd comisd cvtdq2pd cvtdq2ps cvtpd2dq cvtpd2pi cvtpd2ps cvtpi2pd cvtps2dq cvtps2pd cvtsd2si cvtsd2ss cvtsi2sd cvtss2sd cvttpd2pi cvttpd2dq cvttps2dq cvttsd2si divpd divsd maxpd maxsd minpd minsd movapd movhpd movlpd movmskpd movupd mulpd mulsd orpd shufpd sqrtpd sqrtsd subpd subsd ucomisd unpckhpd unpcklpd xorpd addsubpd addsubps haddpd haddps hsubpd hsubps lddqu movddup movshdup movsldup clgi stgi vmcall vmclear vmfunc vmlaunch vmload vmmcall vmptrld vmptrst vmread vmresume vmrun vmsave vmwrite vmxoff vmxon invept invvpid pabsb pabsw pabsd palignr phaddw phaddd phaddsw phsubw phsubd phsubsw pmaddubsw pmulhrsw pshufb psignb psignw psignd extrq insertq movntsd movntss lzcnt blendpd blendps blendvpd blendvps dppd dpps extractps insertps movntdqa mpsadbw packusdw pblendvb pblendw pcmpeqq pextrb pextrd pextrq phminposuw pinsrb pinsrd pinsrq pmaxsb pmaxsd pmaxud pmaxuw pminsb pminsd pminud pminuw pmovsxbw pmovsxbd pmovsxbq pmovsxwd pmovsxwq pmovsxdq pmovzxbw pmovzxbd pmovzxbq pmovzxwd pmovzxwq pmovzxdq pmuldq pmulld ptest roundpd roundps roundsd roundss crc32 pcmpestri pcmpestrm pcmpistri pcmpistrm pcmpgtq popcnt getsec pfrcpv pfrsqrtv movbe aesenc aesenclast aesdec aesdeclast aesimc aeskeygenassist vaesenc vaesenclast vaesdec vaesdeclast vaesimc vaeskeygenassist vaddpd vaddps vaddsd vaddss vaddsubpd vaddsubps vandpd vandps vandnpd vandnps vblendpd vblendps vblendvpd vblendvps vbroadcastss vbroadcastsd vbroadcastf128 vcmpeq_ospd vcmpeqpd vcmplt_ospd vcmpltpd vcmple_ospd vcmplepd vcmpunord_qpd vcmpunordpd vcmpneq_uqpd vcmpneqpd vcmpnlt_uspd vcmpnltpd vcmpnle_uspd vcmpnlepd vcmpord_qpd vcmpordpd vcmpeq_uqpd vcmpnge_uspd vcmpngepd vcmpngt_uspd vcmpngtpd vcmpfalse_oqpd vcmpfalsepd vcmpneq_oqpd vcmpge_ospd vcmpgepd vcmpgt_ospd vcmpgtpd vcmptrue_uqpd vcmptruepd vcmplt_oqpd vcmple_oqpd vcmpunord_spd vcmpneq_uspd vcmpnlt_uqpd vcmpnle_uqpd vcmpord_spd vcmpeq_uspd vcmpnge_uqpd vcmpngt_uqpd vcmpfalse_ospd vcmpneq_ospd vcmpge_oqpd vcmpgt_oqpd vcmptrue_uspd vcmppd vcmpeq_osps vcmpeqps vcmplt_osps vcmpltps vcmple_osps vcmpleps vcmpunord_qps vcmpunordps vcmpneq_uqps vcmpneqps vcmpnlt_usps vcmpnltps vcmpnle_usps vcmpnleps vcmpord_qps vcmpordps vcmpeq_uqps vcmpnge_usps vcmpngeps vcmpngt_usps vcmpngtps vcmpfalse_oqps vcmpfalseps vcmpneq_oqps vcmpge_osps vcmpgeps vcmpgt_osps vcmpgtps vcmptrue_uqps vcmptrueps vcmplt_oqps vcmple_oqps vcmpunord_sps vcmpneq_usps vcmpnlt_uqps vcmpnle_uqps vcmpord_sps vcmpeq_usps vcmpnge_uqps vcmpngt_uqps vcmpfalse_osps vcmpneq_osps vcmpge_oqps vcmpgt_oqps vcmptrue_usps vcmpps vcmpeq_ossd vcmpeqsd vcmplt_ossd vcmpltsd vcmple_ossd vcmplesd vcmpunord_qsd vcmpunordsd vcmpneq_uqsd vcmpneqsd vcmpnlt_ussd vcmpnltsd vcmpnle_ussd vcmpnlesd vcmpord_qsd vcmpordsd vcmpeq_uqsd vcmpnge_ussd vcmpngesd vcmpngt_ussd vcmpngtsd vcmpfalse_oqsd vcmpfalsesd vcmpneq_oqsd vcmpge_ossd vcmpgesd vcmpgt_ossd vcmpgtsd vcmptrue_uqsd vcmptruesd vcmplt_oqsd vcmple_oqsd vcmpunord_ssd vcmpneq_ussd vcmpnlt_uqsd vcmpnle_uqsd vcmpord_ssd vcmpeq_ussd vcmpnge_uqsd vcmpngt_uqsd vcmpfalse_ossd vcmpneq_ossd vcmpge_oqsd vcmpgt_oqsd vcmptrue_ussd vcmpsd vcmpeq_osss vcmpeqss vcmplt_osss vcmpltss vcmple_osss vcmpless vcmpunord_qss vcmpunordss vcmpneq_uqss vcmpneqss vcmpnlt_usss vcmpnltss vcmpnle_usss vcmpnless vcmpord_qss vcmpordss vcmpeq_uqss vcmpnge_usss vcmpngess vcmpngt_usss vcmpngtss vcmpfalse_oqss vcmpfalsess vcmpneq_oqss vcmpge_osss vcmpgess vcmpgt_osss vcmpgtss vcmptrue_uqss vcmptruess vcmplt_oqss vcmple_oqss vcmpunord_sss vcmpneq_usss vcmpnlt_uqss vcmpnle_uqss vcmpord_sss vcmpeq_usss vcmpnge_uqss vcmpngt_uqss vcmpfalse_osss vcmpneq_osss vcmpge_oqss vcmpgt_oqss vcmptrue_usss vcmpss vcomisd vcomiss vcvtdq2pd vcvtdq2ps vcvtpd2dq vcvtpd2ps vcvtps2dq vcvtps2pd vcvtsd2si vcvtsd2ss vcvtsi2sd vcvtsi2ss vcvtss2sd vcvtss2si vcvttpd2dq vcvttps2dq vcvttsd2si vcvttss2si vdivpd vdivps vdivsd vdivss vdppd vdpps vextractf128 vextractps vhaddpd vhaddps vhsubpd vhsubps vinsertf128 vinsertps vlddqu vldqqu vldmxcsr vmaskmovdqu vmaskmovps vmaskmovpd vmaxpd vmaxps vmaxsd vmaxss vminpd vminps vminsd vminss vmovapd vmovaps vmovd vmovq vmovddup vmovdqa vmovqqa vmovdqu vmovqqu vmovhlps vmovhpd vmovhps vmovlhps vmovlpd vmovlps vmovmskpd vmovmskps vmovntdq vmovntqq vmovntdqa vmovntpd vmovntps vmovsd vmovshdup vmovsldup vmovss vmovupd vmovups vmpsadbw vmulpd vmulps vmulsd vmulss vorpd vorps vpabsb vpabsw vpabsd vpacksswb vpackssdw vpackuswb vpackusdw vpaddb vpaddw vpaddd vpaddq vpaddsb vpaddsw vpaddusb vpaddusw vpalignr vpand vpandn vpavgb vpavgw vpblendvb vpblendw vpcmpestri vpcmpestrm vpcmpistri vpcmpistrm vpcmpeqb vpcmpeqw vpcmpeqd vpcmpeqq vpcmpgtb vpcmpgtw vpcmpgtd vpcmpgtq vpermilpd vpermilps vperm2f128 vpextrb vpextrw vpextrd vpextrq vphaddw vphaddd vphaddsw vphminposuw vphsubw vphsubd vphsubsw vpinsrb vpinsrw vpinsrd vpinsrq vpmaddwd vpmaddubsw vpmaxsb vpmaxsw vpmaxsd vpmaxub vpmaxuw vpmaxud vpminsb vpminsw vpminsd vpminub vpminuw vpminud vpmovmskb vpmovsxbw vpmovsxbd vpmovsxbq vpmovsxwd vpmovsxwq vpmovsxdq vpmovzxbw vpmovzxbd vpmovzxbq vpmovzxwd vpmovzxwq vpmovzxdq vpmulhuw vpmulhrsw vpmulhw vpmullw vpmulld vpmuludq vpmuldq vpor vpsadbw vpshufb vpshufd vpshufhw vpshuflw vpsignb vpsignw vpsignd vpslldq vpsrldq vpsllw vpslld vpsllq vpsraw vpsrad vpsrlw vpsrld vpsrlq vptest vpsubb vpsubw vpsubd vpsubq vpsubsb vpsubsw vpsubusb vpsubusw vpunpckhbw vpunpckhwd vpunpckhdq vpunpckhqdq vpunpcklbw vpunpcklwd vpunpckldq vpunpcklqdq vpxor vrcpps vrcpss vrsqrtps vrsqrtss vroundpd vroundps vroundsd vroundss vshufpd vshufps vsqrtpd vsqrtps vsqrtsd vsqrtss vstmxcsr vsubpd vsubps vsubsd vsubss vtestps vtestpd vucomisd vucomiss vunpckhpd vunpckhps vunpcklpd vunpcklps vxorpd vxorps vzeroall vzeroupper pclmullqlqdq pclmulhqlqdq pclmullqhqdq pclmulhqhqdq pclmulqdq vpclmullqlqdq vpclmulhqlqdq vpclmullqhqdq vpclmulhqhqdq vpclmulqdq vfmadd132ps vfmadd132pd vfmadd312ps vfmadd312pd vfmadd213ps vfmadd213pd vfmadd123ps vfmadd123pd vfmadd231ps vfmadd231pd vfmadd321ps vfmadd321pd vfmaddsub132ps vfmaddsub132pd vfmaddsub312ps vfmaddsub312pd vfmaddsub213ps vfmaddsub213pd vfmaddsub123ps vfmaddsub123pd vfmaddsub231ps vfmaddsub231pd vfmaddsub321ps vfmaddsub321pd vfmsub132ps vfmsub132pd vfmsub312ps vfmsub312pd vfmsub213ps vfmsub213pd vfmsub123ps vfmsub123pd vfmsub231ps vfmsub231pd vfmsub321ps vfmsub321pd vfmsubadd132ps vfmsubadd132pd vfmsubadd312ps vfmsubadd312pd vfmsubadd213ps vfmsubadd213pd vfmsubadd123ps vfmsubadd123pd vfmsubadd231ps vfmsubadd231pd vfmsubadd321ps vfmsubadd321pd vfnmadd132ps vfnmadd132pd vfnmadd312ps vfnmadd312pd vfnmadd213ps vfnmadd213pd vfnmadd123ps vfnmadd123pd vfnmadd231ps vfnmadd231pd vfnmadd321ps vfnmadd321pd vfnmsub132ps vfnmsub132pd vfnmsub312ps vfnmsub312pd vfnmsub213ps vfnmsub213pd vfnmsub123ps vfnmsub123pd vfnmsub231ps vfnmsub231pd vfnmsub321ps vfnmsub321pd vfmadd132ss vfmadd132sd vfmadd312ss vfmadd312sd vfmadd213ss vfmadd213sd vfmadd123ss vfmadd123sd vfmadd231ss vfmadd231sd vfmadd321ss vfmadd321sd vfmsub132ss vfmsub132sd vfmsub312ss vfmsub312sd vfmsub213ss vfmsub213sd vfmsub123ss vfmsub123sd vfmsub231ss vfmsub231sd vfmsub321ss vfmsub321sd vfnmadd132ss vfnmadd132sd vfnmadd312ss vfnmadd312sd vfnmadd213ss vfnmadd213sd vfnmadd123ss vfnmadd123sd vfnmadd231ss vfnmadd231sd vfnmadd321ss vfnmadd321sd vfnmsub132ss vfnmsub132sd vfnmsub312ss vfnmsub312sd vfnmsub213ss vfnmsub213sd vfnmsub123ss vfnmsub123sd vfnmsub231ss vfnmsub231sd vfnmsub321ss vfnmsub321sd rdfsbase rdgsbase rdrand wrfsbase wrgsbase vcvtph2ps vcvtps2ph adcx adox rdseed clac stac xstore xcryptecb xcryptcbc xcryptctr xcryptcfb xcryptofb montmul xsha1 xsha256 llwpcb slwpcb lwpval lwpins vfmaddpd vfmaddps vfmaddsd vfmaddss vfmaddsubpd vfmaddsubps vfmsubaddpd vfmsubaddps vfmsubpd vfmsubps vfmsubsd vfmsubss vfnmaddpd vfnmaddps vfnmaddsd vfnmaddss vfnmsubpd vfnmsubps vfnmsubsd vfnmsubss vfrczpd vfrczps vfrczsd vfrczss vpcmov vpcomb vpcomd vpcomq vpcomub vpcomud vpcomuq vpcomuw vpcomw vphaddbd vphaddbq vphaddbw vphadddq vphaddubd vphaddubq vphaddubw vphaddudq vphadduwd vphadduwq vphaddwd vphaddwq vphsubbw vphsubdq vphsubwd vpmacsdd vpmacsdqh vpmacsdql vpmacssdd vpmacssdqh vpmacssdql vpmacsswd vpmacssww vpmacswd vpmacsww vpmadcsswd vpmadcswd vpperm vprotb vprotd vprotq vprotw vpshab vpshad vpshaq vpshaw vpshlb vpshld vpshlq vpshlw vbroadcasti128 vpblendd vpbroadcastb vpbroadcastw vpbroadcastd vpbroadcastq vpermd vpermpd vpermps vpermq vperm2i128 vextracti128 vinserti128 vpmaskmovd vpmaskmovq vpsllvd vpsllvq vpsravd vpsrlvd vpsrlvq vgatherdpd vgatherqpd vgatherdps vgatherqps vpgatherdd vpgatherqd vpgatherdq vpgatherqq xabort xbegin xend xtest andn bextr blci blcic blsi blsic blcfill blsfill blcmsk blsmsk blsr blcs bzhi mulx pdep pext rorx sarx shlx shrx tzcnt tzmsk t1mskc valignd valignq vblendmpd vblendmps vbroadcastf32x4 vbroadcastf64x4 vbroadcasti32x4 vbroadcasti64x4 vcompresspd vcompressps vcvtpd2udq vcvtps2udq vcvtsd2usi vcvtss2usi vcvttpd2udq vcvttps2udq vcvttsd2usi vcvttss2usi vcvtudq2pd vcvtudq2ps vcvtusi2sd vcvtusi2ss vexpandpd vexpandps vextractf32x4 vextractf64x4 vextracti32x4 vextracti64x4 vfixupimmpd vfixupimmps vfixupimmsd vfixupimmss vgetexppd vgetexpps vgetexpsd vgetexpss vgetmantpd vgetmantps vgetmantsd vgetmantss vinsertf32x4 vinsertf64x4 vinserti32x4 vinserti64x4 vmovdqa32 vmovdqa64 vmovdqu32 vmovdqu64 vpabsq vpandd vpandnd vpandnq vpandq vpblendmd vpblendmq vpcmpltd vpcmpled vpcmpneqd vpcmpnltd vpcmpnled vpcmpd vpcmpltq vpcmpleq vpcmpneqq vpcmpnltq vpcmpnleq vpcmpq vpcmpequd vpcmpltud vpcmpleud vpcmpnequd vpcmpnltud vpcmpnleud vpcmpud vpcmpequq vpcmpltuq vpcmpleuq vpcmpnequq vpcmpnltuq vpcmpnleuq vpcmpuq vpcompressd vpcompressq vpermi2d vpermi2pd vpermi2ps vpermi2q vpermt2d vpermt2pd vpermt2ps vpermt2q vpexpandd vpexpandq vpmaxsq vpmaxuq vpminsq vpminuq vpmovdb vpmovdw vpmovqb vpmovqd vpmovqw vpmovsdb vpmovsdw vpmovsqb vpmovsqd vpmovsqw vpmovusdb vpmovusdw vpmovusqb vpmovusqd vpmovusqw vpord vporq vprold vprolq vprolvd vprolvq vprord vprorq vprorvd vprorvq vpscatterdd vpscatterdq vpscatterqd vpscatterqq vpsraq vpsravq vpternlogd vpternlogq vptestmd vptestmq vptestnmd vptestnmq vpxord vpxorq vrcp14pd vrcp14ps vrcp14sd vrcp14ss vrndscalepd vrndscaleps vrndscalesd vrndscaless vrsqrt14pd vrsqrt14ps vrsqrt14sd vrsqrt14ss vscalefpd vscalefps vscalefsd vscalefss vscatterdpd vscatterdps vscatterqpd vscatterqps vshuff32x4 vshuff64x2 vshufi32x4 vshufi64x2 kandnw kandw kmovw knotw kortestw korw kshiftlw kshiftrw kunpckbw kxnorw kxorw vpbroadcastmb2q vpbroadcastmw2d vpconflictd vpconflictq vplzcntd vplzcntq vexp2pd vexp2ps vrcp28pd vrcp28ps vrcp28sd vrcp28ss vrsqrt28pd vrsqrt28ps vrsqrt28sd vrsqrt28ss vgatherpf0dpd vgatherpf0dps vgatherpf0qpd vgatherpf0qps vgatherpf1dpd vgatherpf1dps vgatherpf1qpd vgatherpf1qps vscatterpf0dpd vscatterpf0dps vscatterpf0qpd vscatterpf0qps vscatterpf1dpd vscatterpf1dps vscatterpf1qpd vscatterpf1qps prefetchwt1 bndmk bndcl bndcu bndcn bndmov bndldx bndstx sha1rnds4 sha1nexte sha1msg1 sha1msg2 sha256rnds2 sha256msg1 sha256msg2 hint_nop0 hint_nop1 hint_nop2 hint_nop3 hint_nop4 hint_nop5 hint_nop6 hint_nop7 hint_nop8 hint_nop9 hint_nop10 hint_nop11 hint_nop12 hint_nop13 hint_nop14 hint_nop15 hint_nop16 hint_nop17 hint_nop18 hint_nop19 hint_nop20 hint_nop21 hint_nop22 hint_nop23 hint_nop24 hint_nop25 hint_nop26 hint_nop27 hint_nop28 hint_nop29 hint_nop30 hint_nop31 hint_nop32 hint_nop33 hint_nop34 hint_nop35 hint_nop36 hint_nop37 hint_nop38 hint_nop39 hint_nop40 hint_nop41 hint_nop42 hint_nop43 hint_nop44 hint_nop45 hint_nop46 hint_nop47 hint_nop48 hint_nop49 hint_nop50 hint_nop51 hint_nop52 hint_nop53 hint_nop54 hint_nop55 hint_nop56 hint_nop57 hint_nop58 hint_nop59 hint_nop60 hint_nop61 hint_nop62 hint_nop63",built_in:"ip eip rip al ah bl bh cl ch dl dh sil dil bpl spl r8b r9b r10b r11b r12b r13b r14b r15b ax bx cx dx si di bp sp r8w r9w r10w r11w r12w r13w r14w r15w eax ebx ecx edx esi edi ebp esp eip r8d r9d r10d r11d r12d r13d r14d r15d rax rbx rcx rdx rsi rdi rbp rsp r8 r9 r10 r11 r12 r13 r14 r15 cs ds es fs gs ss st st0 st1 st2 st3 st4 st5 st6 st7 mm0 mm1 mm2 mm3 mm4 mm5 mm6 mm7 xmm0  xmm1  xmm2  xmm3  xmm4  xmm5  xmm6  xmm7  xmm8  xmm9 xmm10  xmm11 xmm12 xmm13 xmm14 xmm15 xmm16 xmm17 xmm18 xmm19 xmm20 xmm21 xmm22 xmm23 xmm24 xmm25 xmm26 xmm27 xmm28 xmm29 xmm30 xmm31 ymm0  ymm1  ymm2  ymm3  ymm4  ymm5  ymm6  ymm7  ymm8  ymm9 ymm10  ymm11 ymm12 ymm13 ymm14 ymm15 ymm16 ymm17 ymm18 ymm19 ymm20 ymm21 ymm22 ymm23 ymm24 ymm25 ymm26 ymm27 ymm28 ymm29 ymm30 ymm31 zmm0  zmm1  zmm2  zmm3  zmm4  zmm5  zmm6  zmm7  zmm8  zmm9 zmm10  zmm11 zmm12 zmm13 zmm14 zmm15 zmm16 zmm17 zmm18 zmm19 zmm20 zmm21 zmm22 zmm23 zmm24 zmm25 zmm26 zmm27 zmm28 zmm29 zmm30 zmm31 k0 k1 k2 k3 k4 k5 k6 k7 bnd0 bnd1 bnd2 bnd3 cr0 cr1 cr2 cr3 cr4 cr8 dr0 dr1 dr2 dr3 dr8 tr3 tr4 tr5 tr6 tr7 r0 r1 r2 r3 r4 r5 r6 r7 r0b r1b r2b r3b r4b r5b r6b r7b r0w r1w r2w r3w r4w r5w r6w r7w r0d r1d r2d r3d r4d r5d r6d r7d r0h r1h r2h r3h r0l r1l r2l r3l r4l r5l r6l r7l r8l r9l r10l r11l r12l r13l r14l r15l db dw dd dq dt ddq do dy dz resb resw resd resq rest resdq reso resy resz incbin equ times byte word dword qword nosplit rel abs seg wrt strict near far a32 ptr",meta:"%define %xdefine %+ %undef %defstr %deftok %assign %strcat %strlen %substr %rotate %elif %else %endif %if %ifmacro %ifctx %ifidn %ifidni %ifid %ifnum %ifstr %iftoken %ifempty %ifenv %error %warning %fatal %rep %endrep %include %push %pop %repl %pathsearch %depend %use %arg %stacksize %local %line %comment %endcomment .nolist __FILE__ __LINE__ __SECT__  __BITS__ __OUTPUT_FORMAT__ __DATE__ __TIME__ __DATE_NUM__ __TIME_NUM__ __UTC_DATE__ __UTC_TIME__ __UTC_DATE_NUM__ __UTC_TIME_NUM__  __PASS__ struc endstruc istruc at iend align alignb sectalign daz nodaz up down zero default option assume public bits use16 use32 use64 default section segment absolute extern global common cpu float __utf16__ __utf16le__ __utf16be__ __utf32__ __utf32le__ __utf32be__ __float8__ __float16__ __float32__ __float64__ __float80m__ __float80e__ __float128l__ __float128h__ __Infinity__ __QNaN__ __SNaN__ Inf NaN QNaN SNaN float8 float16 float32 float64 float80m float80e float128l float128h __FLOAT_DAZ__ __FLOAT_ROUND__ __FLOAT__"},contains:[e.COMMENT(";","$",{relevance:0}),{className:"number",variants:[{begin:"\\b(?:([0-9][0-9_]*)?\\.[0-9_]*(?:[eE][+-]?[0-9_]+)?|(0[Xx])?[0-9][0-9_]*(\\.[0-9_]*)?(?:[pP](?:[+-]?[0-9_]+)?)?)\\b",relevance:0},{begin:"\\$[0-9][0-9A-Fa-f]*",relevance:0},{begin:"\\b(?:[0-9A-Fa-f][0-9A-Fa-f_]*[Hh]|[0-9][0-9_]*[DdTt]?|[0-7][0-7_]*[QqOo]|[0-1][0-1_]*[BbYy])\\b"},{begin:"\\b(?:0[Xx][0-9A-Fa-f_]+|0[DdTt][0-9_]+|0[QqOo][0-7_]+|0[BbYy][0-1_]+)\\b"}]},e.QUOTE_STRING_MODE,{className:"string",variants:[{begin:"'",end:"[^\\\\]'"},{begin:"`",end:"[^\\\\]`"}],relevance:0},{className:"symbol",variants:[{begin:"^\\s*[A-Za-z._?][A-Za-z0-9_$#@~.?]*(:|\\s+label)"},{begin:"^\\s*%%[A-Za-z0-9_$#@~.?]*:"}],relevance:0},{className:"subst",begin:"%[0-9]+",relevance:0},{className:"subst",begin:"%!S+",relevance:0},{className:"meta",begin:/^\s*\.[\w_-]+/}]}}var RA=vA;function CA(e){const t=["if","then","else","do","while","until","for","loop","import","with","is","as","where","when","by","data","constant","integer","real","text","name","boolean","symbol","infix","prefix","postfix","block","tree"],n=["in","mod","rem","and","or","xor","not","abs","sign","floor","ceil","sqrt","sin","cos","tan","asin","acos","atan","exp","expm1","log","log2","log10","log1p","pi","at","text_length","text_range","text_find","text_replace","contains","page","slide","basic_slide","title_slide","title","subtitle","fade_in","fade_out","fade_at","clear_color","color","line_color","line_width","texture_wrap","texture_transform","texture","scale_?x","scale_?y","scale_?z?","translate_?x","translate_?y","translate_?z?","rotate_?x","rotate_?y","rotate_?z?","rectangle","circle","ellipse","sphere","path","line_to","move_to","quad_to","curve_to","theme","background","contents","locally","time","mouse_?x","mouse_?y","mouse_buttons"],a=["ObjectLoader","Animate","MovieCredits","Slides","Filters","Shading","Materials","LensFlare","Mapping","VLCAudioVideo","StereoDecoder","PointCloud","NetworkAccess","RemoteControl","RegExp","ChromaKey","Snowfall","NodeJS","Speech","Charts"],i={$pattern:/[a-zA-Z][a-zA-Z0-9_?]*/,keyword:t,literal:["true","false","nil"],built_in:n.concat(a)},s={className:"string",begin:'"',end:'"',illegal:"\\n"},o={className:"string",begin:"'",end:"'",illegal:"\\n"},l={className:"string",begin:"<<",end:">>"},c={className:"number",begin:"[0-9]+#[0-9A-Z_]+(\\.[0-9-A-Z_]+)?#?([Ee][+-]?[0-9]+)?"},d={beginKeywords:"import",end:"$",keywords:i,contains:[s]},_={className:"function",begin:/[a-z][^\n]*->/,returnBegin:!0,end:/->/,contains:[e.inherit(e.TITLE_MODE,{starts:{endsWithParent:!0,keywords:i}})]};return{name:"XL",aliases:["tao"],keywords:i,contains:[e.C_LINE_COMMENT_MODE,e.C_BLOCK_COMMENT_MODE,s,o,l,_,d,c,e.NUMBER_MODE]}}var NA=CA;function wA(e){return{name:"XQuery",aliases:["xpath","xq"],case_insensitive:!1,illegal:/(proc)|(abstract)|(extends)|(until)|(#)/,keywords:{$pattern:/[a-zA-Z$][a-zA-Z0-9_:-]*/,keyword:["module","schema","namespace","boundary-space","preserve","no-preserve","strip","default","collation","base-uri","ordering","context","decimal-format","decimal-separator","copy-namespaces","empty-sequence","except","exponent-separator","external","grouping-separator","inherit","no-inherit","lax","minus-sign","per-mille","percent","schema-attribute","schema-element","strict","unordered","zero-digit","declare","import","option","function","validate","variable","for","at","in","let","where","order","group","by","return","if","then","else","tumbling","sliding","window","start","when","only","end","previous","next","stable","ascending","descending","allowing","empty","greatest","least","some","every","satisfies","switch","case","typeswitch","try","catch","and","or","to","union","intersect","instance","of","treat","as","castable","cast","map","array","delete","insert","into","replace","value","rename","copy","modify","update"],type:["item","document-node","node","attribute","document","element","comment","namespace","namespace-node","processing-instruction","text","construction","xs:anyAtomicType","xs:untypedAtomic","xs:duration","xs:time","xs:decimal","xs:float","xs:double","xs:gYearMonth","xs:gYear","xs:gMonthDay","xs:gMonth","xs:gDay","xs:boolean","xs:base64Binary","xs:hexBinary","xs:anyURI","xs:QName","xs:NOTATION","xs:dateTime","xs:dateTimeStamp","xs:date","xs:string","xs:normalizedString","xs:token","xs:language","xs:NMTOKEN","xs:Name","xs:NCName","xs:ID","xs:IDREF","xs:ENTITY","xs:integer","xs:nonPositiveInteger","xs:negativeInteger","xs:long","xs:int","xs:short","xs:byte","xs:nonNegativeInteger","xs:unisignedLong","xs:unsignedInt","xs:unsignedShort","xs:unsignedByte","xs:positiveInteger","xs:yearMonthDuration","xs:dayTimeDuration"],literal:["eq","ne","lt","le","gt","ge","is","self::","child::","descendant::","descendant-or-self::","attribute::","following::","following-sibling::","parent::","ancestor::","ancestor-or-self::","preceding::","preceding-sibling::","NaN"]},contains:[{className:"variable",begin:/[$][\w\-:]+/},{className:"built_in",variants:[{begin:/\barray:/,end:/(?:append|filter|flatten|fold-(?:left|right)|for-each(?:-pair)?|get|head|insert-before|join|put|remove|reverse|size|sort|subarray|tail)\b/},{begin:/\bmap:/,end:/(?:contains|entry|find|for-each|get|keys|merge|put|remove|size)\b/},{begin:/\bmath:/,end:/(?:a(?:cos|sin|tan[2]?)|cos|exp(?:10)?|log(?:10)?|pi|pow|sin|sqrt|tan)\b/},{begin:/\bop:/,end:/\(/,excludeEnd:!0},{begin:/\bfn:/,end:/\(/,excludeEnd:!0},{begin:/[^</$:'"-]\b(?:abs|accumulator-(?:after|before)|adjust-(?:date(?:Time)?|time)-to-timezone|analyze-string|apply|available-(?:environment-variables|system-properties)|avg|base-uri|boolean|ceiling|codepoints?-(?:equal|to-string)|collation-key|collection|compare|concat|contains(?:-token)?|copy-of|count|current(?:-)?(?:date(?:Time)?|time|group(?:ing-key)?|output-uri|merge-(?:group|key))?data|dateTime|days?-from-(?:date(?:Time)?|duration)|deep-equal|default-(?:collation|language)|distinct-values|document(?:-uri)?|doc(?:-available)?|element-(?:available|with-id)|empty|encode-for-uri|ends-with|environment-variable|error|escape-html-uri|exactly-one|exists|false|filter|floor|fold-(?:left|right)|for-each(?:-pair)?|format-(?:date(?:Time)?|time|integer|number)|function-(?:arity|available|lookup|name)|generate-id|has-children|head|hours-from-(?:dateTime|duration|time)|id(?:ref)?|implicit-timezone|in-scope-prefixes|index-of|innermost|insert-before|iri-to-uri|json-(?:doc|to-xml)|key|lang|last|load-xquery-module|local-name(?:-from-QName)?|(?:lower|upper)-case|matches|max|minutes-from-(?:dateTime|duration|time)|min|months?-from-(?:date(?:Time)?|duration)|name(?:space-uri-?(?:for-prefix|from-QName)?)?|nilled|node-name|normalize-(?:space|unicode)|not|number|one-or-more|outermost|parse-(?:ietf-date|json)|path|position|(?:prefix-from-)?QName|random-number-generator|regex-group|remove|replace|resolve-(?:QName|uri)|reverse|root|round(?:-half-to-even)?|seconds-from-(?:dateTime|duration|time)|snapshot|sort|starts-with|static-base-uri|stream-available|string-?(?:join|length|to-codepoints)?|subsequence|substring-?(?:after|before)?|sum|system-property|tail|timezone-from-(?:date(?:Time)?|time)|tokenize|trace|trans(?:form|late)|true|type-available|unordered|unparsed-(?:entity|text)?-?(?:public-id|uri|available|lines)?|uri-collection|xml-to-json|years?-from-(?:date(?:Time)?|duration)|zero-or-one)\b/},{begin:/\blocal:/,end:/\(/,excludeEnd:!0},{begin:/\bzip:/,end:/(?:zip-file|(?:xml|html|text|binary)-entry| (?:update-)?entries)\b/},{begin:/\b(?:util|db|functx|app|xdmp|xmldb):/,end:/\(/,excludeEnd:!0}]},{className:"string",variants:[{begin:/"/,end:/"/,contains:[{begin:/""/,relevance:0}]},{begin:/'/,end:/'/,contains:[{begin:/''/,relevance:0}]}]},{className:"number",begin:/(\b0[0-7_]+)|(\b0x[0-9a-fA-F_]+)|(\b[1-9][0-9_]*(\.[0-9_]+)?)|[0_]\b/,relevance:0},{className:"comment",begin:/\(:/,end:/:\)/,relevance:10,contains:[{className:"doctag",begin:/@\w+/}]},{className:"meta",begin:/%[\w\-:]+/},{className:"title",begin:/\bxquery version "[13]\.[01]"\s?(?:encoding ".+")?/,end:/;/},{beginKeywords:"element attribute comment document processing-instruction",end:/\{/,excludeEnd:!0},{begin:/<([\w._:-]+)(\s+\S*=('|").*('|"))?>/,end:/(\/[\w._:-]+>)/,subLanguage:"xml",contains:[{begin:/\{/,end:/\}/,subLanguage:"xquery"},"self"]}]}}var OA=wA;function IA(e){const t={className:"string",contains:[e.BACKSLASH_ESCAPE],variants:[e.inherit(e.APOS_STRING_MODE,{illegal:null}),e.inherit(e.QUOTE_STRING_MODE,{illegal:null})]},n=e.UNDERSCORE_TITLE_MODE,a={variants:[e.BINARY_NUMBER_MODE,e.C_NUMBER_MODE]},r="namespace class interface use extends function return abstract final public protected private static deprecated throw try catch Exception echo empty isset instanceof unset let var new const self require if else elseif switch case default do while loop for continue break likely unlikely __LINE__ __FILE__ __DIR__ __FUNCTION__ __CLASS__ __TRAIT__ __METHOD__ __NAMESPACE__ array boolean float double integer object resource string char long unsigned bool int uint ulong uchar true false null undefined";return{name:"Zephir",aliases:["zep"],keywords:r,contains:[e.C_LINE_COMMENT_MODE,e.COMMENT(/\/\*/,/\*\//,{contains:[{className:"doctag",begin:/@[A-Za-z]+/}]}),{className:"string",begin:/<<<['"]?\w+['"]?$/,end:/^\w+;/,contains:[e.BACKSLASH_ESCAPE]},{begin:/(::|->)+[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*/},{className:"function",beginKeywords:"function fn",end:/[;{]/,excludeEnd:!0,illegal:/\$|\[|%/,contains:[n,{className:"params",begin:/\(/,end:/\)/,keywords:r,contains:["self",e.C_BLOCK_COMMENT_MODE,t,a]}]},{className:"class",beginKeywords:"class interface",end:/\{/,excludeEnd:!0,illegal:/[:($"]/,contains:[{beginKeywords:"extends implements"},n]},{beginKeywords:"namespace",end:/;/,illegal:/[.']/,contains:[n]},{beginKeywords:"use",end:/;/,contains:[n]},{begin:/=>/},t,a]}}var AA=IA,E=Ny;E.registerLanguage("1c",Oy);E.registerLanguage("abnf",Ay);E.registerLanguage("accesslog",xy);E.registerLanguage("actionscript",My);E.registerLanguage("ada",Py);E.registerLanguage("angelscript",Fy);E.registerLanguage("apache",Gy);E.registerLanguage("applescript",Hy);E.registerLanguage("arcade",Vy);E.registerLanguage("arduino",$y);E.registerLanguage("armasm",Qy);E.registerLanguage("xml",Xy);E.registerLanguage("asciidoc",Jy);E.registerLanguage("aspectj",tv);E.registerLanguage("autohotkey",av);E.registerLanguage("autoit",iv);E.registerLanguage("avrasm",ov);E.registerLanguage("awk",cv);E.registerLanguage("axapta",uv);E.registerLanguage("bash",pv);E.registerLanguage("basic",gv);E.registerLanguage("bnf",fv);E.registerLanguage("brainfuck",Sv);E.registerLanguage("c",Tv);E.registerLanguage("cal",vv);E.registerLanguage("capnproto",Cv);E.registerLanguage("ceylon",wv);E.registerLanguage("clean",Iv);E.registerLanguage("clojure",Dv);E.registerLanguage("clojure-repl",kv);E.registerLanguage("cmake",Lv);E.registerLanguage("coffeescript",Wv);E.registerLanguage("coq",qv);E.registerLanguage("cos",$v);E.registerLanguage("cpp",Qv);E.registerLanguage("crmsh",Xv);E.registerLanguage("crystal",Jv);E.registerLanguage("csharp",tR);E.registerLanguage("csp",aR);E.registerLanguage("css",uR);E.registerLanguage("d",pR);E.registerLanguage("markdown",gR);E.registerLanguage("dart",fR);E.registerLanguage("delphi",SR);E.registerLanguage("diff",TR);E.registerLanguage("django",vR);E.registerLanguage("dns",CR);E.registerLanguage("dockerfile",wR);E.registerLanguage("dos",IR);E.registerLanguage("dsconfig",DR);E.registerLanguage("dts",kR);E.registerLanguage("dust",LR);E.registerLanguage("ebnf",UR);E.registerLanguage("elixir",BR);E.registerLanguage("elm",YR);E.registerLanguage("ruby",WR);E.registerLanguage("erb",qR);E.registerLanguage("erlang-repl",$R);E.registerLanguage("erlang",QR);E.registerLanguage("excel",XR);E.registerLanguage("fix",JR);E.registerLanguage("flix",tC);E.registerLanguage("fortran",aC);E.registerLanguage("fsharp",oC);E.registerLanguage("gams",cC);E.registerLanguage("gauss",uC);E.registerLanguage("gcode",pC);E.registerLanguage("gherkin",gC);E.registerLanguage("glsl",fC);E.registerLanguage("gml",SC);E.registerLanguage("go",TC);E.registerLanguage("golo",vC);E.registerLanguage("gradle",CC);E.registerLanguage("graphql",wC);E.registerLanguage("groovy",IC);E.registerLanguage("haml",DC);E.registerLanguage("handlebars",kC);E.registerLanguage("haskell",LC);E.registerLanguage("haxe",UC);E.registerLanguage("hsp",BC);E.registerLanguage("http",YC);E.registerLanguage("hy",WC);E.registerLanguage("inform7",qC);E.registerLanguage("ini",$C);E.registerLanguage("irpf90",QC);E.registerLanguage("isbl",XC);E.registerLanguage("java",JC);E.registerLanguage("javascript",iN);E.registerLanguage("jboss-cli",oN);E.registerLanguage("json",cN);E.registerLanguage("julia",uN);E.registerLanguage("julia-repl",pN);E.registerLanguage("kotlin",hN);E.registerLanguage("lasso",EN);E.registerLanguage("latex",bN);E.registerLanguage("ldif",yN);E.registerLanguage("leaf",RN);E.registerLanguage("less",DN);E.registerLanguage("lisp",kN);E.registerLanguage("livecodeserver",LN);E.registerLanguage("livescript",WN);E.registerLanguage("llvm",qN);E.registerLanguage("lsl",$N);E.registerLanguage("lua",QN);E.registerLanguage("makefile",XN);E.registerLanguage("mathematica",ew);E.registerLanguage("matlab",nw);E.registerLanguage("maxima",rw);E.registerLanguage("mel",sw);E.registerLanguage("mercury",lw);E.registerLanguage("mipsasm",dw);E.registerLanguage("mizar",_w);E.registerLanguage("perl",mw);E.registerLanguage("mojolicious",hw);E.registerLanguage("monkey",Ew);E.registerLanguage("moonscript",bw);E.registerLanguage("n1ql",yw);E.registerLanguage("nestedtext",Rw);E.registerLanguage("nginx",Nw);E.registerLanguage("nim",Ow);E.registerLanguage("nix",Aw);E.registerLanguage("node-repl",xw);E.registerLanguage("nsis",Mw);E.registerLanguage("objectivec",Pw);E.registerLanguage("ocaml",Fw);E.registerLanguage("openscad",Gw);E.registerLanguage("oxygene",Hw);E.registerLanguage("parser3",Vw);E.registerLanguage("pf",zw);E.registerLanguage("pgsql",Kw);E.registerLanguage("php",jw);E.registerLanguage("php-template",Zw);E.registerLanguage("plaintext",eO);E.registerLanguage("pony",nO);E.registerLanguage("powershell",rO);E.registerLanguage("processing",sO);E.registerLanguage("profile",lO);E.registerLanguage("prolog",dO);E.registerLanguage("properties",_O);E.registerLanguage("protobuf",mO);E.registerLanguage("puppet",hO);E.registerLanguage("purebasic",EO);E.registerLanguage("python",bO);E.registerLanguage("python-repl",yO);E.registerLanguage("q",RO);E.registerLanguage("qml",NO);E.registerLanguage("r",OO);E.registerLanguage("reasonml",AO);E.registerLanguage("rib",xO);E.registerLanguage("roboconf",MO);E.registerLanguage("routeros",PO);E.registerLanguage("rsl",FO);E.registerLanguage("ruleslanguage",GO);E.registerLanguage("rust",HO);E.registerLanguage("sas",VO);E.registerLanguage("scala",zO);E.registerLanguage("scheme",KO);E.registerLanguage("scilab",jO);E.registerLanguage("scss",rI);E.registerLanguage("shell",sI);E.registerLanguage("smali",lI);E.registerLanguage("smalltalk",dI);E.registerLanguage("sml",_I);E.registerLanguage("sqf",mI);E.registerLanguage("sql",hI);E.registerLanguage("stan",EI);E.registerLanguage("stata",bI);E.registerLanguage("step21",yI);E.registerLanguage("stylus",AI);E.registerLanguage("subunit",xI);E.registerLanguage("swift",YI);E.registerLanguage("taggerscript",WI);E.registerLanguage("yaml",qI);E.registerLanguage("tap",$I);E.registerLanguage("tcl",QI);E.registerLanguage("thrift",XI);E.registerLanguage("tp",JI);E.registerLanguage("twig",tA);E.registerLanguage("typescript",rA);E.registerLanguage("vala",sA);E.registerLanguage("vbnet",lA);E.registerLanguage("vbscript",dA);E.registerLanguage("vbscript-html",_A);E.registerLanguage("verilog",mA);E.registerLanguage("vhdl",hA);E.registerLanguage("vim",EA);E.registerLanguage("wasm",bA);E.registerLanguage("wren",yA);E.registerLanguage("x86asm",RA);E.registerLanguage("xl",NA);E.registerLanguage("xquery",OA);E.registerLanguage("zephir",AA);E.HighlightJS=E;E.default=E;var DA=E,Oi=DA;ie.setOptions({sanitize:!0,headerIds:!0,langPrefix:"language-",highlight:(e,t)=>{if(t)try{return Oi.highlight(t,e).value}catch{return Oi.highlightAuto(e).value}else return Oi.highlightAuto(e).value}});const xA=()=>({fileModules:{"/src/assets/BDDInGo.md":`---
+`},{className:"string",begin:"\\d{4}-\\d{2}-\\d{2}(\\s+)\\d{2}:\\d{2}:\\d{2}.\\d+Z"},{className:"string",begin:"(\\+|-)\\d+"},{className:"keyword",relevance:10,variants:[{begin:"^(test|testing|success|successful|failure|error|skip|xfail|uxsuccess)(:?)\\s+(test)?"},{begin:"^progress(:?)(\\s+)?(pop|push)?"},{begin:"^tags:"},{begin:"^time:"}]}]}}var xI=DI;function au(e){return e?typeof e=="string"?e:e.source:null}function or(e){return ke("(?=",e,")")}function ke(...e){return e.map(n=>au(n)).join("")}function kI(e){const t=e[e.length-1];return typeof t=="object"&&t.constructor===Object?(e.splice(e.length-1,1),t):{}}function st(...e){const t=kI(e);return"("+(t.capture?"":"?:")+e.map(a=>au(a)).join("|")+")"}const eo=e=>ke(/\b/,e,/\w$/.test(e)?/\b/:/\B/),MI=["Protocol","Type"].map(eo),dl=["init","self"].map(eo),LI=["Any","Self"],Ci=["actor","any","associatedtype","async","await",/as\?/,/as!/,"as","break","case","catch","class","continue","convenience","default","defer","deinit","didSet","distributed","do","dynamic","else","enum","extension","fallthrough",/fileprivate\(set\)/,"fileprivate","final","for","func","get","guard","if","import","indirect","infix",/init\?/,/init!/,"inout",/internal\(set\)/,"internal","in","is","isolated","nonisolated","lazy","let","mutating","nonmutating",/open\(set\)/,"open","operator","optional","override","postfix","precedencegroup","prefix",/private\(set\)/,"private","protocol",/public\(set\)/,"public","repeat","required","rethrows","return","set","some","static","struct","subscript","super","switch","throws","throw",/try\?/,/try!/,"try","typealias",/unowned\(safe\)/,/unowned\(unsafe\)/,"unowned","var","weak","where","while","willSet"],ul=["false","nil","true"],PI=["assignment","associativity","higherThan","left","lowerThan","none","right"],UI=["#colorLiteral","#column","#dsohandle","#else","#elseif","#endif","#error","#file","#fileID","#fileLiteral","#filePath","#function","#if","#imageLiteral","#keyPath","#line","#selector","#sourceLocation","#warn_unqualified_access","#warning"],_l=["abs","all","any","assert","assertionFailure","debugPrint","dump","fatalError","getVaList","isKnownUniquelyReferenced","max","min","numericCast","pointwiseMax","pointwiseMin","precondition","preconditionFailure","print","readLine","repeatElement","sequence","stride","swap","swift_unboxFromSwiftValueWithType","transcode","type","unsafeBitCast","unsafeDowncast","withExtendedLifetime","withUnsafeMutablePointer","withUnsafePointer","withVaList","withoutActuallyEscaping","zip"],ru=st(/[/=\-+!*%<>&|^~?]/,/[\u00A1-\u00A7]/,/[\u00A9\u00AB]/,/[\u00AC\u00AE]/,/[\u00B0\u00B1]/,/[\u00B6\u00BB\u00BF\u00D7\u00F7]/,/[\u2016-\u2017]/,/[\u2020-\u2027]/,/[\u2030-\u203E]/,/[\u2041-\u2053]/,/[\u2055-\u205E]/,/[\u2190-\u23FF]/,/[\u2500-\u2775]/,/[\u2794-\u2BFF]/,/[\u2E00-\u2E7F]/,/[\u3001-\u3003]/,/[\u3008-\u3020]/,/[\u3030]/),iu=st(ru,/[\u0300-\u036F]/,/[\u1DC0-\u1DFF]/,/[\u20D0-\u20FF]/,/[\uFE00-\uFE0F]/,/[\uFE20-\uFE2F]/),Ni=ke(ru,iu,"*"),su=st(/[a-zA-Z_]/,/[\u00A8\u00AA\u00AD\u00AF\u00B2-\u00B5\u00B7-\u00BA]/,/[\u00BC-\u00BE\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u00FF]/,/[\u0100-\u02FF\u0370-\u167F\u1681-\u180D\u180F-\u1DBF]/,/[\u1E00-\u1FFF]/,/[\u200B-\u200D\u202A-\u202E\u203F-\u2040\u2054\u2060-\u206F]/,/[\u2070-\u20CF\u2100-\u218F\u2460-\u24FF\u2776-\u2793]/,/[\u2C00-\u2DFF\u2E80-\u2FFF]/,/[\u3004-\u3007\u3021-\u302F\u3031-\u303F\u3040-\uD7FF]/,/[\uF900-\uFD3D\uFD40-\uFDCF\uFDF0-\uFE1F\uFE30-\uFE44]/,/[\uFE47-\uFEFE\uFF00-\uFFFD]/),Dr=st(su,/\d/,/[\u0300-\u036F\u1DC0-\u1DFF\u20D0-\u20FF\uFE20-\uFE2F]/),Wt=ke(su,Dr,"*"),wi=ke(/[A-Z]/,Dr,"*"),FI=["autoclosure",ke(/convention\(/,st("swift","block","c"),/\)/),"discardableResult","dynamicCallable","dynamicMemberLookup","escaping","frozen","GKInspectable","IBAction","IBDesignable","IBInspectable","IBOutlet","IBSegueAction","inlinable","main","nonobjc","NSApplicationMain","NSCopying","NSManaged",ke(/objc\(/,Wt,/\)/),"objc","objcMembers","propertyWrapper","requires_stored_property_inits","resultBuilder","testable","UIApplicationMain","unknown","usableFromInline"],BI=["iOS","iOSApplicationExtension","macOS","macOSApplicationExtension","macCatalyst","macCatalystApplicationExtension","watchOS","watchOSApplicationExtension","tvOS","tvOSApplicationExtension","swift"];function GI(e){const t={match:/\s+/,relevance:0},n=e.COMMENT("/\\*","\\*/",{contains:["self"]}),a=[e.C_LINE_COMMENT_MODE,n],r={match:[/\./,st(...MI,...dl)],className:{2:"keyword"}},i={match:ke(/\./,st(...Ci)),relevance:0},s=Ci.filter(Z=>typeof Z=="string").concat(["_|0"]),o=Ci.filter(Z=>typeof Z!="string").concat(LI).map(eo),l={variants:[{className:"keyword",match:st(...o,...dl)}]},c={$pattern:st(/\b\w+/,/#\w+/),keyword:s.concat(UI),literal:ul},d=[r,i,l],_={match:ke(/\./,st(..._l)),relevance:0},u={className:"built_in",match:ke(/\b/,st(..._l),/(?=\()/)},p=[_,u],h={match:/->/,relevance:0},f={className:"operator",relevance:0,variants:[{match:Ni},{match:`\\.(\\.|${iu})+`}]},b=[h,f],S="([0-9]_*)+",v="([0-9a-fA-F]_*)+",T={className:"number",relevance:0,variants:[{match:`\\b(${S})(\\.(${S}))?([eE][+-]?(${S}))?\\b`},{match:`\\b0x(${v})(\\.(${v}))?([pP][+-]?(${S}))?\\b`},{match:/\b0o([0-7]_*)+\b/},{match:/\b0b([01]_*)+\b/}]},C=(Z="")=>({className:"subst",variants:[{match:ke(/\\/,Z,/[0\\tnr"']/)},{match:ke(/\\/,Z,/u\{[0-9a-fA-F]{1,8}\}/)}]}),I=(Z="")=>({className:"subst",match:ke(/\\/,Z,/[\t ]*(?:[\r\n]|\r\n)/)}),H=(Z="")=>({className:"subst",label:"interpol",begin:ke(/\\/,Z,/\(/),end:/\)/}),G=(Z="")=>({begin:ke(Z,/"""/),end:ke(/"""/,Z),contains:[C(Z),I(Z),H(Z)]}),L=(Z="")=>({begin:ke(Z,/"/),end:ke(/"/,Z),contains:[C(Z),H(Z)]}),K={className:"string",variants:[G(),G("#"),G("##"),G("###"),L(),L("#"),L("##"),L("###")]},W={match:ke(/`/,Wt,/`/)},oe={className:"variable",match:/\$\d+/},he={className:"variable",match:`\\$${Dr}+`},be=[W,oe,he],fe={match:/(@|#(un)?)available/,className:"keyword",starts:{contains:[{begin:/\(/,end:/\)/,keywords:BI,contains:[...b,T,K]}]}},Te={className:"keyword",match:ke(/@/,st(...FI))},A={className:"meta",match:ke(/@/,Wt)},D=[fe,Te,A],U={match:or(/\b[A-Z]/),relevance:0,contains:[{className:"type",match:ke(/(AV|CA|CF|CG|CI|CL|CM|CN|CT|MK|MP|MTK|MTL|NS|SCN|SK|UI|WK|XC)/,Dr,"+")},{className:"type",match:wi,relevance:0},{match:/[?!]+/,relevance:0},{match:/\.\.\./,relevance:0},{match:ke(/\s+&\s+/,or(wi)),relevance:0}]},ee={begin:/</,end:/>/,keywords:c,contains:[...a,...d,...D,h,U]};U.contains.push(ee);const de={match:ke(Wt,/\s*:/),keywords:"_|0",relevance:0},me={begin:/\(/,end:/\)/,relevance:0,keywords:c,contains:["self",de,...a,...d,...p,...b,T,K,...be,...D,U]},ge={begin:/</,end:/>/,contains:[...a,U]},Ve={begin:st(or(ke(Wt,/\s*:/)),or(ke(Wt,/\s+/,Wt,/\s*:/))),end:/:/,relevance:0,contains:[{className:"keyword",match:/\b_\b/},{className:"params",match:Wt}]},Ae={begin:/\(/,end:/\)/,keywords:c,contains:[Ve,...a,...d,...b,T,K,...D,U,me],endsParent:!0,illegal:/["']/},N={match:[/func/,/\s+/,st(W.match,Wt,Ni)],className:{1:"keyword",3:"title.function"},contains:[ge,Ae,t],illegal:[/\[/,/%/]},V={match:[/\b(?:subscript|init[?!]?)/,/\s*(?=[<(])/],className:{1:"keyword"},contains:[ge,Ae,t],illegal:/\[|%/},Y={match:[/operator/,/\s+/,Ni],className:{1:"keyword",3:"title"}},te={begin:[/precedencegroup/,/\s+/,wi],className:{1:"keyword",3:"title"},contains:[U],keywords:[...PI,...ul],end:/}/};for(const Z of K.variants){const Ce=Z.contains.find(m=>m.label==="interpol");Ce.keywords=c;const le=[...d,...p,...b,T,K,...be];Ce.contains=[...le,{begin:/\(/,end:/\)/,contains:["self",...le]}]}return{name:"Swift",keywords:c,contains:[...a,N,V,{beginKeywords:"struct protocol class extension enum actor",end:"\\{",excludeEnd:!0,keywords:c,contains:[e.inherit(e.TITLE_MODE,{className:"title.class",begin:/[A-Za-z$_][\u00C0-\u02B80-9A-Za-z$_]*/}),...d]},Y,te,{beginKeywords:"import",end:/$/,contains:[...a],relevance:0},...d,...p,...b,T,K,...be,...D,U,me]}}var YI=GI;function HI(e){return{name:"Tagger Script",contains:[{className:"comment",begin:/\$noop\(/,end:/\)/,contains:[{begin:/\\[()]/},{begin:/\(/,end:/\)/,contains:[{begin:/\\[()]/},"self"]}],relevance:10},{className:"keyword",begin:/\$[_a-zA-Z0-9]+(?=\()/},{className:"variable",begin:/%[_a-zA-Z0-9:]+%/},{className:"symbol",begin:/\\[\\nt$%,()]/},{className:"symbol",begin:/\\u[a-fA-F0-9]{4}/}]}}var WI=HI;function VI(e){const t="true false yes no null",n="[\\w#;/?:@&=+$,.~*'()[\\]]+",a={className:"attr",variants:[{begin:"\\w[\\w :\\/.-]*:(?=[ 	]|$)"},{begin:'"\\w[\\w :\\/.-]*":(?=[ 	]|$)'},{begin:"'\\w[\\w :\\/.-]*':(?=[ 	]|$)"}]},r={className:"template-variable",variants:[{begin:/\{\{/,end:/\}\}/},{begin:/%\{/,end:/\}/}]},i={className:"string",relevance:0,variants:[{begin:/'/,end:/'/},{begin:/"/,end:/"/},{begin:/\S+/}],contains:[e.BACKSLASH_ESCAPE,r]},s=e.inherit(i,{variants:[{begin:/'/,end:/'/},{begin:/"/,end:/"/},{begin:/[^\s,{}[\]]+/}]}),o="[0-9]{4}(-[0-9][0-9]){0,2}",l="([Tt \\t][0-9][0-9]?(:[0-9][0-9]){2})?",c="(\\.[0-9]*)?",d="([ \\t])*(Z|[-+][0-9][0-9]?(:[0-9][0-9])?)?",_={className:"number",begin:"\\b"+o+l+c+d+"\\b"},u={end:",",endsWithParent:!0,excludeEnd:!0,keywords:t,relevance:0},p={begin:/\{/,end:/\}/,contains:[u],illegal:"\\n",relevance:0},h={begin:"\\[",end:"\\]",contains:[u],illegal:"\\n",relevance:0},f=[a,{className:"meta",begin:"^---\\s*$",relevance:10},{className:"string",begin:"[\\|>]([1-9]?[+-])?[ ]*\\n( +)[^ ][^\\n]*\\n(\\2[^\\n]+\\n?)*"},{begin:"<%[%=-]?",end:"[%-]?%>",subLanguage:"ruby",excludeBegin:!0,excludeEnd:!0,relevance:0},{className:"type",begin:"!\\w+!"+n},{className:"type",begin:"!<"+n+">"},{className:"type",begin:"!"+n},{className:"type",begin:"!!"+n},{className:"meta",begin:"&"+e.UNDERSCORE_IDENT_RE+"$"},{className:"meta",begin:"\\*"+e.UNDERSCORE_IDENT_RE+"$"},{className:"bullet",begin:"-(?=[ ]|$)",relevance:0},e.HASH_COMMENT_MODE,{beginKeywords:t,keywords:{literal:t}},_,{className:"number",begin:e.C_NUMBER_RE+"\\b",relevance:0},p,h,i],b=[...f];return b.pop(),b.push(s),u.contains=b,{name:"YAML",case_insensitive:!0,aliases:["yml"],contains:f}}var qI=VI;function zI(e){return{name:"Test Anything Protocol",case_insensitive:!0,contains:[e.HASH_COMMENT_MODE,{className:"meta",variants:[{begin:"^TAP version (\\d+)$"},{begin:"^1\\.\\.(\\d+)$"}]},{begin:/---$/,end:"\\.\\.\\.$",subLanguage:"yaml",relevance:0},{className:"number",begin:" (\\d+) "},{className:"symbol",variants:[{begin:"^ok"},{begin:"^not ok"}]}]}}var $I=zI;function KI(e){const t=e.regex,n=/[a-zA-Z_][a-zA-Z0-9_]*/,a={className:"number",variants:[e.BINARY_NUMBER_MODE,e.C_NUMBER_MODE]};return{name:"Tcl",aliases:["tk"],keywords:["after","append","apply","array","auto_execok","auto_import","auto_load","auto_mkindex","auto_mkindex_old","auto_qualify","auto_reset","bgerror","binary","break","catch","cd","chan","clock","close","concat","continue","dde","dict","encoding","eof","error","eval","exec","exit","expr","fblocked","fconfigure","fcopy","file","fileevent","filename","flush","for","foreach","format","gets","glob","global","history","http","if","incr","info","interp","join","lappend|10","lassign|10","lindex|10","linsert|10","list","llength|10","load","lrange|10","lrepeat|10","lreplace|10","lreverse|10","lsearch|10","lset|10","lsort|10","mathfunc","mathop","memory","msgcat","namespace","open","package","parray","pid","pkg::create","pkg_mkIndex","platform","platform::shell","proc","puts","pwd","read","refchan","regexp","registry","regsub|10","rename","return","safe","scan","seek","set","socket","source","split","string","subst","switch","tcl_endOfWord","tcl_findLibrary","tcl_startOfNextWord","tcl_startOfPreviousWord","tcl_wordBreakAfter","tcl_wordBreakBefore","tcltest","tclvars","tell","time","tm","trace","unknown","unload","unset","update","uplevel","upvar","variable","vwait","while"],contains:[e.COMMENT(";[ \\t]*#","$"),e.COMMENT("^[ \\t]*#","$"),{beginKeywords:"proc",end:"[\\{]",excludeEnd:!0,contains:[{className:"title",begin:"[ \\t\\n\\r]+(::)?[a-zA-Z_]((::)?[a-zA-Z0-9_])*",end:"[ \\t\\n\\r]",endsWithParent:!0,excludeEnd:!0}]},{className:"variable",variants:[{begin:t.concat(/\$/,t.optional(/::/),n,"(::",n,")*")},{begin:"\\$\\{(::)?[a-zA-Z_]((::)?[a-zA-Z0-9_])*",end:"\\}",contains:[a]}]},{className:"string",contains:[e.BACKSLASH_ESCAPE],variants:[e.inherit(e.QUOTE_STRING_MODE,{illegal:null})]},a]}}var QI=KI;function jI(e){const t=["bool","byte","i16","i32","i64","double","string","binary"];return{name:"Thrift",keywords:{keyword:["namespace","const","typedef","struct","enum","service","exception","void","oneway","set","list","map","required","optional"],type:t,literal:"true false"},contains:[e.QUOTE_STRING_MODE,e.NUMBER_MODE,e.C_LINE_COMMENT_MODE,e.C_BLOCK_COMMENT_MODE,{className:"class",beginKeywords:"struct enum service exception",end:/\{/,illegal:/\n/,contains:[e.inherit(e.TITLE_MODE,{starts:{endsWithParent:!0,excludeEnd:!0}})]},{begin:"\\b(set|list|map)\\s*<",keywords:{type:[...t,"set","list","map"]},end:">",contains:["self"]}]}}var XI=jI;function ZI(e){const t={className:"number",begin:"[1-9][0-9]*",relevance:0},n={className:"symbol",begin:":[^\\]]+"},a={className:"built_in",begin:"(AR|P|PAYLOAD|PR|R|SR|RSR|LBL|VR|UALM|MESSAGE|UTOOL|UFRAME|TIMER|TIMER_OVERFLOW|JOINT_MAX_SPEED|RESUME_PROG|DIAG_REC)\\[",end:"\\]",contains:["self",t,n]},r={className:"built_in",begin:"(AI|AO|DI|DO|F|RI|RO|UI|UO|GI|GO|SI|SO)\\[",end:"\\]",contains:["self",t,e.QUOTE_STRING_MODE,n]};return{name:"TP",keywords:{keyword:["ABORT","ACC","ADJUST","AND","AP_LD","BREAK","CALL","CNT","COL","CONDITION","CONFIG","DA","DB","DIV","DETECT","ELSE","END","ENDFOR","ERR_NUM","ERROR_PROG","FINE","FOR","GP","GUARD","INC","IF","JMP","LINEAR_MAX_SPEED","LOCK","MOD","MONITOR","OFFSET","Offset","OR","OVERRIDE","PAUSE","PREG","PTH","RT_LD","RUN","SELECT","SKIP","Skip","TA","TB","TO","TOOL_OFFSET","Tool_Offset","UF","UT","UFRAME_NUM","UTOOL_NUM","UNLOCK","WAIT","X","Y","Z","W","P","R","STRLEN","SUBSTR","FINDSTR","VOFFSET","PROG","ATTR","MN","POS"],literal:["ON","OFF","max_speed","LPOS","JPOS","ENABLE","DISABLE","START","STOP","RESET"]},contains:[a,r,{className:"keyword",begin:"/(PROG|ATTR|MN|POS|END)\\b"},{className:"keyword",begin:"(CALL|RUN|POINT_LOGIC|LBL)\\b"},{className:"keyword",begin:"\\b(ACC|CNT|Skip|Offset|PSPD|RT_LD|AP_LD|Tool_Offset)"},{className:"number",begin:"\\d+(sec|msec|mm/sec|cm/min|inch/min|deg/sec|mm|in|cm)?\\b",relevance:0},e.COMMENT("//","[;$]"),e.COMMENT("!","[;$]"),e.COMMENT("--eg:","$"),e.QUOTE_STRING_MODE,{className:"string",begin:"'",end:"'"},e.C_NUMBER_MODE,{className:"variable",begin:"\\$[A-Za-z0-9_]+"}]}}var JI=ZI;function eA(e){const t=e.regex,n=["absolute_url","asset|0","asset_version","attribute","block","constant","controller|0","country_timezones","csrf_token","cycle","date","dump","expression","form|0","form_end","form_errors","form_help","form_label","form_rest","form_row","form_start","form_widget","html_classes","include","is_granted","logout_path","logout_url","max","min","parent","path|0","random","range","relative_path","render","render_esi","source","template_from_string","url|0"],a=["abs","abbr_class","abbr_method","batch","capitalize","column","convert_encoding","country_name","currency_name","currency_symbol","data_uri","date","date_modify","default","escape","file_excerpt","file_link","file_relative","filter","first","format","format_args","format_args_as_text","format_currency","format_date","format_datetime","format_file","format_file_from_text","format_number","format_time","html_to_markdown","humanize","inky_to_html","inline_css","join","json_encode","keys","language_name","last","length","locale_name","lower","map","markdown","markdown_to_html","merge","nl2br","number_format","raw","reduce","replace","reverse","round","slice","slug","sort","spaceless","split","striptags","timezone_name","title","trans","transchoice","trim","u|0","upper","url_encode","yaml_dump","yaml_encode"];let r=["apply","autoescape","block","cache","deprecated","do","embed","extends","filter","flush","for","form_theme","from","if","import","include","macro","sandbox","set","stopwatch","trans","trans_default_domain","transchoice","use","verbatim","with"];r=r.concat(r.map(h=>`end${h}`));const i={scope:"string",variants:[{begin:/'/,end:/'/},{begin:/"/,end:/"/}]},s={scope:"number",match:/\d+/},o={begin:/\(/,end:/\)/,excludeBegin:!0,excludeEnd:!0,contains:[i,s]},l={beginKeywords:n.join(" "),keywords:{name:n},relevance:0,contains:[o]},c={match:/\|(?=[A-Za-z_]+:?)/,beginScope:"punctuation",relevance:0,contains:[{match:/[A-Za-z_]+:?/,keywords:a}]},d=(h,{relevance:f})=>({beginScope:{1:"template-tag",3:"name"},relevance:f||2,endScope:"template-tag",begin:[/\{%/,/\s*/,t.either(...h)],end:/%\}/,keywords:"in",contains:[c,l,i,s]}),_=/[a-z_]+/,u=d(r,{relevance:2}),p=d([_],{relevance:1});return{name:"Twig",aliases:["craftcms"],case_insensitive:!0,subLanguage:"xml",contains:[e.COMMENT(/\{#/,/#\}/),u,p,{className:"template-variable",begin:/\{\{/,end:/\}\}/,contains:["self",c,l,i,s]}]}}var tA=eA;const xr="[A-Za-z$_][0-9A-Za-z$_]*",ou=["as","in","of","if","for","while","finally","var","new","function","do","return","void","else","break","catch","instanceof","with","throw","case","default","try","switch","continue","typeof","delete","let","yield","const","class","debugger","async","await","static","import","from","export","extends"],lu=["true","false","null","undefined","NaN","Infinity"],cu=["Object","Function","Boolean","Symbol","Math","Date","Number","BigInt","String","RegExp","Array","Float32Array","Float64Array","Int8Array","Uint8Array","Uint8ClampedArray","Int16Array","Int32Array","Uint16Array","Uint32Array","BigInt64Array","BigUint64Array","Set","Map","WeakSet","WeakMap","ArrayBuffer","SharedArrayBuffer","Atomics","DataView","JSON","Promise","Generator","GeneratorFunction","AsyncFunction","Reflect","Proxy","Intl","WebAssembly"],du=["Error","EvalError","InternalError","RangeError","ReferenceError","SyntaxError","TypeError","URIError"],uu=["setInterval","setTimeout","clearInterval","clearTimeout","require","exports","eval","isFinite","isNaN","parseFloat","parseInt","decodeURI","decodeURIComponent","encodeURI","encodeURIComponent","escape","unescape"],_u=["arguments","this","super","console","window","document","localStorage","module","global"],pu=[].concat(uu,cu,du);function nA(e){const t=e.regex,n=(D,{after:U})=>{const ee="</"+D[0].slice(1);return D.input.indexOf(ee,U)!==-1},a=xr,r={begin:"<>",end:"</>"},i=/<[A-Za-z0-9\\._:-]+\s*\/>/,s={begin:/<[A-Za-z0-9\\._:-]+/,end:/\/[A-Za-z0-9\\._:-]+>|\/>/,isTrulyOpeningTag:(D,U)=>{const ee=D[0].length+D.index,de=D.input[ee];if(de==="<"||de===","){U.ignoreMatch();return}de===">"&&(n(D,{after:ee})||U.ignoreMatch());let me;const ge=D.input.substring(ee);if(me=ge.match(/^\s*=/)){U.ignoreMatch();return}if((me=ge.match(/^\s+extends\s+/))&&me.index===0){U.ignoreMatch();return}}},o={$pattern:xr,keyword:ou,literal:lu,built_in:pu,"variable.language":_u},l="[0-9](_?[0-9])*",c=`\\.(${l})`,d="0|[1-9](_?[0-9])*|0[0-7]*[89][0-9]*",_={className:"number",variants:[{begin:`(\\b(${d})((${c})|\\.)?|(${c}))[eE][+-]?(${l})\\b`},{begin:`\\b(${d})\\b((${c})\\b|\\.)?|(${c})\\b`},{begin:"\\b(0|[1-9](_?[0-9])*)n\\b"},{begin:"\\b0[xX][0-9a-fA-F](_?[0-9a-fA-F])*n?\\b"},{begin:"\\b0[bB][0-1](_?[0-1])*n?\\b"},{begin:"\\b0[oO][0-7](_?[0-7])*n?\\b"},{begin:"\\b0[0-7]+n?\\b"}],relevance:0},u={className:"subst",begin:"\\$\\{",end:"\\}",keywords:o,contains:[]},p={begin:"html`",end:"",starts:{end:"`",returnEnd:!1,contains:[e.BACKSLASH_ESCAPE,u],subLanguage:"xml"}},h={begin:"css`",end:"",starts:{end:"`",returnEnd:!1,contains:[e.BACKSLASH_ESCAPE,u],subLanguage:"css"}},f={className:"string",begin:"`",end:"`",contains:[e.BACKSLASH_ESCAPE,u]},b=e.COMMENT(/\/\*\*(?!\/)/,"\\*/",{relevance:0,contains:[{begin:"(?=@[A-Za-z]+)",relevance:0,contains:[{className:"doctag",begin:"@[A-Za-z]+"},{className:"type",begin:"\\{",end:"\\}",excludeEnd:!0,excludeBegin:!0,relevance:0},{className:"variable",begin:a+"(?=\\s*(-)|$)",endsParent:!0,relevance:0},{begin:/(?=[^\n])\s/,relevance:0}]}]}),S={className:"comment",variants:[b,e.C_BLOCK_COMMENT_MODE,e.C_LINE_COMMENT_MODE]},v=[e.APOS_STRING_MODE,e.QUOTE_STRING_MODE,p,h,f,{match:/\$\d+/},_];u.contains=v.concat({begin:/\{/,end:/\}/,keywords:o,contains:["self"].concat(v)});const T=[].concat(S,u.contains),C=T.concat([{begin:/\(/,end:/\)/,keywords:o,contains:["self"].concat(T)}]),I={className:"params",begin:/\(/,end:/\)/,excludeBegin:!0,excludeEnd:!0,keywords:o,contains:C},H={variants:[{match:[/class/,/\s+/,a,/\s+/,/extends/,/\s+/,t.concat(a,"(",t.concat(/\./,a),")*")],scope:{1:"keyword",3:"title.class",5:"keyword",7:"title.class.inherited"}},{match:[/class/,/\s+/,a],scope:{1:"keyword",3:"title.class"}}]},G={relevance:0,match:t.either(/\bJSON/,/\b[A-Z][a-z]+([A-Z][a-z]*|\d)*/,/\b[A-Z]{2,}([A-Z][a-z]+|\d)+([A-Z][a-z]*)*/,/\b[A-Z]{2,}[a-z]+([A-Z][a-z]+|\d)*([A-Z][a-z]*)*/),className:"title.class",keywords:{_:[...cu,...du]}},L={label:"use_strict",className:"meta",relevance:10,begin:/^\s*['"]use (strict|asm)['"]/},K={variants:[{match:[/function/,/\s+/,a,/(?=\s*\()/]},{match:[/function/,/\s*(?=\()/]}],className:{1:"keyword",3:"title.function"},label:"func.def",contains:[I],illegal:/%/},W={relevance:0,match:/\b[A-Z][A-Z_0-9]+\b/,className:"variable.constant"};function oe(D){return t.concat("(?!",D.join("|"),")")}const he={match:t.concat(/\b/,oe([...uu,"super","import"]),a,t.lookahead(/\(/)),className:"title.function",relevance:0},be={begin:t.concat(/\./,t.lookahead(t.concat(a,/(?![0-9A-Za-z$_(])/))),end:a,excludeBegin:!0,keywords:"prototype",className:"property",relevance:0},fe={match:[/get|set/,/\s+/,a,/(?=\()/],className:{1:"keyword",3:"title.function"},contains:[{begin:/\(\)/},I]},Te="(\\([^()]*(\\([^()]*(\\([^()]*\\)[^()]*)*\\)[^()]*)*\\)|"+e.UNDERSCORE_IDENT_RE+")\\s*=>",A={match:[/const|var|let/,/\s+/,a,/\s*/,/=\s*/,/(async\s*)?/,t.lookahead(Te)],keywords:"async",className:{1:"keyword",3:"title.function"},contains:[I]};return{name:"Javascript",aliases:["js","jsx","mjs","cjs"],keywords:o,exports:{PARAMS_CONTAINS:C,CLASS_REFERENCE:G},illegal:/#(?![$_A-z])/,contains:[e.SHEBANG({label:"shebang",binary:"node",relevance:5}),L,e.APOS_STRING_MODE,e.QUOTE_STRING_MODE,p,h,f,S,{match:/\$\d+/},_,G,{className:"attr",begin:a+t.lookahead(":"),relevance:0},A,{begin:"("+e.RE_STARTERS_RE+"|\\b(case|return|throw)\\b)\\s*",keywords:"return throw case",relevance:0,contains:[S,e.REGEXP_MODE,{className:"function",begin:Te,returnBegin:!0,end:"\\s*=>",contains:[{className:"params",variants:[{begin:e.UNDERSCORE_IDENT_RE,relevance:0},{className:null,begin:/\(\s*\)/,skip:!0},{begin:/\(/,end:/\)/,excludeBegin:!0,excludeEnd:!0,keywords:o,contains:C}]}]},{begin:/,/,relevance:0},{match:/\s+/,relevance:0},{variants:[{begin:r.begin,end:r.end},{match:i},{begin:s.begin,"on:begin":s.isTrulyOpeningTag,end:s.end}],subLanguage:"xml",contains:[{begin:s.begin,end:s.end,skip:!0,contains:["self"]}]}]},K,{beginKeywords:"while if switch catch for"},{begin:"\\b(?!function)"+e.UNDERSCORE_IDENT_RE+"\\([^()]*(\\([^()]*(\\([^()]*\\)[^()]*)*\\)[^()]*)*\\)\\s*\\{",returnBegin:!0,label:"func.def",contains:[I,e.inherit(e.TITLE_MODE,{begin:a,className:"title.function"})]},{match:/\.\.\./,relevance:0},be,{match:"\\$"+a,relevance:0},{match:[/\bconstructor(?=\s*\()/],className:{1:"title.function"},contains:[I]},he,W,H,fe,{match:/\$[(.]/}]}}function aA(e){const t=nA(e),n=xr,a=["any","void","number","boolean","string","object","never","symbol","bigint","unknown"],r={beginKeywords:"namespace",end:/\{/,excludeEnd:!0,contains:[t.exports.CLASS_REFERENCE]},i={beginKeywords:"interface",end:/\{/,excludeEnd:!0,keywords:{keyword:"interface extends",built_in:a},contains:[t.exports.CLASS_REFERENCE]},s={className:"meta",relevance:10,begin:/^\s*['"]use strict['"]/},o=["type","namespace","interface","public","private","protected","implements","declare","abstract","readonly","enum","override"],l={$pattern:xr,keyword:ou.concat(o),literal:lu,built_in:pu.concat(a),"variable.language":_u},c={className:"meta",begin:"@"+n},d=(u,p,h)=>{const f=u.contains.findIndex(b=>b.label===p);if(f===-1)throw new Error("can not find mode to replace");u.contains.splice(f,1,h)};Object.assign(t.keywords,l),t.exports.PARAMS_CONTAINS.push(c),t.contains=t.contains.concat([c,r,i]),d(t,"shebang",e.SHEBANG()),d(t,"use_strict",s);const _=t.contains.find(u=>u.label==="func.def");return _.relevance=0,Object.assign(t,{name:"TypeScript",aliases:["ts","tsx"]}),t}var rA=aA;function iA(e){return{name:"Vala",keywords:{keyword:"char uchar unichar int uint long ulong short ushort int8 int16 int32 int64 uint8 uint16 uint32 uint64 float double bool struct enum string void weak unowned owned async signal static abstract interface override virtual delegate if while do for foreach else switch case break default return try catch public private protected internal using new this get set const stdout stdin stderr var",built_in:"DBus GLib CCode Gee Object Gtk Posix",literal:"false true null"},contains:[{className:"class",beginKeywords:"class interface namespace",end:/\{/,excludeEnd:!0,illegal:"[^,:\\n\\s\\.]",contains:[e.UNDERSCORE_TITLE_MODE]},e.C_LINE_COMMENT_MODE,e.C_BLOCK_COMMENT_MODE,{className:"string",begin:'"""',end:'"""',relevance:5},e.APOS_STRING_MODE,e.QUOTE_STRING_MODE,e.C_NUMBER_MODE,{className:"meta",begin:"^#",end:"$"}]}}var sA=iA;function oA(e){const t=e.regex,n={className:"string",begin:/"(""|[^/n])"C\b/},a={className:"string",begin:/"/,end:/"/,illegal:/\n/,contains:[{begin:/""/}]},r=/\d{1,2}\/\d{1,2}\/\d{4}/,i=/\d{4}-\d{1,2}-\d{1,2}/,s=/(\d|1[012])(:\d+){0,2} *(AM|PM)/,o=/\d{1,2}(:\d{1,2}){1,2}/,l={className:"literal",variants:[{begin:t.concat(/# */,t.either(i,r),/ *#/)},{begin:t.concat(/# */,o,/ *#/)},{begin:t.concat(/# */,s,/ *#/)},{begin:t.concat(/# */,t.either(i,r),/ +/,t.either(s,o),/ *#/)}]},c={className:"number",relevance:0,variants:[{begin:/\b\d[\d_]*((\.[\d_]+(E[+-]?[\d_]+)?)|(E[+-]?[\d_]+))[RFD@!#]?/},{begin:/\b\d[\d_]*((U?[SIL])|[%&])?/},{begin:/&H[\dA-F_]+((U?[SIL])|[%&])?/},{begin:/&O[0-7_]+((U?[SIL])|[%&])?/},{begin:/&B[01_]+((U?[SIL])|[%&])?/}]},d={className:"label",begin:/^\w+:/},_=e.COMMENT(/'''/,/$/,{contains:[{className:"doctag",begin:/<\/?/,end:/>/}]}),u=e.COMMENT(null,/$/,{variants:[{begin:/'/},{begin:/([\t ]|^)REM(?=\s)/}]});return{name:"Visual Basic .NET",aliases:["vb"],case_insensitive:!0,classNameAliases:{label:"symbol"},keywords:{keyword:"addhandler alias aggregate ansi as async assembly auto binary by byref byval call case catch class compare const continue custom declare default delegate dim distinct do each equals else elseif end enum erase error event exit explicit finally for friend from function get global goto group handles if implements imports in inherits interface into iterator join key let lib loop me mid module mustinherit mustoverride mybase myclass namespace narrowing new next notinheritable notoverridable of off on operator option optional order overloads overridable overrides paramarray partial preserve private property protected public raiseevent readonly redim removehandler resume return select set shadows shared skip static step stop structure strict sub synclock take text then throw to try unicode until using when where while widening with withevents writeonly yield",built_in:"addressof and andalso await directcast gettype getxmlnamespace is isfalse isnot istrue like mod nameof new not or orelse trycast typeof xor cbool cbyte cchar cdate cdbl cdec cint clng cobj csbyte cshort csng cstr cuint culng cushort",type:"boolean byte char date decimal double integer long object sbyte short single string uinteger ulong ushort",literal:"true false nothing"},illegal:"//|\\{|\\}|endif|gosub|variant|wend|^\\$ ",contains:[n,a,l,c,d,_,u,{className:"meta",begin:/[\t ]*#(const|disable|else|elseif|enable|end|externalsource|if|region)\b/,end:/$/,keywords:{keyword:"const disable else elseif enable end externalsource if region then"},contains:[u]}]}}var lA=oA;function cA(e){const t=e.regex,n=["lcase","month","vartype","instrrev","ubound","setlocale","getobject","rgb","getref","string","weekdayname","rnd","dateadd","monthname","now","day","minute","isarray","cbool","round","formatcurrency","conversions","csng","timevalue","second","year","space","abs","clng","timeserial","fixs","len","asc","isempty","maths","dateserial","atn","timer","isobject","filter","weekday","datevalue","ccur","isdate","instr","datediff","formatdatetime","replace","isnull","right","sgn","array","snumeric","log","cdbl","hex","chr","lbound","msgbox","ucase","getlocale","cos","cdate","cbyte","rtrim","join","hour","oct","typename","trim","strcomp","int","createobject","loadpicture","tan","formatnumber","mid","split","cint","sin","datepart","ltrim","sqr","time","derived","eval","date","formatpercent","exp","inputbox","left","ascw","chrw","regexp","cstr","err"],a=["server","response","request","scriptengine","scriptenginebuildversion","scriptengineminorversion","scriptenginemajorversion"],r={begin:t.concat(t.either(...n),"\\s*\\("),relevance:0,keywords:{built_in:n}};return{name:"VBScript",aliases:["vbs"],case_insensitive:!0,keywords:{keyword:["call","class","const","dim","do","loop","erase","execute","executeglobal","exit","for","each","next","function","if","then","else","on","error","option","explicit","new","private","property","let","get","public","randomize","redim","rem","select","case","set","stop","sub","while","wend","with","end","to","elseif","is","or","xor","and","not","class_initialize","class_terminate","default","preserve","in","me","byval","byref","step","resume","goto"],built_in:a,literal:["true","false","null","nothing","empty"]},illegal:"//",contains:[r,e.inherit(e.QUOTE_STRING_MODE,{contains:[{begin:'""'}]}),e.COMMENT(/'/,/$/,{relevance:0}),e.C_NUMBER_MODE]}}var dA=cA;function uA(e){return{name:"VBScript in HTML",subLanguage:"xml",contains:[{begin:"<%",end:"%>",subLanguage:"vbscript"}]}}var _A=uA;function pA(e){const t=e.regex,n={$pattern:/\$?[\w]+(\$[\w]+)*/,keyword:["accept_on","alias","always","always_comb","always_ff","always_latch","and","assert","assign","assume","automatic","before","begin","bind","bins","binsof","bit","break","buf|0","bufif0","bufif1","byte","case","casex","casez","cell","chandle","checker","class","clocking","cmos","config","const","constraint","context","continue","cover","covergroup","coverpoint","cross","deassign","default","defparam","design","disable","dist","do","edge","else","end","endcase","endchecker","endclass","endclocking","endconfig","endfunction","endgenerate","endgroup","endinterface","endmodule","endpackage","endprimitive","endprogram","endproperty","endspecify","endsequence","endtable","endtask","enum","event","eventually","expect","export","extends","extern","final","first_match","for","force","foreach","forever","fork","forkjoin","function","generate|5","genvar","global","highz0","highz1","if","iff","ifnone","ignore_bins","illegal_bins","implements","implies","import","incdir","include","initial","inout","input","inside","instance","int","integer","interconnect","interface","intersect","join","join_any","join_none","large","let","liblist","library","local","localparam","logic","longint","macromodule","matches","medium","modport","module","nand","negedge","nettype","new","nexttime","nmos","nor","noshowcancelled","not","notif0","notif1","or","output","package","packed","parameter","pmos","posedge","primitive","priority","program","property","protected","pull0","pull1","pulldown","pullup","pulsestyle_ondetect","pulsestyle_onevent","pure","rand","randc","randcase","randsequence","rcmos","real","realtime","ref","reg","reject_on","release","repeat","restrict","return","rnmos","rpmos","rtran","rtranif0","rtranif1","s_always","s_eventually","s_nexttime","s_until","s_until_with","scalared","sequence","shortint","shortreal","showcancelled","signed","small","soft","solve","specify","specparam","static","string","strong","strong0","strong1","struct","super","supply0","supply1","sync_accept_on","sync_reject_on","table","tagged","task","this","throughout","time","timeprecision","timeunit","tran","tranif0","tranif1","tri","tri0","tri1","triand","trior","trireg","type","typedef","union","unique","unique0","unsigned","until","until_with","untyped","use","uwire","var","vectored","virtual","void","wait","wait_order","wand","weak","weak0","weak1","while","wildcard","wire","with","within","wor","xnor","xor"],literal:["null"],built_in:["$finish","$stop","$exit","$fatal","$error","$warning","$info","$realtime","$time","$printtimescale","$bitstoreal","$bitstoshortreal","$itor","$signed","$cast","$bits","$stime","$timeformat","$realtobits","$shortrealtobits","$rtoi","$unsigned","$asserton","$assertkill","$assertpasson","$assertfailon","$assertnonvacuouson","$assertoff","$assertcontrol","$assertpassoff","$assertfailoff","$assertvacuousoff","$isunbounded","$sampled","$fell","$changed","$past_gclk","$fell_gclk","$changed_gclk","$rising_gclk","$steady_gclk","$coverage_control","$coverage_get","$coverage_save","$set_coverage_db_name","$rose","$stable","$past","$rose_gclk","$stable_gclk","$future_gclk","$falling_gclk","$changing_gclk","$display","$coverage_get_max","$coverage_merge","$get_coverage","$load_coverage_db","$typename","$unpacked_dimensions","$left","$low","$increment","$clog2","$ln","$log10","$exp","$sqrt","$pow","$floor","$ceil","$sin","$cos","$tan","$countbits","$onehot","$isunknown","$fatal","$warning","$dimensions","$right","$high","$size","$asin","$acos","$atan","$atan2","$hypot","$sinh","$cosh","$tanh","$asinh","$acosh","$atanh","$countones","$onehot0","$error","$info","$random","$dist_chi_square","$dist_erlang","$dist_exponential","$dist_normal","$dist_poisson","$dist_t","$dist_uniform","$q_initialize","$q_remove","$q_exam","$async$and$array","$async$nand$array","$async$or$array","$async$nor$array","$sync$and$array","$sync$nand$array","$sync$or$array","$sync$nor$array","$q_add","$q_full","$psprintf","$async$and$plane","$async$nand$plane","$async$or$plane","$async$nor$plane","$sync$and$plane","$sync$nand$plane","$sync$or$plane","$sync$nor$plane","$system","$display","$displayb","$displayh","$displayo","$strobe","$strobeb","$strobeh","$strobeo","$write","$readmemb","$readmemh","$writememh","$value$plusargs","$dumpvars","$dumpon","$dumplimit","$dumpports","$dumpportson","$dumpportslimit","$writeb","$writeh","$writeo","$monitor","$monitorb","$monitorh","$monitoro","$writememb","$dumpfile","$dumpoff","$dumpall","$dumpflush","$dumpportsoff","$dumpportsall","$dumpportsflush","$fclose","$fdisplay","$fdisplayb","$fdisplayh","$fdisplayo","$fstrobe","$fstrobeb","$fstrobeh","$fstrobeo","$swrite","$swriteb","$swriteh","$swriteo","$fscanf","$fread","$fseek","$fflush","$feof","$fopen","$fwrite","$fwriteb","$fwriteh","$fwriteo","$fmonitor","$fmonitorb","$fmonitorh","$fmonitoro","$sformat","$sformatf","$fgetc","$ungetc","$fgets","$sscanf","$rewind","$ftell","$ferror"]},a=["__FILE__","__LINE__"],r=["begin_keywords","celldefine","default_nettype","default_decay_time","default_trireg_strength","define","delay_mode_distributed","delay_mode_path","delay_mode_unit","delay_mode_zero","else","elsif","end_keywords","endcelldefine","endif","ifdef","ifndef","include","line","nounconnected_drive","pragma","resetall","timescale","unconnected_drive","undef","undefineall"];return{name:"Verilog",aliases:["v","sv","svh"],case_insensitive:!1,keywords:n,contains:[e.C_BLOCK_COMMENT_MODE,e.C_LINE_COMMENT_MODE,e.QUOTE_STRING_MODE,{scope:"number",contains:[e.BACKSLASH_ESCAPE],variants:[{begin:/\b((\d+'([bhodBHOD]))[0-9xzXZa-fA-F_]+)/},{begin:/\B(('([bhodBHOD]))[0-9xzXZa-fA-F_]+)/},{begin:/\b[0-9][0-9_]*/,relevance:0}]},{scope:"variable",variants:[{begin:"#\\((?!parameter).+\\)"},{begin:"\\.\\w+",relevance:0}]},{scope:"variable.constant",match:t.concat(/`/,t.either(...a))},{scope:"meta",begin:t.concat(/`/,t.either(...r)),end:/$|\/\/|\/\*/,returnEnd:!0,keywords:r}]}}var mA=pA;function gA(e){const t="\\d(_|\\d)*",n="[eE][-+]?"+t,a=t+"(\\."+t+")?("+n+")?",r="\\w+",i=t+"#"+r+"(\\."+r+")?#("+n+")?",s="\\b("+i+"|"+a+")";return{name:"VHDL",case_insensitive:!0,keywords:{keyword:["abs","access","after","alias","all","and","architecture","array","assert","assume","assume_guarantee","attribute","begin","block","body","buffer","bus","case","component","configuration","constant","context","cover","disconnect","downto","default","else","elsif","end","entity","exit","fairness","file","for","force","function","generate","generic","group","guarded","if","impure","in","inertial","inout","is","label","library","linkage","literal","loop","map","mod","nand","new","next","nor","not","null","of","on","open","or","others","out","package","parameter","port","postponed","procedure","process","property","protected","pure","range","record","register","reject","release","rem","report","restrict","restrict_guarantee","return","rol","ror","select","sequence","severity","shared","signal","sla","sll","sra","srl","strong","subtype","then","to","transport","type","unaffected","units","until","use","variable","view","vmode","vprop","vunit","wait","when","while","with","xnor","xor"],built_in:["boolean","bit","character","integer","time","delay_length","natural","positive","string","bit_vector","file_open_kind","file_open_status","std_logic","std_logic_vector","unsigned","signed","boolean_vector","integer_vector","std_ulogic","std_ulogic_vector","unresolved_unsigned","u_unsigned","unresolved_signed","u_signed","real_vector","time_vector"],literal:["false","true","note","warning","error","failure","line","text","side","width"]},illegal:/\{/,contains:[e.C_BLOCK_COMMENT_MODE,e.COMMENT("--","$"),e.QUOTE_STRING_MODE,{className:"number",begin:s,relevance:0},{className:"string",begin:"'(U|X|0|1|Z|W|L|H|-)'",contains:[e.BACKSLASH_ESCAPE]},{className:"symbol",begin:"'[A-Za-z](_?[A-Za-z0-9])*",contains:[e.BACKSLASH_ESCAPE]}]}}var hA=gA;function fA(e){return{name:"Vim Script",keywords:{$pattern:/[!#@\w]+/,keyword:"N|0 P|0 X|0 a|0 ab abc abo al am an|0 ar arga argd arge argdo argg argl argu as au aug aun b|0 bN ba bad bd be bel bf bl bm bn bo bp br brea breaka breakd breakl bro bufdo buffers bun bw c|0 cN cNf ca cabc caddb cad caddf cal cat cb cc ccl cd ce cex cf cfir cgetb cgete cg changes chd che checkt cl cla clo cm cmapc cme cn cnew cnf cno cnorea cnoreme co col colo com comc comp con conf cope cp cpf cq cr cs cst cu cuna cunme cw delm deb debugg delc delf dif diffg diffo diffp diffpu diffs diffthis dig di dl dell dj dli do doautoa dp dr ds dsp e|0 ea ec echoe echoh echom echon el elsei em en endfo endf endt endw ene ex exe exi exu f|0 files filet fin fina fini fir fix fo foldc foldd folddoc foldo for fu go gr grepa gu gv ha helpf helpg helpt hi hid his ia iabc if ij il im imapc ime ino inorea inoreme int is isp iu iuna iunme j|0 ju k|0 keepa kee keepj lN lNf l|0 lad laddb laddf la lan lat lb lc lch lcl lcs le lefta let lex lf lfir lgetb lgete lg lgr lgrepa lh ll lla lli lmak lm lmapc lne lnew lnf ln loadk lo loc lockv lol lope lp lpf lr ls lt lu lua luad luaf lv lvimgrepa lw m|0 ma mak map mapc marks mat me menut mes mk mks mksp mkv mkvie mod mz mzf nbc nb nbs new nm nmapc nme nn nnoreme noa no noh norea noreme norm nu nun nunme ol o|0 om omapc ome on ono onoreme opt ou ounme ow p|0 profd prof pro promptr pc ped pe perld po popu pp pre prev ps pt ptN ptf ptj ptl ptn ptp ptr pts pu pw py3 python3 py3d py3f py pyd pyf quita qa rec red redi redr redraws reg res ret retu rew ri rightb rub rubyd rubyf rund ru rv sN san sa sal sav sb sbN sba sbf sbl sbm sbn sbp sbr scrip scripte scs se setf setg setl sf sfir sh sim sig sil sl sla sm smap smapc sme sn sni sno snor snoreme sor so spelld spe spelli spellr spellu spellw sp spr sre st sta startg startr star stopi stj sts sun sunm sunme sus sv sw sy synti sync tN tabN tabc tabdo tabe tabf tabfir tabl tabm tabnew tabn tabo tabp tabr tabs tab ta tags tc tcld tclf te tf th tj tl tm tn to tp tr try ts tu u|0 undoj undol una unh unl unlo unm unme uns up ve verb vert vim vimgrepa vi viu vie vm vmapc vme vne vn vnoreme vs vu vunme windo w|0 wN wa wh wi winc winp wn wp wq wqa ws wu wv x|0 xa xmapc xm xme xn xnoreme xu xunme y|0 z|0 ~ Next Print append abbreviate abclear aboveleft all amenu anoremenu args argadd argdelete argedit argglobal arglocal argument ascii autocmd augroup aunmenu buffer bNext ball badd bdelete behave belowright bfirst blast bmodified bnext botright bprevious brewind break breakadd breakdel breaklist browse bunload bwipeout change cNext cNfile cabbrev cabclear caddbuffer caddexpr caddfile call catch cbuffer cclose center cexpr cfile cfirst cgetbuffer cgetexpr cgetfile chdir checkpath checktime clist clast close cmap cmapclear cmenu cnext cnewer cnfile cnoremap cnoreabbrev cnoremenu copy colder colorscheme command comclear compiler continue confirm copen cprevious cpfile cquit crewind cscope cstag cunmap cunabbrev cunmenu cwindow delete delmarks debug debuggreedy delcommand delfunction diffupdate diffget diffoff diffpatch diffput diffsplit digraphs display deletel djump dlist doautocmd doautoall deletep drop dsearch dsplit edit earlier echo echoerr echohl echomsg else elseif emenu endif endfor endfunction endtry endwhile enew execute exit exusage file filetype find finally finish first fixdel fold foldclose folddoopen folddoclosed foldopen function global goto grep grepadd gui gvim hardcopy help helpfind helpgrep helptags highlight hide history insert iabbrev iabclear ijump ilist imap imapclear imenu inoremap inoreabbrev inoremenu intro isearch isplit iunmap iunabbrev iunmenu join jumps keepalt keepmarks keepjumps lNext lNfile list laddexpr laddbuffer laddfile last language later lbuffer lcd lchdir lclose lcscope left leftabove lexpr lfile lfirst lgetbuffer lgetexpr lgetfile lgrep lgrepadd lhelpgrep llast llist lmake lmap lmapclear lnext lnewer lnfile lnoremap loadkeymap loadview lockmarks lockvar lolder lopen lprevious lpfile lrewind ltag lunmap luado luafile lvimgrep lvimgrepadd lwindow move mark make mapclear match menu menutranslate messages mkexrc mksession mkspell mkvimrc mkview mode mzscheme mzfile nbclose nbkey nbsart next nmap nmapclear nmenu nnoremap nnoremenu noautocmd noremap nohlsearch noreabbrev noremenu normal number nunmap nunmenu oldfiles open omap omapclear omenu only onoremap onoremenu options ounmap ounmenu ownsyntax print profdel profile promptfind promptrepl pclose pedit perl perldo pop popup ppop preserve previous psearch ptag ptNext ptfirst ptjump ptlast ptnext ptprevious ptrewind ptselect put pwd py3do py3file python pydo pyfile quit quitall qall read recover redo redir redraw redrawstatus registers resize retab return rewind right rightbelow ruby rubydo rubyfile rundo runtime rviminfo substitute sNext sandbox sargument sall saveas sbuffer sbNext sball sbfirst sblast sbmodified sbnext sbprevious sbrewind scriptnames scriptencoding scscope set setfiletype setglobal setlocal sfind sfirst shell simalt sign silent sleep slast smagic smapclear smenu snext sniff snomagic snoremap snoremenu sort source spelldump spellgood spellinfo spellrepall spellundo spellwrong split sprevious srewind stop stag startgreplace startreplace startinsert stopinsert stjump stselect sunhide sunmap sunmenu suspend sview swapname syntax syntime syncbind tNext tabNext tabclose tabedit tabfind tabfirst tablast tabmove tabnext tabonly tabprevious tabrewind tag tcl tcldo tclfile tearoff tfirst throw tjump tlast tmenu tnext topleft tprevious trewind tselect tunmenu undo undojoin undolist unabbreviate unhide unlet unlockvar unmap unmenu unsilent update vglobal version verbose vertical vimgrep vimgrepadd visual viusage view vmap vmapclear vmenu vnew vnoremap vnoremenu vsplit vunmap vunmenu write wNext wall while winsize wincmd winpos wnext wprevious wqall wsverb wundo wviminfo xit xall xmapclear xmap xmenu xnoremap xnoremenu xunmap xunmenu yank",built_in:"synIDtrans atan2 range matcharg did_filetype asin feedkeys xor argv complete_check add getwinposx getqflist getwinposy screencol clearmatches empty extend getcmdpos mzeval garbagecollect setreg ceil sqrt diff_hlID inputsecret get getfperm getpid filewritable shiftwidth max sinh isdirectory synID system inputrestore winline atan visualmode inputlist tabpagewinnr round getregtype mapcheck hasmapto histdel argidx findfile sha256 exists toupper getcmdline taglist string getmatches bufnr strftime winwidth bufexists strtrans tabpagebuflist setcmdpos remote_read printf setloclist getpos getline bufwinnr float2nr len getcmdtype diff_filler luaeval resolve libcallnr foldclosedend reverse filter has_key bufname str2float strlen setline getcharmod setbufvar index searchpos shellescape undofile foldclosed setqflist buflisted strchars str2nr virtcol floor remove undotree remote_expr winheight gettabwinvar reltime cursor tabpagenr finddir localtime acos getloclist search tanh matchend rename gettabvar strdisplaywidth type abs py3eval setwinvar tolower wildmenumode log10 spellsuggest bufloaded synconcealed nextnonblank server2client complete settabwinvar executable input wincol setmatches getftype hlID inputsave searchpair or screenrow line settabvar histadd deepcopy strpart remote_peek and eval getftime submatch screenchar winsaveview matchadd mkdir screenattr getfontname libcall reltimestr getfsize winnr invert pow getbufline byte2line soundfold repeat fnameescape tagfiles sin strwidth spellbadword trunc maparg log lispindent hostname setpos globpath remote_foreground getchar synIDattr fnamemodify cscope_connection stridx winbufnr indent min complete_add nr2char searchpairpos inputdialog values matchlist items hlexists strridx browsedir expand fmod pathshorten line2byte argc count getwinvar glob foldtextresult getreg foreground cosh matchdelete has char2nr simplify histget searchdecl iconv winrestcmd pumvisible writefile foldlevel haslocaldir keys cos matchstr foldtext histnr tan tempname getcwd byteidx getbufvar islocked escape eventhandler remote_send serverlist winrestview synstack pyeval prevnonblank readfile cindent filereadable changenr exp"},illegal:/;/,contains:[e.NUMBER_MODE,{className:"string",begin:"'",end:"'",illegal:"\\n"},{className:"string",begin:/"(\\"|\n\\|[^"\n])*"/},e.COMMENT('"',"$"),{className:"variable",begin:/[bwtglsav]:[\w\d_]+/},{begin:[/\b(?:function|function!)/,/\s+/,e.IDENT_RE],className:{1:"keyword",3:"title"},end:"$",relevance:0,contains:[{className:"params",begin:"\\(",end:"\\)"}]},{className:"symbol",begin:/<[\w-]+>/}]}}var EA=fA;function SA(e){e.regex;const t=e.COMMENT(/\(;/,/;\)/);t.contains.push("self");const n=e.COMMENT(/;;/,/$/),a=["anyfunc","block","br","br_if","br_table","call","call_indirect","data","drop","elem","else","end","export","func","global.get","global.set","local.get","local.set","local.tee","get_global","get_local","global","if","import","local","loop","memory","memory.grow","memory.size","module","mut","nop","offset","param","result","return","select","set_global","set_local","start","table","tee_local","then","type","unreachable"],r={begin:[/(?:func|call|call_indirect)/,/\s+/,/\$[^\s)]+/],className:{1:"keyword",3:"title.function"}},i={className:"variable",begin:/\$[\w_]+/},s={match:/(\((?!;)|\))+/,className:"punctuation",relevance:0},o={className:"number",relevance:0,match:/[+-]?\b(?:\d(?:_?\d)*(?:\.\d(?:_?\d)*)?(?:[eE][+-]?\d(?:_?\d)*)?|0x[\da-fA-F](?:_?[\da-fA-F])*(?:\.[\da-fA-F](?:_?[\da-fA-D])*)?(?:[pP][+-]?\d(?:_?\d)*)?)\b|\binf\b|\bnan(?::0x[\da-fA-F](?:_?[\da-fA-D])*)?\b/},l={match:/(i32|i64|f32|f64)(?!\.)/,className:"type"},c={className:"keyword",match:/\b(f32|f64|i32|i64)(?:\.(?:abs|add|and|ceil|clz|const|convert_[su]\/i(?:32|64)|copysign|ctz|demote\/f64|div(?:_[su])?|eqz?|extend_[su]\/i32|floor|ge(?:_[su])?|gt(?:_[su])?|le(?:_[su])?|load(?:(?:8|16|32)_[su])?|lt(?:_[su])?|max|min|mul|nearest|neg?|or|popcnt|promote\/f32|reinterpret\/[fi](?:32|64)|rem_[su]|rot[lr]|shl|shr_[su]|store(?:8|16|32)?|sqrt|sub|trunc(?:_[su]\/f(?:32|64))?|wrap\/i64|xor))\b/};return{name:"WebAssembly",keywords:{$pattern:/[\w.]+/,keyword:a},contains:[n,t,{match:[/(?:offset|align)/,/\s*/,/=/],className:{1:"keyword",3:"operator"}},i,s,r,e.QUOTE_STRING_MODE,l,c,o]}}var bA=SA;function TA(e){const t=e.regex,n=/[a-zA-Z]\w*/,a=["as","break","class","construct","continue","else","for","foreign","if","import","in","is","return","static","var","while"],r=["true","false","null"],i=["this","super"],s=["Bool","Class","Fiber","Fn","List","Map","Null","Num","Object","Range","Sequence","String","System"],o=["-","~",/\*/,"%",/\.\.\./,/\.\./,/\+/,"<<",">>",">=","<=","<",">",/\^/,/!=/,/!/,/\bis\b/,"==","&&","&",/\|\|/,/\|/,/\?:/,"="],l={relevance:0,match:t.concat(/\b(?!(if|while|for|else|super)\b)/,n,/(?=\s*[({])/),className:"title.function"},c={match:t.concat(t.either(t.concat(/\b(?!(if|while|for|else|super)\b)/,n),t.either(...o)),/(?=\s*\([^)]+\)\s*\{)/),className:"title.function",starts:{contains:[{begin:/\(/,end:/\)/,contains:[{relevance:0,scope:"params",match:n}]}]}},d={variants:[{match:[/class\s+/,n,/\s+is\s+/,n]},{match:[/class\s+/,n]}],scope:{2:"title.class",4:"title.class.inherited"},keywords:a},_={relevance:0,match:t.either(...o),className:"operator"},u={className:"string",begin:/"""/,end:/"""/},p={className:"property",begin:t.concat(/\./,t.lookahead(n)),end:n,excludeBegin:!0,relevance:0},h={relevance:0,match:t.concat(/\b_/,n),scope:"variable"},f={relevance:0,match:/\b[A-Z]+[a-z]+([A-Z]+[a-z]+)*/,scope:"title.class",keywords:{_:s}},b=e.C_NUMBER_MODE,S={match:[n,/\s*/,/=/,/\s*/,/\(/,n,/\)\s*\{/],scope:{1:"title.function",3:"operator",6:"params"}},v=e.COMMENT(/\/\*\*/,/\*\//,{contains:[{match:/@[a-z]+/,scope:"doctag"},"self"]}),T={scope:"subst",begin:/%\(/,end:/\)/,contains:[b,f,l,h,_]},C={scope:"string",begin:/"/,end:/"/,contains:[T,{scope:"char.escape",variants:[{match:/\\\\|\\["0%abefnrtv]/},{match:/\\x[0-9A-F]{2}/},{match:/\\u[0-9A-F]{4}/},{match:/\\U[0-9A-F]{8}/}]}]};T.contains.push(C);const I=[...a,...i,...r],H={relevance:0,match:t.concat("\\b(?!",I.join("|"),"\\b)",/[a-zA-Z_]\w*(?:[?!]|\b)/),className:"variable"};return{name:"Wren",keywords:{keyword:a,"variable.language":i,literal:r},contains:[{scope:"comment",variants:[{begin:[/#!?/,/[A-Za-z_]+(?=\()/],beginScope:{},keywords:{literal:r},contains:[],end:/\)/},{begin:[/#!?/,/[A-Za-z_]+/],beginScope:{},end:/$/}]},b,C,u,v,e.C_LINE_COMMENT_MODE,e.C_BLOCK_COMMENT_MODE,f,d,S,c,l,_,h,p,H]}}var yA=TA;function vA(e){return{name:"Intel x86 Assembly",case_insensitive:!0,keywords:{$pattern:"[.%]?"+e.IDENT_RE,keyword:"lock rep repe repz repne repnz xaquire xrelease bnd nobnd aaa aad aam aas adc add and arpl bb0_reset bb1_reset bound bsf bsr bswap bt btc btr bts call cbw cdq cdqe clc cld cli clts cmc cmp cmpsb cmpsd cmpsq cmpsw cmpxchg cmpxchg486 cmpxchg8b cmpxchg16b cpuid cpu_read cpu_write cqo cwd cwde daa das dec div dmint emms enter equ f2xm1 fabs fadd faddp fbld fbstp fchs fclex fcmovb fcmovbe fcmove fcmovnb fcmovnbe fcmovne fcmovnu fcmovu fcom fcomi fcomip fcomp fcompp fcos fdecstp fdisi fdiv fdivp fdivr fdivrp femms feni ffree ffreep fiadd ficom ficomp fidiv fidivr fild fimul fincstp finit fist fistp fisttp fisub fisubr fld fld1 fldcw fldenv fldl2e fldl2t fldlg2 fldln2 fldpi fldz fmul fmulp fnclex fndisi fneni fninit fnop fnsave fnstcw fnstenv fnstsw fpatan fprem fprem1 fptan frndint frstor fsave fscale fsetpm fsin fsincos fsqrt fst fstcw fstenv fstp fstsw fsub fsubp fsubr fsubrp ftst fucom fucomi fucomip fucomp fucompp fxam fxch fxtract fyl2x fyl2xp1 hlt ibts icebp idiv imul in inc incbin insb insd insw int int01 int1 int03 int3 into invd invpcid invlpg invlpga iret iretd iretq iretw jcxz jecxz jrcxz jmp jmpe lahf lar lds lea leave les lfence lfs lgdt lgs lidt lldt lmsw loadall loadall286 lodsb lodsd lodsq lodsw loop loope loopne loopnz loopz lsl lss ltr mfence monitor mov movd movq movsb movsd movsq movsw movsx movsxd movzx mul mwait neg nop not or out outsb outsd outsw packssdw packsswb packuswb paddb paddd paddsb paddsiw paddsw paddusb paddusw paddw pand pandn pause paveb pavgusb pcmpeqb pcmpeqd pcmpeqw pcmpgtb pcmpgtd pcmpgtw pdistib pf2id pfacc pfadd pfcmpeq pfcmpge pfcmpgt pfmax pfmin pfmul pfrcp pfrcpit1 pfrcpit2 pfrsqit1 pfrsqrt pfsub pfsubr pi2fd pmachriw pmaddwd pmagw pmulhriw pmulhrwa pmulhrwc pmulhw pmullw pmvgezb pmvlzb pmvnzb pmvzb pop popa popad popaw popf popfd popfq popfw por prefetch prefetchw pslld psllq psllw psrad psraw psrld psrlq psrlw psubb psubd psubsb psubsiw psubsw psubusb psubusw psubw punpckhbw punpckhdq punpckhwd punpcklbw punpckldq punpcklwd push pusha pushad pushaw pushf pushfd pushfq pushfw pxor rcl rcr rdshr rdmsr rdpmc rdtsc rdtscp ret retf retn rol ror rdm rsdc rsldt rsm rsts sahf sal salc sar sbb scasb scasd scasq scasw sfence sgdt shl shld shr shrd sidt sldt skinit smi smint smintold smsw stc std sti stosb stosd stosq stosw str sub svdc svldt svts swapgs syscall sysenter sysexit sysret test ud0 ud1 ud2b ud2 ud2a umov verr verw fwait wbinvd wrshr wrmsr xadd xbts xchg xlatb xlat xor cmove cmovz cmovne cmovnz cmova cmovnbe cmovae cmovnb cmovb cmovnae cmovbe cmovna cmovg cmovnle cmovge cmovnl cmovl cmovnge cmovle cmovng cmovc cmovnc cmovo cmovno cmovs cmovns cmovp cmovpe cmovnp cmovpo je jz jne jnz ja jnbe jae jnb jb jnae jbe jna jg jnle jge jnl jl jnge jle jng jc jnc jo jno js jns jpo jnp jpe jp sete setz setne setnz seta setnbe setae setnb setnc setb setnae setcset setbe setna setg setnle setge setnl setl setnge setle setng sets setns seto setno setpe setp setpo setnp addps addss andnps andps cmpeqps cmpeqss cmpleps cmpless cmpltps cmpltss cmpneqps cmpneqss cmpnleps cmpnless cmpnltps cmpnltss cmpordps cmpordss cmpunordps cmpunordss cmpps cmpss comiss cvtpi2ps cvtps2pi cvtsi2ss cvtss2si cvttps2pi cvttss2si divps divss ldmxcsr maxps maxss minps minss movaps movhps movlhps movlps movhlps movmskps movntps movss movups mulps mulss orps rcpps rcpss rsqrtps rsqrtss shufps sqrtps sqrtss stmxcsr subps subss ucomiss unpckhps unpcklps xorps fxrstor fxrstor64 fxsave fxsave64 xgetbv xsetbv xsave xsave64 xsaveopt xsaveopt64 xrstor xrstor64 prefetchnta prefetcht0 prefetcht1 prefetcht2 maskmovq movntq pavgb pavgw pextrw pinsrw pmaxsw pmaxub pminsw pminub pmovmskb pmulhuw psadbw pshufw pf2iw pfnacc pfpnacc pi2fw pswapd maskmovdqu clflush movntdq movnti movntpd movdqa movdqu movdq2q movq2dq paddq pmuludq pshufd pshufhw pshuflw pslldq psrldq psubq punpckhqdq punpcklqdq addpd addsd andnpd andpd cmpeqpd cmpeqsd cmplepd cmplesd cmpltpd cmpltsd cmpneqpd cmpneqsd cmpnlepd cmpnlesd cmpnltpd cmpnltsd cmpordpd cmpordsd cmpunordpd cmpunordsd cmppd comisd cvtdq2pd cvtdq2ps cvtpd2dq cvtpd2pi cvtpd2ps cvtpi2pd cvtps2dq cvtps2pd cvtsd2si cvtsd2ss cvtsi2sd cvtss2sd cvttpd2pi cvttpd2dq cvttps2dq cvttsd2si divpd divsd maxpd maxsd minpd minsd movapd movhpd movlpd movmskpd movupd mulpd mulsd orpd shufpd sqrtpd sqrtsd subpd subsd ucomisd unpckhpd unpcklpd xorpd addsubpd addsubps haddpd haddps hsubpd hsubps lddqu movddup movshdup movsldup clgi stgi vmcall vmclear vmfunc vmlaunch vmload vmmcall vmptrld vmptrst vmread vmresume vmrun vmsave vmwrite vmxoff vmxon invept invvpid pabsb pabsw pabsd palignr phaddw phaddd phaddsw phsubw phsubd phsubsw pmaddubsw pmulhrsw pshufb psignb psignw psignd extrq insertq movntsd movntss lzcnt blendpd blendps blendvpd blendvps dppd dpps extractps insertps movntdqa mpsadbw packusdw pblendvb pblendw pcmpeqq pextrb pextrd pextrq phminposuw pinsrb pinsrd pinsrq pmaxsb pmaxsd pmaxud pmaxuw pminsb pminsd pminud pminuw pmovsxbw pmovsxbd pmovsxbq pmovsxwd pmovsxwq pmovsxdq pmovzxbw pmovzxbd pmovzxbq pmovzxwd pmovzxwq pmovzxdq pmuldq pmulld ptest roundpd roundps roundsd roundss crc32 pcmpestri pcmpestrm pcmpistri pcmpistrm pcmpgtq popcnt getsec pfrcpv pfrsqrtv movbe aesenc aesenclast aesdec aesdeclast aesimc aeskeygenassist vaesenc vaesenclast vaesdec vaesdeclast vaesimc vaeskeygenassist vaddpd vaddps vaddsd vaddss vaddsubpd vaddsubps vandpd vandps vandnpd vandnps vblendpd vblendps vblendvpd vblendvps vbroadcastss vbroadcastsd vbroadcastf128 vcmpeq_ospd vcmpeqpd vcmplt_ospd vcmpltpd vcmple_ospd vcmplepd vcmpunord_qpd vcmpunordpd vcmpneq_uqpd vcmpneqpd vcmpnlt_uspd vcmpnltpd vcmpnle_uspd vcmpnlepd vcmpord_qpd vcmpordpd vcmpeq_uqpd vcmpnge_uspd vcmpngepd vcmpngt_uspd vcmpngtpd vcmpfalse_oqpd vcmpfalsepd vcmpneq_oqpd vcmpge_ospd vcmpgepd vcmpgt_ospd vcmpgtpd vcmptrue_uqpd vcmptruepd vcmplt_oqpd vcmple_oqpd vcmpunord_spd vcmpneq_uspd vcmpnlt_uqpd vcmpnle_uqpd vcmpord_spd vcmpeq_uspd vcmpnge_uqpd vcmpngt_uqpd vcmpfalse_ospd vcmpneq_ospd vcmpge_oqpd vcmpgt_oqpd vcmptrue_uspd vcmppd vcmpeq_osps vcmpeqps vcmplt_osps vcmpltps vcmple_osps vcmpleps vcmpunord_qps vcmpunordps vcmpneq_uqps vcmpneqps vcmpnlt_usps vcmpnltps vcmpnle_usps vcmpnleps vcmpord_qps vcmpordps vcmpeq_uqps vcmpnge_usps vcmpngeps vcmpngt_usps vcmpngtps vcmpfalse_oqps vcmpfalseps vcmpneq_oqps vcmpge_osps vcmpgeps vcmpgt_osps vcmpgtps vcmptrue_uqps vcmptrueps vcmplt_oqps vcmple_oqps vcmpunord_sps vcmpneq_usps vcmpnlt_uqps vcmpnle_uqps vcmpord_sps vcmpeq_usps vcmpnge_uqps vcmpngt_uqps vcmpfalse_osps vcmpneq_osps vcmpge_oqps vcmpgt_oqps vcmptrue_usps vcmpps vcmpeq_ossd vcmpeqsd vcmplt_ossd vcmpltsd vcmple_ossd vcmplesd vcmpunord_qsd vcmpunordsd vcmpneq_uqsd vcmpneqsd vcmpnlt_ussd vcmpnltsd vcmpnle_ussd vcmpnlesd vcmpord_qsd vcmpordsd vcmpeq_uqsd vcmpnge_ussd vcmpngesd vcmpngt_ussd vcmpngtsd vcmpfalse_oqsd vcmpfalsesd vcmpneq_oqsd vcmpge_ossd vcmpgesd vcmpgt_ossd vcmpgtsd vcmptrue_uqsd vcmptruesd vcmplt_oqsd vcmple_oqsd vcmpunord_ssd vcmpneq_ussd vcmpnlt_uqsd vcmpnle_uqsd vcmpord_ssd vcmpeq_ussd vcmpnge_uqsd vcmpngt_uqsd vcmpfalse_ossd vcmpneq_ossd vcmpge_oqsd vcmpgt_oqsd vcmptrue_ussd vcmpsd vcmpeq_osss vcmpeqss vcmplt_osss vcmpltss vcmple_osss vcmpless vcmpunord_qss vcmpunordss vcmpneq_uqss vcmpneqss vcmpnlt_usss vcmpnltss vcmpnle_usss vcmpnless vcmpord_qss vcmpordss vcmpeq_uqss vcmpnge_usss vcmpngess vcmpngt_usss vcmpngtss vcmpfalse_oqss vcmpfalsess vcmpneq_oqss vcmpge_osss vcmpgess vcmpgt_osss vcmpgtss vcmptrue_uqss vcmptruess vcmplt_oqss vcmple_oqss vcmpunord_sss vcmpneq_usss vcmpnlt_uqss vcmpnle_uqss vcmpord_sss vcmpeq_usss vcmpnge_uqss vcmpngt_uqss vcmpfalse_osss vcmpneq_osss vcmpge_oqss vcmpgt_oqss vcmptrue_usss vcmpss vcomisd vcomiss vcvtdq2pd vcvtdq2ps vcvtpd2dq vcvtpd2ps vcvtps2dq vcvtps2pd vcvtsd2si vcvtsd2ss vcvtsi2sd vcvtsi2ss vcvtss2sd vcvtss2si vcvttpd2dq vcvttps2dq vcvttsd2si vcvttss2si vdivpd vdivps vdivsd vdivss vdppd vdpps vextractf128 vextractps vhaddpd vhaddps vhsubpd vhsubps vinsertf128 vinsertps vlddqu vldqqu vldmxcsr vmaskmovdqu vmaskmovps vmaskmovpd vmaxpd vmaxps vmaxsd vmaxss vminpd vminps vminsd vminss vmovapd vmovaps vmovd vmovq vmovddup vmovdqa vmovqqa vmovdqu vmovqqu vmovhlps vmovhpd vmovhps vmovlhps vmovlpd vmovlps vmovmskpd vmovmskps vmovntdq vmovntqq vmovntdqa vmovntpd vmovntps vmovsd vmovshdup vmovsldup vmovss vmovupd vmovups vmpsadbw vmulpd vmulps vmulsd vmulss vorpd vorps vpabsb vpabsw vpabsd vpacksswb vpackssdw vpackuswb vpackusdw vpaddb vpaddw vpaddd vpaddq vpaddsb vpaddsw vpaddusb vpaddusw vpalignr vpand vpandn vpavgb vpavgw vpblendvb vpblendw vpcmpestri vpcmpestrm vpcmpistri vpcmpistrm vpcmpeqb vpcmpeqw vpcmpeqd vpcmpeqq vpcmpgtb vpcmpgtw vpcmpgtd vpcmpgtq vpermilpd vpermilps vperm2f128 vpextrb vpextrw vpextrd vpextrq vphaddw vphaddd vphaddsw vphminposuw vphsubw vphsubd vphsubsw vpinsrb vpinsrw vpinsrd vpinsrq vpmaddwd vpmaddubsw vpmaxsb vpmaxsw vpmaxsd vpmaxub vpmaxuw vpmaxud vpminsb vpminsw vpminsd vpminub vpminuw vpminud vpmovmskb vpmovsxbw vpmovsxbd vpmovsxbq vpmovsxwd vpmovsxwq vpmovsxdq vpmovzxbw vpmovzxbd vpmovzxbq vpmovzxwd vpmovzxwq vpmovzxdq vpmulhuw vpmulhrsw vpmulhw vpmullw vpmulld vpmuludq vpmuldq vpor vpsadbw vpshufb vpshufd vpshufhw vpshuflw vpsignb vpsignw vpsignd vpslldq vpsrldq vpsllw vpslld vpsllq vpsraw vpsrad vpsrlw vpsrld vpsrlq vptest vpsubb vpsubw vpsubd vpsubq vpsubsb vpsubsw vpsubusb vpsubusw vpunpckhbw vpunpckhwd vpunpckhdq vpunpckhqdq vpunpcklbw vpunpcklwd vpunpckldq vpunpcklqdq vpxor vrcpps vrcpss vrsqrtps vrsqrtss vroundpd vroundps vroundsd vroundss vshufpd vshufps vsqrtpd vsqrtps vsqrtsd vsqrtss vstmxcsr vsubpd vsubps vsubsd vsubss vtestps vtestpd vucomisd vucomiss vunpckhpd vunpckhps vunpcklpd vunpcklps vxorpd vxorps vzeroall vzeroupper pclmullqlqdq pclmulhqlqdq pclmullqhqdq pclmulhqhqdq pclmulqdq vpclmullqlqdq vpclmulhqlqdq vpclmullqhqdq vpclmulhqhqdq vpclmulqdq vfmadd132ps vfmadd132pd vfmadd312ps vfmadd312pd vfmadd213ps vfmadd213pd vfmadd123ps vfmadd123pd vfmadd231ps vfmadd231pd vfmadd321ps vfmadd321pd vfmaddsub132ps vfmaddsub132pd vfmaddsub312ps vfmaddsub312pd vfmaddsub213ps vfmaddsub213pd vfmaddsub123ps vfmaddsub123pd vfmaddsub231ps vfmaddsub231pd vfmaddsub321ps vfmaddsub321pd vfmsub132ps vfmsub132pd vfmsub312ps vfmsub312pd vfmsub213ps vfmsub213pd vfmsub123ps vfmsub123pd vfmsub231ps vfmsub231pd vfmsub321ps vfmsub321pd vfmsubadd132ps vfmsubadd132pd vfmsubadd312ps vfmsubadd312pd vfmsubadd213ps vfmsubadd213pd vfmsubadd123ps vfmsubadd123pd vfmsubadd231ps vfmsubadd231pd vfmsubadd321ps vfmsubadd321pd vfnmadd132ps vfnmadd132pd vfnmadd312ps vfnmadd312pd vfnmadd213ps vfnmadd213pd vfnmadd123ps vfnmadd123pd vfnmadd231ps vfnmadd231pd vfnmadd321ps vfnmadd321pd vfnmsub132ps vfnmsub132pd vfnmsub312ps vfnmsub312pd vfnmsub213ps vfnmsub213pd vfnmsub123ps vfnmsub123pd vfnmsub231ps vfnmsub231pd vfnmsub321ps vfnmsub321pd vfmadd132ss vfmadd132sd vfmadd312ss vfmadd312sd vfmadd213ss vfmadd213sd vfmadd123ss vfmadd123sd vfmadd231ss vfmadd231sd vfmadd321ss vfmadd321sd vfmsub132ss vfmsub132sd vfmsub312ss vfmsub312sd vfmsub213ss vfmsub213sd vfmsub123ss vfmsub123sd vfmsub231ss vfmsub231sd vfmsub321ss vfmsub321sd vfnmadd132ss vfnmadd132sd vfnmadd312ss vfnmadd312sd vfnmadd213ss vfnmadd213sd vfnmadd123ss vfnmadd123sd vfnmadd231ss vfnmadd231sd vfnmadd321ss vfnmadd321sd vfnmsub132ss vfnmsub132sd vfnmsub312ss vfnmsub312sd vfnmsub213ss vfnmsub213sd vfnmsub123ss vfnmsub123sd vfnmsub231ss vfnmsub231sd vfnmsub321ss vfnmsub321sd rdfsbase rdgsbase rdrand wrfsbase wrgsbase vcvtph2ps vcvtps2ph adcx adox rdseed clac stac xstore xcryptecb xcryptcbc xcryptctr xcryptcfb xcryptofb montmul xsha1 xsha256 llwpcb slwpcb lwpval lwpins vfmaddpd vfmaddps vfmaddsd vfmaddss vfmaddsubpd vfmaddsubps vfmsubaddpd vfmsubaddps vfmsubpd vfmsubps vfmsubsd vfmsubss vfnmaddpd vfnmaddps vfnmaddsd vfnmaddss vfnmsubpd vfnmsubps vfnmsubsd vfnmsubss vfrczpd vfrczps vfrczsd vfrczss vpcmov vpcomb vpcomd vpcomq vpcomub vpcomud vpcomuq vpcomuw vpcomw vphaddbd vphaddbq vphaddbw vphadddq vphaddubd vphaddubq vphaddubw vphaddudq vphadduwd vphadduwq vphaddwd vphaddwq vphsubbw vphsubdq vphsubwd vpmacsdd vpmacsdqh vpmacsdql vpmacssdd vpmacssdqh vpmacssdql vpmacsswd vpmacssww vpmacswd vpmacsww vpmadcsswd vpmadcswd vpperm vprotb vprotd vprotq vprotw vpshab vpshad vpshaq vpshaw vpshlb vpshld vpshlq vpshlw vbroadcasti128 vpblendd vpbroadcastb vpbroadcastw vpbroadcastd vpbroadcastq vpermd vpermpd vpermps vpermq vperm2i128 vextracti128 vinserti128 vpmaskmovd vpmaskmovq vpsllvd vpsllvq vpsravd vpsrlvd vpsrlvq vgatherdpd vgatherqpd vgatherdps vgatherqps vpgatherdd vpgatherqd vpgatherdq vpgatherqq xabort xbegin xend xtest andn bextr blci blcic blsi blsic blcfill blsfill blcmsk blsmsk blsr blcs bzhi mulx pdep pext rorx sarx shlx shrx tzcnt tzmsk t1mskc valignd valignq vblendmpd vblendmps vbroadcastf32x4 vbroadcastf64x4 vbroadcasti32x4 vbroadcasti64x4 vcompresspd vcompressps vcvtpd2udq vcvtps2udq vcvtsd2usi vcvtss2usi vcvttpd2udq vcvttps2udq vcvttsd2usi vcvttss2usi vcvtudq2pd vcvtudq2ps vcvtusi2sd vcvtusi2ss vexpandpd vexpandps vextractf32x4 vextractf64x4 vextracti32x4 vextracti64x4 vfixupimmpd vfixupimmps vfixupimmsd vfixupimmss vgetexppd vgetexpps vgetexpsd vgetexpss vgetmantpd vgetmantps vgetmantsd vgetmantss vinsertf32x4 vinsertf64x4 vinserti32x4 vinserti64x4 vmovdqa32 vmovdqa64 vmovdqu32 vmovdqu64 vpabsq vpandd vpandnd vpandnq vpandq vpblendmd vpblendmq vpcmpltd vpcmpled vpcmpneqd vpcmpnltd vpcmpnled vpcmpd vpcmpltq vpcmpleq vpcmpneqq vpcmpnltq vpcmpnleq vpcmpq vpcmpequd vpcmpltud vpcmpleud vpcmpnequd vpcmpnltud vpcmpnleud vpcmpud vpcmpequq vpcmpltuq vpcmpleuq vpcmpnequq vpcmpnltuq vpcmpnleuq vpcmpuq vpcompressd vpcompressq vpermi2d vpermi2pd vpermi2ps vpermi2q vpermt2d vpermt2pd vpermt2ps vpermt2q vpexpandd vpexpandq vpmaxsq vpmaxuq vpminsq vpminuq vpmovdb vpmovdw vpmovqb vpmovqd vpmovqw vpmovsdb vpmovsdw vpmovsqb vpmovsqd vpmovsqw vpmovusdb vpmovusdw vpmovusqb vpmovusqd vpmovusqw vpord vporq vprold vprolq vprolvd vprolvq vprord vprorq vprorvd vprorvq vpscatterdd vpscatterdq vpscatterqd vpscatterqq vpsraq vpsravq vpternlogd vpternlogq vptestmd vptestmq vptestnmd vptestnmq vpxord vpxorq vrcp14pd vrcp14ps vrcp14sd vrcp14ss vrndscalepd vrndscaleps vrndscalesd vrndscaless vrsqrt14pd vrsqrt14ps vrsqrt14sd vrsqrt14ss vscalefpd vscalefps vscalefsd vscalefss vscatterdpd vscatterdps vscatterqpd vscatterqps vshuff32x4 vshuff64x2 vshufi32x4 vshufi64x2 kandnw kandw kmovw knotw kortestw korw kshiftlw kshiftrw kunpckbw kxnorw kxorw vpbroadcastmb2q vpbroadcastmw2d vpconflictd vpconflictq vplzcntd vplzcntq vexp2pd vexp2ps vrcp28pd vrcp28ps vrcp28sd vrcp28ss vrsqrt28pd vrsqrt28ps vrsqrt28sd vrsqrt28ss vgatherpf0dpd vgatherpf0dps vgatherpf0qpd vgatherpf0qps vgatherpf1dpd vgatherpf1dps vgatherpf1qpd vgatherpf1qps vscatterpf0dpd vscatterpf0dps vscatterpf0qpd vscatterpf0qps vscatterpf1dpd vscatterpf1dps vscatterpf1qpd vscatterpf1qps prefetchwt1 bndmk bndcl bndcu bndcn bndmov bndldx bndstx sha1rnds4 sha1nexte sha1msg1 sha1msg2 sha256rnds2 sha256msg1 sha256msg2 hint_nop0 hint_nop1 hint_nop2 hint_nop3 hint_nop4 hint_nop5 hint_nop6 hint_nop7 hint_nop8 hint_nop9 hint_nop10 hint_nop11 hint_nop12 hint_nop13 hint_nop14 hint_nop15 hint_nop16 hint_nop17 hint_nop18 hint_nop19 hint_nop20 hint_nop21 hint_nop22 hint_nop23 hint_nop24 hint_nop25 hint_nop26 hint_nop27 hint_nop28 hint_nop29 hint_nop30 hint_nop31 hint_nop32 hint_nop33 hint_nop34 hint_nop35 hint_nop36 hint_nop37 hint_nop38 hint_nop39 hint_nop40 hint_nop41 hint_nop42 hint_nop43 hint_nop44 hint_nop45 hint_nop46 hint_nop47 hint_nop48 hint_nop49 hint_nop50 hint_nop51 hint_nop52 hint_nop53 hint_nop54 hint_nop55 hint_nop56 hint_nop57 hint_nop58 hint_nop59 hint_nop60 hint_nop61 hint_nop62 hint_nop63",built_in:"ip eip rip al ah bl bh cl ch dl dh sil dil bpl spl r8b r9b r10b r11b r12b r13b r14b r15b ax bx cx dx si di bp sp r8w r9w r10w r11w r12w r13w r14w r15w eax ebx ecx edx esi edi ebp esp eip r8d r9d r10d r11d r12d r13d r14d r15d rax rbx rcx rdx rsi rdi rbp rsp r8 r9 r10 r11 r12 r13 r14 r15 cs ds es fs gs ss st st0 st1 st2 st3 st4 st5 st6 st7 mm0 mm1 mm2 mm3 mm4 mm5 mm6 mm7 xmm0  xmm1  xmm2  xmm3  xmm4  xmm5  xmm6  xmm7  xmm8  xmm9 xmm10  xmm11 xmm12 xmm13 xmm14 xmm15 xmm16 xmm17 xmm18 xmm19 xmm20 xmm21 xmm22 xmm23 xmm24 xmm25 xmm26 xmm27 xmm28 xmm29 xmm30 xmm31 ymm0  ymm1  ymm2  ymm3  ymm4  ymm5  ymm6  ymm7  ymm8  ymm9 ymm10  ymm11 ymm12 ymm13 ymm14 ymm15 ymm16 ymm17 ymm18 ymm19 ymm20 ymm21 ymm22 ymm23 ymm24 ymm25 ymm26 ymm27 ymm28 ymm29 ymm30 ymm31 zmm0  zmm1  zmm2  zmm3  zmm4  zmm5  zmm6  zmm7  zmm8  zmm9 zmm10  zmm11 zmm12 zmm13 zmm14 zmm15 zmm16 zmm17 zmm18 zmm19 zmm20 zmm21 zmm22 zmm23 zmm24 zmm25 zmm26 zmm27 zmm28 zmm29 zmm30 zmm31 k0 k1 k2 k3 k4 k5 k6 k7 bnd0 bnd1 bnd2 bnd3 cr0 cr1 cr2 cr3 cr4 cr8 dr0 dr1 dr2 dr3 dr8 tr3 tr4 tr5 tr6 tr7 r0 r1 r2 r3 r4 r5 r6 r7 r0b r1b r2b r3b r4b r5b r6b r7b r0w r1w r2w r3w r4w r5w r6w r7w r0d r1d r2d r3d r4d r5d r6d r7d r0h r1h r2h r3h r0l r1l r2l r3l r4l r5l r6l r7l r8l r9l r10l r11l r12l r13l r14l r15l db dw dd dq dt ddq do dy dz resb resw resd resq rest resdq reso resy resz incbin equ times byte word dword qword nosplit rel abs seg wrt strict near far a32 ptr",meta:"%define %xdefine %+ %undef %defstr %deftok %assign %strcat %strlen %substr %rotate %elif %else %endif %if %ifmacro %ifctx %ifidn %ifidni %ifid %ifnum %ifstr %iftoken %ifempty %ifenv %error %warning %fatal %rep %endrep %include %push %pop %repl %pathsearch %depend %use %arg %stacksize %local %line %comment %endcomment .nolist __FILE__ __LINE__ __SECT__  __BITS__ __OUTPUT_FORMAT__ __DATE__ __TIME__ __DATE_NUM__ __TIME_NUM__ __UTC_DATE__ __UTC_TIME__ __UTC_DATE_NUM__ __UTC_TIME_NUM__  __PASS__ struc endstruc istruc at iend align alignb sectalign daz nodaz up down zero default option assume public bits use16 use32 use64 default section segment absolute extern global common cpu float __utf16__ __utf16le__ __utf16be__ __utf32__ __utf32le__ __utf32be__ __float8__ __float16__ __float32__ __float64__ __float80m__ __float80e__ __float128l__ __float128h__ __Infinity__ __QNaN__ __SNaN__ Inf NaN QNaN SNaN float8 float16 float32 float64 float80m float80e float128l float128h __FLOAT_DAZ__ __FLOAT_ROUND__ __FLOAT__"},contains:[e.COMMENT(";","$",{relevance:0}),{className:"number",variants:[{begin:"\\b(?:([0-9][0-9_]*)?\\.[0-9_]*(?:[eE][+-]?[0-9_]+)?|(0[Xx])?[0-9][0-9_]*(\\.[0-9_]*)?(?:[pP](?:[+-]?[0-9_]+)?)?)\\b",relevance:0},{begin:"\\$[0-9][0-9A-Fa-f]*",relevance:0},{begin:"\\b(?:[0-9A-Fa-f][0-9A-Fa-f_]*[Hh]|[0-9][0-9_]*[DdTt]?|[0-7][0-7_]*[QqOo]|[0-1][0-1_]*[BbYy])\\b"},{begin:"\\b(?:0[Xx][0-9A-Fa-f_]+|0[DdTt][0-9_]+|0[QqOo][0-7_]+|0[BbYy][0-1_]+)\\b"}]},e.QUOTE_STRING_MODE,{className:"string",variants:[{begin:"'",end:"[^\\\\]'"},{begin:"`",end:"[^\\\\]`"}],relevance:0},{className:"symbol",variants:[{begin:"^\\s*[A-Za-z._?][A-Za-z0-9_$#@~.?]*(:|\\s+label)"},{begin:"^\\s*%%[A-Za-z0-9_$#@~.?]*:"}],relevance:0},{className:"subst",begin:"%[0-9]+",relevance:0},{className:"subst",begin:"%!S+",relevance:0},{className:"meta",begin:/^\s*\.[\w_-]+/}]}}var RA=vA;function CA(e){const t=["if","then","else","do","while","until","for","loop","import","with","is","as","where","when","by","data","constant","integer","real","text","name","boolean","symbol","infix","prefix","postfix","block","tree"],n=["in","mod","rem","and","or","xor","not","abs","sign","floor","ceil","sqrt","sin","cos","tan","asin","acos","atan","exp","expm1","log","log2","log10","log1p","pi","at","text_length","text_range","text_find","text_replace","contains","page","slide","basic_slide","title_slide","title","subtitle","fade_in","fade_out","fade_at","clear_color","color","line_color","line_width","texture_wrap","texture_transform","texture","scale_?x","scale_?y","scale_?z?","translate_?x","translate_?y","translate_?z?","rotate_?x","rotate_?y","rotate_?z?","rectangle","circle","ellipse","sphere","path","line_to","move_to","quad_to","curve_to","theme","background","contents","locally","time","mouse_?x","mouse_?y","mouse_buttons"],a=["ObjectLoader","Animate","MovieCredits","Slides","Filters","Shading","Materials","LensFlare","Mapping","VLCAudioVideo","StereoDecoder","PointCloud","NetworkAccess","RemoteControl","RegExp","ChromaKey","Snowfall","NodeJS","Speech","Charts"],i={$pattern:/[a-zA-Z][a-zA-Z0-9_?]*/,keyword:t,literal:["true","false","nil"],built_in:n.concat(a)},s={className:"string",begin:'"',end:'"',illegal:"\\n"},o={className:"string",begin:"'",end:"'",illegal:"\\n"},l={className:"string",begin:"<<",end:">>"},c={className:"number",begin:"[0-9]+#[0-9A-Z_]+(\\.[0-9-A-Z_]+)?#?([Ee][+-]?[0-9]+)?"},d={beginKeywords:"import",end:"$",keywords:i,contains:[s]},_={className:"function",begin:/[a-z][^\n]*->/,returnBegin:!0,end:/->/,contains:[e.inherit(e.TITLE_MODE,{starts:{endsWithParent:!0,keywords:i}})]};return{name:"XL",aliases:["tao"],keywords:i,contains:[e.C_LINE_COMMENT_MODE,e.C_BLOCK_COMMENT_MODE,s,o,l,_,d,c,e.NUMBER_MODE]}}var NA=CA;function wA(e){return{name:"XQuery",aliases:["xpath","xq"],case_insensitive:!1,illegal:/(proc)|(abstract)|(extends)|(until)|(#)/,keywords:{$pattern:/[a-zA-Z$][a-zA-Z0-9_:-]*/,keyword:["module","schema","namespace","boundary-space","preserve","no-preserve","strip","default","collation","base-uri","ordering","context","decimal-format","decimal-separator","copy-namespaces","empty-sequence","except","exponent-separator","external","grouping-separator","inherit","no-inherit","lax","minus-sign","per-mille","percent","schema-attribute","schema-element","strict","unordered","zero-digit","declare","import","option","function","validate","variable","for","at","in","let","where","order","group","by","return","if","then","else","tumbling","sliding","window","start","when","only","end","previous","next","stable","ascending","descending","allowing","empty","greatest","least","some","every","satisfies","switch","case","typeswitch","try","catch","and","or","to","union","intersect","instance","of","treat","as","castable","cast","map","array","delete","insert","into","replace","value","rename","copy","modify","update"],type:["item","document-node","node","attribute","document","element","comment","namespace","namespace-node","processing-instruction","text","construction","xs:anyAtomicType","xs:untypedAtomic","xs:duration","xs:time","xs:decimal","xs:float","xs:double","xs:gYearMonth","xs:gYear","xs:gMonthDay","xs:gMonth","xs:gDay","xs:boolean","xs:base64Binary","xs:hexBinary","xs:anyURI","xs:QName","xs:NOTATION","xs:dateTime","xs:dateTimeStamp","xs:date","xs:string","xs:normalizedString","xs:token","xs:language","xs:NMTOKEN","xs:Name","xs:NCName","xs:ID","xs:IDREF","xs:ENTITY","xs:integer","xs:nonPositiveInteger","xs:negativeInteger","xs:long","xs:int","xs:short","xs:byte","xs:nonNegativeInteger","xs:unisignedLong","xs:unsignedInt","xs:unsignedShort","xs:unsignedByte","xs:positiveInteger","xs:yearMonthDuration","xs:dayTimeDuration"],literal:["eq","ne","lt","le","gt","ge","is","self::","child::","descendant::","descendant-or-self::","attribute::","following::","following-sibling::","parent::","ancestor::","ancestor-or-self::","preceding::","preceding-sibling::","NaN"]},contains:[{className:"variable",begin:/[$][\w\-:]+/},{className:"built_in",variants:[{begin:/\barray:/,end:/(?:append|filter|flatten|fold-(?:left|right)|for-each(?:-pair)?|get|head|insert-before|join|put|remove|reverse|size|sort|subarray|tail)\b/},{begin:/\bmap:/,end:/(?:contains|entry|find|for-each|get|keys|merge|put|remove|size)\b/},{begin:/\bmath:/,end:/(?:a(?:cos|sin|tan[2]?)|cos|exp(?:10)?|log(?:10)?|pi|pow|sin|sqrt|tan)\b/},{begin:/\bop:/,end:/\(/,excludeEnd:!0},{begin:/\bfn:/,end:/\(/,excludeEnd:!0},{begin:/[^</$:'"-]\b(?:abs|accumulator-(?:after|before)|adjust-(?:date(?:Time)?|time)-to-timezone|analyze-string|apply|available-(?:environment-variables|system-properties)|avg|base-uri|boolean|ceiling|codepoints?-(?:equal|to-string)|collation-key|collection|compare|concat|contains(?:-token)?|copy-of|count|current(?:-)?(?:date(?:Time)?|time|group(?:ing-key)?|output-uri|merge-(?:group|key))?data|dateTime|days?-from-(?:date(?:Time)?|duration)|deep-equal|default-(?:collation|language)|distinct-values|document(?:-uri)?|doc(?:-available)?|element-(?:available|with-id)|empty|encode-for-uri|ends-with|environment-variable|error|escape-html-uri|exactly-one|exists|false|filter|floor|fold-(?:left|right)|for-each(?:-pair)?|format-(?:date(?:Time)?|time|integer|number)|function-(?:arity|available|lookup|name)|generate-id|has-children|head|hours-from-(?:dateTime|duration|time)|id(?:ref)?|implicit-timezone|in-scope-prefixes|index-of|innermost|insert-before|iri-to-uri|json-(?:doc|to-xml)|key|lang|last|load-xquery-module|local-name(?:-from-QName)?|(?:lower|upper)-case|matches|max|minutes-from-(?:dateTime|duration|time)|min|months?-from-(?:date(?:Time)?|duration)|name(?:space-uri-?(?:for-prefix|from-QName)?)?|nilled|node-name|normalize-(?:space|unicode)|not|number|one-or-more|outermost|parse-(?:ietf-date|json)|path|position|(?:prefix-from-)?QName|random-number-generator|regex-group|remove|replace|resolve-(?:QName|uri)|reverse|root|round(?:-half-to-even)?|seconds-from-(?:dateTime|duration|time)|snapshot|sort|starts-with|static-base-uri|stream-available|string-?(?:join|length|to-codepoints)?|subsequence|substring-?(?:after|before)?|sum|system-property|tail|timezone-from-(?:date(?:Time)?|time)|tokenize|trace|trans(?:form|late)|true|type-available|unordered|unparsed-(?:entity|text)?-?(?:public-id|uri|available|lines)?|uri-collection|xml-to-json|years?-from-(?:date(?:Time)?|duration)|zero-or-one)\b/},{begin:/\blocal:/,end:/\(/,excludeEnd:!0},{begin:/\bzip:/,end:/(?:zip-file|(?:xml|html|text|binary)-entry| (?:update-)?entries)\b/},{begin:/\b(?:util|db|functx|app|xdmp|xmldb):/,end:/\(/,excludeEnd:!0}]},{className:"string",variants:[{begin:/"/,end:/"/,contains:[{begin:/""/,relevance:0}]},{begin:/'/,end:/'/,contains:[{begin:/''/,relevance:0}]}]},{className:"number",begin:/(\b0[0-7_]+)|(\b0x[0-9a-fA-F_]+)|(\b[1-9][0-9_]*(\.[0-9_]+)?)|[0_]\b/,relevance:0},{className:"comment",begin:/\(:/,end:/:\)/,relevance:10,contains:[{className:"doctag",begin:/@\w+/}]},{className:"meta",begin:/%[\w\-:]+/},{className:"title",begin:/\bxquery version "[13]\.[01]"\s?(?:encoding ".+")?/,end:/;/},{beginKeywords:"element attribute comment document processing-instruction",end:/\{/,excludeEnd:!0},{begin:/<([\w._:-]+)(\s+\S*=('|").*('|"))?>/,end:/(\/[\w._:-]+>)/,subLanguage:"xml",contains:[{begin:/\{/,end:/\}/,subLanguage:"xquery"},"self"]}]}}var OA=wA;function IA(e){const t={className:"string",contains:[e.BACKSLASH_ESCAPE],variants:[e.inherit(e.APOS_STRING_MODE,{illegal:null}),e.inherit(e.QUOTE_STRING_MODE,{illegal:null})]},n=e.UNDERSCORE_TITLE_MODE,a={variants:[e.BINARY_NUMBER_MODE,e.C_NUMBER_MODE]},r="namespace class interface use extends function return abstract final public protected private static deprecated throw try catch Exception echo empty isset instanceof unset let var new const self require if else elseif switch case default do while loop for continue break likely unlikely __LINE__ __FILE__ __DIR__ __FUNCTION__ __CLASS__ __TRAIT__ __METHOD__ __NAMESPACE__ array boolean float double integer object resource string char long unsigned bool int uint ulong uchar true false null undefined";return{name:"Zephir",aliases:["zep"],keywords:r,contains:[e.C_LINE_COMMENT_MODE,e.COMMENT(/\/\*/,/\*\//,{contains:[{className:"doctag",begin:/@[A-Za-z]+/}]}),{className:"string",begin:/<<<['"]?\w+['"]?$/,end:/^\w+;/,contains:[e.BACKSLASH_ESCAPE]},{begin:/(::|->)+[a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*/},{className:"function",beginKeywords:"function fn",end:/[;{]/,excludeEnd:!0,illegal:/\$|\[|%/,contains:[n,{className:"params",begin:/\(/,end:/\)/,keywords:r,contains:["self",e.C_BLOCK_COMMENT_MODE,t,a]}]},{className:"class",beginKeywords:"class interface",end:/\{/,excludeEnd:!0,illegal:/[:($"]/,contains:[{beginKeywords:"extends implements"},n]},{beginKeywords:"namespace",end:/;/,illegal:/[.']/,contains:[n]},{beginKeywords:"use",end:/;/,contains:[n]},{begin:/=>/},t,a]}}var AA=IA,E=Ny;E.registerLanguage("1c",Oy);E.registerLanguage("abnf",Ay);E.registerLanguage("accesslog",xy);E.registerLanguage("actionscript",My);E.registerLanguage("ada",Py);E.registerLanguage("angelscript",Fy);E.registerLanguage("apache",Gy);E.registerLanguage("applescript",Hy);E.registerLanguage("arcade",Vy);E.registerLanguage("arduino",$y);E.registerLanguage("armasm",Qy);E.registerLanguage("xml",Xy);E.registerLanguage("asciidoc",Jy);E.registerLanguage("aspectj",tv);E.registerLanguage("autohotkey",av);E.registerLanguage("autoit",iv);E.registerLanguage("avrasm",ov);E.registerLanguage("awk",cv);E.registerLanguage("axapta",uv);E.registerLanguage("bash",pv);E.registerLanguage("basic",gv);E.registerLanguage("bnf",fv);E.registerLanguage("brainfuck",Sv);E.registerLanguage("c",Tv);E.registerLanguage("cal",vv);E.registerLanguage("capnproto",Cv);E.registerLanguage("ceylon",wv);E.registerLanguage("clean",Iv);E.registerLanguage("clojure",Dv);E.registerLanguage("clojure-repl",kv);E.registerLanguage("cmake",Lv);E.registerLanguage("coffeescript",Wv);E.registerLanguage("coq",qv);E.registerLanguage("cos",$v);E.registerLanguage("cpp",Qv);E.registerLanguage("crmsh",Xv);E.registerLanguage("crystal",Jv);E.registerLanguage("csharp",tR);E.registerLanguage("csp",aR);E.registerLanguage("css",uR);E.registerLanguage("d",pR);E.registerLanguage("markdown",gR);E.registerLanguage("dart",fR);E.registerLanguage("delphi",SR);E.registerLanguage("diff",TR);E.registerLanguage("django",vR);E.registerLanguage("dns",CR);E.registerLanguage("dockerfile",wR);E.registerLanguage("dos",IR);E.registerLanguage("dsconfig",DR);E.registerLanguage("dts",kR);E.registerLanguage("dust",LR);E.registerLanguage("ebnf",UR);E.registerLanguage("elixir",BR);E.registerLanguage("elm",YR);E.registerLanguage("ruby",WR);E.registerLanguage("erb",qR);E.registerLanguage("erlang-repl",$R);E.registerLanguage("erlang",QR);E.registerLanguage("excel",XR);E.registerLanguage("fix",JR);E.registerLanguage("flix",tC);E.registerLanguage("fortran",aC);E.registerLanguage("fsharp",oC);E.registerLanguage("gams",cC);E.registerLanguage("gauss",uC);E.registerLanguage("gcode",pC);E.registerLanguage("gherkin",gC);E.registerLanguage("glsl",fC);E.registerLanguage("gml",SC);E.registerLanguage("go",TC);E.registerLanguage("golo",vC);E.registerLanguage("gradle",CC);E.registerLanguage("graphql",wC);E.registerLanguage("groovy",IC);E.registerLanguage("haml",DC);E.registerLanguage("handlebars",kC);E.registerLanguage("haskell",LC);E.registerLanguage("haxe",UC);E.registerLanguage("hsp",BC);E.registerLanguage("http",YC);E.registerLanguage("hy",WC);E.registerLanguage("inform7",qC);E.registerLanguage("ini",$C);E.registerLanguage("irpf90",QC);E.registerLanguage("isbl",XC);E.registerLanguage("java",JC);E.registerLanguage("javascript",iN);E.registerLanguage("jboss-cli",oN);E.registerLanguage("json",cN);E.registerLanguage("julia",uN);E.registerLanguage("julia-repl",pN);E.registerLanguage("kotlin",hN);E.registerLanguage("lasso",EN);E.registerLanguage("latex",bN);E.registerLanguage("ldif",yN);E.registerLanguage("leaf",RN);E.registerLanguage("less",DN);E.registerLanguage("lisp",kN);E.registerLanguage("livecodeserver",LN);E.registerLanguage("livescript",WN);E.registerLanguage("llvm",qN);E.registerLanguage("lsl",$N);E.registerLanguage("lua",QN);E.registerLanguage("makefile",XN);E.registerLanguage("mathematica",ew);E.registerLanguage("matlab",nw);E.registerLanguage("maxima",rw);E.registerLanguage("mel",sw);E.registerLanguage("mercury",lw);E.registerLanguage("mipsasm",dw);E.registerLanguage("mizar",_w);E.registerLanguage("perl",mw);E.registerLanguage("mojolicious",hw);E.registerLanguage("monkey",Ew);E.registerLanguage("moonscript",bw);E.registerLanguage("n1ql",yw);E.registerLanguage("nestedtext",Rw);E.registerLanguage("nginx",Nw);E.registerLanguage("nim",Ow);E.registerLanguage("nix",Aw);E.registerLanguage("node-repl",xw);E.registerLanguage("nsis",Mw);E.registerLanguage("objectivec",Pw);E.registerLanguage("ocaml",Fw);E.registerLanguage("openscad",Gw);E.registerLanguage("oxygene",Hw);E.registerLanguage("parser3",Vw);E.registerLanguage("pf",zw);E.registerLanguage("pgsql",Kw);E.registerLanguage("php",jw);E.registerLanguage("php-template",Zw);E.registerLanguage("plaintext",eO);E.registerLanguage("pony",nO);E.registerLanguage("powershell",rO);E.registerLanguage("processing",sO);E.registerLanguage("profile",lO);E.registerLanguage("prolog",dO);E.registerLanguage("properties",_O);E.registerLanguage("protobuf",mO);E.registerLanguage("puppet",hO);E.registerLanguage("purebasic",EO);E.registerLanguage("python",bO);E.registerLanguage("python-repl",yO);E.registerLanguage("q",RO);E.registerLanguage("qml",NO);E.registerLanguage("r",OO);E.registerLanguage("reasonml",AO);E.registerLanguage("rib",xO);E.registerLanguage("roboconf",MO);E.registerLanguage("routeros",PO);E.registerLanguage("rsl",FO);E.registerLanguage("ruleslanguage",GO);E.registerLanguage("rust",HO);E.registerLanguage("sas",VO);E.registerLanguage("scala",zO);E.registerLanguage("scheme",KO);E.registerLanguage("scilab",jO);E.registerLanguage("scss",rI);E.registerLanguage("shell",sI);E.registerLanguage("smali",lI);E.registerLanguage("smalltalk",dI);E.registerLanguage("sml",_I);E.registerLanguage("sqf",mI);E.registerLanguage("sql",hI);E.registerLanguage("stan",EI);E.registerLanguage("stata",bI);E.registerLanguage("step21",yI);E.registerLanguage("stylus",AI);E.registerLanguage("subunit",xI);E.registerLanguage("swift",YI);E.registerLanguage("taggerscript",WI);E.registerLanguage("yaml",qI);E.registerLanguage("tap",$I);E.registerLanguage("tcl",QI);E.registerLanguage("thrift",XI);E.registerLanguage("tp",JI);E.registerLanguage("twig",tA);E.registerLanguage("typescript",rA);E.registerLanguage("vala",sA);E.registerLanguage("vbnet",lA);E.registerLanguage("vbscript",dA);E.registerLanguage("vbscript-html",_A);E.registerLanguage("verilog",mA);E.registerLanguage("vhdl",hA);E.registerLanguage("vim",EA);E.registerLanguage("wasm",bA);E.registerLanguage("wren",yA);E.registerLanguage("x86asm",RA);E.registerLanguage("xl",NA);E.registerLanguage("xquery",OA);E.registerLanguage("zephir",AA);E.HighlightJS=E;E.default=E;var DA=E,Oi=DA;ie.setOptions({sanitize:!0,headerIds:!0,langPrefix:"language-",highlight:(e,t)=>{if(t)try{return Oi.highlight(t,e).value}catch{return Oi.highlightAuto(e).value}else return Oi.highlightAuto(e).value}});const xA=()=>({fileModules:{"/src/assets/TDDInGo.md":`---
+title: TDD in Go
+authorName: Artur Neumann
+authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800.jpg
+authorLink: https://github.com/individual-it
+createdAt: Oct 30, 2019
+tags: testing, performance, python, infrastructure
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
+---
+
+## Demonstrating TDD (Test-driven development) in Go
+
+TDD is the practice to write tests before code and it should reduce failure rates and defects in your software.
+In this blog-post I want to demonstrate how it can work.
+
+### starting point
+I'm writing an application in Go that should convert Bikram Sambat (BS) (also called Vikram Samvat) dates to Gregorian dates and vice-versa. [Vikram Samvat](https://en.wikipedia.org/wiki/Vikram_Samvat) is a calendar used mostly in Nepal and India. But even if you don't use it, this demonstration might be useful for you to understand TDD.
+
+So far I have done a bit of work that makes it possible to create a BS (Bikram Sambat) date instance, to get its details and to convert it to a Gregorian date. See: https://github.com/JankariTech/GoBikramSambat/blob/b99c510b22faf8395becda9a6dec1d0239504bb1/bsdate.go
+
+These functions are also tested: https://github.com/JankariTech/GoBikramSambat/blob/b99c510b22faf8395becda9a6dec1d0239504bb1/bsdate_test.go
+
+Now I want to add the possibility to convert a Gregorian date to a Bikram Sambat date. To do so, I want to be able to create a BS-date-instance by using a Gregorian date, then I could just get the BS-date details and the conversion is done.
+
+Something like \`nepaliDate, err := NewFromGregorian(gregorianDay, gregorianMonth, gregorianYear)\` would be great and then simply use the existing \`nepaliDate.GetDay()\` \`nepaliDate.GetMonth()\` and \`nepaliDate.GetYear()\`
+
+### 1. create the test
+According to TDD I first have to create a test.
+So in the file \`bsdate_test.go\` I create a new function called \`TestCreateFromGregorian()\`.
+As I already have a table of test-dates that are used for the conversion from Nepali to Gregorian I will use that data also to test the reverse conversion.
+
+Here is the test data and the test function:
+
+\`\`\`
+type TestDateConversionStruc struct {
+	bsDate        string
+	gregorianDate string
+}
+
+var convertedDates = []TestDateConversionStruc{
+	{"2068-04-01", "2011-07-17"}, //a random date
+	{"2068-01-01", "2011-04-14"}, //1st Baisakh
+	{"2037-11-28", "1981-03-11"},
+	{"2038-09-17", "1982-01-01"}, //1st Jan
+	{"2040-09-17", "1984-01-01"}, //1st Jan in a leap year
+...
+}
+
+func TestCreateFromGregorian(t *testing.T) {
+	for _, testCase := range convertedDates {
+		t.Run(testCase.bsDate, func(t *testing.T) {
+			var splitedBSDate = strings.Split(testCase.bsDate, "-")
+			var expectedBsDay, _ = strconv.Atoi(splitedBSDate[2])
+			var expectedBsMonth, _ = strconv.Atoi(splitedBSDate[1])
+			var expectedBsYear, _ = strconv.Atoi(splitedBSDate[0])
+
+			var splitedGregorianDate = strings.Split(testCase.gregorianDate, "-")
+			var gregorianDay, _ = strconv.Atoi(splitedGregorianDate[2])
+			var gregorianMonth, _ = strconv.Atoi(splitedGregorianDate[1])
+			var gregorianYear, _ = strconv.Atoi(splitedGregorianDate[0])
+
+			nepaliDate, err := NewFromGregorian(gregorianDay, gregorianMonth, gregorianYear)
+			assert.Equal(t, err, nil)
+			assert.Equal(t, nepaliDate.GetDay(), expectedBsDay)
+			assert.Equal(t, nepaliDate.GetMonth(), expectedBsMonth)
+			assert.Equal(t, nepaliDate.GetYear(), expectedBsYear)
+		})
+	}
+}
+\`\`\`
+
+The function takes entries from the \`convertedDates\` list, splits them, tries to create a BS date out of the particular gregorian test-case and then asserts that the BS date (day, month, year) is as expected.
+
+### 2. run the tests
+The test is done, according to TDD I have to run it.
+
+\`go test -v\`
+
+results in:
+
+\`\`\`console
+# NepaliCalendar/bsdate [NepaliCalendar/bsdate.test]
+./bsdate_test.go:171:23: undefined: NewFromGregorian
+FAIL	NepaliCalendar/bsdate [build failed]
+\`\`\`
+
+That was expected, the function does not exist, no wonder my tests fail. What to do next? Guess what: implement the function.
+That makes TDD so easy, you just do what the tests tell you to fix.
+
+### 3. fix it
+That's easy, add to \`bsdate.go\` a new function:
+\`\`\`
+func NewFromGregorian(gregorianDay, gregorianMonth, gregorianYear int) (Date, error) {
+
+}
+\`\`\`
+
+### 4. repeat
+running the tests again I get:
+
+\`./bsdate.go:195:1: missing return at end of function\`
+
+That is true, let's return something, but what? Hey let's just create a BS date with the Gregorian numbers
+\`\`\`diff
+ func NewFromGregorian(gregorianDay, gregorianMonth, gregorianYear int) (Date, error) {
+-
++       return New(gregorianDay, gregorianMonth, gregorianYear)
+ }
+\`\`\`
+
+You are saying that will not work? I don't care, I do TDD, the test tells me to return something, and I do return, I even return the correct type of value.
+
+lets run the tests again:
+\`\`\`console
+=== RUN   TestCreateFromGregorian/2068-04-01
+	assert.go:24: got '17' want '1'
+
+	assert.go:24: got '7' want '4'
+
+	assert.go:24: got '2011' want '2068'
+
+=== RUN   TestCreateFromGregorian/2068-01-01
+	assert.go:24: got '14' want '1'
+
+	assert.go:24: got '4' want '1'
+
+	assert.go:24: got '2011' want '2068'
+
+....
+\`\`\`
+
+a lot of failures, you have guessed it, the conversion does not work. So lets implement some bits.
+
+We know that BS is 56 point something years ahead of Gregorian. So adding 56 to the gregorian year should help:
+\`\`\`diff
+ func NewFromGregorian(gregorianDay, gregorianMonth, gregorianYear int) (Date, error) {
+-       return New(gregorianDay, gregorianMonth, gregorianYear)
++       var bsYear = gregorianYear + 56
++       return New(gregorianDay, gregorianMonth, bsYear)
+ }
+\`\`\`
+
+test results look better, instead of
+
+\`\`\`
+....
+=== RUN   TestCreateFromGregorian/2037-11-28
+	assert.go:24: got '11' want '28'
+
+	assert.go:24: got '3' want '11'
+
+	assert.go:24: got '1981' want '2037'
+
+=== RUN   TestCreateFromGregorian/2038-09-17
+	assert.go:24: got '1' want '17'
+
+	assert.go:24: got '1' want '9'
+
+	assert.go:24: got '1982' want '2038'
+....
+\`\`\`
+I get:
+
+\`\`\`
+....
+=== RUN   TestCreateFromGregorian/2037-11-28
+	assert.go:24: got '11' want '28'
+
+	assert.go:24: got '3' want '11'
+
+=== RUN   TestCreateFromGregorian/2038-09-17
+	assert.go:24: got '1' want '17'
+
+	assert.go:24: got '1' want '9'
+....
+\`\`\`
+
+So some years are calculated correctly, at least. Lets fix more tests by calculating the years more accurate and also calculate the BS month.
+
+Because of the way the BS-calendar works, there is no algorithm to convert the date directly from the Gregorian calendar, we need a table. We know that Jan 1st falls always in the 9th BS month (Paush). So we have a table of BS years where the first value is the day in Paush that is the 1st Jan in that year, then a list of days of every BS month.
+We can easily get the day-of-year from the gregorian date. Starting from Paush, we count the days of each BS month, whenever we get over the gregorian day-of-year, we found the correct BS month.
+\`\`\`
+2074: [13]int{17, 31, 31, 31, 32, 31, 31, 30, 29, 30, 29, 30, 30},
+2075: [13]int{17, 31, 31, 32, 31, 31, 31, 30, 29, 30, 29, 30, 30},
+2076: [13]int{16, 31, 32, 31, 32, 31, 30, 30, 30, 29, 29, 30, 30},
+2077: [13]int{17, 31, 32, 31, 32, 31, 30, 30, 30, 29, 30, 29, 31},
+2078: [13]int{17, 31, 31, 31, 32, 31, 31, 30, 29, 30, 29, 30, 30},
+\`\`\`
+
+These details have nothing to do with TDD, but help you to understand the coming algorithm.
+
+lets put it into code:
+\`\`\`diff
+ func NewFromGregorian(gregorianDay, gregorianMonth, gregorianYear int) (Date, error) {
+        var bsYear = gregorianYear + 56
+-       return New(gregorianDay, gregorianMonth, bsYear)
++       var bsMonth = 9                         //Jan 1 always fall in BS month Paush which is the 9th month
++       var daysSinceJanFirstToEndOfBsMonth int //days calculated from 1st Jan till the end of the actual BS month,
++                                               // we use this value to check if the gregorian Date is in the actual BS month
++
++       year := time.Date(gregorianYear, time.Month(gregorianMonth), gregorianDay, 0, 0, 0, 0, time.UTC)
++       var gregorianDayOfYear = year.YearDay()
++
++       //get the BS day in Paush (month 9) of 1st January
++       var dayOfFirstJanInPaush = calendardata[bsYear][0]
++
++       //check how many days are left of Paush
++       daysSinceJanFirstToEndOfBsMonth = calendardata[bsYear][bsMonth] - dayOfFirstJanInPaush + 1
++
++       //If the gregorian day-of-year is smaller or equal to the sum of days between the 1st January and
++       //the end of the actual BS month we found the correct nepali month.
++       //Example:
++       //The 4th February 2011 is the gregorianDayOfYear 35 (31 days of January + 4)
++       //1st January 2011 is in the BS year 2067 and its the 17th day of Paush (9th month)
++       //In 2067 Paush had 30days, This means (30-17+1=14) there are 14days between 1st January and end of Paush
++       //(including 17th January)
++       //The gregorianDayOfYear (35) is bigger than 14, so we check the next month
++       //The next BS month (Mangh) has 29 days
++       //29+14=43, this is bigger than gregorianDayOfYear(35) so, we found the correct nepali month
++       for ; gregorianDayOfYear > daysSinceJanFirstToEndOfBsMonth; {
++               bsMonth++
++               if bsMonth > 12 {
++                       bsMonth = 1
++                       bsYear++
++               }
++               daysSinceJanFirstToEndOfBsMonth += calendardata[bsYear][bsMonth]
++       }
++
++       return New(gregorianDay, bsMonth, bsYear)
+ }
+\`\`\`
+
+and now? You guessed it! Run the tests:
+\`\`\`console
+=== RUN   TestCreateFromGregorian
+=== RUN   TestCreateFromGregorian/2068-04-01
+	assert.go:24: got '17' want '1'
+
+=== RUN   TestCreateFromGregorian/2068-01-01
+	assert.go:24: got '14' want '1'
+
+=== RUN   TestCreateFromGregorian/2037-11-28
+	assert.go:24: got '11' want '28'
+
+....
+\`\`\`
+
+Actually, while implementing the algorithm I've run the tests multiple times and found mistakes in mixed-up variable names and other rubbish. That's cool, the tests helped me to find the issues right away.
+
+But the tests still fail, I better get the day calculation correct.
+We know the correct BS month, and we know the days since 1st Jan till the end of this month. Subtracting the day-of-the-year of the gregorian calendar from the days since 1st Jan till the end of the correct BS month will give us the amount of days between the searched day and the end of the BS month. Subtracting that number from the amount of days in the BS month should bring us to the correct date.
+
+So many words to describe it, so little effort to write it in code:
+\`\`\`diff
+-       return New(gregorianDay, bsMonth, bsYear)
++       var bsDay = calendardata[bsYear][bsMonth] - (daysSinceJanFirstToEndOfBsMonth - gregorianDayOfYear)
++
++       return New(bsDay, bsMonth, bsYear)
+\`\`\`
+
+I hear you shouting: "Run the tests, run the tests!" Don't worry, I will:
+\`\`\`console
+=== RUN   TestCreateFromGregorian
+=== RUN   TestCreateFromGregorian/2068-04-01
+=== RUN   TestCreateFromGregorian/2068-01-01
+=== RUN   TestCreateFromGregorian/2037-11-28
+=== RUN   TestCreateFromGregorian/2038-09-17
+=== RUN   TestCreateFromGregorian/2040-09-17
+=== RUN   TestCreateFromGregorian/2040-09-18
+=== RUN   TestCreateFromGregorian/2041-09-17
+=== RUN   TestCreateFromGregorian/2041-09-18
+=== RUN   TestCreateFromGregorian/2068-09-01
+=== RUN   TestCreateFromGregorian/2068-08-29
+=== RUN   TestCreateFromGregorian/2068-09-20
+=== RUN   TestCreateFromGregorian/2077-08-30
+=== RUN   TestCreateFromGregorian/2077-09-16
+=== RUN   TestCreateFromGregorian/2074-09-16
+=== RUN   TestCreateFromGregorian/2077-09-17
+=== RUN   TestCreateFromGregorian/2077-09-01
+=== RUN   TestCreateFromGregorian/2076-11-17
+=== RUN   TestCreateFromGregorian/2076-11-18
+=== RUN   TestCreateFromGregorian/2075-11-16
+=== RUN   TestCreateFromGregorian/2076-02-01
+=== RUN   TestCreateFromGregorian/2076-02-32
+=== RUN   TestCreateFromGregorian/2076-03-01
+--- PASS: TestCreateFromGregorian (0.00s)
+    --- PASS: TestCreateFromGregorian/2068-04-01 (0.00s)
+    --- PASS: TestCreateFromGregorian/2068-01-01 (0.00s)
+    --- PASS: TestCreateFromGregorian/2037-11-28 (0.00s)
+    --- PASS: TestCreateFromGregorian/2038-09-17 (0.00s)
+    --- PASS: TestCreateFromGregorian/2040-09-17 (0.00s)
+    --- PASS: TestCreateFromGregorian/2040-09-18 (0.00s)
+    --- PASS: TestCreateFromGregorian/2041-09-17 (0.00s)
+    --- PASS: TestCreateFromGregorian/2041-09-18 (0.00s)
+    --- PASS: TestCreateFromGregorian/2068-09-01 (0.00s)
+    --- PASS: TestCreateFromGregorian/2068-08-29 (0.00s)
+    --- PASS: TestCreateFromGregorian/2068-09-20 (0.00s)
+    --- PASS: TestCreateFromGregorian/2077-08-30 (0.00s)
+    --- PASS: TestCreateFromGregorian/2077-09-16 (0.00s)
+    --- PASS: TestCreateFromGregorian/2074-09-16 (0.00s)
+    --- PASS: TestCreateFromGregorian/2077-09-17 (0.00s)
+    --- PASS: TestCreateFromGregorian/2077-09-01 (0.00s)
+    --- PASS: TestCreateFromGregorian/2076-11-17 (0.00s)
+    --- PASS: TestCreateFromGregorian/2076-11-18 (0.00s)
+    --- PASS: TestCreateFromGregorian/2075-11-16 (0.00s)
+    --- PASS: TestCreateFromGregorian/2076-02-01 (0.00s)
+    --- PASS: TestCreateFromGregorian/2076-02-32 (0.00s)
+    --- PASS: TestCreateFromGregorian/2076-03-01 (0.00s)
+PASS
+ok  	NepaliCalendar/bsdate	0.002s
+\`\`\`
+
+The tests pass, job done! Commit it, push it and get yourself some [Chiya](https://www.youtube.com/watch?v=LO0k9rmKneI)!
+
+You can find all the changes of this post here: https://github.com/JankariTech/GoBikramSambat/pull/4/
+
+## conclusion
+TDD is easy: think about what you want to achieve, write tests for it and wildly hack code till your tests pass.
+
+An other big advantage is: I can refactor my code all I like and still be confident it works fine. Maybe I want to optimize the speed of the algorithm, maybe I don't like it altogether and come up with a better one, or I simply want to change variable names. I can do that all without fear of messing up the functionality, as long as my tests are passing I'm pretty sure the code reacts the same.
+`,"/src/assets/codeceptJs.md":`---
+title: CodeceptJs: Setup & BDD
+authorName: Hari Bhandari
+authorAvatar: https://avatars.githubusercontent.com/u/34328907?v=4
+authorLink: https://github.com/HariBhandari07
+createdAt: June 2, 2020
+tags: k6, load, performance, testing
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
+---
+
+CodeceptJS is a modern end to end testing framework. In this tutorial we will setup BDD end-to-end testing using CodeceptJS along with Puppeteer.
+
+## Requirements:
+1. \`npm\`
+2. An app to write tests to: If you already have an app you can use that OR
+ you can just clone this basic todo app https://github.com/taniarascia/react-hooks and follow along
+
+    If you cloned the above app please browse inside the cloned directory and run the following commands to set it up:
+
+a. \`npm install\`
+
+b. \`npm run start\`
+
+## CodeceptJS Setup
+Browse inside your project directory
+1. Install CodeceptJS with Puppeteer
+
+    \`npm install codeceptjs puppeteer --save-dev\`
+
+2. Initialize CodeceptJS in the current directory by running:
+
+    \`npx codeceptjs init\`
+
+You will be asked some questions as shown below:
+![2](https://user-images.githubusercontent.com/34328907/80667879-04605f00-8ac0-11ea-9c2c-40f5ddf3180c.png)
+
+When asked to select helpers choose \`Puppeteer\` but in other cases take the default (i.e. hit \`Enter\`).
+![1](https://user-images.githubusercontent.com/34328907/82856381-8dd34780-9f2d-11ea-9c47-7c9fe7a0fd55.png)
+
+3. The above initialization of codeceptjs will create some files:
+- \`codecept.conf.js\` : main configuration file
+- \`_test.js\`
+- \`jsconfig.json\`
+- \`steps.d.ts\`
+- \`steps_file.js\`
+- \`output\`: a directory that will contain screenshot of failed tests
+
+  We only need \`condecept.conf.js\` as it is the main configuration file. The rest of the files are not needed so you can delete them.
+
+4. We can enable Gherkin for the current project by running:
+
+    \`npx codeceptjs gherkin:init\`
+
+    It will add a gherkin section to the  \`codecept.conf.js\` file and create directories for features and step definitions.
+
+5. Now edit \`codecept.conf.js\` file according to your testing infrastructure so it looks similar to:
+
+    \`\`\`js
+    exports.config = {
+      output: './output', // screenshot directory and contains screenshot of failed tests
+      helpers: {
+        Puppeteer: {
+          url: 'http://localhost:3000', // host url
+          show: true,
+          windowSize: '1200x900'
+        }
+      },
+      gherkin: {
+        features: './features/*.feature',   // feature files location
+        steps: ['./step_definitions/steps.js']  // step definitions location
+      },
+      plugins: {
+        screenshotOnFail: { // if true take screenshot of failed scenarios
+          enabled: true
+        },
+        retryFailedStep: { // if true rerun failed tests
+          enabled: true
+        }
+      },
+      name: 'react-hooks' // name of the application folder
+    }
+    \`\`\`
+    <strong>Note</strong>: React applications by default run on port \`3000\`. So, if you cloned the application from \`Requirements\` section don't forget to include the port in \`url\` section of \`Puppeteer\` object.
+
+6. After you create a feature file and write some scenarios, to generate gherkin snippets run:
+
+    \`npx codeceptjs gherkin:snippets\`
+
+
+## Writing Tests with CodeceptJS
+1. Let's create a basic test scenario to add a user
+
+    File: \`features/basic.feature\`
+
+    \`\`\`gherkin
+    Feature: add user
+      As a user
+      I want to be able to create other users
+      So that different people can have individual data
+
+      Scenario: signup a user
+        Given the user has browsed to the homepage
+        When the user adds user with name "Hari Bhandari" and username "hari" using the webUI
+        Then user with name "Hari Bhandari" and username "hari" should be listed on users table
+    \`\`\`
+
+2. After you wrote some scenarios, to generate gherkin snippets run:
+
+    \`npx codeceptjs gherkin:snippets\`
+
+    Now edit the generated step definitions so that it looks like:
+
+    File: \`step_definitions/steps.js\`
+
+    \`\`\`js
+    const { I } = inject();
+
+    Given('the user has browsed to the homepage', () => I.amOnPage('/'));
+
+    When('the user adds user with name {string} and username {string} using the webUI', (name, username) => {
+        I.waitForVisible("//input[@name='name']");
+        I.fillField("name", name)
+        I.fillField("username", username)
+        I.click("//button[contains(text(),'Add new user')]")
+    });
+
+    Then('user with name {string} and username {string} should be listed on users table', (name, username) => {
+        I.see(name);
+        I.see(username);
+    });
+    \`\`\`
+    In CodeceptJS tests are written as a sequence of actions performed by an actor. So, the \`I\` object is an actor, an abstraction for a testing user. The \`I\` is also a proxy object for the currently enabled Helper(Puppeteer).
+
+    So basically in the above step definitions, \`I\` browse to the homepage(http://localhost:3000), wait until the \`name\` input field is visible, fill the fields, click on the \`Add new user\` button and check if the user I added is listed on the \`View users\` table.
+
+3. To run the test and see step-by step output use --steps option:
+
+    \`npx codeceptjs run --steps\`
+
+    To see not only the business steps but the actual performed steps use the --debug flag:
+
+    \`npx codeceptjs run --debug\`
+
+    By using the \`debug\` flag you can see the execution of step definitions and it is very useful for debugging purposes.
+
+## Page object
+A page object is basically a wrapper around an HTML page, or a fragment of the page that provides an access to the state of the underlying page/fragment. A page object provides a separation between the test code and the locators and makes our code more DRY.
+
+If an application has different pages (login, admin, etc.) you should use a page object. Even though our example app doesn't have different pages we are going to create a page object.
+
+To get more ideas about page objects and page objects in CodeceptJS check the following links:
+
+- https://github.com/SeleniumHQ/selenium/wiki/PageObjects
+- https://codecept.io/pageobjects/
+
+
+CodeceptJS can generate a sample template for a page object with the command:
+
+\`npx codeceptjs gpo\`
+
+![3](https://user-images.githubusercontent.com/34328907/82879880-511f4480-9f5d-11ea-9ddf-0b29067d7b3e.png)
+
+In the above screenshot, I am creating a page object with the name \`dashboardPage.js\`
+
+Now, include the page object section in your config file. \`codecept.conf.js\` should now look similar to:
+\`\`\`
+exports.config = {
+  .....
+  include: {
+    Page: './pages/dashboardPage.js'  // page object location
+  },
+  .....
+}
+\`\`\`
+
+Edit \`pages/dashboardPage.js\` so that it looks like:
+
+\`\`\`js
+const { I } = inject();
+
+module.exports = {
+  elements: {
+    addNewUserButton: '//button[contains(text(),"Add new user")]',
+    name: String('name'),
+    username: String('username')
+  },
+  addUser(name, username) {
+    I.waitForVisible(this.elements.addNewUserButton);
+    I.fillField(this.elements.name, name)
+    I.fillField(this.elements.username, username)
+    I.click(this.elements.addNewUserButton)
+  }
+}
+\`\`\`
+
+CodeceptJS provides flexible strategies for locating elements. Here, I have used \`xpath\` for \`Add new user\` button and semantic locator(name) for \`name\` and \`username\`.
+
+Edit the \`When\` step in \`step_definitions/steps.js\` to include the pageObject's function
+
+File:  \`step_definitions/steps.js\`
+
+\`\`\`js
+....
+const dashboard = require('../pages/dashboardPage');
+....
+
+When('the user adds user with name {string} and username {string} using the webUI', (name, username) => {
+    dashboard.addUser(name, username)
+});
+...
+\`\`\`
+
+Now, run your test again with \`npx codeceptjs run --steps\`
+
+In this way we have set up BDD end-to-end testing using CodeceptJS. Happy Testing.
+`,"/src/assets/dockerSelenium.md":`---
+title: How to use selenium in docker?
+authorName: Hari Bhandari
+authorAvatar: https://avatars.githubusercontent.com/u/34328907?v=4
+authorLink: https://github.com/HariBhandari07
+createdAt: April 23, 2020
+tags: docker, selenium, automation
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
+---
+
+## What is docker?
+![not_working](https://user-images.githubusercontent.com/34328907/78120341-7b56f900-7429-11ea-9b3f-1a5e17b813da.png)
+
+Can you recall how many times you face an issue where code runs in another developer's machine but doesn't work on yours? Docker
+at a very basic level resolves this issue of an application working on one platform and not working on some other platform.
+
+Docker is a tool which is used to automate the deployment of applications in lightweight containers so that applications can
+work efficiently in different environments. It does this by virtualizing the operating system of the computer on which it is
+installed and running. A docker container is basically a software package that consists of all the dependencies required to run an
+application.
+
+
+## Why docker?
+Let\u2019s say you have three different nodejs applications that you plan to host on a single server.
+
+Each of these applications makes use of a different version of nodejs and mongodb, as well as the associated libraries and dependencies, which differ from one application to another.
+
+Now, we cannot host all three applications on the same machine as different versions of nodejs and other dependencies are required.
+
+We can solve this problem either by having three different machines, or a single machine, which is powerful enough to host and run three virtual machines on it.
+
+But both solutions are quite cumbersome. In this case, docker is an efficient and cost-effective solution to this problem. With docker, we are able to run all the three apps in a separate container with its own dependencies and libraries, all within a single machine. Containers are completely isolated environments that can have their own processes, services, and network interfaces just like virtual machines except they all share the same OS kernel.
+
+![Screenshot from 2020-04-01 15-48-54](https://user-images.githubusercontent.com/34328907/78125190-6336a800-7430-11ea-91f6-644ca63d9e54.png)
+
+## Docker Installation
+Follow the installation instructions given in https://docs.docker.com/install/ to install docker according to your operating system. But, I suggest you use Linux, preferably Ubuntu for this blog/tutorial as later we will use a docker network command that works only on Linux.
+
+And follow docker post-install instructions given usually at the end of the "installation instructions" page to create a docker group.
+
+## Selenium
+
+Usually, for running tests using selenium we download \`selenium standalone server JAR\` file and \`chrome driver\` and start selenium server with a command which usually looks like:
+
+\`java -jar selenium-server-standalone-<selenium version>.jar -port <port-no>\`
+
+Now, let's suppose we want to run tests with different browsers or various browser versions. Here, we have to install all the browsers and the versions we want to test on our development environment. We also need to find the corresponding selenium and the webdriver version for it. Ever tried to install multiple versions of the same browser on your machine?
+
+In this case too, docker comes to the rescue.
+
+Selenium provides Docker images out of the box to test with one or several browsers. The images spawn a Selenium server and a browser underneath. It can work with different browsers.
+
+Now to run selenium using docker we just need to run [selenium/standalone-chrome](https://hub.docker.com/r/selenium/standalone-chrome) or [selenium/standalone-firefox](https://hub.docker.com/r/selenium/standalone-firefox) as:
+
+\`docker run -d -v /dev/shm:/dev/shm selenium/standalone-chrome-debug\`
+
+Here
+- \`-d\` runs the container in the background (detached)
+- \`-v /dev/shm:/dev/shm\` adds a volume mount to use the host\u2019s shared memory. There is no requirement for a volume mount but it is recommended.
+
+Once you run the command, Docker will download the selenium image and run the container straight away (port: \`4444\`).
+
+## Networking using the host network
+When the docker container is running it has its own \`localhost\` which is relative to its container and it has no awareness of \`localhost\` running on the host OS. Because of this, we cannot access the selenium container at \`localhost:4444\`. Also, the selenium container won't be able to access the apps running on \`localhost\` of the host OS.
+
+How do we solve this problem?
+
+The answer is simple - we use docker option \`--network="host"\` in \`docker run\` command. If we use the \`host\` network mode for a container, that container\u2019s network stack is not isolated from the docker host, and the container does not get its own IP-address allocated. Now, the selenium container will be available on port 4444 on the \`localhost\`.
+
+Now, the \`docker run\` command should basically look like:
+
+\`docker run -d --network="host" -v /dev/shm:/dev/shm selenium/standalone-chrome-debug\`
+
+                        OR
+
+\`docker run -d --network host -v /dev/shm:/dev/shm selenium/standalone-chrome-debug\`
+
+The host networking driver only works on Linux hosts, and is not supported on Docker Desktop for Mac, Docker Desktop for Windows, or Docker EE for Windows Server.
+
+## Run test from the docker host, using selenium within a docker container
+Requirements:
+1. chrome
+2. nodejs and yarn
+3. linux (to use \`--network="host"\` in \`docker run\` command)
+
+Clone this basic todo app: https://github.com/HariBhandari07/todo-with-tests
+This is a single page todo app with basic acceptance tests
+
+1. Install the necessary dependencies using the following command inside the project directory:
+
+\`yarn install\`
+
+2. Start the development server at \`localhost:3000\` using command:
+
+\`yarn start\`
+
+3. Run selenium in docker with
+
+\`docker run -d --network="host" --name selenium -v /dev/shm:/dev/shm selenium/standalone-chrome-debug\`
+
+4. Run the acceptance tests using command:
+
+\`yarn acceptance-tests tests/acceptance/features/login.feature\`
+
+The full script to run the acceptance tests is specified in \`scripts\` object of \`package.json\` file inside the project's root directory.
+
+The above commands run our test at \`localhost:3000\`.
+
+After you run the above command, you can see the tests running on the selenium docker container by using VNC.
+
+If you are on Ubuntu:
+
+- open \`Remmina\` (Remmina is a Remote Desktop Client and comes installed with Ubuntu)
+
+- choose \`VNC\` and enter \`localhost\` on the address bar
+
+- enter \`secret\` as the password
+
+![reminna](https://user-images.githubusercontent.com/34328907/79425650-ba687b00-7fe1-11ea-8b76-9d1100cc05c7.png)
+
+Now, you should see the test running on VNC
+
+![ezgif com-video-to-gif](https://user-images.githubusercontent.com/34328907/79431517-47afcd80-7fea-11ea-8b83-0b7d729eb1e6.gif)
+`,"/src/assets/jest-puppeteer.md":`---
+title: Testing with Jest and Puppeteer
+authorName: Talank Baral
+authorAvatar: https://www.jankaritech.com/images/2021/12/29/p1110976-crop-col-800.jpg
+authorLink: https://github.com/Talank
+createdAt: Jul 22, 2020
+tags: testing, javascript, jest, puppeteer
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
+---
+
+"In Jest, there is truth" -William Shakespeare.
+
+By using Jest, you will know the truth about your application. The \`Jest\` is a javascript testing tool that is installed via NPM or Yarn and run via the command line. It is a great testing library and many react team members are involved building it, so it happens to work very well for testing react applications. Jest is built on top of Jasmine and Mocha but some additional features like snapshot testing and parallel test execution are provided by Jest. It also comes with built-in mocking and assertion abilities.
+
+Puppeteer is a Node library that is used for browser automation. Puppeteer provides a high-level API to control the browser. It can work with Chrome, Chromium or Firefox. By default this library runs the browser in headless mode, but it can be also configured to run Chrome or Chromium fully (non-headless).
+
+## Installation And Requirements
+This guide is based on Ubuntu 18.04. Some commands will be different if you have another OS installed on your computer. Before getting started with Jest, You need to have \`npm\` and an app for which you will be writing tests.
+
+If your app is not yet ready for testing then you can just clone this basic [todo app](https://github.com/Talank/todo-react) and follow along.
+
+### Jest Versions
+Jest is the test runner library for creating, executing, and structuring tests. Jest CLI is a tool that you use from the command line to run and provide configuration options to jest. It configures jest based on whatever argument you give while running jest. The version is important because jest is a dynamic library and different versions of jest might work differently. While writing this blog, I am using jest version \`24.9.0\`. So, some features might be different if you are using some other version.
+
+### Jest installation and Running Tests
+You can install the latest version of jest from NPM using
+\`\`\`
+npm i jest --save-dev
+\`\`\`
+
+Now, its time to configure the NPM script for running a test from the command line. For this, open your \`package.json\` and add the \`test\` script as follows:
+\`\`\`
+"scripts": {
+    "test": "jest"
+  },
+\`\`\`
+
+Tests are run by using the Jest CLI (typing \`jest\` followed by arguments in the command line).
+
+For example, in the [todo app](https://github.com/Talank/todo-react) in my github, you can run the test with the command \`npm run test\` since I have added \`"test": "jest"\` in the script of my \`package.json\`
+
+With the above-mentioned way, jest can be configured within your \`package.json\`. That is the easy way for jest configuration. Alternatively, you can also use the jest configuration file for which you should create a \`jest.config.js\` file and include that file in the command to run the test. For example, your package.json scripts section should include
+\`\`\`
+"scripts": {
+    "test": "jest --config ./jest.config.js"
+  },
+\`\`\`
+And, in the root path alongside the package.json, your \`jest.config.js\` should contain following configurations
+\`\`\`
+module.exports = {
+  verbose: true,
+  roots: [
+    "./__tests__"
+  ]
+}
+\`\`\`
+By using the jest configuration file, you have many other options as well. You can find the details about that in the [jest documentation](https://jestjs.io/docs/en/configuration). However, in this blog, I will focus on configuring jest using the \`package.json\`
+
+### Install Puppeteer
+Use the following command to install puppeteer in your project.
+\`\`\`
+npm i puppeteer --save-dev
+\`\`\`
+Puppeteer will download the latest version of chrome. If you need to work with firefox then you need to install the \`puppeteer-firefox\` library. Refer to [Puppeteer for Firefox](https://www.npmjs.com/package/puppeteer-firefox) in the npmjs website for further details.
+
+By the end of the installation of jest and puppeteer, you should have the following dependencies in the \`devDependencies\` section of your \`package.json\`.
+\`\`\`
+"devDependencies": {
+  "jest": "^24.9.0",
+  "puppeteer": "^4.0.1"
+}
+\`\`\`
+
+### Creating Test Files
+The jest command runs the test files inside \`__tests__\` folder or it will runs any files with \`.spec.js\` or \`.test.js\` in their filename. So, you have to write your test in a file that ends with \`.spec.js\` or \`test.js\`. Or you can simply put all your tests inside the \`__tests__\` folder.
+
+### Jest Globals
+There are a variety of jest Globals but we will mainly need 2 important globals called \`describe\` and \`it\`. The table below tells about these two globals in more detail.
+
+| | it | describe |
+|---|---|---|
+| AKA | Tests | Test Suite |
+| Syntax | it(name, fn) | describe(name, fn) |
+| Description | \`it()\` global is a method in which you pass a function as an argument, that function is executed as a block of tests by the test runner. You describe your test logic inside \`it()\` block. | \`describe\` is an optional method for grouping any number of \`it()\` or test statements. \`describe()\` block contains related it blocks. |
+
+In addition to \`it()\` and \`describe()\` methods, you might need the following methods to start testing with jest.
+- afterAll(fn, timeout)
+- afterEach(fn, timeout)
+- beforeAll(fn, timeout)
+- beforeEach(fn, timeout)
+
+These functions are executed before and after the test scenarios. You can define these functions inside the \`describe()\` method to make it applicable for all tests in the scope of that particular \`describe()\` method.
+
+## Demo:
+Here I have added a test for adding a task in my react ToDo app.
+\`\`\`
+const puppeteer = require('puppeteer');
+
+describe('Todo React', () => {
+  let browser
+  let page
+
+  beforeAll(async () => {
+      browser = await puppeteer.launch()
+  })
+
+  afterEach(async () => {
+      await page.close()
+    })
+
+  afterAll(async () => {
+    await browser.close()
+  })
+
+  describe('add task to the list', () => {
+    beforeEach(async () => {
+      page = await browser.newPage()
+      await page.goto('http://localhost:3000')
+    })
+
+    it('should be possible to add task to the list', async () => {
+      const taskInputField = await page.$x('//input[@placeholder="Enter task"]')
+      const taskToAdd = "New Task"
+      await taskInputField[0].click()
+      await taskInputField[0].type(taskToAdd)
+
+      await page.keyboard.press('Enter')
+
+      const lists = await page.$x("//div[@class='list']/p/input");
+
+      let toDo;
+
+      for( let list of lists ) {
+        toDo = await page.evaluate(el => el.getAttribute("value"), list);
+      }
+
+      expect(toDo).toBe(taskToAdd)
+    })
+  })
+})
+\`\`\`
+
+### Explanation of Demo
+In the above demo, I first imported the puppeteer library. And in before scenario, I launched the browser in headless mode. Before all the scenarios inside the first describe block, the browser is launched only once. And before each scenario, a new tab is opened in incognito mode. Similarly, after each scenario, the tab is closed and when all the scenarios are executed, the browser is closed.
+
+The browser is launched in headless mode by default. However, if you want to launch the browser in non-headless mode then you can provide the browser launch option in \`puppeteer.launch()\`. For example:
+\`\`\`
+browser = await puppeteer.launch({headless:false})
+\`\`\`
+
+In Jest, there are plenty of functions to simulate UI activities. For example, in the above demo, you can see \`click()\` for clicking in an element, \`type()\` for typing, etc.
+
+Similarly, for assert operation, you can use \`expect()\`. Many other matcher functions can be used with expect() such as \`.toContain(item)\` , \`toBeTruthy()\` etc. You can find more of these \`jest matchers\` in the [jest documentation](https://jestjs.io/docs/en/expect).
+
+### Gherkin with Jest
+In Jest, you do not have to write a feature file for your test cases. If you need to write features in a separate file then you can use [jest-cucumber](https://github.com/bencompton/jest-cucumber) library. By using this library, you can replace \`describe\` and \`it\` blocks by \`Given\`, \`When\`, and \`Then\` step definitions. The step definitions are linked with the respective steps in the feature files.
+
+However, I would prefer \`Codecept.js\` or \`nightwatch.js\` instead of \`jest\` if I need to use features of \`Cucumber.js\` while testing my application. Because, with jest-cucumber, you need to specify which feature file is linked with a particular step definition file. While Codecept.js or nightwatch.js, you can write the step definition of a \`given\` step in one file and the \`when\` step of the same scenario in some other file. You might lose this kind of freedom if you are using jest-cucumber.
+
+That's it for now. If you want to learn more about jest and it's commands, you can refer to [jestjs.io](https://jestjs.io/docs/en/api)
+
+Hope you enjoy jesting.
+ThankYou!
+`,"/src/assets/nightwatchSetup.md":`---
+title: Setup Nightwatch and run your first test
+authorName: Talank Baral
+authorAvatar: https://www.jankaritech.com/images/2021/12/29/p1110976-crop-col-800.jpg
+authorLink: https://github.com/Talank
+createdAt: Feb 18, 2020
+tags: testing, javascript, nightwatch, selenium
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
+---
+
+\`Nightwatch.js\` is an open-source automated testing framework that aims at providing complete E2E (end to end) solutions to automate testing with \`Selenium Javascript\` for web-based applications, browser applications, and websites. It is written in \`Node.js\` and uses the \`W3C WebDriver API\` (formerly Selenium WebDriver) for interacting with various browsers.
+
+## Installation And Requirements
+This guide is based on Ubuntu 18.04. Some commands will be different if you have another OS installed on your computer. Also, we will be following the BDD approach in this blog. So, if you want to learn more about BDD first then please read our blog on [Demonstrating BDD (Behavior-driven development) in Go](https://dev.to/jankaritech/demonstrating-bdd-behavior-driven-development-in-go-1eci). Before getting started with Nightwatch we need to have the following installed on our computer.
+
+### 1. Node.js:
+- To install Node.js:
+\`\`\`
+sudo apt install nodejs
+\`\`\`
+- To verify the successful installation of nodejs and to check its version use the following command
+\`\`\`
+nodejs -v
+\`\`\`
+
+### 2. Node Package Manager(npm):
+The nodejs package contains both the node and npm binaries. So, npm is also installed when you run the command to install nodejs. However, to verify that npm was also successfully installed, you can check the version of npm by running the command
+\`\`\`
+npm -v
+\`\`\`
+
+### 3. Java:
+We need java to run the Selenium server which automates our browser. If your machine does not have java installed then install it using the following command
+\`\`\`
+sudo apt install default-jdk
+\`\`\`
+If you want to learn more about how to install Java, then you can follow this [link](https://linuxize.com/post/install-java-on-ubuntu-18-04/).
+
+### 4.Selenium Server:
+[Download](https://selenium.dev/downloads/) the latest stable version of the Selenium standalone server JAR file.
+
+### 5.Chrome Driver:
+Lastly, [download](https://chromedriver.chromium.org/) the \`latest stable version\` of \`Chrome Driver\`.
+
+Once you have downloaded \`Chrome Driver\`, you need to unzip it by running the following command:
+\`\`\`
+unzip chromedriver_linux64.zip
+\`\`\`
+Once you have unzipped it, you need to move the chromedriver(shared library) and place it inside the <u>same folder</u> where you have placed the Selenium standalone server file.
+
+## Setting up Nightwatch.js
+Make a configuration file and name it \`nightwatch.conf.js\` inside the root directory of your project and inside the configuration file add the following content.
+\`\`\`js
+module.exports = {
+    src_folders: ['test'],
+    test_settings: {
+        default: {
+            selenium_host: '127.0.0.1',
+            launch_url: 'http://localhost:3000',
+            globals: {},
+            desiredCapabilities: {
+                browserName: 'chrome',
+                javascriptEnabled: true,
+                chromeOptions: {
+                    args: ['disable-gpu'],
+                    w3c: false
+                }
+            }
+        }
+    }
+}
+\`\`\`
+You can also make a \`nightwatch.json\` configuration file as an alternative to the nightwatch.conf.js file. Please refer to the [nightwatch website](https://nightwatchjs.org/gettingstarted/configuration/#nightwatch-json) to learn how to write the nightwatch.json configuration file.
+
+You need to define \`src_folders\` and \`launch_url\` inside the nightwatch.conf.js where \`src_folders\` is used to define the folder in which you have written your tests and \`launch_url\` is used to define the index URL of your project which is used as the main URL to load and run your tests.
+
+\`src_folders\` and \`launch_url\` will be different for different projects.
+\`\`\`
+src_folders: YOUR_SOURCE_FOLDER_FOR_TEST_FILES
+launch_url: URL_OF_YOUR_WEBSITE
+\`\`\`
+Run this command to install nightwatch and cucumber into your project dependencies which allow us to run automated tests using the gherkin language.
+\`\`\`
+yarn add --dev nightwatch-api nightwatch cucumber
+\`\`\`
+Or,
+\`\`\`
+npm add --dev nightwatch-api nightwatch cucumber
+\`\`\`
+Now the following information should be added inside package.json in devDependencies. But do remember that these versions may also vary depending upon the releases of these dependencies.
+\`\`\`
+ "devDependencies": {
+    "cucumber": "^6.0.5",
+    "nightwatch": "^1.3.3",
+    "nightwatch-api": "^3.0.1"
+ }
+ \`\`\`
+You can use npm or yarn, whichever you prefer. However, if you want to use yarn but do not have it already installed then, you can install it by downloading the \`.deb\` file from the [yarn releases](https://github.com/yarnpkg/yarn/releases) and run the following command:
+ \`\`\`
+ sudo dpkg -i yarn[VERSION].deb
+ \`\`\`
+The .deb file might not be compatible with your machine. It only works for debian based linux distros.
+
+For the rest of the setup process, I am using \`npm\`.
+
+Now, create \`index.js\` inside \`[root_dir]/test/acceptance\` and add
+\`\`\`
+const { setDefaultTimeout, After, Before } = require('cucumber')
+const { createSession, closeSession, startWebDriver, stopWebDriver } = require('nightwatch-api')
+
+setDefaultTimeout(60000)
+
+Before(async () => {
+    await startWebDriver();
+    await createSession();
+})
+
+After(async () => {
+    await closeSession();
+    await stopWebDriver();
+})
+\`\`\`
+Here, we are using before() and after() hooks which will allow us to execute the code inside them before and after each test scenario.
+
+Before starting the Selenium server you need to change your directory to where the selenium and chromedriver files are. After doing that you can now start the Selenium server with the command:
+\`\`\`
+java -jar selenium-server-standalone-3.141.59.jar -port 4444
+\`\`\`
+
+## Testing your Project
+Create feature files inside \`[root_dir]/test/acceptance/features\` with an extension \`.feature\` for each feature of your project. Follow the [Gherkin reference](https://cucumber.io/docs/gherkin/reference/) to write your feature file.
+
+We do not need to use gherkin language but I am using it because this is the same language that user and domain experts use while they talk about the domain. Also, it is easy to understand for both technical and non-technical personnel involved in the project.
+
+A feature file written using gherkin language looks like this.
+
+\`\`\`
+Feature: search using transliterated Latin characters
+  As a user
+  I want to find the literature by specifying Latin (English-style) script equivalent to the Nepali
+  So I can find the literature without needing to use a Nepali keyboard
+
+  Background:
+    Given the user has browsed to the homepage
+
+  Scenario: user should be able to search in English characters using transliterated text
+    When the user enters the English characters "munaa madan"
+    And the user selects the transliterated text
+    And the user searches for the literature
+    Then the search result should be displayed
+\`\`\`
+
+Next, create a javascript file for the step-definitions inside \`[root_dir]/test/acceptance/stepDefinitions\` for each feature. For each step in the scenario of your feature file, a matching step definition is executed while running the test. Step definitions for the above search feature will look something like this.
+
+\`\`\`
+const { Given, When, Then } = require('cucumber');
+const { client } = require('nightwatch-api');
+const searchField = "//input[contains(@class, 'SearchBox')]";
+const searchButton = "//button[contains(@class,'SearchBox__Button')]";
+const searchResultFoundContainer = '.sk-hits';
+const searchResultNotFoundContainer = '.sk-no-hits';
+
+const userEntersTheEnglishOrNepaliCharacters = (searchTerm) => client.useXpath()
+	.waitForElementVisible(searchField)
+	.setValue(searchField, searchTerm)
+	.useCss();
+
+const userSearchesForTheLiterature = () => client.useXpath()
+	.click(searchButton)
+	.useCss();
+
+Given('the user has entered the English/Nepali characters {string}', userEntersTheEnglishOrNepaliCharacters);
+When('the user enters the English/Nepali characters {string}', userEntersTheEnglishOrNepaliCharacters);
+
+Given('the user has searched for the literature', userSearchesForTheLiterature);
+When('the user searches for the literature', userSearchesForTheLiterature);
+
+Then('the search result should be displayed', () => client.waitForElementVisible(searchResultFoundContainer)
+	.waitForElementNotPresent(searchResultNotFoundContainer));
+
+Then('the search result should not be displayed', () => client.waitForElementVisible(searchResultNotFoundContainer)
+	.waitForElementNotPresent(searchResultFoundContainer));
+\`\`\`
+
+Finally, run the test from the root directory using the command:
+\`\`\`
+cucumber-js --require test/acceptance/index.js --require test/acceptance/stepDefinitions test/acceptance/features/[YOUR_FEATURE_FILE].feature
+\`\`\`
+
+Does the above command look long? I am sorry, but you have to use that command every time you run the test. But only the name of \`your feature file\` is different, while running different tests, the rest is all the same. So, let's assign an easy short name for the rest and put it inside the scripts section of \`package.json\`. I called it \`test-e2e\` and inside the scripts of \`package.json\`, I added
+\`\`\`
+"test-e2e" : "cucumber-js --require test/acceptance/index.js --require test/acceptance/stepDefinitions"
+\`\`\`
+Now, the above long command is shortened to
+\`\`\`
+npm run test-e2e test/acceptance/features/[YOUR_FEATURE_FILE].feature
+\`\`\`
+That's it. Now, you are ready to run test suites for your project. You can refer to [Nightwatch](https://nightwatchjs.org/) to read more about Nightwatch and its commands.
+
+Hope you enjoy testing.
+Thank You!
+`,"/src/assets/organizeYourCompanyTheGeekWay.md":`---
+title: Organize your company the geek-way
+authorName: Artur Neumann
+authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800.jpg
+authorLink: https://github.com/individual-it
+createdAt: Oct 23, 2019
+tags: startup, git, documents, organizing
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
+---
+
+## Organize your company the geek-way
+
+How do you organize your documents in your department / company / startup ? Your policies, your minutes of meetings, your contracts, etc.?
+
+Do you have a trillion Word documents that you share with your colleagues using your /.\\*[cloud|share|box|sync|].\\*/ tool? That is good, but how do you know what is the latest version of a document? What is the version you are currently working with a colleague on? How do you track changes? You send a document to a group to review, several people edit some lines, others just type comments into the document, some send it back to you by email, others put it in a file share. And how do you know who agreed on the changes? Pure chaos!
+
+In our company we are using GIT as the solution for all that!
+
+Advantages:
+- easy to track every change of a document
+- discussions are archived and can be retraced at any time
+- no accidental changes can be made because the master branch is protected
+- changes need to be approved before they become "official"
+- the approvals can be traced back
+
+OK, OK, there are also disadvantages:
+- more difficult workflow, specially for non-techies => get them a GIT UI
+- binary files (.odt, .docx, etc.) are hard to diff => use Markdown wherever possible
+- limited formatting, no easy spreadsheet calculations
+
+But overall it works pretty good for us. And here are the rules we are working with:
+
+### Commandments
+
+#### 1. use GIT
+For official work (proposals, policy, procedures, etc.) use GIT  where-ever possible.
+We like to use git as it makes it easy to know where the latest documents are and to track all changes.
+
+#### 2. use text only
+Where-ever possible use "text only" formats.
+So use [Markup](https://guides.github.com/features/mastering-markdown/)
+instead of DOC.
+
+This makes it easier to compare files and track changes.
+
+#### 3. master is law
+  - Documents in the "master" branch are considered "official"
+  - All changes to master need to be reviewed. The master branch is
+  protected against direct edits, a change can only be merged after a review.
+  Ask for reviews if you want to get changes into master.
+  **An approved review is considered the same as a signature**
+  - Do not have "Work in Process" in master
+
+#### 4. use branches, create Pull Requests
+Work in branches and make Pull Requests to the master branch. **You can work together with others in a branch if you need.**
+
+#### 5. write good commit messages
+The commit message has to explain what you have changed, in just a few words
+
+#### 6. discuss Pull Requests
+If you are asked for your opinion on a change or a review is requested use the GitHub comment function to express yourself.
+
+#### 7. use GitHub Issues function for ToDos
+The Issue function is great to write ToDos, assign work and discuss & track
+progress.
+
+#### 8. use Labels
+The labels in GitHub should be used to tag different work staged.
+
+**For Pull Requests**
+- *Work in Process*
+- *Help Needed*
+- *To Review*
+
+**For Issues**
+- *priority:critical*
+- *priority:high*
+- *priority:normal*
+- *priority:low*
+
+#### 9. review and approve
+If asked for a review, check the changes carefully and if you are happy
+with them approve the Pull Request, other-wise request a change and/or
+write a comment.
+
+**An approved review is considered the same as a signature.**
+
+As collaborators cannot review their own work, making a commit, starting a new Pull Request and asking for a review is considered as their own signature for that particular document.
+
+This does not matter a great deal for a lot of work but occasionally might be very important. E.g. If you review&approve the Minutes of a meeting on GitHub it is the same as if you would approve and sign them during the next meeting.
+
+#### 10. use squash & rebase
+When merging a branch into master choose between "Squash & merge" and "Rebase & merge"
+- If there are a lot of small changes choose "Squash" to put all changes into one big commit
+- If there are changes where you care about the author use "Rebase"
+- do not use "Merge & commit" as this creates unnecessary commit messages
+
+### Workflow
+
+#### If you want to make a change
+1. pull the current master branch
+2. create a new branch
+3. work in your branch
+4. when finished or when you need input/help from someone else
+  - create a Pull Request
+  - tag your Pull Request
+  - ask for comments
+5. when your work is ready to be reviewed ask for reviews and mark the
+Pull Request as "To Review"
+6. after everybody who needs to give their approval has done so, merge your work into the master branch
+7. delete your work-branch
+
+#### If you are asked for a review
+1. check the changes carefully
+2. comment, ask for changes and/or approve
+`,"/src/assets/robotBdd.md":`---
+title: Setup and run tests with robot framework
+authorName: Jasmine Baral
+authorAvatar: https://avatars.githubusercontent.com/u/40829116?v=4
+authorLink: https://github.com/jasson99/
+createdAt: April 6, 2020
+tags: testing, bdd, robotframework, python
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
+---
+## Robot Framework
+
+Robot framework is a generic open source test automation framework for acceptance testing. It is a keyword-driven testing framework that uses tabular test data syntax. It has easy syntax, using human-readable keywords. This framework is independent of operating system and application. The core framework is implemented using Python and also runs on Jython(JVM) and IronPython(.NET). This framework provides support for external libraries, tools which are open source and can be used for test automation.
+
+The test data is in simple tabular format. When started, the robot framework processes the data, executes the test cases, and generates logs and reports.
+
+ ### Installation and setup of robot framework
+1. Preconditions:
+   * Python installation
+   * Pip
+   * make virtual environment
+
+2. Installing robot framework with pip
+    * \`python -m pip install robotframework\`
+    * \`python3 -m pip install  robotframework\`
+
+   After the successful installation, you should be able to execute the created runner scripts (robot and rebot) with --version option and get both Robot Framework and interpreter versions as a result:
+
+        $ robot --version
+        Robot Framework 3.0 (Python 2.7.10 on linux2)
+
+        $ rebot --version
+        Rebot 3.0 (Python 2.7.10 on linux2)
+
+3. Upgrade[optional]
+   * \`pip install --upgrade robotframework\`
+
+4. Using robot and rebot scripts
+
+   Starting from Robot Framework 3.0, tests are executed using the robot script and results post-processed with the rebot script:
+
+        robot tests.robot
+        rebot output.xml
+5. Installing required libraries
+    * \`pip install requests robotframework-selenium2library robotframework-pageobjectlibrary\`
+
+6. Installation of IDE
+    * Install pycharm or any preferred IDE
+
+7. Import required libraries in the IDE. In pycharm,
+    * To add the project interpreter, Go to \`Files\` => \`Settings\` => \`Project: <your_Project>\` => \`Project Interpreter\` and then add the python version available through your virtual environment.
+    * Also add the required libraries such as : \`Selenium\`, \`robotframework-seleniumLibrary\`, \`robotframework-pageObjectLibrary\`.
+
+8. Make a robot file inside a test folder eg: \`robotBDDExample/test/login.robot\`
+
+### Test Data Sections
+The data used is defined in different sections in robot framework. These sections are often called tables.
+
+ 1. Settings: This section is used for importing test libraries, resource files and variable files.
+ 2. Variables: The variables that can be used in other parts of the test data are defined in this section.
+ 3. Test Cases: In this section, test cases are created from available keywords.
+ 4. Tasks: In this section, tasks are created using available keywords.
+ 5. Keywords: User keywords are created using existing lower-level keywords.
+ 6. Comments: This section contains additional comments or data which are ignored by robot framework.
+
+ These sections are recognized by their header row. The recommended header format is \`*** Settings ***\`. However, the header is case-insensitive, the surrounding spaces are optional, and the number of asterisk characters can vary as long as there is one asterisk at the beginning.
+
+Robot framework test cases can be written in space separated plain text format. In a space separated format, two or more spaces are used as a separator between different data items.
+
+\`\`\`
+*** Settings ***
+Documentation    Example using the space separated plain text format.
+Library          OperatingSystem
+
+*** Variables ***
+\${MESSAGE}       Hello, i am robo!
+
+*** Test Cases ***
+My Test
+    [Documentation]    Example robot test
+    Log    \${MESSAGE}
+    My keyword    /lorem.txt
+
+Another Test
+    Should Be Equal    \${MESSAGE}    Hello, i am robo!
+
+*** Keywords ***
+My Keyword
+    [Arguments]    \${path}
+    File Should Exist    \${path}
+\`\`\`
+
+In order to make the separations more clear, pipe separated format can be used.
+
+\`\`\`
+| *** Settings ***   |
+| Documentation      | Example using the pipe separated plain text format.
+| Library            | OperatingSystem
+
+| *** Variables ***  |
+| \${MESSAGE}         | Hello, i am robo!
+
+| *** Test Cases *** |                 |                   |
+| My Test            | [Documentation] | Example robo test |
+|                    | Log             | \${MESSAGE}        |
+|                    | My Keyword      | /lorem.txt        |
+| Another Test       | Should Be Equal | \${MESSAGE}        | Hello, i am robo!
+
+| *** Keywords ***   |                    |         |
+| My Keyword         | [Arguments]        | \${path} |
+|                    | File Should Exist  | \${path} |
+\`\`\`
+
+From the above examples, it is clear that the test cases are created in the test case tables from the available keywords. Keywords can be imported from the test libraries or resource files, or created in the keyword table of the test case itself.
+
+Let us now see a practical example where a user logs in.
+
+\`\`\`
+*** Settings ***
+Documentation       Test for user login
+Library             SeleniumLibrary
+Library             PageObjectLibrary
+
+
+Test Setup           Open test browser
+Test Teardown        Close all test browsers
+
+*** Variables ***
+\${SERVER}           localhost:8080
+\${ROOT}             http://\${SERVER}/myApp
+\${BROWSER}          chrome
+\${SELENIUM_URL}     http://localhost:4444
+\${PLATFORM}         linux
+\${VERSION}          latest
+\${USERNAME}         admin
+\${PASSWORD}         password
+\${username_field}   id=usernametext
+\${password_field}   id=passwordtext
+\${signIn_Button}    id=submit
+\${LOGIN_URL}        http://\${SERVER}/myApp/login
+\${WELCOME_URL}      http://\${SERVER}/myApp/welcome.html
+
+*** Test Cases ***
+Valid Login
+  [Documentation]       Test valid login
+  Open Login Page
+  Input Username        \${USERNAME}
+  Input Password        \${PASSWORD}
+  Submit Credentials
+  Welcome page is open
+
+*** Keywords ***
+Open test browser
+   Open browser  \${ROOT}  \${BROWSER}
+    ...  remote_url=\${SELENIUM_URL}/wd/hub
+    ...  desired_capabilities=browserName:\${BROWSER},version:\${VERSION},platform:\${PLATFORM}
+
+Open Login Page
+   Go To        \${LOGIN_URL}
+   Login Page Should Be Open
+
+Login Page Should Be Open
+   Title Should Be    Login Page
+
+Input Username
+   [Arguments]    \${USERNAME}
+   Input Text    \${username_field}    \${USERNAME}
+
+Input Password
+   [Arguments]    \${PASSWORD}
+   Input Text    \${password_field}    \${PASSWORD}
+
+Submit Credentials
+   Click Button    \${signIn_Button}
+
+Welcome Page Is Open
+   Location Should Be    \${WELCOME_URL}
+   Title Should Be    Welcome Page
+
+Close all test browsers
+    Close all browsers
+\`\`\`
+Now, let us understand the above example. The test case has a scenario for valid user login. This test case uses a number of keywords, which can be either the predefined keywords imported from the libraries, or can be self created using available low-level keywords. In the keyword section, all the self created keywords are defined using available keywords. For example: 'Input Username' is a user created keyword which uses an existing keyword 'Input Text'. Similarly, 'Welcome Page Is Open' is a user created keyword which is created using pre-existing keywords 'Location Should Be' and 'Title Should Be'.
+
+The keyword 'Title Should Be' uses the page title such as 'Welcome Page' and 'Login Page' as in example above. These page titles are defined in the page object classes, which will be discussed below.
+
+### Using page objects in robot framework
+Page objects provide an additional layer of abstraction for test case creation. Using page objects results in easier maintenance of the tests.
+
+PageObjectLibrary is a Robot Framework keyword library that makes it possible to use the Page Object pattern when testing web pages with the keyword based approach of robot framework. Page Object classes are implemented as standard robot keyword libraries. When you use PageObjectLibrary keywords to go to a page or assert you are on a specific page, the keyword will automatically load the library for that page and put it at the front of the library search order, guaranteeing that the Page Object keywords are available to your test case.
+
+#### Writing a page object class
+Page Objects are simple python classes that inherit from \`PageObjectLibrary.PageObject\`. There are only a couple of requirements for the class:
+
+ 1. The class should define a variable named \`PAGE_TITLE\`
+ 2. The class should define a variable named \`PAGE_URL\` which is a URI relative to the site root.
+
+By inheriting from \`PageObjectLibrary.PageObject\`, methods have access to the following special object attributes:
+
+
+1. \`self.selib\` : a reference to an instance of \`SeleniumLibrary\`. With this you can call any of the SeleniumLibrary keywords via their python method names (eg: \`self.selib.input_text\`)
+
+2. \`self.browser\` : a reference to the webdriver object created when a browser was opened by \`SeleniumLibrary\`. With this you can bypass SeleniumLibrary and directly call all of the functions provided by the core selenium library.
+
+3. \`self.locator\` : a wrapper around the \`_locators dictionary\` of the page. This dictionary can contain all of the locators used by the Page Object keywords. self.locators adds the ability to access the locators with dot notation rather than the slightly more verbose dictionary syntax (eg: \`self.locator.username\` vs \`self._locators["username"]\`.
+
+The above tests can be easy to understand when written in gherkin format. Let's get familiar with gherkin syntax and how the test can be written in this format.
+
+### Gherkin Syntax
+Gherkin format focuses on describing a feature to be implemented using the "Given", "When", "Then", "And", and "But" keywords. Writing requirements in this manner makes tests easier to understand, specially for non-technical people, as natural language is used to describe the test cases. Moreover, this format focuses on a clear separation between test-setup, test-actions, and test-results.
+
+Given < some initial state or preconditions >
+When < the action taken which triggers the scenario >
+Then < the expected outcome >
+
+for e.g.
+\`\`\`
+*** Settings ***
+Documentation       Test for user login
+Library             SeleniumLibrary
+Library             PageObjectLibrary
+
+Test Setup           Open test browser
+Test Teardown        Close all test browsers
+
+*** Variables ***
+\${SERVER}           localhost:8080
+\${ROOT}             http://\${SERVER}/myApp
+\${BROWSER}          chrome
+\${SELENIUM_URL}     http://localhost:4444
+\${PLATFORM}         linux
+\${VERSION}          latest
+\${USERNAME}         admin
+\${PASSWORD}         password
+\${LOGIN_URL}        http://\${SERVER}/myApp/login
+\${WELCOME_URL}      http://\${SERVER}/myApp/welcome.html
+
+*** Test Cases ***
+Valid Login
+  [Documentation]                                     Test valid login
+  Given the user has browsed to the login page
+  When the user enters the username                   \${USERNAME}
+  And the user enters the password                    \${PASSWORD}
+  And the user submits the credentials
+  Then the current page should be  FilesPage
+\`\`\`
+ For clear separations and abstraction layers, we make context files for the test steps. Let us now create a \`contexts\` directory where all the context files are located. For the login step, let us create a login context file \`contexts/LoginContext.py\`.
+
+ Note that: Prefixes \`Given\`, \`When\`, \`Then\`, \`And\` and \`But\` are dropped when matching keywords are searched, if no match with the full name is found. This works for both user keywords and library keywords
+
+\`\`\`py
+from robot.api.deco import keyword
+
+from LoginPage import LoginPage
+
+
+class LoginContext:
+    loginPage = LoginPage()
+
+    @keyword(name="the user enters the username '\${USERNAME}'")
+    def enter_username(self, username):
+        self.loginPage.enter_username(username)
+
+    @keyword(name="the user enters the password '\${PASSWORD}'")
+    def enter_password(self, password):
+        self.loginPage.enter_password(password)
+
+    @keyword(name="the user has browsed to the login page")
+    def browse_to_login_page(self):
+        self.loginPage.browse_to_page()
+
+    @keyword(name="the user submits the credentials")
+    def submit_credentials(self):
+        self.loginPage.submit_credentials()
+\`\`\`
+The login context file uses the methods of the login page. So, we must write every needed functions in the login page. Let us create a page objects directory 'page_objects' and then a login page 'page_objects/LoginPage'.
+
+\`\`\`py
+from PageObjectLibrary import PageObject, PageObjectLibraryKeywords
+
+
+class LoginPage(PageObject):
+    PAGE_URL = "/myApp/login"
+    PAGE_TITLE = "myApp"
+
+    _locators = {
+        "username": "id=user",
+        "password": "id=password",
+        "form_id": "login",
+        "login_form_xpath": "//form[@name='%s']"
+    }
+
+    keywords = PageObjectLibraryKeywords()
+
+    def browse_to_page(self):
+        self.keywords.go_to_page('LoginPage')
+
+    def enter_username(self, username):
+        """Type the given text into the username field """
+        self.selib.input_text(self.locator.username, username)
+
+    def enter_password(self, password):
+        """Type the given text into the password field"""
+        self.selib.input_text(self.locator.password, password)
+
+    def submit_credentials(self):
+        """Clicks the submit button on the form
+        For illustrative purposes, this uses the low level selenium
+        functions for submitting the form
+        """
+        form = self.driver.find_element_by_xpath( self.locator.login_form_xpath % self.locator.form_id)
+        form.submit()
+\`\`\`
+We create all other context files and page objects as per requirements. All the methods and elements related to a certain page are included in a specific page object and its own context file. This makes tests easier to understand and maintain.
+
+FilesPage can be created in a similar manner as follows:
+
+\`\`\`PY
+from PageObjectLibrary import PageObject
+
+
+class FilesPage(PageObject):
+    PAGE_URL = "/index.php/apps/files/"
+    PAGE_TITLE = "Files - myApp"
+\`\`\`
+
+### Go to : https://github.com/JankariTech/robotBDDExample for example test cases.
+`,"/src/assets/scenarioOutline.md":`---
+title: Scenario Outline in a Gherkin Feature File
+authorName: Jasmine Baral
+authorAvatar: https://avatars.githubusercontent.com/u/40829116?v=4
+authorLink: https://github.com/jasson99/
+createdAt: Feb 20, 2020
+tags: testing, cucumber, gherkin, bdd
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
+---
+
+As we are familiar with the basic gherkin syntax such as \`feature\`, \`scenario\`, \`background\`, \`given\`, \`when\` and \`then\` steps already, let us discuss about the \`Scenario Outline\` used in a gherkin feature file.
+
+### *Scenario Outline*
+
+Let us start with a very simple feature where the remaining candies should be calculated based on the total candies and the candies consumed. However, there can be different scenarios for the different combinations of total candies, consumed candies, and the remaining candies.
+
+\`\`\`gherkin
+ Scenario: calculate remaining candies when all candies are consumed
+   Given I have 10 candies
+   When I eat 10 candies
+   Then I should have 0 candies remaining
+
+
+ Scenario: calculate remaining candies when some candies are consumed
+   Given I have 60 candies
+   When I eat 23 candies
+   Then I should have 37 candies remaining
+
+
+ Scenario: calculate remaining candies when no candies are consumed
+   Given I have 93 candies
+   When I eat 0 candies
+   Then I should have 93 candies remaining
+\`\`\`
+
+It can be very time consuming to write repetitive scenarios with different permutations of data values. It can also be difficult for the reader to understand many seperate but similar scenarios. This can be improved by using the \`scenario outline\` and its example table, thus combining similar scenarios with different combinations of similar data values into one Scenario Outline. A Scenario Outline is always followed by an example table: \`Examples\`. The example table in scenario outline is used to combine multiple similar scenarios into a single scenario in the feature file. It provides one set of data per scenario. Each new row of the example table is run as a different scenario. The data values in single row of data are passed to the step definition at the run time of a scenario.
+
+A scenario outline replaces variables with the value from the examples table. Each row in the examples table is considered to be a scenario.
+
+In the scenario outline, the data values do not need to be hard coded in the step definition. Rather the values are replaced with the name of the parameter <parameter_name> itself.
+
+In the above example of candies, if we observe closely, all three scenarios have the same statements, only the parameter value (total/consumed/remaining number of candies) is changing. This is where the significance of the scenario outline comes into the picture.
+
+When we define a scenario using a scenario outline, we can specify a single test scenario for all the similar scenarios and then provide an example table at the end of the test scenario. The test scenario is always specified by \`Scenario Outline\` and is always followed by a table : \`Examples\`. This scenario will thus be executed as many times as the number of data inputs (data rows) provided in the examples table
+
+\`\`\`gherkin
+ Scenario Outline: calculate remaining candies
+   Given I have <total> candies
+   When I eat <eaten> candies
+   Then I should have <remaining> candies
+   Examples:
+     | total | eaten | remaining  |
+     | 10    | 10    | 0          |
+     | 60    | 23    | 37         |
+     | 93    | 0     | 93         |
+\`\`\`
+
+Now, let us continue with more realistic scenarios. The scenarios of user login with valid credentials (login for different valid users) can be implemented using Scenario Outline as follows:
+
+\`\`\`gherkin
+ Scenario Outline: login with valid credentials
+   Given a user has been created with email "<email>" and password "<password>"
+   And the user has browsed to the login page
+   When the user enters email "<email>" and password "<password>" in the login form
+   And the user logs in
+   Then the user should be redirected to the homepage
+   Examples:
+     | email            | password     |
+     | user1@email.com  | firstpass    |
+     | second@email.com | password12   |
+     | test@gmail.com   | testpassword |
+\`\`\`
+
+Here, each row of the example table provides the email and password used in the given and when steps. Even if this scenario looks like a single scenario, it runs 3 times in this example with different email and password set in the step definition, one at a time. The first scenario takes the first row of email and password and completes the test (hopefully passed). Then the 2nd scenario takes the data in the second row independent of other data present in other rows. After this is completed, it's turn for the 3rd row of data sets.
+
+Let us be more clear. The above scenario outline consists of 3 similar scenarios which run uniquely with their own set of data. Let us see how it happens.
+
+The first row of data acts as first scenario and runs as :
+
+
+\`\`\`gherkin
+Given a user has been created with email "user1@email.com" and password "firstpass"
+And the user has browsed to the login page
+When the user enters email "user1@email.com" and password "firstpass" in the login form
+And the user logs in
+Then the user should be redirected to the homepage
+\`\`\`
+
+
+Similarly, the next two scenarios run as below respectively.
+
+\`\`\`gherkin
+Given a user has been created with email "second@email.com" and password "password12"
+And the user has browsed to the login page
+When the user enters email "second@email.com" and password "password12" in the login form
+And the user logs in
+Then the user should be redirected to the homepage
+\`\`\`
+
+\`\`\`gherkin
+Given a user has been created with email "test@gmail.com" and password "testpassword"
+And the user has browsed to the login page
+When the user enters email "test@gmail.com" and password "testpassword" in the login form
+And the user logs in
+Then the user should be redirected to the homepage
+\`\`\`
+
+To sum up, when there are cases where the scenarios are similar with same statements but with varying data values as parameters, it is advisable to use Scenario Outline with different sets of values provided through the examples table.
+`,"/src/assets/tablenodes.md":`---
+title: Datatables used in a Gherkin Feature File
+authorName: Jasmine Baral
+authorAvatar: https://avatars.githubusercontent.com/u/40829116?v=4
+authorLink: https://github.com/jasson99/
+createdAt: Feb 20, 2020
+tags: testing, cucumber, gherkin, bdd
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
+---
+
+As we are familiar with the basic gherkin syntax such as \`feature\`, \`scenario\`, \`Scenario Outline\`, \`background\`, \`given\`, \`when\` and \`then\` steps already, let us discuss about the \`table\` or \`tablenodes\` used in the steps of a gherkin feature file.
+
+## Tables
+
+\`Tables\` or \`tablenodes\` or \`Datatables\` are used for specifying a larger data set as an argument in the steps of a scenario in a feature file. These tables are handy for passing a list of values to a step definition. The data tables are passed to the step definition of a specific step as its last argument. Let us understand with the help of an example below.
+
+#### A scenario for logging in without using a data table
+
+\`\`\`gherkin
+ Scenario: login with valid credentials
+   Given a user has been created with email "user@email.com" and username "user" and password "password"
+   And the user has browsed to the login page
+   When the user enters email "user@email.com" and username "user" and password "password" in the login form
+   And the user logs in
+   Then the user should be redirected to the homepage
+\`\`\`
+
+There are cases where a large amount of data needs to be set in the steps. It can be done using a number of "ands" in the step text as shown in the example above. However, good practice would be to use data tables to provide the data.
+
+#### A scenario for logging in using a data table
+
+ \`\`\`gherkin
+  Scenario: login with valid credentials
+    Given a user has been created with the following details:
+       | email          | username  | password |
+       | user@email.com | user      | password |
+    And the user has browsed to the login page
+    When the user enters the following details in the login form:
+       | email          | username  | password |
+       | user@email.com | user      | password |
+    And the user logs in
+    Then the user should be redirected to the homepage
+\`\`\`
+
+Please do not confuse data tables with the example table used in a scenario outline. Even if they look alike, they have completely different purposes. Please refer to this blog to learn more about the \`Scenario Outline\`: \`https://dev.to/jankaritech/scenario-outline-in-gherkin-feature-file-16jh\`
+
+### *Data tables*
+
+Unlike the examples table, a table node provides all of the data in the data table at once, in the specific step where the table is provided.
+
+Let us look at another example of a data table. To be more clear about its significance, let us first write a scenario without using a data table as below.
+
+\`\`\`gherkin
+Scenario: view and delete files
+  Given user "testuser" has been created
+  And user "testuser" has logged in
+  When the user browses to the files page
+  Then file "myCollegeProject" should be listed
+  And file "interviewQuestions" should be listed
+  And file "picnicCollections" should be listed
+  And file "presentation" should be listed
+  When the user deletes file "myCollegeProject"
+  And the user deletes file "interviewQuestions"
+  Then file "myCollegeProject" should not be listed
+  And file "interviewQuestions" should not be listed
+  But file "picnicCollection" should be listed
+  And file "presentation" should be listed
+\`\`\`
+
+When observed closely, we can see that the listing of several files, continuous deletion of several files, non-listing of deleted files and listing of non-deleted files has been written using several repetitive steps. The steps seem to be difficult to maintain this way. Moreover, more effort is required to understand the scenario when reading it. To improve this, we can use the data tables. The example below illustrates the use of data tables in the steps where multiple data are to be passed at once. For example, multiple files are to be listed, multiple files are to be deleted, and again multiple files are expected not to be listed and to be listed respectively.
+\`\`\`gherkin
+ Scenario: view and delete files
+   Given user "testuser" has been created
+   And user "testuser" has logged in
+   When the user browses to the files page
+   Then the following files should be listed:
+      | files              |
+      | myCollegeProject   |
+      | interviewQuestions |
+      | picnicCollections  |
+      | presentation       |
+   When the user deletes the following files
+      | files              |
+      | myCollegeProject   |
+      | interviewQuestions |
+   Then the following files should not be listed:
+      | files              |
+      | myCollegeProject   |
+      | interviewQuestions |
+   But the following files should be listed:
+      | files              |
+      | picnicCollections  |
+      | presentation       |
+\`\`\`
+
+The data set provided using the data table should be hashed in the step definition of the particular steps in order to transform the cucumber data table into either an array of data or object.
+
+ for example:
+ In nightwatch, to transform a cucumber data table to an array, we use \`hashes\`
+\`\`\`js
+ When('the user deletes the following files', (dataTable) => {
+  const filesToDelete = dataTable.hashes()
+  console.log(filesToDelete);
+  /* It returns :
+  [ {files: 'myCollegeProject'},
+    {files: 'interviewQuestions'} ]
+  */
+
+  for (const file in filesToDelete) {
+    this.delete(file)
+  }
+})
+\`\`\`
+Now, to transform a cucumber data table to an object, we use \`rowsHash\`. However, rowsHash can only be called on a data table where all rows have \`exactly two columns\`.
+
+for example:
+\`\`\`gherkin
+When the user sets the price for the following items
+   | book      | 500 |
+   | sharpener | 30  |
+   | pencil    | 15  |
+\`\`\`
+
+The step definition for this step can parse the data table using \`rowsHash\` as follows:
+
+\`\`\`js
+When('the user sets the price for the following items', (dataTable) => {
+  const priceOfItems = dataTable.rowsHash()
+  console.log(priceOfItems)
+    /* It returns :
+    { book : '500',
+      sharpener : '30',
+      pencil : '15' }
+    */
+})
+\`\`\`
+Let us see what happens if we use \`hashes\` for this example.
+\`\`\`js
+When('the user sets the price for the following items', (dataTable) => {
+  const priceOfItems = dataTable.hashes()
+  console.log(priceOfItems)
+   /* It returns :
+   [ { book : 'sharpener', '500' : '30' },
+     { book : 'pencil', '500' : '15'} ]
+   */
+})
+\`\`\`
+
+However, if we provide data in the steps as follows, then \`hashes\` can be used. for example:
+\`\`\`gherkin
+When the user sets the price for the following items
+   | item      | price |
+   | book      | 500   |
+   | sharpener | 30    |
+   | pencil    | 15    |
+\`\`\`
+\`\`\`js
+When('the user sets the price for the following items', (dataTable) => {
+  const priceOfItems = dataTable.hashes()
+  console.log(priceOfItems)
+   /* It returns :
+   [ { item : 'book', price : '500' },
+     { item : 'sharpener', price : '30' },
+     { item : 'pencil', price : '15'} ]
+   */
+})
+\`\`\`
+
+
+ ### Combination
+It is also possible to combine data tables with a scenario outline as well when needed. Let us see an example below:
+\`\`\`gherkin
+Scenario Outline: User tries to signup with improper combination of password
+   Given the user has browsed to the signup page
+   When the user tries to signup entering the following details
+      | email           |  william@xyz.com   |
+      | password        | <Password>         |
+      | confirmPassword | <ConfirmPassword>  |
+   Then an error message "<validation>" should be shown above the "password" field
+   Examples:
+      | Password    | ConfirmPassword  | validation                         |
+      | 234567569   | 234567569        | This password is entirely numeric  |
+      | 123456789   | 123456789        | This password is too common.       |
+      | abcde       | abcde            | This password is too short.        |
+\`\`\`
+
+The values in the examples table get substituted into the steps which require the parameter values. The substitution takes place one row at a time. The values from the data table are passed to its step definition at once. For the above example, since there are 3 data rows in the \`examples table\`, this scenario runs thrice with a specific combination of data values as provided in the example table. Let us be clear about how the above example executes.
+
+In the first scenario, a set of data is used from the first row of the examples table, as below.
+
+\`\`\`gherkin
+Given the user has browsed to the signup page
+When the user tries to signup entering the following details
+    | email           | william@xyz.com    |
+    | password        | 234567569          |
+    | confirmPassword | 234567569          |
+Then an error message "This password is entirely numeric" should be shown above the "password" field
+\`\`\`
+
+For the step definition of when step, the data table is parsed as follows:
+
+\`\`\`js
+When('the user tries to signup entering the following details', (dataTable) => {
+const userDetails = dataTable.rowsHash()
+  /* It returns: {
+    email : 'william@xyz.com',
+    password : '234567569',
+    confirmPassword : '234567569'
+  } */
+
+  return client.setValue(emailField, userDetails['email'])
+    .setValue(passwordField, userDetails['password'])
+    .setValue(confirmPasswordField, userDetail['confirmPassword'])
+    .click(signupButton)
+})
+\`\`\`
+
+In the next run of the scenario, the next single row of data is used as follows.
+
+\`\`\`gherkin
+Given the user has browsed to the signup page
+When the user tries to signup entering the following details
+   | email           | william@xyz.com    |
+   | password        | 123456789          |
+   | confirmPassword | 123456789          |
+Then an error message "This password is too common" should be shown above the "password" field
+\`\`\`
+
+Similarly, the third run of the scenario uses the third row of the examples table as follows.
+
+\`\`\`gherkin
+Given the user has browsed to the signup page
+When the user tries to signup entering the following details
+   | email           | william@xyz.com    |
+   | password        | abcde              |
+   | confirmPassword | abcde              |
+Then an error message "This password is too short" should be shown above the "password" field
+\`\`\`
+`,"/src/assets/test_cafe_blog.md":`---
+title: E2E Testing using TestCafe
+authorName: Sagar Gurung
+authorAvatar: https://avatars.githubusercontent.com/u/46086950?v=4
+authorLink: https://github.com/SagarGi
+createdAt: Nov 30, 2022
+tags: test-cafe, testing, webUI-testing, javascript, automation
+banner: https://raw.githubusercontent.com/DevExpress/testcafe-gh-page-assets/master/src/images/testcafe-ogp-icon.png
+---
+## Background
+
+Are you one of those who is still struggling to write your first End-to-End (E2E) test for your web application?
+
+So what may be the reasons that you are struggling?
+
+- difficult to set up test framework with your web application?
+- difficult to learn?
+- lengthy implementation of code?
+
+If the above points are exactly of your concern then \`test-cafe\` can be your go-to test automation framework for testing your web application.
+
+In this blog post, we will look into the concept of \`test-cafe\`, a modern solution to sort out E2E testing for your web application. At the end of this blog hopefully, you will be able to set up \`test-cafe\` for your web application and run your first end-to-end test.
+
+## Brief about TestCafe
+Let's start this blog with a brief understanding of \`test-cafe\`. It is an open-source test automation framework or tool built with Node Js. This framework basically supports two programming languages i.e Javascript and Typescript. So you are required to have at least the basics of Javascript to use this tool. [DevExpress](https://www.devexpress.com/) is in charge of managing TestCafe, which is made available under an open-source MIT license.
+
+## Why to use TestCafe?
+Before moving to installation and set-up, lets understand some points why to use \`test-cafe\`.
+
+- It is very easy to set up
+- No dependencies (with other libraries)
+- Writing tests is easy and with less code
+- Cross-browser testing is made easy
+- Free and Open Source
+
+*Note: I will be doing the whole setup with Ubuntu 20.04.3 LTS, but it will be similar for other OS too*
+
+## Prerequisites
+
+At first, we need \`Node JS\` installed into our system. You can download \`Node JS\` version 12 or above. [Download Node JS](https://nodejs.org/en/download/).
+
+## Installation and setup
+Now lets move into installing \`test-cafe\` which is really easy. Follow the following steps:
+
+- Create a folder \`E2EWithTestCafe\`.
+- Open the folder you created with a code editor. In my case I am using \`Visual Studio Code\`.
+- Create a \`package.json\` file with command \`npm init\` through command line. (using terminal)
+- Now use \`npm install testcafe\` command to install TestCafe.
+
+After this, your \`package.json\` file should contain \`dependencies\` as
+
+\`\`\`json
+// package.json file
+
+"dependencies": {
+"testcafe": "^2.1.0"
+}
+\`\`\`
+
+## What to test?
+
+For this blog, we will be writing an E2E test for this \`https://devexpress.github.io/testcafe/example\` website (provided by devexpress). You can go to this website and check what it looks like. We will automate a simple form submit scenario using \`test-cafe\`
+
+##  Writing Test
+
+At first inside \`E2EWithTestCafe\` project, make your file structure as
+
+\`\`\`
+\u{1F4E6}tests
+\u2517 \u{1F4C2}e2e
+  \u2523 \u{1F4C2}fixtures
+    \u2517 \u{1F4DC}firste2etest.js
+
+\`\`\`
+And then at the root level of your project which is \`E2EWithTestCafe\` create a file \`.testcaferc.json\`. This file includes all the configuration required to test the application.
+
+The configuration should look like this:
+\`\`\`json
+// testcaferc.json
+
+{
+  "browsers": "chrome", // means your test will be automated in chrome browser
+  "baseUrl": "https://devexpress.github.io/testcafe/example/", // URL for your web application to be tested or automated
+  "src": "tests/e2e/fixtures/firste2etest.js" // path to your test code to execute
+}
+
+\`\`\`
+
+I assume that you have checked \`https://devexpress.github.io/testcafe/example\` website. On that website, if we fill up the username and submit the form, it redirects us to another page saying thank you. So this will be our simple test case, and we will be automating it with \`test-cafe\`
+I have implemented the test code And it looks like this.
+
+\`\`\`js
+// firste2etest.js
+
+import { Selector, t } from "testcafe";
+fixture\`My First E2E test with test-cafe\`.page;
+
+const inputNameFieldSelector = Selector("#developer-name");
+const submitButtonSelector = Selector("#submit-button");
+const headingSelector = Selector("#article-header");
+
+test("Submitting a form should browse to thank you page", async (t) => {
+  const yourName = "JankariTech";
+  // fills name input field
+  await t.typeText(inputNameFieldSelector, yourName);
+  // clicks the submit button
+  await t.click(submitButtonSelector);
+
+  // check for the thankyou page after form has been submitted with name
+  const actualThankyouMessage = await headingSelector.innerText;
+  await t.expect("Thank you, " + yourName + "!").eql(actualThankyouMessage);
+});
+
+
+\`\`\`
+
+I will not be explaining the whole implementation but I have put comments on each action in the code. And probably the code is easy to understand which is exactly what \`test-cafe\` has aimed for.
+
+## Running Test
+
+Huh, now finally the time has come to run our test script and see it magically running. To run our test we need some adjustments in the \`package.json\` file. Put the test scripts as
+
+\`\`\`json
+// package.json file
+
+ "scripts": {
+    "test": "testcafe"
+  },
+
+\`\`\`
+
+Now one final command needed to run our test i.e.
+
+\`\`\`bash
+npm run test
+\`\`\`
+
+With the above command being executed, you should see the browser (chrome) automating the actions that we have implemented. (submitting a form with a name that redirects to Thank You page)
+
+And your output in the console should look like this
+
+\`\`\`console
+\u276F npm run test
+
+> e2ewithtestcafe@1.0.0 test
+> testcafe
+
+ Running tests in:
+ - Chrome 105.0.0.0 / Ubuntu 20.04
+
+ My First E2E test with test-cafe
+ \u2713 Submitting a form should browse to thank you page
+
+
+ 1 passed (8s)
+
+\`\`\`
+
+## Conclusion
+
+So far I have used \`test-cafe\`, it is definitely a go-to automation tool for modern web End-To-End testing.
+You can use it on your own project quickly with ease and less code. Also, it has many more features to explore. You can start exploring [test-cafe](https://testcafe.io/) now.
+`,"/src/assets/tusProtocol.md":`---
+title: Resumable file upload with TUS protocol
+authorName: Swoichha Adhikari
+authorAvatar: https://harunmudak.com/wp-content/uploads/2020/12/girl-cartoon-characters-3-724x1024.jpg
+authorLink: https://github.com/swoichha
+createdAt: Feb 10, 2022
+tags: tus, upload, resumable
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
+---
+
+\`\`\`
+"Work half done is still some work done"
+\`\`\`
+
+We all have faced problems while uploading a file. Whether it is an error with a file exceeding the maximum upload size or failing to write a file to disk.
+
+Here, in this blog, we are going to talk about partial upload failing. We all have been to that place where we have uploaded a huge file and have been waiting for minutes if not hours to finish the uploading process. Finally, the moment comes when our upload is about to be completed but then some error occurs, and our upload fails.
+
+Now, you have to go through all the trouble to re-upload it, which is irritating as well as time-consuming.
+
+There might be various factors for such failure. Such as a weak internet connection, your browser might crash, etc.
+So, what can we do? Should we re-upload the whole file? But then again the re-uploading process will take the same amount of time and effort that it required earlier. If only there was a way that we could continue from where the last failure occurred.
+
+Well, we are in luck because the answer is simple, "TUS upload".
+
+## What is TUS?
+
+TUS stands for Transloadit Upload Server.
+
+"TUS is a protocol for resumable uploads built on HTTP. It offers simple, cheap, and reusable stacks for clients and servers. It supports any programming-language, any platform, and any network."
+
+## Why TUS?
+
+So, the question may arise, Why do we need TUS? The thing about TUS is that it allows us to continue uploading our file from where we left off even after it has failed previously.
+
+For example, We are trying to upload a file of 100 GB and due to some interruption, we were able to upload only 60 GB of the data. Normally, we would re-upload the file which means we will be uploading the 60 GB of the same data that was already uploaded in a prior upload. But, using TUS we won't need to upload that 60 GB we will be uploading the remaining 40 GB of data.
+
+## Pros
+
+- It is built upon HTTP and supports any programming-language, any platform, and any network.
+- The main advantage of using TUS is that you can start uploading files from the point where you left off last time.
+- It is open source. So, anyone can use and contribute to it.
+- It allows the user the ability to pause and resume the upload anytime they want(even after multiple days).
+- It can handle increasing numbers of connections and uploads.
+
+To see a demo of how it works you can visit the [Resumable File Upload Demo](https://tus.io/demo.html) and for real-life implementation of TUS resumable upload protocol have a look at [this](https://tus.io/implementations.html).
+
+This brings us to the end of this blog. In the next blog, we will look into specifications for the TUS protocol and its HTTP methods.
+`,"/src/assets/BDDInGo/BDDInGo.md":`---
 title: Demonstrating BDD (Behavior-driven development) in Go
 authorName: Artur Neumann
 authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800.jpg
 authorLink: https://github.com/individual-it
 createdAt: Feb 5, 2020
 tags: testing, bdd, go, qa
-banner: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800.jpg
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/assets/BDDInGo/BDDInGo.png
 seriesTitle: Behaviour Driven Development
 episode: 1
 ---
@@ -646,14 +2665,14 @@ Godog will run a single scenario for every line in the examples table. That way 
 If you need help with setting up BDD or you want to outsource your test-development, please contact us:
 - https://www.jankaritech.com/
 - https://www.linkedin.com/company/jankaritech/
-`,"/src/assets/BDDInGo_1_DE.md":`---
+`,"/src/assets/BDDInGo/BDDInGo_1_DE.md":`---
 title: Einstieg in BDD (Behavior-driven development)
 authorName: Artur Neumann
 authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800.jpg
 authorLink: https://github.com/individual-it
 createdAt: March 31, 2021
 tags: testing, bdd, test
-banner: https://res.cloudinary.com/practicaldev/image/fetch/s--9V07u59B--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/kwqa0mzc2gp33o3rhbg5.png
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/assets/BDDInGo/BDDInGoDe.png
 ---
 
 In [Demonstrating TDD (Test-driven development) in Go](https://dev.to/jankaritech/demonstrating-tdd-test-driven-development-in-go-27b0) habe ich \xFCber TDD geschrieben und jetzt m\xF6chte ich zeigen wie BDD (Behavior-driven development) mit Go funktionieren kann.
@@ -783,14 +2802,14 @@ F\xFCr weitere Informationen, wie die Schritte formuliert werden sollen, siehe: 
 Nachdem eine Funktion oder auch nur ein Szenario beschrieben wurde, kann die Entwicklung starten. In SCRUM-Sprache: jedes Feature ist eine user-story. Der ganze agile Zyklus funktioniert damit. Diese Beschreibung ist nicht nur die To-Do-Liste f\xFCr die Entwicklung, sondern auch das Testprozedere f\xFCr die Qualit\xE4tssicherung und sie dient auch als Dokumentation.
 
 Im zweiten Teil des Blogs tauchen wir dann in die technischen Details ein und benutzen die Feature-Dateien, um die Anwendung automatisch zu testen.
-`,"/src/assets/BDDInGo_2_DE.md":`---
+`,"/src/assets/BDDInGo/BDDInGo_2_DE.md":`---
 title: BDD (Behavior-driven development) mit Go
 authorName: Artur Neumann
 authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800.jpg
 authorLink: https://github.com/individual-it
 createdAt: May 18, 2021
 tags: testing, go, bdd, test
-banner: https://res.cloudinary.com/practicaldev/image/fetch/s--JeC9Hmh4--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/brg6zf6ifa9fpru9e7yh.png
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/assets/BDDInGo/BDDInGo.png
 ---
 
 In [Einstieg in BDD (Behavior-driven development)](https://dev.to/jankaritech/einstieg-in-bdd-behavior-driven-development-1m8h) habe ich die Grundz\xFCge von BDD erkl\xE4rt und ihren Einsatz, um die Funktionen einer Anwendung zu beschreiben. Im Grunde genommen ist BDD dazu gedacht, alle Beteiligten zusammenzubringen und klar zu beschreiben, wie sich die "Features" einer Anwendung in verschiedenen Situationen zu verhalten haben.
@@ -834,7 +2853,7 @@ und dann \`go get github.com/cucumber/godog@v0.12.6\` ausf\xFChren.
 
 Wir brauchen auch das godog Kommandozeilenwerkzeug, um das zu installieren muss
 
-\`go install github.com/cucumber/godog/cmd/godog@v0.12.6\` 
+\`go install github.com/cucumber/godog/cmd/godog@v0.12.6\`
 
 ausgef\xFChrt werden
 
@@ -1273,14 +3292,14 @@ Godog erstellt damit aus jeder Tabellenzeile ein separates Szenario.
 Wir helfen gerne bei der Umstellung auf BDD und der Erstellung von automatischen Tests:
 - https://www.jankaritech.com/
 - https://www.linkedin.com/company/jankaritech/
-`,"/src/assets/BDDOnRewrite.md":`---
+`,"/src/assets/BDDOnRewrite/BDDOnRewrite.md":`---
 title: BDD on Software Rewrite
 authorName: Artur Neumann
 authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800.jpg
 authorLink: https://github.com/individual-it
 createdAt: Feb 15, 2021
 tags: bdd, testing
-banner: https://dev-to-uploads.s3.amazonaws.com/i/23qvc2yp1fx00fnkpjb3.jpg
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/assets/BDDOnRewrite/BDDOnRewrite.png
 seriesTitle: Behaviour Driven Development
 episode: 3
 ---
@@ -1323,2061 +3342,6 @@ With all that in place the developers
 1. are safe from regressions for already implemented features
 
 The only job left is to reduce the amount of expected-to-fail tests to 0, how hard can that be? \u{1F61C}
-`,"/src/assets/TDDInGo.md":`---
-title: TDD in Go
-authorName: Artur Neumann
-authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800.jpg
-authorLink: https://github.com/individual-it
-createdAt: Oct 30, 2019
-tags: testing, performance, python, infrastructure
-banner: https://cdn-images-1.medium.com/max/768/1*WJ-o9buxhxzVK18iEW-eRg.png
----
-
-## Demonstrating TDD (Test-driven development) in Go
-
-TDD is the practice to write tests before code and it should reduce failure rates and defects in your software.
-In this blog-post I want to demonstrate how it can work.
-
-### starting point
-I'm writing an application in Go that should convert Bikram Sambat (BS) (also called Vikram Samvat) dates to Gregorian dates and vice-versa. [Vikram Samvat](https://en.wikipedia.org/wiki/Vikram_Samvat) is a calendar used mostly in Nepal and India. But even if you don't use it, this demonstration might be useful for you to understand TDD.
-
-So far I have done a bit of work that makes it possible to create a BS (Bikram Sambat) date instance, to get its details and to convert it to a Gregorian date. See: https://github.com/JankariTech/GoBikramSambat/blob/b99c510b22faf8395becda9a6dec1d0239504bb1/bsdate.go
-
-These functions are also tested: https://github.com/JankariTech/GoBikramSambat/blob/b99c510b22faf8395becda9a6dec1d0239504bb1/bsdate_test.go
-
-Now I want to add the possibility to convert a Gregorian date to a Bikram Sambat date. To do so, I want to be able to create a BS-date-instance by using a Gregorian date, then I could just get the BS-date details and the conversion is done.
-
-Something like \`nepaliDate, err := NewFromGregorian(gregorianDay, gregorianMonth, gregorianYear)\` would be great and then simply use the existing \`nepaliDate.GetDay()\` \`nepaliDate.GetMonth()\` and \`nepaliDate.GetYear()\`
-
-### 1. create the test
-According to TDD I first have to create a test.
-So in the file \`bsdate_test.go\` I create a new function called \`TestCreateFromGregorian()\`.
-As I already have a table of test-dates that are used for the conversion from Nepali to Gregorian I will use that data also to test the reverse conversion.
-
-Here is the test data and the test function:
-
-\`\`\`
-type TestDateConversionStruc struct {
-	bsDate        string
-	gregorianDate string
-}
-
-var convertedDates = []TestDateConversionStruc{
-	{"2068-04-01", "2011-07-17"}, //a random date
-	{"2068-01-01", "2011-04-14"}, //1st Baisakh
-	{"2037-11-28", "1981-03-11"},
-	{"2038-09-17", "1982-01-01"}, //1st Jan
-	{"2040-09-17", "1984-01-01"}, //1st Jan in a leap year
-...
-}
-
-func TestCreateFromGregorian(t *testing.T) {
-	for _, testCase := range convertedDates {
-		t.Run(testCase.bsDate, func(t *testing.T) {
-			var splitedBSDate = strings.Split(testCase.bsDate, "-")
-			var expectedBsDay, _ = strconv.Atoi(splitedBSDate[2])
-			var expectedBsMonth, _ = strconv.Atoi(splitedBSDate[1])
-			var expectedBsYear, _ = strconv.Atoi(splitedBSDate[0])
-
-			var splitedGregorianDate = strings.Split(testCase.gregorianDate, "-")
-			var gregorianDay, _ = strconv.Atoi(splitedGregorianDate[2])
-			var gregorianMonth, _ = strconv.Atoi(splitedGregorianDate[1])
-			var gregorianYear, _ = strconv.Atoi(splitedGregorianDate[0])
-
-			nepaliDate, err := NewFromGregorian(gregorianDay, gregorianMonth, gregorianYear)
-			assert.Equal(t, err, nil)
-			assert.Equal(t, nepaliDate.GetDay(), expectedBsDay)
-			assert.Equal(t, nepaliDate.GetMonth(), expectedBsMonth)
-			assert.Equal(t, nepaliDate.GetYear(), expectedBsYear)
-		})
-	}
-}
-\`\`\`
-
-The function takes entries from the \`convertedDates\` list, splits them, tries to create a BS date out of the particular gregorian test-case and then asserts that the BS date (day, month, year) is as expected.
-
-### 2. run the tests
-The test is done, according to TDD I have to run it.
-
-\`go test -v\`
-
-results in:
-
-\`\`\`console
-# NepaliCalendar/bsdate [NepaliCalendar/bsdate.test]
-./bsdate_test.go:171:23: undefined: NewFromGregorian
-FAIL	NepaliCalendar/bsdate [build failed]
-\`\`\`
-
-That was expected, the function does not exist, no wonder my tests fail. What to do next? Guess what: implement the function.
-That makes TDD so easy, you just do what the tests tell you to fix.
-
-### 3. fix it
-That's easy, add to \`bsdate.go\` a new function:
-\`\`\`
-func NewFromGregorian(gregorianDay, gregorianMonth, gregorianYear int) (Date, error) {
-
-}
-\`\`\`
-
-### 4. repeat
-running the tests again I get:
-
-\`./bsdate.go:195:1: missing return at end of function\`
-
-That is true, let's return something, but what? Hey let's just create a BS date with the Gregorian numbers
-\`\`\`diff
- func NewFromGregorian(gregorianDay, gregorianMonth, gregorianYear int) (Date, error) {
--
-+       return New(gregorianDay, gregorianMonth, gregorianYear)
- }
-\`\`\`
-
-You are saying that will not work? I don't care, I do TDD, the test tells me to return something, and I do return, I even return the correct type of value.
-
-lets run the tests again:
-\`\`\`console
-=== RUN   TestCreateFromGregorian/2068-04-01
-	assert.go:24: got '17' want '1'
-
-	assert.go:24: got '7' want '4'
-
-	assert.go:24: got '2011' want '2068'
-
-=== RUN   TestCreateFromGregorian/2068-01-01
-	assert.go:24: got '14' want '1'
-
-	assert.go:24: got '4' want '1'
-
-	assert.go:24: got '2011' want '2068'
-
-....
-\`\`\`
-
-a lot of failures, you have guessed it, the conversion does not work. So lets implement some bits.
-
-We know that BS is 56 point something years ahead of Gregorian. So adding 56 to the gregorian year should help:
-\`\`\`diff
- func NewFromGregorian(gregorianDay, gregorianMonth, gregorianYear int) (Date, error) {
--       return New(gregorianDay, gregorianMonth, gregorianYear)
-+       var bsYear = gregorianYear + 56
-+       return New(gregorianDay, gregorianMonth, bsYear)
- }
-\`\`\`
-
-test results look better, instead of
-
-\`\`\`
-....
-=== RUN   TestCreateFromGregorian/2037-11-28
-	assert.go:24: got '11' want '28'
-
-	assert.go:24: got '3' want '11'
-
-	assert.go:24: got '1981' want '2037'
-
-=== RUN   TestCreateFromGregorian/2038-09-17
-	assert.go:24: got '1' want '17'
-
-	assert.go:24: got '1' want '9'
-
-	assert.go:24: got '1982' want '2038'
-....
-\`\`\`
-I get:
-
-\`\`\`
-....
-=== RUN   TestCreateFromGregorian/2037-11-28
-	assert.go:24: got '11' want '28'
-
-	assert.go:24: got '3' want '11'
-
-=== RUN   TestCreateFromGregorian/2038-09-17
-	assert.go:24: got '1' want '17'
-
-	assert.go:24: got '1' want '9'
-....
-\`\`\`
-
-So some years are calculated correctly, at least. Lets fix more tests by calculating the years more accurate and also calculate the BS month.
-
-Because of the way the BS-calendar works, there is no algorithm to convert the date directly from the Gregorian calendar, we need a table. We know that Jan 1st falls always in the 9th BS month (Paush). So we have a table of BS years where the first value is the day in Paush that is the 1st Jan in that year, then a list of days of every BS month.
-We can easily get the day-of-year from the gregorian date. Starting from Paush, we count the days of each BS month, whenever we get over the gregorian day-of-year, we found the correct BS month.
-\`\`\`
-2074: [13]int{17, 31, 31, 31, 32, 31, 31, 30, 29, 30, 29, 30, 30},
-2075: [13]int{17, 31, 31, 32, 31, 31, 31, 30, 29, 30, 29, 30, 30},
-2076: [13]int{16, 31, 32, 31, 32, 31, 30, 30, 30, 29, 29, 30, 30},
-2077: [13]int{17, 31, 32, 31, 32, 31, 30, 30, 30, 29, 30, 29, 31},
-2078: [13]int{17, 31, 31, 31, 32, 31, 31, 30, 29, 30, 29, 30, 30},
-\`\`\`
-
-These details have nothing to do with TDD, but help you to understand the coming algorithm.
-
-lets put it into code:
-\`\`\`diff
- func NewFromGregorian(gregorianDay, gregorianMonth, gregorianYear int) (Date, error) {
-        var bsYear = gregorianYear + 56
--       return New(gregorianDay, gregorianMonth, bsYear)
-+       var bsMonth = 9                         //Jan 1 always fall in BS month Paush which is the 9th month
-+       var daysSinceJanFirstToEndOfBsMonth int //days calculated from 1st Jan till the end of the actual BS month,
-+                                               // we use this value to check if the gregorian Date is in the actual BS month
-+
-+       year := time.Date(gregorianYear, time.Month(gregorianMonth), gregorianDay, 0, 0, 0, 0, time.UTC)
-+       var gregorianDayOfYear = year.YearDay()
-+
-+       //get the BS day in Paush (month 9) of 1st January
-+       var dayOfFirstJanInPaush = calendardata[bsYear][0]
-+
-+       //check how many days are left of Paush
-+       daysSinceJanFirstToEndOfBsMonth = calendardata[bsYear][bsMonth] - dayOfFirstJanInPaush + 1
-+
-+       //If the gregorian day-of-year is smaller or equal to the sum of days between the 1st January and
-+       //the end of the actual BS month we found the correct nepali month.
-+       //Example:
-+       //The 4th February 2011 is the gregorianDayOfYear 35 (31 days of January + 4)
-+       //1st January 2011 is in the BS year 2067 and its the 17th day of Paush (9th month)
-+       //In 2067 Paush had 30days, This means (30-17+1=14) there are 14days between 1st January and end of Paush
-+       //(including 17th January)
-+       //The gregorianDayOfYear (35) is bigger than 14, so we check the next month
-+       //The next BS month (Mangh) has 29 days
-+       //29+14=43, this is bigger than gregorianDayOfYear(35) so, we found the correct nepali month
-+       for ; gregorianDayOfYear > daysSinceJanFirstToEndOfBsMonth; {
-+               bsMonth++
-+               if bsMonth > 12 {
-+                       bsMonth = 1
-+                       bsYear++
-+               }
-+               daysSinceJanFirstToEndOfBsMonth += calendardata[bsYear][bsMonth]
-+       }
-+
-+       return New(gregorianDay, bsMonth, bsYear)
- }
-\`\`\`
-
-and now? You guessed it! Run the tests:
-\`\`\`console
-=== RUN   TestCreateFromGregorian
-=== RUN   TestCreateFromGregorian/2068-04-01
-	assert.go:24: got '17' want '1'
-
-=== RUN   TestCreateFromGregorian/2068-01-01
-	assert.go:24: got '14' want '1'
-
-=== RUN   TestCreateFromGregorian/2037-11-28
-	assert.go:24: got '11' want '28'
-
-....
-\`\`\`
-
-Actually, while implementing the algorithm I've run the tests multiple times and found mistakes in mixed-up variable names and other rubbish. That's cool, the tests helped me to find the issues right away.
-
-But the tests still fail, I better get the day calculation correct.
-We know the correct BS month, and we know the days since 1st Jan till the end of this month. Subtracting the day-of-the-year of the gregorian calendar from the days since 1st Jan till the end of the correct BS month will give us the amount of days between the searched day and the end of the BS month. Subtracting that number from the amount of days in the BS month should bring us to the correct date.
-
-So many words to describe it, so little effort to write it in code:
-\`\`\`diff
--       return New(gregorianDay, bsMonth, bsYear)
-+       var bsDay = calendardata[bsYear][bsMonth] - (daysSinceJanFirstToEndOfBsMonth - gregorianDayOfYear)
-+
-+       return New(bsDay, bsMonth, bsYear)
-\`\`\`
-
-I hear you shouting: "Run the tests, run the tests!" Don't worry, I will:
-\`\`\`console
-=== RUN   TestCreateFromGregorian
-=== RUN   TestCreateFromGregorian/2068-04-01
-=== RUN   TestCreateFromGregorian/2068-01-01
-=== RUN   TestCreateFromGregorian/2037-11-28
-=== RUN   TestCreateFromGregorian/2038-09-17
-=== RUN   TestCreateFromGregorian/2040-09-17
-=== RUN   TestCreateFromGregorian/2040-09-18
-=== RUN   TestCreateFromGregorian/2041-09-17
-=== RUN   TestCreateFromGregorian/2041-09-18
-=== RUN   TestCreateFromGregorian/2068-09-01
-=== RUN   TestCreateFromGregorian/2068-08-29
-=== RUN   TestCreateFromGregorian/2068-09-20
-=== RUN   TestCreateFromGregorian/2077-08-30
-=== RUN   TestCreateFromGregorian/2077-09-16
-=== RUN   TestCreateFromGregorian/2074-09-16
-=== RUN   TestCreateFromGregorian/2077-09-17
-=== RUN   TestCreateFromGregorian/2077-09-01
-=== RUN   TestCreateFromGregorian/2076-11-17
-=== RUN   TestCreateFromGregorian/2076-11-18
-=== RUN   TestCreateFromGregorian/2075-11-16
-=== RUN   TestCreateFromGregorian/2076-02-01
-=== RUN   TestCreateFromGregorian/2076-02-32
-=== RUN   TestCreateFromGregorian/2076-03-01
---- PASS: TestCreateFromGregorian (0.00s)
-    --- PASS: TestCreateFromGregorian/2068-04-01 (0.00s)
-    --- PASS: TestCreateFromGregorian/2068-01-01 (0.00s)
-    --- PASS: TestCreateFromGregorian/2037-11-28 (0.00s)
-    --- PASS: TestCreateFromGregorian/2038-09-17 (0.00s)
-    --- PASS: TestCreateFromGregorian/2040-09-17 (0.00s)
-    --- PASS: TestCreateFromGregorian/2040-09-18 (0.00s)
-    --- PASS: TestCreateFromGregorian/2041-09-17 (0.00s)
-    --- PASS: TestCreateFromGregorian/2041-09-18 (0.00s)
-    --- PASS: TestCreateFromGregorian/2068-09-01 (0.00s)
-    --- PASS: TestCreateFromGregorian/2068-08-29 (0.00s)
-    --- PASS: TestCreateFromGregorian/2068-09-20 (0.00s)
-    --- PASS: TestCreateFromGregorian/2077-08-30 (0.00s)
-    --- PASS: TestCreateFromGregorian/2077-09-16 (0.00s)
-    --- PASS: TestCreateFromGregorian/2074-09-16 (0.00s)
-    --- PASS: TestCreateFromGregorian/2077-09-17 (0.00s)
-    --- PASS: TestCreateFromGregorian/2077-09-01 (0.00s)
-    --- PASS: TestCreateFromGregorian/2076-11-17 (0.00s)
-    --- PASS: TestCreateFromGregorian/2076-11-18 (0.00s)
-    --- PASS: TestCreateFromGregorian/2075-11-16 (0.00s)
-    --- PASS: TestCreateFromGregorian/2076-02-01 (0.00s)
-    --- PASS: TestCreateFromGregorian/2076-02-32 (0.00s)
-    --- PASS: TestCreateFromGregorian/2076-03-01 (0.00s)
-PASS
-ok  	NepaliCalendar/bsdate	0.002s
-\`\`\`
-
-The tests pass, job done! Commit it, push it and get yourself some [Chiya](https://www.youtube.com/watch?v=LO0k9rmKneI)!
-
-You can find all the changes of this post here: https://github.com/JankariTech/GoBikramSambat/pull/4/
-
-## conclusion
-TDD is easy: think about what you want to achieve, write tests for it and wildly hack code till your tests pass.
-
-An other big advantage is: I can refactor my code all I like and still be confident it works fine. Maybe I want to optimize the speed of the algorithm, maybe I don't like it altogether and come up with a better one, or I simply want to change variable names. I can do that all without fear of messing up the functionality, as long as my tests are passing I'm pretty sure the code reacts the same.
-`,"/src/assets/are_you_safe_enough_to_take_risks.md":`---
-title: Are you safe enough to take risk?
-authorName: Artur Neumann
-authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800.jpg
-authorLink: https://github.com/individual-it
-createdAt: Oct 23, 2019
-tags: startup, git, documents, organizing
-banner: https://www.gannett-cdn.com/-mm-/c46c1e89ec02b505b89f6d0dbc3e82c81eb08243/c=0-0-3863-2182/local/-/media/2017/05/24/IAGroup/DesMoines/636312225086507546-GettyImages-120636972.jpg
----
-
-Company values are great, but if they are only saved away in a document they are useless. The values need to be saved in peoples heads and hearts. To achieve that, we discuss them on a regular basis.
-Today we had a special guest to lead the discussion: Paurakh Sharma Humagain. He is the first programmer JankariTech ever employed, and even though he left the company a while ago, we stay in a good contact.
-
-For the discussion today he picked the value of \u201CTEAMWORK\u201D and explained how important it is to feel psychologically safe to perform well in a team.
-
-Only a member who feels safe in the team will leave the comfort zone to take on risks. E.g. Tackle a task with the possibility of failure. Taking those risks, helping each other through issues and failures without embarrassing others will take the team to new shores.
-
-A big "THANK YOU" to Paurakh for this new view on teamwork!
-
-## JankariTech Values
-### 1. Honesty
-To maintain long term relationships and reach our long term goals, we speak the truth while respecting other people's feelings. We act in accordance with our words.
-### 2. Trust
-Trust is the basis of good relationships, but trust is hard to build and easily destroyed. That\u2019s why we work hard to earn and maintain the trust of our colleagues, customers and suppliers. We trust that every team-member works towards the benefit of the whole team and the company.
-### 3. Forgiveness
-We recognize that nobody is perfect, we ask for forgiveness for our own mistakes and forgive others their mistakes.
-### 4. Equity
-All staff are given the opportunity to reach their full potential.
-### 5. Teamwork
-We need each other to be successful, so we work together using and respecting everybody's uniqueness.
-### 6. Quality
-We are committed to deliver only high quality work to our customers.
-### 7. Transparency
-Relevant information is shared between staff and management in a timely manner.
-### 8. Joy
-We should do what we enjoy and enjoy what we do.
-`,"/src/assets/codeceptJs.md":`---
-title: CodeceptJs: Setup & BDD
-authorName: Hari Bhandari
-authorAvatar: https://avatars.githubusercontent.com/u/34328907?v=4
-authorLink: https://github.com/HariBhandari07
-createdAt: June 2, 2020
-tags: k6, load, performance, testing
-banner: https://www.comakeit.com/blog/wp-content/uploads/2020/05/Embracing-CodeceptJS-01-scaled.jpg
----
-
-CodeceptJS is a modern end to end testing framework. In this tutorial we will setup BDD end-to-end testing using CodeceptJS along with Puppeteer.
-
-## Requirements:
-1. \`npm\`
-2. An app to write tests to: If you already have an app you can use that OR
- you can just clone this basic todo app https://github.com/taniarascia/react-hooks and follow along
-
-    If you cloned the above app please browse inside the cloned directory and run the following commands to set it up:
-
-a. \`npm install\`
-
-b. \`npm run start\`
-
-## CodeceptJS Setup
-Browse inside your project directory
-1. Install CodeceptJS with Puppeteer
-
-    \`npm install codeceptjs puppeteer --save-dev\`
-
-2. Initialize CodeceptJS in the current directory by running:
-
-    \`npx codeceptjs init\`
-
-You will be asked some questions as shown below:
-![2](https://user-images.githubusercontent.com/34328907/80667879-04605f00-8ac0-11ea-9c2c-40f5ddf3180c.png)
-
-When asked to select helpers choose \`Puppeteer\` but in other cases take the default (i.e. hit \`Enter\`).
-![1](https://user-images.githubusercontent.com/34328907/82856381-8dd34780-9f2d-11ea-9c47-7c9fe7a0fd55.png)
-
-3. The above initialization of codeceptjs will create some files:
-- \`codecept.conf.js\` : main configuration file
-- \`_test.js\`
-- \`jsconfig.json\`
-- \`steps.d.ts\`
-- \`steps_file.js\`
-- \`output\`: a directory that will contain screenshot of failed tests
-
-  We only need \`condecept.conf.js\` as it is the main configuration file. The rest of the files are not needed so you can delete them.
-
-4. We can enable Gherkin for the current project by running:
-
-    \`npx codeceptjs gherkin:init\`
-
-    It will add a gherkin section to the  \`codecept.conf.js\` file and create directories for features and step definitions.
-
-5. Now edit \`codecept.conf.js\` file according to your testing infrastructure so it looks similar to:
-
-    \`\`\`js
-    exports.config = {
-      output: './output', // screenshot directory and contains screenshot of failed tests
-      helpers: {
-        Puppeteer: {
-          url: 'http://localhost:3000', // host url
-          show: true,
-          windowSize: '1200x900'
-        }
-      },
-      gherkin: {
-        features: './features/*.feature',   // feature files location
-        steps: ['./step_definitions/steps.js']  // step definitions location
-      },
-      plugins: {
-        screenshotOnFail: { // if true take screenshot of failed scenarios
-          enabled: true
-        },
-        retryFailedStep: { // if true rerun failed tests
-          enabled: true
-        }
-      },
-      name: 'react-hooks' // name of the application folder
-    }
-    \`\`\`
-    <strong>Note</strong>: React applications by default run on port \`3000\`. So, if you cloned the application from \`Requirements\` section don't forget to include the port in \`url\` section of \`Puppeteer\` object.
-
-6. After you create a feature file and write some scenarios, to generate gherkin snippets run:
-
-    \`npx codeceptjs gherkin:snippets\`
-
-
-## Writing Tests with CodeceptJS
-1. Let's create a basic test scenario to add a user
-
-    File: \`features/basic.feature\`
-
-    \`\`\`gherkin
-    Feature: add user
-      As a user
-      I want to be able to create other users
-      So that different people can have individual data
-
-      Scenario: signup a user
-        Given the user has browsed to the homepage
-        When the user adds user with name "Hari Bhandari" and username "hari" using the webUI
-        Then user with name "Hari Bhandari" and username "hari" should be listed on users table
-    \`\`\`
-
-2. After you wrote some scenarios, to generate gherkin snippets run:
-
-    \`npx codeceptjs gherkin:snippets\`
-
-    Now edit the generated step definitions so that it looks like:
-
-    File: \`step_definitions/steps.js\`
-
-    \`\`\`js
-    const { I } = inject();
-
-    Given('the user has browsed to the homepage', () => I.amOnPage('/'));
-
-    When('the user adds user with name {string} and username {string} using the webUI', (name, username) => {
-        I.waitForVisible("//input[@name='name']");
-        I.fillField("name", name)
-        I.fillField("username", username)
-        I.click("//button[contains(text(),'Add new user')]")
-    });
-
-    Then('user with name {string} and username {string} should be listed on users table', (name, username) => {
-        I.see(name);
-        I.see(username);
-    });
-    \`\`\`
-    In CodeceptJS tests are written as a sequence of actions performed by an actor. So, the \`I\` object is an actor, an abstraction for a testing user. The \`I\` is also a proxy object for the currently enabled Helper(Puppeteer).
-
-    So basically in the above step definitions, \`I\` browse to the homepage(http://localhost:3000), wait until the \`name\` input field is visible, fill the fields, click on the \`Add new user\` button and check if the user I added is listed on the \`View users\` table.
-
-3. To run the test and see step-by step output use --steps option:
-
-    \`npx codeceptjs run --steps\`
-
-    To see not only the business steps but the actual performed steps use the --debug flag:
-
-    \`npx codeceptjs run --debug\`
-
-    By using the \`debug\` flag you can see the execution of step definitions and it is very useful for debugging purposes.
-
-## Page object
-A page object is basically a wrapper around an HTML page, or a fragment of the page that provides an access to the state of the underlying page/fragment. A page object provides a separation between the test code and the locators and makes our code more DRY.
-
-If an application has different pages (login, admin, etc.) you should use a page object. Even though our example app doesn't have different pages we are going to create a page object.
-
-To get more ideas about page objects and page objects in CodeceptJS check the following links:
-
-- https://github.com/SeleniumHQ/selenium/wiki/PageObjects
-- https://codecept.io/pageobjects/
-
-
-CodeceptJS can generate a sample template for a page object with the command:
-
-\`npx codeceptjs gpo\`
-
-![3](https://user-images.githubusercontent.com/34328907/82879880-511f4480-9f5d-11ea-9ddf-0b29067d7b3e.png)
-
-In the above screenshot, I am creating a page object with the name \`dashboardPage.js\`
-
-Now, include the page object section in your config file. \`codecept.conf.js\` should now look similar to:
-\`\`\`
-exports.config = {
-  .....
-  include: {
-    Page: './pages/dashboardPage.js'  // page object location
-  },
-  .....
-}
-\`\`\`
-
-Edit \`pages/dashboardPage.js\` so that it looks like:
-
-\`\`\`js
-const { I } = inject();
-
-module.exports = {
-  elements: {
-    addNewUserButton: '//button[contains(text(),"Add new user")]',
-    name: String('name'),
-    username: String('username')
-  },
-  addUser(name, username) {
-    I.waitForVisible(this.elements.addNewUserButton);
-    I.fillField(this.elements.name, name)
-    I.fillField(this.elements.username, username)
-    I.click(this.elements.addNewUserButton)
-  }
-}
-\`\`\`
-
-CodeceptJS provides flexible strategies for locating elements. Here, I have used \`xpath\` for \`Add new user\` button and semantic locator(name) for \`name\` and \`username\`.
-
-Edit the \`When\` step in \`step_definitions/steps.js\` to include the pageObject's function
-
-File:  \`step_definitions/steps.js\`
-
-\`\`\`js
-....
-const dashboard = require('../pages/dashboardPage');
-....
-
-When('the user adds user with name {string} and username {string} using the webUI', (name, username) => {
-    dashboard.addUser(name, username)
-});
-...
-\`\`\`
-
-Now, run your test again with \`npx codeceptjs run --steps\`
-
-In this way we have set up BDD end-to-end testing using CodeceptJS. Happy Testing.
-`,"/src/assets/dockerSelenium.md":`---
-title: How to use selenium in docker?
-authorName: Hari Bhandari
-authorAvatar: https://avatars.githubusercontent.com/u/34328907?v=4
-authorLink: https://github.com/HariBhandari07
-createdAt: April 23, 2020
-tags: docker, selenium, automation
-banner: https://miro.medium.com/max/1074/1*jLET2Lxo6m_9_Wv4EgQubA.png
----
-
-## What is docker?
-![not_working](https://user-images.githubusercontent.com/34328907/78120341-7b56f900-7429-11ea-9b3f-1a5e17b813da.png)
-
-Can you recall how many times you face an issue where code runs in another developer's machine but doesn't work on yours? Docker
-at a very basic level resolves this issue of an application working on one platform and not working on some other platform.
-
-Docker is a tool which is used to automate the deployment of applications in lightweight containers so that applications can
-work efficiently in different environments. It does this by virtualizing the operating system of the computer on which it is
-installed and running. A docker container is basically a software package that consists of all the dependencies required to run an
-application.
-
-
-## Why docker?
-Let\u2019s say you have three different nodejs applications that you plan to host on a single server.
-
-Each of these applications makes use of a different version of nodejs and mongodb, as well as the associated libraries and dependencies, which differ from one application to another.
-
-Now, we cannot host all three applications on the same machine as different versions of nodejs and other dependencies are required.
-
-We can solve this problem either by having three different machines, or a single machine, which is powerful enough to host and run three virtual machines on it.
-
-But both solutions are quite cumbersome. In this case, docker is an efficient and cost-effective solution to this problem. With docker, we are able to run all the three apps in a separate container with its own dependencies and libraries, all within a single machine. Containers are completely isolated environments that can have their own processes, services, and network interfaces just like virtual machines except they all share the same OS kernel.
-
-![Screenshot from 2020-04-01 15-48-54](https://user-images.githubusercontent.com/34328907/78125190-6336a800-7430-11ea-91f6-644ca63d9e54.png)
-
-## Docker Installation
-Follow the installation instructions given in https://docs.docker.com/install/ to install docker according to your operating system. But, I suggest you use Linux, preferably Ubuntu for this blog/tutorial as later we will use a docker network command that works only on Linux.
-
-And follow docker post-install instructions given usually at the end of the "installation instructions" page to create a docker group.
-
-## Selenium
-
-Usually, for running tests using selenium we download \`selenium standalone server JAR\` file and \`chrome driver\` and start selenium server with a command which usually looks like:
-
-\`java -jar selenium-server-standalone-<selenium version>.jar -port <port-no>\`
-
-Now, let's suppose we want to run tests with different browsers or various browser versions. Here, we have to install all the browsers and the versions we want to test on our development environment. We also need to find the corresponding selenium and the webdriver version for it. Ever tried to install multiple versions of the same browser on your machine?
-
-In this case too, docker comes to the rescue.
-
-Selenium provides Docker images out of the box to test with one or several browsers. The images spawn a Selenium server and a browser underneath. It can work with different browsers.
-
-Now to run selenium using docker we just need to run [selenium/standalone-chrome](https://hub.docker.com/r/selenium/standalone-chrome) or [selenium/standalone-firefox](https://hub.docker.com/r/selenium/standalone-firefox) as:
-
-\`docker run -d -v /dev/shm:/dev/shm selenium/standalone-chrome-debug\`
-
-Here
-- \`-d\` runs the container in the background (detached)
-- \`-v /dev/shm:/dev/shm\` adds a volume mount to use the host\u2019s shared memory. There is no requirement for a volume mount but it is recommended.
-
-Once you run the command, Docker will download the selenium image and run the container straight away (port: \`4444\`).
-
-## Networking using the host network
-When the docker container is running it has its own \`localhost\` which is relative to its container and it has no awareness of \`localhost\` running on the host OS. Because of this, we cannot access the selenium container at \`localhost:4444\`. Also, the selenium container won't be able to access the apps running on \`localhost\` of the host OS.
-
-How do we solve this problem?
-
-The answer is simple - we use docker option \`--network="host"\` in \`docker run\` command. If we use the \`host\` network mode for a container, that container\u2019s network stack is not isolated from the docker host, and the container does not get its own IP-address allocated. Now, the selenium container will be available on port 4444 on the \`localhost\`.
-
-Now, the \`docker run\` command should basically look like:
-
-\`docker run -d --network="host" -v /dev/shm:/dev/shm selenium/standalone-chrome-debug\`
-
-                        OR
-
-\`docker run -d --network host -v /dev/shm:/dev/shm selenium/standalone-chrome-debug\`
-
-The host networking driver only works on Linux hosts, and is not supported on Docker Desktop for Mac, Docker Desktop for Windows, or Docker EE for Windows Server.
-
-## Run test from the docker host, using selenium within a docker container
-Requirements:
-1. chrome
-2. nodejs and yarn
-3. linux (to use \`--network="host"\` in \`docker run\` command)
-
-Clone this basic todo app: https://github.com/HariBhandari07/todo-with-tests
-This is a single page todo app with basic acceptance tests
-
-1. Install the necessary dependencies using the following command inside the project directory:
-
-\`yarn install\`
-
-2. Start the development server at \`localhost:3000\` using command:
-
-\`yarn start\`
-
-3. Run selenium in docker with
-
-\`docker run -d --network="host" --name selenium -v /dev/shm:/dev/shm selenium/standalone-chrome-debug\`
-
-4. Run the acceptance tests using command:
-
-\`yarn acceptance-tests tests/acceptance/features/login.feature\`
-
-The full script to run the acceptance tests is specified in \`scripts\` object of \`package.json\` file inside the project's root directory.
-
-The above commands run our test at \`localhost:3000\`.
-
-After you run the above command, you can see the tests running on the selenium docker container by using VNC.
-
-If you are on Ubuntu:
-
-- open \`Remmina\` (Remmina is a Remote Desktop Client and comes installed with Ubuntu)
-
-- choose \`VNC\` and enter \`localhost\` on the address bar
-
-- enter \`secret\` as the password
-
-![reminna](https://user-images.githubusercontent.com/34328907/79425650-ba687b00-7fe1-11ea-8b76-9d1100cc05c7.png)
-
-Now, you should see the test running on VNC
-
-![ezgif com-video-to-gif](https://user-images.githubusercontent.com/34328907/79431517-47afcd80-7fea-11ea-8b83-0b7d729eb1e6.gif)
-`,"/src/assets/jest-puppeteer.md":`---
-title: Testing with Jest and Puppeteer
-authorName: Talank Baral
-authorAvatar: https://www.jankaritech.com/images/2021/12/29/p1110976-crop-col-800.jpg
-authorLink: https://github.com/Talank
-createdAt: Jul 22, 2020
-tags: testing, javascript, jest, puppeteer
-banner: https://res.cloudinary.com/practicaldev/image/fetch/s--sXh42dKN--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/i/raxyo382jgx8tvfpnxc4.png
----
-
-"In Jest, there is truth" -William Shakespeare.
-
-By using Jest, you will know the truth about your application. The \`Jest\` is a javascript testing tool that is installed via NPM or Yarn and run via the command line. It is a great testing library and many react team members are involved building it, so it happens to work very well for testing react applications. Jest is built on top of Jasmine and Mocha but some additional features like snapshot testing and parallel test execution are provided by Jest. It also comes with built-in mocking and assertion abilities.
-
-Puppeteer is a Node library that is used for browser automation. Puppeteer provides a high-level API to control the browser. It can work with Chrome, Chromium or Firefox. By default this library runs the browser in headless mode, but it can be also configured to run Chrome or Chromium fully (non-headless).
-
-## Installation And Requirements
-This guide is based on Ubuntu 18.04. Some commands will be different if you have another OS installed on your computer. Before getting started with Jest, You need to have \`npm\` and an app for which you will be writing tests.
-
-If your app is not yet ready for testing then you can just clone this basic [todo app](https://github.com/Talank/todo-react) and follow along.
-
-### Jest Versions
-Jest is the test runner library for creating, executing, and structuring tests. Jest CLI is a tool that you use from the command line to run and provide configuration options to jest. It configures jest based on whatever argument you give while running jest. The version is important because jest is a dynamic library and different versions of jest might work differently. While writing this blog, I am using jest version \`24.9.0\`. So, some features might be different if you are using some other version.
-
-### Jest installation and Running Tests
-You can install the latest version of jest from NPM using
-\`\`\`
-npm i jest --save-dev
-\`\`\`
-
-Now, its time to configure the NPM script for running a test from the command line. For this, open your \`package.json\` and add the \`test\` script as follows:
-\`\`\`
-"scripts": {
-    "test": "jest"
-  },
-\`\`\`
-
-Tests are run by using the Jest CLI (typing \`jest\` followed by arguments in the command line).
-
-For example, in the [todo app](https://github.com/Talank/todo-react) in my github, you can run the test with the command \`npm run test\` since I have added \`"test": "jest"\` in the script of my \`package.json\`
-
-With the above-mentioned way, jest can be configured within your \`package.json\`. That is the easy way for jest configuration. Alternatively, you can also use the jest configuration file for which you should create a \`jest.config.js\` file and include that file in the command to run the test. For example, your package.json scripts section should include
-\`\`\`
-"scripts": {
-    "test": "jest --config ./jest.config.js"
-  },
-\`\`\`
-And, in the root path alongside the package.json, your \`jest.config.js\` should contain following configurations
-\`\`\`
-module.exports = {
-  verbose: true,
-  roots: [
-    "./__tests__"
-  ]
-}
-\`\`\`
-By using the jest configuration file, you have many other options as well. You can find the details about that in the [jest documentation](https://jestjs.io/docs/en/configuration). However, in this blog, I will focus on configuring jest using the \`package.json\`
-
-### Install Puppeteer
-Use the following command to install puppeteer in your project.
-\`\`\`
-npm i puppeteer --save-dev
-\`\`\`
-Puppeteer will download the latest version of chrome. If you need to work with firefox then you need to install the \`puppeteer-firefox\` library. Refer to [Puppeteer for Firefox](https://www.npmjs.com/package/puppeteer-firefox) in the npmjs website for further details.
-
-By the end of the installation of jest and puppeteer, you should have the following dependencies in the \`devDependencies\` section of your \`package.json\`.
-\`\`\`
-"devDependencies": {
-  "jest": "^24.9.0",
-  "puppeteer": "^4.0.1"
-}
-\`\`\`
-
-### Creating Test Files
-The jest command runs the test files inside \`__tests__\` folder or it will runs any files with \`.spec.js\` or \`.test.js\` in their filename. So, you have to write your test in a file that ends with \`.spec.js\` or \`test.js\`. Or you can simply put all your tests inside the \`__tests__\` folder.
-
-### Jest Globals
-There are a variety of jest Globals but we will mainly need 2 important globals called \`describe\` and \`it\`. The table below tells about these two globals in more detail.
-
-| | it | describe |
-|---|---|---|
-| AKA | Tests | Test Suite |
-| Syntax | it(name, fn) | describe(name, fn) |
-| Description | \`it()\` global is a method in which you pass a function as an argument, that function is executed as a block of tests by the test runner. You describe your test logic inside \`it()\` block. | \`describe\` is an optional method for grouping any number of \`it()\` or test statements. \`describe()\` block contains related it blocks. |
-
-In addition to \`it()\` and \`describe()\` methods, you might need the following methods to start testing with jest.
-- afterAll(fn, timeout)
-- afterEach(fn, timeout)
-- beforeAll(fn, timeout)
-- beforeEach(fn, timeout)
-
-These functions are executed before and after the test scenarios. You can define these functions inside the \`describe()\` method to make it applicable for all tests in the scope of that particular \`describe()\` method.
-
-## Demo:
-Here I have added a test for adding a task in my react ToDo app.
-\`\`\`
-const puppeteer = require('puppeteer');
-
-describe('Todo React', () => {
-  let browser
-  let page
-
-  beforeAll(async () => {
-      browser = await puppeteer.launch()
-  })
-
-  afterEach(async () => {
-      await page.close()
-    })
-
-  afterAll(async () => {
-    await browser.close()
-  })
-
-  describe('add task to the list', () => {
-    beforeEach(async () => {
-      page = await browser.newPage()
-      await page.goto('http://localhost:3000')
-    })
-
-    it('should be possible to add task to the list', async () => {
-      const taskInputField = await page.$x('//input[@placeholder="Enter task"]')
-      const taskToAdd = "New Task"
-      await taskInputField[0].click()
-      await taskInputField[0].type(taskToAdd)
-
-      await page.keyboard.press('Enter')
-
-      const lists = await page.$x("//div[@class='list']/p/input");
-
-      let toDo;
-
-      for( let list of lists ) {
-        toDo = await page.evaluate(el => el.getAttribute("value"), list);
-      }
-
-      expect(toDo).toBe(taskToAdd)
-    })
-  })
-})
-\`\`\`
-
-### Explanation of Demo
-In the above demo, I first imported the puppeteer library. And in before scenario, I launched the browser in headless mode. Before all the scenarios inside the first describe block, the browser is launched only once. And before each scenario, a new tab is opened in incognito mode. Similarly, after each scenario, the tab is closed and when all the scenarios are executed, the browser is closed.
-
-The browser is launched in headless mode by default. However, if you want to launch the browser in non-headless mode then you can provide the browser launch option in \`puppeteer.launch()\`. For example:
-\`\`\`
-browser = await puppeteer.launch({headless:false})
-\`\`\`
-
-In Jest, there are plenty of functions to simulate UI activities. For example, in the above demo, you can see \`click()\` for clicking in an element, \`type()\` for typing, etc.
-
-Similarly, for assert operation, you can use \`expect()\`. Many other matcher functions can be used with expect() such as \`.toContain(item)\` , \`toBeTruthy()\` etc. You can find more of these \`jest matchers\` in the [jest documentation](https://jestjs.io/docs/en/expect).
-
-### Gherkin with Jest
-In Jest, you do not have to write a feature file for your test cases. If you need to write features in a separate file then you can use [jest-cucumber](https://github.com/bencompton/jest-cucumber) library. By using this library, you can replace \`describe\` and \`it\` blocks by \`Given\`, \`When\`, and \`Then\` step definitions. The step definitions are linked with the respective steps in the feature files.
-
-However, I would prefer \`Codecept.js\` or \`nightwatch.js\` instead of \`jest\` if I need to use features of \`Cucumber.js\` while testing my application. Because, with jest-cucumber, you need to specify which feature file is linked with a particular step definition file. While Codecept.js or nightwatch.js, you can write the step definition of a \`given\` step in one file and the \`when\` step of the same scenario in some other file. You might lose this kind of freedom if you are using jest-cucumber.
-
-That's it for now. If you want to learn more about jest and it's commands, you can refer to [jestjs.io](https://jestjs.io/docs/en/api)
-
-Hope you enjoy jesting.
-ThankYou!
-`,"/src/assets/nightwatchSetup.md":`---
-title: Setup Nightwatch and run your first test
-authorName: Talank Baral
-authorAvatar: https://www.jankaritech.com/images/2021/12/29/p1110976-crop-col-800.jpg
-authorLink: https://github.com/Talank
-createdAt: Feb 18, 2020
-tags: testing, javascript, nightwatch, selenium
-banner: https://nightwatchjs.org/img/banner.png
----
-
-\`Nightwatch.js\` is an open-source automated testing framework that aims at providing complete E2E (end to end) solutions to automate testing with \`Selenium Javascript\` for web-based applications, browser applications, and websites. It is written in \`Node.js\` and uses the \`W3C WebDriver API\` (formerly Selenium WebDriver) for interacting with various browsers.
-
-## Installation And Requirements
-This guide is based on Ubuntu 18.04. Some commands will be different if you have another OS installed on your computer. Also, we will be following the BDD approach in this blog. So, if you want to learn more about BDD first then please read our blog on [Demonstrating BDD (Behavior-driven development) in Go](https://dev.to/jankaritech/demonstrating-bdd-behavior-driven-development-in-go-1eci). Before getting started with Nightwatch we need to have the following installed on our computer.
-
-### 1. Node.js:
-- To install Node.js:
-\`\`\`
-sudo apt install nodejs
-\`\`\`
-- To verify the successful installation of nodejs and to check its version use the following command
-\`\`\`
-nodejs -v
-\`\`\`
-
-### 2. Node Package Manager(npm):
-The nodejs package contains both the node and npm binaries. So, npm is also installed when you run the command to install nodejs. However, to verify that npm was also successfully installed, you can check the version of npm by running the command
-\`\`\`
-npm -v
-\`\`\`
-
-### 3. Java:
-We need java to run the Selenium server which automates our browser. If your machine does not have java installed then install it using the following command
-\`\`\`
-sudo apt install default-jdk
-\`\`\`
-If you want to learn more about how to install Java, then you can follow this [link](https://linuxize.com/post/install-java-on-ubuntu-18-04/).
-
-### 4.Selenium Server:
-[Download](https://selenium.dev/downloads/) the latest stable version of the Selenium standalone server JAR file.
-
-### 5.Chrome Driver:
-Lastly, [download](https://chromedriver.chromium.org/) the \`latest stable version\` of \`Chrome Driver\`.
-
-Once you have downloaded \`Chrome Driver\`, you need to unzip it by running the following command:
-\`\`\`
-unzip chromedriver_linux64.zip
-\`\`\`
-Once you have unzipped it, you need to move the chromedriver(shared library) and place it inside the <u>same folder</u> where you have placed the Selenium standalone server file.
-
-## Setting up Nightwatch.js
-Make a configuration file and name it \`nightwatch.conf.js\` inside the root directory of your project and inside the configuration file add the following content.
-\`\`\`js
-module.exports = {
-    src_folders: ['test'],
-    test_settings: {
-        default: {
-            selenium_host: '127.0.0.1',
-            launch_url: 'http://localhost:3000',
-            globals: {},
-            desiredCapabilities: {
-                browserName: 'chrome',
-                javascriptEnabled: true,
-                chromeOptions: {
-                    args: ['disable-gpu'],
-                    w3c: false
-                }
-            }
-        }
-    }
-}
-\`\`\`
-You can also make a \`nightwatch.json\` configuration file as an alternative to the nightwatch.conf.js file. Please refer to the [nightwatch website](https://nightwatchjs.org/gettingstarted/configuration/#nightwatch-json) to learn how to write the nightwatch.json configuration file.
-
-You need to define \`src_folders\` and \`launch_url\` inside the nightwatch.conf.js where \`src_folders\` is used to define the folder in which you have written your tests and \`launch_url\` is used to define the index URL of your project which is used as the main URL to load and run your tests.
-
-\`src_folders\` and \`launch_url\` will be different for different projects.
-\`\`\`
-src_folders: YOUR_SOURCE_FOLDER_FOR_TEST_FILES
-launch_url: URL_OF_YOUR_WEBSITE
-\`\`\`
-Run this command to install nightwatch and cucumber into your project dependencies which allow us to run automated tests using the gherkin language.
-\`\`\`
-yarn add --dev nightwatch-api nightwatch cucumber
-\`\`\`
-Or,
-\`\`\`
-npm add --dev nightwatch-api nightwatch cucumber
-\`\`\`
-Now the following information should be added inside package.json in devDependencies. But do remember that these versions may also vary depending upon the releases of these dependencies.
-\`\`\`
- "devDependencies": {
-    "cucumber": "^6.0.5",
-    "nightwatch": "^1.3.3",
-    "nightwatch-api": "^3.0.1"
- }
- \`\`\`
-You can use npm or yarn, whichever you prefer. However, if you want to use yarn but do not have it already installed then, you can install it by downloading the \`.deb\` file from the [yarn releases](https://github.com/yarnpkg/yarn/releases) and run the following command:
- \`\`\`
- sudo dpkg -i yarn[VERSION].deb
- \`\`\`
-The .deb file might not be compatible with your machine. It only works for debian based linux distros.
-
-For the rest of the setup process, I am using \`npm\`.
-
-Now, create \`index.js\` inside \`[root_dir]/test/acceptance\` and add
-\`\`\`
-const { setDefaultTimeout, After, Before } = require('cucumber')
-const { createSession, closeSession, startWebDriver, stopWebDriver } = require('nightwatch-api')
-
-setDefaultTimeout(60000)
-
-Before(async () => {
-    await startWebDriver();
-    await createSession();
-})
-
-After(async () => {
-    await closeSession();
-    await stopWebDriver();
-})
-\`\`\`
-Here, we are using before() and after() hooks which will allow us to execute the code inside them before and after each test scenario.
-
-Before starting the Selenium server you need to change your directory to where the selenium and chromedriver files are. After doing that you can now start the Selenium server with the command:
-\`\`\`
-java -jar selenium-server-standalone-3.141.59.jar -port 4444
-\`\`\`
-
-## Testing your Project
-Create feature files inside \`[root_dir]/test/acceptance/features\` with an extension \`.feature\` for each feature of your project. Follow the [Gherkin reference](https://cucumber.io/docs/gherkin/reference/) to write your feature file.
-
-We do not need to use gherkin language but I am using it because this is the same language that user and domain experts use while they talk about the domain. Also, it is easy to understand for both technical and non-technical personnel involved in the project.
-
-A feature file written using gherkin language looks like this.
-
-\`\`\`
-Feature: search using transliterated Latin characters
-  As a user
-  I want to find the literature by specifying Latin (English-style) script equivalent to the Nepali
-  So I can find the literature without needing to use a Nepali keyboard
-
-  Background:
-    Given the user has browsed to the homepage
-
-  Scenario: user should be able to search in English characters using transliterated text
-    When the user enters the English characters "munaa madan"
-    And the user selects the transliterated text
-    And the user searches for the literature
-    Then the search result should be displayed
-\`\`\`
-
-Next, create a javascript file for the step-definitions inside \`[root_dir]/test/acceptance/stepDefinitions\` for each feature. For each step in the scenario of your feature file, a matching step definition is executed while running the test. Step definitions for the above search feature will look something like this.
-
-\`\`\`
-const { Given, When, Then } = require('cucumber');
-const { client } = require('nightwatch-api');
-const searchField = "//input[contains(@class, 'SearchBox')]";
-const searchButton = "//button[contains(@class,'SearchBox__Button')]";
-const searchResultFoundContainer = '.sk-hits';
-const searchResultNotFoundContainer = '.sk-no-hits';
-
-const userEntersTheEnglishOrNepaliCharacters = (searchTerm) => client.useXpath()
-	.waitForElementVisible(searchField)
-	.setValue(searchField, searchTerm)
-	.useCss();
-
-const userSearchesForTheLiterature = () => client.useXpath()
-	.click(searchButton)
-	.useCss();
-
-Given('the user has entered the English/Nepali characters {string}', userEntersTheEnglishOrNepaliCharacters);
-When('the user enters the English/Nepali characters {string}', userEntersTheEnglishOrNepaliCharacters);
-
-Given('the user has searched for the literature', userSearchesForTheLiterature);
-When('the user searches for the literature', userSearchesForTheLiterature);
-
-Then('the search result should be displayed', () => client.waitForElementVisible(searchResultFoundContainer)
-	.waitForElementNotPresent(searchResultNotFoundContainer));
-
-Then('the search result should not be displayed', () => client.waitForElementVisible(searchResultNotFoundContainer)
-	.waitForElementNotPresent(searchResultFoundContainer));
-\`\`\`
-
-Finally, run the test from the root directory using the command:
-\`\`\`
-cucumber-js --require test/acceptance/index.js --require test/acceptance/stepDefinitions test/acceptance/features/[YOUR_FEATURE_FILE].feature
-\`\`\`
-
-Does the above command look long? I am sorry, but you have to use that command every time you run the test. But only the name of \`your feature file\` is different, while running different tests, the rest is all the same. So, let's assign an easy short name for the rest and put it inside the scripts section of \`package.json\`. I called it \`test-e2e\` and inside the scripts of \`package.json\`, I added
-\`\`\`
-"test-e2e" : "cucumber-js --require test/acceptance/index.js --require test/acceptance/stepDefinitions"
-\`\`\`
-Now, the above long command is shortened to
-\`\`\`
-npm run test-e2e test/acceptance/features/[YOUR_FEATURE_FILE].feature
-\`\`\`
-That's it. Now, you are ready to run test suites for your project. You can refer to [Nightwatch](https://nightwatchjs.org/) to read more about Nightwatch and its commands.
-
-Hope you enjoy testing.
-Thank You!
-`,"/src/assets/organizeYourCompanyTheGeekWay.md":`---
-title: Organize your company the geek-way
-authorName: Artur Neumann
-authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800.jpg
-authorLink: https://github.com/individual-it
-createdAt: Oct 23, 2019
-tags: startup, git, documents, organizing
-banner: https://res.cloudinary.com/practicaldev/image/fetch/s--Kf8L6kUm--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://thepracticaldev.s3.amazonaws.com/i/l8hil2nyr3jz5ujpljyp.jpg
----
-
-## Organize your company the geek-way
-
-How do you organize your documents in your department / company / startup ? Your policies, your minutes of meetings, your contracts, etc.?
-
-Do you have a trillion Word documents that you share with your colleagues using your /.\\*[cloud|share|box|sync|].\\*/ tool? That is good, but how do you know what is the latest version of a document? What is the version you are currently working with a colleague on? How do you track changes? You send a document to a group to review, several people edit some lines, others just type comments into the document, some send it back to you by email, others put it in a file share. And how do you know who agreed on the changes? Pure chaos!
-
-In our company we are using GIT as the solution for all that!
-
-Advantages:
-- easy to track every change of a document
-- discussions are archived and can be retraced at any time
-- no accidental changes can be made because the master branch is protected
-- changes need to be approved before they become "official"
-- the approvals can be traced back
-
-OK, OK, there are also disadvantages:
-- more difficult workflow, specially for non-techies => get them a GIT UI
-- binary files (.odt, .docx, etc.) are hard to diff => use Markdown wherever possible
-- limited formatting, no easy spreadsheet calculations
-
-But overall it works pretty good for us. And here are the rules we are working with:
-
-### Commandments
-
-#### 1. use GIT
-For official work (proposals, policy, procedures, etc.) use GIT  where-ever possible.
-We like to use git as it makes it easy to know where the latest documents are and to track all changes.
-
-#### 2. use text only
-Where-ever possible use "text only" formats.
-So use [Markup](https://guides.github.com/features/mastering-markdown/)
-instead of DOC.
-
-This makes it easier to compare files and track changes.
-
-#### 3. master is law
-  - Documents in the "master" branch are considered "official"
-  - All changes to master need to be reviewed. The master branch is
-  protected against direct edits, a change can only be merged after a review.
-  Ask for reviews if you want to get changes into master.
-  **An approved review is considered the same as a signature**
-  - Do not have "Work in Process" in master
-
-#### 4. use branches, create Pull Requests
-Work in branches and make Pull Requests to the master branch. **You can work together with others in a branch if you need.**
-
-#### 5. write good commit messages
-The commit message has to explain what you have changed, in just a few words
-
-#### 6. discuss Pull Requests
-If you are asked for your opinion on a change or a review is requested use the GitHub comment function to express yourself.
-
-#### 7. use GitHub Issues function for ToDos
-The Issue function is great to write ToDos, assign work and discuss & track
-progress.
-
-#### 8. use Labels
-The labels in GitHub should be used to tag different work staged.
-
-**For Pull Requests**
-- *Work in Process*
-- *Help Needed*
-- *To Review*
-
-**For Issues**
-- *priority:critical*
-- *priority:high*
-- *priority:normal*
-- *priority:low*
-
-#### 9. review and approve
-If asked for a review, check the changes carefully and if you are happy
-with them approve the Pull Request, other-wise request a change and/or
-write a comment.
-
-**An approved review is considered the same as a signature.**
-
-As collaborators cannot review their own work, making a commit, starting a new Pull Request and asking for a review is considered as their own signature for that particular document.
-
-This does not matter a great deal for a lot of work but occasionally might be very important. E.g. If you review&approve the Minutes of a meeting on GitHub it is the same as if you would approve and sign them during the next meeting.
-
-#### 10. use squash & rebase
-When merging a branch into master choose between "Squash & merge" and "Rebase & merge"
-- If there are a lot of small changes choose "Squash" to put all changes into one big commit
-- If there are changes where you care about the author use "Rebase"
-- do not use "Merge & commit" as this creates unnecessary commit messages
-
-### Workflow
-
-#### If you want to make a change
-1. pull the current master branch
-2. create a new branch
-3. work in your branch
-4. when finished or when you need input/help from someone else
-  - create a Pull Request
-  - tag your Pull Request
-  - ask for comments
-5. when your work is ready to be reviewed ask for reviews and mark the
-Pull Request as "To Review"
-6. after everybody who needs to give their approval has done so, merge your work into the master branch
-7. delete your work-branch
-
-#### If you are asked for a review
-1. check the changes carefully
-2. comment, ask for changes and/or approve
-`,"/src/assets/robotBdd.md":`---
-title: Setup and run tests with robot framework
-authorName: Jasmine Baral
-authorAvatar: https://avatars.githubusercontent.com/u/40829116?v=4
-authorLink: https://github.com/jasson99/
-createdAt: April 6, 2020
-tags: testing, bdd, robotframework, python
-banner: https://blog.testproject.io/wp-content/uploads/2020/06/23-06-A.jpg
----
-## Robot Framework
-
-Robot framework is a generic open source test automation framework for acceptance testing. It is a keyword-driven testing framework that uses tabular test data syntax. It has easy syntax, using human-readable keywords. This framework is independent of operating system and application. The core framework is implemented using Python and also runs on Jython(JVM) and IronPython(.NET). This framework provides support for external libraries, tools which are open source and can be used for test automation.
-
-The test data is in simple tabular format. When started, the robot framework processes the data, executes the test cases, and generates logs and reports.
-
- ### Installation and setup of robot framework
-1. Preconditions:
-   * Python installation
-   * Pip
-   * make virtual environment
-
-2. Installing robot framework with pip
-    * \`python -m pip install robotframework\`
-    * \`python3 -m pip install  robotframework\`
-
-   After the successful installation, you should be able to execute the created runner scripts (robot and rebot) with --version option and get both Robot Framework and interpreter versions as a result:
-
-        $ robot --version
-        Robot Framework 3.0 (Python 2.7.10 on linux2)
-
-        $ rebot --version
-        Rebot 3.0 (Python 2.7.10 on linux2)
-
-3. Upgrade[optional]
-   * \`pip install --upgrade robotframework\`
-
-4. Using robot and rebot scripts
-
-   Starting from Robot Framework 3.0, tests are executed using the robot script and results post-processed with the rebot script:
-
-        robot tests.robot
-        rebot output.xml
-5. Installing required libraries
-    * \`pip install requests robotframework-selenium2library robotframework-pageobjectlibrary\`
-
-6. Installation of IDE
-    * Install pycharm or any preferred IDE
-
-7. Import required libraries in the IDE. In pycharm,
-    * To add the project interpreter, Go to \`Files\` => \`Settings\` => \`Project: <your_Project>\` => \`Project Interpreter\` and then add the python version available through your virtual environment.
-    * Also add the required libraries such as : \`Selenium\`, \`robotframework-seleniumLibrary\`, \`robotframework-pageObjectLibrary\`.
-
-8. Make a robot file inside a test folder eg: \`robotBDDExample/test/login.robot\`
-
-### Test Data Sections
-The data used is defined in different sections in robot framework. These sections are often called tables.
-
- 1. Settings: This section is used for importing test libraries, resource files and variable files.
- 2. Variables: The variables that can be used in other parts of the test data are defined in this section.
- 3. Test Cases: In this section, test cases are created from available keywords.
- 4. Tasks: In this section, tasks are created using available keywords.
- 5. Keywords: User keywords are created using existing lower-level keywords.
- 6. Comments: This section contains additional comments or data which are ignored by robot framework.
-
- These sections are recognized by their header row. The recommended header format is \`*** Settings ***\`. However, the header is case-insensitive, the surrounding spaces are optional, and the number of asterisk characters can vary as long as there is one asterisk at the beginning.
-
-Robot framework test cases can be written in space separated plain text format. In a space separated format, two or more spaces are used as a separator between different data items.
-
-\`\`\`
-*** Settings ***
-Documentation    Example using the space separated plain text format.
-Library          OperatingSystem
-
-*** Variables ***
-\${MESSAGE}       Hello, i am robo!
-
-*** Test Cases ***
-My Test
-    [Documentation]    Example robot test
-    Log    \${MESSAGE}
-    My keyword    /lorem.txt
-
-Another Test
-    Should Be Equal    \${MESSAGE}    Hello, i am robo!
-
-*** Keywords ***
-My Keyword
-    [Arguments]    \${path}
-    File Should Exist    \${path}
-\`\`\`
-
-In order to make the separations more clear, pipe separated format can be used.
-
-\`\`\`
-| *** Settings ***   |
-| Documentation      | Example using the pipe separated plain text format.
-| Library            | OperatingSystem
-
-| *** Variables ***  |
-| \${MESSAGE}         | Hello, i am robo!
-
-| *** Test Cases *** |                 |                   |
-| My Test            | [Documentation] | Example robo test |
-|                    | Log             | \${MESSAGE}        |
-|                    | My Keyword      | /lorem.txt        |
-| Another Test       | Should Be Equal | \${MESSAGE}        | Hello, i am robo!
-
-| *** Keywords ***   |                    |         |
-| My Keyword         | [Arguments]        | \${path} |
-|                    | File Should Exist  | \${path} |
-\`\`\`
-
-From the above examples, it is clear that the test cases are created in the test case tables from the available keywords. Keywords can be imported from the test libraries or resource files, or created in the keyword table of the test case itself.
-
-Let us now see a practical example where a user logs in.
-
-\`\`\`
-*** Settings ***
-Documentation       Test for user login
-Library             SeleniumLibrary
-Library             PageObjectLibrary
-
-
-Test Setup           Open test browser
-Test Teardown        Close all test browsers
-
-*** Variables ***
-\${SERVER}           localhost:8080
-\${ROOT}             http://\${SERVER}/myApp
-\${BROWSER}          chrome
-\${SELENIUM_URL}     http://localhost:4444
-\${PLATFORM}         linux
-\${VERSION}          latest
-\${USERNAME}         admin
-\${PASSWORD}         password
-\${username_field}   id=usernametext
-\${password_field}   id=passwordtext
-\${signIn_Button}    id=submit
-\${LOGIN_URL}        http://\${SERVER}/myApp/login
-\${WELCOME_URL}      http://\${SERVER}/myApp/welcome.html
-
-*** Test Cases ***
-Valid Login
-  [Documentation]       Test valid login
-  Open Login Page
-  Input Username        \${USERNAME}
-  Input Password        \${PASSWORD}
-  Submit Credentials
-  Welcome page is open
-
-*** Keywords ***
-Open test browser
-   Open browser  \${ROOT}  \${BROWSER}
-    ...  remote_url=\${SELENIUM_URL}/wd/hub
-    ...  desired_capabilities=browserName:\${BROWSER},version:\${VERSION},platform:\${PLATFORM}
-
-Open Login Page
-   Go To        \${LOGIN_URL}
-   Login Page Should Be Open
-
-Login Page Should Be Open
-   Title Should Be    Login Page
-
-Input Username
-   [Arguments]    \${USERNAME}
-   Input Text    \${username_field}    \${USERNAME}
-
-Input Password
-   [Arguments]    \${PASSWORD}
-   Input Text    \${password_field}    \${PASSWORD}
-
-Submit Credentials
-   Click Button    \${signIn_Button}
-
-Welcome Page Is Open
-   Location Should Be    \${WELCOME_URL}
-   Title Should Be    Welcome Page
-
-Close all test browsers
-    Close all browsers
-\`\`\`
-Now, let us understand the above example. The test case has a scenario for valid user login. This test case uses a number of keywords, which can be either the predefined keywords imported from the libraries, or can be self created using available low-level keywords. In the keyword section, all the self created keywords are defined using available keywords. For example: 'Input Username' is a user created keyword which uses an existing keyword 'Input Text'. Similarly, 'Welcome Page Is Open' is a user created keyword which is created using pre-existing keywords 'Location Should Be' and 'Title Should Be'.
-
-The keyword 'Title Should Be' uses the page title such as 'Welcome Page' and 'Login Page' as in example above. These page titles are defined in the page object classes, which will be discussed below.
-
-### Using page objects in robot framework
-Page objects provide an additional layer of abstraction for test case creation. Using page objects results in easier maintenance of the tests.
-
-PageObjectLibrary is a Robot Framework keyword library that makes it possible to use the Page Object pattern when testing web pages with the keyword based approach of robot framework. Page Object classes are implemented as standard robot keyword libraries. When you use PageObjectLibrary keywords to go to a page or assert you are on a specific page, the keyword will automatically load the library for that page and put it at the front of the library search order, guaranteeing that the Page Object keywords are available to your test case.
-
-#### Writing a page object class
-Page Objects are simple python classes that inherit from \`PageObjectLibrary.PageObject\`. There are only a couple of requirements for the class:
-
- 1. The class should define a variable named \`PAGE_TITLE\`
- 2. The class should define a variable named \`PAGE_URL\` which is a URI relative to the site root.
-
-By inheriting from \`PageObjectLibrary.PageObject\`, methods have access to the following special object attributes:
-
-
-1. \`self.selib\` : a reference to an instance of \`SeleniumLibrary\`. With this you can call any of the SeleniumLibrary keywords via their python method names (eg: \`self.selib.input_text\`)
-
-2. \`self.browser\` : a reference to the webdriver object created when a browser was opened by \`SeleniumLibrary\`. With this you can bypass SeleniumLibrary and directly call all of the functions provided by the core selenium library.
-
-3. \`self.locator\` : a wrapper around the \`_locators dictionary\` of the page. This dictionary can contain all of the locators used by the Page Object keywords. self.locators adds the ability to access the locators with dot notation rather than the slightly more verbose dictionary syntax (eg: \`self.locator.username\` vs \`self._locators["username"]\`.
-
-The above tests can be easy to understand when written in gherkin format. Let's get familiar with gherkin syntax and how the test can be written in this format.
-
-### Gherkin Syntax
-Gherkin format focuses on describing a feature to be implemented using the "Given", "When", "Then", "And", and "But" keywords. Writing requirements in this manner makes tests easier to understand, specially for non-technical people, as natural language is used to describe the test cases. Moreover, this format focuses on a clear separation between test-setup, test-actions, and test-results.
-
-Given < some initial state or preconditions >
-When < the action taken which triggers the scenario >
-Then < the expected outcome >
-
-for e.g.
-\`\`\`
-*** Settings ***
-Documentation       Test for user login
-Library             SeleniumLibrary
-Library             PageObjectLibrary
-
-Test Setup           Open test browser
-Test Teardown        Close all test browsers
-
-*** Variables ***
-\${SERVER}           localhost:8080
-\${ROOT}             http://\${SERVER}/myApp
-\${BROWSER}          chrome
-\${SELENIUM_URL}     http://localhost:4444
-\${PLATFORM}         linux
-\${VERSION}          latest
-\${USERNAME}         admin
-\${PASSWORD}         password
-\${LOGIN_URL}        http://\${SERVER}/myApp/login
-\${WELCOME_URL}      http://\${SERVER}/myApp/welcome.html
-
-*** Test Cases ***
-Valid Login
-  [Documentation]                                     Test valid login
-  Given the user has browsed to the login page
-  When the user enters the username                   \${USERNAME}
-  And the user enters the password                    \${PASSWORD}
-  And the user submits the credentials
-  Then the current page should be  FilesPage
-\`\`\`
- For clear separations and abstraction layers, we make context files for the test steps. Let us now create a \`contexts\` directory where all the context files are located. For the login step, let us create a login context file \`contexts/LoginContext.py\`.
-
- Note that: Prefixes \`Given\`, \`When\`, \`Then\`, \`And\` and \`But\` are dropped when matching keywords are searched, if no match with the full name is found. This works for both user keywords and library keywords
-
-\`\`\`py
-from robot.api.deco import keyword
-
-from LoginPage import LoginPage
-
-
-class LoginContext:
-    loginPage = LoginPage()
-
-    @keyword(name="the user enters the username '\${USERNAME}'")
-    def enter_username(self, username):
-        self.loginPage.enter_username(username)
-
-    @keyword(name="the user enters the password '\${PASSWORD}'")
-    def enter_password(self, password):
-        self.loginPage.enter_password(password)
-
-    @keyword(name="the user has browsed to the login page")
-    def browse_to_login_page(self):
-        self.loginPage.browse_to_page()
-
-    @keyword(name="the user submits the credentials")
-    def submit_credentials(self):
-        self.loginPage.submit_credentials()
-\`\`\`
-The login context file uses the methods of the login page. So, we must write every needed functions in the login page. Let us create a page objects directory 'page_objects' and then a login page 'page_objects/LoginPage'.
-
-\`\`\`py
-from PageObjectLibrary import PageObject, PageObjectLibraryKeywords
-
-
-class LoginPage(PageObject):
-    PAGE_URL = "/myApp/login"
-    PAGE_TITLE = "myApp"
-
-    _locators = {
-        "username": "id=user",
-        "password": "id=password",
-        "form_id": "login",
-        "login_form_xpath": "//form[@name='%s']"
-    }
-
-    keywords = PageObjectLibraryKeywords()
-
-    def browse_to_page(self):
-        self.keywords.go_to_page('LoginPage')
-
-    def enter_username(self, username):
-        """Type the given text into the username field """
-        self.selib.input_text(self.locator.username, username)
-
-    def enter_password(self, password):
-        """Type the given text into the password field"""
-        self.selib.input_text(self.locator.password, password)
-
-    def submit_credentials(self):
-        """Clicks the submit button on the form
-        For illustrative purposes, this uses the low level selenium
-        functions for submitting the form
-        """
-        form = self.driver.find_element_by_xpath( self.locator.login_form_xpath % self.locator.form_id)
-        form.submit()
-\`\`\`
-We create all other context files and page objects as per requirements. All the methods and elements related to a certain page are included in a specific page object and its own context file. This makes tests easier to understand and maintain.
-
-FilesPage can be created in a similar manner as follows:
-
-\`\`\`PY
-from PageObjectLibrary import PageObject
-
-
-class FilesPage(PageObject):
-    PAGE_URL = "/index.php/apps/files/"
-    PAGE_TITLE = "Files - myApp"
-\`\`\`
-
-### Go to : https://github.com/JankariTech/robotBDDExample for example test cases.
-`,"/src/assets/scenarioOutline.md":`---
-title: Scenario Outline in a Gherkin Feature File
-authorName: Jasmine Baral
-authorAvatar: https://avatars.githubusercontent.com/u/40829116?v=4
-authorLink: https://github.com/jasson99/
-createdAt: Feb 20, 2020
-tags: testing, cucumber, gherkin, bdd
-banner: https://blog.testproject.io/wp-content/uploads/2019/11/Cucumber-Benefits-on-Skin-Feature.jpg
----
-
-As we are familiar with the basic gherkin syntax such as \`feature\`, \`scenario\`, \`background\`, \`given\`, \`when\` and \`then\` steps already, let us discuss about the \`Scenario Outline\` used in a gherkin feature file.
-
-### *Scenario Outline*
-
-Let us start with a very simple feature where the remaining candies should be calculated based on the total candies and the candies consumed. However, there can be different scenarios for the different combinations of total candies, consumed candies, and the remaining candies.
-
-\`\`\`gherkin
- Scenario: calculate remaining candies when all candies are consumed
-   Given I have 10 candies
-   When I eat 10 candies
-   Then I should have 0 candies remaining
-
-
- Scenario: calculate remaining candies when some candies are consumed
-   Given I have 60 candies
-   When I eat 23 candies
-   Then I should have 37 candies remaining
-
-
- Scenario: calculate remaining candies when no candies are consumed
-   Given I have 93 candies
-   When I eat 0 candies
-   Then I should have 93 candies remaining
-\`\`\`
-
-It can be very time consuming to write repetitive scenarios with different permutations of data values. It can also be difficult for the reader to understand many seperate but similar scenarios. This can be improved by using the \`scenario outline\` and its example table, thus combining similar scenarios with different combinations of similar data values into one Scenario Outline. A Scenario Outline is always followed by an example table: \`Examples\`. The example table in scenario outline is used to combine multiple similar scenarios into a single scenario in the feature file. It provides one set of data per scenario. Each new row of the example table is run as a different scenario. The data values in single row of data are passed to the step definition at the run time of a scenario.
-
-A scenario outline replaces variables with the value from the examples table. Each row in the examples table is considered to be a scenario.
-
-In the scenario outline, the data values do not need to be hard coded in the step definition. Rather the values are replaced with the name of the parameter <parameter_name> itself.
-
-In the above example of candies, if we observe closely, all three scenarios have the same statements, only the parameter value (total/consumed/remaining number of candies) is changing. This is where the significance of the scenario outline comes into the picture.
-
-When we define a scenario using a scenario outline, we can specify a single test scenario for all the similar scenarios and then provide an example table at the end of the test scenario. The test scenario is always specified by \`Scenario Outline\` and is always followed by a table : \`Examples\`. This scenario will thus be executed as many times as the number of data inputs (data rows) provided in the examples table
-
-\`\`\`gherkin
- Scenario Outline: calculate remaining candies
-   Given I have <total> candies
-   When I eat <eaten> candies
-   Then I should have <remaining> candies
-   Examples:
-     | total | eaten | remaining  |
-     | 10    | 10    | 0          |
-     | 60    | 23    | 37         |
-     | 93    | 0     | 93         |
-\`\`\`
-
-Now, let us continue with more realistic scenarios. The scenarios of user login with valid credentials (login for different valid users) can be implemented using Scenario Outline as follows:
-
-\`\`\`gherkin
- Scenario Outline: login with valid credentials
-   Given a user has been created with email "<email>" and password "<password>"
-   And the user has browsed to the login page
-   When the user enters email "<email>" and password "<password>" in the login form
-   And the user logs in
-   Then the user should be redirected to the homepage
-   Examples:
-     | email            | password     |
-     | user1@email.com  | firstpass    |
-     | second@email.com | password12   |
-     | test@gmail.com   | testpassword |
-\`\`\`
-
-Here, each row of the example table provides the email and password used in the given and when steps. Even if this scenario looks like a single scenario, it runs 3 times in this example with different email and password set in the step definition, one at a time. The first scenario takes the first row of email and password and completes the test (hopefully passed). Then the 2nd scenario takes the data in the second row independent of other data present in other rows. After this is completed, it's turn for the 3rd row of data sets.
-
-Let us be more clear. The above scenario outline consists of 3 similar scenarios which run uniquely with their own set of data. Let us see how it happens.
-
-The first row of data acts as first scenario and runs as :
-
-
-\`\`\`gherkin
-Given a user has been created with email "user1@email.com" and password "firstpass"
-And the user has browsed to the login page
-When the user enters email "user1@email.com" and password "firstpass" in the login form
-And the user logs in
-Then the user should be redirected to the homepage
-\`\`\`
-
-
-Similarly, the next two scenarios run as below respectively.
-
-\`\`\`gherkin
-Given a user has been created with email "second@email.com" and password "password12"
-And the user has browsed to the login page
-When the user enters email "second@email.com" and password "password12" in the login form
-And the user logs in
-Then the user should be redirected to the homepage
-\`\`\`
-
-\`\`\`gherkin
-Given a user has been created with email "test@gmail.com" and password "testpassword"
-And the user has browsed to the login page
-When the user enters email "test@gmail.com" and password "testpassword" in the login form
-And the user logs in
-Then the user should be redirected to the homepage
-\`\`\`
-
-To sum up, when there are cases where the scenarios are similar with same statements but with varying data values as parameters, it is advisable to use Scenario Outline with different sets of values provided through the examples table.
-`,"/src/assets/tablenodes.md":`---
-title: Datatables used in a Gherkin Feature File
-authorName: Jasmine Baral
-authorAvatar: https://avatars.githubusercontent.com/u/40829116?v=4
-authorLink: https://github.com/jasson99/
-createdAt: Feb 20, 2020
-tags: testing, cucumber, gherkin, bdd
-banner: https://3.bp.blogspot.com/-14nZ-MQ6sOc/WUAxMaWgd2I/AAAAAAAAERQ/a-7VBWr2FfQYuhx5vFNqeL_j504rNtruACLcB/s1600/cucumberDatable.jpg
----
-
-As we are familiar with the basic gherkin syntax such as \`feature\`, \`scenario\`, \`Scenario Outline\`, \`background\`, \`given\`, \`when\` and \`then\` steps already, let us discuss about the \`table\` or \`tablenodes\` used in the steps of a gherkin feature file.
-
-## Tables
-
-\`Tables\` or \`tablenodes\` or \`Datatables\` are used for specifying a larger data set as an argument in the steps of a scenario in a feature file. These tables are handy for passing a list of values to a step definition. The data tables are passed to the step definition of a specific step as its last argument. Let us understand with the help of an example below.
-
-#### A scenario for logging in without using a data table
-
-\`\`\`gherkin
- Scenario: login with valid credentials
-   Given a user has been created with email "user@email.com" and username "user" and password "password"
-   And the user has browsed to the login page
-   When the user enters email "user@email.com" and username "user" and password "password" in the login form
-   And the user logs in
-   Then the user should be redirected to the homepage
-\`\`\`
-
-There are cases where a large amount of data needs to be set in the steps. It can be done using a number of "ands" in the step text as shown in the example above. However, good practice would be to use data tables to provide the data.
-
-#### A scenario for logging in using a data table
-
- \`\`\`gherkin
-  Scenario: login with valid credentials
-    Given a user has been created with the following details:
-       | email          | username  | password |
-       | user@email.com | user      | password |
-    And the user has browsed to the login page
-    When the user enters the following details in the login form:
-       | email          | username  | password |
-       | user@email.com | user      | password |
-    And the user logs in
-    Then the user should be redirected to the homepage
-\`\`\`
-
-Please do not confuse data tables with the example table used in a scenario outline. Even if they look alike, they have completely different purposes. Please refer to this blog to learn more about the \`Scenario Outline\`: \`https://dev.to/jankaritech/scenario-outline-in-gherkin-feature-file-16jh\`
-
-### *Data tables*
-
-Unlike the examples table, a table node provides all of the data in the data table at once, in the specific step where the table is provided.
-
-Let us look at another example of a data table. To be more clear about its significance, let us first write a scenario without using a data table as below.
-
-\`\`\`gherkin
-Scenario: view and delete files
-  Given user "testuser" has been created
-  And user "testuser" has logged in
-  When the user browses to the files page
-  Then file "myCollegeProject" should be listed
-  And file "interviewQuestions" should be listed
-  And file "picnicCollections" should be listed
-  And file "presentation" should be listed
-  When the user deletes file "myCollegeProject"
-  And the user deletes file "interviewQuestions"
-  Then file "myCollegeProject" should not be listed
-  And file "interviewQuestions" should not be listed
-  But file "picnicCollection" should be listed
-  And file "presentation" should be listed
-\`\`\`
-
-When observed closely, we can see that the listing of several files, continuous deletion of several files, non-listing of deleted files and listing of non-deleted files has been written using several repetitive steps. The steps seem to be difficult to maintain this way. Moreover, more effort is required to understand the scenario when reading it. To improve this, we can use the data tables. The example below illustrates the use of data tables in the steps where multiple data are to be passed at once. For example, multiple files are to be listed, multiple files are to be deleted, and again multiple files are expected not to be listed and to be listed respectively.
-\`\`\`gherkin
- Scenario: view and delete files
-   Given user "testuser" has been created
-   And user "testuser" has logged in
-   When the user browses to the files page
-   Then the following files should be listed:
-      | files              |
-      | myCollegeProject   |
-      | interviewQuestions |
-      | picnicCollections  |
-      | presentation       |
-   When the user deletes the following files
-      | files              |
-      | myCollegeProject   |
-      | interviewQuestions |
-   Then the following files should not be listed:
-      | files              |
-      | myCollegeProject   |
-      | interviewQuestions |
-   But the following files should be listed:
-      | files              |
-      | picnicCollections  |
-      | presentation       |
-\`\`\`
-
-The data set provided using the data table should be hashed in the step definition of the particular steps in order to transform the cucumber data table into either an array of data or object.
-
- for example:
- In nightwatch, to transform a cucumber data table to an array, we use \`hashes\`
-\`\`\`js
- When('the user deletes the following files', (dataTable) => {
-  const filesToDelete = dataTable.hashes()
-  console.log(filesToDelete);
-  /* It returns :
-  [ {files: 'myCollegeProject'},
-    {files: 'interviewQuestions'} ]
-  */
-
-  for (const file in filesToDelete) {
-    this.delete(file)
-  }
-})
-\`\`\`
-Now, to transform a cucumber data table to an object, we use \`rowsHash\`. However, rowsHash can only be called on a data table where all rows have \`exactly two columns\`.
-
-for example:
-\`\`\`gherkin
-When the user sets the price for the following items
-   | book      | 500 |
-   | sharpener | 30  |
-   | pencil    | 15  |
-\`\`\`
-
-The step definition for this step can parse the data table using \`rowsHash\` as follows:
-
-\`\`\`js
-When('the user sets the price for the following items', (dataTable) => {
-  const priceOfItems = dataTable.rowsHash()
-  console.log(priceOfItems)
-    /* It returns :
-    { book : '500',
-      sharpener : '30',
-      pencil : '15' }
-    */
-})
-\`\`\`
-Let us see what happens if we use \`hashes\` for this example.
-\`\`\`js
-When('the user sets the price for the following items', (dataTable) => {
-  const priceOfItems = dataTable.hashes()
-  console.log(priceOfItems)
-   /* It returns :
-   [ { book : 'sharpener', '500' : '30' },
-     { book : 'pencil', '500' : '15'} ]
-   */
-})
-\`\`\`
-
-However, if we provide data in the steps as follows, then \`hashes\` can be used. for example:
-\`\`\`gherkin
-When the user sets the price for the following items
-   | item      | price |
-   | book      | 500   |
-   | sharpener | 30    |
-   | pencil    | 15    |
-\`\`\`
-\`\`\`js
-When('the user sets the price for the following items', (dataTable) => {
-  const priceOfItems = dataTable.hashes()
-  console.log(priceOfItems)
-   /* It returns :
-   [ { item : 'book', price : '500' },
-     { item : 'sharpener', price : '30' },
-     { item : 'pencil', price : '15'} ]
-   */
-})
-\`\`\`
-
-
- ### Combination
-It is also possible to combine data tables with a scenario outline as well when needed. Let us see an example below:
-\`\`\`gherkin
-Scenario Outline: User tries to signup with improper combination of password
-   Given the user has browsed to the signup page
-   When the user tries to signup entering the following details
-      | email           |  william@xyz.com   |
-      | password        | <Password>         |
-      | confirmPassword | <ConfirmPassword>  |
-   Then an error message "<validation>" should be shown above the "password" field
-   Examples:
-      | Password    | ConfirmPassword  | validation                         |
-      | 234567569   | 234567569        | This password is entirely numeric  |
-      | 123456789   | 123456789        | This password is too common.       |
-      | abcde       | abcde            | This password is too short.        |
-\`\`\`
-
-The values in the examples table get substituted into the steps which require the parameter values. The substitution takes place one row at a time. The values from the data table are passed to its step definition at once. For the above example, since there are 3 data rows in the \`examples table\`, this scenario runs thrice with a specific combination of data values as provided in the example table. Let us be clear about how the above example executes.
-
-In the first scenario, a set of data is used from the first row of the examples table, as below.
-
-\`\`\`gherkin
-Given the user has browsed to the signup page
-When the user tries to signup entering the following details
-    | email           | william@xyz.com    |
-    | password        | 234567569          |
-    | confirmPassword | 234567569          |
-Then an error message "This password is entirely numeric" should be shown above the "password" field
-\`\`\`
-
-For the step definition of when step, the data table is parsed as follows:
-
-\`\`\`js
-When('the user tries to signup entering the following details', (dataTable) => {
-const userDetails = dataTable.rowsHash()
-  /* It returns: {
-    email : 'william@xyz.com',
-    password : '234567569',
-    confirmPassword : '234567569'
-  } */
-
-  return client.setValue(emailField, userDetails['email'])
-    .setValue(passwordField, userDetails['password'])
-    .setValue(confirmPasswordField, userDetail['confirmPassword'])
-    .click(signupButton)
-})
-\`\`\`
-
-In the next run of the scenario, the next single row of data is used as follows.
-
-\`\`\`gherkin
-Given the user has browsed to the signup page
-When the user tries to signup entering the following details
-   | email           | william@xyz.com    |
-   | password        | 123456789          |
-   | confirmPassword | 123456789          |
-Then an error message "This password is too common" should be shown above the "password" field
-\`\`\`
-
-Similarly, the third run of the scenario uses the third row of the examples table as follows.
-
-\`\`\`gherkin
-Given the user has browsed to the signup page
-When the user tries to signup entering the following details
-   | email           | william@xyz.com    |
-   | password        | abcde              |
-   | confirmPassword | abcde              |
-Then an error message "This password is too short" should be shown above the "password" field
-\`\`\`
-`,"/src/assets/test_cafe_blog.md":`---
-title: E2E Testing using TestCafe
-authorName: Sagar Gurung
-authorAvatar: https://avatars.githubusercontent.com/u/46086950?v=4
-authorLink: https://github.com/SagarGi
-createdAt: Nov 30, 2022
-tags: test-cafe, testing, webUI-testing, javascript, automation
-banner: https://raw.githubusercontent.com/DevExpress/testcafe-gh-page-assets/master/src/images/testcafe-ogp-icon.png
----
-## Background
-
-Are you one of those who is still struggling to write your first End-to-End (E2E) test for your web application?
-
-So what may be the reasons that you are struggling?
-
-- difficult to set up test framework with your web application?
-- difficult to learn?
-- lengthy implementation of code?
-
-If the above points are exactly of your concern then \`test-cafe\` can be your go-to test automation framework for testing your web application.
-
-In this blog post, we will look into the concept of \`test-cafe\`, a modern solution to sort out E2E testing for your web application. At the end of this blog hopefully, you will be able to set up \`test-cafe\` for your web application and run your first end-to-end test.
-
-## Brief about TestCafe
-Let's start this blog with a brief understanding of \`test-cafe\`. It is an open-source test automation framework or tool built with Node Js. This framework basically supports two programming languages i.e Javascript and Typescript. So you are required to have at least the basics of Javascript to use this tool. [DevExpress](https://www.devexpress.com/) is in charge of managing TestCafe, which is made available under an open-source MIT license.
-
-## Why to use TestCafe?
-Before moving to installation and set-up, lets understand some points why to use \`test-cafe\`.
-
-- It is very easy to set up
-- No dependencies (with other libraries)
-- Writing tests is easy and with less code
-- Cross-browser testing is made easy
-- Free and Open Source
-
-*Note: I will be doing the whole setup with Ubuntu 20.04.3 LTS, but it will be similar for other OS too*
-
-## Prerequisites
-
-At first, we need \`Node JS\` installed into our system. You can download \`Node JS\` version 12 or above. [Download Node JS](https://nodejs.org/en/download/).
-
-## Installation and setup
-Now lets move into installing \`test-cafe\` which is really easy. Follow the following steps:
-
-- Create a folder \`E2EWithTestCafe\`.
-- Open the folder you created with a code editor. In my case I am using \`Visual Studio Code\`.
-- Create a \`package.json\` file with command \`npm init\` through command line. (using terminal)
-- Now use \`npm install testcafe\` command to install TestCafe.
-
-After this, your \`package.json\` file should contain \`dependencies\` as
-
-\`\`\`json
-// package.json file
-
-"dependencies": {
-"testcafe": "^2.1.0"
-}
-\`\`\`
-
-## What to test?
-
-For this blog, we will be writing an E2E test for this \`https://devexpress.github.io/testcafe/example\` website (provided by devexpress). You can go to this website and check what it looks like. We will automate a simple form submit scenario using \`test-cafe\`
-
-##  Writing Test
-
-At first inside \`E2EWithTestCafe\` project, make your file structure as
-
-\`\`\`
-\u{1F4E6}tests
-\u2517 \u{1F4C2}e2e
-  \u2523 \u{1F4C2}fixtures
-    \u2517 \u{1F4DC}firste2etest.js
-
-\`\`\`
-And then at the root level of your project which is \`E2EWithTestCafe\` create a file \`.testcaferc.json\`. This file includes all the configuration required to test the application.
-
-The configuration should look like this:
-\`\`\`json
-// testcaferc.json
-
-{
-  "browsers": "chrome", // means your test will be automated in chrome browser
-  "baseUrl": "https://devexpress.github.io/testcafe/example/", // URL for your web application to be tested or automated
-  "src": "tests/e2e/fixtures/firste2etest.js" // path to your test code to execute
-}
-
-\`\`\`
-
-I assume that you have checked \`https://devexpress.github.io/testcafe/example\` website. On that website, if we fill up the username and submit the form, it redirects us to another page saying thank you. So this will be our simple test case, and we will be automating it with \`test-cafe\`
-I have implemented the test code And it looks like this.
-
-\`\`\`js
-// firste2etest.js
-
-import { Selector, t } from "testcafe";
-fixture\`My First E2E test with test-cafe\`.page;
-
-const inputNameFieldSelector = Selector("#developer-name");
-const submitButtonSelector = Selector("#submit-button");
-const headingSelector = Selector("#article-header");
-
-test("Submitting a form should browse to thank you page", async (t) => {
-  const yourName = "JankariTech";
-  // fills name input field
-  await t.typeText(inputNameFieldSelector, yourName);
-  // clicks the submit button
-  await t.click(submitButtonSelector);
-
-  // check for the thankyou page after form has been submitted with name
-  const actualThankyouMessage = await headingSelector.innerText;
-  await t.expect("Thank you, " + yourName + "!").eql(actualThankyouMessage);
-});
-
-
-\`\`\`
-
-I will not be explaining the whole implementation but I have put comments on each action in the code. And probably the code is easy to understand which is exactly what \`test-cafe\` has aimed for.
-
-## Running Test
-
-Huh, now finally the time has come to run our test script and see it magically running. To run our test we need some adjustments in the \`package.json\` file. Put the test scripts as
-
-\`\`\`json
-// package.json file
-
- "scripts": {
-    "test": "testcafe"
-  },
-
-\`\`\`
-
-Now one final command needed to run our test i.e.
-
-\`\`\`bash
-npm run test
-\`\`\`
-
-With the above command being executed, you should see the browser (chrome) automating the actions that we have implemented. (submitting a form with a name that redirects to Thank You page)
-
-And your output in the console should look like this
-
-\`\`\`console
-\u276F npm run test
-
-> e2ewithtestcafe@1.0.0 test
-> testcafe
-
- Running tests in:
- - Chrome 105.0.0.0 / Ubuntu 20.04
-
- My First E2E test with test-cafe
- \u2713 Submitting a form should browse to thank you page
-
-
- 1 passed (8s)
-
-\`\`\`
-
-## Conclusion
-
-So far I have used \`test-cafe\`, it is definitely a go-to automation tool for modern web End-To-End testing.
-You can use it on your own project quickly with ease and less code. Also, it has many more features to explore. You can start exploring [test-cafe](https://testcafe.io/) now.
-`,"/src/assets/tusProtocol.md":`---
-title: Resumable file upload with TUS protocol
-authorName: Swoichha Adhikari
-authorAvatar: https://harunmudak.com/wp-content/uploads/2020/12/girl-cartoon-characters-3-724x1024.jpg
-authorLink: https://github.com/swoichha
-createdAt: Feb 10, 2022
-tags: tus, upload, resumable
-banner: https://tus.io/assets/img/tus1--no-io.png
----
-
-\`\`\`
-"Work half done is still some work done"
-\`\`\`
-
-We all have faced problems while uploading a file. Whether it is an error with a file exceeding the maximum upload size or failing to write a file to disk.
-
-Here, in this blog, we are going to talk about partial upload failing. We all have been to that place where we have uploaded a huge file and have been waiting for minutes if not hours to finish the uploading process. Finally, the moment comes when our upload is about to be completed but then some error occurs, and our upload fails.
-
-Now, you have to go through all the trouble to re-upload it, which is irritating as well as time-consuming.
-
-There might be various factors for such failure. Such as a weak internet connection, your browser might crash, etc.
-So, what can we do? Should we re-upload the whole file? But then again the re-uploading process will take the same amount of time and effort that it required earlier. If only there was a way that we could continue from where the last failure occurred.
-
-Well, we are in luck because the answer is simple, "TUS upload".
-
-## What is TUS?
-
-TUS stands for Transloadit Upload Server.
-
-"TUS is a protocol for resumable uploads built on HTTP. It offers simple, cheap, and reusable stacks for clients and servers. It supports any programming-language, any platform, and any network."
-
-## Why TUS?
-
-So, the question may arise, Why do we need TUS? The thing about TUS is that it allows us to continue uploading our file from where we left off even after it has failed previously.
-
-For example, We are trying to upload a file of 100 GB and due to some interruption, we were able to upload only 60 GB of the data. Normally, we would re-upload the file which means we will be uploading the 60 GB of the same data that was already uploaded in a prior upload. But, using TUS we won't need to upload that 60 GB we will be uploading the remaining 40 GB of data.
-
-## Pros
-
-- It is built upon HTTP and supports any programming-language, any platform, and any network.
-- The main advantage of using TUS is that you can start uploading files from the point where you left off last time.
-- It is open source. So, anyone can use and contribute to it.
-- It allows the user the ability to pause and resume the upload anytime they want(even after multiple days).
-- It can handle increasing numbers of connections and uploads.
-
-To see a demo of how it works you can visit the [Resumable File Upload Demo](https://tus.io/demo.html) and for real-life implementation of TUS resumable upload protocol have a look at [this](https://tus.io/implementations.html).
-
-This brings us to the end of this blog. In the next blog, we will look into specifications for the TUS protocol and its HTTP methods.
 `,"/src/assets/BDDWithFlutter/BDDWithFlutter.md":`---
 title: BDD (Behavior Driven Development) with Flutter
 authorName: Artur Neumann
@@ -3385,7 +3349,7 @@ authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800
 authorLink: https://github.com/individual-it
 createdAt: June 3, 2020
 tags: bdd, testing, flutter, dart
-banner: https://www.concettolabs.com/blog/wp-content/uploads/2019/05/flutter-desktop-app.png
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
 seriesTitle: Behaviour Driven Development
 episode: 2
 ---
@@ -3893,7 +3857,7 @@ authorAvatar: https://avatars.githubusercontent.com/u/52366632?v=4
 authorLink: https://github.com/saw-jan
 createdAt: Aug 24, 2021
 tags: pactjs, testing, javascript
-banner: https://res.cloudinary.com/practicaldev/image/fetch/s--rgD9-Oz9--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/tj9nr0r3wfgchgbpa7d5.png
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/ContractTestingWithPact/images/header.png
 ---
 Contract testing is a software testing technique which is used to test the integration points and interfaces between different software applications. The main goal of contract testing is to test each application in isolation and ensure that they are compatible with a shared contract.
 
@@ -4841,7 +4805,7 @@ authorAvatar: https://avatars.githubusercontent.com/u/34328907?v=4
 authorLink: https://github.com/HariBhandari07
 createdAt: May 5, 2021
 tags: k6, load, performance, testing
-banner: https://buddy.works/_next/image?url=%2Fguides%2Fcovers%2Fk6-loadtesting%2Fk6-loadtesting-cover.png&w=1920&q=75
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
 seriesTitle: Performance Testing with k6
 episode: 1
 ---
@@ -4939,7 +4903,7 @@ authorAvatar: https://avatars.githubusercontent.com/u/34328907?v=4
 authorLink: https://github.com/HariBhandari07
 createdAt: May 5, 2021
 tags: k6, load, performance, testing
-banner: https://buddy.works/_next/image?url=%2Fguides%2Fcovers%2Fk6-loadtesting%2Fk6-loadtesting-cover.png&w=1920&q=75
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
 seriesTitle: Performance Testing with k6
 episode: 2
 ---
@@ -5067,7 +5031,7 @@ authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800
 authorLink: https://github.com/individual-it
 createdAt: Oct 30, 2019
 tags: testing, performance, python, infrastructure
-banner: https://images.theconversation.com/files/362378/original/file-20201008-20-g8soll.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=926&fit=clip
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
 seriesTitle: Performance Testing with Locust
 episode: 1
 ---
@@ -5136,7 +5100,7 @@ authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800
 authorLink: https://github.com/individual-it
 createdAt: Oct 30, 2019
 tags: testing, performance, python, infrastructure
-banner: https://images.theconversation.com/files/362378/original/file-20201008-20-g8soll.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=926&
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
 seriesTitle: Performance Testing with Locust
 episode: 2
 ---
@@ -5300,7 +5264,7 @@ authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800
 authorLink: https://github.com/individual-it
 createdAt: Nov 27, 2019
 tags: qa, performance, python, automation
-banner: https://images.theconversation.com/files/362378/original/file-20201008-20-g8soll.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=926&
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
 seriesTitle: Performance Testing with Locust
 episode: 3
 ---
@@ -5551,7 +5515,7 @@ authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800
 authorLink: https://github.com/individual-it
 createdAt: Jan 14, 2020
 tags: qa, performance, python, testing
-banner: https://images.theconversation.com/files/362378/original/file-20201008-20-g8soll.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=926&
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
 seriesTitle: Performance Testing with Locust
 episode: 4
 ---
@@ -6197,7 +6161,7 @@ authorAvatar: https://avatars.githubusercontent.com/u/39373750?v=4
 authorLink: https://github.com/kiranparajuli589/
 createdAt: Feb 2, 2021
 tags: vue, jest, unit, testing
-banner: https://res.cloudinary.com/practicaldev/image/fetch/s--hbLLUL0d--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/i/9amku7k0nxfs6vx9p8tk.jpg
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
 seriesTitle: E2E Testing with Cypress
 episode: 1
 ---
@@ -6379,7 +6343,7 @@ authorAvatar: https://avatars.githubusercontent.com/u/39373750?v=4
 authorLink: https://github.com/kiranparajuli589/
 createdAt: Feb 2, 2021
 tags: testing, javascript, automation, cypress
-banner: https://res.cloudinary.com/practicaldev/image/fetch/s--wD1Dk_BA--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/i/472k6ih1n456rtvn4xb3.png
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
 seriesTitle: E2E Testing with Cypress
 episode: 2
 ---
@@ -6848,7 +6812,7 @@ authorAvatar: https://avatars.githubusercontent.com/u/39373750?v=4
 authorLink: https://github.com/kiranparajuli589/
 createdAt: Feb 2, 2021
 tags: testing, javaScript, cypress, automation
-banner: https://res.cloudinary.com/practicaldev/image/fetch/s--Tj6xmJa8--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/i/u5fey1ilksgx8uz6qdrk.jpg
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
 seriesTitle: E2E Testing with Cypress
 episode: 3
 ---
@@ -7008,7 +6972,7 @@ authorAvatar: https://avatars.githubusercontent.com/u/39373750?v=4
 authorLink: https://github.com/kiranparajuli589/
 createdAt: Feb 2, 2021
 tags: cypress, cucumber, gherkin, testing
-banner: https://www.sipios.com/hubfs/e2E-tuto-full-mage-white.png
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
 seriesTitle: E2E Testing with Cypress
 episode: 4
 ---
@@ -7221,7 +7185,7 @@ authorAvatar: https://avatars.githubusercontent.com/u/39373750?v=4
 authorLink: https://github.com/kiranparajuli589/
 createdAt: Feb 2, 2021
 tags: cypress, selenium, comparison, testing
-banner: https://codoid.com/wp-content/uploads/2021/09/Selenium-vs-Cypress-Listing-out-the-Key-Differences-Blog.jpg
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
 seriesTitle: E2E Testing with Cypress
 episode: 5
 ---
@@ -7300,7 +7264,7 @@ authorAvatar: https://avatars.githubusercontent.com/u/39373750?v=4
 authorLink: https://github.com/kiranparajuli589/
 createdAt: Feb 2, 2021
 tags: cypress, gherkin, parallelization, testing
-banner: https://thumbs.dreamstime.com/b/parallel-railway-lines-sunny-day-photo-bridge-above-white-balance-adjustment-parallel-lines-railway-115036060.jpg
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
 seriesTitle: E2E Testing with Cypress
 episode: 6
 ---
@@ -7368,7 +7332,7 @@ authorAvatar: https://avatars.githubusercontent.com/u/41365307?v=4
 authorLink: https://github.com/sakshamgurung
 createdAt: Dec 6, 2021
 tags: socket, java, http, video
-banner: https://images.unsplash.com/photo-1478098711619-5ab0b478d6e6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTV8fHxlbnwwfHx8fA%3D%3D&w=1000&q=80
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
 ---
 
 This blog explains the basic understanding of HTTP, client-server model, network layers, and some socket programming in Java.
@@ -7699,7 +7663,7 @@ authorAvatar: https://avatars.githubusercontent.com/u/39373750?v=4
 authorLink: https://github.com/kiranparajuli589/
 createdAt: May 6, 2022
 tags: vue, jest, unit, testing
-banner: https://brightsec.com/wp-content/uploads/2022/07/Blog-How-Vue-Unit-Testing-Works-and-4-Critical-Best-Practices.png
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
 ---
 ## Unit Testing Vue Components
 
@@ -7981,7 +7945,7 @@ authorAvatar: https://www.jankaritech.com/images/2021/12/29/p1110976-crop-col-80
 authorLink: https://github.com/Talank
 createdAt: Nov 3, 2021
 tags: visual-testing, testing, javascript
-banner: https://mtr-design.com/storage/var/images/news/the-perfect-e2e-testing-tool-pt2/testing-with-nightwatchjs.jpg
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
 seriesTitle: Visual Regression Testing (VRT)
 episode: 2
 ---
@@ -8092,7 +8056,7 @@ authorAvatar: https://www.jankaritech.com/images/2021/12/29/p1110976-crop-col-80
 authorLink: https://github.com/Talank
 createdAt: Nov 3, 2021
 tags: vrt, testing, image-processing
-banner: https://bs-uploads.toptal.io/blackfish-uploads/components/blog_post_page/content/cover_image_file/cover_image/690065/retina_1708x683_image_0-a3538a5354b21df65a923cabccf9e404-614ac96b7fda78df5593880bac65b1a1.png
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
 seriesTitle: Visual Regression Testing (VRT)
 episode: 1
 ---
@@ -8137,6 +8101,42 @@ Like Percy, Applitools is also a commercial platform that provides several funct
 To learn more about its visual AI algorithms, you can refer to [this documentation](https://applitools.com/applitools-ai-and-deep-learning/).
 
 I hope you get some basic ideas about VRT, its pros, cons, and shortcomings. In my next blog, I will show you how to start implementing VRT using \`nightwatch-vrt\`. Until then, happy coding.
+`,"/src/assets/are_you_safe_enough_to_take_risks/are_you_safe_enough_to_take_risks.md":`---
+title: Are you safe enough to take risk?
+authorName: Artur Neumann
+authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800.jpg
+authorLink: https://github.com/individual-it
+createdAt: Oct 23, 2019
+tags: startup, git, documents, organizing
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/assets/are_you_safe_enough_to_take_risks/are_you_safe_enough_to_take_risks.png
+---
+
+Company values are great, but if they are only saved away in a document they are useless. The values need to be saved in peoples heads and hearts. To achieve that, we discuss them on a regular basis.
+Today we had a special guest to lead the discussion: Paurakh Sharma Humagain. He is the first programmer JankariTech ever employed, and even though he left the company a while ago, we stay in a good contact.
+
+For the discussion today he picked the value of \u201CTEAMWORK\u201D and explained how important it is to feel psychologically safe to perform well in a team.
+
+Only a member who feels safe in the team will leave the comfort zone to take on risks. E.g. Tackle a task with the possibility of failure. Taking those risks, helping each other through issues and failures without embarrassing others will take the team to new shores.
+
+A big "THANK YOU" to Paurakh for this new view on teamwork!
+
+## JankariTech Values
+### 1. Honesty
+To maintain long term relationships and reach our long term goals, we speak the truth while respecting other people's feelings. We act in accordance with our words.
+### 2. Trust
+Trust is the basis of good relationships, but trust is hard to build and easily destroyed. That\u2019s why we work hard to earn and maintain the trust of our colleagues, customers and suppliers. We trust that every team-member works towards the benefit of the whole team and the company.
+### 3. Forgiveness
+We recognize that nobody is perfect, we ask for forgiveness for our own mistakes and forgive others their mistakes.
+### 4. Equity
+All staff are given the opportunity to reach their full potential.
+### 5. Teamwork
+We need each other to be successful, so we work together using and respecting everybody's uniqueness.
+### 6. Quality
+We are committed to deliver only high quality work to our customers.
+### 7. Transparency
+Relevant information is shared between staff and management in a timely manner.
+### 8. Joy
+We should do what we enjoy and enjoy what we do.
 `,"/src/assets/ocisWrapper/ocisWrapper.md":`---
 title: Automated Black-Box Tests for System Settings of a Microservice Application
 authorName: Artur Neumann
@@ -8186,4 +8186,4 @@ I will keep posting about interesting developments in this test automation area.
   * vue-router v4.1.6
   * (c) 2022 Eduardo San Martin Morote
   * @license MIT
-  */const Kn=typeof window!="undefined";function PA(e){return e.__esModule||e[Symbol.toStringTag]==="Module"}const Ie=Object.assign;function Ii(e,t){const n={};for(const a in t){const r=t[a];n[a]=Ot(r)?r.map(e):e(r)}return n}const Ra=()=>{},Ot=Array.isArray,UA=/\/$/,FA=e=>e.replace(UA,"");function Ai(e,t,n="/"){let a,r={},i="",s="";const o=t.indexOf("#");let l=t.indexOf("?");return o<l&&o>=0&&(l=-1),l>-1&&(a=t.slice(0,l),i=t.slice(l+1,o>-1?o:t.length),r=e(i)),o>-1&&(a=a||t.slice(0,o),s=t.slice(o,t.length)),a=HA(a!=null?a:t,n),{fullPath:a+(i&&"?")+i+s,path:a,query:r,hash:s}}function BA(e,t){const n=t.query?e(t.query):"";return t.path+(n&&"?")+n+(t.hash||"")}function pl(e,t){return!t||!e.toLowerCase().startsWith(t.toLowerCase())?e:e.slice(t.length)||"/"}function GA(e,t,n){const a=t.matched.length-1,r=n.matched.length-1;return a>-1&&a===r&&ia(t.matched[a],n.matched[r])&&mu(t.params,n.params)&&e(t.query)===e(n.query)&&t.hash===n.hash}function ia(e,t){return(e.aliasOf||e)===(t.aliasOf||t)}function mu(e,t){if(Object.keys(e).length!==Object.keys(t).length)return!1;for(const n in e)if(!YA(e[n],t[n]))return!1;return!0}function YA(e,t){return Ot(e)?ml(e,t):Ot(t)?ml(t,e):e===t}function ml(e,t){return Ot(t)?e.length===t.length&&e.every((n,a)=>n===t[a]):e.length===1&&e[0]===t}function HA(e,t){if(e.startsWith("/"))return e;if(!e)return t;const n=t.split("/"),a=e.split("/");let r=n.length-1,i,s;for(i=0;i<a.length;i++)if(s=a[i],s!==".")if(s==="..")r>1&&r--;else break;return n.slice(0,r).join("/")+"/"+a.slice(i-(i===a.length?1:0)).join("/")}var Fa;(function(e){e.pop="pop",e.push="push"})(Fa||(Fa={}));var Ca;(function(e){e.back="back",e.forward="forward",e.unknown=""})(Ca||(Ca={}));function WA(e){if(!e)if(Kn){const t=document.querySelector("base");e=t&&t.getAttribute("href")||"/",e=e.replace(/^\w+:\/\/[^\/]+/,"")}else e="/";return e[0]!=="/"&&e[0]!=="#"&&(e="/"+e),FA(e)}const VA=/^[^#]+#/;function qA(e,t){return e.replace(VA,"#")+t}function zA(e,t){const n=document.documentElement.getBoundingClientRect(),a=e.getBoundingClientRect();return{behavior:t.behavior,left:a.left-n.left-(t.left||0),top:a.top-n.top-(t.top||0)}}const ci=()=>({left:window.pageXOffset,top:window.pageYOffset});function $A(e){let t;if("el"in e){const n=e.el,a=typeof n=="string"&&n.startsWith("#"),r=typeof n=="string"?a?document.getElementById(n.slice(1)):document.querySelector(n):n;if(!r)return;t=zA(r,e)}else t=e;"scrollBehavior"in document.documentElement.style?window.scrollTo(t):window.scrollTo(t.left!=null?t.left:window.pageXOffset,t.top!=null?t.top:window.pageYOffset)}function gl(e,t){return(history.state?history.state.position-t:-1)+e}const ns=new Map;function KA(e,t){ns.set(e,t)}function QA(e){const t=ns.get(e);return ns.delete(e),t}let jA=()=>location.protocol+"//"+location.host;function gu(e,t){const{pathname:n,search:a,hash:r}=t,i=e.indexOf("#");if(i>-1){let o=r.includes(e.slice(i))?e.slice(i).length:1,l=r.slice(o);return l[0]!=="/"&&(l="/"+l),pl(l,"")}return pl(n,e)+a+r}function XA(e,t,n,a){let r=[],i=[],s=null;const o=({state:u})=>{const p=gu(e,location),h=n.value,f=t.value;let b=0;if(u){if(n.value=p,t.value=u,s&&s===h){s=null;return}b=f?u.position-f.position:0}else a(p);r.forEach(S=>{S(n.value,h,{delta:b,type:Fa.pop,direction:b?b>0?Ca.forward:Ca.back:Ca.unknown})})};function l(){s=n.value}function c(u){r.push(u);const p=()=>{const h=r.indexOf(u);h>-1&&r.splice(h,1)};return i.push(p),p}function d(){const{history:u}=window;!u.state||u.replaceState(Ie({},u.state,{scroll:ci()}),"")}function _(){for(const u of i)u();i=[],window.removeEventListener("popstate",o),window.removeEventListener("beforeunload",d)}return window.addEventListener("popstate",o),window.addEventListener("beforeunload",d),{pauseListeners:l,listen:c,destroy:_}}function hl(e,t,n,a=!1,r=!1){return{back:e,current:t,forward:n,replaced:a,position:window.history.length,scroll:r?ci():null}}function ZA(e){const{history:t,location:n}=window,a={value:gu(e,n)},r={value:t.state};r.value||i(a.value,{back:null,current:a.value,forward:null,position:t.length-1,replaced:!0,scroll:null},!0);function i(l,c,d){const _=e.indexOf("#"),u=_>-1?(n.host&&document.querySelector("base")?e:e.slice(_))+l:jA()+e+l;try{t[d?"replaceState":"pushState"](c,"",u),r.value=c}catch(p){console.error(p),n[d?"replace":"assign"](u)}}function s(l,c){const d=Ie({},t.state,hl(r.value.back,l,r.value.forward,!0),c,{position:r.value.position});i(l,d,!0),a.value=l}function o(l,c){const d=Ie({},r.value,t.state,{forward:l,scroll:ci()});i(d.current,d,!0);const _=Ie({},hl(a.value,l,null),{position:d.position+1},c);i(l,_,!1),a.value=l}return{location:a,state:r,push:o,replace:s}}function JA(e){e=WA(e);const t=ZA(e),n=XA(e,t.state,t.location,t.replace);function a(i,s=!0){s||n.pauseListeners(),history.go(i)}const r=Ie({location:"",base:e,go:a,createHref:qA.bind(null,e)},t,n);return Object.defineProperty(r,"location",{enumerable:!0,get:()=>t.location.value}),Object.defineProperty(r,"state",{enumerable:!0,get:()=>t.state.value}),r}function eD(e){return e=location.host?e||location.pathname+location.search:"",e.includes("#")||(e+="#"),JA(e)}function tD(e){return typeof e=="string"||e&&typeof e=="object"}function hu(e){return typeof e=="string"||typeof e=="symbol"}const an={path:"/",name:void 0,params:{},query:{},hash:"",fullPath:"/",matched:[],meta:{},redirectedFrom:void 0},fu=Symbol("");var fl;(function(e){e[e.aborted=4]="aborted",e[e.cancelled=8]="cancelled",e[e.duplicated=16]="duplicated"})(fl||(fl={}));function sa(e,t){return Ie(new Error,{type:e,[fu]:!0},t)}function Ht(e,t){return e instanceof Error&&fu in e&&(t==null||!!(e.type&t))}const El="[^/]+?",nD={sensitive:!1,strict:!1,start:!0,end:!0},aD=/[.+*?^${}()[\]/\\]/g;function rD(e,t){const n=Ie({},nD,t),a=[];let r=n.start?"^":"";const i=[];for(const c of e){const d=c.length?[]:[90];n.strict&&!c.length&&(r+="/");for(let _=0;_<c.length;_++){const u=c[_];let p=40+(n.sensitive?.25:0);if(u.type===0)_||(r+="/"),r+=u.value.replace(aD,"\\$&"),p+=40;else if(u.type===1){const{value:h,repeatable:f,optional:b,regexp:S}=u;i.push({name:h,repeatable:f,optional:b});const v=S||El;if(v!==El){p+=10;try{new RegExp(`(${v})`)}catch(C){throw new Error(`Invalid custom RegExp for param "${h}" (${v}): `+C.message)}}let T=f?`((?:${v})(?:/(?:${v}))*)`:`(${v})`;_||(T=b&&c.length<2?`(?:/${T})`:"/"+T),b&&(T+="?"),r+=T,p+=20,b&&(p+=-8),f&&(p+=-20),v===".*"&&(p+=-50)}d.push(p)}a.push(d)}if(n.strict&&n.end){const c=a.length-1;a[c][a[c].length-1]+=.7000000000000001}n.strict||(r+="/?"),n.end?r+="$":n.strict&&(r+="(?:/|$)");const s=new RegExp(r,n.sensitive?"":"i");function o(c){const d=c.match(s),_={};if(!d)return null;for(let u=1;u<d.length;u++){const p=d[u]||"",h=i[u-1];_[h.name]=p&&h.repeatable?p.split("/"):p}return _}function l(c){let d="",_=!1;for(const u of e){(!_||!d.endsWith("/"))&&(d+="/"),_=!1;for(const p of u)if(p.type===0)d+=p.value;else if(p.type===1){const{value:h,repeatable:f,optional:b}=p,S=h in c?c[h]:"";if(Ot(S)&&!f)throw new Error(`Provided param "${h}" is an array but it is not repeatable (* or + modifiers)`);const v=Ot(S)?S.join("/"):S;if(!v)if(b)u.length<2&&(d.endsWith("/")?d=d.slice(0,-1):_=!0);else throw new Error(`Missing required param "${h}"`);d+=v}}return d||"/"}return{re:s,score:a,keys:i,parse:o,stringify:l}}function iD(e,t){let n=0;for(;n<e.length&&n<t.length;){const a=t[n]-e[n];if(a)return a;n++}return e.length<t.length?e.length===1&&e[0]===40+40?-1:1:e.length>t.length?t.length===1&&t[0]===40+40?1:-1:0}function sD(e,t){let n=0;const a=e.score,r=t.score;for(;n<a.length&&n<r.length;){const i=iD(a[n],r[n]);if(i)return i;n++}if(Math.abs(r.length-a.length)===1){if(Sl(a))return 1;if(Sl(r))return-1}return r.length-a.length}function Sl(e){const t=e[e.length-1];return e.length>0&&t[t.length-1]<0}const oD={type:0,value:""},lD=/[a-zA-Z0-9_]/;function cD(e){if(!e)return[[]];if(e==="/")return[[oD]];if(!e.startsWith("/"))throw new Error(`Invalid path "${e}"`);function t(p){throw new Error(`ERR (${n})/"${c}": ${p}`)}let n=0,a=n;const r=[];let i;function s(){i&&r.push(i),i=[]}let o=0,l,c="",d="";function _(){!c||(n===0?i.push({type:0,value:c}):n===1||n===2||n===3?(i.length>1&&(l==="*"||l==="+")&&t(`A repeatable param (${c}) must be alone in its segment. eg: '/:ids+.`),i.push({type:1,value:c,regexp:d,repeatable:l==="*"||l==="+",optional:l==="*"||l==="?"})):t("Invalid state to consume buffer"),c="")}function u(){c+=l}for(;o<e.length;){if(l=e[o++],l==="\\"&&n!==2){a=n,n=4;continue}switch(n){case 0:l==="/"?(c&&_(),s()):l===":"?(_(),n=1):u();break;case 4:u(),n=a;break;case 1:l==="("?n=2:lD.test(l)?u():(_(),n=0,l!=="*"&&l!=="?"&&l!=="+"&&o--);break;case 2:l===")"?d[d.length-1]=="\\"?d=d.slice(0,-1)+l:n=3:d+=l;break;case 3:_(),n=0,l!=="*"&&l!=="?"&&l!=="+"&&o--,d="";break;default:t("Unknown state");break}}return n===2&&t(`Unfinished custom RegExp for param "${c}"`),_(),s(),r}function dD(e,t,n){const a=rD(cD(e.path),n),r=Ie(a,{record:e,parent:t,children:[],alias:[]});return t&&!r.record.aliasOf==!t.record.aliasOf&&t.children.push(r),r}function uD(e,t){const n=[],a=new Map;t=yl({strict:!1,end:!0,sensitive:!1},t);function r(d){return a.get(d)}function i(d,_,u){const p=!u,h=_D(d);h.aliasOf=u&&u.record;const f=yl(t,d),b=[h];if("alias"in d){const T=typeof d.alias=="string"?[d.alias]:d.alias;for(const C of T)b.push(Ie({},h,{components:u?u.record.components:h.components,path:C,aliasOf:u?u.record:h}))}let S,v;for(const T of b){const{path:C}=T;if(_&&C[0]!=="/"){const I=_.record.path,H=I[I.length-1]==="/"?"":"/";T.path=_.record.path+(C&&H+C)}if(S=dD(T,_,f),u?u.alias.push(S):(v=v||S,v!==S&&v.alias.push(S),p&&d.name&&!Tl(S)&&s(d.name)),h.children){const I=h.children;for(let H=0;H<I.length;H++)i(I[H],S,u&&u.children[H])}u=u||S,(S.record.components&&Object.keys(S.record.components).length||S.record.name||S.record.redirect)&&l(S)}return v?()=>{s(v)}:Ra}function s(d){if(hu(d)){const _=a.get(d);_&&(a.delete(d),n.splice(n.indexOf(_),1),_.children.forEach(s),_.alias.forEach(s))}else{const _=n.indexOf(d);_>-1&&(n.splice(_,1),d.record.name&&a.delete(d.record.name),d.children.forEach(s),d.alias.forEach(s))}}function o(){return n}function l(d){let _=0;for(;_<n.length&&sD(d,n[_])>=0&&(d.record.path!==n[_].record.path||!Eu(d,n[_]));)_++;n.splice(_,0,d),d.record.name&&!Tl(d)&&a.set(d.record.name,d)}function c(d,_){let u,p={},h,f;if("name"in d&&d.name){if(u=a.get(d.name),!u)throw sa(1,{location:d});f=u.record.name,p=Ie(bl(_.params,u.keys.filter(v=>!v.optional).map(v=>v.name)),d.params&&bl(d.params,u.keys.map(v=>v.name))),h=u.stringify(p)}else if("path"in d)h=d.path,u=n.find(v=>v.re.test(h)),u&&(p=u.parse(h),f=u.record.name);else{if(u=_.name?a.get(_.name):n.find(v=>v.re.test(_.path)),!u)throw sa(1,{location:d,currentLocation:_});f=u.record.name,p=Ie({},_.params,d.params),h=u.stringify(p)}const b=[];let S=u;for(;S;)b.unshift(S.record),S=S.parent;return{name:f,path:h,params:p,matched:b,meta:mD(b)}}return e.forEach(d=>i(d)),{addRoute:i,resolve:c,removeRoute:s,getRoutes:o,getRecordMatcher:r}}function bl(e,t){const n={};for(const a of t)a in e&&(n[a]=e[a]);return n}function _D(e){return{path:e.path,redirect:e.redirect,name:e.name,meta:e.meta||{},aliasOf:void 0,beforeEnter:e.beforeEnter,props:pD(e),children:e.children||[],instances:{},leaveGuards:new Set,updateGuards:new Set,enterCallbacks:{},components:"components"in e?e.components||null:e.component&&{default:e.component}}}function pD(e){const t={},n=e.props||!1;if("component"in e)t.default=n;else for(const a in e.components)t[a]=typeof n=="boolean"?n:n[a];return t}function Tl(e){for(;e;){if(e.record.aliasOf)return!0;e=e.parent}return!1}function mD(e){return e.reduce((t,n)=>Ie(t,n.meta),{})}function yl(e,t){const n={};for(const a in e)n[a]=a in t?t[a]:e[a];return n}function Eu(e,t){return t.children.some(n=>n===e||Eu(e,n))}const Su=/#/g,gD=/&/g,hD=/\//g,fD=/=/g,ED=/\?/g,bu=/\+/g,SD=/%5B/g,bD=/%5D/g,Tu=/%5E/g,TD=/%60/g,yu=/%7B/g,yD=/%7C/g,vu=/%7D/g,vD=/%20/g;function to(e){return encodeURI(""+e).replace(yD,"|").replace(SD,"[").replace(bD,"]")}function RD(e){return to(e).replace(yu,"{").replace(vu,"}").replace(Tu,"^")}function as(e){return to(e).replace(bu,"%2B").replace(vD,"+").replace(Su,"%23").replace(gD,"%26").replace(TD,"`").replace(yu,"{").replace(vu,"}").replace(Tu,"^")}function CD(e){return as(e).replace(fD,"%3D")}function ND(e){return to(e).replace(Su,"%23").replace(ED,"%3F")}function wD(e){return e==null?"":ND(e).replace(hD,"%2F")}function kr(e){try{return decodeURIComponent(""+e)}catch{}return""+e}function OD(e){const t={};if(e===""||e==="?")return t;const a=(e[0]==="?"?e.slice(1):e).split("&");for(let r=0;r<a.length;++r){const i=a[r].replace(bu," "),s=i.indexOf("="),o=kr(s<0?i:i.slice(0,s)),l=s<0?null:kr(i.slice(s+1));if(o in t){let c=t[o];Ot(c)||(c=t[o]=[c]),c.push(l)}else t[o]=l}return t}function vl(e){let t="";for(let n in e){const a=e[n];if(n=CD(n),a==null){a!==void 0&&(t+=(t.length?"&":"")+n);continue}(Ot(a)?a.map(i=>i&&as(i)):[a&&as(a)]).forEach(i=>{i!==void 0&&(t+=(t.length?"&":"")+n,i!=null&&(t+="="+i))})}return t}function ID(e){const t={};for(const n in e){const a=e[n];a!==void 0&&(t[n]=Ot(a)?a.map(r=>r==null?null:""+r):a==null?a:""+a)}return t}const AD=Symbol(""),Rl=Symbol(""),di=Symbol(""),Ru=Symbol(""),rs=Symbol("");function ha(){let e=[];function t(a){return e.push(a),()=>{const r=e.indexOf(a);r>-1&&e.splice(r,1)}}function n(){e=[]}return{add:t,list:()=>e,reset:n}}function on(e,t,n,a,r){const i=a&&(a.enterCallbacks[r]=a.enterCallbacks[r]||[]);return()=>new Promise((s,o)=>{const l=_=>{_===!1?o(sa(4,{from:n,to:t})):_ instanceof Error?o(_):tD(_)?o(sa(2,{from:t,to:_})):(i&&a.enterCallbacks[r]===i&&typeof _=="function"&&i.push(_),s())},c=e.call(a&&a.instances[r],t,n,l);let d=Promise.resolve(c);e.length<3&&(d=d.then(l)),d.catch(_=>o(_))})}function Di(e,t,n,a){const r=[];for(const i of e)for(const s in i.components){let o=i.components[s];if(!(t!=="beforeRouteEnter"&&!i.instances[s]))if(DD(o)){const c=(o.__vccOpts||o)[t];c&&r.push(on(c,n,a,i,s))}else{let l=o();r.push(()=>l.then(c=>{if(!c)return Promise.reject(new Error(`Couldn't resolve component "${s}" at "${i.path}"`));const d=PA(c)?c.default:c;i.components[s]=d;const u=(d.__vccOpts||d)[t];return u&&on(u,n,a,i,s)()}))}}return r}function DD(e){return typeof e=="object"||"displayName"in e||"props"in e||"__vccOpts"in e}function Cl(e){const t=Ct(di),n=Ct(Ru),a=ot(()=>t.resolve(at(e.to))),r=ot(()=>{const{matched:l}=a.value,{length:c}=l,d=l[c-1],_=n.matched;if(!d||!_.length)return-1;const u=_.findIndex(ia.bind(null,d));if(u>-1)return u;const p=Nl(l[c-2]);return c>1&&Nl(d)===p&&_[_.length-1].path!==p?_.findIndex(ia.bind(null,l[c-2])):u}),i=ot(()=>r.value>-1&&LD(n.params,a.value.params)),s=ot(()=>r.value>-1&&r.value===n.matched.length-1&&mu(n.params,a.value.params));function o(l={}){return MD(l)?t[at(e.replace)?"replace":"push"](at(e.to)).catch(Ra):Promise.resolve()}return{route:a,href:ot(()=>a.value.href),isActive:i,isExactActive:s,navigate:o}}const xD=nd({name:"RouterLink",compatConfig:{MODE:3},props:{to:{type:[String,Object],required:!0},replace:Boolean,activeClass:String,exactActiveClass:String,custom:Boolean,ariaCurrentValue:{type:String,default:"page"}},useLink:Cl,setup(e,{slots:t}){const n=ua(Cl(e)),{options:a}=Ct(di),r=ot(()=>({[wl(e.activeClass,a.linkActiveClass,"router-link-active")]:n.isActive,[wl(e.exactActiveClass,a.linkExactActiveClass,"router-link-exact-active")]:n.isExactActive}));return()=>{const i=t.default&&t.default(n);return e.custom?i:vd("a",{"aria-current":n.isExactActive?e.ariaCurrentValue:null,href:n.href,onClick:n.navigate,class:r.value},i)}}}),kD=xD;function MD(e){if(!(e.metaKey||e.altKey||e.ctrlKey||e.shiftKey)&&!e.defaultPrevented&&!(e.button!==void 0&&e.button!==0)){if(e.currentTarget&&e.currentTarget.getAttribute){const t=e.currentTarget.getAttribute("target");if(/\b_blank\b/i.test(t))return}return e.preventDefault&&e.preventDefault(),!0}}function LD(e,t){for(const n in t){const a=t[n],r=e[n];if(typeof a=="string"){if(a!==r)return!1}else if(!Ot(r)||r.length!==a.length||a.some((i,s)=>i!==r[s]))return!1}return!0}function Nl(e){return e?e.aliasOf?e.aliasOf.path:e.path:""}const wl=(e,t,n)=>e!=null?e:t!=null?t:n,PD=nd({name:"RouterView",inheritAttrs:!1,props:{name:{type:String,default:"default"},route:Object},compatConfig:{MODE:3},setup(e,{attrs:t,slots:n}){const a=Ct(rs),r=ot(()=>e.route||a.value),i=Ct(Rl,0),s=ot(()=>{let c=at(i);const{matched:d}=r.value;let _;for(;(_=d[c])&&!_.components;)c++;return c}),o=ot(()=>r.value.matched[s.value]);pr(Rl,ot(()=>s.value+1)),pr(AD,o),pr(rs,r);const l=Xr();return Dn(()=>[l.value,o.value,e.name],([c,d,_],[u,p,h])=>{d&&(d.instances[_]=c,p&&p!==d&&c&&c===u&&(d.leaveGuards.size||(d.leaveGuards=p.leaveGuards),d.updateGuards.size||(d.updateGuards=p.updateGuards))),c&&d&&(!p||!ia(d,p)||!u)&&(d.enterCallbacks[_]||[]).forEach(f=>f(c))},{flush:"post"}),()=>{const c=r.value,d=e.name,_=o.value,u=_&&_.components[d];if(!u)return Ol(n.default,{Component:u,route:c});const p=_.props[d],h=p?p===!0?c.params:typeof p=="function"?p(c):p:null,b=vd(u,Ie({},h,t,{onVnodeUnmounted:S=>{S.component.isUnmounted&&(_.instances[d]=null)},ref:l}));return Ol(n.default,{Component:b,route:c})||b}}});function Ol(e,t){if(!e)return null;const n=e(t);return n.length===1?n[0]:n}const UD=PD;function FD(e){const t=uD(e.routes,e),n=e.parseQuery||OD,a=e.stringifyQuery||vl,r=e.history,i=ha(),s=ha(),o=ha(),l=Cf(an);let c=an;Kn&&e.scrollBehavior&&"scrollRestoration"in history&&(history.scrollRestoration="manual");const d=Ii.bind(null,N=>""+N),_=Ii.bind(null,wD),u=Ii.bind(null,kr);function p(N,V){let Y,te;return hu(N)?(Y=t.getRecordMatcher(N),te=V):te=N,t.addRoute(te,Y)}function h(N){const V=t.getRecordMatcher(N);V&&t.removeRoute(V)}function f(){return t.getRoutes().map(N=>N.record)}function b(N){return!!t.getRecordMatcher(N)}function S(N,V){if(V=Ie({},V||l.value),typeof N=="string"){const m=Ai(n,N,V.path),g=t.resolve({path:m.path},V),y=r.createHref(m.fullPath);return Ie(m,g,{params:u(g.params),hash:kr(m.hash),redirectedFrom:void 0,href:y})}let Y;if("path"in N)Y=Ie({},N,{path:Ai(n,N.path,V.path).path});else{const m=Ie({},N.params);for(const g in m)m[g]==null&&delete m[g];Y=Ie({},N,{params:_(N.params)}),V.params=_(V.params)}const te=t.resolve(Y,V),Z=N.hash||"";te.params=d(u(te.params));const Ce=BA(a,Ie({},N,{hash:RD(Z),path:te.path})),le=r.createHref(Ce);return Ie({fullPath:Ce,hash:Z,query:a===vl?ID(N.query):N.query||{}},te,{redirectedFrom:void 0,href:le})}function v(N){return typeof N=="string"?Ai(n,N,l.value.path):Ie({},N)}function T(N,V){if(c!==N)return sa(8,{from:V,to:N})}function C(N){return G(N)}function I(N){return C(Ie(v(N),{replace:!0}))}function H(N){const V=N.matched[N.matched.length-1];if(V&&V.redirect){const{redirect:Y}=V;let te=typeof Y=="function"?Y(N):Y;return typeof te=="string"&&(te=te.includes("?")||te.includes("#")?te=v(te):{path:te},te.params={}),Ie({query:N.query,hash:N.hash,params:"path"in te?{}:N.params},te)}}function G(N,V){const Y=c=S(N),te=l.value,Z=N.state,Ce=N.force,le=N.replace===!0,m=H(Y);if(m)return G(Ie(v(m),{state:typeof m=="object"?Ie({},Z,m.state):Z,force:Ce,replace:le}),V||Y);const g=Y;g.redirectedFrom=V;let y;return!Ce&&GA(a,te,Y)&&(y=sa(16,{to:g,from:te}),de(te,te,!0,!1)),(y?Promise.resolve(y):K(g,te)).catch(w=>Ht(w)?Ht(w,2)?w:ee(w):D(w,g,te)).then(w=>{if(w){if(Ht(w,2))return G(Ie({replace:le},v(w.to),{state:typeof w.to=="object"?Ie({},Z,w.to.state):Z,force:Ce}),V||g)}else w=oe(g,te,!0,le,Z);return W(g,te,w),w})}function L(N,V){const Y=T(N,V);return Y?Promise.reject(Y):Promise.resolve()}function K(N,V){let Y;const[te,Z,Ce]=BD(N,V);Y=Di(te.reverse(),"beforeRouteLeave",N,V);for(const m of te)m.leaveGuards.forEach(g=>{Y.push(on(g,N,V))});const le=L.bind(null,N,V);return Y.push(le),Wn(Y).then(()=>{Y=[];for(const m of i.list())Y.push(on(m,N,V));return Y.push(le),Wn(Y)}).then(()=>{Y=Di(Z,"beforeRouteUpdate",N,V);for(const m of Z)m.updateGuards.forEach(g=>{Y.push(on(g,N,V))});return Y.push(le),Wn(Y)}).then(()=>{Y=[];for(const m of N.matched)if(m.beforeEnter&&!V.matched.includes(m))if(Ot(m.beforeEnter))for(const g of m.beforeEnter)Y.push(on(g,N,V));else Y.push(on(m.beforeEnter,N,V));return Y.push(le),Wn(Y)}).then(()=>(N.matched.forEach(m=>m.enterCallbacks={}),Y=Di(Ce,"beforeRouteEnter",N,V),Y.push(le),Wn(Y))).then(()=>{Y=[];for(const m of s.list())Y.push(on(m,N,V));return Y.push(le),Wn(Y)}).catch(m=>Ht(m,8)?m:Promise.reject(m))}function W(N,V,Y){for(const te of o.list())te(N,V,Y)}function oe(N,V,Y,te,Z){const Ce=T(N,V);if(Ce)return Ce;const le=V===an,m=Kn?history.state:{};Y&&(te||le?r.replace(N.fullPath,Ie({scroll:le&&m&&m.scroll},Z)):r.push(N.fullPath,Z)),l.value=N,de(N,V,Y,le),ee()}let he;function be(){he||(he=r.listen((N,V,Y)=>{if(!Ae.listening)return;const te=S(N),Z=H(te);if(Z){G(Ie(Z,{replace:!0}),te).catch(Ra);return}c=te;const Ce=l.value;Kn&&KA(gl(Ce.fullPath,Y.delta),ci()),K(te,Ce).catch(le=>Ht(le,12)?le:Ht(le,2)?(G(le.to,te).then(m=>{Ht(m,20)&&!Y.delta&&Y.type===Fa.pop&&r.go(-1,!1)}).catch(Ra),Promise.reject()):(Y.delta&&r.go(-Y.delta,!1),D(le,te,Ce))).then(le=>{le=le||oe(te,Ce,!1),le&&(Y.delta&&!Ht(le,8)?r.go(-Y.delta,!1):Y.type===Fa.pop&&Ht(le,20)&&r.go(-1,!1)),W(te,Ce,le)}).catch(Ra)}))}let fe=ha(),Te=ha(),A;function D(N,V,Y){ee(N);const te=Te.list();return te.length?te.forEach(Z=>Z(N,V,Y)):console.error(N),Promise.reject(N)}function U(){return A&&l.value!==an?Promise.resolve():new Promise((N,V)=>{fe.add([N,V])})}function ee(N){return A||(A=!N,be(),fe.list().forEach(([V,Y])=>N?Y(N):V()),fe.reset()),N}function de(N,V,Y,te){const{scrollBehavior:Z}=e;if(!Kn||!Z)return Promise.resolve();const Ce=!Y&&QA(gl(N.fullPath,0))||(te||!Y)&&history.state&&history.state.scroll||null;return Bs().then(()=>Z(N,V,Ce)).then(le=>le&&$A(le)).catch(le=>D(le,N,V))}const me=N=>r.go(N);let ge;const Ve=new Set,Ae={currentRoute:l,listening:!0,addRoute:p,removeRoute:h,hasRoute:b,getRoutes:f,resolve:S,options:e,push:C,replace:I,go:me,back:()=>me(-1),forward:()=>me(1),beforeEach:i.add,beforeResolve:s.add,afterEach:o.add,onError:Te.add,isReady:U,install(N){const V=this;N.component("RouterLink",kD),N.component("RouterView",UD),N.config.globalProperties.$router=V,Object.defineProperty(N.config.globalProperties,"$route",{enumerable:!0,get:()=>at(l)}),Kn&&!ge&&l.value===an&&(ge=!0,C(r.location).catch(Z=>{}));const Y={};for(const Z in an)Y[Z]=ot(()=>l.value[Z]);N.provide(di,V),N.provide(Ru,ua(Y)),N.provide(rs,l);const te=N.unmount;Ve.add(N),N.unmount=function(){Ve.delete(N),Ve.size<1&&(c=an,he&&he(),he=null,l.value=an,ge=!1,A=!1),te()}}};return Ae}function Wn(e){return e.reduce((t,n)=>t.then(()=>n()),Promise.resolve())}function BD(e,t){const n=[],a=[],r=[],i=Math.max(t.matched.length,e.matched.length);for(let s=0;s<i;s++){const o=t.matched[s];o&&(e.matched.find(c=>ia(c,o))?a.push(o):n.push(o));const l=e.matched[s];l&&(t.matched.find(c=>ia(c,l))||r.push(l))}return[n,a,r]}function GD(){return Ct(di)}const YD={class:"content sharp-border"},HD={key:0,class:"app-bar-space"},WD={__name:"App",setup(e){const{dark:t,setFont:n,setDark:a,font:r}=Ad(),{setModules:i}=xd(),{currentRoute:s}=GD();Dn(t,()=>{document.body.toggleAttribute("theme-dark")});const o=Xr(!1);Ys(()=>{window.addEventListener("scroll",c)}),rd(()=>{const{fileModules:u}=xA();l(),i(kA(u))});const l=()=>{var h;const u=mn.getFont(),p=((h=kn.find(f=>f.name===u))==null?void 0:h.class)||kn[0].class;n(p),a(mn.getTheme()==="dark"),document.body.classList.add(r.value)},c=u=>{if(typeof window=="undefined")return;const p=window.pageYOffset||u.target.scrollTop;o.value=p>150},d=()=>{window.scroll({top:0,behavior:"smooth"})},_=ot(()=>["Home","Filter","Sort"].includes(s==null?void 0:s.value.name));return(u,p)=>{const h=iE("router-view"),f=TS;return Fe(),He("div",null,[Oe(at(rb)),ue("div",YD,[at(_)?(Fe(),He("div",HD)):Zi("",!0),Oe(h),o.value?(Fe(),He("button",{key:1,class:"scroll-to-top circle small-shadow",onClick:d},[Oe(f)])):Zi("",!0)]),Oe(at(mT))])}}},VD=[{name:"Home",path:"/",component:()=>Yn(()=>import("./HomeView.5d1acb3f.js"),["assets/HomeView.5d1acb3f.js","assets/HomeView.669ed221.css","assets/tracker.d5d900f2.js"])},{name:"Filter",path:"/filter/:filterBy/:filterValue?",component:()=>Yn(()=>import("./HomeView.5d1acb3f.js"),["assets/HomeView.5d1acb3f.js","assets/HomeView.669ed221.css","assets/tracker.d5d900f2.js"])},{name:"Sort",path:"/sort/:sortBy",component:()=>Yn(()=>import("./HomeView.5d1acb3f.js"),["assets/HomeView.5d1acb3f.js","assets/HomeView.669ed221.css","assets/tracker.d5d900f2.js"])},{name:"Blog",path:"/blog/:name",component:()=>Yn(()=>import("./PostView.8912afdc.js"),["assets/PostView.8912afdc.js","assets/PostView.77b2947d.css","assets/tracker.d5d900f2.js"])},{name:"Series",path:"/blog/:series/:name",component:()=>Yn(()=>import("./PostView.8912afdc.js"),["assets/PostView.8912afdc.js","assets/PostView.77b2947d.css","assets/tracker.d5d900f2.js"])},{name:"404",path:"/:pathMatch(.*)*",component:()=>Yn(()=>import("./404View.5ed3778c.js"),["assets/404View.5ed3778c.js","assets/404View.7c5e5cbc.css"])}],qD=FD({history:eD(),routes:VD,scrollBehavior(e,t,n){return{top:(n==null?void 0:n.top)||0}}}),zD=_S(),Wa=cS(WD);Wa.config.globalProperties.window=window;Wa.config.globalProperties.$moment=z;Wa.use(zD);Wa.use(qD);Wa.mount("#app");export{Vb as A,Bb as B,gr as C,jS as D,xd as E,dt as F,tx as G,nx as H,Ff as I,Bf as J,mn as S,qs as _,ue as a,ot as b,He as c,at as d,Zi as e,Oe as f,$o as g,z as h,GD as i,Xr as j,Ys as k,ex as l,QD as m,In as n,Fe as o,XD as p,Vi as q,lE as r,Ed as s,Tc as t,Ad as u,jD as v,Dn as w,JD as x,ZD as y,Ns as z};
+  */const Kn=typeof window!="undefined";function PA(e){return e.__esModule||e[Symbol.toStringTag]==="Module"}const Ie=Object.assign;function Ii(e,t){const n={};for(const a in t){const r=t[a];n[a]=Ot(r)?r.map(e):e(r)}return n}const Ra=()=>{},Ot=Array.isArray,UA=/\/$/,FA=e=>e.replace(UA,"");function Ai(e,t,n="/"){let a,r={},i="",s="";const o=t.indexOf("#");let l=t.indexOf("?");return o<l&&o>=0&&(l=-1),l>-1&&(a=t.slice(0,l),i=t.slice(l+1,o>-1?o:t.length),r=e(i)),o>-1&&(a=a||t.slice(0,o),s=t.slice(o,t.length)),a=HA(a!=null?a:t,n),{fullPath:a+(i&&"?")+i+s,path:a,query:r,hash:s}}function BA(e,t){const n=t.query?e(t.query):"";return t.path+(n&&"?")+n+(t.hash||"")}function pl(e,t){return!t||!e.toLowerCase().startsWith(t.toLowerCase())?e:e.slice(t.length)||"/"}function GA(e,t,n){const a=t.matched.length-1,r=n.matched.length-1;return a>-1&&a===r&&ia(t.matched[a],n.matched[r])&&mu(t.params,n.params)&&e(t.query)===e(n.query)&&t.hash===n.hash}function ia(e,t){return(e.aliasOf||e)===(t.aliasOf||t)}function mu(e,t){if(Object.keys(e).length!==Object.keys(t).length)return!1;for(const n in e)if(!YA(e[n],t[n]))return!1;return!0}function YA(e,t){return Ot(e)?ml(e,t):Ot(t)?ml(t,e):e===t}function ml(e,t){return Ot(t)?e.length===t.length&&e.every((n,a)=>n===t[a]):e.length===1&&e[0]===t}function HA(e,t){if(e.startsWith("/"))return e;if(!e)return t;const n=t.split("/"),a=e.split("/");let r=n.length-1,i,s;for(i=0;i<a.length;i++)if(s=a[i],s!==".")if(s==="..")r>1&&r--;else break;return n.slice(0,r).join("/")+"/"+a.slice(i-(i===a.length?1:0)).join("/")}var Fa;(function(e){e.pop="pop",e.push="push"})(Fa||(Fa={}));var Ca;(function(e){e.back="back",e.forward="forward",e.unknown=""})(Ca||(Ca={}));function WA(e){if(!e)if(Kn){const t=document.querySelector("base");e=t&&t.getAttribute("href")||"/",e=e.replace(/^\w+:\/\/[^\/]+/,"")}else e="/";return e[0]!=="/"&&e[0]!=="#"&&(e="/"+e),FA(e)}const VA=/^[^#]+#/;function qA(e,t){return e.replace(VA,"#")+t}function zA(e,t){const n=document.documentElement.getBoundingClientRect(),a=e.getBoundingClientRect();return{behavior:t.behavior,left:a.left-n.left-(t.left||0),top:a.top-n.top-(t.top||0)}}const ci=()=>({left:window.pageXOffset,top:window.pageYOffset});function $A(e){let t;if("el"in e){const n=e.el,a=typeof n=="string"&&n.startsWith("#"),r=typeof n=="string"?a?document.getElementById(n.slice(1)):document.querySelector(n):n;if(!r)return;t=zA(r,e)}else t=e;"scrollBehavior"in document.documentElement.style?window.scrollTo(t):window.scrollTo(t.left!=null?t.left:window.pageXOffset,t.top!=null?t.top:window.pageYOffset)}function gl(e,t){return(history.state?history.state.position-t:-1)+e}const ns=new Map;function KA(e,t){ns.set(e,t)}function QA(e){const t=ns.get(e);return ns.delete(e),t}let jA=()=>location.protocol+"//"+location.host;function gu(e,t){const{pathname:n,search:a,hash:r}=t,i=e.indexOf("#");if(i>-1){let o=r.includes(e.slice(i))?e.slice(i).length:1,l=r.slice(o);return l[0]!=="/"&&(l="/"+l),pl(l,"")}return pl(n,e)+a+r}function XA(e,t,n,a){let r=[],i=[],s=null;const o=({state:u})=>{const p=gu(e,location),h=n.value,f=t.value;let b=0;if(u){if(n.value=p,t.value=u,s&&s===h){s=null;return}b=f?u.position-f.position:0}else a(p);r.forEach(S=>{S(n.value,h,{delta:b,type:Fa.pop,direction:b?b>0?Ca.forward:Ca.back:Ca.unknown})})};function l(){s=n.value}function c(u){r.push(u);const p=()=>{const h=r.indexOf(u);h>-1&&r.splice(h,1)};return i.push(p),p}function d(){const{history:u}=window;!u.state||u.replaceState(Ie({},u.state,{scroll:ci()}),"")}function _(){for(const u of i)u();i=[],window.removeEventListener("popstate",o),window.removeEventListener("beforeunload",d)}return window.addEventListener("popstate",o),window.addEventListener("beforeunload",d),{pauseListeners:l,listen:c,destroy:_}}function hl(e,t,n,a=!1,r=!1){return{back:e,current:t,forward:n,replaced:a,position:window.history.length,scroll:r?ci():null}}function ZA(e){const{history:t,location:n}=window,a={value:gu(e,n)},r={value:t.state};r.value||i(a.value,{back:null,current:a.value,forward:null,position:t.length-1,replaced:!0,scroll:null},!0);function i(l,c,d){const _=e.indexOf("#"),u=_>-1?(n.host&&document.querySelector("base")?e:e.slice(_))+l:jA()+e+l;try{t[d?"replaceState":"pushState"](c,"",u),r.value=c}catch(p){console.error(p),n[d?"replace":"assign"](u)}}function s(l,c){const d=Ie({},t.state,hl(r.value.back,l,r.value.forward,!0),c,{position:r.value.position});i(l,d,!0),a.value=l}function o(l,c){const d=Ie({},r.value,t.state,{forward:l,scroll:ci()});i(d.current,d,!0);const _=Ie({},hl(a.value,l,null),{position:d.position+1},c);i(l,_,!1),a.value=l}return{location:a,state:r,push:o,replace:s}}function JA(e){e=WA(e);const t=ZA(e),n=XA(e,t.state,t.location,t.replace);function a(i,s=!0){s||n.pauseListeners(),history.go(i)}const r=Ie({location:"",base:e,go:a,createHref:qA.bind(null,e)},t,n);return Object.defineProperty(r,"location",{enumerable:!0,get:()=>t.location.value}),Object.defineProperty(r,"state",{enumerable:!0,get:()=>t.state.value}),r}function eD(e){return e=location.host?e||location.pathname+location.search:"",e.includes("#")||(e+="#"),JA(e)}function tD(e){return typeof e=="string"||e&&typeof e=="object"}function hu(e){return typeof e=="string"||typeof e=="symbol"}const an={path:"/",name:void 0,params:{},query:{},hash:"",fullPath:"/",matched:[],meta:{},redirectedFrom:void 0},fu=Symbol("");var fl;(function(e){e[e.aborted=4]="aborted",e[e.cancelled=8]="cancelled",e[e.duplicated=16]="duplicated"})(fl||(fl={}));function sa(e,t){return Ie(new Error,{type:e,[fu]:!0},t)}function Ht(e,t){return e instanceof Error&&fu in e&&(t==null||!!(e.type&t))}const El="[^/]+?",nD={sensitive:!1,strict:!1,start:!0,end:!0},aD=/[.+*?^${}()[\]/\\]/g;function rD(e,t){const n=Ie({},nD,t),a=[];let r=n.start?"^":"";const i=[];for(const c of e){const d=c.length?[]:[90];n.strict&&!c.length&&(r+="/");for(let _=0;_<c.length;_++){const u=c[_];let p=40+(n.sensitive?.25:0);if(u.type===0)_||(r+="/"),r+=u.value.replace(aD,"\\$&"),p+=40;else if(u.type===1){const{value:h,repeatable:f,optional:b,regexp:S}=u;i.push({name:h,repeatable:f,optional:b});const v=S||El;if(v!==El){p+=10;try{new RegExp(`(${v})`)}catch(C){throw new Error(`Invalid custom RegExp for param "${h}" (${v}): `+C.message)}}let T=f?`((?:${v})(?:/(?:${v}))*)`:`(${v})`;_||(T=b&&c.length<2?`(?:/${T})`:"/"+T),b&&(T+="?"),r+=T,p+=20,b&&(p+=-8),f&&(p+=-20),v===".*"&&(p+=-50)}d.push(p)}a.push(d)}if(n.strict&&n.end){const c=a.length-1;a[c][a[c].length-1]+=.7000000000000001}n.strict||(r+="/?"),n.end?r+="$":n.strict&&(r+="(?:/|$)");const s=new RegExp(r,n.sensitive?"":"i");function o(c){const d=c.match(s),_={};if(!d)return null;for(let u=1;u<d.length;u++){const p=d[u]||"",h=i[u-1];_[h.name]=p&&h.repeatable?p.split("/"):p}return _}function l(c){let d="",_=!1;for(const u of e){(!_||!d.endsWith("/"))&&(d+="/"),_=!1;for(const p of u)if(p.type===0)d+=p.value;else if(p.type===1){const{value:h,repeatable:f,optional:b}=p,S=h in c?c[h]:"";if(Ot(S)&&!f)throw new Error(`Provided param "${h}" is an array but it is not repeatable (* or + modifiers)`);const v=Ot(S)?S.join("/"):S;if(!v)if(b)u.length<2&&(d.endsWith("/")?d=d.slice(0,-1):_=!0);else throw new Error(`Missing required param "${h}"`);d+=v}}return d||"/"}return{re:s,score:a,keys:i,parse:o,stringify:l}}function iD(e,t){let n=0;for(;n<e.length&&n<t.length;){const a=t[n]-e[n];if(a)return a;n++}return e.length<t.length?e.length===1&&e[0]===40+40?-1:1:e.length>t.length?t.length===1&&t[0]===40+40?1:-1:0}function sD(e,t){let n=0;const a=e.score,r=t.score;for(;n<a.length&&n<r.length;){const i=iD(a[n],r[n]);if(i)return i;n++}if(Math.abs(r.length-a.length)===1){if(Sl(a))return 1;if(Sl(r))return-1}return r.length-a.length}function Sl(e){const t=e[e.length-1];return e.length>0&&t[t.length-1]<0}const oD={type:0,value:""},lD=/[a-zA-Z0-9_]/;function cD(e){if(!e)return[[]];if(e==="/")return[[oD]];if(!e.startsWith("/"))throw new Error(`Invalid path "${e}"`);function t(p){throw new Error(`ERR (${n})/"${c}": ${p}`)}let n=0,a=n;const r=[];let i;function s(){i&&r.push(i),i=[]}let o=0,l,c="",d="";function _(){!c||(n===0?i.push({type:0,value:c}):n===1||n===2||n===3?(i.length>1&&(l==="*"||l==="+")&&t(`A repeatable param (${c}) must be alone in its segment. eg: '/:ids+.`),i.push({type:1,value:c,regexp:d,repeatable:l==="*"||l==="+",optional:l==="*"||l==="?"})):t("Invalid state to consume buffer"),c="")}function u(){c+=l}for(;o<e.length;){if(l=e[o++],l==="\\"&&n!==2){a=n,n=4;continue}switch(n){case 0:l==="/"?(c&&_(),s()):l===":"?(_(),n=1):u();break;case 4:u(),n=a;break;case 1:l==="("?n=2:lD.test(l)?u():(_(),n=0,l!=="*"&&l!=="?"&&l!=="+"&&o--);break;case 2:l===")"?d[d.length-1]=="\\"?d=d.slice(0,-1)+l:n=3:d+=l;break;case 3:_(),n=0,l!=="*"&&l!=="?"&&l!=="+"&&o--,d="";break;default:t("Unknown state");break}}return n===2&&t(`Unfinished custom RegExp for param "${c}"`),_(),s(),r}function dD(e,t,n){const a=rD(cD(e.path),n),r=Ie(a,{record:e,parent:t,children:[],alias:[]});return t&&!r.record.aliasOf==!t.record.aliasOf&&t.children.push(r),r}function uD(e,t){const n=[],a=new Map;t=yl({strict:!1,end:!0,sensitive:!1},t);function r(d){return a.get(d)}function i(d,_,u){const p=!u,h=_D(d);h.aliasOf=u&&u.record;const f=yl(t,d),b=[h];if("alias"in d){const T=typeof d.alias=="string"?[d.alias]:d.alias;for(const C of T)b.push(Ie({},h,{components:u?u.record.components:h.components,path:C,aliasOf:u?u.record:h}))}let S,v;for(const T of b){const{path:C}=T;if(_&&C[0]!=="/"){const I=_.record.path,H=I[I.length-1]==="/"?"":"/";T.path=_.record.path+(C&&H+C)}if(S=dD(T,_,f),u?u.alias.push(S):(v=v||S,v!==S&&v.alias.push(S),p&&d.name&&!Tl(S)&&s(d.name)),h.children){const I=h.children;for(let H=0;H<I.length;H++)i(I[H],S,u&&u.children[H])}u=u||S,(S.record.components&&Object.keys(S.record.components).length||S.record.name||S.record.redirect)&&l(S)}return v?()=>{s(v)}:Ra}function s(d){if(hu(d)){const _=a.get(d);_&&(a.delete(d),n.splice(n.indexOf(_),1),_.children.forEach(s),_.alias.forEach(s))}else{const _=n.indexOf(d);_>-1&&(n.splice(_,1),d.record.name&&a.delete(d.record.name),d.children.forEach(s),d.alias.forEach(s))}}function o(){return n}function l(d){let _=0;for(;_<n.length&&sD(d,n[_])>=0&&(d.record.path!==n[_].record.path||!Eu(d,n[_]));)_++;n.splice(_,0,d),d.record.name&&!Tl(d)&&a.set(d.record.name,d)}function c(d,_){let u,p={},h,f;if("name"in d&&d.name){if(u=a.get(d.name),!u)throw sa(1,{location:d});f=u.record.name,p=Ie(bl(_.params,u.keys.filter(v=>!v.optional).map(v=>v.name)),d.params&&bl(d.params,u.keys.map(v=>v.name))),h=u.stringify(p)}else if("path"in d)h=d.path,u=n.find(v=>v.re.test(h)),u&&(p=u.parse(h),f=u.record.name);else{if(u=_.name?a.get(_.name):n.find(v=>v.re.test(_.path)),!u)throw sa(1,{location:d,currentLocation:_});f=u.record.name,p=Ie({},_.params,d.params),h=u.stringify(p)}const b=[];let S=u;for(;S;)b.unshift(S.record),S=S.parent;return{name:f,path:h,params:p,matched:b,meta:mD(b)}}return e.forEach(d=>i(d)),{addRoute:i,resolve:c,removeRoute:s,getRoutes:o,getRecordMatcher:r}}function bl(e,t){const n={};for(const a of t)a in e&&(n[a]=e[a]);return n}function _D(e){return{path:e.path,redirect:e.redirect,name:e.name,meta:e.meta||{},aliasOf:void 0,beforeEnter:e.beforeEnter,props:pD(e),children:e.children||[],instances:{},leaveGuards:new Set,updateGuards:new Set,enterCallbacks:{},components:"components"in e?e.components||null:e.component&&{default:e.component}}}function pD(e){const t={},n=e.props||!1;if("component"in e)t.default=n;else for(const a in e.components)t[a]=typeof n=="boolean"?n:n[a];return t}function Tl(e){for(;e;){if(e.record.aliasOf)return!0;e=e.parent}return!1}function mD(e){return e.reduce((t,n)=>Ie(t,n.meta),{})}function yl(e,t){const n={};for(const a in e)n[a]=a in t?t[a]:e[a];return n}function Eu(e,t){return t.children.some(n=>n===e||Eu(e,n))}const Su=/#/g,gD=/&/g,hD=/\//g,fD=/=/g,ED=/\?/g,bu=/\+/g,SD=/%5B/g,bD=/%5D/g,Tu=/%5E/g,TD=/%60/g,yu=/%7B/g,yD=/%7C/g,vu=/%7D/g,vD=/%20/g;function to(e){return encodeURI(""+e).replace(yD,"|").replace(SD,"[").replace(bD,"]")}function RD(e){return to(e).replace(yu,"{").replace(vu,"}").replace(Tu,"^")}function as(e){return to(e).replace(bu,"%2B").replace(vD,"+").replace(Su,"%23").replace(gD,"%26").replace(TD,"`").replace(yu,"{").replace(vu,"}").replace(Tu,"^")}function CD(e){return as(e).replace(fD,"%3D")}function ND(e){return to(e).replace(Su,"%23").replace(ED,"%3F")}function wD(e){return e==null?"":ND(e).replace(hD,"%2F")}function kr(e){try{return decodeURIComponent(""+e)}catch{}return""+e}function OD(e){const t={};if(e===""||e==="?")return t;const a=(e[0]==="?"?e.slice(1):e).split("&");for(let r=0;r<a.length;++r){const i=a[r].replace(bu," "),s=i.indexOf("="),o=kr(s<0?i:i.slice(0,s)),l=s<0?null:kr(i.slice(s+1));if(o in t){let c=t[o];Ot(c)||(c=t[o]=[c]),c.push(l)}else t[o]=l}return t}function vl(e){let t="";for(let n in e){const a=e[n];if(n=CD(n),a==null){a!==void 0&&(t+=(t.length?"&":"")+n);continue}(Ot(a)?a.map(i=>i&&as(i)):[a&&as(a)]).forEach(i=>{i!==void 0&&(t+=(t.length?"&":"")+n,i!=null&&(t+="="+i))})}return t}function ID(e){const t={};for(const n in e){const a=e[n];a!==void 0&&(t[n]=Ot(a)?a.map(r=>r==null?null:""+r):a==null?a:""+a)}return t}const AD=Symbol(""),Rl=Symbol(""),di=Symbol(""),Ru=Symbol(""),rs=Symbol("");function ha(){let e=[];function t(a){return e.push(a),()=>{const r=e.indexOf(a);r>-1&&e.splice(r,1)}}function n(){e=[]}return{add:t,list:()=>e,reset:n}}function on(e,t,n,a,r){const i=a&&(a.enterCallbacks[r]=a.enterCallbacks[r]||[]);return()=>new Promise((s,o)=>{const l=_=>{_===!1?o(sa(4,{from:n,to:t})):_ instanceof Error?o(_):tD(_)?o(sa(2,{from:t,to:_})):(i&&a.enterCallbacks[r]===i&&typeof _=="function"&&i.push(_),s())},c=e.call(a&&a.instances[r],t,n,l);let d=Promise.resolve(c);e.length<3&&(d=d.then(l)),d.catch(_=>o(_))})}function Di(e,t,n,a){const r=[];for(const i of e)for(const s in i.components){let o=i.components[s];if(!(t!=="beforeRouteEnter"&&!i.instances[s]))if(DD(o)){const c=(o.__vccOpts||o)[t];c&&r.push(on(c,n,a,i,s))}else{let l=o();r.push(()=>l.then(c=>{if(!c)return Promise.reject(new Error(`Couldn't resolve component "${s}" at "${i.path}"`));const d=PA(c)?c.default:c;i.components[s]=d;const u=(d.__vccOpts||d)[t];return u&&on(u,n,a,i,s)()}))}}return r}function DD(e){return typeof e=="object"||"displayName"in e||"props"in e||"__vccOpts"in e}function Cl(e){const t=Ct(di),n=Ct(Ru),a=ot(()=>t.resolve(at(e.to))),r=ot(()=>{const{matched:l}=a.value,{length:c}=l,d=l[c-1],_=n.matched;if(!d||!_.length)return-1;const u=_.findIndex(ia.bind(null,d));if(u>-1)return u;const p=Nl(l[c-2]);return c>1&&Nl(d)===p&&_[_.length-1].path!==p?_.findIndex(ia.bind(null,l[c-2])):u}),i=ot(()=>r.value>-1&&LD(n.params,a.value.params)),s=ot(()=>r.value>-1&&r.value===n.matched.length-1&&mu(n.params,a.value.params));function o(l={}){return MD(l)?t[at(e.replace)?"replace":"push"](at(e.to)).catch(Ra):Promise.resolve()}return{route:a,href:ot(()=>a.value.href),isActive:i,isExactActive:s,navigate:o}}const xD=nd({name:"RouterLink",compatConfig:{MODE:3},props:{to:{type:[String,Object],required:!0},replace:Boolean,activeClass:String,exactActiveClass:String,custom:Boolean,ariaCurrentValue:{type:String,default:"page"}},useLink:Cl,setup(e,{slots:t}){const n=ua(Cl(e)),{options:a}=Ct(di),r=ot(()=>({[wl(e.activeClass,a.linkActiveClass,"router-link-active")]:n.isActive,[wl(e.exactActiveClass,a.linkExactActiveClass,"router-link-exact-active")]:n.isExactActive}));return()=>{const i=t.default&&t.default(n);return e.custom?i:vd("a",{"aria-current":n.isExactActive?e.ariaCurrentValue:null,href:n.href,onClick:n.navigate,class:r.value},i)}}}),kD=xD;function MD(e){if(!(e.metaKey||e.altKey||e.ctrlKey||e.shiftKey)&&!e.defaultPrevented&&!(e.button!==void 0&&e.button!==0)){if(e.currentTarget&&e.currentTarget.getAttribute){const t=e.currentTarget.getAttribute("target");if(/\b_blank\b/i.test(t))return}return e.preventDefault&&e.preventDefault(),!0}}function LD(e,t){for(const n in t){const a=t[n],r=e[n];if(typeof a=="string"){if(a!==r)return!1}else if(!Ot(r)||r.length!==a.length||a.some((i,s)=>i!==r[s]))return!1}return!0}function Nl(e){return e?e.aliasOf?e.aliasOf.path:e.path:""}const wl=(e,t,n)=>e!=null?e:t!=null?t:n,PD=nd({name:"RouterView",inheritAttrs:!1,props:{name:{type:String,default:"default"},route:Object},compatConfig:{MODE:3},setup(e,{attrs:t,slots:n}){const a=Ct(rs),r=ot(()=>e.route||a.value),i=Ct(Rl,0),s=ot(()=>{let c=at(i);const{matched:d}=r.value;let _;for(;(_=d[c])&&!_.components;)c++;return c}),o=ot(()=>r.value.matched[s.value]);pr(Rl,ot(()=>s.value+1)),pr(AD,o),pr(rs,r);const l=Xr();return Dn(()=>[l.value,o.value,e.name],([c,d,_],[u,p,h])=>{d&&(d.instances[_]=c,p&&p!==d&&c&&c===u&&(d.leaveGuards.size||(d.leaveGuards=p.leaveGuards),d.updateGuards.size||(d.updateGuards=p.updateGuards))),c&&d&&(!p||!ia(d,p)||!u)&&(d.enterCallbacks[_]||[]).forEach(f=>f(c))},{flush:"post"}),()=>{const c=r.value,d=e.name,_=o.value,u=_&&_.components[d];if(!u)return Ol(n.default,{Component:u,route:c});const p=_.props[d],h=p?p===!0?c.params:typeof p=="function"?p(c):p:null,b=vd(u,Ie({},h,t,{onVnodeUnmounted:S=>{S.component.isUnmounted&&(_.instances[d]=null)},ref:l}));return Ol(n.default,{Component:b,route:c})||b}}});function Ol(e,t){if(!e)return null;const n=e(t);return n.length===1?n[0]:n}const UD=PD;function FD(e){const t=uD(e.routes,e),n=e.parseQuery||OD,a=e.stringifyQuery||vl,r=e.history,i=ha(),s=ha(),o=ha(),l=Cf(an);let c=an;Kn&&e.scrollBehavior&&"scrollRestoration"in history&&(history.scrollRestoration="manual");const d=Ii.bind(null,N=>""+N),_=Ii.bind(null,wD),u=Ii.bind(null,kr);function p(N,V){let Y,te;return hu(N)?(Y=t.getRecordMatcher(N),te=V):te=N,t.addRoute(te,Y)}function h(N){const V=t.getRecordMatcher(N);V&&t.removeRoute(V)}function f(){return t.getRoutes().map(N=>N.record)}function b(N){return!!t.getRecordMatcher(N)}function S(N,V){if(V=Ie({},V||l.value),typeof N=="string"){const m=Ai(n,N,V.path),g=t.resolve({path:m.path},V),y=r.createHref(m.fullPath);return Ie(m,g,{params:u(g.params),hash:kr(m.hash),redirectedFrom:void 0,href:y})}let Y;if("path"in N)Y=Ie({},N,{path:Ai(n,N.path,V.path).path});else{const m=Ie({},N.params);for(const g in m)m[g]==null&&delete m[g];Y=Ie({},N,{params:_(N.params)}),V.params=_(V.params)}const te=t.resolve(Y,V),Z=N.hash||"";te.params=d(u(te.params));const Ce=BA(a,Ie({},N,{hash:RD(Z),path:te.path})),le=r.createHref(Ce);return Ie({fullPath:Ce,hash:Z,query:a===vl?ID(N.query):N.query||{}},te,{redirectedFrom:void 0,href:le})}function v(N){return typeof N=="string"?Ai(n,N,l.value.path):Ie({},N)}function T(N,V){if(c!==N)return sa(8,{from:V,to:N})}function C(N){return G(N)}function I(N){return C(Ie(v(N),{replace:!0}))}function H(N){const V=N.matched[N.matched.length-1];if(V&&V.redirect){const{redirect:Y}=V;let te=typeof Y=="function"?Y(N):Y;return typeof te=="string"&&(te=te.includes("?")||te.includes("#")?te=v(te):{path:te},te.params={}),Ie({query:N.query,hash:N.hash,params:"path"in te?{}:N.params},te)}}function G(N,V){const Y=c=S(N),te=l.value,Z=N.state,Ce=N.force,le=N.replace===!0,m=H(Y);if(m)return G(Ie(v(m),{state:typeof m=="object"?Ie({},Z,m.state):Z,force:Ce,replace:le}),V||Y);const g=Y;g.redirectedFrom=V;let y;return!Ce&&GA(a,te,Y)&&(y=sa(16,{to:g,from:te}),de(te,te,!0,!1)),(y?Promise.resolve(y):K(g,te)).catch(w=>Ht(w)?Ht(w,2)?w:ee(w):D(w,g,te)).then(w=>{if(w){if(Ht(w,2))return G(Ie({replace:le},v(w.to),{state:typeof w.to=="object"?Ie({},Z,w.to.state):Z,force:Ce}),V||g)}else w=oe(g,te,!0,le,Z);return W(g,te,w),w})}function L(N,V){const Y=T(N,V);return Y?Promise.reject(Y):Promise.resolve()}function K(N,V){let Y;const[te,Z,Ce]=BD(N,V);Y=Di(te.reverse(),"beforeRouteLeave",N,V);for(const m of te)m.leaveGuards.forEach(g=>{Y.push(on(g,N,V))});const le=L.bind(null,N,V);return Y.push(le),Wn(Y).then(()=>{Y=[];for(const m of i.list())Y.push(on(m,N,V));return Y.push(le),Wn(Y)}).then(()=>{Y=Di(Z,"beforeRouteUpdate",N,V);for(const m of Z)m.updateGuards.forEach(g=>{Y.push(on(g,N,V))});return Y.push(le),Wn(Y)}).then(()=>{Y=[];for(const m of N.matched)if(m.beforeEnter&&!V.matched.includes(m))if(Ot(m.beforeEnter))for(const g of m.beforeEnter)Y.push(on(g,N,V));else Y.push(on(m.beforeEnter,N,V));return Y.push(le),Wn(Y)}).then(()=>(N.matched.forEach(m=>m.enterCallbacks={}),Y=Di(Ce,"beforeRouteEnter",N,V),Y.push(le),Wn(Y))).then(()=>{Y=[];for(const m of s.list())Y.push(on(m,N,V));return Y.push(le),Wn(Y)}).catch(m=>Ht(m,8)?m:Promise.reject(m))}function W(N,V,Y){for(const te of o.list())te(N,V,Y)}function oe(N,V,Y,te,Z){const Ce=T(N,V);if(Ce)return Ce;const le=V===an,m=Kn?history.state:{};Y&&(te||le?r.replace(N.fullPath,Ie({scroll:le&&m&&m.scroll},Z)):r.push(N.fullPath,Z)),l.value=N,de(N,V,Y,le),ee()}let he;function be(){he||(he=r.listen((N,V,Y)=>{if(!Ae.listening)return;const te=S(N),Z=H(te);if(Z){G(Ie(Z,{replace:!0}),te).catch(Ra);return}c=te;const Ce=l.value;Kn&&KA(gl(Ce.fullPath,Y.delta),ci()),K(te,Ce).catch(le=>Ht(le,12)?le:Ht(le,2)?(G(le.to,te).then(m=>{Ht(m,20)&&!Y.delta&&Y.type===Fa.pop&&r.go(-1,!1)}).catch(Ra),Promise.reject()):(Y.delta&&r.go(-Y.delta,!1),D(le,te,Ce))).then(le=>{le=le||oe(te,Ce,!1),le&&(Y.delta&&!Ht(le,8)?r.go(-Y.delta,!1):Y.type===Fa.pop&&Ht(le,20)&&r.go(-1,!1)),W(te,Ce,le)}).catch(Ra)}))}let fe=ha(),Te=ha(),A;function D(N,V,Y){ee(N);const te=Te.list();return te.length?te.forEach(Z=>Z(N,V,Y)):console.error(N),Promise.reject(N)}function U(){return A&&l.value!==an?Promise.resolve():new Promise((N,V)=>{fe.add([N,V])})}function ee(N){return A||(A=!N,be(),fe.list().forEach(([V,Y])=>N?Y(N):V()),fe.reset()),N}function de(N,V,Y,te){const{scrollBehavior:Z}=e;if(!Kn||!Z)return Promise.resolve();const Ce=!Y&&QA(gl(N.fullPath,0))||(te||!Y)&&history.state&&history.state.scroll||null;return Bs().then(()=>Z(N,V,Ce)).then(le=>le&&$A(le)).catch(le=>D(le,N,V))}const me=N=>r.go(N);let ge;const Ve=new Set,Ae={currentRoute:l,listening:!0,addRoute:p,removeRoute:h,hasRoute:b,getRoutes:f,resolve:S,options:e,push:C,replace:I,go:me,back:()=>me(-1),forward:()=>me(1),beforeEach:i.add,beforeResolve:s.add,afterEach:o.add,onError:Te.add,isReady:U,install(N){const V=this;N.component("RouterLink",kD),N.component("RouterView",UD),N.config.globalProperties.$router=V,Object.defineProperty(N.config.globalProperties,"$route",{enumerable:!0,get:()=>at(l)}),Kn&&!ge&&l.value===an&&(ge=!0,C(r.location).catch(Z=>{}));const Y={};for(const Z in an)Y[Z]=ot(()=>l.value[Z]);N.provide(di,V),N.provide(Ru,ua(Y)),N.provide(rs,l);const te=N.unmount;Ve.add(N),N.unmount=function(){Ve.delete(N),Ve.size<1&&(c=an,he&&he(),he=null,l.value=an,ge=!1,A=!1),te()}}};return Ae}function Wn(e){return e.reduce((t,n)=>t.then(()=>n()),Promise.resolve())}function BD(e,t){const n=[],a=[],r=[],i=Math.max(t.matched.length,e.matched.length);for(let s=0;s<i;s++){const o=t.matched[s];o&&(e.matched.find(c=>ia(c,o))?a.push(o):n.push(o));const l=e.matched[s];l&&(t.matched.find(c=>ia(c,l))||r.push(l))}return[n,a,r]}function GD(){return Ct(di)}const YD={class:"content sharp-border"},HD={key:0,class:"app-bar-space"},WD={__name:"App",setup(e){const{dark:t,setFont:n,setDark:a,font:r}=Ad(),{setModules:i}=xd(),{currentRoute:s}=GD();Dn(t,()=>{document.body.toggleAttribute("theme-dark")});const o=Xr(!1);Ys(()=>{window.addEventListener("scroll",c)}),rd(()=>{const{fileModules:u}=xA();l(),i(kA(u))});const l=()=>{var h;const u=mn.getFont(),p=((h=kn.find(f=>f.name===u))==null?void 0:h.class)||kn[0].class;n(p),a(mn.getTheme()==="dark"),document.body.classList.add(r.value)},c=u=>{if(typeof window=="undefined")return;const p=window.pageYOffset||u.target.scrollTop;o.value=p>150},d=()=>{window.scroll({top:0,behavior:"smooth"})},_=ot(()=>["Home","Filter","Sort"].includes(s==null?void 0:s.value.name));return(u,p)=>{const h=iE("router-view"),f=TS;return Fe(),He("div",null,[Oe(at(rb)),ue("div",YD,[at(_)?(Fe(),He("div",HD)):Zi("",!0),Oe(h),o.value?(Fe(),He("button",{key:1,class:"scroll-to-top circle small-shadow",onClick:d},[Oe(f)])):Zi("",!0)]),Oe(at(mT))])}}},VD=[{name:"Home",path:"/",component:()=>Yn(()=>import("./HomeView.60253988.js"),["assets/HomeView.60253988.js","assets/HomeView.669ed221.css","assets/tracker.d5d900f2.js"])},{name:"Filter",path:"/filter/:filterBy/:filterValue?",component:()=>Yn(()=>import("./HomeView.60253988.js"),["assets/HomeView.60253988.js","assets/HomeView.669ed221.css","assets/tracker.d5d900f2.js"])},{name:"Sort",path:"/sort/:sortBy",component:()=>Yn(()=>import("./HomeView.60253988.js"),["assets/HomeView.60253988.js","assets/HomeView.669ed221.css","assets/tracker.d5d900f2.js"])},{name:"Blog",path:"/blog/:name",component:()=>Yn(()=>import("./PostView.2969923b.js"),["assets/PostView.2969923b.js","assets/PostView.77b2947d.css","assets/tracker.d5d900f2.js"])},{name:"Series",path:"/blog/:series/:name",component:()=>Yn(()=>import("./PostView.2969923b.js"),["assets/PostView.2969923b.js","assets/PostView.77b2947d.css","assets/tracker.d5d900f2.js"])},{name:"404",path:"/:pathMatch(.*)*",component:()=>Yn(()=>import("./404View.c8c80f45.js"),["assets/404View.c8c80f45.js","assets/404View.7c5e5cbc.css"])}],qD=FD({history:eD(),routes:VD,scrollBehavior(e,t,n){return{top:(n==null?void 0:n.top)||0}}}),zD=_S(),Wa=cS(WD);Wa.config.globalProperties.window=window;Wa.config.globalProperties.$moment=z;Wa.use(zD);Wa.use(qD);Wa.mount("#app");export{Vb as A,Bb as B,gr as C,jS as D,xd as E,dt as F,tx as G,nx as H,Ff as I,Bf as J,mn as S,qs as _,ue as a,ot as b,He as c,at as d,Zi as e,Oe as f,$o as g,z as h,GD as i,Xr as j,Ys as k,ex as l,QD as m,In as n,Fe as o,XD as p,Vi as q,lE as r,Ed as s,Tc as t,Ad as u,jD as v,Dn as w,JD as x,ZD as y,Ns as z};

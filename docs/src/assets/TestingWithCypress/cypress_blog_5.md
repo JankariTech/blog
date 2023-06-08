@@ -5,7 +5,7 @@ authorAvatar: https://avatars.githubusercontent.com/u/39373750?v=4
 authorLink: https://github.com/kiranparajuli589/
 createdAt: Feb 2, 2021
 tags: cypress, selenium, comparison, testing
-banner: https://codoid.com/wp-content/uploads/2021/09/Selenium-vs-Cypress-Listing-out-the-Key-Differences-Blog.jpg
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
 seriesTitle: E2E Testing with Cypress
 episode: 5
 ---
