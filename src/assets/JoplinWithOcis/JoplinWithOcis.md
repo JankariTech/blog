@@ -5,7 +5,7 @@ authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800
 authorLink: https://github.com/individual-it
 createdAt: Jun 7, 2023
 tags: joplin, owncloud, cloudstorage
-banner: https://github.com/JankariTech/blog/blob/fd8730dbc20a3855db82e8ae7a97f5c941e9e3fd/src/assets/JoplinWithOcis/joplin_with_ocis-header.png
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/assets/JoplinWithOcis/joplin_with_ocis-header.png
 ---
 
 I love to use [Joplin](joplinapp.org) to organize my notes. To synchronize the notes between different devices I have so far used the WebDAV sync option together with [ownCloud 10](github.com/owncloud/core/). Now [oCIS (ownCloud Infinite Scale)](https://owncloud.com/infinite-scale/) is the new cool kid in the cloud storage space and I would like to use it for syncing of Joplin.
