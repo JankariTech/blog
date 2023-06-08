@@ -5,7 +5,7 @@ authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800
 authorLink: https://github.com/individual-it
 createdAt: Feb 5, 2020
 tags: testing, bdd, go, qa
-banner: https://github.com/JankariTech/blog/blob/master/src/BDDInGo.png
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/assets/BDDInGo/BDDInGo.png
 seriesTitle: Behaviour Driven Development
 episode: 1
 ---

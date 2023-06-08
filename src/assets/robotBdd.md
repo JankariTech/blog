@@ -5,7 +5,7 @@ authorAvatar: https://avatars.githubusercontent.com/u/40829116?v=4
 authorLink: https://github.com/jasson99/
 createdAt: April 6, 2020
 tags: testing, bdd, robotframework, python
-banner: https://github.com/JankariTech/blog/blob/master/src/imgs/fallback_banner.png
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
 ---
 ## Robot Framework
 

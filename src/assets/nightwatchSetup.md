@@ -5,7 +5,7 @@ authorAvatar: https://www.jankaritech.com/images/2021/12/29/p1110976-crop-col-80
 authorLink: https://github.com/Talank
 createdAt: Feb 18, 2020
 tags: testing, javascript, nightwatch, selenium
-banner: https://github.com/JankariTech/blog/blob/master/src/imgs/fallback_banner.png
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
 ---
 
 `Nightwatch.js` is an open-source automated testing framework that aims at providing complete E2E (end to end) solutions to automate testing with `Selenium Javascript` for web-based applications, browser applications, and websites. It is written in `Node.js` and uses the `W3C WebDriver API` (formerly Selenium WebDriver) for interacting with various browsers.

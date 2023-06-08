@@ -5,7 +5,7 @@ authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800
 authorLink: https://github.com/individual-it
 createdAt: Feb 15, 2021
 tags: bdd, testing
-banner: https://github.com/JankariTech/blog/blob/master/src/BDDOnRewrite.png
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/assets/BDDOnRewrite/BDDOnRewrite.png
 seriesTitle: Behaviour Driven Development
 episode: 3
 ---

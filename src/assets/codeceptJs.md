@@ -5,7 +5,7 @@ authorAvatar: https://avatars.githubusercontent.com/u/34328907?v=4
 authorLink: https://github.com/HariBhandari07
 createdAt: June 2, 2020
 tags: k6, load, performance, testing
-banner: https://github.com/JankariTech/blog/blob/master/src/imgs/fallback_banner.png
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
 ---
 
 CodeceptJS is a modern end to end testing framework. In this tutorial we will setup BDD end-to-end testing using CodeceptJS along with Puppeteer.

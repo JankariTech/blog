@@ -5,7 +5,7 @@ authorAvatar: https://www.jankaritech.com/images/2021/12/29/p1110976-crop-col-80
 authorLink: https://github.com/Talank
 createdAt: Nov 3, 2021
 tags: visual-testing, testing, javascript
-banner: https://github.com/JankariTech/blog/blob/master/src/imgs/fallback_banner.png
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
 seriesTitle: Visual Regression Testing (VRT)
 episode: 2
 ---
