@@ -5,7 +5,7 @@ authorAvatar: https://avatars.githubusercontent.com/u/52366632?v=4
 authorLink: https://github.com/saw-jan
 createdAt: Aug 24, 2021
 tags: pactjs, testing, javascript
-banner: https://res.cloudinary.com/practicaldev/image/fetch/s--rgD9-Oz9--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/tj9nr0r3wfgchgbpa7d5.png
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/ContractTestingWithPact/images/header.png
 ---
 Contract testing is a software testing technique which is used to test the integration points and interfaces between different software applications. The main goal of contract testing is to test each application in isolation and ensure that they are compatible with a shared contract.
 

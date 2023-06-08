@@ -5,7 +5,7 @@ authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800
 authorLink: https://github.com/individual-it
 createdAt: May 18, 2021
 tags: testing, go, bdd, test
-banner: https://res.cloudinary.com/practicaldev/image/fetch/s--JeC9Hmh4--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/brg6zf6ifa9fpru9e7yh.png
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/assets/BDDInGo/BDDInGo.png
 ---
 
 In [Einstieg in BDD (Behavior-driven development)](https://dev.to/jankaritech/einstieg-in-bdd-behavior-driven-development-1m8h) habe ich die Grundzüge von BDD erklärt und ihren Einsatz, um die Funktionen einer Anwendung zu beschreiben. Im Grunde genommen ist BDD dazu gedacht, alle Beteiligten zusammenzubringen und klar zu beschreiben, wie sich die "Features" einer Anwendung in verschiedenen Situationen zu verhalten haben.
@@ -49,7 +49,7 @@ und dann `go get github.com/cucumber/godog@v0.12.6` ausführen.
 
 Wir brauchen auch das godog Kommandozeilenwerkzeug, um das zu installieren muss
 
-`go install github.com/cucumber/godog/cmd/godog@v0.12.6` 
+`go install github.com/cucumber/godog/cmd/godog@v0.12.6`
 
 ausgeführt werden
 

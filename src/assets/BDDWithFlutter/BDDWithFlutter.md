@@ -5,7 +5,7 @@ authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800
 authorLink: https://github.com/individual-it
 createdAt: June 3, 2020
 tags: bdd, testing, flutter, dart
-banner: https://www.concettolabs.com/blog/wp-content/uploads/2019/05/flutter-desktop-app.png
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
 seriesTitle: Behaviour Driven Development
 episode: 2
 ---

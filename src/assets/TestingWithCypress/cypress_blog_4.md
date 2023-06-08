@@ -5,7 +5,7 @@ authorAvatar: https://avatars.githubusercontent.com/u/39373750?v=4
 authorLink: https://github.com/kiranparajuli589/
 createdAt: Feb 2, 2021
 tags: cypress, cucumber, gherkin, testing
-banner: https://www.sipios.com/hubfs/e2E-tuto-full-mage-white.png
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
 seriesTitle: E2E Testing with Cypress
 episode: 4
 ---

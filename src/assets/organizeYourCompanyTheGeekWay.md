@@ -5,7 +5,7 @@ authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800
 authorLink: https://github.com/individual-it
 createdAt: Oct 23, 2019
 tags: startup, git, documents, organizing
-banner: https://res.cloudinary.com/practicaldev/image/fetch/s--Kf8L6kUm--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://thepracticaldev.s3.amazonaws.com/i/l8hil2nyr3jz5ujpljyp.jpg
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
 ---
 
 ## Organize your company the geek-way
