@@ -5,7 +5,7 @@ authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800
 authorLink: https://github.com/individual-it
 createdAt: March 31, 2021
 tags: testing, bdd, test
-banner: https://res.cloudinary.com/practicaldev/image/fetch/s--9V07u59B--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/kwqa0mzc2gp33o3rhbg5.png
+banner: https://github.com/JankariTech/blog/blob/master/src/BDDInGoDe.png
 ---
 
 In [Demonstrating TDD (Test-driven development) in Go](https://dev.to/jankaritech/demonstrating-tdd-test-driven-development-in-go-27b0) habe ich über TDD geschrieben und jetzt möchte ich zeigen wie BDD (Behavior-driven development) mit Go funktionieren kann.

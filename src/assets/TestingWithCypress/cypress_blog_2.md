@@ -5,7 +5,7 @@ authorAvatar: https://avatars.githubusercontent.com/u/39373750?v=4
 authorLink: https://github.com/kiranparajuli589/
 createdAt: Feb 2, 2021
 tags: testing, javascript, automation, cypress
-banner: https://res.cloudinary.com/practicaldev/image/fetch/s--wD1Dk_BA--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/i/472k6ih1n456rtvn4xb3.png
+banner: https://github.com/JankariTech/blog/blob/master/src/imgs/fallback_banner.png
 seriesTitle: E2E Testing with Cypress
 episode: 2
 ---

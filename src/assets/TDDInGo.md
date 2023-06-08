@@ -5,7 +5,7 @@ authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800
 authorLink: https://github.com/individual-it
 createdAt: Oct 30, 2019
 tags: testing, performance, python, infrastructure
-banner: https://cdn-images-1.medium.com/max/768/1*WJ-o9buxhxzVK18iEW-eRg.png
+banner: https://github.com/JankariTech/blog/blob/master/src/imgs/fallback_banner.png
 ---
 
 ## Demonstrating TDD (Test-driven development) in Go

@@ -5,7 +5,7 @@ authorAvatar: https://avatars.githubusercontent.com/u/40829116?v=4
 authorLink: https://github.com/jasson99/
 createdAt: Feb 20, 2020
 tags: testing, cucumber, gherkin, bdd
-banner: https://blog.testproject.io/wp-content/uploads/2019/11/Cucumber-Benefits-on-Skin-Feature.jpg
+banner: https://github.com/JankariTech/blog/blob/master/src/imgs/fallback_banner.png
 ---
 
 As we are familiar with the basic gherkin syntax such as `feature`, `scenario`, `background`, `given`, `when` and `then` steps already, let us discuss about the `Scenario Outline` used in a gherkin feature file.

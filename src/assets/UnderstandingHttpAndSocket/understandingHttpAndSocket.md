@@ -5,7 +5,7 @@ authorAvatar: https://avatars.githubusercontent.com/u/41365307?v=4
 authorLink: https://github.com/sakshamgurung
 createdAt: Dec 6, 2021
 tags: socket, java, http, video
-banner: https://images.unsplash.com/photo-1478098711619-5ab0b478d6e6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTV8fHxlbnwwfHx8fA%3D%3D&w=1000&q=80
+banner: https://github.com/JankariTech/blog/blob/master/src/imgs/fallback_banner.png
 ---
 
 This blog explains the basic understanding of HTTP, client-server model, network layers, and some socket programming in Java.

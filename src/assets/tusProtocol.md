@@ -5,7 +5,7 @@ authorAvatar: https://harunmudak.com/wp-content/uploads/2020/12/girl-cartoon-cha
 authorLink: https://github.com/swoichha
 createdAt: Feb 10, 2022
 tags: tus, upload, resumable
-banner: https://tus.io/assets/img/tus1--no-io.png
+banner: https://github.com/JankariTech/blog/blob/master/src/imgs/fallback_banner.png
 ---
 
 ```

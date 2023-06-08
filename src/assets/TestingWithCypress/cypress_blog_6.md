@@ -5,7 +5,7 @@ authorAvatar: https://avatars.githubusercontent.com/u/39373750?v=4
 authorLink: https://github.com/kiranparajuli589/
 createdAt: Feb 2, 2021
 tags: cypress, gherkin, parallelization, testing
-banner: https://thumbs.dreamstime.com/b/parallel-railway-lines-sunny-day-photo-bridge-above-white-balance-adjustment-parallel-lines-railway-115036060.jpg
+banner: https://github.com/JankariTech/blog/blob/master/src/imgs/fallback_banner.png
 seriesTitle: E2E Testing with Cypress
 episode: 6
 ---

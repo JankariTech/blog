@@ -5,7 +5,7 @@ authorAvatar: https://avatars.githubusercontent.com/u/39373750?v=4
 authorLink: https://github.com/kiranparajuli589/
 createdAt: May 6, 2022
 tags: vue, jest, unit, testing
-banner: https://brightsec.com/wp-content/uploads/2022/07/Blog-How-Vue-Unit-Testing-Works-and-4-Critical-Best-Practices.png
+banner: https://github.com/JankariTech/blog/blob/master/src/imgs/fallback_banner.png
 ---
 ## Unit Testing Vue Components
 

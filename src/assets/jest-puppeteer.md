@@ -5,7 +5,7 @@ authorAvatar: https://www.jankaritech.com/images/2021/12/29/p1110976-crop-col-80
 authorLink: https://github.com/Talank
 createdAt: Jul 22, 2020
 tags: testing, javascript, jest, puppeteer
-banner: https://res.cloudinary.com/practicaldev/image/fetch/s--sXh42dKN--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/i/raxyo382jgx8tvfpnxc4.png
+banner: https://github.com/JankariTech/blog/blob/master/src/imgs/fallback_banner.png
 ---
 
 "In Jest, there is truth" -William Shakespeare.

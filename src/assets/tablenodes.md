@@ -5,7 +5,7 @@ authorAvatar: https://avatars.githubusercontent.com/u/40829116?v=4
 authorLink: https://github.com/jasson99/
 createdAt: Feb 20, 2020
 tags: testing, cucumber, gherkin, bdd
-banner: https://3.bp.blogspot.com/-14nZ-MQ6sOc/WUAxMaWgd2I/AAAAAAAAERQ/a-7VBWr2FfQYuhx5vFNqeL_j504rNtruACLcB/s1600/cucumberDatable.jpg
+banner: https://github.com/JankariTech/blog/blob/master/src/imgs/fallback_banner.png
 ---
 
 As we are familiar with the basic gherkin syntax such as `feature`, `scenario`, `Scenario Outline`, `background`, `given`, `when` and `then` steps already, let us discuss about the `table` or `tablenodes` used in the steps of a gherkin feature file.
