@@ -5,7 +5,7 @@
       <div v-for="(item, index) in toc"
         :key="index"
         class="toc--item"
-        @click="scrollToHeading(item.text, item.depth)"
+        @click="scrollToHeading(item.id)"
       >
         <mdi-menu-right class="mdi-circle" />
         {{ item.text }}
@@ -42,8 +42,8 @@ defineProps({
   }
 })
 
-const scrollToHeading = (headingText, headingDepth) => {
-  const xpath = `//h${headingDepth}[contains(text(), '${headingText.trim()}')]`
+const scrollToHeading = (headingId) => {
+  const xpath = `//*[@id="${headingId}"]`
   const heading = document.evaluate(
     xpath,
     document,

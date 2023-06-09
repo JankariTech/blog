@@ -91,5 +91,12 @@ export const getTableOfContent = (source) => {
   const tokens = marked.lexer(source)
   // remove the first 2 tokens to avoid meta information
   // and then return every tokens that is of header type
-  return tokens.slice(2).filter(token => token.type === "heading")
+  const headers = tokens.slice(2).filter(token => token.type === "heading" && token.depth <= 4)
+  headers.forEach(header => {
+    const html = marked.parser([header])
+    const doc = new DOMParser().parseFromString(html, "text/xml")
+    header.id = doc.firstChild.id
+    header.text = doc.firstChild.textContent
+  })
+  return headers
 }
