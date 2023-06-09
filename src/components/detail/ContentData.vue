@@ -14,6 +14,7 @@ defineProps({
 <style lang="scss">
 .blog-content-data {
   flex: 65%;
+  max-width: 65%;
   padding: 0 1rem;
 
   @media only screen and (max-width: 768px) {
