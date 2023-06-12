@@ -11,7 +11,7 @@
     <div class="wrapper">
       <div class="title">Share</div>
       <div class="share-items">
-        <mdi-twitter class="share-icon twitter" />
+        <mdi-twitter class="share-icon twitter" @click="shareOnTwitter"/>
         <mdi-facebook class="share-icon facebook" @click="shareOnFb" />
         <mdi-linkedin class="share-icon linkedin" />
       </div>
@@ -19,6 +19,7 @@
   </div>
 </template>
 <script setup>
+const props = defineProps(["title"])
 const shareOnFb = () => {
   // eslint-disable-next-line no-undef
   FB.ui({
@@ -27,6 +28,16 @@ const shareOnFb = () => {
     href: window.location.href,
     redirect_uri: window.location.href
   }, function (response) {})
+}
+const shareOnTwitter = () => {
+  window
+    .open(
+      `https://twitter.com/intent/tweet?text=${encodeURIComponent(
+        `"${props.title.title}" by ${props.title.authorName} #JankariTech`
+      )}&url=${encodeURIComponent(encodeURI(window.location.href))}`,
+      "_blank"
+    )
+    .focus()
 }
 </script>
 <style lang="scss">

@@ -2,7 +2,7 @@
   <div class="blog" v-if="peekData">
     <HeadSection :peek="peekData" />
     <div class="blog--content">
-      <ContentInfo />
+      <ContentInfo :title="peekData"/>
       <ContentData :data="content" />
       <ContentSidebar :toc="toc" :tags="peekData.tags" />
     </div>
