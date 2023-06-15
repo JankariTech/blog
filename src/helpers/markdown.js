@@ -84,7 +84,9 @@ export const getContentHtml = (source) => {
   const tokens = marked.lexer(source, null)
   // remove the first 2 tokens to avoid meta information
   // and then return every tokens beneath the meta token
-  return marked.parser(tokens.slice(2), null)
+  const html = marked.parser([tokens[2]])
+  const doc = new DOMParser().parseFromString(html, "text/xml")
+  return [marked.parser(tokens.slice(2), null), doc.firstChild.textContent]
 }
 
 export const getTableOfContent = (source) => {

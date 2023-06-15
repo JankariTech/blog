@@ -53,8 +53,10 @@ const loadMarkdown = () => {
   const module = modules.value.find(item => item.meta.title === title && item.meta.seriesTitle === sTitle)
 
   peekData.value = module.meta
-  content.value = DOMPurify.sanitize(getContentHtml(module.raw))
+  const [html, description] = getContentHtml(module.raw)
+  content.value = DOMPurify.sanitize(html)
   toc.value = getTableOfContent(module.raw)
+  peekData.value.description = description
 
   document.title = `Blog | ${peekData.value.title}`
 }

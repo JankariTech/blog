@@ -19,7 +19,21 @@
   </div>
 </template>
 <script setup>
+import { onMounted } from "vue"
 const props = defineProps(["title"])
+
+onMounted(() => {
+  document
+    .querySelector("head meta[name='twitter:image']")
+    .setAttribute("content", props.title.banner)
+  document
+    .querySelector("head meta[name='twitter:title']")
+    .setAttribute("content", props.title.title)
+  document
+    .querySelector("head meta[name='twitter:description']")
+    .setAttribute("content", props.title.description)
+})
+
 const shareOnFb = () => {
   // eslint-disable-next-line no-undef
   FB.ui({
@@ -33,8 +47,8 @@ const shareOnTwitter = () => {
   window
     .open(
       `https://twitter.com/intent/tweet?text=${encodeURIComponent(
-        `"${props.title.title}" by ${props.title.authorName} #JankariTech`
-      )}&url=${encodeURIComponent(encodeURI(window.location.href))}`,
+        `"${props.title.title}" by ${props.title.authorName}`
+      )}&url=${encodeURIComponent(window.location.href)}&hashtags=JankariTech`,
       "_blank"
     )
     .focus()
