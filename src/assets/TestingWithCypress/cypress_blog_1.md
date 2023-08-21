@@ -1,5 +1,5 @@
 ---
-title: E2E Testing with Cypress: Introduction
+title: E2E Testing with Cypress - Introduction
 authorName: Kiran Parajuli
 authorAvatar: https://avatars.githubusercontent.com/u/39373750?v=4
 authorLink: https://github.com/kiranparajuli589/

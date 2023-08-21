@@ -1,6 +1,7 @@
 import { marked } from "marked"
 import useMarkdown from "@/composables/markdown"
 import hljs from "highlight.js"
+import yaml from "js-yaml"
 
 marked.setOptions({
   sanitize: true,
@@ -41,18 +42,8 @@ export const getPeekInfoForModules = (modules) => {
 }
 
 export const extractMeta = (lexer) => {
-  const metaDetails = {}
-  const metaLexer = lexer.slice(1, 2)[0]
-    .text?.split("\n")
-    ?.map(line => [
-      line.substring(0, line.indexOf(": ")),
-      line.substring(line.indexOf(": ") + 2)]
-    )
-
-  metaLexer?.forEach((line) => {
-    metaDetails[line[0]] = line[1]
-  })
-
+  const metaLexer = lexer.slice(1, 2)[0].text
+  const metaDetails = yaml.load(metaLexer)
   const createdAt = metaDetails["createdAt"]
   metaDetails.createdAt = createdAt ? new Date(createdAt) : "-"
   metaDetails.tags = metaDetails.tags ? metaDetails.tags.split(", ") : []

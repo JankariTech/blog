@@ -51,6 +51,9 @@ devDependencies:
   eslint-plugin-vue:
     specifier: ^9.8.0
     version: 9.8.0(eslint@8.29.0)
+  js-yaml:
+    specifier: ^4.1.0
+    version: 4.1.0
   postcss-html:
     specifier: ^1.5.0
     version: 1.5.0
