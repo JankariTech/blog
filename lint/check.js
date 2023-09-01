@@ -49,7 +49,12 @@ const optionalMeta = [
 const extractMeta = (rawMarkdown) => {
   const lexer = marked.lexer(rawMarkdown, { sanitize: true })
   const metaLexer = lexer.slice(1, 2)[0].text
-  return yaml.load(metaLexer)
+  try {
+    const meta = yaml.load(metaLexer)
+    return meta
+  } catch (err) {
+    return err
+  }
 }
 
 // check the meta information in the markdown files
@@ -61,6 +66,14 @@ log.info("-------------------------------------")
 
 function lintMeta (key) {
   const peekData = extractMeta(markdownFiles[key])
+
+  // check if the metadata is extracted properly
+  if (peekData instanceof Error && peekData.name === "YAMLException") {
+    log.error(`Invalid metadata in '${key}.md'\nError: ${peekData.message}\n`)
+    success = false
+    return
+  }
+
   // check if every meta is valid
   Object.keys(peekData).forEach((meta) => {
     if (!requiredMeta.includes(meta) && !optionalMeta.includes(meta)) {
