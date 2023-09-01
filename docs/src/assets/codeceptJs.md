@@ -1,5 +1,5 @@
 ---
-title: CodeceptJs: Setup & BDD
+title: CodeceptJs - Setup & BDD
 authorName: Hari Bhandari
 authorAvatar: https://avatars.githubusercontent.com/u/34328907?v=4
 authorLink: https://github.com/HariBhandari07
