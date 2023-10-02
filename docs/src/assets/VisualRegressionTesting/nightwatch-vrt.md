@@ -1,7 +1,7 @@
 ---
 title: Visual Regression Test with Nigthwatch VRT
 authorName: Talank Baral
-authorAvatar: https://www.jankaritech.com/images/2021/12/29/p1110976-crop-col-800.jpg
+authorAvatar: https://avatars.githubusercontent.com/u/27364813?v=4
 authorLink: https://github.com/Talank
 createdAt: Nov 3, 2021
 tags: visual-testing, testing, javascript
