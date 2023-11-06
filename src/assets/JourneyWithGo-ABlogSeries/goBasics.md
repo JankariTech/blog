@@ -1,11 +1,11 @@
 ---
 title: Go Basics - The Starting Point
 authorName: Prarup Gurung (प्रारुप गुरुङ्ग)
-authorAvatar: https://www.jankaritech.com/images/2021/12/29/p1110938-crop-colour-800.jpg
+authorAvatar: https://avatars.githubusercontent.com/u/8559121?v=4
 authorLink: https://github.com/grgprarup
 createdAt: Dec 6, 2022
-tags: golang, introduction, go variables, go datatypes, constants
-banner: https://camo.githubusercontent.com/2b507540e2681c1a25698f246b9dca69c30548ed66a7323075b0224cbb1bf058/68747470733a2f2f676f6c616e672e6f72672f646f632f676f706865722f6669766579656172732e6a7067
+tags: golang, go, introduction, go variables, go datatypes, constants
+banner: https://blog.jankaritech.com/src/assets/JourneyWithGo-ABlogSeries/images/go-basics-banner.jpeg
 seriesTitle: Journey With Go - A Blog Series
 episode: 1
 ---
