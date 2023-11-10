@@ -4829,6 +4829,978 @@ In this blog, we have learned about the control flow in Go language. We have lea
 - [Go Documentation](https://go.dev/doc/ "Go Documentation")
 - [Go Playground](https://play.golang.org/ "Go Playground")
 - [Go Tour](https://tour.golang.org/welcome/1 "Go Tour")
+`,"/src/assets/JourneyWithGo-ABlogSeries/goFundamentals.md":`---
+title: Fundamentals of Go - FARMISS
+authorName: Prarup Gurung (\u092A\u094D\u0930\u093E\u0930\u0941\u092A \u0917\u0941\u0930\u0941\u0919\u094D\u0917)
+authorAvatar: https://avatars.githubusercontent.com/u/8559121?v=4
+authorLink: https://github.com/grgprarup
+createdAt: Oct 26, 2023
+tags: golang, go, function, array, rune, method, interface, string, struct
+banner: https://blog.jankaritech.com/src/assets/JourneyWithGo-ABlogSeries/images/go-fundamentals-banner.png
+seriesTitle: Journey With Go - A Blog Series
+episode: 3
+---
+
+**[\u0917\u094B](https://go.dev "Go in Nepali")** **"Journey With Go - A Blog Series"** about the basics of Go \`Go Basic\`,
+advanced concepts in Go \`Go Beyond Basics\`, testing with go \`Godog as Test Framework\` and many more.
+
+This is the third installment of the series. You are here which means you have most likely read the first and second blog of
+the series. If you haven't, please read them
+first [Go Basics](https://blog.jankaritech.com/#/blog/Journey%20With%20Go%20-%20A%20Blog%20Series/Go%20Basics%20-%20The%20Starting%20Point "Go Basics"), [Control Statements](https://blog.jankaritech.com/#/blog/Journey%20With%20Go%20-%20A%20Blog%20Series/Control%20Statements%20-%20Control%20Your%20Go "Control Statements").
+
+In this blog, we will learn about the \`Rune\`, \`String\`, \`Array\`, \`Function\`, \`Struct\`, \`Method\`, and \`Interface\` in
+Go. **So, let's get started.**
+
+## **1. Rune**
+
+In Go, a rune is a built-in type that represents a Unicode code point. A rune literal is expressed as one or more
+characters enclosed in single quotes, as in 'x' or '\\n'.
+Each Unicode code point corresponds to a unique character, which can be a letter, a numeral, a symbol, or an emoji.
+
+**Examples:**
+
+\`\`\`go
+package main
+
+import (
+  "fmt"
+)
+
+func main() {
+  var om rune = '\u0950'             // rune literal declared using the \`rune\` keyword, use single quotes
+  fmt.Println(om)               // prints the Unicode code point for the Om symbol
+  fmt.Printf("%T\\n", om)        // prints the underlying type of rune
+  fmt.Println(string(om))       // prints the string representation of the Om symbol
+
+  // more examples
+  var heart rune = '\u2665'
+  fmt.Println(heart)
+  fmt.Println(string(heart))
+
+  var smiley rune = '\u{1F600}'
+  fmt.Println(smiley)
+  fmt.Println(string(smiley))
+}
+\`\`\`
+
+**Output:**
+
+\`\`\`bash
+2384
+int32
+\u0950
+9829
+\u2665
+128512
+\u{1F600}
+\`\`\`
+
+It is particularly important when dealing with text in different languages or when working with special symbols and
+emojis. It ensures that each character is treated as a single entity, regardless of its complexity or language.
+
+## **2. String**
+
+In Go, a string is a sequence of bytes (not characters) that is used to represent text. Strings are immutable, which
+means once created, their values cannot be changed. However, you can assign a new value to a string variable, which will
+create a new string.
+
+_Note: The rune is encoded with single quotes, whereas the string is encoded with double quotes._
+
+**Examples:**
+
+\`\`\`go
+package main
+
+import (
+  "fmt"
+)
+
+func main() {
+  // declaring a variable \`greeting\` of type string using \`string\` keyword
+  var greeting string = "Hello, World!"
+  fmt.Println(greeting)                 // it prints the value of the \`greeting\`
+  fmt.Printf("%T\\n", greeting)          // it prints the type of the \`greeting\`
+  fmt.Println(len(greeting))            // it prints the length of bytes in the \`greeting\`
+  fmt.Println(greeting[0])              // it prints the byte code of the char in index 0
+  fmt.Println(string(greeting[0]))      // it prints the string representation of the char in index 0
+  fmt.Println("Hello, " + "World!")     // it prints the concatenated string \`Hello, \` and \`World!\` with \`+\`
+
+  // try to change the value at index 1, i.e. \`e\` to \`E\` in the \`greeting\`
+  greeting[1] = 'E'                     // it gives an error \`cannot assign to greeting[1]\`
+
+  // try to assign the new value of the \`greeting\` to \`Hello, Nepal!\`
+  greeting = "Hello, Nepal!"            // it creates a new string \`Hello, Nepal!\` and assigns it to the \`greeting\`
+  fmt.Println(greeting)                 // it prints the new value of the \`greeting\`
+}
+\`\`\`
+
+**Output:**
+
+\`\`\`bash
+Hello, World!
+string
+13
+72
+H
+Hello, World!
+cannot assign to greeting[1]
+Hello, Nepal!
+\`\`\`
+
+### **2.1. Slicing of a String**
+
+Slicing is a mechanism to extract a portion of a string. It is done by specifying the start and end indices of the part
+of the string that you want to extract. The syntax for slicing a string is \`string[start:end]\`.
+
+Taking the above \`greeting\` variable as example:
+
+| slice            | output        | description                                                                                      |
+|------------------|---------------|--------------------------------------------------------------------------------------------------|
+| \`greeting[7:]\`   | World!        | It gives the sub-string from index 7 to the end                                                  |
+| \`greeting[:5]\`   | Hello         | It gives the sub-string from the beginning to index 5, excluding index 5 value                   |
+| \`greeting[7:12]\` | World         | It gives the sub-string from index 7 to index 12, including index 7 and excluding index 12 value |
+| \`greeting[:]\`    | Hello, World! | It gives the entire string, same as printing \`greeting\`                                          |
+
+### **2.2. Iterating over a String**
+
+Strings are immutable, but you can iterate over them using a for loop with range.
+
+**Examples:**
+
+\`\`\`go
+package main
+
+import (
+  "fmt"
+)
+
+func main() {
+  greeting := "Hello, World!"
+  for index, char := range greeting {
+    fmt.Printf("Index: %d, Value: %c\\n", index, char)
+  }
+}
+\`\`\`
+
+**Output:**
+
+\`\`\`bash
+Index: 0, Value: H
+Index: 1, Value: e
+Index: 2, Value: l
+Index: 3, Value: l
+Index: 4, Value: o
+Index: 5, Value: ,
+Index: 6, Value:
+Index: 7, Value: W
+Index: 8, Value: o
+Index: 9, Value: r
+Index: 10, Value: l
+Index: 11, Value: d
+Index: 12, Value: !
+\`\`\`
+
+### **2.3. len Vs RuneCountInString**
+
+The \`len\` function returns the number of bytes in a string, whereas the \`utf8.RuneCountInString\` function returns the number of runes in a string.
+
+**Examples:**
+
+\`\`\`go
+package main
+
+import (
+	"fmt"
+	"unicode/utf8"
+)
+
+func main() {
+	// let's look at the example of English language
+	greeting := "Hello, World!"
+	fmt.Println(len(greeting))                            // it prints the number of bytes in the string given by len function
+	fmt.Println(utf8.RuneCountInString(greeting))         // it prints the number of runes in the string given by utf8.RuneCountInString function
+
+	// Now, take an example of Nepali language
+	greetingInNepali := "\u0928\u092E\u0938\u094D\u0915\u093E\u0930 \u0938\u0902\u0938\u093E\u0930";
+	fmt.Println(len(greetingInNepali))                    // it prints the number of bytes in the string given by len function
+	fmt.Println(utf8.RuneCountInString(greetingInNepali)) // it prints the number of runes in the string given by utf8.RuneCountInString function
+}
+\`\`\`
+
+**Output:**
+
+\`\`\`bash
+13
+13
+37
+13
+\`\`\`
+
+In the example for the English language, the value returned by the \`len\` function is same as of the value returned by the \`utf8.RuneCountInString\` function.
+
+However, for the Nepali language, the value returned by the \`len\` function is different from the value returned by the \`utf8.RuneCountInString\` function. This is because the Nepali language uses the UTF-8 encoding scheme, which uses 3 bytes to represent a single character. Therefore, the string "\u0E2A\u0E27\u0E31\u0E2A\u0E14\u0E35" has 18 bytes, but only 6 runes.
+
+## **3. Array**
+
+In Go, an array is a fixed-length sequence of elements of the same type but the content of array is mutable (i.e. can be changed). Arrays are useful when you know the number of elements that you want to store in advance.
+
+### **3.1. Declaration of Array**
+
+Declaration of an array can be done using the following syntax:
+
+**Syntax:**
+
+\`\`\`go
+var <array_name> [<size>] <data_type>
+\`\`\`
+
+**Examples:**
+
+\`\`\`go
+package main
+
+import (
+	"fmt"
+)
+
+func main(){
+	// declaring an array of type int with 5 elements
+	var numbers [5]int
+	fmt.Println(numbers)              // by default 0 will be assigned to array elements
+
+	// declaring an array of type string with 3 elements
+	var languages [3]string
+	fmt.Println(languages)            // by default empty array will be created
+
+	// declaring an array of type bool with 2 elements
+	var truths [2]bool
+	fmt.Println(truths)               // by default false will be assigned to array elements
+
+	// declaring an array of type float64 with 4 elements
+	var scores [4]float64
+	fmt.Println(scores)               // by default 0 will be assigned to array elements
+}
+\`\`\`
+
+**Output:**
+
+\`\`\`bash
+[0 0 0 0 0]
+[  ]
+[false false]
+[0 0 0 0]
+\`\`\`
+
+### **3.2. Initialization of Array**
+
+You can initialize an array using the following syntax:
+
+**Syntax:**
+
+\`\`\`go
+var <array_name> [<size>] <data_type> = [<size>]<data_type>{<comma-separated-values>}
+\`\`\`
+
+**Examples:**
+
+\`\`\`go
+package main
+
+import (
+	"fmt"
+)
+
+func main(){
+	// initialization of an array of type int with 3 elements
+	var numbers [3]int = [3]int{1, 2, 3}
+	fmt.Println(numbers)              // prints the value of integer array
+
+	// initialization of an array of type string with 3 elements
+	var languages [3]string = [3]string{"Go", "Python", "JavaScript"}
+	fmt.Println(languages)            // prints the value of string array
+
+	// initialization of an array of type bool with 2 elements
+	var truths [2]bool = [2]bool{true, false}
+	fmt.Println(truths)               // prints the value of boolean array
+
+	// initialization of an array of type float64 with 3 elements
+	var scores [3]float64 = [3]float64{9.5, 8.2, 7.8}
+	fmt.Println(scores)               // prints the value of float64 array
+}
+\`\`\`
+
+**Output:**
+
+\`\`\`bash
+[1 2 3]
+[Go Python JavaScript]
+[true false]
+[9.5 8.2 7.8]
+\`\`\`
+
+### **3.3. Manipulation of Array**
+
+You can manipulate an array using the following syntax:
+
+**Syntax:**
+
+\`\`\`go
+<array_name>[<index>] = <value>
+\`\`\`
+
+**Examples:**
+
+\`\`\`go
+package main
+
+import (
+  "fmt"
+)
+
+func main() {
+  var numbers [3]int = [3]int{1, 2, 3}
+  fmt.Println(numbers)              // prints the value of the array
+
+  // changing the value of the first element
+  numbers[0] = 4
+  fmt.Println(numbers)              // prints the new value of the array
+
+  // accessing an element of the array
+  fmt.Println(numbers[0])           // prints the value of the first element
+
+  // adding a new element to the array is not possible
+  numbers[3] = 5                    // invalid array index 3 (out of bounds for 3-element array)
+
+  // accessing an element of non-existing index is not possible
+  fmt.Println(numbers[3])           // invalid array index 3 (out of bounds for 3-element array)
+}
+\`\`\`
+
+**Output:**
+
+\`\`\`bash
+[1 2 3]
+[4 2 3]
+4
+invalid argument: index 3 out of bounds
+invalid argument: index 3 out of bounds
+\`\`\`
+
+
+### **3.4. Array Length**
+
+You can get the length of an array using the \`len\` function.
+
+**Examples:**
+
+\`\`\`go
+package main
+
+import (
+  "fmt"
+)
+
+func main() {
+  var numbers [3]int = [3]int{1, 2, 3}
+  fmt.Println(len(numbers))     // prints the length of the array
+}
+\`\`\`
+
+**Output:**
+
+\`\`\`bash
+3
+\`\`\`
+
+### **3.5. Iterating over Array**
+
+You can iterate over an array using a for loop with range.
+
+**Examples:**
+
+\`\`\`go
+package main
+
+import (
+  "fmt"
+)
+
+func main() {
+  var languages [3]string = [3]string{"Go", "Javascript", "Python"}
+  for index, language := range languages {
+    fmt.Printf("Index: %d, Value: %s\\n", index, language)
+  }
+}
+\`\`\`
+
+**Output:**
+
+\`\`\`bash
+Index: 0, Value: Go
+Index: 1, Value: Javascript
+Index: 2, Value: Python
+\`\`\`
+
+An alternative way to iterate over an array is to use a for loop with the length of the array.
+
+**Examples:**
+
+\`\`\`go
+package main
+
+import (
+  "fmt"
+)
+
+func main() {
+  var languages [3]string = [3]string{"Go", "Javascript", "Python"}
+  for i := 0; i < len(languages); i++ {
+    fmt.Printf("Index: %d, Value: %s\\n", i, languages[i])
+  }
+}
+\`\`\`
+
+**Output:**
+
+\`\`\`bash
+Index: 0, Value: Go
+Index: 1, Value: Javascript
+Index: 2, Value: Python
+\`\`\`
+
+## **4. Function**
+
+In Go, a function is a block of code that performs a specific task. Functions are useful when you want to reuse the same code multiple times. They also help in organizing your code into smaller chunks, which makes it easier to read and maintain.
+
+### **4.1. Function Definition**
+
+A function must be defined before it can be called. A function definition must have a name, and a body with optional list of parameters and a return type. In Go, the \`func\` keyword is used to define a function.
+
+A function can be defined using the following syntax:
+
+**Syntax:**
+
+\`\`\`go
+func <function_name>(<comma-separated-parameters>) <return_type> {
+  // function body is the code that is executed when the function is called
+}
+\`\`\`
+
+**Examples:**
+
+\`\`\`go
+// defining a function named \`greet\`
+func greet(name string) {           // function name is \`greet\`, parameter is \`name\` of type string
+  fmt.Println("Hello, " + name)     // function body enclosed in curly braces
+}
+\`\`\`
+
+In the above example, we have declared a function named \`greet\` that takes a string parameter named \`name\` and returns nothing.
+
+### **4.2. Function Call**
+
+A function can be called using the following syntax:
+
+**Syntax:**
+
+\`\`\`go
+<function_name>(<comma-separated-arguments>)
+\`\`\`
+
+**Examples:**
+
+\`\`\`go
+package main
+
+import (
+  "fmt"
+)
+
+func greet(name string) {
+  fmt.Println("Hello, " + name)
+}
+
+func main() {
+  greet("World")    // Calling the \`greet\` function
+}
+\`\`\`
+
+**Output:**
+
+\`\`\`bash
+Hello, World
+\`\`\`
+
+### **4.3. Function Parameters**
+
+Function can have zero or more parameters. Parameters are variables that are used to pass values to a function. They are declared in the function definition. The values passed to a function are called arguments.
+
+**Examples:**
+
+\`\`\`go
+package main
+
+import (
+  "fmt"
+)
+
+// defining a function named \`printHelloWorld\` without parameters
+func printHelloWorld() {
+  fmt.Println("Hello, World!")
+}
+
+// defining a function named \`add\` that takes two integer parameters
+func add(a int, b int) {
+  fmt.Println(a + b)
+}
+
+func main() {
+  printHelloWorld()                // Calling the \`printHelloWorld\` function, without arguments
+  add(1, 2)                        // Calling the \`add\` function, with two arguments
+}
+\`\`\`
+
+**Output:**
+
+\`\`\`bash
+Hello, World!
+3
+\`\`\`
+
+### **4.4. Function Return Type**
+
+A function can return zero or more values. The return-type of a function is declared in the function definition. If a function returns more than one value, then the return-types are enclosed in parentheses.
+
+**Examples:**
+
+\`\`\`go
+package main
+
+import (
+  "fmt"
+)
+
+// defining a function named \`greet\` that takes a string parameter and returns nothing
+func greet(name string) {
+  fmt.Println("Hello, " + name)
+}
+
+// defining a function named \`add\` that takes two integer parameters and returns an integer
+func add(a int, b int) int {
+  return a + b              // \`return\` keyword is used to return values from a function
+}
+
+// defining a function named \`swap\` that takes two integer parameters and returns two integers
+func swap(a int, b int) (int, int) {
+  return b, a
+}
+
+func main() {
+  greet("World")            // Calling the \`greet\` function
+  fmt.Println(add(1, 2))    // Calling the \`add\` function
+
+  sum := add(3,6)           // Also, the \`add\` function can be called and store the returned value in variable \`sum\`
+  fmt.Println(sum)
+
+  x, y := swap(1, 2)        // Calling the \`swap\` function and storing the returned values in variables \`x\` and \`y\`
+  fmt.Println(x, y)
+}
+\`\`\`
+
+**Output:**
+
+\`\`\`bash
+Hello, World
+3
+9
+2 1
+\`\`\`
+
+## **5. Struct**
+
+In Go, a struct is a composite data type that represents a collection of fields. It is useful for grouping related data together. Structs are useful when you want to model real-world entities that have multiple properties. Struct is also known as a user-defined type.
+
+### **5.1. Struct Definition**
+
+The \`struct\` keyword is used to define a struct in Go.
+
+A struct can be defined using the following syntax:
+
+**Syntax:**
+
+\`\`\`go
+type <struct_name> struct {
+  <comma-separated-fields>
+}
+\`\`\`
+
+**Examples:**
+
+\`\`\`go
+package main
+
+// defining a struct named \`Student\` with three fields \`name\`, \`phone number\`, \`address\`
+type Student struct {
+  name        string
+  phoneNumber int
+  address     string
+}
+\`\`\`
+
+### **5.2. Struct Initialization**
+
+A struct can be initialized using the following syntax:
+
+**Syntax:**
+
+\`\`\`go
+<struct_name>{<comma-separated-values>}
+\`\`\`
+
+**Examples:**
+
+\`\`\`go
+package main
+
+import (
+  "fmt"
+)
+
+type Student struct {
+  name        string
+  phoneNumber int
+  address     string
+}
+
+func main() {
+  // initializing a struct named \`student\` with three fields \`name\`, \`phone number\`, \`address\`
+  student := Student{"John Doe", 1234567890, "Kathmandu"}       // order of values must match the order of fields
+  fmt.Println(student)
+}
+\`\`\`
+
+**Output:**
+
+\`\`\`bash
+{John Doe 1234567890 Kathmandu}
+\`\`\`
+
+### **5.3. Manipulation of Struct Fields**
+
+The struct fields are variables that are used to store values in a struct. They are declared in the struct definition. Fields can be manipulated using the dot operator.
+
+**Examples:**
+
+\`\`\`go
+package main
+
+import (
+  "fmt"
+)
+
+type Student struct {
+  name        string
+  phoneNumber int
+  address     string
+}
+
+func main() {
+  student := Student{"John Doe", 1234567890, "Kathmandu"}
+  fmt.Println(student)
+
+  // accessing a field of a struct
+  fmt.Println(student.name)
+  fmt.Println(student.phoneNumber)
+  fmt.Println(student.address)
+
+  // changing the value of a field
+  student.name = "Jane Doe"
+  fmt.Println(student.name)
+}
+\`\`\`
+
+**Output:**
+
+\`\`\`bash
+{John Doe 1234567890 Kathmandu}
+John Doe
+1234567890
+Kathmandu
+Jane Doe
+\`\`\`
+
+## **6. Method**
+
+In Go, a method is a function that is associated with a type. It is useful for grouping related functions together. Methods are useful when you want to model real-world entities that have multiple behaviors. Methods are also known as functions with receivers.
+
+### **6.1. Method Definition**
+
+A method can be defined using the following syntax:
+
+**Syntax:**
+
+\`\`\`go
+func (<receiver>) <method_name>(<comma-separated-parameters>) <return_type> {
+  // method body is the code that is executed when the method is called
+}
+\`\`\`
+
+**Examples:**
+
+\`\`\`go
+package main
+
+type Triangle struct {
+	  base   float64
+	  height float64
+}
+
+// defining a method named \`area\` that takes no parameters and returns a float64
+func (t Triangle) area() float64 {
+  return 0.5 * t.base * t.height
+}
+\`\`\`
+
+In the above example we have defined a method associated with a struct named \`Triangle\` by adding a receiver to the function definition. The receiver is the name of the struct that the method is associated with. The receiver is enclosed in parentheses before the method name.
+
+### **6.2. Method Call**
+
+A method can be called using the following syntax:
+
+**Syntax:**
+
+\`\`\`go
+<receiver>.<method_name>(<comma-separated-arguments>)
+\`\`\`
+
+**Examples:**
+
+\`\`\`go
+package main
+
+import (
+  "fmt"
+)
+
+type Triangle struct {
+	  base   float64
+	  height float64
+}
+
+func (t Triangle) area() float64 {
+  return 0.5 * t.base * t.height
+}
+
+func main() {
+  triangle := Triangle{base: 10, height: 5}
+  fmt.Println(triangle)
+
+  // calling the \`area\` method
+  area := triangle.area()                                           // triangle is the receiver
+  fmt.Println("Area of triangle is " + fmt.Sprintf("%.2f", area))
+}
+\`\`\`
+
+**Output:**
+
+\`\`\`bash
+{10 5}
+Area of triangle is 25.00
+\`\`\`
+
+### **6.3. Function Vs Method**
+
+A function is a block of code that performs a specific task whereas a method is a function that is associated with a type. We can create multiple methods of same name associated to different types but the function name must be different (see example of [7.2](#L783)).
+
+Let's see the difference between a function and a method with the help of an example.
+
+**Examples:**
+
+\`\`\`go
+package main
+
+import (
+  "fmt"
+)
+
+// defining a function named \`getAreaOfTriangle\` that takes two float64 parameters and returns a float64
+func getAreaOfTriangle(base float64, height float64) float64 {
+  return 0.5 * base * height
+}
+
+type Triangle struct {
+    base   float64
+    height float64
+}
+
+// defining a method named \`getAreaOfTriangle\` that takes no parameters and returns a float64
+func (t Triangle) getAreaOfTriangle() float64 {
+  return 0.5 * t.base * t.height
+}
+
+func main() {
+  // calling the \`getAreaOfTriangle\` function
+  area := getAreaOfTriangle(10, 5)
+  fmt.Println("Area of triangle is " + fmt.Sprintf("%.2f", area))
+
+  triangle := Triangle{base: 10, height: 5}                         // creating a new instance of the \`Triangle\` struct
+  fmt.Println(triangle)
+
+  // calling the \`getAreaOfTriangle\` method
+  area = triangle.getAreaOfTriangle()                               // triangle is the receiver
+  fmt.Println("Area of triangle is " + fmt.Sprintf("%.2f", area))
+}
+\`\`\`
+
+**Output:**
+
+\`\`\`bash
+Area of triangle is 25.00
+{10 5}
+Area of triangle is 25.00
+\`\`\`
+
+So, in the above example, we have defined a function named \`area\` that takes two float64 parameters and returns a float64. We have also defined a method named \`area\` that takes no parameters and returns a float64. The function and the method have the same name, but they are different because the function is not associated with any type, whereas the method is associated with the \`Triangle\` struct.
+
+## **7. Interface**
+
+In Go, an interface is a collection of method signatures. It is useful for grouping related methods together. Interfaces are useful when you want to model real-world entities that have multiple behaviors.
+
+### **7.1. Interface Definition**
+
+The \`interface\` keyword is used to define an interface in Go.
+
+An interface can be defined using the following syntax:
+
+**Syntax:**
+
+\`\`\`go
+type <interface_name> interface {
+  <comma-separated-method-signatures>
+}
+\`\`\`
+
+**Examples:**
+
+\`\`\`go
+package main
+
+// defining an interface named \`Shape\` with a method signature \`area\` and \`perimeter\`
+type Shape interface {
+  area() float64
+  perimeter() float64
+}
+\`\`\`
+
+In the above example, we have defined an interface named \`Shape\` with a method signature \`area\` and \`perimeter\`. An interface can have zero or more method signatures. A method signature is the name of the method and its parameters and return type.
+
+### **7.2. Interface Implementation**
+
+A type implements an interface by implementing all the methods of the interface. A type can implement more than one interface.
+
+**Examples:**
+
+\`\`\`go
+package main
+
+import (
+  "fmt"
+  "math"
+)
+
+type Shape interface {
+  area() float64
+  perimeter() float64
+}
+
+type Triangle struct {
+  base   float64
+  height float64
+}
+
+type Rectangle struct {
+  length float64
+  width  float64
+}
+
+// implementing a method \`area\` for the \`Triangle\` struct
+func (t Triangle) area() float64 {
+  return 0.5 * t.base * t.height
+}
+
+// implementing a method \`perimeter\` for the \`Triangle\` struct
+func (t Triangle) perimeter() float64 {
+  return t.base + t.height + math.Sqrt(math.Pow(t.base, 2)+math.Pow(t.height, 2))
+}
+
+// implementing a method \`area\` for the \`Rectangle\` struct
+func (r Rectangle) area() float64 {
+  return r.length * r.width
+}
+
+// implementing a method \`perimeter\` for the \`Rectangle\` struct
+func (r Rectangle) perimeter() float64 {
+  return 2 * (r.length + r.width)
+}
+
+func main() {
+  var triangle Shape = Triangle{base: 10, height: 5}
+  fmt.Println(triangle)
+
+  area := triangle.area()                                                       // calling the \`area\` method associated with the \`Triangle\` struct
+  fmt.Println("Area of triangle is " + fmt.Sprintf("%.2f", area))
+
+  perimeter := triangle.perimeter()                                             // calling the \`perimeter\` method associated with the \`Triangle\` struct
+  fmt.Println("Perimeter of triangle is " + fmt.Sprintf("%.2f", perimeter))
+
+  var rectangle Shape = Rectangle{length: 10, width: 5}
+  fmt.Println(rectangle)
+
+  area = rectangle.area()                                                       // calling the \`area\` method associated with the \`Rectangle\` struct
+  fmt.Println("Area of rectangle is " + fmt.Sprintf("%.2f", area))
+
+  perimeter = rectangle.perimeter()
+  fmt.Println("Perimeter of rectangle is " + fmt.Sprintf("%.2f", perimeter))    // calling the \`perimeter\` method associated with the \`Rectangle\` struct
+}
+\`\`\`
+
+**Output:**
+
+\`\`\`bash
+{10 5}
+Area of triangle is 25.00
+Perimeter of triangle is 26.18
+{10 5}
+Area of rectangle is 50.00
+Perimeter of rectangle is 30.00
+\`\`\`
+
+## What we have learned so far
+
+In this blog, we have learned how to declare, define, manipulate, and use the following terms in Go language:
+- Rune
+- String
+- Array
+- Function
+- Struct
+- Method
+- Interface
+
+In the next blog, we will learn about some advanced topics like Errors, Goroutines, and Channels in Go language.
+
+**_Keep Learning and Keep Practicing_** \u{1F44D}
+
+**Stay tuned!!!**
+
+## References
+
+- [Go Programming Language](https://go.dev/ "Go Programming Language")
+- [Go by Example](https://gobyexample.com/ "Go by Example")
+- [Go Documentation](https://go.dev/doc/ "Go Documentation")
+- [Go Playground](https://play.golang.org/ "Go Playground")
+- [Go Tour](https://tour.golang.org/welcome/1 "Go Tour")
+
+**PC:** **Banner Image by [Maria Letta](https://github.com/MariaLetta/free-gophers-pack "Maria Letta"), licensed under [Creative Commons 0 license](https://creativecommons.org/public-domain/cc0/ "Creative Commons 0 license").**
 `,"/src/assets/LoadTestingWithK6/k6-01.md":`---
 title: Performance Testing with k6 - 01 - Getting Started
 authorName: Hari Bhandari
@@ -8216,4 +9188,4 @@ I will keep posting about interesting developments in this test automation area.
   * vue-router v4.1.6
   * (c) 2022 Eduardo San Martin Morote
   * @license MIT
-  */const la=typeof window!="undefined";function zM(e){return e.__esModule||e[Symbol.toStringTag]==="Module"}const Ae=Object.assign;function ss(e,t){const n={};for(const a in t){const r=t[a];n[a]=Lt(r)?r.map(e):e(r)}return n}const Ha=()=>{},Lt=Array.isArray,$M=/\/$/,KM=e=>e.replace($M,"");function os(e,t,n="/"){let a,r={},i="",s="";const o=t.indexOf("#");let l=t.indexOf("?");return o<l&&o>=0&&(l=-1),l>-1&&(a=t.slice(0,l),i=t.slice(l+1,o>-1?o:t.length),r=e(i)),o>-1&&(a=a||t.slice(0,o),s=t.slice(o,t.length)),a=ZM(a!=null?a:t,n),{fullPath:a+(i&&"?")+i+s,path:a,query:r,hash:s}}function QM(e,t){const n=t.query?e(t.query):"";return t.path+(n&&"?")+n+(t.hash||"")}function hc(e,t){return!t||!e.toLowerCase().startsWith(t.toLowerCase())?e:e.slice(t.length)||"/"}function jM(e,t,n){const a=t.matched.length-1,r=n.matched.length-1;return a>-1&&a===r&&ya(t.matched[a],n.matched[r])&&rp(t.params,n.params)&&e(t.query)===e(n.query)&&t.hash===n.hash}function ya(e,t){return(e.aliasOf||e)===(t.aliasOf||t)}function rp(e,t){if(Object.keys(e).length!==Object.keys(t).length)return!1;for(const n in e)if(!XM(e[n],t[n]))return!1;return!0}function XM(e,t){return Lt(e)?fc(e,t):Lt(t)?fc(t,e):e===t}function fc(e,t){return Lt(t)?e.length===t.length&&e.every((n,a)=>n===t[a]):e.length===1&&e[0]===t}function ZM(e,t){if(e.startsWith("/"))return e;if(!e)return t;const n=t.split("/"),a=e.split("/");let r=n.length-1,i,s;for(i=0;i<a.length;i++)if(s=a[i],s!==".")if(s==="..")r>1&&r--;else break;return n.slice(0,r).join("/")+"/"+a.slice(i-(i===a.length?1:0)).join("/")}var sr;(function(e){e.pop="pop",e.push="push"})(sr||(sr={}));var Wa;(function(e){e.back="back",e.forward="forward",e.unknown=""})(Wa||(Wa={}));function JM(e){if(!e)if(la){const t=document.querySelector("base");e=t&&t.getAttribute("href")||"/",e=e.replace(/^\w+:\/\/[^\/]+/,"")}else e="/";return e[0]!=="/"&&e[0]!=="#"&&(e="/"+e),KM(e)}const eL=/^[^#]+#/;function tL(e,t){return e.replace(eL,"#")+t}function nL(e,t){const n=document.documentElement.getBoundingClientRect(),a=e.getBoundingClientRect();return{behavior:t.behavior,left:a.left-n.left-(t.left||0),top:a.top-n.top-(t.top||0)}}const Fi=()=>({left:window.pageXOffset,top:window.pageYOffset});function aL(e){let t;if("el"in e){const n=e.el,a=typeof n=="string"&&n.startsWith("#"),r=typeof n=="string"?a?document.getElementById(n.slice(1)):document.querySelector(n):n;if(!r)return;t=nL(r,e)}else t=e;"scrollBehavior"in document.documentElement.style?window.scrollTo(t):window.scrollTo(t.left!=null?t.left:window.pageXOffset,t.top!=null?t.top:window.pageYOffset)}function Ec(e,t){return(history.state?history.state.position-t:-1)+e}const Us=new Map;function rL(e,t){Us.set(e,t)}function iL(e){const t=Us.get(e);return Us.delete(e),t}let sL=()=>location.protocol+"//"+location.host;function ip(e,t){const{pathname:n,search:a,hash:r}=t,i=e.indexOf("#");if(i>-1){let o=r.includes(e.slice(i))?e.slice(i).length:1,l=r.slice(o);return l[0]!=="/"&&(l="/"+l),hc(l,"")}return hc(n,e)+a+r}function oL(e,t,n,a){let r=[],i=[],s=null;const o=({state:_})=>{const p=ip(e,location),g=n.value,h=t.value;let b=0;if(_){if(n.value=p,t.value=_,s&&s===g){s=null;return}b=h?_.position-h.position:0}else a(p);r.forEach(S=>{S(n.value,g,{delta:b,type:sr.pop,direction:b?b>0?Wa.forward:Wa.back:Wa.unknown})})};function l(){s=n.value}function c(_){r.push(_);const p=()=>{const g=r.indexOf(_);g>-1&&r.splice(g,1)};return i.push(p),p}function d(){const{history:_}=window;!_.state||_.replaceState(Ae({},_.state,{scroll:Fi()}),"")}function u(){for(const _ of i)_();i=[],window.removeEventListener("popstate",o),window.removeEventListener("beforeunload",d)}return window.addEventListener("popstate",o),window.addEventListener("beforeunload",d),{pauseListeners:l,listen:c,destroy:u}}function Sc(e,t,n,a=!1,r=!1){return{back:e,current:t,forward:n,replaced:a,position:window.history.length,scroll:r?Fi():null}}function lL(e){const{history:t,location:n}=window,a={value:ip(e,n)},r={value:t.state};r.value||i(a.value,{back:null,current:a.value,forward:null,position:t.length-1,replaced:!0,scroll:null},!0);function i(l,c,d){const u=e.indexOf("#"),_=u>-1?(n.host&&document.querySelector("base")?e:e.slice(u))+l:sL()+e+l;try{t[d?"replaceState":"pushState"](c,"",_),r.value=c}catch(p){console.error(p),n[d?"replace":"assign"](_)}}function s(l,c){const d=Ae({},t.state,Sc(r.value.back,l,r.value.forward,!0),c,{position:r.value.position});i(l,d,!0),a.value=l}function o(l,c){const d=Ae({},r.value,t.state,{forward:l,scroll:Fi()});i(d.current,d,!0);const u=Ae({},Sc(a.value,l,null),{position:d.position+1},c);i(l,u,!1),a.value=l}return{location:a,state:r,push:o,replace:s}}function cL(e){e=JM(e);const t=lL(e),n=oL(e,t.state,t.location,t.replace);function a(i,s=!0){s||n.pauseListeners(),history.go(i)}const r=Ae({location:"",base:e,go:a,createHref:tL.bind(null,e)},t,n);return Object.defineProperty(r,"location",{enumerable:!0,get:()=>t.location.value}),Object.defineProperty(r,"state",{enumerable:!0,get:()=>t.state.value}),r}function dL(e){return e=location.host?e||location.pathname+location.search:"",e.includes("#")||(e+="#"),cL(e)}function uL(e){return typeof e=="string"||e&&typeof e=="object"}function sp(e){return typeof e=="string"||typeof e=="symbol"}const pn={path:"/",name:void 0,params:{},query:{},hash:"",fullPath:"/",matched:[],meta:{},redirectedFrom:void 0},op=Symbol("");var bc;(function(e){e[e.aborted=4]="aborted",e[e.cancelled=8]="cancelled",e[e.duplicated=16]="duplicated"})(bc||(bc={}));function va(e,t){return Ae(new Error,{type:e,[op]:!0},t)}function jt(e,t){return e instanceof Error&&op in e&&(t==null||!!(e.type&t))}const Tc="[^/]+?",_L={sensitive:!1,strict:!1,start:!0,end:!0},pL=/[.+*?^${}()[\]/\\]/g;function mL(e,t){const n=Ae({},_L,t),a=[];let r=n.start?"^":"";const i=[];for(const c of e){const d=c.length?[]:[90];n.strict&&!c.length&&(r+="/");for(let u=0;u<c.length;u++){const _=c[u];let p=40+(n.sensitive?.25:0);if(_.type===0)u||(r+="/"),r+=_.value.replace(pL,"\\$&"),p+=40;else if(_.type===1){const{value:g,repeatable:h,optional:b,regexp:S}=_;i.push({name:g,repeatable:h,optional:b});const T=S||Tc;if(T!==Tc){p+=10;try{new RegExp(`(${T})`)}catch(R){throw new Error(`Invalid custom RegExp for param "${g}" (${T}): `+R.message)}}let y=h?`((?:${T})(?:/(?:${T}))*)`:`(${T})`;u||(y=b&&c.length<2?`(?:/${y})`:"/"+y),b&&(y+="?"),r+=y,p+=20,b&&(p+=-8),h&&(p+=-20),T===".*"&&(p+=-50)}d.push(p)}a.push(d)}if(n.strict&&n.end){const c=a.length-1;a[c][a[c].length-1]+=.7000000000000001}n.strict||(r+="/?"),n.end?r+="$":n.strict&&(r+="(?:/|$)");const s=new RegExp(r,n.sensitive?"":"i");function o(c){const d=c.match(s),u={};if(!d)return null;for(let _=1;_<d.length;_++){const p=d[_]||"",g=i[_-1];u[g.name]=p&&g.repeatable?p.split("/"):p}return u}function l(c){let d="",u=!1;for(const _ of e){(!u||!d.endsWith("/"))&&(d+="/"),u=!1;for(const p of _)if(p.type===0)d+=p.value;else if(p.type===1){const{value:g,repeatable:h,optional:b}=p,S=g in c?c[g]:"";if(Lt(S)&&!h)throw new Error(`Provided param "${g}" is an array but it is not repeatable (* or + modifiers)`);const T=Lt(S)?S.join("/"):S;if(!T)if(b)_.length<2&&(d.endsWith("/")?d=d.slice(0,-1):u=!0);else throw new Error(`Missing required param "${g}"`);d+=T}}return d||"/"}return{re:s,score:a,keys:i,parse:o,stringify:l}}function gL(e,t){let n=0;for(;n<e.length&&n<t.length;){const a=t[n]-e[n];if(a)return a;n++}return e.length<t.length?e.length===1&&e[0]===40+40?-1:1:e.length>t.length?t.length===1&&t[0]===40+40?1:-1:0}function hL(e,t){let n=0;const a=e.score,r=t.score;for(;n<a.length&&n<r.length;){const i=gL(a[n],r[n]);if(i)return i;n++}if(Math.abs(r.length-a.length)===1){if(yc(a))return 1;if(yc(r))return-1}return r.length-a.length}function yc(e){const t=e[e.length-1];return e.length>0&&t[t.length-1]<0}const fL={type:0,value:""},EL=/[a-zA-Z0-9_]/;function SL(e){if(!e)return[[]];if(e==="/")return[[fL]];if(!e.startsWith("/"))throw new Error(`Invalid path "${e}"`);function t(p){throw new Error(`ERR (${n})/"${c}": ${p}`)}let n=0,a=n;const r=[];let i;function s(){i&&r.push(i),i=[]}let o=0,l,c="",d="";function u(){!c||(n===0?i.push({type:0,value:c}):n===1||n===2||n===3?(i.length>1&&(l==="*"||l==="+")&&t(`A repeatable param (${c}) must be alone in its segment. eg: '/:ids+.`),i.push({type:1,value:c,regexp:d,repeatable:l==="*"||l==="+",optional:l==="*"||l==="?"})):t("Invalid state to consume buffer"),c="")}function _(){c+=l}for(;o<e.length;){if(l=e[o++],l==="\\"&&n!==2){a=n,n=4;continue}switch(n){case 0:l==="/"?(c&&u(),s()):l===":"?(u(),n=1):_();break;case 4:_(),n=a;break;case 1:l==="("?n=2:EL.test(l)?_():(u(),n=0,l!=="*"&&l!=="?"&&l!=="+"&&o--);break;case 2:l===")"?d[d.length-1]=="\\"?d=d.slice(0,-1)+l:n=3:d+=l;break;case 3:u(),n=0,l!=="*"&&l!=="?"&&l!=="+"&&o--,d="";break;default:t("Unknown state");break}}return n===2&&t(`Unfinished custom RegExp for param "${c}"`),u(),s(),r}function bL(e,t,n){const a=mL(SL(e.path),n),r=Ae(a,{record:e,parent:t,children:[],alias:[]});return t&&!r.record.aliasOf==!t.record.aliasOf&&t.children.push(r),r}function TL(e,t){const n=[],a=new Map;t=Rc({strict:!1,end:!0,sensitive:!1},t);function r(d){return a.get(d)}function i(d,u,_){const p=!_,g=yL(d);g.aliasOf=_&&_.record;const h=Rc(t,d),b=[g];if("alias"in d){const y=typeof d.alias=="string"?[d.alias]:d.alias;for(const R of y)b.push(Ae({},g,{components:_?_.record.components:g.components,path:R,aliasOf:_?_.record:g}))}let S,T;for(const y of b){const{path:R}=y;if(u&&R[0]!=="/"){const I=u.record.path,H=I[I.length-1]==="/"?"":"/";y.path=u.record.path+(R&&H+R)}if(S=bL(y,u,h),_?_.alias.push(S):(T=T||S,T!==S&&T.alias.push(S),p&&d.name&&!Cc(S)&&s(d.name)),g.children){const I=g.children;for(let H=0;H<I.length;H++)i(I[H],S,_&&_.children[H])}_=_||S,(S.record.components&&Object.keys(S.record.components).length||S.record.name||S.record.redirect)&&l(S)}return T?()=>{s(T)}:Ha}function s(d){if(sp(d)){const u=a.get(d);u&&(a.delete(d),n.splice(n.indexOf(u),1),u.children.forEach(s),u.alias.forEach(s))}else{const u=n.indexOf(d);u>-1&&(n.splice(u,1),d.record.name&&a.delete(d.record.name),d.children.forEach(s),d.alias.forEach(s))}}function o(){return n}function l(d){let u=0;for(;u<n.length&&hL(d,n[u])>=0&&(d.record.path!==n[u].record.path||!lp(d,n[u]));)u++;n.splice(u,0,d),d.record.name&&!Cc(d)&&a.set(d.record.name,d)}function c(d,u){let _,p={},g,h;if("name"in d&&d.name){if(_=a.get(d.name),!_)throw va(1,{location:d});h=_.record.name,p=Ae(vc(u.params,_.keys.filter(T=>!T.optional).map(T=>T.name)),d.params&&vc(d.params,_.keys.map(T=>T.name))),g=_.stringify(p)}else if("path"in d)g=d.path,_=n.find(T=>T.re.test(g)),_&&(p=_.parse(g),h=_.record.name);else{if(_=u.name?a.get(u.name):n.find(T=>T.re.test(u.path)),!_)throw va(1,{location:d,currentLocation:u});h=_.record.name,p=Ae({},u.params,d.params),g=_.stringify(p)}const b=[];let S=_;for(;S;)b.unshift(S.record),S=S.parent;return{name:h,path:g,params:p,matched:b,meta:CL(b)}}return e.forEach(d=>i(d)),{addRoute:i,resolve:c,removeRoute:s,getRoutes:o,getRecordMatcher:r}}function vc(e,t){const n={};for(const a of t)a in e&&(n[a]=e[a]);return n}function yL(e){return{path:e.path,redirect:e.redirect,name:e.name,meta:e.meta||{},aliasOf:void 0,beforeEnter:e.beforeEnter,props:vL(e),children:e.children||[],instances:{},leaveGuards:new Set,updateGuards:new Set,enterCallbacks:{},components:"components"in e?e.components||null:e.component&&{default:e.component}}}function vL(e){const t={},n=e.props||!1;if("component"in e)t.default=n;else for(const a in e.components)t[a]=typeof n=="boolean"?n:n[a];return t}function Cc(e){for(;e;){if(e.record.aliasOf)return!0;e=e.parent}return!1}function CL(e){return e.reduce((t,n)=>Ae(t,n.meta),{})}function Rc(e,t){const n={};for(const a in e)n[a]=a in t?t[a]:e[a];return n}function lp(e,t){return t.children.some(n=>n===e||lp(e,n))}const cp=/#/g,RL=/&/g,wL=/\//g,NL=/=/g,OL=/\?/g,dp=/\+/g,IL=/%5B/g,AL=/%5D/g,up=/%5E/g,DL=/%60/g,_p=/%7B/g,xL=/%7C/g,pp=/%7D/g,kL=/%20/g;function Vo(e){return encodeURI(""+e).replace(xL,"|").replace(IL,"[").replace(AL,"]")}function ML(e){return Vo(e).replace(_p,"{").replace(pp,"}").replace(up,"^")}function Bs(e){return Vo(e).replace(dp,"%2B").replace(kL,"+").replace(cp,"%23").replace(RL,"%26").replace(DL,"`").replace(_p,"{").replace(pp,"}").replace(up,"^")}function LL(e){return Bs(e).replace(NL,"%3D")}function PL(e){return Vo(e).replace(cp,"%23").replace(OL,"%3F")}function FL(e){return e==null?"":PL(e).replace(wL,"%2F")}function si(e){try{return decodeURIComponent(""+e)}catch{}return""+e}function UL(e){const t={};if(e===""||e==="?")return t;const a=(e[0]==="?"?e.slice(1):e).split("&");for(let r=0;r<a.length;++r){const i=a[r].replace(dp," "),s=i.indexOf("="),o=si(s<0?i:i.slice(0,s)),l=s<0?null:si(i.slice(s+1));if(o in t){let c=t[o];Lt(c)||(c=t[o]=[c]),c.push(l)}else t[o]=l}return t}function wc(e){let t="";for(let n in e){const a=e[n];if(n=LL(n),a==null){a!==void 0&&(t+=(t.length?"&":"")+n);continue}(Lt(a)?a.map(i=>i&&Bs(i)):[a&&Bs(a)]).forEach(i=>{i!==void 0&&(t+=(t.length?"&":"")+n,i!=null&&(t+="="+i))})}return t}function BL(e){const t={};for(const n in e){const a=e[n];a!==void 0&&(t[n]=Lt(a)?a.map(r=>r==null?null:""+r):a==null?a:""+a)}return t}const GL=Symbol(""),Nc=Symbol(""),Ui=Symbol(""),mp=Symbol(""),Gs=Symbol("");function ka(){let e=[];function t(a){return e.push(a),()=>{const r=e.indexOf(a);r>-1&&e.splice(r,1)}}function n(){e=[]}return{add:t,list:()=>e,reset:n}}function hn(e,t,n,a,r){const i=a&&(a.enterCallbacks[r]=a.enterCallbacks[r]||[]);return()=>new Promise((s,o)=>{const l=u=>{u===!1?o(va(4,{from:n,to:t})):u instanceof Error?o(u):uL(u)?o(va(2,{from:t,to:u})):(i&&a.enterCallbacks[r]===i&&typeof u=="function"&&i.push(u),s())},c=e.call(a&&a.instances[r],t,n,l);let d=Promise.resolve(c);e.length<3&&(d=d.then(l)),d.catch(u=>o(u))})}function ls(e,t,n,a){const r=[];for(const i of e)for(const s in i.components){let o=i.components[s];if(!(t!=="beforeRouteEnter"&&!i.instances[s]))if(YL(o)){const c=(o.__vccOpts||o)[t];c&&r.push(hn(c,n,a,i,s))}else{let l=o();r.push(()=>l.then(c=>{if(!c)return Promise.reject(new Error(`Couldn't resolve component "${s}" at "${i.path}"`));const d=zM(c)?c.default:c;i.components[s]=d;const _=(d.__vccOpts||d)[t];return _&&hn(_,n,a,i,s)()}))}}return r}function YL(e){return typeof e=="object"||"displayName"in e||"props"in e||"__vccOpts"in e}function Oc(e){const t=xt(Ui),n=xt(mp),a=pt(()=>t.resolve(lt(e.to))),r=pt(()=>{const{matched:l}=a.value,{length:c}=l,d=l[c-1],u=n.matched;if(!d||!u.length)return-1;const _=u.findIndex(ya.bind(null,d));if(_>-1)return _;const p=Ic(l[c-2]);return c>1&&Ic(d)===p&&u[u.length-1].path!==p?u.findIndex(ya.bind(null,l[c-2])):_}),i=pt(()=>r.value>-1&&qL(n.params,a.value.params)),s=pt(()=>r.value>-1&&r.value===n.matched.length-1&&rp(n.params,a.value.params));function o(l={}){return VL(l)?t[lt(e.replace)?"replace":"push"](lt(e.to)).catch(Ha):Promise.resolve()}return{route:a,href:pt(()=>a.value.href),isActive:i,isExactActive:s,navigate:o}}const HL=iu({name:"RouterLink",compatConfig:{MODE:3},props:{to:{type:[String,Object],required:!0},replace:Boolean,activeClass:String,exactActiveClass:String,custom:Boolean,ariaCurrentValue:{type:String,default:"page"}},useLink:Oc,setup(e,{slots:t}){const n=Oa(Oc(e)),{options:a}=xt(Ui),r=pt(()=>({[Ac(e.activeClass,a.linkActiveClass,"router-link-active")]:n.isActive,[Ac(e.exactActiveClass,a.linkExactActiveClass,"router-link-exact-active")]:n.isExactActive}));return()=>{const i=t.default&&t.default(n);return e.custom?i:wu("a",{"aria-current":n.isExactActive?e.ariaCurrentValue:null,href:n.href,onClick:n.navigate,class:r.value},i)}}}),WL=HL;function VL(e){if(!(e.metaKey||e.altKey||e.ctrlKey||e.shiftKey)&&!e.defaultPrevented&&!(e.button!==void 0&&e.button!==0)){if(e.currentTarget&&e.currentTarget.getAttribute){const t=e.currentTarget.getAttribute("target");if(/\b_blank\b/i.test(t))return}return e.preventDefault&&e.preventDefault(),!0}}function qL(e,t){for(const n in t){const a=t[n],r=e[n];if(typeof a=="string"){if(a!==r)return!1}else if(!Lt(r)||r.length!==a.length||a.some((i,s)=>i!==r[s]))return!1}return!0}function Ic(e){return e?e.aliasOf?e.aliasOf.path:e.path:""}const Ac=(e,t,n)=>e!=null?e:t!=null?t:n,zL=iu({name:"RouterView",inheritAttrs:!1,props:{name:{type:String,default:"default"},route:Object},compatConfig:{MODE:3},setup(e,{attrs:t,slots:n}){const a=xt(Gs),r=pt(()=>e.route||a.value),i=xt(Nc,0),s=pt(()=>{let c=lt(i);const{matched:d}=r.value;let u;for(;(u=d[c])&&!u.components;)c++;return c}),o=pt(()=>r.value.matched[s.value]);Lr(Nc,pt(()=>s.value+1)),Lr(GL,o),Lr(Gs,r);const l=Ci();return Hn(()=>[l.value,o.value,e.name],([c,d,u],[_,p,g])=>{d&&(d.instances[u]=c,p&&p!==d&&c&&c===_&&(d.leaveGuards.size||(d.leaveGuards=p.leaveGuards),d.updateGuards.size||(d.updateGuards=p.updateGuards))),c&&d&&(!p||!ya(d,p)||!_)&&(d.enterCallbacks[u]||[]).forEach(h=>h(c))},{flush:"post"}),()=>{const c=r.value,d=e.name,u=o.value,_=u&&u.components[d];if(!_)return Dc(n.default,{Component:_,route:c});const p=u.props[d],g=p?p===!0?c.params:typeof p=="function"?p(c):p:null,b=wu(_,Ae({},g,t,{onVnodeUnmounted:S=>{S.component.isUnmounted&&(u.instances[d]=null)},ref:l}));return Dc(n.default,{Component:b,route:c})||b}}});function Dc(e,t){if(!e)return null;const n=e(t);return n.length===1?n[0]:n}const $L=zL;function KL(e){const t=TL(e.routes,e),n=e.parseQuery||UL,a=e.stringifyQuery||wc,r=e.history,i=ka(),s=ka(),o=ka(),l=gS(pn);let c=pn;la&&e.scrollBehavior&&"scrollRestoration"in history&&(history.scrollRestoration="manual");const d=ss.bind(null,w=>""+w),u=ss.bind(null,FL),_=ss.bind(null,si);function p(w,V){let Y,te;return sp(w)?(Y=t.getRecordMatcher(w),te=V):te=w,t.addRoute(te,Y)}function g(w){const V=t.getRecordMatcher(w);V&&t.removeRoute(V)}function h(){return t.getRoutes().map(w=>w.record)}function b(w){return!!t.getRecordMatcher(w)}function S(w,V){if(V=Ae({},V||l.value),typeof w=="string"){const m=os(n,w,V.path),f=t.resolve({path:m.path},V),v=r.createHref(m.fullPath);return Ae(m,f,{params:_(f.params),hash:si(m.hash),redirectedFrom:void 0,href:v})}let Y;if("path"in w)Y=Ae({},w,{path:os(n,w.path,V.path).path});else{const m=Ae({},w.params);for(const f in m)m[f]==null&&delete m[f];Y=Ae({},w,{params:u(w.params)}),V.params=u(V.params)}const te=t.resolve(Y,V),Z=w.hash||"";te.params=d(_(te.params));const we=QM(a,Ae({},w,{hash:ML(Z),path:te.path})),ce=r.createHref(we);return Ae({fullPath:we,hash:Z,query:a===wc?BL(w.query):w.query||{}},te,{redirectedFrom:void 0,href:ce})}function T(w){return typeof w=="string"?os(n,w,l.value.path):Ae({},w)}function y(w,V){if(c!==w)return va(8,{from:V,to:w})}function R(w){return G(w)}function I(w){return R(Ae(T(w),{replace:!0}))}function H(w){const V=w.matched[w.matched.length-1];if(V&&V.redirect){const{redirect:Y}=V;let te=typeof Y=="function"?Y(w):Y;return typeof te=="string"&&(te=te.includes("?")||te.includes("#")?te=T(te):{path:te},te.params={}),Ae({query:w.query,hash:w.hash,params:"path"in te?{}:w.params},te)}}function G(w,V){const Y=c=S(w),te=l.value,Z=w.state,we=w.force,ce=w.replace===!0,m=H(Y);if(m)return G(Ae(T(m),{state:typeof m=="object"?Ae({},Z,m.state):Z,force:we,replace:ce}),V||Y);const f=Y;f.redirectedFrom=V;let v;return!we&&jM(a,te,Y)&&(v=va(16,{to:f,from:te}),ue(te,te,!0,!1)),(v?Promise.resolve(v):K(f,te)).catch(N=>jt(N)?jt(N,2)?N:ee(N):D(N,f,te)).then(N=>{if(N){if(jt(N,2))return G(Ae({replace:ce},T(N.to),{state:typeof N.to=="object"?Ae({},Z,N.to.state):Z,force:we}),V||f)}else N=le(f,te,!0,ce,Z);return W(f,te,N),N})}function L(w,V){const Y=y(w,V);return Y?Promise.reject(Y):Promise.resolve()}function K(w,V){let Y;const[te,Z,we]=QL(w,V);Y=ls(te.reverse(),"beforeRouteLeave",w,V);for(const m of te)m.leaveGuards.forEach(f=>{Y.push(hn(f,w,V))});const ce=L.bind(null,w,V);return Y.push(ce),na(Y).then(()=>{Y=[];for(const m of i.list())Y.push(hn(m,w,V));return Y.push(ce),na(Y)}).then(()=>{Y=ls(Z,"beforeRouteUpdate",w,V);for(const m of Z)m.updateGuards.forEach(f=>{Y.push(hn(f,w,V))});return Y.push(ce),na(Y)}).then(()=>{Y=[];for(const m of w.matched)if(m.beforeEnter&&!V.matched.includes(m))if(Lt(m.beforeEnter))for(const f of m.beforeEnter)Y.push(hn(f,w,V));else Y.push(hn(m.beforeEnter,w,V));return Y.push(ce),na(Y)}).then(()=>(w.matched.forEach(m=>m.enterCallbacks={}),Y=ls(we,"beforeRouteEnter",w,V),Y.push(ce),na(Y))).then(()=>{Y=[];for(const m of s.list())Y.push(hn(m,w,V));return Y.push(ce),na(Y)}).catch(m=>jt(m,8)?m:Promise.reject(m))}function W(w,V,Y){for(const te of o.list())te(w,V,Y)}function le(w,V,Y,te,Z){const we=y(w,V);if(we)return we;const ce=V===pn,m=la?history.state:{};Y&&(te||ce?r.replace(w.fullPath,Ae({scroll:ce&&m&&m.scroll},Z)):r.push(w.fullPath,Z)),l.value=w,ue(w,V,Y,ce),ee()}let fe;function Te(){fe||(fe=r.listen((w,V,Y)=>{if(!De.listening)return;const te=S(w),Z=H(te);if(Z){G(Ae(Z,{replace:!0}),te).catch(Ha);return}c=te;const we=l.value;la&&rL(Ec(we.fullPath,Y.delta),Fi()),K(te,we).catch(ce=>jt(ce,12)?ce:jt(ce,2)?(G(ce.to,te).then(m=>{jt(m,20)&&!Y.delta&&Y.type===sr.pop&&r.go(-1,!1)}).catch(Ha),Promise.reject()):(Y.delta&&r.go(-Y.delta,!1),D(ce,te,we))).then(ce=>{ce=ce||le(te,we,!1),ce&&(Y.delta&&!jt(ce,8)?r.go(-Y.delta,!1):Y.type===sr.pop&&jt(ce,20)&&r.go(-1,!1)),W(te,we,ce)}).catch(Ha)}))}let Ee=ka(),ye=ka(),A;function D(w,V,Y){ee(w);const te=ye.list();return te.length?te.forEach(Z=>Z(w,V,Y)):console.error(w),Promise.reject(w)}function F(){return A&&l.value!==pn?Promise.resolve():new Promise((w,V)=>{Ee.add([w,V])})}function ee(w){return A||(A=!w,Te(),Ee.list().forEach(([V,Y])=>w?Y(w):V()),Ee.reset()),w}function ue(w,V,Y,te){const{scrollBehavior:Z}=e;if(!la||!Z)return Promise.resolve();const we=!Y&&iL(Ec(w.fullPath,0))||(te||!Y)&&history.state&&history.state.scroll||null;return yo().then(()=>Z(w,V,we)).then(ce=>ce&&aL(ce)).catch(ce=>D(ce,w,V))}const ge=w=>r.go(w);let he;const qe=new Set,De={currentRoute:l,listening:!0,addRoute:p,removeRoute:g,hasRoute:b,getRoutes:h,resolve:S,options:e,push:R,replace:I,go:ge,back:()=>ge(-1),forward:()=>ge(1),beforeEach:i.add,beforeResolve:s.add,afterEach:o.add,onError:ye.add,isReady:F,install(w){const V=this;w.component("RouterLink",WL),w.component("RouterView",$L),w.config.globalProperties.$router=V,Object.defineProperty(w.config.globalProperties,"$route",{enumerable:!0,get:()=>lt(l)}),la&&!he&&l.value===pn&&(he=!0,R(r.location).catch(Z=>{}));const Y={};for(const Z in pn)Y[Z]=pt(()=>l.value[Z]);w.provide(Ui,V),w.provide(mp,Oa(Y)),w.provide(Gs,l);const te=w.unmount;qe.add(w),w.unmount=function(){qe.delete(w),qe.size<1&&(c=pn,fe&&fe(),fe=null,l.value=pn,he=!1,A=!1),te()}}};return De}function na(e){return e.reduce((t,n)=>t.then(()=>n()),Promise.resolve())}function QL(e,t){const n=[],a=[],r=[],i=Math.max(t.matched.length,e.matched.length);for(let s=0;s<i;s++){const o=t.matched[s];o&&(e.matched.find(c=>ya(c,o))?a.push(o):n.push(o));const l=e.matched[s];l&&(t.matched.find(c=>ya(c,l))||r.push(l))}return[n,a,r]}function jL(){return xt(Ui)}const XL={class:"content sharp-border"},ZL={key:0,class:"app-bar-space"},JL={__name:"App",setup(e){const{dark:t,setFont:n,setDark:a,font:r}=ku(),{setModules:i}=Lu(),{currentRoute:s}=jL();Hn(t,()=>{document.body.toggleAttribute("theme-dark")});const o=Ci(!1);Co(()=>{window.addEventListener("scroll",c)}),ou(()=>{const{fileModules:_}=HM();l(),i(WM(_))});const l=()=>{var g;const _=vn.getFont(),p=((g=Vn.find(h=>h.name===_))==null?void 0:g.class)||Vn[0].class;n(p),a(vn.getTheme()==="dark"),document.body.classList.add(r.value)},c=_=>{if(typeof window=="undefined")return;const p=window.pageYOffset||_.target.scrollTop;o.value=p>150},d=()=>{window.scroll({top:0,behavior:"smooth"})},u=pt(()=>["Home","Filter","Sort"].includes(s==null?void 0:s.value.name));return(_,p)=>{const g=QS("router-view"),h=uT;return Be(),We("div",null,[Ie(lt(KT)),_e("div",XL,[lt(u)?(Be(),We("div",ZL)):Is("",!0),Ie(g),o.value?(Be(),We("button",{key:1,class:"scroll-to-top circle small-shadow",onClick:d},[Ie(h)])):Is("",!0)]),Ie(lt(rv))])}}},eP=[{name:"Home",path:"/",component:()=>Jn(()=>import("./HomeView.0aebf634.js"),["assets/HomeView.0aebf634.js","assets/HomeView.669ed221.css","assets/tracker.d5d900f2.js"])},{name:"Filter",path:"/filter/:filterBy/:filterValue?",component:()=>Jn(()=>import("./HomeView.0aebf634.js"),["assets/HomeView.0aebf634.js","assets/HomeView.669ed221.css","assets/tracker.d5d900f2.js"])},{name:"Sort",path:"/sort/:sortBy",component:()=>Jn(()=>import("./HomeView.0aebf634.js"),["assets/HomeView.0aebf634.js","assets/HomeView.669ed221.css","assets/tracker.d5d900f2.js"])},{name:"Blog",path:"/blog/:name",component:()=>Jn(()=>import("./PostView.43fc2729.js"),["assets/PostView.43fc2729.js","assets/PostView.cdc27dd0.css","assets/tracker.d5d900f2.js"])},{name:"Series",path:"/blog/:series/:name",component:()=>Jn(()=>import("./PostView.43fc2729.js"),["assets/PostView.43fc2729.js","assets/PostView.cdc27dd0.css","assets/tracker.d5d900f2.js"])},{name:"404",path:"/:pathMatch(.*)*",component:()=>Jn(()=>import("./404View.e591d75f.js"),["assets/404View.e591d75f.js","assets/404View.7c5e5cbc.css"])}],tP=KL({history:dL(),routes:eP,scrollBehavior(e,t,n){return{top:(n==null?void 0:n.top)||0}}}),nP=nT(),ur=Jb(JL);ur.config.globalProperties.window=window;ur.config.globalProperties.$moment=z;ur.use(nP);ur.use(tP);ur.mount("#app");export{My as A,Iy as B,Fr as C,GT as D,Lu as E,ft as F,uP as G,_P as H,OS as I,IS as J,vn as S,Oo as _,_e as a,pt as b,We as c,lt as d,Is as e,Ie as f,Ll as g,z as h,jL as i,Ci as j,Co as k,dP as l,iP as m,Gn as n,Be as o,oP as p,Ts as q,ZS as r,Tu as s,Cd as t,ku as u,sP as v,Hn as w,cP as x,lP as y,lo as z};
+  */const la=typeof window!="undefined";function zM(e){return e.__esModule||e[Symbol.toStringTag]==="Module"}const Ae=Object.assign;function ss(e,t){const n={};for(const a in t){const r=t[a];n[a]=Lt(r)?r.map(e):e(r)}return n}const Ha=()=>{},Lt=Array.isArray,$M=/\/$/,KM=e=>e.replace($M,"");function os(e,t,n="/"){let a,r={},i="",s="";const o=t.indexOf("#");let l=t.indexOf("?");return o<l&&o>=0&&(l=-1),l>-1&&(a=t.slice(0,l),i=t.slice(l+1,o>-1?o:t.length),r=e(i)),o>-1&&(a=a||t.slice(0,o),s=t.slice(o,t.length)),a=ZM(a!=null?a:t,n),{fullPath:a+(i&&"?")+i+s,path:a,query:r,hash:s}}function QM(e,t){const n=t.query?e(t.query):"";return t.path+(n&&"?")+n+(t.hash||"")}function hc(e,t){return!t||!e.toLowerCase().startsWith(t.toLowerCase())?e:e.slice(t.length)||"/"}function jM(e,t,n){const a=t.matched.length-1,r=n.matched.length-1;return a>-1&&a===r&&ya(t.matched[a],n.matched[r])&&rp(t.params,n.params)&&e(t.query)===e(n.query)&&t.hash===n.hash}function ya(e,t){return(e.aliasOf||e)===(t.aliasOf||t)}function rp(e,t){if(Object.keys(e).length!==Object.keys(t).length)return!1;for(const n in e)if(!XM(e[n],t[n]))return!1;return!0}function XM(e,t){return Lt(e)?fc(e,t):Lt(t)?fc(t,e):e===t}function fc(e,t){return Lt(t)?e.length===t.length&&e.every((n,a)=>n===t[a]):e.length===1&&e[0]===t}function ZM(e,t){if(e.startsWith("/"))return e;if(!e)return t;const n=t.split("/"),a=e.split("/");let r=n.length-1,i,s;for(i=0;i<a.length;i++)if(s=a[i],s!==".")if(s==="..")r>1&&r--;else break;return n.slice(0,r).join("/")+"/"+a.slice(i-(i===a.length?1:0)).join("/")}var sr;(function(e){e.pop="pop",e.push="push"})(sr||(sr={}));var Wa;(function(e){e.back="back",e.forward="forward",e.unknown=""})(Wa||(Wa={}));function JM(e){if(!e)if(la){const t=document.querySelector("base");e=t&&t.getAttribute("href")||"/",e=e.replace(/^\w+:\/\/[^\/]+/,"")}else e="/";return e[0]!=="/"&&e[0]!=="#"&&(e="/"+e),KM(e)}const eL=/^[^#]+#/;function tL(e,t){return e.replace(eL,"#")+t}function nL(e,t){const n=document.documentElement.getBoundingClientRect(),a=e.getBoundingClientRect();return{behavior:t.behavior,left:a.left-n.left-(t.left||0),top:a.top-n.top-(t.top||0)}}const Fi=()=>({left:window.pageXOffset,top:window.pageYOffset});function aL(e){let t;if("el"in e){const n=e.el,a=typeof n=="string"&&n.startsWith("#"),r=typeof n=="string"?a?document.getElementById(n.slice(1)):document.querySelector(n):n;if(!r)return;t=nL(r,e)}else t=e;"scrollBehavior"in document.documentElement.style?window.scrollTo(t):window.scrollTo(t.left!=null?t.left:window.pageXOffset,t.top!=null?t.top:window.pageYOffset)}function Ec(e,t){return(history.state?history.state.position-t:-1)+e}const Us=new Map;function rL(e,t){Us.set(e,t)}function iL(e){const t=Us.get(e);return Us.delete(e),t}let sL=()=>location.protocol+"//"+location.host;function ip(e,t){const{pathname:n,search:a,hash:r}=t,i=e.indexOf("#");if(i>-1){let o=r.includes(e.slice(i))?e.slice(i).length:1,l=r.slice(o);return l[0]!=="/"&&(l="/"+l),hc(l,"")}return hc(n,e)+a+r}function oL(e,t,n,a){let r=[],i=[],s=null;const o=({state:_})=>{const p=ip(e,location),g=n.value,h=t.value;let b=0;if(_){if(n.value=p,t.value=_,s&&s===g){s=null;return}b=h?_.position-h.position:0}else a(p);r.forEach(S=>{S(n.value,g,{delta:b,type:sr.pop,direction:b?b>0?Wa.forward:Wa.back:Wa.unknown})})};function l(){s=n.value}function c(_){r.push(_);const p=()=>{const g=r.indexOf(_);g>-1&&r.splice(g,1)};return i.push(p),p}function d(){const{history:_}=window;!_.state||_.replaceState(Ae({},_.state,{scroll:Fi()}),"")}function u(){for(const _ of i)_();i=[],window.removeEventListener("popstate",o),window.removeEventListener("beforeunload",d)}return window.addEventListener("popstate",o),window.addEventListener("beforeunload",d),{pauseListeners:l,listen:c,destroy:u}}function Sc(e,t,n,a=!1,r=!1){return{back:e,current:t,forward:n,replaced:a,position:window.history.length,scroll:r?Fi():null}}function lL(e){const{history:t,location:n}=window,a={value:ip(e,n)},r={value:t.state};r.value||i(a.value,{back:null,current:a.value,forward:null,position:t.length-1,replaced:!0,scroll:null},!0);function i(l,c,d){const u=e.indexOf("#"),_=u>-1?(n.host&&document.querySelector("base")?e:e.slice(u))+l:sL()+e+l;try{t[d?"replaceState":"pushState"](c,"",_),r.value=c}catch(p){console.error(p),n[d?"replace":"assign"](_)}}function s(l,c){const d=Ae({},t.state,Sc(r.value.back,l,r.value.forward,!0),c,{position:r.value.position});i(l,d,!0),a.value=l}function o(l,c){const d=Ae({},r.value,t.state,{forward:l,scroll:Fi()});i(d.current,d,!0);const u=Ae({},Sc(a.value,l,null),{position:d.position+1},c);i(l,u,!1),a.value=l}return{location:a,state:r,push:o,replace:s}}function cL(e){e=JM(e);const t=lL(e),n=oL(e,t.state,t.location,t.replace);function a(i,s=!0){s||n.pauseListeners(),history.go(i)}const r=Ae({location:"",base:e,go:a,createHref:tL.bind(null,e)},t,n);return Object.defineProperty(r,"location",{enumerable:!0,get:()=>t.location.value}),Object.defineProperty(r,"state",{enumerable:!0,get:()=>t.state.value}),r}function dL(e){return e=location.host?e||location.pathname+location.search:"",e.includes("#")||(e+="#"),cL(e)}function uL(e){return typeof e=="string"||e&&typeof e=="object"}function sp(e){return typeof e=="string"||typeof e=="symbol"}const pn={path:"/",name:void 0,params:{},query:{},hash:"",fullPath:"/",matched:[],meta:{},redirectedFrom:void 0},op=Symbol("");var bc;(function(e){e[e.aborted=4]="aborted",e[e.cancelled=8]="cancelled",e[e.duplicated=16]="duplicated"})(bc||(bc={}));function va(e,t){return Ae(new Error,{type:e,[op]:!0},t)}function jt(e,t){return e instanceof Error&&op in e&&(t==null||!!(e.type&t))}const Tc="[^/]+?",_L={sensitive:!1,strict:!1,start:!0,end:!0},pL=/[.+*?^${}()[\]/\\]/g;function mL(e,t){const n=Ae({},_L,t),a=[];let r=n.start?"^":"";const i=[];for(const c of e){const d=c.length?[]:[90];n.strict&&!c.length&&(r+="/");for(let u=0;u<c.length;u++){const _=c[u];let p=40+(n.sensitive?.25:0);if(_.type===0)u||(r+="/"),r+=_.value.replace(pL,"\\$&"),p+=40;else if(_.type===1){const{value:g,repeatable:h,optional:b,regexp:S}=_;i.push({name:g,repeatable:h,optional:b});const T=S||Tc;if(T!==Tc){p+=10;try{new RegExp(`(${T})`)}catch(R){throw new Error(`Invalid custom RegExp for param "${g}" (${T}): `+R.message)}}let y=h?`((?:${T})(?:/(?:${T}))*)`:`(${T})`;u||(y=b&&c.length<2?`(?:/${y})`:"/"+y),b&&(y+="?"),r+=y,p+=20,b&&(p+=-8),h&&(p+=-20),T===".*"&&(p+=-50)}d.push(p)}a.push(d)}if(n.strict&&n.end){const c=a.length-1;a[c][a[c].length-1]+=.7000000000000001}n.strict||(r+="/?"),n.end?r+="$":n.strict&&(r+="(?:/|$)");const s=new RegExp(r,n.sensitive?"":"i");function o(c){const d=c.match(s),u={};if(!d)return null;for(let _=1;_<d.length;_++){const p=d[_]||"",g=i[_-1];u[g.name]=p&&g.repeatable?p.split("/"):p}return u}function l(c){let d="",u=!1;for(const _ of e){(!u||!d.endsWith("/"))&&(d+="/"),u=!1;for(const p of _)if(p.type===0)d+=p.value;else if(p.type===1){const{value:g,repeatable:h,optional:b}=p,S=g in c?c[g]:"";if(Lt(S)&&!h)throw new Error(`Provided param "${g}" is an array but it is not repeatable (* or + modifiers)`);const T=Lt(S)?S.join("/"):S;if(!T)if(b)_.length<2&&(d.endsWith("/")?d=d.slice(0,-1):u=!0);else throw new Error(`Missing required param "${g}"`);d+=T}}return d||"/"}return{re:s,score:a,keys:i,parse:o,stringify:l}}function gL(e,t){let n=0;for(;n<e.length&&n<t.length;){const a=t[n]-e[n];if(a)return a;n++}return e.length<t.length?e.length===1&&e[0]===40+40?-1:1:e.length>t.length?t.length===1&&t[0]===40+40?1:-1:0}function hL(e,t){let n=0;const a=e.score,r=t.score;for(;n<a.length&&n<r.length;){const i=gL(a[n],r[n]);if(i)return i;n++}if(Math.abs(r.length-a.length)===1){if(yc(a))return 1;if(yc(r))return-1}return r.length-a.length}function yc(e){const t=e[e.length-1];return e.length>0&&t[t.length-1]<0}const fL={type:0,value:""},EL=/[a-zA-Z0-9_]/;function SL(e){if(!e)return[[]];if(e==="/")return[[fL]];if(!e.startsWith("/"))throw new Error(`Invalid path "${e}"`);function t(p){throw new Error(`ERR (${n})/"${c}": ${p}`)}let n=0,a=n;const r=[];let i;function s(){i&&r.push(i),i=[]}let o=0,l,c="",d="";function u(){!c||(n===0?i.push({type:0,value:c}):n===1||n===2||n===3?(i.length>1&&(l==="*"||l==="+")&&t(`A repeatable param (${c}) must be alone in its segment. eg: '/:ids+.`),i.push({type:1,value:c,regexp:d,repeatable:l==="*"||l==="+",optional:l==="*"||l==="?"})):t("Invalid state to consume buffer"),c="")}function _(){c+=l}for(;o<e.length;){if(l=e[o++],l==="\\"&&n!==2){a=n,n=4;continue}switch(n){case 0:l==="/"?(c&&u(),s()):l===":"?(u(),n=1):_();break;case 4:_(),n=a;break;case 1:l==="("?n=2:EL.test(l)?_():(u(),n=0,l!=="*"&&l!=="?"&&l!=="+"&&o--);break;case 2:l===")"?d[d.length-1]=="\\"?d=d.slice(0,-1)+l:n=3:d+=l;break;case 3:u(),n=0,l!=="*"&&l!=="?"&&l!=="+"&&o--,d="";break;default:t("Unknown state");break}}return n===2&&t(`Unfinished custom RegExp for param "${c}"`),u(),s(),r}function bL(e,t,n){const a=mL(SL(e.path),n),r=Ae(a,{record:e,parent:t,children:[],alias:[]});return t&&!r.record.aliasOf==!t.record.aliasOf&&t.children.push(r),r}function TL(e,t){const n=[],a=new Map;t=Rc({strict:!1,end:!0,sensitive:!1},t);function r(d){return a.get(d)}function i(d,u,_){const p=!_,g=yL(d);g.aliasOf=_&&_.record;const h=Rc(t,d),b=[g];if("alias"in d){const y=typeof d.alias=="string"?[d.alias]:d.alias;for(const R of y)b.push(Ae({},g,{components:_?_.record.components:g.components,path:R,aliasOf:_?_.record:g}))}let S,T;for(const y of b){const{path:R}=y;if(u&&R[0]!=="/"){const I=u.record.path,H=I[I.length-1]==="/"?"":"/";y.path=u.record.path+(R&&H+R)}if(S=bL(y,u,h),_?_.alias.push(S):(T=T||S,T!==S&&T.alias.push(S),p&&d.name&&!Cc(S)&&s(d.name)),g.children){const I=g.children;for(let H=0;H<I.length;H++)i(I[H],S,_&&_.children[H])}_=_||S,(S.record.components&&Object.keys(S.record.components).length||S.record.name||S.record.redirect)&&l(S)}return T?()=>{s(T)}:Ha}function s(d){if(sp(d)){const u=a.get(d);u&&(a.delete(d),n.splice(n.indexOf(u),1),u.children.forEach(s),u.alias.forEach(s))}else{const u=n.indexOf(d);u>-1&&(n.splice(u,1),d.record.name&&a.delete(d.record.name),d.children.forEach(s),d.alias.forEach(s))}}function o(){return n}function l(d){let u=0;for(;u<n.length&&hL(d,n[u])>=0&&(d.record.path!==n[u].record.path||!lp(d,n[u]));)u++;n.splice(u,0,d),d.record.name&&!Cc(d)&&a.set(d.record.name,d)}function c(d,u){let _,p={},g,h;if("name"in d&&d.name){if(_=a.get(d.name),!_)throw va(1,{location:d});h=_.record.name,p=Ae(vc(u.params,_.keys.filter(T=>!T.optional).map(T=>T.name)),d.params&&vc(d.params,_.keys.map(T=>T.name))),g=_.stringify(p)}else if("path"in d)g=d.path,_=n.find(T=>T.re.test(g)),_&&(p=_.parse(g),h=_.record.name);else{if(_=u.name?a.get(u.name):n.find(T=>T.re.test(u.path)),!_)throw va(1,{location:d,currentLocation:u});h=_.record.name,p=Ae({},u.params,d.params),g=_.stringify(p)}const b=[];let S=_;for(;S;)b.unshift(S.record),S=S.parent;return{name:h,path:g,params:p,matched:b,meta:CL(b)}}return e.forEach(d=>i(d)),{addRoute:i,resolve:c,removeRoute:s,getRoutes:o,getRecordMatcher:r}}function vc(e,t){const n={};for(const a of t)a in e&&(n[a]=e[a]);return n}function yL(e){return{path:e.path,redirect:e.redirect,name:e.name,meta:e.meta||{},aliasOf:void 0,beforeEnter:e.beforeEnter,props:vL(e),children:e.children||[],instances:{},leaveGuards:new Set,updateGuards:new Set,enterCallbacks:{},components:"components"in e?e.components||null:e.component&&{default:e.component}}}function vL(e){const t={},n=e.props||!1;if("component"in e)t.default=n;else for(const a in e.components)t[a]=typeof n=="boolean"?n:n[a];return t}function Cc(e){for(;e;){if(e.record.aliasOf)return!0;e=e.parent}return!1}function CL(e){return e.reduce((t,n)=>Ae(t,n.meta),{})}function Rc(e,t){const n={};for(const a in e)n[a]=a in t?t[a]:e[a];return n}function lp(e,t){return t.children.some(n=>n===e||lp(e,n))}const cp=/#/g,RL=/&/g,wL=/\//g,NL=/=/g,OL=/\?/g,dp=/\+/g,IL=/%5B/g,AL=/%5D/g,up=/%5E/g,DL=/%60/g,_p=/%7B/g,xL=/%7C/g,pp=/%7D/g,kL=/%20/g;function Vo(e){return encodeURI(""+e).replace(xL,"|").replace(IL,"[").replace(AL,"]")}function ML(e){return Vo(e).replace(_p,"{").replace(pp,"}").replace(up,"^")}function Bs(e){return Vo(e).replace(dp,"%2B").replace(kL,"+").replace(cp,"%23").replace(RL,"%26").replace(DL,"`").replace(_p,"{").replace(pp,"}").replace(up,"^")}function LL(e){return Bs(e).replace(NL,"%3D")}function PL(e){return Vo(e).replace(cp,"%23").replace(OL,"%3F")}function FL(e){return e==null?"":PL(e).replace(wL,"%2F")}function si(e){try{return decodeURIComponent(""+e)}catch{}return""+e}function UL(e){const t={};if(e===""||e==="?")return t;const a=(e[0]==="?"?e.slice(1):e).split("&");for(let r=0;r<a.length;++r){const i=a[r].replace(dp," "),s=i.indexOf("="),o=si(s<0?i:i.slice(0,s)),l=s<0?null:si(i.slice(s+1));if(o in t){let c=t[o];Lt(c)||(c=t[o]=[c]),c.push(l)}else t[o]=l}return t}function wc(e){let t="";for(let n in e){const a=e[n];if(n=LL(n),a==null){a!==void 0&&(t+=(t.length?"&":"")+n);continue}(Lt(a)?a.map(i=>i&&Bs(i)):[a&&Bs(a)]).forEach(i=>{i!==void 0&&(t+=(t.length?"&":"")+n,i!=null&&(t+="="+i))})}return t}function BL(e){const t={};for(const n in e){const a=e[n];a!==void 0&&(t[n]=Lt(a)?a.map(r=>r==null?null:""+r):a==null?a:""+a)}return t}const GL=Symbol(""),Nc=Symbol(""),Ui=Symbol(""),mp=Symbol(""),Gs=Symbol("");function ka(){let e=[];function t(a){return e.push(a),()=>{const r=e.indexOf(a);r>-1&&e.splice(r,1)}}function n(){e=[]}return{add:t,list:()=>e,reset:n}}function hn(e,t,n,a,r){const i=a&&(a.enterCallbacks[r]=a.enterCallbacks[r]||[]);return()=>new Promise((s,o)=>{const l=u=>{u===!1?o(va(4,{from:n,to:t})):u instanceof Error?o(u):uL(u)?o(va(2,{from:t,to:u})):(i&&a.enterCallbacks[r]===i&&typeof u=="function"&&i.push(u),s())},c=e.call(a&&a.instances[r],t,n,l);let d=Promise.resolve(c);e.length<3&&(d=d.then(l)),d.catch(u=>o(u))})}function ls(e,t,n,a){const r=[];for(const i of e)for(const s in i.components){let o=i.components[s];if(!(t!=="beforeRouteEnter"&&!i.instances[s]))if(YL(o)){const c=(o.__vccOpts||o)[t];c&&r.push(hn(c,n,a,i,s))}else{let l=o();r.push(()=>l.then(c=>{if(!c)return Promise.reject(new Error(`Couldn't resolve component "${s}" at "${i.path}"`));const d=zM(c)?c.default:c;i.components[s]=d;const _=(d.__vccOpts||d)[t];return _&&hn(_,n,a,i,s)()}))}}return r}function YL(e){return typeof e=="object"||"displayName"in e||"props"in e||"__vccOpts"in e}function Oc(e){const t=xt(Ui),n=xt(mp),a=pt(()=>t.resolve(lt(e.to))),r=pt(()=>{const{matched:l}=a.value,{length:c}=l,d=l[c-1],u=n.matched;if(!d||!u.length)return-1;const _=u.findIndex(ya.bind(null,d));if(_>-1)return _;const p=Ic(l[c-2]);return c>1&&Ic(d)===p&&u[u.length-1].path!==p?u.findIndex(ya.bind(null,l[c-2])):_}),i=pt(()=>r.value>-1&&qL(n.params,a.value.params)),s=pt(()=>r.value>-1&&r.value===n.matched.length-1&&rp(n.params,a.value.params));function o(l={}){return VL(l)?t[lt(e.replace)?"replace":"push"](lt(e.to)).catch(Ha):Promise.resolve()}return{route:a,href:pt(()=>a.value.href),isActive:i,isExactActive:s,navigate:o}}const HL=iu({name:"RouterLink",compatConfig:{MODE:3},props:{to:{type:[String,Object],required:!0},replace:Boolean,activeClass:String,exactActiveClass:String,custom:Boolean,ariaCurrentValue:{type:String,default:"page"}},useLink:Oc,setup(e,{slots:t}){const n=Oa(Oc(e)),{options:a}=xt(Ui),r=pt(()=>({[Ac(e.activeClass,a.linkActiveClass,"router-link-active")]:n.isActive,[Ac(e.exactActiveClass,a.linkExactActiveClass,"router-link-exact-active")]:n.isExactActive}));return()=>{const i=t.default&&t.default(n);return e.custom?i:wu("a",{"aria-current":n.isExactActive?e.ariaCurrentValue:null,href:n.href,onClick:n.navigate,class:r.value},i)}}}),WL=HL;function VL(e){if(!(e.metaKey||e.altKey||e.ctrlKey||e.shiftKey)&&!e.defaultPrevented&&!(e.button!==void 0&&e.button!==0)){if(e.currentTarget&&e.currentTarget.getAttribute){const t=e.currentTarget.getAttribute("target");if(/\b_blank\b/i.test(t))return}return e.preventDefault&&e.preventDefault(),!0}}function qL(e,t){for(const n in t){const a=t[n],r=e[n];if(typeof a=="string"){if(a!==r)return!1}else if(!Lt(r)||r.length!==a.length||a.some((i,s)=>i!==r[s]))return!1}return!0}function Ic(e){return e?e.aliasOf?e.aliasOf.path:e.path:""}const Ac=(e,t,n)=>e!=null?e:t!=null?t:n,zL=iu({name:"RouterView",inheritAttrs:!1,props:{name:{type:String,default:"default"},route:Object},compatConfig:{MODE:3},setup(e,{attrs:t,slots:n}){const a=xt(Gs),r=pt(()=>e.route||a.value),i=xt(Nc,0),s=pt(()=>{let c=lt(i);const{matched:d}=r.value;let u;for(;(u=d[c])&&!u.components;)c++;return c}),o=pt(()=>r.value.matched[s.value]);Lr(Nc,pt(()=>s.value+1)),Lr(GL,o),Lr(Gs,r);const l=Ci();return Hn(()=>[l.value,o.value,e.name],([c,d,u],[_,p,g])=>{d&&(d.instances[u]=c,p&&p!==d&&c&&c===_&&(d.leaveGuards.size||(d.leaveGuards=p.leaveGuards),d.updateGuards.size||(d.updateGuards=p.updateGuards))),c&&d&&(!p||!ya(d,p)||!_)&&(d.enterCallbacks[u]||[]).forEach(h=>h(c))},{flush:"post"}),()=>{const c=r.value,d=e.name,u=o.value,_=u&&u.components[d];if(!_)return Dc(n.default,{Component:_,route:c});const p=u.props[d],g=p?p===!0?c.params:typeof p=="function"?p(c):p:null,b=wu(_,Ae({},g,t,{onVnodeUnmounted:S=>{S.component.isUnmounted&&(u.instances[d]=null)},ref:l}));return Dc(n.default,{Component:b,route:c})||b}}});function Dc(e,t){if(!e)return null;const n=e(t);return n.length===1?n[0]:n}const $L=zL;function KL(e){const t=TL(e.routes,e),n=e.parseQuery||UL,a=e.stringifyQuery||wc,r=e.history,i=ka(),s=ka(),o=ka(),l=gS(pn);let c=pn;la&&e.scrollBehavior&&"scrollRestoration"in history&&(history.scrollRestoration="manual");const d=ss.bind(null,w=>""+w),u=ss.bind(null,FL),_=ss.bind(null,si);function p(w,V){let Y,te;return sp(w)?(Y=t.getRecordMatcher(w),te=V):te=w,t.addRoute(te,Y)}function g(w){const V=t.getRecordMatcher(w);V&&t.removeRoute(V)}function h(){return t.getRoutes().map(w=>w.record)}function b(w){return!!t.getRecordMatcher(w)}function S(w,V){if(V=Ae({},V||l.value),typeof w=="string"){const m=os(n,w,V.path),f=t.resolve({path:m.path},V),v=r.createHref(m.fullPath);return Ae(m,f,{params:_(f.params),hash:si(m.hash),redirectedFrom:void 0,href:v})}let Y;if("path"in w)Y=Ae({},w,{path:os(n,w.path,V.path).path});else{const m=Ae({},w.params);for(const f in m)m[f]==null&&delete m[f];Y=Ae({},w,{params:u(w.params)}),V.params=u(V.params)}const te=t.resolve(Y,V),Z=w.hash||"";te.params=d(_(te.params));const we=QM(a,Ae({},w,{hash:ML(Z),path:te.path})),ce=r.createHref(we);return Ae({fullPath:we,hash:Z,query:a===wc?BL(w.query):w.query||{}},te,{redirectedFrom:void 0,href:ce})}function T(w){return typeof w=="string"?os(n,w,l.value.path):Ae({},w)}function y(w,V){if(c!==w)return va(8,{from:V,to:w})}function R(w){return G(w)}function I(w){return R(Ae(T(w),{replace:!0}))}function H(w){const V=w.matched[w.matched.length-1];if(V&&V.redirect){const{redirect:Y}=V;let te=typeof Y=="function"?Y(w):Y;return typeof te=="string"&&(te=te.includes("?")||te.includes("#")?te=T(te):{path:te},te.params={}),Ae({query:w.query,hash:w.hash,params:"path"in te?{}:w.params},te)}}function G(w,V){const Y=c=S(w),te=l.value,Z=w.state,we=w.force,ce=w.replace===!0,m=H(Y);if(m)return G(Ae(T(m),{state:typeof m=="object"?Ae({},Z,m.state):Z,force:we,replace:ce}),V||Y);const f=Y;f.redirectedFrom=V;let v;return!we&&jM(a,te,Y)&&(v=va(16,{to:f,from:te}),ue(te,te,!0,!1)),(v?Promise.resolve(v):K(f,te)).catch(N=>jt(N)?jt(N,2)?N:ee(N):D(N,f,te)).then(N=>{if(N){if(jt(N,2))return G(Ae({replace:ce},T(N.to),{state:typeof N.to=="object"?Ae({},Z,N.to.state):Z,force:we}),V||f)}else N=le(f,te,!0,ce,Z);return W(f,te,N),N})}function L(w,V){const Y=y(w,V);return Y?Promise.reject(Y):Promise.resolve()}function K(w,V){let Y;const[te,Z,we]=QL(w,V);Y=ls(te.reverse(),"beforeRouteLeave",w,V);for(const m of te)m.leaveGuards.forEach(f=>{Y.push(hn(f,w,V))});const ce=L.bind(null,w,V);return Y.push(ce),na(Y).then(()=>{Y=[];for(const m of i.list())Y.push(hn(m,w,V));return Y.push(ce),na(Y)}).then(()=>{Y=ls(Z,"beforeRouteUpdate",w,V);for(const m of Z)m.updateGuards.forEach(f=>{Y.push(hn(f,w,V))});return Y.push(ce),na(Y)}).then(()=>{Y=[];for(const m of w.matched)if(m.beforeEnter&&!V.matched.includes(m))if(Lt(m.beforeEnter))for(const f of m.beforeEnter)Y.push(hn(f,w,V));else Y.push(hn(m.beforeEnter,w,V));return Y.push(ce),na(Y)}).then(()=>(w.matched.forEach(m=>m.enterCallbacks={}),Y=ls(we,"beforeRouteEnter",w,V),Y.push(ce),na(Y))).then(()=>{Y=[];for(const m of s.list())Y.push(hn(m,w,V));return Y.push(ce),na(Y)}).catch(m=>jt(m,8)?m:Promise.reject(m))}function W(w,V,Y){for(const te of o.list())te(w,V,Y)}function le(w,V,Y,te,Z){const we=y(w,V);if(we)return we;const ce=V===pn,m=la?history.state:{};Y&&(te||ce?r.replace(w.fullPath,Ae({scroll:ce&&m&&m.scroll},Z)):r.push(w.fullPath,Z)),l.value=w,ue(w,V,Y,ce),ee()}let fe;function Te(){fe||(fe=r.listen((w,V,Y)=>{if(!De.listening)return;const te=S(w),Z=H(te);if(Z){G(Ae(Z,{replace:!0}),te).catch(Ha);return}c=te;const we=l.value;la&&rL(Ec(we.fullPath,Y.delta),Fi()),K(te,we).catch(ce=>jt(ce,12)?ce:jt(ce,2)?(G(ce.to,te).then(m=>{jt(m,20)&&!Y.delta&&Y.type===sr.pop&&r.go(-1,!1)}).catch(Ha),Promise.reject()):(Y.delta&&r.go(-Y.delta,!1),D(ce,te,we))).then(ce=>{ce=ce||le(te,we,!1),ce&&(Y.delta&&!jt(ce,8)?r.go(-Y.delta,!1):Y.type===sr.pop&&jt(ce,20)&&r.go(-1,!1)),W(te,we,ce)}).catch(Ha)}))}let Ee=ka(),ye=ka(),A;function D(w,V,Y){ee(w);const te=ye.list();return te.length?te.forEach(Z=>Z(w,V,Y)):console.error(w),Promise.reject(w)}function F(){return A&&l.value!==pn?Promise.resolve():new Promise((w,V)=>{Ee.add([w,V])})}function ee(w){return A||(A=!w,Te(),Ee.list().forEach(([V,Y])=>w?Y(w):V()),Ee.reset()),w}function ue(w,V,Y,te){const{scrollBehavior:Z}=e;if(!la||!Z)return Promise.resolve();const we=!Y&&iL(Ec(w.fullPath,0))||(te||!Y)&&history.state&&history.state.scroll||null;return yo().then(()=>Z(w,V,we)).then(ce=>ce&&aL(ce)).catch(ce=>D(ce,w,V))}const ge=w=>r.go(w);let he;const qe=new Set,De={currentRoute:l,listening:!0,addRoute:p,removeRoute:g,hasRoute:b,getRoutes:h,resolve:S,options:e,push:R,replace:I,go:ge,back:()=>ge(-1),forward:()=>ge(1),beforeEach:i.add,beforeResolve:s.add,afterEach:o.add,onError:ye.add,isReady:F,install(w){const V=this;w.component("RouterLink",WL),w.component("RouterView",$L),w.config.globalProperties.$router=V,Object.defineProperty(w.config.globalProperties,"$route",{enumerable:!0,get:()=>lt(l)}),la&&!he&&l.value===pn&&(he=!0,R(r.location).catch(Z=>{}));const Y={};for(const Z in pn)Y[Z]=pt(()=>l.value[Z]);w.provide(Ui,V),w.provide(mp,Oa(Y)),w.provide(Gs,l);const te=w.unmount;qe.add(w),w.unmount=function(){qe.delete(w),qe.size<1&&(c=pn,fe&&fe(),fe=null,l.value=pn,he=!1,A=!1),te()}}};return De}function na(e){return e.reduce((t,n)=>t.then(()=>n()),Promise.resolve())}function QL(e,t){const n=[],a=[],r=[],i=Math.max(t.matched.length,e.matched.length);for(let s=0;s<i;s++){const o=t.matched[s];o&&(e.matched.find(c=>ya(c,o))?a.push(o):n.push(o));const l=e.matched[s];l&&(t.matched.find(c=>ya(c,l))||r.push(l))}return[n,a,r]}function jL(){return xt(Ui)}const XL={class:"content sharp-border"},ZL={key:0,class:"app-bar-space"},JL={__name:"App",setup(e){const{dark:t,setFont:n,setDark:a,font:r}=ku(),{setModules:i}=Lu(),{currentRoute:s}=jL();Hn(t,()=>{document.body.toggleAttribute("theme-dark")});const o=Ci(!1);Co(()=>{window.addEventListener("scroll",c)}),ou(()=>{const{fileModules:_}=HM();l(),i(WM(_))});const l=()=>{var g;const _=vn.getFont(),p=((g=Vn.find(h=>h.name===_))==null?void 0:g.class)||Vn[0].class;n(p),a(vn.getTheme()==="dark"),document.body.classList.add(r.value)},c=_=>{if(typeof window=="undefined")return;const p=window.pageYOffset||_.target.scrollTop;o.value=p>150},d=()=>{window.scroll({top:0,behavior:"smooth"})},u=pt(()=>["Home","Filter","Sort"].includes(s==null?void 0:s.value.name));return(_,p)=>{const g=QS("router-view"),h=uT;return Be(),We("div",null,[Ie(lt(KT)),_e("div",XL,[lt(u)?(Be(),We("div",ZL)):Is("",!0),Ie(g),o.value?(Be(),We("button",{key:1,class:"scroll-to-top circle small-shadow",onClick:d},[Ie(h)])):Is("",!0)]),Ie(lt(rv))])}}},eP=[{name:"Home",path:"/",component:()=>Jn(()=>import("./HomeView.f4a59086.js"),["assets/HomeView.f4a59086.js","assets/HomeView.669ed221.css","assets/tracker.d5d900f2.js"])},{name:"Filter",path:"/filter/:filterBy/:filterValue?",component:()=>Jn(()=>import("./HomeView.f4a59086.js"),["assets/HomeView.f4a59086.js","assets/HomeView.669ed221.css","assets/tracker.d5d900f2.js"])},{name:"Sort",path:"/sort/:sortBy",component:()=>Jn(()=>import("./HomeView.f4a59086.js"),["assets/HomeView.f4a59086.js","assets/HomeView.669ed221.css","assets/tracker.d5d900f2.js"])},{name:"Blog",path:"/blog/:name",component:()=>Jn(()=>import("./PostView.81cbc53f.js"),["assets/PostView.81cbc53f.js","assets/PostView.cdc27dd0.css","assets/tracker.d5d900f2.js"])},{name:"Series",path:"/blog/:series/:name",component:()=>Jn(()=>import("./PostView.81cbc53f.js"),["assets/PostView.81cbc53f.js","assets/PostView.cdc27dd0.css","assets/tracker.d5d900f2.js"])},{name:"404",path:"/:pathMatch(.*)*",component:()=>Jn(()=>import("./404View.2e0fd8da.js"),["assets/404View.2e0fd8da.js","assets/404View.7c5e5cbc.css"])}],tP=KL({history:dL(),routes:eP,scrollBehavior(e,t,n){return{top:(n==null?void 0:n.top)||0}}}),nP=nT(),ur=Jb(JL);ur.config.globalProperties.window=window;ur.config.globalProperties.$moment=z;ur.use(nP);ur.use(tP);ur.mount("#app");export{My as A,Iy as B,Fr as C,GT as D,Lu as E,ft as F,uP as G,_P as H,OS as I,IS as J,vn as S,Oo as _,_e as a,pt as b,We as c,lt as d,Is as e,Ie as f,Ll as g,z as h,jL as i,Ci as j,Co as k,dP as l,iP as m,Gn as n,Be as o,oP as p,Ts as q,ZS as r,Tu as s,Cd as t,ku as u,sP as v,Hn as w,cP as x,lP as y,lo as z};
