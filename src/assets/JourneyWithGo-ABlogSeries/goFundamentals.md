@@ -11,9 +11,9 @@ episode: 3
 ---
 
 **[गो](https://go.dev "Go in Nepali")** **"Journey With Go - A Blog Series"** about the basics of Go `Go Basic`,
-advanced concepts in Go `Go Beyond Basics`, testing with go `Godog as Test Framework` and many more.
+advanced concepts in Go `Go Beyond Basics`, testing with go `Godog as Test Framework`, and many more.
 
-This is the third installment of the series. You are here which means you have most likely read the first and second blog of
+This is the third installment of the series. You are here which means you have most likely read the first and second blogs of
 the series. If you haven't, please read them
 first [Go Basics](https://blog.jankaritech.com/#/blog/Journey%20With%20Go%20-%20A%20Blog%20Series/Go%20Basics%20-%20The%20Starting%20Point "Go Basics"), [Control Statements](https://blog.jankaritech.com/#/blog/Journey%20With%20Go%20-%20A%20Blog%20Series/Control%20Statements%20-%20Control%20Your%20Go "Control Statements").
 
@@ -70,7 +70,7 @@ emojis. It ensures that each character is treated as a single entity, regardless
 ## **2. String**
 
 In Go, a string is a sequence of bytes (not characters) that is used to represent text. Strings are immutable, which
-means once created, their values cannot be changed. However, you can assign a new value to a string variable, which will
+means that once created, their values cannot be changed. However, you can assign a new value to a string variable, which will
 create a new string.
 
 _Note: The rune is encoded with single quotes, whereas the string is encoded with double quotes._
@@ -121,7 +121,7 @@ Hello, Nepal!
 Slicing is a mechanism to extract a portion of a string. It is done by specifying the start and end indices of the part
 of the string that you want to extract. The syntax for slicing a string is `string[start:end]`.
 
-Taking the above `greeting` variable as example:
+Taking the above `greeting` variable as an example:
 
 | slice            | output        | description                                                                                      |
 |------------------|---------------|--------------------------------------------------------------------------------------------------|
@@ -205,13 +205,13 @@ func main() {
 13
 ```
 
-In the example for the English language, the value returned by the `len` function is same as of the value returned by the `utf8.RuneCountInString` function.
+In the example for the English language, the value returned by the `len` function is the same as the value returned by the `utf8.RuneCountInString` function.
 
-However, for the Nepali language, the value returned by the `len` function is different from the value returned by the `utf8.RuneCountInString` function. This is because the Nepali language uses the UTF-8 encoding scheme, which uses 3 bytes to represent a single character. Therefore, the string "สวัสดี" has 18 bytes, but only 6 runes.
+However, for the Nepali language, the value returned by the `len` function is different from the value returned by the `utf8.RuneCountInString` function. This is because the Nepali language uses the UTF-8 encoding scheme, which uses 3 bytes to represent a single character. Therefore, the string "नमस्कार संसार" has 37 bytes, but only 13 runes.
 
 ## **3. Array**
 
-In Go, an array is a fixed-length sequence of elements of the same type but the content of array is mutable (i.e. can be changed). Arrays are useful when you know the number of elements that you want to store in advance.
+In Go, an array is a fixed-length sequence of elements of the same type but the content of the array is mutable (i.e. can be changed). Arrays are useful when you know the number of elements that you want to store in advance.
 
 ### **3.1. Declaration of Array**
 
@@ -443,7 +443,7 @@ In Go, a function is a block of code that performs a specific task. Functions ar
 
 ### **4.1. Function Definition**
 
-A function must be defined before it can be called. A function definition must have a name, and a body with optional list of parameters and a return type. In Go, the `func` keyword is used to define a function.
+A function must be defined before it can be called. A function definition must have a name and a body with an optional list of parameters and a return type. In Go, the `func` keyword is used to define a function.
 
 A function can be defined using the following syntax:
 
@@ -502,7 +502,7 @@ Hello, World
 
 ### **4.3. Function Parameters**
 
-Function can have zero or more parameters. Parameters are variables that are used to pass values to a function. They are declared in the function definition. The values passed to a function are called arguments.
+The function can have zero or more parameters. Parameters are variables that are used to pass values to a function. They are declared in the function definition. The values passed to a function are called arguments.
 
 **Examples:**
 
@@ -538,7 +538,7 @@ Hello, World!
 
 ### **4.4. Function Return Type**
 
-A function can return zero or more values. The return-type of a function is declared in the function definition. If a function returns more than one value, then the return-types are enclosed in parentheses.
+A function can return zero or more values. The return type of a function is declared in the function definition. If a function returns more than one value, then the return types are enclosed in parentheses.
 
 **Examples:**
 
@@ -730,7 +730,7 @@ func (t Triangle) area() float64 {
 }
 ```
 
-In the above example we have defined a method associated with a struct named `Triangle` by adding a receiver to the function definition. The receiver is the name of the struct that the method is associated with. The receiver is enclosed in parentheses before the method name.
+In the above example, we have defined a method associated with a struct named `Triangle` by adding a receiver to the function definition. The receiver is the name of the struct that the method is associated with. The receiver is enclosed in parentheses before the method name.
 
 ### **6.2. Method Call**
 
@@ -779,7 +779,7 @@ Area of triangle is 25.00
 
 ### **6.3. Function Vs Method**
 
-A function is a block of code that performs a specific task whereas a method is a function that is associated with a type. We can create multiple methods of same name associated to different types but the function name must be different (see example of [7.2](#L783)).
+A function is a block of code that performs a specific task whereas a method is a function that is associated with a type. We can create multiple methods of the same name associated with different types but the function name must be different (see example of [7.2](https://blog.jankaritech.com/#/blog/Journey%20With%20Go%20-%20A%20Blog%20Series/Fundamentals%20of%20Go%20-%20FARMISS:~:text=than%20one%20interface.-,Examples%3A,-package%20main%0A%0Aimport)).
 
 Let's see the difference between a function and a method with the help of an example.
 
@@ -946,7 +946,7 @@ Perimeter of rectangle is 30.00
 
 ## What we have learned so far
 
-In this blog, we have learned how to declare, define, manipulate, and use the following terms in Go language:
+In this blog, we have learned how to declare, define, manipulate, and use the following terms in the Go language:
 - Rune
 - String
 - Array
@@ -955,7 +955,7 @@ In this blog, we have learned how to declare, define, manipulate, and use the fo
 - Method
 - Interface
 
-In the next blog, we will learn about some advanced topics like Errors, Goroutines, and Channels in Go language.
+In the next blog, we will learn about some advanced topics like Errors, Goroutines, and Channels in the Go language.
 
 **_Keep Learning and Keep Practicing_** 👍
 
