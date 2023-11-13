@@ -9,17 +9,17 @@ banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallb
 ---
 ## Robot Framework
 
-Robot framework is a generic open source test automation framework for acceptance testing. It is a keyword-driven testing framework that uses tabular test data syntax. It has easy syntax, using human-readable keywords. This framework is independent of operating system and application. The core framework is implemented using Python and also runs on Jython(JVM) and IronPython(.NET). This framework provides support for external libraries, tools which are open source and can be used for test automation.
+The Robot framework is a generic open-source test automation framework for acceptance testing. It is a keyword-driven testing framework that uses tabular test data syntax. It has easy syntax, using human-readable keywords. This framework is independent of the operating system and application. The core framework is implemented using Python and also runs on Jython(JVM) and IronPython(.NET). This framework provides support for external libraries, tools which are open source and can be used for test automation.
 
 The test data is in simple tabular format. When started, the robot framework processes the data, executes the test cases, and generates logs and reports.
 
- ### Installation and setup of robot framework
+ ### Installation and setup of the robot framework
 1. Preconditions:
    * Python installation
    * Pip
    * make virtual environment
 
-2. Installing robot framework with pip
+2. Installing the robot framework with pip
     * `python -m pip install robotframework`
     * `python3 -m pip install  robotframework`
 
@@ -53,9 +53,9 @@ The test data is in simple tabular format. When started, the robot framework pro
 8. Make a robot file inside a test folder eg: `robotBDDExample/test/login.robot`
 
 ### Test Data Sections
-The data used is defined in different sections in robot framework. These sections are often called tables.
+The data used is defined in different sections in the robot framework. These sections are often called tables.
 
- 1. Settings: This section is used for importing test libraries, resource files and variable files.
+ 1. Settings: This section is used for importing test libraries, resource files, and variable files.
  2. Variables: The variables that can be used in other parts of the test data are defined in this section.
  3. Test Cases: In this section, test cases are created from available keywords.
  4. Tasks: In this section, tasks are created using available keywords.
@@ -89,7 +89,7 @@ My Keyword
     File Should Exist    ${path}
 ```
 
-In order to make the separations more clear, pipe separated format can be used.
+To make the separations clearer, the pipe-separated format can be used.
 
 ```
 | *** Settings ***   |
@@ -179,14 +179,14 @@ Welcome Page Is Open
 Close all test browsers
     Close all browsers
 ```
-Now, let us understand the above example. The test case has a scenario for valid user login. This test case uses a number of keywords, which can be either the predefined keywords imported from the libraries, or can be self created using available low-level keywords. In the keyword section, all the self created keywords are defined using available keywords. For example: 'Input Username' is a user created keyword which uses an existing keyword 'Input Text'. Similarly, 'Welcome Page Is Open' is a user created keyword which is created using pre-existing keywords 'Location Should Be' and 'Title Should Be'.
+Now, let us understand the above example. The test case has a scenario for valid user login. This test case uses a number of keywords, which can be either the predefined keywords imported from the libraries, or can be self created using available low-level keywords. In the keyword section, all the self-created keywords are defined using available keywords. For example, 'Input Username' is a user-created keyword which uses an existing keyword 'Input Text'. Similarly, 'Welcome Page Is Open' is a user-created keyword which is created using pre-existing keywords 'Location Should Be' and 'Title Should Be'.
 
-The keyword 'Title Should Be' uses the page title such as 'Welcome Page' and 'Login Page' as in example above. These page titles are defined in the page object classes, which will be discussed below.
+The keyword 'Title Should Be' uses the page title such as 'Welcome Page' and 'Login Page' as in the example above. These page titles are defined in the page object classes, which will be discussed below.
 
-### Using page objects in robot framework
+### Using page objects in the robot framework
 Page objects provide an additional layer of abstraction for test case creation. Using page objects results in easier maintenance of the tests.
 
-PageObjectLibrary is a Robot Framework keyword library that makes it possible to use the Page Object pattern when testing web pages with the keyword based approach of robot framework. Page Object classes are implemented as standard robot keyword libraries. When you use PageObjectLibrary keywords to go to a page or assert you are on a specific page, the keyword will automatically load the library for that page and put it at the front of the library search order, guaranteeing that the Page Object keywords are available to your test case.
+PageObjectLibrary is a Robot Framework keyword library that makes it possible to use the Page Object pattern when testing web pages with the keyword-based approach of the robot framework. Page Object classes are implemented as standard robot keyword libraries. When you use PageObjectLibrary keywords to go to a page or assert you are on a specific page, the keyword will automatically load the library for that page and put it at the front of the library search order, guaranteeing that the Page Object keywords are available to your test case.
 
 #### Writing a page object class
 Page Objects are simple python classes that inherit from `PageObjectLibrary.PageObject`. There are only a couple of requirements for the class:
@@ -199,9 +199,9 @@ By inheriting from `PageObjectLibrary.PageObject`, methods have access to the fo
 
 1. `self.selib` : a reference to an instance of `SeleniumLibrary`. With this you can call any of the SeleniumLibrary keywords via their python method names (eg: `self.selib.input_text`)
 
-2. `self.browser` : a reference to the webdriver object created when a browser was opened by `SeleniumLibrary`. With this you can bypass SeleniumLibrary and directly call all of the functions provided by the core selenium library.
+2. `self.browser` : a reference to the webdriver object created when a browser was opened by `SeleniumLibrary`. With this, you can bypass SeleniumLibrary and directly call all the functions provided by the core selenium library.
 
-3. `self.locator` : a wrapper around the `_locators dictionary` of the page. This dictionary can contain all of the locators used by the Page Object keywords. self.locators adds the ability to access the locators with dot notation rather than the slightly more verbose dictionary syntax (eg: `self.locator.username` vs `self._locators["username"]`.
+3. `self.locator` : a wrapper around the `_locators dictionary` of the page. This dictionary can contain all the locators used by the Page Object keywords. self.locators adds the ability to access the locators with dot notation rather than the slightly more verbose dictionary syntax, e.g.: `self.locator.username` vs `self._locators["username"]`.
 
 The above tests can be easy to understand when written in gherkin format. Let's get familiar with gherkin syntax and how the test can be written in this format.
 
@@ -272,7 +272,7 @@ class LoginContext:
     def submit_credentials(self):
         self.loginPage.submit_credentials()
 ```
-The login context file uses the methods of the login page. So, we must write every needed functions in the login page. Let us create a page objects directory 'page_objects' and then a login page 'page_objects/LoginPage'.
+The login context file uses the methods of the login page. So, we must write every needed function in the login page. Let us create a page objects directory 'page_objects' and then a login page 'page_objects/LoginPage'.
 
 ```py
 from PageObjectLibrary import PageObject, PageObjectLibraryKeywords
@@ -323,4 +323,4 @@ class FilesPage(PageObject):
     PAGE_TITLE = "Files - myApp"
 ```
 
-### Go to : https://github.com/JankariTech/robotBDDExample for example test cases.
+### Go to: https://github.com/JankariTech/robotBDDExample for example test cases.

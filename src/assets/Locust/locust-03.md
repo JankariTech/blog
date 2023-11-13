@@ -14,7 +14,7 @@ In the [last part of this series](https://dev.to/jankaritech/performance-testing
 
 Now we want to go the next step and use multiple ownCloud users.
 
-I will use the term "ownCloud user" for users that are set-up in the ownCloud system, have a username and password and can be used to login into the system. When I'm using the term "locust user" I'm talking about simulated users that hammer the server with requests. So far we used only one ownCloud user "admin" and multiple locust users. All locust users used that one ownCloud user to access the ownCloud server.
+I will use the term "ownCloud user" for users that are set up in the ownCloud system, have a username and password and can be used to log in into the system. When I'm using the term "locust user" I'm talking about simulated users that hammer the server with requests. So far, we used only one ownCloud user "admin" and multiple locust users. All locust users used that one ownCloud user to access the ownCloud server.
 
 In this part of the series we want to have one ownCloud user for every locust user, so every `TaskSet` will be connecting with an own ownCloud user to the ownCloud server.
 
@@ -55,7 +55,7 @@ class User(HttpLocust):
 
 We have two tasks and a `setup` and a `teardown`, one in the `User` class and one in the `UserBehavior` class
 
-Now lets see what happens.
+Now let's see what happens.
 
 1. Starting locust from the CLI:
 
@@ -119,7 +119,7 @@ Now lets see what happens.
     ```
 
 Did you expect that? `teardown` only runs after locust is completely stopped, not when the test is stopped.
-Makes sense, but does not help us with our issue, we want to create users before running the actual test and delete them afterwards. We might start and stop the test, without stopping locust and we can increase the locust users during the test and in that case we want to create more ownCloud users on the fly.
+Makes sense, but does not help us with our issue, we want to create users before running the actual test and delete them afterward. We might start and stop the test without stopping locust, and we can increase the locust users during the test, and in that case, we want to create more ownCloud users on the fly.
 
 Luckily we have also `on_start` and `on_stop` methods
 
@@ -175,30 +175,30 @@ class User(HttpLocust):
 
 So what is new here?
 
-The `on_start` method first constructs a ownCloud username out of "locust" & a number. The `userNo` variable has to be defined globally, so that it survives when locust initialize the next instance of the `User` class. Remember: the `Locust` class (`HttpLocust` inherits from `Locust`) represents one simulated user that accesses your application.
+The `on_start` method first constructs a ownCloud username out of "locust" & a number. The `userNo` variable has to be defined globally, so that it survives when locust initializes the next instance of the `User` class. Remember: the `Locust` class (`HttpLocust` inherits from `Locust`) represents one simulated user that accesses your application.
 
-Next a `POST` request is send with the username as userid and password. That requests needs to be authenticated as the admin-user. ([Check the ownCloud docu if you are interested to learn more about those requests.](https://doc.owncloud.com/server/10.0/admin_manual/configuration/user/user_provisioning_api.html))
+Next a `POST` request is sent with the username as userid and password. That request needs to be authenticated as the admin-user. ([Check the ownCloud docu if you are interested to learn more about those requests.](https://doc.owncloud.com/server/10.0/admin_manual/configuration/user/user_provisioning_api.html))
 
 At last there is the `davEndpoint`, now it needs the specific username, so that information has been moved into the specific `GET` and `PUT` method.
 
-If you run that script now with locust and start a test with, lets say 3 users, you should see something like that:
+If you run that script now with locust and start a test with, let's say 3 users; you should see something like that:
 ![users created in locust](/src/assets/Locust/images/locust-03-images/createUsersLocust.png)
 
 The first line tells us that 3 `POST` requests have been sent to `/ocs/v2.php/cloud/users`, that looks promising.
 And in the `PUT` ans `GET` requests, the usernames "locust0" till "locust2" are mentioned, very good!
 
-Now lets look into the users list of ownCloud. For that login with "admin" / "admin" to http://localhost:8080/ and in the top right corner click on "admin" and then on "Users".
+Now let's look into the users list of ownCloud. For that login with "admin" / "admin" to http://localhost:8080/ and in the top right corner, click on "admin" and then on "Users".
 
 ![owncloud users list](/src/assets/Locust/images/locust-03-images/owncloudListUsers.png)
 
-Those three users were created and used. If you want to double check use them to login to ownCloud, you should see the uploaded file.
+Those three users were created and used. If you want to double-check use them to log in to ownCloud, you should see the uploaded file.
 
 ## delete users with on_stop
-The only thing left is to clean up after us. Obviously we can simply kill the docker container, delete it and start it fresh with no users, but wouldn't it be nice to delete the users after stopping the test?
+The only thing left is to clean up after us. We can simply kill the docker container, delete it and start it fresh with no users, but wouldn't it be nice to delete the users after stopping the test?
 
 Let's use `on_stop` to clean up! It is run when the TaskSet is stopped.
 
-Just add a simple small method to the `UserBehaviour` class:
+Add a simple small method to the `UserBehaviour` class:
 
 ```
 def on_stop(self):
@@ -213,7 +213,7 @@ Remember to delete the users from ownCloud before rerunning the script (or just 
 Now when you start the test and stop it again, you will see `DELETE` requests in the list, one per hatched locust user.
 But what's that? The `DELETE` requests fail with `HTTPError('401 Client Error: Unauthorized for url: http://localhost:8080/ocs/v2.php/cloud/users/locust0',)`
 
-Digging deeper (e.g. with WireShark) shows that the requests not only had the correct Authorization header sent, but also some cookies.
+Digging deeper (e.g., with WireShark) shows that the requests not only had the correct Authorization header sent, but also some cookies.
 ```
 DELETE /ocs/v2.php/cloud/users/locust0 HTTP/1.1
 Host: localhost:8080
@@ -226,7 +226,7 @@ Content-Length: 0
 Authorization: Basic YWRtaW46YWRtaW4=
 ```
 
-locust got those cookies from the first `GET` request we have sent as the specific ownCloud user, and it has kept them for all future requests. Generally that is a good thing, but ownCloud now ignores the Authorization header and uses the cookies to authenticate. So we effectively authenticate as the specific ownCloud user e.g. `locust0` and that user has no privilege to delete itself.
+locust got those cookies from the first `GET` request we have sent as the specific ownCloud user, and it has kept them for all future requests. Generally, that is a good thing, but ownCloud now ignores the Authorization header and uses the cookies to authenticate. So we effectively authenticate as the specific ownCloud user e.g. `locust0` and that user has no privilege to delete itself.
 
 I could not find a way to clear the session, so we need a new one.
 For that change the `on_stop` function to:
@@ -248,4 +248,4 @@ And here we go, when starting and stopping the tests we have successful `DELETE`
 ![successfull user deletion](/src/assets/Locust/images/locust-03-images/deleteSuccess.png)
 
 ## what's next?
-We have now some basic tests, now it's time to look closer into the metrics and try to understand the meaning of all the numbers locust throws at us.
+We now have some basic tests, now it's time to look closer into the metrics and try to understand the meaning of all the numbers locust throws at us.

@@ -64,7 +64,7 @@ Cypress gives you the option to dynamically alter configuration values. This is 
 
 ### Command Line
 
-When running Cypress from the Command Line you can pass a `--config` flag.
+When running Cypress from the Command Line, you can pass a `--config` flag.
 
 Examples:
 
@@ -82,7 +82,7 @@ cypress run --browser firefox --config viewportWidth=1280,viewportHeight=720
 
 ### Environment Variables
 
-You can also use environment variables to override configuration values. This is especially useful in Continuous Integration or when working locally. This gives you the ability to change configuration options without modifying any code or build scripts.
+You can also use environment variables to override configuration values. This is especially useful in Continuous Integration or when working locally. This allows you to change configuration options without modifying any code or build scripts.
 
 By default, any environment variable that matches a corresponding configuration key will override the configuration file (`cypress.json` ) by default value.
 
@@ -137,7 +137,7 @@ The Cypress Slack application provides real-time results for your Cypress tests,
 
 ![Cypress Slack Integration]
 
-## Github Integration
+## GitHub Integration
 
 Cypress Dashboard tightly integrates your Cypress test runs with your `GitHub` work flow via commit status checks and pull-request comments.
 
@@ -147,7 +147,7 @@ Cypress Dashboard will report status of test runs as `GitHub` commit status chec
 
 > Test Results in Your Work flow via Pull-Request Comments
 
-Detailed test run information conveniently posted as PR comments that include tests run statistics, specific test failures, related screenshots and deep links to the Cypress Dashboard to help you quickly resolve problems.
+Detailed test run information conveniently posted as PR comments that include test run statistics, specific test failures, related screenshots and deep links to the Cypress Dashboard to help you quickly resolve problems.
 
 ![GitHub Integration]
 
