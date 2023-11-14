@@ -15,8 +15,8 @@ episode: 1
 ## Introduction
 - Designed and Developed at Google by Robert Griesemer, Rob Pike, and Ken Thompson
 - Go is an open-source programming language backed by Google
-- Go is statically typed i.e. you need to declare the type of a variable before using it
-- Go is compiled programming language i.e. you need to compile your code before running it
+- Go is statically typed i.e., you need to declare the type of a variable before using it
+- Go is compiled programming language i.e., you need to compile your code before running it
 
 ## Why Go?
 
@@ -46,7 +46,7 @@ tar -C /usr/local -xzf go1.19.4.linux-amd64.tar.gz
 
 ### Setting Environment Variables
 
-Go requires you to set two environment variables GOROOT and GOPATH. GOROOT points to the location of the Go installation directory whereas GOPATH points to the location of your workspace directory.
+Go requires you to set two environment variables GOROOT and GOPATH. GOROOT points to the location of the Go installation directory, whereas GOPATH points to the location of your workspace directory.
 
 1. Setting **GOROOT**
 ```bash
@@ -160,7 +160,7 @@ A similar code can be written as follows:
 ```go
 var number = 10
 ```
-In such type of declaration Go automatically infers the type of the variable from the value assigned to it.
+In such a type of declaration, Go automatically infers the type of the variable from the value assigned to it.
 
 The variable can be declared without the `var` keyword as follows:
 ```go

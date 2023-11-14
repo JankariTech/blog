@@ -21,7 +21,7 @@ Developers and designers can select different arrangements and architecture for 
 </figure>
 
 ## A common language
-To conduct communication between a client and a server a common language is necessary. We can develop and use any language we desire to make these computers communicate with each other. But to make it usable, compatible, and widely accessible we need a standardized language (aka protocol). This is where the HTTP protocol comes in.
+To conduct communication between a client and a server, a common language is necessary. We can develop and use any language we desire to make these computers communicate with each other. But to make it usable, compatible, and widely accessible, we need a standardized language (aka protocol). This is where the HTTP protocol comes in.
 
 - HTTP protocol defines the structure for request and response messages. It is like sending a parcel to your friend with an address structured as street name, city name, state name, zip code, and country code.
 - HTTP defines operations that can be performed on a given resource. These are called HTTP request methods. They are also referred to as HTTP verbs. Some examples are:
@@ -29,7 +29,7 @@ To conduct communication between a client and a server a common language is nece
     - The POST method submits an entity to the specified resource, often causing a change in the server.
 - HTTP protocol also defines different sets of status codes to indicate different states that may occur during communication like successful responses (200-299), client error responses (400-499), server error responses (500-599), etc.
 - HTTP requests and responses share a similar structure and are composed of:
-    - A single start-line describing the requests/response to be implemented, or it's status of whether successful or a failure.
+    - A single start-line describing the requests/response to be implemented, or its status of whether successful or a failure.
     - An optional set of HTTP headers specifying the request/response or describing the body included in the message.
     - A blank line indicating all meta-information for the request has been sent.
     - An optional body containing data associated with the request (like the content of an HTML form) or the document associated with a response. The presence of the body and its size is specified by the start-line and HTTP headers.
@@ -40,15 +40,15 @@ To conduct communication between a client and a server a common language is nece
 </figure>
 
 ## Soft layers
-The software model of the Internet can be defined by two types of layered models: **OSI model** (for reference only) and **Internet Protocol Suite** (practically implemented and used by the Internet). Without going into much depth the main points are:
+The software model of the Internet can be defined by two types of layered models: **OSI model** (for reference only) and **Internet Protocol Suite** (practically implemented and used by the Internet). Without going into much depth, the main points are:
 - Every computer (client or server), and network device that supports the Internet implements the IP suite model.
-- These models are structured as layers so we say the model has a layered structure
+- These models are structured as layers, so we say the model has a layered structure
 - Each layer has its responsibility and hides its implementation (inner working) from other layers
-- Each layer provides an interface to layers immediately above or below itself
+- Each layer provides an interface to the layers immediately above or below itself
 
 > Note:
-In the IP suite model, the *Application* layer combines all three layers from the OSI model i.e *Application* + *Presentation* + *Session*
-In the IP suite model, the *Link* layer combines the lower two layers from the OSI model i.e *Physical* + *Datalink*
+In the IP suite model, the *Application* layer combines all three layers from the OSI model i.e. *Application* + *Presentation* + *Session*
+In the IP suite model, the *Link* layer combines the lower two layers from the OSI model i.e. *Physical* + *Datalink*
 The lowermost layer from each model connects with physical network devices like routers, switches, etc.
 
 <figure align="center">
@@ -72,7 +72,7 @@ This figure shows the socket functions implemented in the C language. In this ar
 ## Coding
 ### Basic files and project structure
 > Note:
-> Please first install `java JDK` for this project, setup your environment variables, and check everything is working well.
+> Please first install `java JDK` for this project, set up your environment variables, and check everything is working well.
 
 1. Main project folder will contain a `public` and a `resources` folder. In the `public` folder, we will store all our `.html` pages, and in the `resources` folder, we will store our resources like images, videos, etc.
 2. Our main server program `WebServer.java` will be in the project's root directory.
@@ -328,4 +328,4 @@ The above code does the following things:
 - In the `network` tab, we can notice that, after clicking the link, our client sends two requests to the server: one for the `cats.html` page and one for the video file.
 
 ### Conclusion
-What we have learned in this article is just a speck of technology used on the Internet. We should be thankful for all those brilliant minds and engineering that make the Internet possible. Most importantly stay curious, and learn.
+What we have learned in this article is just a speck of technology used on the Internet. We should be thankful for all those brilliant minds and engineering that make the Internet possible. Most importantly, stay curious, and learn.

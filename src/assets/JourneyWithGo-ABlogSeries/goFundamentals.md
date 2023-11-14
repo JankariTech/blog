@@ -13,7 +13,7 @@ episode: 3
 **[गो](https://go.dev "Go in Nepali")** **"Journey With Go - A Blog Series"** about the basics of Go `Go Basic`,
 advanced concepts in Go `Go Beyond Basics`, testing with go `Godog as Test Framework`, and many more.
 
-This is the third installment of the series. You are here which means you have most likely read the first and second blogs of
+This is the third installment of the series. You are here, which means you have most likely read the first and second blogs of
 the series. If you haven't, please read them
 first [Go Basics](https://blog.jankaritech.com/#/blog/Journey%20With%20Go%20-%20A%20Blog%20Series/Go%20Basics%20-%20The%20Starting%20Point "Go Basics"), [Control Statements](https://blog.jankaritech.com/#/blog/Journey%20With%20Go%20-%20A%20Blog%20Series/Control%20Statements%20-%20Control%20Your%20Go "Control Statements").
 
@@ -211,7 +211,7 @@ However, for the Nepali language, the value returned by the `len` function is di
 
 ## **3. Array**
 
-In Go, an array is a fixed-length sequence of elements of the same type but the content of the array is mutable (i.e. can be changed). Arrays are useful when you know the number of elements that you want to store in advance.
+In Go, an array is a fixed-length sequence of elements of the same type, but the content of the array is mutable (i.e., can be changed). Arrays are useful when you know the number of elements that you want to store in advance.
 
 ### **3.1. Declaration of Array**
 
@@ -779,7 +779,7 @@ Area of triangle is 25.00
 
 ### **6.3. Function Vs Method**
 
-A function is a block of code that performs a specific task whereas a method is a function that is associated with a type. We can create multiple methods of the same name associated with different types but the function name must be different (see example of [7.2](https://blog.jankaritech.com/#/blog/Journey%20With%20Go%20-%20A%20Blog%20Series/Fundamentals%20of%20Go%20-%20FARMISS:~:text=than%20one%20interface.-,Examples%3A,-package%20main%0A%0Aimport)).
+A function is a block of code that performs a specific task, whereas a method is a function that is associated with a type. We can create multiple methods of the same name associated with different types, but the function name must be different (see example of [7.2](https://blog.jankaritech.com/#/blog/Journey%20With%20Go%20-%20A%20Blog%20Series/Fundamentals%20of%20Go%20-%20FARMISS:~:text=than%20one%20interface.-,Examples%3A,-package%20main%0A%0Aimport)).
 
 Let's see the difference between a function and a method with the help of an example.
 

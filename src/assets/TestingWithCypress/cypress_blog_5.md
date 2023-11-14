@@ -21,7 +21,7 @@ episode: 5
 
 These architectural improvements unlock the ability to do TDD with full e2e tests. You can develop faster while driving the entire dev process with tests because: you can see your application; you still have access to the developer tools, and changes are reflected in real-time. The end result is that you will have developed more, your code will be better, and it will be completely tested. If you opt for parallelization and automated load balancing will further supercharge your test speeds.
 
-But, there are some serious downsides to these architectural changes.
+But there are some serious downsides to these architectural changes.
 
 > The following permanent and temporary trade-offs are well discussed in Cypress documentation. Please follow the official documentation for more information. I've just listed out the main point just for an overview.
 
@@ -57,15 +57,15 @@ IMO, Cypress has a pretty responsive issues section on GitHub. Many issues that 
 
 
 ### Problems I faced with my project's tests
-- Cypress says, the browser XHRs are properly tracked, and we can wait for them too. But it is not true for me. The test-runner does not log about the XHR requests triggered by the browser interaction, and I cannot wait dynamically for some time-consuming requests.
+- Cypress says the browser XHRs are properly tracked, and we can wait for them too. But it is not true for me. The test-runner does not log about the XHR requests triggered by the browser interaction, and I cannot wait dynamically for some time-consuming requests.
 
     ![NoXHRRecorded]
 
-    At this point i.e clicking the `Sign In` button should start a XHR request. But alas, no luck here.
+    At this point clicking the `Sign In` button should start a XHR request. But alas, no luck here.
 
-- Testing inside iframes? Well, it's gonna bother you. I am working on a project which uses iframes with large contents and takes some time to load properly. Following the documentation and [cypress blogs] were also not quite helpful. For now, I'm using static wait before diving inside any iframes. If somebody has a better idea, well, please share!
+- Testing inside iframes? Well, it's going to bother you. I am working on a project which uses iframes with large contents and takes some time to load properly. Following the documentation and [cypress blogs] were also not quite helpful. For now, I'm using static wait before diving inside any iframes. If somebody has a better idea, well, please share!
 
-- I feel like why we choose Cypress while testing dropdown fields 😂. I find most of the official tips for dropdown testing is with `<select>...</select>`. But the recent web is mostly based on frameworks like `VueJs`, `ReactJs`, etc. which uses a different mechanism to render dropdowns (using classes rather than using `select` tag). Options are extracted from some API requests and may also have abilities like autocompletion. With these features included the browser elements keeps on changing (some get in, and some are removed out completely). Running tests with such form fields interactions, you'll surely encounter the `Element is detached from the DOM` error [ref] blog to handle this type of errors.
+- I feel like why we choose Cypress while testing dropdown fields 😂. I find most of the official tips for dropdown testing is with `<select>...</select>`. But the recent web is mostly based on frameworks like `VueJs`, `ReactJs`, etc. which uses a different mechanism to render dropdowns (using classes rather than using `select` tag). Options are extracted from some API requests and may also have abilities like autocompletion. With these features included, the browser elements keep on changing (some get in, and some are removed out completely). Running tests with such form fields interactions, you'll surely encounter the `Element is detached from the DOM` error [ref] blog to handle this type of error.
 
 - Test just terminates when it likes: Only half of the test runs and that particular test is marked as passed (sometimes, but can litter test result accuracy).
 

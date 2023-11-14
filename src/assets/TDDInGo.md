@@ -10,13 +10,13 @@ banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallb
 
 ## Demonstrating TDD (Test-driven development) in Go
 
-TDD is the practice to write tests before code and it should reduce failure rates and defects in your software.
-In this blog-post I want to demonstrate how it can work.
+TDD is the practice to write tests before code, and it should reduce failure rates and defects in your software.
+In this blog-post, I want to demonstrate how it can work.
 
 ### starting point
 I'm writing an application in Go that should convert Bikram Sambat (BS) (also called Vikram Samvat) dates to Gregorian dates and vice-versa. [Vikram Samvat](https://en.wikipedia.org/wiki/Vikram_Samvat) is a calendar used mostly in Nepal and India. But even if you don't use it, this demonstration might be useful for you to understand TDD.
 
-So far I have done a bit of work that makes it possible to create a BS (Bikram Sambat) date instance, to get its details and to convert it to a Gregorian date. See: https://github.com/JankariTech/GoBikramSambat/blob/b99c510b22faf8395becda9a6dec1d0239504bb1/bsdate.go
+So far, I have done a bit of work that makes it possible to create a BS (Bikram Sambat) date instance, to get its details and to convert it to a Gregorian date. See: https://github.com/JankariTech/GoBikramSambat/blob/b99c510b22faf8395becda9a6dec1d0239504bb1/bsdate.go
 
 These functions are also tested: https://github.com/JankariTech/GoBikramSambat/blob/b99c510b22faf8395becda9a6dec1d0239504bb1/bsdate_test.go
 
@@ -25,9 +25,9 @@ Now I want to add the possibility to convert a Gregorian date to a Bikram Sambat
 Something like `nepaliDate, err := NewFromGregorian(gregorianDay, gregorianMonth, gregorianYear)` would be great and then simply use the existing `nepaliDate.GetDay()` `nepaliDate.GetMonth()` and `nepaliDate.GetYear()`
 
 ### 1. create the test
-According to TDD I first have to create a test.
+According to TDD, I first have to create a test.
 So in the file `bsdate_test.go` I create a new function called `TestCreateFromGregorian()`.
-As I already have a table of test-dates that are used for the conversion from Nepali to Gregorian I will use that data also to test the reverse conversion.
+As I already have a table of test-dates that are used for the conversion from Nepali to Gregorian, I will use that data also to test the reverse conversion.
 
 Here is the test data and the test function:
 
@@ -72,7 +72,7 @@ func TestCreateFromGregorian(t *testing.T) {
 The function takes entries from the `convertedDates` list, splits them, tries to create a BS date out of the particular gregorian test-case and then asserts that the BS date (day, month, year) is as expected.
 
 ### 2. run the tests
-The test is done, according to TDD I have to run it.
+The test is done; according to TDD, I have to run it.
 
 `go test -v`
 
@@ -96,11 +96,11 @@ func NewFromGregorian(gregorianDay, gregorianMonth, gregorianYear int) (Date, er
 ```
 
 ### 4. repeat
-running the tests again I get:
+running the tests again, I get:
 
 `./bsdate.go:195:1: missing return at end of function`
 
-That is true, let's return something, but what? Hey let's just create a BS date with the Gregorian numbers
+That is true, let's return something, but what? Hey, let's just create a BS date with the Gregorian numbers
 ```diff
  func NewFromGregorian(gregorianDay, gregorianMonth, gregorianYear int) (Date, error) {
 -
@@ -110,7 +110,7 @@ That is true, let's return something, but what? Hey let's just create a BS date 
 
 You are saying that will not work? I don't care, I do TDD, the test tells me to return something, and I do return, I even return the correct type of value.
 
-lets run the tests again:
+let's run the tests again:
 ```console
 === RUN   TestCreateFromGregorian/2068-04-01
 	assert.go:24: got '17' want '1'
@@ -129,7 +129,7 @@ lets run the tests again:
 ....
 ```
 
-a lot of failures, you have guessed it, the conversion does not work. So lets implement some bits.
+A lot of failures, you have guessed it, the conversion does not work. So let's implement some bits.
 
 We know that BS is 56 point something years ahead of Gregorian. So adding 56 to the gregorian year should help:
 ```diff
@@ -175,9 +175,9 @@ I get:
 ....
 ```
 
-So some years are calculated correctly, at least. Lets fix more tests by calculating the years more accurate and also calculate the BS month.
+So some years are calculated correctly, at least. Let's fix more tests by calculating the years more accurately and also calculate the BS month.
 
-Because of the way the BS-calendar works, there is no algorithm to convert the date directly from the Gregorian calendar, we need a table. We know that Jan 1st falls always in the 9th BS month (Paush). So we have a table of BS years where the first value is the day in Paush that is the 1st Jan in that year, then a list of days of every BS month.
+Because of the way the BS-calendar works, there is no algorithm to convert the date directly from the Gregorian calendar; we need a table. We know that Jan 1st falls always in the 9th BS month (Paush). So we have a table of BS years where the first value is the day in Paush that is the 1st Jan in that year, then a list of days of every BS month.
 We can easily get the day-of-year from the gregorian date. Starting from Paush, we count the days of each BS month, whenever we get over the gregorian day-of-year, we found the correct BS month.
 ```
 2074: [13]int{17, 31, 31, 31, 32, 31, 31, 30, 29, 30, 29, 30, 30},
@@ -189,7 +189,7 @@ We can easily get the day-of-year from the gregorian date. Starting from Paush, 
 
 These details have nothing to do with TDD, but help you to understand the coming algorithm.
 
-lets put it into code:
+Let's put it into code:
 ```diff
  func NewFromGregorian(gregorianDay, gregorianMonth, gregorianYear int) (Date, error) {
         var bsYear = gregorianYear + 56
@@ -230,7 +230,7 @@ lets put it into code:
  }
 ```
 
-and now? You guessed it! Run the tests:
+And now? You guessed it! Run the tests:
 ```console
 === RUN   TestCreateFromGregorian
 === RUN   TestCreateFromGregorian/2068-04-01
@@ -245,10 +245,10 @@ and now? You guessed it! Run the tests:
 ....
 ```
 
-Actually, while implementing the algorithm I've run the tests multiple times and found mistakes in mixed-up variable names and other rubbish. That's cool, the tests helped me to find the issues right away.
+Actually, while implementing the algorithm, I've run the tests multiple times and found mistakes in mixed-up variable names and other rubbish. That's cool, the tests helped me to find the issues right away.
 
 But the tests still fail, I better get the day calculation correct.
-We know the correct BS month, and we know the days since 1st Jan till the end of this month. Subtracting the day-of-the-year of the gregorian calendar from the days since 1st Jan till the end of the correct BS month will give us the amount of days between the searched day and the end of the BS month. Subtracting that number from the amount of days in the BS month should bring us to the correct date.
+We know the correct BS month, and we know the days since 1st Jan till the end of this month. Subtracting the day-of-the-year of the gregorian calendar from the days since 1st Jan till the end of the correct BS month will give us the number of days between the searched day and the end of the BS month. Subtracting that number from the number of days in the BS month should bring us to the correct date.
 
 So many words to describe it, so little effort to write it in code:
 ```diff
@@ -317,4 +317,4 @@ You can find all the changes of this post here: https://github.com/JankariTech/G
 ## conclusion
 TDD is easy: think about what you want to achieve, write tests for it and wildly hack code till your tests pass.
 
-An other big advantage is: I can refactor my code all I like and still be confident it works fine. Maybe I want to optimize the speed of the algorithm, maybe I don't like it altogether and come up with a better one, or I simply want to change variable names. I can do that all without fear of messing up the functionality, as long as my tests are passing I'm pretty sure the code reacts the same.
+Another big advantage is: I can refactor my code all I like and still be confident it works fine. Maybe I want to optimize the speed of the algorithm, maybe I don't like it altogether and come up with a better one, or I simply want to change variable names. I can do that all without fear of messing up the functionality, as long as my tests are passing, I'm pretty sure the code reacts the same.

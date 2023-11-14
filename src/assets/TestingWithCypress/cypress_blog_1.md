@@ -22,7 +22,7 @@ Cypress provides a complete end-to-end testing experience. Until now, end-to-end
 
 `Cypress` users are typically developers or QA engineers building web applications using modern JavaScript frameworks.
 
-Cypress enables you to write all type of tests:
+Cypress enables you to write all types of tests:
 
 - End-to-end tests
 - Integration tests
@@ -30,13 +30,13 @@ Cypress enables you to write all type of tests:
 
 Cypress can test anything that runs in a browser.
 
-####  How Cypress is different ?
+####  How Cypress is different
 
 ![Cypress Architecture]
 
 - ###### Cypress does not use Selenium
 
-  The architecture is completely different. Most end-to-end testing tools operate by running outside of the browser and executing remote commands across the network. Cypress is the exact opposite. Cypress is executed in the same run loop as your application. Behind Cypress is a `Node.js` server process. Cypress and the Node.js process constantly communicate, synchronize and perform tasks on behalf of each other. Having access to both parts (front and back) gives us the ability to respond to your application’s events in real time, while at the same time, work outside of the browser for tasks that require a higher privilege.
+  The architecture is completely different. Most end-to-end testing tools operate by running outside the browser and executing remote commands across the network. Cypress is the exact opposite. Cypress is executed in the same run loop as your application. Behind Cypress is a `Node.js` server process. Cypress and the Node.js process constantly communicate, synchronize and perform tasks on behalf of each other. Having access to both parts (front and back) allows us to respond to your application’s events in real time, while at the same time, work outside the browser for tasks that require a higher privilege.
 
 - ###### Cypress tests are only written in JavaScript
 
@@ -80,7 +80,7 @@ Cypress can test anything that runs in a browser.
 
   View `screenshots` taken automatically on failure, or `videos` of your entire test suite when run from the `CLI`.
 
-- **Cross Browser Testing:**
+- **Cross-Browser Testing:**
 
   ![Cross Browser Testing Platforms for Cypress][cypressCrossBrowserPlatforms]
 

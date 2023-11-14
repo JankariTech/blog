@@ -12,7 +12,7 @@ episode: 2
 
 **[गो](https://go.dev "Go in Nepali")** **"Journey With Go - A Blog Series"** about the basics of Go `Go Basic`, advanced concepts in Go `Go Beyond Basics`, testing with go `Godog as Test Framework` and many more.
 
-This is the second installment of the series. You are here which means you have already read the first blog of the series. If you haven't read the first blog, please read it first. It is available [here](https://blog.jankaritech.com/#/blog/Journey%20With%20Go%20-%20A%20Blog%20Series/Go%20Basics%20-%20The%20Starting%20Point "here"). In this blog, we will learn about the `Control Flow Statements in Go`. **So, let's get started.**
+This is the second installment of the series. You are here, which means you have already read the first blog of the series. If you haven't read the first blog, please read it first. It is available [here](https://blog.jankaritech.com/#/blog/Journey%20With%20Go%20-%20A%20Blog%20Series/Go%20Basics%20-%20The%20Starting%20Point "here"). In this blog, we will learn about the `Control Flow Statements in Go`. **So, let's get started.**
 
 ## **Control Flow Statements**
 
@@ -27,7 +27,7 @@ Branching statements divide the program into different branches on the basis of 
 
 #### 1. if-else
 
-If the condition is true, it executes the code inside the `if` block otherwise (i.e. the condition is false), it executes the code inside the `else` block. There are different forms of `if-else` pairs such as, `if`, `if-else`, `nested if-else`, and `else-if ladder`.
+If the condition is true, it executes the code inside the `if` block otherwise (i.e., the condition is false), it executes the code inside the `else` block. There are different forms of `if-else` pairs such as, `if`, `if-else`, `nested if-else`, and `else-if ladder`.
 
 ##### _a. if_
 
@@ -53,7 +53,7 @@ You are eligible to receive a Citizenship
 
 ##### _b. if-else_
 
-When you want to execute codes either for true or false cases then `if-else` can be used. `if-else` executes the code inside of the `if` block if the condition is true otherwise, it executes the code inside of the `else` block. The syntax of `if-else` is as follows.
+When you want to execute codes either for true or false cases then `if-else` can be used. `if-else` executes the code inside the `if` block if the condition is true otherwise, it executes the code inside the `else` block. The syntax of `if-else` is as follows.
 
 ```go
 if condition {
@@ -111,7 +111,7 @@ The greatest number is: 566
 
 ##### _d. else-if ladder_
 
-Else-if ladder is a series of if-else statements. It is used when we have multiple conditions to check, when the previous condition is not met. The syntax of `else-if ladder` is as follows.
+An else-if ladder is a series of if-else statements. It is used when we have multiple conditions to check, when the previous condition is not met. The syntax of `else-if ladder` is as follows.
 
 ```go
 if condition {
@@ -139,7 +139,7 @@ It is Negative number
 
 ### 2. Switch
 
-`switch` allows us to execute one block of code among several cases based on the value of a given expression. It can be used as an alternative to the `else-if ladder` statement, when you have lots of conditions to be checked. If none of the cases match with the expression, the code inside of the `default` block gets executed. The syntax of `switch` is as follows.
+`switch` allows us to execute one block of code among several cases based on the value of a given expression. It can be used as an alternative to the `else-if ladder` statement, when you have lots of conditions to be checked. If none of the cases match with the expression, the code inside the `default` block gets executed. The syntax of `switch` is as follows.
 
 ```go
 switch expression {
@@ -172,7 +172,7 @@ Tuesday
 
 The `break` keyword is not required, as the `switch` statement automatically breaks the execution of the code as soon as the first case is matched.
 
-But, we can use `fallthrough` keyword to execute the code inside of the next case. The syntax of `fallthrough` is as follows.
+But, we can use `fallthrough` keyword to execute the code inside the next case. The syntax of `fallthrough` is as follows.
 
 ```go
 switch expression {
@@ -277,7 +277,7 @@ Fruit at index 4 is Strawberry
 ```
 ### **C. Other Statements**
 
-Beside, if, switch, for, and range, Go language also provides some other statements. They are `break`, `continue`, `defer`, and `panic`.
+Besides, if, switch, for, and range, Go language also provides some other statements. They are `break`, `continue`, `defer`, and `panic`.
 #### 1. Break Statement
 
 `break` statement terminates the loop or switch statement and transfers execution to the code immediately after the loop or switch. The keyword `break` is used.
@@ -326,7 +326,7 @@ Done
 
 #### 3. Defer Statement
 
-`defer` statement invokes the function after the surrounding function returns. This delays the execution of the function. If there are multiple `defer` statements, they are executed in the last-in-first-out order. This statement might be useful for cleanup task after the function has been executed. The syntax of `defer` is as follows.
+`defer` statement invokes the function after the surrounding function returns. This delays the execution of the function. If there are multiple `defer` statements, they are executed in the last-in-first-out order. This statement might be useful for a cleanup task after the function has been executed. The syntax of `defer` is as follows.
 
 ```go
 func functionToDoSomething() {
@@ -413,7 +413,7 @@ Something went wrong
 
 ## Conclusion
 
-In this blog, we have learned about the control flow in Go language. We have learned about the branching statements, and looping statements. We have also learned about the `break`, `continue`, `defer`, `panic`, and `recover` statements. In the next blog, we will learn about the functions, Arrays, Strings, Structures in Go language. *Keep learning and keep practicing*. **Stay tuned!!!**.
+In this blog, we have learned about the control flow in Go language. We have learned about the branching statements and looping statements. We have also learned about the `break`, `continue`, `defer`, `panic`, and `recover` statements. In the next blog, we will learn about the functions, Arrays, Strings, and Structures in the Go language. *Keep learning and keep practicing*. **Stay tuned!!!**.
 
 ## References
 

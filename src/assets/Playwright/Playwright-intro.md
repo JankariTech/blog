@@ -11,15 +11,15 @@ episode: 1
 ---
 Playwright is an open-source NodeJS framework for browser automation. It is developed by Microsoft and the development team has members that were involved in developing [Puppeteer](https://github.com/puppeteer/puppeteer) for Google.
 
-One of the main features of Playwright is that it can automate Chromium, Webkit, and Firefox browsers with a single API. Along with being cross-browser, it is cross-platform and cross-language, supporting the major OS like Windows, Linux, Mac and languages like TypeScript, JavaScript, Python, .NET, Java. Playwright also comes with tools like codgen - which lets you generate automatic code by recording your actions, you can find out more about Playwright on their [official website](https://playwright.dev/).
+One of the main features of Playwright is that it can automate Chromium, Webkit, and Firefox browsers with a single API. Along with being cross-browser, it is cross-platform and cross-language, supporting the major OS like Windows, Linux, Mac and languages like TypeScript, JavaScript, Python, .NET, Java. Playwright also comes with tools like codgen — which let you generate automatic code by recording your actions. You can find out more about Playwright on their [official website](https://playwright.dev/).
 
-For this blog, we will be implementing BDD in Playwright. I have a small to-do web app and I'm going to be setting up Playwright in the same. If you want to follow through you can fork and clone the project from [here](https://github.com/SwikritiT/todo). If you have your web application you can set up Playwright there as well. Let's get started!
+For this blog, we will be implementing BDD in Playwright. I have a small to-do web app, and I'm going to be setting up Playwright in the same. If you want to follow through, you can fork and clone the project from [here](https://github.com/SwikritiT/todo). If you have your web application, you can set up Playwright there as well. Let's get started!
 
 *Note: the whole setup is done in Ubuntu 20.04.3 LTS, so some setup steps might differ depending on your platform*
 
 ## Prerequisites
 
-- Node.js version 12 or above. If you don't already have node installed in your system you can use this [blog as a guide](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04)
+- Node.js version 12 or above. If you don't already have node installed in your system, you can use this [blog as a guide](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04)
 
 *Note Only Ubuntu 18.04 and Ubuntu 20.04 are officially supported.*
 
@@ -32,7 +32,7 @@ npm i -D @playwright/test
 npm i -D playwright
 npx playwright install
 ```
-Playwright doesn't come with the built-in support for BDD so we are going to use the help of another tool [Cucumber](https://cucumber.io/)
+Playwright doesn't come with the built-in support for BDD, so we are going to use the help of another tool [Cucumber](https://cucumber.io/)
 
 ```bash
 npm i -D @cucumber/cucumber@7.3.1 @cucumber/pretty-formatter
@@ -52,7 +52,7 @@ After this, `devDependencies` in your `package.json` should look something like 
 ```
 
 ## Configuration
-We are going to use `Cucumber` to run our tests so we need to have a configuration file for it. At the root level of your project create a file `cucumber.conf.js`
+We are going to use `Cucumber` to run our tests, so we need to have a configuration file for it. At the root level of your project create a file `cucumber.conf.js`
 
 First of all, we are going to require the following:
 
@@ -87,7 +87,7 @@ AfterAll(async function () {
   await global.browser.close();
 });
 ```
-In the above snippet of code, we launch a `chrome` browser where our tests will be automated. You can launch a different one as per your requirement, just make sure you import the correct browser. We run the browser in the headed mode which can be done by setting `headless:false`, this means that when the test is running we can see it being automated in the browser. You can set it to `true` if you don't want to see the test running but where is the fun in that? Another option is `slowMo` which slows down Playwright operations by the specified amount of milliseconds and can be helpful to watch the test run. There are various options that can be set while launching the browser, you can go through all of them [here](https://playwright.dev/docs/api/class-browsertype#browser-type-launch). After we've finished our operations we will close the browser. This configuration is for before/after all of the tests are run. Now we need to configure what happens when each test scenario is run. For this look at the snippet below:
+In the above snippet of code, we launch a `chrome` browser where our tests will be automated. You can launch a different one as per your requirement, just make sure you import the correct browser. We run the browser in the headed mode which can be done by setting `headless:false`, this means that when the test is running we can see it being automated in the browser. You can set it to `true` if you don't want to see the test running but where is the fun in that? Another option is `slowMo` which slows down Playwright operations by the specified number of milliseconds and can be helpful to watch the test run. There are various options that can be set while launching the browser, you can go through all of them [here](https://playwright.dev/docs/api/class-browsertype#browser-type-launch). After we've finished our operations, we will close the browser. This configuration is for before/after all the tests are run. Now we need to configure what happens when each test scenario is run. For this look at the snippet below:
 
 ```js
 // cucumber.conf.js file
@@ -105,7 +105,7 @@ After(async function () {
 });
 
 ```
-After we've launched our browser we need to create a new browser context. Playwright allows creating `incognito` browser contexts with `browser.newContext([options])` method. Each browser context has its page that provides methods to interact with a single tab in a browser. We can create a page with `context.newPage()` method. Similar to launching a browser we can set a lot of options while creating a `browser context` as well like screenshots, record video,  geolocation, and more, you can go through all of them [here](https://playwright.dev/docs/api/class-browser#browser-new-context). After we've finished with our operations we close the `page` and `context`.
+After we've launched our browser, we need to create a new browser context. Playwright allows creating `incognito` browser contexts with `browser.newContext([options])` method. Each browser context has its page that provides methods to interact with a single tab in a browser. We can create a page with `context.newPage()` method. Similar to launching a browser we can set a lot of options while creating a `browser context` as well as screenshots, record video, geolocation, and more. You can go through all of them [here](https://playwright.dev/docs/api/class-browser#browser-new-context). After we've finished with our operations, we close the `page` and `context`.
 
 *Voila*, we're done with the configuration part. The whole `cucumber.conf.js` file looks like this :
 
@@ -159,7 +159,7 @@ Our file structure will look like this
 
 ```
 
-Following the above tree create file `tests/acceptance/features/todo.feature`. As we are using BDD, we are going to start by writing a feature file and we are going to be using `Gherkin` language to do so. If you don't know how to write a feature file or what `Gherkin` is you can take the help of the following blogs as it's out of the scope of this blog and won't be explained in detail.
+Following the above tree create file `tests/acceptance/features/todo.feature`. As we are using BDD, we are going to start by writing a feature file, and we are going to be using `Gherkin` language to do so. If you don't know how to write a feature file or what `Gherkin` is you can take the help of the following blogs as it's out of the scope of this blog and won't be explained in detail.
 
 - [cucumber BDD](https://cucumber.io/docs/gherkin/reference/)
 - [BDD – An introduction to feature files](https://www.modernanalyst.com/Resources/Articles/tabid/115/ID/3871/BDD-An-introduction-to-feature-files.aspx)
@@ -177,7 +177,7 @@ When [Event or action]
 Then [Expected output]
 ```
 
-Now assuming you've got some knowledge of feature files and how to write them we proceed further.
+Now, assuming you've got some knowledge of feature files and how to write them, we proceed further.
 
 The application that I'm going to be testing is a todo app and the UI looks like this.
 
@@ -211,7 +211,7 @@ We will be using the `test:e2e` script for running the test. Now go to your term
 npm run test:e2e tests/acceptance/features/todo.feature
 ```
 
-This will run your feature file. As the steps aren't implemented yet you will get something like this on your screen.
+This will run your feature file. As the steps aren't implemented, yet you will get something like this on your screen.
 
 ```console
 ? Given a user has navigated to the homepage
@@ -251,7 +251,7 @@ const {Given, When, Then} = require('@cucumber/cucumber')
 const { expect } = require("@playwright/test");
 ```
 
-Define your launch url and selectors for different UI elements as per need, these are project specific. Playwright supports CSS and Xpath selectors. You can find the detailed information about them [here](https://playwright.dev/docs/selectors)
+Define your launch url and selectors for different UI elements as per need, these are project-specific. Playwright supports CSS and Xpath selectors. You can find the detailed information about them [here](https://playwright.dev/docs/selectors)
 
 ```js
 // todoContext.js file
@@ -295,7 +295,7 @@ Then('card {string} should be displayed on the webUI',async function (item) {
 })
 
 ```
-You can find different methods available to interact with UI elements like click, fill and so on in [Playwright's official documentation](https://playwright.dev/docs/api/class-playwright), it's very nicely explained how the function works along with the example code.
+You can find different methods available to interact with UI elements like click, fill, and so on in [Playwright's official documentation](https://playwright.dev/docs/api/class-playwright), it's very nicely explained how the function works along with the example code.
 
 We use the `page` that we created in the `before` hook to interact with various web elements. Playwright performs [autowait](https://playwright.dev/docs/actionability) and performs a range of actionability checks on elements and ensures that elements are ready to perform the expected operation. This is one of its plus points.
 
@@ -372,8 +372,8 @@ Scenario: Add item to the todo list # tests/acceptance/features/todo.feature:6
 0m04.266s (executing steps: 0m04.010s)
 ```
 
-Hopefully, your test also passed like mine and you got to learn about a new library.
-You can extend the feature file to add more scenarios or add multiple feature files, implement the Page Object Model as per your requirement and it should all work the same.
+Hopefully, your test also passed like mine, and you got to learn about a new library.
+You can extend the feature file to add more scenarios or add multiple feature files, implement the Page Object Model as per your requirement, and it should all work the same.
 
 You can find the source code of this implementation [here](https://github.com/SwikritiT/todo/tree/playwright-blog)
 

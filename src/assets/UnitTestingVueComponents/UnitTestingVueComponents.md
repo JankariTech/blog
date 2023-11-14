@@ -28,7 +28,7 @@ The [VTU](https://github.com/vuejs/vue-test-utils/ "VTU") is a set of utilities 
 #### Installation
 There are various options for the installation of VTU. Please refer to the [official VTU docs](https://vue-test-utils.vuejs.org/installation/#installation "official VTU docs") for detailed information on how to install and configure VTU.
 
-VueJS projects will already have a bundler set up for the development. So one thing I would suggest for the installation is please do not set up a different compiler or transformer system for the tests and the source code. This will only increase the project complexity and packages dependency. For example: if you're using `babel` for the source code, use the same for the tests too.
+VueJS projects will already have a bundler set up for the development. So one thing I would suggest for the installation is please do not set up a different compiler or transformer system for the tests and the source code. This will only increase the project complexity and packages dependency. For example, if you're using `babel` for the source code, use the same for the tests too.
 
 #### Writing Tests
 With VTU, we can write our tests using `describe`, `it`, `test`. Similarly, hooks can be implemented under `before`, `beforeEach`, `after` and `afterEach`. And, for assertions, `expect` is also already bundled. Great!
@@ -64,7 +64,7 @@ describe("Fab button component", () => {
 ##### Knowing what to test
 There can be multiple logic involved in our test files. However, not everything needs to be tested during unit testing.
 
-Don't forget we're only writing tests for a specific component. So we should only test the features provided by that specific unit.
+Remember that we're only writing tests for a specific component. So we should only test the features provided by that specific unit.
 
 So, is it necessary to test every feature in the component?
 

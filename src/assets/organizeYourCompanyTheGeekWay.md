@@ -10,11 +10,11 @@ banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallb
 
 ## Organize your company the geek-way
 
-How do you organize your documents in your department / company / startup ? Your policies, your minutes of meetings, your contracts, etc.?
+How do you organize your documents in your department / company / startup? Your policies, your minutes of meetings, your contracts, etc.?
 
 Do you have a trillion Word documents that you share with your colleagues using your /.\*[cloud|share|box|sync|].\*/ tool? That is good, but how do you know what is the latest version of a document? What is the version you are currently working with a colleague on? How do you track changes? You send a document to a group to review, several people edit some lines, others just type comments into the document, some send it back to you by email, others put it in a file share. And how do you know who agreed on the changes? Pure chaos!
 
-In our company we are using GIT as the solution for all that!
+In our company, we are using GIT as the solution for all that!
 
 Advantages:
 - easy to track every change of a document
@@ -28,12 +28,12 @@ OK, OK, there are also disadvantages:
 - binary files (.odt, .docx, etc.) are hard to diff => use Markdown wherever possible
 - limited formatting, no easy spreadsheet calculations
 
-But overall it works pretty good for us. And here are the rules we are working with:
+But overall, it works pretty good for us. And here are the rules we are working with:
 
 ### Commandments
 
 #### 1. use GIT
-For official work (proposals, policy, procedures, etc.) use GIT  where-ever possible.
+For official work (proposals, policy, procedures, etc.) use GIT where-ever possible.
 We like to use git as it makes it easy to know where the latest documents are and to track all changes.
 
 #### 2. use text only
@@ -58,7 +58,7 @@ Work in branches and make Pull Requests to the master branch. **You can work tog
 The commit message has to explain what you have changed, in just a few words
 
 #### 6. discuss Pull Requests
-If you are asked for your opinion on a change or a review is requested use the GitHub comment function to express yourself.
+If you are asked for your opinion on a change or a review is requested, use the GitHub comment function to express yourself.
 
 #### 7. use GitHub Issues function for ToDos
 The Issue function is great to write ToDos, assign work and discuss & track
@@ -87,12 +87,12 @@ write a comment.
 
 As collaborators cannot review their own work, making a commit, starting a new Pull Request and asking for a review is considered as their own signature for that particular document.
 
-This does not matter a great deal for a lot of work but occasionally might be very important. E.g. If you review&approve the Minutes of a meeting on GitHub it is the same as if you would approve and sign them during the next meeting.
+This does not matter a great deal for a lot of work but occasionally might be very important. E.g., If you review&approve the Minutes of a meeting on GitHub, it is the same as if you would approve and sign them during the next meeting.
 
 #### 10. use squash & rebase
-When merging a branch into master choose between "Squash & merge" and "Rebase & merge"
-- If there are a lot of small changes choose "Squash" to put all changes into one big commit
-- If there are changes where you care about the author use "Rebase"
+When merging a branch into master, choose between "Squash & merge" and "Rebase & merge"
+- If there are a lot of small changes, choose "Squash" to put all changes into one big commit
+- If there are changes where you care about the author, use "Rebase"
 - do not use "Merge & commit" as this creates unnecessary commit messages
 
 ### Workflow
@@ -105,7 +105,7 @@ When merging a branch into master choose between "Squash & merge" and "Rebase & 
   - create a Pull Request
   - tag your Pull Request
   - ask for comments
-5. when your work is ready to be reviewed ask for reviews and mark the
+5. when your work is ready to be reviewed, ask for reviews and mark the
 Pull Request as "To Review"
 6. after everybody who needs to give their approval has done so, merge your work into the master branch
 7. delete your work-branch

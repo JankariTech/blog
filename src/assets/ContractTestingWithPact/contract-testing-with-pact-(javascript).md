@@ -7,15 +7,15 @@ createdAt: Aug 24, 2021
 tags: pactjs, testing, javascript
 banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/assets/ContractTestingWithPact/images/header.png
 ---
-Contract testing is a software testing technique which is used to test the integration points and interfaces between different software applications. The main goal of contract testing is to test each application in isolation and ensure that they are compatible with a shared contract.
+Contract testing is a software testing technique used to test the integration points and interfaces between different software applications. The main goal of contract testing is to test each application in isolation and ensure that they are compatible with a shared contract.
 
-Consumer driven contract testing is simply a contract testing approach in which a consumer sets the list of expectations as a contract and expects a provider to be compatible with that contract.
+Consumer-driven contract testing is simply a contract testing approach in which a consumer sets the list of expectations as a contract and expects a provider to be compatible with that contract.
 
 #### Pact
 
 > Pact is a code-first tool for testing HTTP and message integrations using contract tests.
 
-For more information see [docs.pact.io](https://docs.pact.io/)
+For more information, see [docs.pact.io](https://docs.pact.io/)
 
 In this blog post, I will focus on how to test HTTP integrations using Pact. The following diagram shows the overview of how Pact works:
 
@@ -29,7 +29,7 @@ Pact is available in more than 10 programming languages. See [here](https://docs
 
 ### Writing Tests with PactJs (Consumer Side)
 
-Let's assume that you have a web application that gets earth's total population from an API server and you want to test that application without having to actually communicate with the real server. This is where _Pact_ comes in.
+Let's assume that you have a web application that gets the earth's total population from an API server, and you want to test that application without having to actually communicate with the real server. This is where _Pact_ comes in.
 
 Before writing any tests, you need to have a working web application. Let's create one.
 
@@ -74,7 +74,7 @@ Create _client.spec.js_ file inside a _tests_ folder. This _spec_ file is our te
 
 The test looks like this:
 
-> Note: The following example may or may not work with the latest version of above packages
+> Note: The following example may or may not work with the latest version of the above packages
 
 ```js
 // tests/client.spec.js
@@ -154,7 +154,7 @@ And the mock server will respond with the expected response.
 })
 ```
 
-`MatchersV3` provides a set of matchers that can be used to check the response. For detailed information please read [Using the V3 matching rules](https://github.com/pact-foundation/pact-js/tree/feat/v3.0.0#using-the-v3-matching-rules)
+`MatchersV3` provides a set of matchers that can be used to check the response. For detailed information, please read [Using the V3 matching rules](https://github.com/pact-foundation/pact-js/tree/feat/v3.0.0#using-the-v3-matching-rules)
 
 It is important to note that the test function call and assertions should be done within the callback block of `executeTest`. Function `executeTest` is responsible for starting and, stopping the mock server and also for writing the pact file.
 
@@ -171,7 +171,7 @@ When a test run exits with success, it will generate a json file (i.e. pact or c
 
 ### Verifying the Provider (Provider Side)
 
-You have written tests for your web application. But now, you also need to verify that your API server returns the expected response as per the contract. As I have mentioned above, you need a pact file (contract) in order to verify the provider (API server).
+You have written tests for your web application. But now, you also need to verify that your API server returns the expected response as per the contract. As I have mentioned above, you need a pact file (contract) to verify the provider (API server).
 
 Let's create a simple API server using _express_ which will only respond to the `/population` endpoint.
 
@@ -260,4 +260,4 @@ npx jest tests/server.spec.js
 Result:
 ![Provider test result](/src/assets/ContractTestingWithPact/images/provider_test.png)
 
-Congratulations! You have successfully written your first consumer driven contract test and provider verification test using _Pact_.
+Congratulations! You have successfully written your first consumer-driven contract test and provider verification test using _Pact_.
