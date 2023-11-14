@@ -8,14 +8,14 @@ tags: k6, load, performance, testing
 banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
 ---
 
-CodeceptJS is a modern end to end testing framework. In this tutorial we will setup BDD end-to-end testing using CodeceptJS along with Puppeteer.
+CodeceptJS is a modern end-to-end testing framework. In this tutorial, we will set up BDD end-to-end testing using CodeceptJS along with Puppeteer.
 
 ## Requirements:
 1. `npm`
-2. An app to write tests to: If you already have an app you can use that OR
+2. An app to write tests to: If you already have an app, you can use that, or
  you can just clone this basic todo app https://github.com/taniarascia/react-hooks and follow along
 
-    If you cloned the above app please browse inside the cloned directory and run the following commands to set it up:
+    If you cloned the above app, please browse inside the cloned directory and run the following commands to set it up:
 
 a. `npm install`
 
@@ -34,7 +34,7 @@ Browse inside your project directory
 You will be asked some questions as shown below:
 ![2](https://user-images.githubusercontent.com/34328907/80667879-04605f00-8ac0-11ea-9c2c-40f5ddf3180c.png)
 
-When asked to select helpers choose `Puppeteer` but in other cases take the default (i.e. hit `Enter`).
+When asked to select helpers choose `Puppeteer` but in other cases take the default (i.e., hit `Enter`).
 ![1](https://user-images.githubusercontent.com/34328907/82856381-8dd34780-9f2d-11ea-9c47-7c9fe7a0fd55.png)
 
 3. The above initialization of codeceptjs will create some files:
@@ -45,7 +45,7 @@ When asked to select helpers choose `Puppeteer` but in other cases take the defa
 - `steps_file.js`
 - `output`: a directory that will contain screenshot of failed tests
 
-  We only need `condecept.conf.js` as it is the main configuration file. The rest of the files are not needed so you can delete them.
+  We only need `condecept.conf.js` as it is the main configuration file. The rest of the files are not needed, so you can delete them.
 
 4. We can enable Gherkin for the current project by running:
 
@@ -80,7 +80,7 @@ When asked to select helpers choose `Puppeteer` but in other cases take the defa
       name: 'react-hooks' // name of the application folder
     }
     ```
-    <strong>Note</strong>: React applications by default run on port `3000`. So, if you cloned the application from `Requirements` section don't forget to include the port in `url` section of `Puppeteer` object.
+    <strong>Note</strong>: React applications by default run on port `3000`. So, if you cloned the application from `Requirements` section remember to include the port in the `url` section of the `Puppeteer` object.
 
 6. After you create a feature file and write some scenarios, to generate gherkin snippets run:
 
@@ -129,7 +129,7 @@ When asked to select helpers choose `Puppeteer` but in other cases take the defa
         I.see(username);
     });
     ```
-    In CodeceptJS tests are written as a sequence of actions performed by an actor. So, the `I` object is an actor, an abstraction for a testing user. The `I` is also a proxy object for the currently enabled Helper(Puppeteer).
+    In CodeceptJS tests are written as a sequence of actions performed by an actor. So, the `I` object is an actor, an abstraction for a testing user. The `I` is also a proxy object for the currently enabled Helper (Puppeteer).
 
     So basically in the above step definitions, `I` browse to the homepage(http://localhost:3000), wait until the `name` input field is visible, fill the fields, click on the `Add new user` button and check if the user I added is listed on the `View users` table.
 
@@ -141,14 +141,14 @@ When asked to select helpers choose `Puppeteer` but in other cases take the defa
 
     `npx codeceptjs run --debug`
 
-    By using the `debug` flag you can see the execution of step definitions and it is very useful for debugging purposes.
+    By using the `debug` flag you can see the execution of step definitions, and it is very useful for debugging purposes.
 
 ## Page object
-A page object is basically a wrapper around an HTML page, or a fragment of the page that provides an access to the state of the underlying page/fragment. A page object provides a separation between the test code and the locators and makes our code more DRY.
+A page object is basically a wrapper around an HTML page, or a fragment of the page that provides access to the state of the underlying page/fragment. A page object provides a separation between the test code and the locators and makes our code more DRY.
 
-If an application has different pages (login, admin, etc.) you should use a page object. Even though our example app doesn't have different pages we are going to create a page object.
+If an application has different pages (login, admin, etc.), you should use a page object. Even though our example app doesn't have different pages, we are going to create a page object.
 
-To get more ideas about page objects and page objects in CodeceptJS check the following links:
+To get more ideas about page objects and page objects in CodeceptJS, check the following links:
 
 - https://github.com/SeleniumHQ/selenium/wiki/PageObjects
 - https://codecept.io/pageobjects/
@@ -212,4 +212,4 @@ When('the user adds user with name {string} and username {string} using the webU
 
 Now, run your test again with `npx codeceptjs run --steps`
 
-In this way we have set up BDD end-to-end testing using CodeceptJS. Happy Testing.
+In this way, we have set up BDD end-to-end testing using CodeceptJS. Happy Testing.

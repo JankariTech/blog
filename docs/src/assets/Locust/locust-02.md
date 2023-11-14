@@ -12,16 +12,16 @@ episode: 2
 
 ## Preparations
 
-In [the first part of this series](https://dev.to/jankaritech/performance-testing-with-locust-01-get-started-pkk) we talked about creating a very basic locust performance test. Now we want to create some more realistic and interesting tests. For that we better have a real App to test. We could test any App that has an HTTP API. For simplicity and because I'm familiar with it I've chosen [ownCloud](https://owncloud.org/), a file hosting and sharing solution similar to Dropbox.
+In [the first part of this series](https://dev.to/jankaritech/performance-testing-with-locust-01-get-started-pkk) we talked about creating a very basic locust performance test. Now we want to create some more realistic and interesting tests. For that we better have a real App to test. We could test any App that has an HTTP API. For simplicity and because I'm familiar with it, I've chosen [ownCloud](https://owncloud.org/), a file hosting and sharing solution similar to Dropbox.
 
-The easiest way to get a test ownCloud instance up and running is to use docker. Just run: `docker run -p 8080:8080 --name owncloud owncloud/server`. That magic command should give you a fresh ownCloud installation reachable under http://localhost:8080. There is one user pre-setup called `admin` with the super-secure password `admin`. You can login into the UI and upload files, create new users, share files and folders, etc.
+The easiest way to get a test ownCloud instance up and running is to use docker. Run: `docker run -p 8080:8080 --name owncloud owncloud/server`. That magic command should give you a fresh ownCloud installation reachable under http://localhost:8080. There is one user pre-setup called `admin` with the super-secure password `admin`. You can log in to the UI and upload files, create new users, share files and folders, etc.
 OK, after having played a bit with ownCloud itself, let's get back to the performance tests, we actually want to learn about locust.
 
-You should now be able to run the locust test from the first part via `locust --host=http://localhost:8080`, but as we said there, that is not a very realistic test. What would a user do with ownCloud? A main action would be download and upload files. Let's tests the performance of that.
+You should now be able to run the locust test from the first part via `locust --host=http://localhost:8080`, but as we said there, that is not a very realistic test. What would a user do with ownCloud? A main action would be to download and upload files. Let's test the performance of that.
 
 ## Test downloading a file
 
-For file-operations ownCloud uses the [WebDAV](https://en.wikipedia.org/wiki/WebDAV) API. Starting from the locustfile we already have, we create a test for a file download.
+For file-operations, ownCloud uses the [WebDAV](https://en.wikipedia.org/wiki/WebDAV) API. Starting from the locustfile we already have, we create a test for a file download.
 
 ```
 from locust import HttpLocust, TaskSet, task, constant
@@ -80,11 +80,11 @@ class User(HttpLocust):
 Here we have a second task `uploadFile`, it's simply does a `PUT` request with a specific file-name and some data.
 (To be more [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself), I've placed `davEndpoint` in a variable)
 
-Locust will now run every task the same amount of times. But if you run that with enough locust-users (e.g. try 100) you will see the numbers in the `# Fails` column increase
+Locust will now run every task the same number of times. But if you run that with enough locust-users (e.g., try 100) you will see the numbers in the `# Fails` column increase
 
 ![increased upload failures](/src/assets/Locust/images/locust-02-images/failureCountIncrease.png)
 
-To see what happens, lets look into the "Failures Tab"
+To see what happens, let's look into the "Failures Tab"
 There we see the Failure "Type" `HTTPError('423 Client Error: Locked for url: http://localhost:8080/remote.php/dav/files/admin/locust-perfomance-test-file.txt',)`
 
 We have been using one single ownCloud-user `admin` and 100 locust-users. During the write operation ownCloud locks a file, but every second `wait_time = constant(1)` a locust-user tries to over-write that single file. So there will be collisions and that is what the error says.
@@ -130,8 +130,8 @@ In the locust UI you should now see one `PUT` request per locust-user and hopefu
 ## Weight of a task
 
 Now we run every task equally often. But do users upload files as often as they download them?
-Maybe, but maybe not - it depends on your situation and on what you want to test. Luckily locust gives your the freedom to choose.
-e.g. if you want to simulate the situation that the downloads/read operation occurs 3 times more often that a upload/write operation just add a weight argument to the task
+Maybe, but maybe not - it depends on your situation and on what you want to test. Luckily, locust gives you the freedom to choose.
+E.g., if you want to simulate the situation that the download/read operation occurs 3 times more often than an upload/write operation, just add a weight argument to the task
 
 ```
 ...
@@ -157,8 +157,8 @@ def uploadFile(self):
 
 Now most of your requests should be `GET`s.
 
-Remember: when testing we try to be as close to reality as possible. [If your test is significantly different to reality, bad things might happen.](https://people.cs.clemson.edu/~steve/Spiro/arianesiam.htm)
+Remember: when testing, we try to be as close to reality as possible. [If your test is significantly different to reality, bad things might happen.](https://people.cs.clemson.edu/~steve/Spiro/arianesiam.htm)
 
 ## whats next?
 
-We are still only using a single ownCloud user. The application might perform differently when using multiple users. We should create specific test-users before we run the test and ideally delete them at the end of the test run.
+We are still only using a single ownCloud user. The application might perform differently when using multiple users. We should create specific test users before we run the test and ideally delete them at the end of the test run.

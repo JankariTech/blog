@@ -10,11 +10,11 @@ seriesTitle: E2E Testing with Cypress
 episode: 6
 ---
 
-In the previous part of the series we have disused how Cypress is so flexible with multiple CI providers, how it manages balanced strategies on parallel runs, and an example of a CircleCi configuration file. As long as tests are written in Cypress file/folder structure, the configuration of parallel tests run is simple as documented. But if you use feature files in your e2e tests, then your a bit unlucky using Cypress.
+In the previous part of the series, we have disused how Cypress is so flexible with multiple CI providers, how it manages balanced strategies on parallel runs, and an example of a CircleCi configuration file. As long as tests are written in Cypress file/folder structure, the configuration of parallel tests run is simple as documented. But if you use feature files in your e2e tests, then you're a bit unlucky using Cypress.
 
 As I've mentioned in the earlier part of the series, Cypress does not have a cucumber preprocessor by default, and we have to add some tweaks to get tests containing features files running. It's perfectly fine while running our tests on our own machine. We can properly tag, run, and debug our scenarios with different required hooks if necessary. But in CI/CD we do not want to run our tests as we run in our local machine.
 
-According to some cypress users, using Cypress Dashboard along with cucumber preprocessors, they can run over 200 scenarios in 13 minutes. Parallelization is so effective with dashboard service but, it is a `PAID` service. But do not worry we can achieve it for free.
+According to some cypress users, using Cypress Dashboard along with cucumber preprocessors, they can run over 200 scenarios in 13 minutes. Parallelization is so effective with dashboard service but, it is a `PAID` service. But do not worry, we can achieve it for free.
 
 ## Parallelization with cucumber-preprocessor and Cypress
 ```
@@ -23,7 +23,7 @@ cypress/integration/features/
   |- Login/login.feature
   |- Register/register.feature
 ```
-Let us assume, we have two features as shown above. Our goal is to run these two features in parallel in our CI/CD. With Cypress Dashboard service our test files are automatically separated into different suites according to their previous run lengths to maintain minimum test run time. Since we're not using any dashboard, so we've to do this by ourselves. Simple!
+Let us assume, we have two features as shown above. Our goal is to run these two features in parallel in our CI/CD. With the Cypress Dashboard service, our test files are automatically separated into different suites according to their previous run lengths to maintain minimum test run time. Since we're not using any dashboard, so we've to do this by ourselves. Simple!
 
 So the first thing needed is we've to create suites. Where to create? Inside your `features` directory. Each folder you create can be used as a separate suite for your CI/CD.
 

@@ -11,14 +11,14 @@ banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallb
 `Nightwatch.js` is an open-source automated testing framework that aims at providing complete E2E (end to end) solutions to automate testing with `Selenium Javascript` for web-based applications, browser applications, and websites. It is written in `Node.js` and uses the `W3C WebDriver API` (formerly Selenium WebDriver) for interacting with various browsers.
 
 ## Installation And Requirements
-This guide is based on Ubuntu 18.04. Some commands will be different if you have another OS installed on your computer. Also, we will be following the BDD approach in this blog. So, if you want to learn more about BDD first then please read our blog on [Demonstrating BDD (Behavior-driven development) in Go](https://dev.to/jankaritech/demonstrating-bdd-behavior-driven-development-in-go-1eci). Before getting started with Nightwatch we need to have the following installed on our computer.
+This guide is based on Ubuntu 18.04. Some commands will be different if you have another OS installed on your computer. Also, we will be following the BDD approach in this blog. So, if you want to learn more about BDD first, then please read our blog on [Demonstrating BDD (Behavior-driven development) in Go](https://dev.to/jankaritech/demonstrating-bdd-behavior-driven-development-in-go-1eci). Before getting started with Nightwatch, we need to have the following installed on our computer.
 
 ### 1. Node.js:
 - To install Node.js:
 ```
 sudo apt install nodejs
 ```
-- To verify the successful installation of nodejs and to check its version use the following command
+- To verify the successful installation of nodejs and to check its version, use the following command
 ```
 nodejs -v
 ```
@@ -30,7 +30,7 @@ npm -v
 ```
 
 ### 3. Java:
-We need java to run the Selenium server which automates our browser. If your machine does not have java installed then install it using the following command
+We need java to run the Selenium server which automates our browser. If your machine does not have java installed, then install it using the following command
 ```
 sudo apt install default-jdk
 ```
@@ -79,7 +79,7 @@ You need to define `src_folders` and `launch_url` inside the nightwatch.conf.js 
 src_folders: YOUR_SOURCE_FOLDER_FOR_TEST_FILES
 launch_url: URL_OF_YOUR_WEBSITE
 ```
-Run this command to install nightwatch and cucumber into your project dependencies which allow us to run automated tests using the gherkin language.
+Run this command to install nightwatch and cucumber into your project dependencies, which allow us to run automated tests using the gherkin language.
 ```
 yarn add --dev nightwatch-api nightwatch cucumber
 ```
@@ -122,7 +122,7 @@ After(async () => {
 ```
 Here, we are using before() and after() hooks which will allow us to execute the code inside them before and after each test scenario.
 
-Before starting the Selenium server you need to change your directory to where the selenium and chromedriver files are. After doing that you can now start the Selenium server with the command:
+Before starting the Selenium server, you need to change your directory to where the selenium and chromedriver files are. After doing that, you can now start the Selenium server with the command:
 ```
 java -jar selenium-server-standalone-3.141.59.jar -port 4444
 ```
@@ -187,7 +187,7 @@ Finally, run the test from the root directory using the command:
 cucumber-js --require test/acceptance/index.js --require test/acceptance/stepDefinitions test/acceptance/features/[YOUR_FEATURE_FILE].feature
 ```
 
-Does the above command look long? I am sorry, but you have to use that command every time you run the test. But only the name of `your feature file` is different, while running different tests, the rest is all the same. So, let's assign an easy short name for the rest and put it inside the scripts section of `package.json`. I called it `test-e2e` and inside the scripts of `package.json`, I added
+Does the above command look long? I am sorry: you have to use that command every time you run the test. But only the name of `your feature file` is different, while running different tests, the rest is all the same. So, let's assign an easy short name for the rest and put it inside the scripts section of `package.json`. I called it `test-e2e` and inside the scripts of `package.json`, I added
 ```
 "test-e2e" : "cucumber-js --require test/acceptance/index.js --require test/acceptance/stepDefinitions"
 ```

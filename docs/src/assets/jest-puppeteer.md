@@ -10,14 +10,14 @@ banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallb
 
 "In Jest, there is truth" -William Shakespeare.
 
-By using Jest, you will know the truth about your application. The `Jest` is a javascript testing tool that is installed via NPM or Yarn and run via the command line. It is a great testing library and many react team members are involved building it, so it happens to work very well for testing react applications. Jest is built on top of Jasmine and Mocha but some additional features like snapshot testing and parallel test execution are provided by Jest. It also comes with built-in mocking and assertion abilities.
+By using Jest, you will know the truth about your application. The `Jest` is a javascript testing tool that is installed via NPM or Yarn and run via the command line. It is a great testing library and many react team members are involved in building it, so it happens to work very well for testing react applications. Jest is built on top of Jasmine and Mocha, but some additional features like snapshot testing and parallel test execution are provided by Jest. It also comes with built-in mocking and assertion abilities.
 
-Puppeteer is a Node library that is used for browser automation. Puppeteer provides a high-level API to control the browser. It can work with Chrome, Chromium or Firefox. By default this library runs the browser in headless mode, but it can be also configured to run Chrome or Chromium fully (non-headless).
+Puppeteer is a Node library that is used for browser automation. Puppeteer provides a high-level API to control the browser. It can work with Chrome, Chromium or Firefox. By default, this library runs the browser in headless mode, but it can be also configured to run Chrome or Chromium fully (non-headless).
 
 ## Installation And Requirements
 This guide is based on Ubuntu 18.04. Some commands will be different if you have another OS installed on your computer. Before getting started with Jest, You need to have `npm` and an app for which you will be writing tests.
 
-If your app is not yet ready for testing then you can just clone this basic [todo app](https://github.com/Talank/todo-react) and follow along.
+If your app is not yet ready for testing, then you can just clone this basic [todo app](https://github.com/Talank/todo-react) and follow along.
 
 ### Jest Versions
 Jest is the test runner library for creating, executing, and structuring tests. Jest CLI is a tool that you use from the command line to run and provide configuration options to jest. It configures jest based on whatever argument you give while running jest. The version is important because jest is a dynamic library and different versions of jest might work differently. While writing this blog, I am using jest version `24.9.0`. So, some features might be different if you are using some other version.
@@ -28,7 +28,7 @@ You can install the latest version of jest from NPM using
 npm i jest --save-dev
 ```
 
-Now, its time to configure the NPM script for running a test from the command line. For this, open your `package.json` and add the `test` script as follows:
+Now, it's time to configure the NPM script for running a test from the command line. For this, open your `package.json` and add the `test` script as follows:
 ```
 "scripts": {
     "test": "jest"
@@ -37,7 +37,7 @@ Now, its time to configure the NPM script for running a test from the command li
 
 Tests are run by using the Jest CLI (typing `jest` followed by arguments in the command line).
 
-For example, in the [todo app](https://github.com/Talank/todo-react) in my github, you can run the test with the command `npm run test` since I have added `"test": "jest"` in the script of my `package.json`
+For example, in the [todo app](https://github.com/Talank/todo-react) in my GitHub, you can run the test with the command `npm run test` since I have added `"test": "jest"` in the script of my `package.json`
 
 With the above-mentioned way, jest can be configured within your `package.json`. That is the easy way for jest configuration. Alternatively, you can also use the jest configuration file for which you should create a `jest.config.js` file and include that file in the command to run the test. For example, your package.json scripts section should include
 ```
@@ -61,7 +61,7 @@ Use the following command to install puppeteer in your project.
 ```
 npm i puppeteer --save-dev
 ```
-Puppeteer will download the latest version of chrome. If you need to work with firefox then you need to install the `puppeteer-firefox` library. Refer to [Puppeteer for Firefox](https://www.npmjs.com/package/puppeteer-firefox) in the npmjs website for further details.
+Puppeteer will download the latest version of chrome. If you need to work with firefox, then you need to install the `puppeteer-firefox` library. Refer to [Puppeteer for Firefox](https://www.npmjs.com/package/puppeteer-firefox) in the npmjs website for further details.
 
 By the end of the installation of jest and puppeteer, you should have the following dependencies in the `devDependencies` section of your `package.json`.
 ```
@@ -72,10 +72,10 @@ By the end of the installation of jest and puppeteer, you should have the follow
 ```
 
 ### Creating Test Files
-The jest command runs the test files inside `__tests__` folder or it will runs any files with `.spec.js` or `.test.js` in their filename. So, you have to write your test in a file that ends with `.spec.js` or `test.js`. Or you can simply put all your tests inside the `__tests__` folder.
+The jest command runs the test files inside `__tests__` folder or it will run any files with `.spec.js` or `.test.js` in their filename. So, you have to write your test in a file that ends with `.spec.js` or `test.js`. Or you can simply put all your tests inside the `__tests__` folder.
 
 ### Jest Globals
-There are a variety of jest Globals but we will mainly need 2 important globals called `describe` and `it`. The table below tells about these two globals in more detail.
+There are a variety of jest Globals, but we will mainly need 2 important globals called `describe` and `it`. The table below tells about these two globals in more detail.
 
 | | it | describe |
 |---|---|---|
@@ -92,7 +92,7 @@ In addition to `it()` and `describe()` methods, you might need the following met
 These functions are executed before and after the test scenarios. You can define these functions inside the `describe()` method to make it applicable for all tests in the scope of that particular `describe()` method.
 
 ## Demo:
-Here I have added a test for adding a task in my react ToDo app.
+Here I have added a test for adding a task in my React ToDo app.
 ```
 const puppeteer = require('puppeteer');
 
@@ -141,9 +141,9 @@ describe('Todo React', () => {
 ```
 
 ### Explanation of Demo
-In the above demo, I first imported the puppeteer library. And in before scenario, I launched the browser in headless mode. Before all the scenarios inside the first describe block, the browser is launched only once. And before each scenario, a new tab is opened in incognito mode. Similarly, after each scenario, the tab is closed and when all the scenarios are executed, the browser is closed.
+In the above demo, I first imported the puppeteer library. And in the before scenario, I launched the browser in headless mode. Before all the scenarios inside the first describe block, the browser is launched only once. And before each scenario, a new tab is opened in incognito mode. Similarly, after each scenario, the tab is closed and when all the scenarios are executed, the browser is closed.
 
-The browser is launched in headless mode by default. However, if you want to launch the browser in non-headless mode then you can provide the browser launch option in `puppeteer.launch()`. For example:
+The browser is launched in headless mode by default. However, if you want to launch the browser in non-headless mode, then you can provide the browser launch option in `puppeteer.launch()`. For example:
 ```
 browser = await puppeteer.launch({headless:false})
 ```
@@ -153,11 +153,11 @@ In Jest, there are plenty of functions to simulate UI activities. For example, i
 Similarly, for assert operation, you can use `expect()`. Many other matcher functions can be used with expect() such as `.toContain(item)` , `toBeTruthy()` etc. You can find more of these `jest matchers` in the [jest documentation](https://jestjs.io/docs/en/expect).
 
 ### Gherkin with Jest
-In Jest, you do not have to write a feature file for your test cases. If you need to write features in a separate file then you can use [jest-cucumber](https://github.com/bencompton/jest-cucumber) library. By using this library, you can replace `describe` and `it` blocks by `Given`, `When`, and `Then` step definitions. The step definitions are linked with the respective steps in the feature files.
+In Jest, you do not have to write a feature file for your test cases. If you need to write features in a separate file, then you can use [jest-cucumber](https://github.com/bencompton/jest-cucumber) library. By using this library, you can replace `describe` and `it` blocks by `Given`, `When`, and `Then` step definitions. The step definitions are linked with the respective steps in the feature files.
 
-However, I would prefer `Codecept.js` or `nightwatch.js` instead of `jest` if I need to use features of `Cucumber.js` while testing my application. Because, with jest-cucumber, you need to specify which feature file is linked with a particular step definition file. While Codecept.js or nightwatch.js, you can write the step definition of a `given` step in one file and the `when` step of the same scenario in some other file. You might lose this kind of freedom if you are using jest-cucumber.
+However, I would prefer `Codecept.js` or `nightwatch.js` instead of `jest` if I need to use features of `Cucumber.js` while testing my application. Because, with jest-cucumber, you need to specify which feature file is linked with a particular step definition file. While with Codecept.js or nightwatch.js, you can write the step definition of a `given` step in one file and the `when` step of the same scenario in some other file. You might lose this kind of freedom if you are using jest-cucumber.
 
-That's it for now. If you want to learn more about jest and it's commands, you can refer to [jestjs.io](https://jestjs.io/docs/en/api)
+That's it for now. If you want to learn more about jest and its commands, you can refer to [jestjs.io](https://jestjs.io/docs/en/api)
 
 Hope you enjoy jesting.
 ThankYou!

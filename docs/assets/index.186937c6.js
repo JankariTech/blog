@@ -108,13 +108,13 @@ banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallb
 
 ## Demonstrating TDD (Test-driven development) in Go
 
-TDD is the practice to write tests before code and it should reduce failure rates and defects in your software.
-In this blog-post I want to demonstrate how it can work.
+TDD is the practice to write tests before code, and it should reduce failure rates and defects in your software.
+In this blog-post, I want to demonstrate how it can work.
 
 ### starting point
 I'm writing an application in Go that should convert Bikram Sambat (BS) (also called Vikram Samvat) dates to Gregorian dates and vice-versa. [Vikram Samvat](https://en.wikipedia.org/wiki/Vikram_Samvat) is a calendar used mostly in Nepal and India. But even if you don't use it, this demonstration might be useful for you to understand TDD.
 
-So far I have done a bit of work that makes it possible to create a BS (Bikram Sambat) date instance, to get its details and to convert it to a Gregorian date. See: https://github.com/JankariTech/GoBikramSambat/blob/b99c510b22faf8395becda9a6dec1d0239504bb1/bsdate.go
+So far, I have done a bit of work that makes it possible to create a BS (Bikram Sambat) date instance, to get its details and to convert it to a Gregorian date. See: https://github.com/JankariTech/GoBikramSambat/blob/b99c510b22faf8395becda9a6dec1d0239504bb1/bsdate.go
 
 These functions are also tested: https://github.com/JankariTech/GoBikramSambat/blob/b99c510b22faf8395becda9a6dec1d0239504bb1/bsdate_test.go
 
@@ -123,9 +123,9 @@ Now I want to add the possibility to convert a Gregorian date to a Bikram Sambat
 Something like \`nepaliDate, err := NewFromGregorian(gregorianDay, gregorianMonth, gregorianYear)\` would be great and then simply use the existing \`nepaliDate.GetDay()\` \`nepaliDate.GetMonth()\` and \`nepaliDate.GetYear()\`
 
 ### 1. create the test
-According to TDD I first have to create a test.
+According to TDD, I first have to create a test.
 So in the file \`bsdate_test.go\` I create a new function called \`TestCreateFromGregorian()\`.
-As I already have a table of test-dates that are used for the conversion from Nepali to Gregorian I will use that data also to test the reverse conversion.
+As I already have a table of test-dates that are used for the conversion from Nepali to Gregorian, I will use that data also to test the reverse conversion.
 
 Here is the test data and the test function:
 
@@ -170,7 +170,7 @@ func TestCreateFromGregorian(t *testing.T) {
 The function takes entries from the \`convertedDates\` list, splits them, tries to create a BS date out of the particular gregorian test-case and then asserts that the BS date (day, month, year) is as expected.
 
 ### 2. run the tests
-The test is done, according to TDD I have to run it.
+The test is done; according to TDD, I have to run it.
 
 \`go test -v\`
 
@@ -194,11 +194,11 @@ func NewFromGregorian(gregorianDay, gregorianMonth, gregorianYear int) (Date, er
 \`\`\`
 
 ### 4. repeat
-running the tests again I get:
+running the tests again, I get:
 
 \`./bsdate.go:195:1: missing return at end of function\`
 
-That is true, let's return something, but what? Hey let's just create a BS date with the Gregorian numbers
+That is true, let's return something, but what? Hey, let's just create a BS date with the Gregorian numbers
 \`\`\`diff
  func NewFromGregorian(gregorianDay, gregorianMonth, gregorianYear int) (Date, error) {
 -
@@ -208,7 +208,7 @@ That is true, let's return something, but what? Hey let's just create a BS date 
 
 You are saying that will not work? I don't care, I do TDD, the test tells me to return something, and I do return, I even return the correct type of value.
 
-lets run the tests again:
+let's run the tests again:
 \`\`\`console
 === RUN   TestCreateFromGregorian/2068-04-01
 	assert.go:24: got '17' want '1'
@@ -227,7 +227,7 @@ lets run the tests again:
 ....
 \`\`\`
 
-a lot of failures, you have guessed it, the conversion does not work. So lets implement some bits.
+A lot of failures, you have guessed it, the conversion does not work. So let's implement some bits.
 
 We know that BS is 56 point something years ahead of Gregorian. So adding 56 to the gregorian year should help:
 \`\`\`diff
@@ -273,9 +273,9 @@ I get:
 ....
 \`\`\`
 
-So some years are calculated correctly, at least. Lets fix more tests by calculating the years more accurate and also calculate the BS month.
+So some years are calculated correctly, at least. Let's fix more tests by calculating the years more accurately and also calculate the BS month.
 
-Because of the way the BS-calendar works, there is no algorithm to convert the date directly from the Gregorian calendar, we need a table. We know that Jan 1st falls always in the 9th BS month (Paush). So we have a table of BS years where the first value is the day in Paush that is the 1st Jan in that year, then a list of days of every BS month.
+Because of the way the BS-calendar works, there is no algorithm to convert the date directly from the Gregorian calendar; we need a table. We know that Jan 1st falls always in the 9th BS month (Paush). So we have a table of BS years where the first value is the day in Paush that is the 1st Jan in that year, then a list of days of every BS month.
 We can easily get the day-of-year from the gregorian date. Starting from Paush, we count the days of each BS month, whenever we get over the gregorian day-of-year, we found the correct BS month.
 \`\`\`
 2074: [13]int{17, 31, 31, 31, 32, 31, 31, 30, 29, 30, 29, 30, 30},
@@ -287,7 +287,7 @@ We can easily get the day-of-year from the gregorian date. Starting from Paush, 
 
 These details have nothing to do with TDD, but help you to understand the coming algorithm.
 
-lets put it into code:
+Let's put it into code:
 \`\`\`diff
  func NewFromGregorian(gregorianDay, gregorianMonth, gregorianYear int) (Date, error) {
         var bsYear = gregorianYear + 56
@@ -328,7 +328,7 @@ lets put it into code:
  }
 \`\`\`
 
-and now? You guessed it! Run the tests:
+And now? You guessed it! Run the tests:
 \`\`\`console
 === RUN   TestCreateFromGregorian
 === RUN   TestCreateFromGregorian/2068-04-01
@@ -343,10 +343,10 @@ and now? You guessed it! Run the tests:
 ....
 \`\`\`
 
-Actually, while implementing the algorithm I've run the tests multiple times and found mistakes in mixed-up variable names and other rubbish. That's cool, the tests helped me to find the issues right away.
+Actually, while implementing the algorithm, I've run the tests multiple times and found mistakes in mixed-up variable names and other rubbish. That's cool, the tests helped me to find the issues right away.
 
 But the tests still fail, I better get the day calculation correct.
-We know the correct BS month, and we know the days since 1st Jan till the end of this month. Subtracting the day-of-the-year of the gregorian calendar from the days since 1st Jan till the end of the correct BS month will give us the amount of days between the searched day and the end of the BS month. Subtracting that number from the amount of days in the BS month should bring us to the correct date.
+We know the correct BS month, and we know the days since 1st Jan till the end of this month. Subtracting the day-of-the-year of the gregorian calendar from the days since 1st Jan till the end of the correct BS month will give us the number of days between the searched day and the end of the BS month. Subtracting that number from the number of days in the BS month should bring us to the correct date.
 
 So many words to describe it, so little effort to write it in code:
 \`\`\`diff
@@ -415,7 +415,7 @@ You can find all the changes of this post here: https://github.com/JankariTech/G
 ## conclusion
 TDD is easy: think about what you want to achieve, write tests for it and wildly hack code till your tests pass.
 
-An other big advantage is: I can refactor my code all I like and still be confident it works fine. Maybe I want to optimize the speed of the algorithm, maybe I don't like it altogether and come up with a better one, or I simply want to change variable names. I can do that all without fear of messing up the functionality, as long as my tests are passing I'm pretty sure the code reacts the same.
+Another big advantage is: I can refactor my code all I like and still be confident it works fine. Maybe I want to optimize the speed of the algorithm, maybe I don't like it altogether and come up with a better one, or I simply want to change variable names. I can do that all without fear of messing up the functionality, as long as my tests are passing, I'm pretty sure the code reacts the same.
 `,"/src/assets/codeceptJs.md":`---
 title: CodeceptJs - Setup & BDD
 authorName: Hari Bhandari
@@ -426,14 +426,14 @@ tags: k6, load, performance, testing
 banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
 ---
 
-CodeceptJS is a modern end to end testing framework. In this tutorial we will setup BDD end-to-end testing using CodeceptJS along with Puppeteer.
+CodeceptJS is a modern end-to-end testing framework. In this tutorial, we will set up BDD end-to-end testing using CodeceptJS along with Puppeteer.
 
 ## Requirements:
 1. \`npm\`
-2. An app to write tests to: If you already have an app you can use that OR
+2. An app to write tests to: If you already have an app, you can use that, or
  you can just clone this basic todo app https://github.com/taniarascia/react-hooks and follow along
 
-    If you cloned the above app please browse inside the cloned directory and run the following commands to set it up:
+    If you cloned the above app, please browse inside the cloned directory and run the following commands to set it up:
 
 a. \`npm install\`
 
@@ -452,7 +452,7 @@ Browse inside your project directory
 You will be asked some questions as shown below:
 ![2](https://user-images.githubusercontent.com/34328907/80667879-04605f00-8ac0-11ea-9c2c-40f5ddf3180c.png)
 
-When asked to select helpers choose \`Puppeteer\` but in other cases take the default (i.e. hit \`Enter\`).
+When asked to select helpers choose \`Puppeteer\` but in other cases take the default (i.e., hit \`Enter\`).
 ![1](https://user-images.githubusercontent.com/34328907/82856381-8dd34780-9f2d-11ea-9c47-7c9fe7a0fd55.png)
 
 3. The above initialization of codeceptjs will create some files:
@@ -463,7 +463,7 @@ When asked to select helpers choose \`Puppeteer\` but in other cases take the de
 - \`steps_file.js\`
 - \`output\`: a directory that will contain screenshot of failed tests
 
-  We only need \`condecept.conf.js\` as it is the main configuration file. The rest of the files are not needed so you can delete them.
+  We only need \`condecept.conf.js\` as it is the main configuration file. The rest of the files are not needed, so you can delete them.
 
 4. We can enable Gherkin for the current project by running:
 
@@ -498,7 +498,7 @@ When asked to select helpers choose \`Puppeteer\` but in other cases take the de
       name: 'react-hooks' // name of the application folder
     }
     \`\`\`
-    <strong>Note</strong>: React applications by default run on port \`3000\`. So, if you cloned the application from \`Requirements\` section don't forget to include the port in \`url\` section of \`Puppeteer\` object.
+    <strong>Note</strong>: React applications by default run on port \`3000\`. So, if you cloned the application from \`Requirements\` section remember to include the port in the \`url\` section of the \`Puppeteer\` object.
 
 6. After you create a feature file and write some scenarios, to generate gherkin snippets run:
 
@@ -547,7 +547,7 @@ When asked to select helpers choose \`Puppeteer\` but in other cases take the de
         I.see(username);
     });
     \`\`\`
-    In CodeceptJS tests are written as a sequence of actions performed by an actor. So, the \`I\` object is an actor, an abstraction for a testing user. The \`I\` is also a proxy object for the currently enabled Helper(Puppeteer).
+    In CodeceptJS tests are written as a sequence of actions performed by an actor. So, the \`I\` object is an actor, an abstraction for a testing user. The \`I\` is also a proxy object for the currently enabled Helper (Puppeteer).
 
     So basically in the above step definitions, \`I\` browse to the homepage(http://localhost:3000), wait until the \`name\` input field is visible, fill the fields, click on the \`Add new user\` button and check if the user I added is listed on the \`View users\` table.
 
@@ -559,14 +559,14 @@ When asked to select helpers choose \`Puppeteer\` but in other cases take the de
 
     \`npx codeceptjs run --debug\`
 
-    By using the \`debug\` flag you can see the execution of step definitions and it is very useful for debugging purposes.
+    By using the \`debug\` flag you can see the execution of step definitions, and it is very useful for debugging purposes.
 
 ## Page object
-A page object is basically a wrapper around an HTML page, or a fragment of the page that provides an access to the state of the underlying page/fragment. A page object provides a separation between the test code and the locators and makes our code more DRY.
+A page object is basically a wrapper around an HTML page, or a fragment of the page that provides access to the state of the underlying page/fragment. A page object provides a separation between the test code and the locators and makes our code more DRY.
 
-If an application has different pages (login, admin, etc.) you should use a page object. Even though our example app doesn't have different pages we are going to create a page object.
+If an application has different pages (login, admin, etc.), you should use a page object. Even though our example app doesn't have different pages, we are going to create a page object.
 
-To get more ideas about page objects and page objects in CodeceptJS check the following links:
+To get more ideas about page objects and page objects in CodeceptJS, check the following links:
 
 - https://github.com/SeleniumHQ/selenium/wiki/PageObjects
 - https://codecept.io/pageobjects/
@@ -630,7 +630,7 @@ When('the user adds user with name {string} and username {string} using the webU
 
 Now, run your test again with \`npx codeceptjs run --steps\`
 
-In this way we have set up BDD end-to-end testing using CodeceptJS. Happy Testing.
+In this way, we have set up BDD end-to-end testing using CodeceptJS. Happy Testing.
 `,"/src/assets/dockerSelenium.md":`---
 title: How to use selenium in docker?
 authorName: Hari Bhandari
@@ -683,22 +683,22 @@ In this case too, docker comes to the rescue.
 
 Selenium provides Docker images out of the box to test with one or several browsers. The images spawn a Selenium server and a browser underneath. It can work with different browsers.
 
-Now to run selenium using docker we just need to run [selenium/standalone-chrome](https://hub.docker.com/r/selenium/standalone-chrome) or [selenium/standalone-firefox](https://hub.docker.com/r/selenium/standalone-firefox) as:
+Now, to run selenium using docker, we just need to run [selenium/standalone-chrome](https://hub.docker.com/r/selenium/standalone-chrome) or [selenium/standalone-firefox](https://hub.docker.com/r/selenium/standalone-firefox) as:
 
 \`docker run -d -v /dev/shm:/dev/shm selenium/standalone-chrome-debug\`
 
 Here
 - \`-d\` runs the container in the background (detached)
-- \`-v /dev/shm:/dev/shm\` adds a volume mount to use the host\u2019s shared memory. There is no requirement for a volume mount but it is recommended.
+- \`-v /dev/shm:/dev/shm\` adds a volume mount to use the host\u2019s shared memory. There is no requirement for a volume mount, but it is recommended.
 
 Once you run the command, Docker will download the selenium image and run the container straight away (port: \`4444\`).
 
 ## Networking using the host network
-When the docker container is running it has its own \`localhost\` which is relative to its container and it has no awareness of \`localhost\` running on the host OS. Because of this, we cannot access the selenium container at \`localhost:4444\`. Also, the selenium container won't be able to access the apps running on \`localhost\` of the host OS.
+When the docker container is running, it has its own \`localhost\` which is relative to its container and it has no awareness of \`localhost\` running on the host OS. Because of this, we cannot access the selenium container at \`localhost:4444\`. Also, the selenium container won't be able to access the apps running on \`localhost\` of the host OS.
 
 How do we solve this problem?
 
-The answer is simple - we use docker option \`--network="host"\` in \`docker run\` command. If we use the \`host\` network mode for a container, that container\u2019s network stack is not isolated from the docker host, and the container does not get its own IP-address allocated. Now, the selenium container will be available on port 4444 on the \`localhost\`.
+The answer is simple \u2014 we use docker option \`--network="host"\` in \`docker run\` command. If we use the \`host\` network mode for a container, that container\u2019s network stack is not isolated from the docker host, and the container does not get its own IP-address allocated. Now, the selenium container will be available on port 4444 on the \`localhost\`.
 
 Now, the \`docker run\` command should basically look like:
 
@@ -766,14 +766,14 @@ banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallb
 
 "In Jest, there is truth" -William Shakespeare.
 
-By using Jest, you will know the truth about your application. The \`Jest\` is a javascript testing tool that is installed via NPM or Yarn and run via the command line. It is a great testing library and many react team members are involved building it, so it happens to work very well for testing react applications. Jest is built on top of Jasmine and Mocha but some additional features like snapshot testing and parallel test execution are provided by Jest. It also comes with built-in mocking and assertion abilities.
+By using Jest, you will know the truth about your application. The \`Jest\` is a javascript testing tool that is installed via NPM or Yarn and run via the command line. It is a great testing library and many react team members are involved in building it, so it happens to work very well for testing react applications. Jest is built on top of Jasmine and Mocha, but some additional features like snapshot testing and parallel test execution are provided by Jest. It also comes with built-in mocking and assertion abilities.
 
-Puppeteer is a Node library that is used for browser automation. Puppeteer provides a high-level API to control the browser. It can work with Chrome, Chromium or Firefox. By default this library runs the browser in headless mode, but it can be also configured to run Chrome or Chromium fully (non-headless).
+Puppeteer is a Node library that is used for browser automation. Puppeteer provides a high-level API to control the browser. It can work with Chrome, Chromium or Firefox. By default, this library runs the browser in headless mode, but it can be also configured to run Chrome or Chromium fully (non-headless).
 
 ## Installation And Requirements
 This guide is based on Ubuntu 18.04. Some commands will be different if you have another OS installed on your computer. Before getting started with Jest, You need to have \`npm\` and an app for which you will be writing tests.
 
-If your app is not yet ready for testing then you can just clone this basic [todo app](https://github.com/Talank/todo-react) and follow along.
+If your app is not yet ready for testing, then you can just clone this basic [todo app](https://github.com/Talank/todo-react) and follow along.
 
 ### Jest Versions
 Jest is the test runner library for creating, executing, and structuring tests. Jest CLI is a tool that you use from the command line to run and provide configuration options to jest. It configures jest based on whatever argument you give while running jest. The version is important because jest is a dynamic library and different versions of jest might work differently. While writing this blog, I am using jest version \`24.9.0\`. So, some features might be different if you are using some other version.
@@ -784,7 +784,7 @@ You can install the latest version of jest from NPM using
 npm i jest --save-dev
 \`\`\`
 
-Now, its time to configure the NPM script for running a test from the command line. For this, open your \`package.json\` and add the \`test\` script as follows:
+Now, it's time to configure the NPM script for running a test from the command line. For this, open your \`package.json\` and add the \`test\` script as follows:
 \`\`\`
 "scripts": {
     "test": "jest"
@@ -793,7 +793,7 @@ Now, its time to configure the NPM script for running a test from the command li
 
 Tests are run by using the Jest CLI (typing \`jest\` followed by arguments in the command line).
 
-For example, in the [todo app](https://github.com/Talank/todo-react) in my github, you can run the test with the command \`npm run test\` since I have added \`"test": "jest"\` in the script of my \`package.json\`
+For example, in the [todo app](https://github.com/Talank/todo-react) in my GitHub, you can run the test with the command \`npm run test\` since I have added \`"test": "jest"\` in the script of my \`package.json\`
 
 With the above-mentioned way, jest can be configured within your \`package.json\`. That is the easy way for jest configuration. Alternatively, you can also use the jest configuration file for which you should create a \`jest.config.js\` file and include that file in the command to run the test. For example, your package.json scripts section should include
 \`\`\`
@@ -817,7 +817,7 @@ Use the following command to install puppeteer in your project.
 \`\`\`
 npm i puppeteer --save-dev
 \`\`\`
-Puppeteer will download the latest version of chrome. If you need to work with firefox then you need to install the \`puppeteer-firefox\` library. Refer to [Puppeteer for Firefox](https://www.npmjs.com/package/puppeteer-firefox) in the npmjs website for further details.
+Puppeteer will download the latest version of chrome. If you need to work with firefox, then you need to install the \`puppeteer-firefox\` library. Refer to [Puppeteer for Firefox](https://www.npmjs.com/package/puppeteer-firefox) in the npmjs website for further details.
 
 By the end of the installation of jest and puppeteer, you should have the following dependencies in the \`devDependencies\` section of your \`package.json\`.
 \`\`\`
@@ -828,10 +828,10 @@ By the end of the installation of jest and puppeteer, you should have the follow
 \`\`\`
 
 ### Creating Test Files
-The jest command runs the test files inside \`__tests__\` folder or it will runs any files with \`.spec.js\` or \`.test.js\` in their filename. So, you have to write your test in a file that ends with \`.spec.js\` or \`test.js\`. Or you can simply put all your tests inside the \`__tests__\` folder.
+The jest command runs the test files inside \`__tests__\` folder or it will run any files with \`.spec.js\` or \`.test.js\` in their filename. So, you have to write your test in a file that ends with \`.spec.js\` or \`test.js\`. Or you can simply put all your tests inside the \`__tests__\` folder.
 
 ### Jest Globals
-There are a variety of jest Globals but we will mainly need 2 important globals called \`describe\` and \`it\`. The table below tells about these two globals in more detail.
+There are a variety of jest Globals, but we will mainly need 2 important globals called \`describe\` and \`it\`. The table below tells about these two globals in more detail.
 
 | | it | describe |
 |---|---|---|
@@ -848,7 +848,7 @@ In addition to \`it()\` and \`describe()\` methods, you might need the following
 These functions are executed before and after the test scenarios. You can define these functions inside the \`describe()\` method to make it applicable for all tests in the scope of that particular \`describe()\` method.
 
 ## Demo:
-Here I have added a test for adding a task in my react ToDo app.
+Here I have added a test for adding a task in my React ToDo app.
 \`\`\`
 const puppeteer = require('puppeteer');
 
@@ -897,9 +897,9 @@ describe('Todo React', () => {
 \`\`\`
 
 ### Explanation of Demo
-In the above demo, I first imported the puppeteer library. And in before scenario, I launched the browser in headless mode. Before all the scenarios inside the first describe block, the browser is launched only once. And before each scenario, a new tab is opened in incognito mode. Similarly, after each scenario, the tab is closed and when all the scenarios are executed, the browser is closed.
+In the above demo, I first imported the puppeteer library. And in the before scenario, I launched the browser in headless mode. Before all the scenarios inside the first describe block, the browser is launched only once. And before each scenario, a new tab is opened in incognito mode. Similarly, after each scenario, the tab is closed and when all the scenarios are executed, the browser is closed.
 
-The browser is launched in headless mode by default. However, if you want to launch the browser in non-headless mode then you can provide the browser launch option in \`puppeteer.launch()\`. For example:
+The browser is launched in headless mode by default. However, if you want to launch the browser in non-headless mode, then you can provide the browser launch option in \`puppeteer.launch()\`. For example:
 \`\`\`
 browser = await puppeteer.launch({headless:false})
 \`\`\`
@@ -909,11 +909,11 @@ In Jest, there are plenty of functions to simulate UI activities. For example, i
 Similarly, for assert operation, you can use \`expect()\`. Many other matcher functions can be used with expect() such as \`.toContain(item)\` , \`toBeTruthy()\` etc. You can find more of these \`jest matchers\` in the [jest documentation](https://jestjs.io/docs/en/expect).
 
 ### Gherkin with Jest
-In Jest, you do not have to write a feature file for your test cases. If you need to write features in a separate file then you can use [jest-cucumber](https://github.com/bencompton/jest-cucumber) library. By using this library, you can replace \`describe\` and \`it\` blocks by \`Given\`, \`When\`, and \`Then\` step definitions. The step definitions are linked with the respective steps in the feature files.
+In Jest, you do not have to write a feature file for your test cases. If you need to write features in a separate file, then you can use [jest-cucumber](https://github.com/bencompton/jest-cucumber) library. By using this library, you can replace \`describe\` and \`it\` blocks by \`Given\`, \`When\`, and \`Then\` step definitions. The step definitions are linked with the respective steps in the feature files.
 
-However, I would prefer \`Codecept.js\` or \`nightwatch.js\` instead of \`jest\` if I need to use features of \`Cucumber.js\` while testing my application. Because, with jest-cucumber, you need to specify which feature file is linked with a particular step definition file. While Codecept.js or nightwatch.js, you can write the step definition of a \`given\` step in one file and the \`when\` step of the same scenario in some other file. You might lose this kind of freedom if you are using jest-cucumber.
+However, I would prefer \`Codecept.js\` or \`nightwatch.js\` instead of \`jest\` if I need to use features of \`Cucumber.js\` while testing my application. Because, with jest-cucumber, you need to specify which feature file is linked with a particular step definition file. While with Codecept.js or nightwatch.js, you can write the step definition of a \`given\` step in one file and the \`when\` step of the same scenario in some other file. You might lose this kind of freedom if you are using jest-cucumber.
 
-That's it for now. If you want to learn more about jest and it's commands, you can refer to [jestjs.io](https://jestjs.io/docs/en/api)
+That's it for now. If you want to learn more about jest and its commands, you can refer to [jestjs.io](https://jestjs.io/docs/en/api)
 
 Hope you enjoy jesting.
 ThankYou!
@@ -930,14 +930,14 @@ banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallb
 \`Nightwatch.js\` is an open-source automated testing framework that aims at providing complete E2E (end to end) solutions to automate testing with \`Selenium Javascript\` for web-based applications, browser applications, and websites. It is written in \`Node.js\` and uses the \`W3C WebDriver API\` (formerly Selenium WebDriver) for interacting with various browsers.
 
 ## Installation And Requirements
-This guide is based on Ubuntu 18.04. Some commands will be different if you have another OS installed on your computer. Also, we will be following the BDD approach in this blog. So, if you want to learn more about BDD first then please read our blog on [Demonstrating BDD (Behavior-driven development) in Go](https://dev.to/jankaritech/demonstrating-bdd-behavior-driven-development-in-go-1eci). Before getting started with Nightwatch we need to have the following installed on our computer.
+This guide is based on Ubuntu 18.04. Some commands will be different if you have another OS installed on your computer. Also, we will be following the BDD approach in this blog. So, if you want to learn more about BDD first, then please read our blog on [Demonstrating BDD (Behavior-driven development) in Go](https://dev.to/jankaritech/demonstrating-bdd-behavior-driven-development-in-go-1eci). Before getting started with Nightwatch, we need to have the following installed on our computer.
 
 ### 1. Node.js:
 - To install Node.js:
 \`\`\`
 sudo apt install nodejs
 \`\`\`
-- To verify the successful installation of nodejs and to check its version use the following command
+- To verify the successful installation of nodejs and to check its version, use the following command
 \`\`\`
 nodejs -v
 \`\`\`
@@ -949,7 +949,7 @@ npm -v
 \`\`\`
 
 ### 3. Java:
-We need java to run the Selenium server which automates our browser. If your machine does not have java installed then install it using the following command
+We need java to run the Selenium server which automates our browser. If your machine does not have java installed, then install it using the following command
 \`\`\`
 sudo apt install default-jdk
 \`\`\`
@@ -998,7 +998,7 @@ You need to define \`src_folders\` and \`launch_url\` inside the nightwatch.conf
 src_folders: YOUR_SOURCE_FOLDER_FOR_TEST_FILES
 launch_url: URL_OF_YOUR_WEBSITE
 \`\`\`
-Run this command to install nightwatch and cucumber into your project dependencies which allow us to run automated tests using the gherkin language.
+Run this command to install nightwatch and cucumber into your project dependencies, which allow us to run automated tests using the gherkin language.
 \`\`\`
 yarn add --dev nightwatch-api nightwatch cucumber
 \`\`\`
@@ -1041,7 +1041,7 @@ After(async () => {
 \`\`\`
 Here, we are using before() and after() hooks which will allow us to execute the code inside them before and after each test scenario.
 
-Before starting the Selenium server you need to change your directory to where the selenium and chromedriver files are. After doing that you can now start the Selenium server with the command:
+Before starting the Selenium server, you need to change your directory to where the selenium and chromedriver files are. After doing that, you can now start the Selenium server with the command:
 \`\`\`
 java -jar selenium-server-standalone-3.141.59.jar -port 4444
 \`\`\`
@@ -1106,7 +1106,7 @@ Finally, run the test from the root directory using the command:
 cucumber-js --require test/acceptance/index.js --require test/acceptance/stepDefinitions test/acceptance/features/[YOUR_FEATURE_FILE].feature
 \`\`\`
 
-Does the above command look long? I am sorry, but you have to use that command every time you run the test. But only the name of \`your feature file\` is different, while running different tests, the rest is all the same. So, let's assign an easy short name for the rest and put it inside the scripts section of \`package.json\`. I called it \`test-e2e\` and inside the scripts of \`package.json\`, I added
+Does the above command look long? I am sorry: you have to use that command every time you run the test. But only the name of \`your feature file\` is different, while running different tests, the rest is all the same. So, let's assign an easy short name for the rest and put it inside the scripts section of \`package.json\`. I called it \`test-e2e\` and inside the scripts of \`package.json\`, I added
 \`\`\`
 "test-e2e" : "cucumber-js --require test/acceptance/index.js --require test/acceptance/stepDefinitions"
 \`\`\`
@@ -1130,11 +1130,11 @@ banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallb
 
 ## Organize your company the geek-way
 
-How do you organize your documents in your department / company / startup ? Your policies, your minutes of meetings, your contracts, etc.?
+How do you organize your documents in your department / company / startup? Your policies, your minutes of meetings, your contracts, etc.?
 
 Do you have a trillion Word documents that you share with your colleagues using your /.\\*[cloud|share|box|sync|].\\*/ tool? That is good, but how do you know what is the latest version of a document? What is the version you are currently working with a colleague on? How do you track changes? You send a document to a group to review, several people edit some lines, others just type comments into the document, some send it back to you by email, others put it in a file share. And how do you know who agreed on the changes? Pure chaos!
 
-In our company we are using GIT as the solution for all that!
+In our company, we are using GIT as the solution for all that!
 
 Advantages:
 - easy to track every change of a document
@@ -1148,12 +1148,12 @@ OK, OK, there are also disadvantages:
 - binary files (.odt, .docx, etc.) are hard to diff => use Markdown wherever possible
 - limited formatting, no easy spreadsheet calculations
 
-But overall it works pretty good for us. And here are the rules we are working with:
+But overall, it works pretty good for us. And here are the rules we are working with:
 
 ### Commandments
 
 #### 1. use GIT
-For official work (proposals, policy, procedures, etc.) use GIT  where-ever possible.
+For official work (proposals, policy, procedures, etc.) use GIT where-ever possible.
 We like to use git as it makes it easy to know where the latest documents are and to track all changes.
 
 #### 2. use text only
@@ -1178,7 +1178,7 @@ Work in branches and make Pull Requests to the master branch. **You can work tog
 The commit message has to explain what you have changed, in just a few words
 
 #### 6. discuss Pull Requests
-If you are asked for your opinion on a change or a review is requested use the GitHub comment function to express yourself.
+If you are asked for your opinion on a change or a review is requested, use the GitHub comment function to express yourself.
 
 #### 7. use GitHub Issues function for ToDos
 The Issue function is great to write ToDos, assign work and discuss & track
@@ -1207,12 +1207,12 @@ write a comment.
 
 As collaborators cannot review their own work, making a commit, starting a new Pull Request and asking for a review is considered as their own signature for that particular document.
 
-This does not matter a great deal for a lot of work but occasionally might be very important. E.g. If you review&approve the Minutes of a meeting on GitHub it is the same as if you would approve and sign them during the next meeting.
+This does not matter a great deal for a lot of work but occasionally might be very important. E.g., If you review&approve the Minutes of a meeting on GitHub, it is the same as if you would approve and sign them during the next meeting.
 
 #### 10. use squash & rebase
-When merging a branch into master choose between "Squash & merge" and "Rebase & merge"
-- If there are a lot of small changes choose "Squash" to put all changes into one big commit
-- If there are changes where you care about the author use "Rebase"
+When merging a branch into master, choose between "Squash & merge" and "Rebase & merge"
+- If there are a lot of small changes, choose "Squash" to put all changes into one big commit
+- If there are changes where you care about the author, use "Rebase"
 - do not use "Merge & commit" as this creates unnecessary commit messages
 
 ### Workflow
@@ -1225,7 +1225,7 @@ When merging a branch into master choose between "Squash & merge" and "Rebase & 
   - create a Pull Request
   - tag your Pull Request
   - ask for comments
-5. when your work is ready to be reviewed ask for reviews and mark the
+5. when your work is ready to be reviewed, ask for reviews and mark the
 Pull Request as "To Review"
 6. after everybody who needs to give their approval has done so, merge your work into the master branch
 7. delete your work-branch
@@ -1244,17 +1244,17 @@ banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallb
 ---
 ## Robot Framework
 
-Robot framework is a generic open source test automation framework for acceptance testing. It is a keyword-driven testing framework that uses tabular test data syntax. It has easy syntax, using human-readable keywords. This framework is independent of operating system and application. The core framework is implemented using Python and also runs on Jython(JVM) and IronPython(.NET). This framework provides support for external libraries, tools which are open source and can be used for test automation.
+The Robot framework is a generic open-source test automation framework for acceptance testing. It is a keyword-driven testing framework that uses tabular test data syntax. It has easy syntax, using human-readable keywords. This framework is independent of the operating system and application. The core framework is implemented using Python and also runs on Jython(JVM) and IronPython(.NET). This framework provides support for external libraries, tools which are open source and can be used for test automation.
 
 The test data is in simple tabular format. When started, the robot framework processes the data, executes the test cases, and generates logs and reports.
 
- ### Installation and setup of robot framework
+ ### Installation and setup of the robot framework
 1. Preconditions:
    * Python installation
    * Pip
    * make virtual environment
 
-2. Installing robot framework with pip
+2. Installing the robot framework with pip
     * \`python -m pip install robotframework\`
     * \`python3 -m pip install  robotframework\`
 
@@ -1288,9 +1288,9 @@ The test data is in simple tabular format. When started, the robot framework pro
 8. Make a robot file inside a test folder eg: \`robotBDDExample/test/login.robot\`
 
 ### Test Data Sections
-The data used is defined in different sections in robot framework. These sections are often called tables.
+The data used is defined in different sections in the robot framework. These sections are often called tables.
 
- 1. Settings: This section is used for importing test libraries, resource files and variable files.
+ 1. Settings: This section is used for importing test libraries, resource files, and variable files.
  2. Variables: The variables that can be used in other parts of the test data are defined in this section.
  3. Test Cases: In this section, test cases are created from available keywords.
  4. Tasks: In this section, tasks are created using available keywords.
@@ -1324,7 +1324,7 @@ My Keyword
     File Should Exist    \${path}
 \`\`\`
 
-In order to make the separations more clear, pipe separated format can be used.
+To make the separations clearer, the pipe-separated format can be used.
 
 \`\`\`
 | *** Settings ***   |
@@ -1414,14 +1414,14 @@ Welcome Page Is Open
 Close all test browsers
     Close all browsers
 \`\`\`
-Now, let us understand the above example. The test case has a scenario for valid user login. This test case uses a number of keywords, which can be either the predefined keywords imported from the libraries, or can be self created using available low-level keywords. In the keyword section, all the self created keywords are defined using available keywords. For example: 'Input Username' is a user created keyword which uses an existing keyword 'Input Text'. Similarly, 'Welcome Page Is Open' is a user created keyword which is created using pre-existing keywords 'Location Should Be' and 'Title Should Be'.
+Now, let us understand the above example. The test case has a scenario for valid user login. This test case uses a number of keywords, which can be either the predefined keywords imported from the libraries, or can be self created using available low-level keywords. In the keyword section, all the self-created keywords are defined using available keywords. For example, 'Input Username' is a user-created keyword which uses an existing keyword 'Input Text'. Similarly, 'Welcome Page Is Open' is a user-created keyword which is created using pre-existing keywords 'Location Should Be' and 'Title Should Be'.
 
-The keyword 'Title Should Be' uses the page title such as 'Welcome Page' and 'Login Page' as in example above. These page titles are defined in the page object classes, which will be discussed below.
+The keyword 'Title Should Be' uses the page title such as 'Welcome Page' and 'Login Page' as in the example above. These page titles are defined in the page object classes, which will be discussed below.
 
-### Using page objects in robot framework
+### Using page objects in the robot framework
 Page objects provide an additional layer of abstraction for test case creation. Using page objects results in easier maintenance of the tests.
 
-PageObjectLibrary is a Robot Framework keyword library that makes it possible to use the Page Object pattern when testing web pages with the keyword based approach of robot framework. Page Object classes are implemented as standard robot keyword libraries. When you use PageObjectLibrary keywords to go to a page or assert you are on a specific page, the keyword will automatically load the library for that page and put it at the front of the library search order, guaranteeing that the Page Object keywords are available to your test case.
+PageObjectLibrary is a Robot Framework keyword library that makes it possible to use the Page Object pattern when testing web pages with the keyword-based approach of the robot framework. Page Object classes are implemented as standard robot keyword libraries. When you use PageObjectLibrary keywords to go to a page or assert you are on a specific page, the keyword will automatically load the library for that page and put it at the front of the library search order, guaranteeing that the Page Object keywords are available to your test case.
 
 #### Writing a page object class
 Page Objects are simple python classes that inherit from \`PageObjectLibrary.PageObject\`. There are only a couple of requirements for the class:
@@ -1434,9 +1434,9 @@ By inheriting from \`PageObjectLibrary.PageObject\`, methods have access to the 
 
 1. \`self.selib\` : a reference to an instance of \`SeleniumLibrary\`. With this you can call any of the SeleniumLibrary keywords via their python method names (eg: \`self.selib.input_text\`)
 
-2. \`self.browser\` : a reference to the webdriver object created when a browser was opened by \`SeleniumLibrary\`. With this you can bypass SeleniumLibrary and directly call all of the functions provided by the core selenium library.
+2. \`self.browser\` : a reference to the webdriver object created when a browser was opened by \`SeleniumLibrary\`. With this, you can bypass SeleniumLibrary and directly call all the functions provided by the core selenium library.
 
-3. \`self.locator\` : a wrapper around the \`_locators dictionary\` of the page. This dictionary can contain all of the locators used by the Page Object keywords. self.locators adds the ability to access the locators with dot notation rather than the slightly more verbose dictionary syntax (eg: \`self.locator.username\` vs \`self._locators["username"]\`.
+3. \`self.locator\` : a wrapper around the \`_locators dictionary\` of the page. This dictionary can contain all the locators used by the Page Object keywords. self.locators adds the ability to access the locators with dot notation rather than the slightly more verbose dictionary syntax, e.g.: \`self.locator.username\` vs \`self._locators["username"]\`.
 
 The above tests can be easy to understand when written in gherkin format. Let's get familiar with gherkin syntax and how the test can be written in this format.
 
@@ -1507,7 +1507,7 @@ class LoginContext:
     def submit_credentials(self):
         self.loginPage.submit_credentials()
 \`\`\`
-The login context file uses the methods of the login page. So, we must write every needed functions in the login page. Let us create a page objects directory 'page_objects' and then a login page 'page_objects/LoginPage'.
+The login context file uses the methods of the login page. So, we must write every needed function in the login page. Let us create a page objects directory 'page_objects' and then a login page 'page_objects/LoginPage'.
 
 \`\`\`py
 from PageObjectLibrary import PageObject, PageObjectLibraryKeywords
@@ -1558,7 +1558,7 @@ class FilesPage(PageObject):
     PAGE_TITLE = "Files - myApp"
 \`\`\`
 
-### Go to : https://github.com/JankariTech/robotBDDExample for example test cases.
+### Go to: https://github.com/JankariTech/robotBDDExample for example test cases.
 `,"/src/assets/scenarioOutline.md":`---
 title: Scenario Outline in a Gherkin Feature File
 authorName: Jasmine Baral
@@ -1569,7 +1569,7 @@ tags: testing, cucumber, gherkin, bdd
 banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
 ---
 
-As we are familiar with the basic gherkin syntax such as \`feature\`, \`scenario\`, \`background\`, \`given\`, \`when\` and \`then\` steps already, let us discuss about the \`Scenario Outline\` used in a gherkin feature file.
+As we are familiar with the basic gherkin syntax such as \`feature\`, \`scenario\`, \`background\`, \`given\`, \`when\` and \`then\` steps already, let us discuss the \`Scenario Outline\` used in a gherkin feature file.
 
 ### *Scenario Outline*
 
@@ -1594,13 +1594,13 @@ Let us start with a very simple feature where the remaining candies should be ca
    Then I should have 93 candies remaining
 \`\`\`
 
-It can be very time consuming to write repetitive scenarios with different permutations of data values. It can also be difficult for the reader to understand many seperate but similar scenarios. This can be improved by using the \`scenario outline\` and its example table, thus combining similar scenarios with different combinations of similar data values into one Scenario Outline. A Scenario Outline is always followed by an example table: \`Examples\`. The example table in scenario outline is used to combine multiple similar scenarios into a single scenario in the feature file. It provides one set of data per scenario. Each new row of the example table is run as a different scenario. The data values in single row of data are passed to the step definition at the run time of a scenario.
+It can be very time-consuming to write repetitive scenarios with different permutations of data values. It can also be difficult for the reader to understand many separate but similar scenarios. This can be improved by using the \`scenario outline\` and its example table, thus combining similar scenarios with different combinations of similar data values into one Scenario Outline. A Scenario Outline is always followed by an example table: \`Examples\`. The example table in scenario outline is used to combine multiple similar scenarios into a single scenario in the feature file. It provides one set of data per scenario. Each new row of the example table is run as a different scenario. The data values in a single row of data are passed to the step definition at the run time of a scenario.
 
 A scenario outline replaces variables with the value from the examples table. Each row in the examples table is considered to be a scenario.
 
-In the scenario outline, the data values do not need to be hard coded in the step definition. Rather the values are replaced with the name of the parameter <parameter_name> itself.
+In the scenario outline, the data values do not need to be hard coded in the step definition. Rather, the values are replaced with the name of the parameter <parameter_name> itself.
 
-In the above example of candies, if we observe closely, all three scenarios have the same statements, only the parameter value (total/consumed/remaining number of candies) is changing. This is where the significance of the scenario outline comes into the picture.
+In the above example of candies, if we observe closely, all three scenarios have the same statements. Only the parameter value (total/consumed/remaining number of candies) is changing. This is where the significance of the scenario outline comes into the picture.
 
 When we define a scenario using a scenario outline, we can specify a single test scenario for all the similar scenarios and then provide an example table at the end of the test scenario. The test scenario is always specified by \`Scenario Outline\` and is always followed by a table : \`Examples\`. This scenario will thus be executed as many times as the number of data inputs (data rows) provided in the examples table
 
@@ -1636,7 +1636,7 @@ Here, each row of the example table provides the email and password used in the 
 
 Let us be more clear. The above scenario outline consists of 3 similar scenarios which run uniquely with their own set of data. Let us see how it happens.
 
-The first row of data acts as first scenario and runs as :
+The first row of data acts as the first scenario and runs as :
 
 
 \`\`\`gherkin
@@ -1666,7 +1666,7 @@ And the user logs in
 Then the user should be redirected to the homepage
 \`\`\`
 
-To sum up, when there are cases where the scenarios are similar with same statements but with varying data values as parameters, it is advisable to use Scenario Outline with different sets of values provided through the examples table.
+To sum up, when there are cases where the scenarios are similar with the same statements but with varying data values as parameters, it is advisable to use a Scenario Outline with different sets of values provided through the examples table.
 `,"/src/assets/tablenodes.md":`---
 title: Datatables used in a Gherkin Feature File
 authorName: Jasmine Baral
@@ -1677,7 +1677,7 @@ tags: testing, cucumber, gherkin, bdd
 banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
 ---
 
-As we are familiar with the basic gherkin syntax such as \`feature\`, \`scenario\`, \`Scenario Outline\`, \`background\`, \`given\`, \`when\` and \`then\` steps already, let us discuss about the \`table\` or \`tablenodes\` used in the steps of a gherkin feature file.
+As we are familiar with the basic gherkin syntax such as \`feature\`, \`scenario\`, \`Scenario Outline\`, \`background\`, \`given\`, \`when\` and \`then\` steps already, let us discuss the \`table\` or \`tablenodes\` used in the steps of a gherkin feature file.
 
 ## Tables
 
@@ -1715,7 +1715,7 @@ Please do not confuse data tables with the example table used in a scenario outl
 
 ### *Data tables*
 
-Unlike the examples table, a table node provides all of the data in the data table at once, in the specific step where the table is provided.
+Unlike the examples table, a table node provides all the data in the data table at once, in the specific step where the table is provided.
 
 Let us look at another example of a data table. To be more clear about its significance, let us first write a scenario without using a data table as below.
 
@@ -1736,7 +1736,7 @@ Scenario: view and delete files
   And file "presentation" should be listed
 \`\`\`
 
-When observed closely, we can see that the listing of several files, continuous deletion of several files, non-listing of deleted files and listing of non-deleted files has been written using several repetitive steps. The steps seem to be difficult to maintain this way. Moreover, more effort is required to understand the scenario when reading it. To improve this, we can use the data tables. The example below illustrates the use of data tables in the steps where multiple data are to be passed at once. For example, multiple files are to be listed, multiple files are to be deleted, and again multiple files are expected not to be listed and to be listed respectively.
+When observed closely, we can see that the listing of several files, continuous deletion of several files, non-listing of deleted files and listing of non-deleted files has been written using several repetitive steps. The steps seem difficult to maintain this way. Moreover, more effort is required to understand the scenario when reading it. To improve this, we can use the data tables. The example below illustrates the use of data tables in the steps where multiple data are to be passed at once. For example, multiple files are to be listed, multiple files are to be deleted, and again multiple files are expected not to be listed and to be listed respectively.
 \`\`\`gherkin
  Scenario: view and delete files
    Given user "testuser" has been created
@@ -1815,7 +1815,7 @@ When('the user sets the price for the following items', (dataTable) => {
 })
 \`\`\`
 
-However, if we provide data in the steps as follows, then \`hashes\` can be used. for example:
+However, if we provide data in the steps as follows, then \`hashes\` can be used. For example:
 \`\`\`gherkin
 When the user sets the price for the following items
    | item      | price |
@@ -1866,7 +1866,7 @@ When the user tries to signup entering the following details
 Then an error message "This password is entirely numeric" should be shown above the "password" field
 \`\`\`
 
-For the step definition of when step, the data table is parsed as follows:
+For the step definition of a when step, the data table is parsed as follows:
 
 \`\`\`js
 When('the user tries to signup entering the following details', (dataTable) => {
@@ -1920,7 +1920,7 @@ Are you one of those who is still struggling to write your first End-to-End (E2E
 
 So what may be the reasons that you are struggling?
 
-- difficult to set up test framework with your web application?
+- difficult to set up a test framework with your web application?
 - difficult to learn?
 - lengthy implementation of code?
 
@@ -1929,10 +1929,10 @@ If the above points are exactly of your concern then \`test-cafe\` can be your g
 In this blog post, we will look into the concept of \`test-cafe\`, a modern solution to sort out E2E testing for your web application. At the end of this blog hopefully, you will be able to set up \`test-cafe\` for your web application and run your first end-to-end test.
 
 ## Brief about TestCafe
-Let's start this blog with a brief understanding of \`test-cafe\`. It is an open-source test automation framework or tool built with Node Js. This framework basically supports two programming languages i.e Javascript and Typescript. So you are required to have at least the basics of Javascript to use this tool. [DevExpress](https://www.devexpress.com/) is in charge of managing TestCafe, which is made available under an open-source MIT license.
+Let's start this blog with a brief understanding of \`test-cafe\`. It is an open-source test automation framework or tool built with Node Js. This framework basically supports two programming languages i.e., Javascript and Typescript. So you are required to have at least the basics of Javascript to use this tool. [DevExpress](https://www.devexpress.com/) is in charge of managing TestCafe, which is made available under an open-source MIT license.
 
 ## Why to use TestCafe?
-Before moving to installation and set-up, lets understand some points why to use \`test-cafe\`.
+Before moving to installation and set-up, let's understand some points why to use \`test-cafe\`.
 
 - It is very easy to set up
 - No dependencies (with other libraries)
@@ -1947,7 +1947,7 @@ Before moving to installation and set-up, lets understand some points why to use
 At first, we need \`Node JS\` installed into our system. You can download \`Node JS\` version 12 or above. [Download Node JS](https://nodejs.org/en/download/).
 
 ## Installation and setup
-Now lets move into installing \`test-cafe\` which is really easy. Follow the following steps:
+Now let's move into installing \`test-cafe\` which is really easy. Follow the following steps:
 
 - Create a folder \`E2EWithTestCafe\`.
 - Open the folder you created with a code editor. In my case I am using \`Visual Studio Code\`.
@@ -2021,11 +2021,11 @@ test("Submitting a form should browse to thank you page", async (t) => {
 
 \`\`\`
 
-I will not be explaining the whole implementation but I have put comments on each action in the code. And probably the code is easy to understand which is exactly what \`test-cafe\` has aimed for.
+I will not be explaining the whole implementation, but I have put comments on each action in the code. And probably the code is easy to understand which is exactly what \`test-cafe\` has aimed for.
 
 ## Running Test
 
-Huh, now finally the time has come to run our test script and see it magically running. To run our test we need some adjustments in the \`package.json\` file. Put the test scripts as
+Huh, now finally the time has come to run our test script and see it magically running. To run our test, we need some adjustments in the \`package.json\` file. Put the test scripts as
 
 \`\`\`json
 // package.json file
@@ -2042,7 +2042,7 @@ Now one final command needed to run our test i.e.
 npm run test
 \`\`\`
 
-With the above command being executed, you should see the browser (chrome) automating the actions that we have implemented. (submitting a form with a name that redirects to Thank You page)
+With the above command being executed, you should see the browser (chrome) automating the actions that we have implemented. (Submitting a form with a name that redirects to Thank You page)
 
 And your output in the console should look like this
 
@@ -2088,7 +2088,7 @@ Here, in this blog, we are going to talk about partial upload failing. We all ha
 Now, you have to go through all the trouble to re-upload it, which is irritating as well as time-consuming.
 
 There might be various factors for such failure. Such as a weak internet connection, your browser might crash, etc.
-So, what can we do? Should we re-upload the whole file? But then again the re-uploading process will take the same amount of time and effort that it required earlier. If only there was a way that we could continue from where the last failure occurred.
+So, what can we do? Should we re-upload the whole file? But then again, the re-uploading process will take the same amount of time and effort that it required earlier. If only there was a way that we could continue from where the last failure occurred.
 
 Well, we are in luck because the answer is simple, "TUS upload".
 
@@ -2096,23 +2096,23 @@ Well, we are in luck because the answer is simple, "TUS upload".
 
 TUS stands for Transloadit Upload Server.
 
-"TUS is a protocol for resumable uploads built on HTTP. It offers simple, cheap, and reusable stacks for clients and servers. It supports any programming-language, any platform, and any network."
+"TUS is a protocol for resumable uploads built on HTTP. It offers simple, cheap, and reusable stacks for clients and servers. It supports any programming language, any platform, and any network."
 
 ## Why TUS?
 
-So, the question may arise, Why do we need TUS? The thing about TUS is that it allows us to continue uploading our file from where we left off even after it has failed previously.
+So, the question may arise; why do we need TUS? The thing about TUS is that it allows us to continue uploading our file from where we left off even after it has failed previously.
 
-For example, We are trying to upload a file of 100 GB and due to some interruption, we were able to upload only 60 GB of the data. Normally, we would re-upload the file which means we will be uploading the 60 GB of the same data that was already uploaded in a prior upload. But, using TUS we won't need to upload that 60 GB we will be uploading the remaining 40 GB of data.
+For example, We are trying to upload a file of 100 GB and due to some interruption, we were able to upload only 60 GB of the data. Normally, we would re-upload the file, which means we will be uploading the 60 GB of the same data that was already uploaded in a prior upload. But, using TUS, we won't need to upload that 60 GB. We will be uploading only the remaining 40 GB of data.
 
 ## Pros
 
-- It is built upon HTTP and supports any programming-language, any platform, and any network.
+- It is built upon HTTP and supports any programming language, any platform, and any network.
 - The main advantage of using TUS is that you can start uploading files from the point where you left off last time.
 - It is open source. So, anyone can use and contribute to it.
-- It allows the user the ability to pause and resume the upload anytime they want(even after multiple days).
+- It allows the user the ability to pause and resume the upload anytime they want (even after multiple days).
 - It can handle increasing numbers of connections and uploads.
 
-To see a demo of how it works you can visit the [Resumable File Upload Demo](https://tus.io/demo.html) and for real-life implementation of TUS resumable upload protocol have a look at [this](https://tus.io/implementations.html).
+To see a demo of how it works, you can visit the [Resumable File Upload Demo](https://tus.io/demo.html) and for real-life implementation of TUS resumable upload protocol have a look at [this](https://tus.io/implementations.html).
 
 This brings us to the end of this blog. In the next blog, we will look into specifications for the TUS protocol and its HTTP methods.
 `,"/src/assets/BDDInGo/BDDInGo.md":`---
@@ -2138,23 +2138,23 @@ I will not explain all principles of BDD upfront, but explain some of them as I 
 If you have more good resources, please post them in the comment section.
 
 ## The basic idea
-I'm a fan of explaining things with real examples, that's why in [Demonstrating TDD (Test-driven development) in Go](https://dev.to/jankaritech/demonstrating-tdd-test-driven-development-in-go-27b0) I've created that small library to convert from Bikram Sambat (BS) (also called Vikram Samvat) dates to Gregorian dates and vice-versa. Now I want to use that library to create an API-driven service to do the conversion. (The project can be found on [github](https://github.com/JankariTech/bsDateServer))
+I'm a fan of explaining things with real examples, that's why in [Demonstrating TDD (Test-driven development) in Go](https://dev.to/jankaritech/demonstrating-tdd-test-driven-development-in-go-27b0) I've created that small library to convert from Bikram Sambat (BS) (also called Vikram Samvat) dates to Gregorian dates and vice-versa. Now I want to use that library to create an API-driven service to do the conversion. (The project can be found on [GitHub](https://github.com/JankariTech/bsDateServer))
 
 One could now give that "requirement" to a developer and see what happens. With that kind of small project, chances are, something good will come out, but bad things might also happen:
 - the API will be super-complex and over-engineered
 - the API does the conversion, but does not handle errors correctly
 - etc.
 
-So there is a lot of potential for wasted resources, conflicts, misunderstandings etc. So it would be better to write down the requirements in more detail, because:
+So there is a lot of potential for wasted resources, conflicts, misunderstandings, etc. So it would be better to write down the requirements in more detail, because:
 
-1. As customer you want your application to behave correctly (sometimes without knowing exactly what that means).
-2. As developer your want to develop exactly what is requested and needed (to save time) and get paid afterwards.
-3. As as QA-person, you want to know what you have to test, and you want to know what is a bug and what is a feature.
+1. As a customer, you want your application to behave correctly (sometimes without knowing exactly what that means).
+2. As a developer, you want to develop exactly what is requested and needed (to save time) and get paid afterward.
+3. As a QA-person, you want to know what you have to test, and you want to know what is a bug and what is a feature.
 
-So basically the goal is to get all the stakeholders (there might be more than the listed 3) to communicate and agree on what should be the acceptable behavior of the application. And that is in a nutshell the idea of BDD: improve the communication between stakeholders so that everybody knows what is talked about.
+So basically the goal is to get all the stakeholders (there might be more than the listed 3) to communicate and agree on what should be the acceptable behavior of the application. And that is in a nutshell, the idea of BDD: improve the communication between stakeholders so that everybody knows what is talked about.
 
-But how to do that? The customer might think that the one-line explanation: "API to convert dates from BS to AD and vice-versa" is enough, the manager wants to write a contract and the developer says: "code is documentation enough".
-A good way to bring everybody on the same page is to describe the features of an application using the Gherkin language. Its a semi-structured language, that is so simple a cucumber could understand.
+But how to do that? The customer might think that the one-line explanation: "API to convert dates from BS to AD and vice-versa" is enough, the manager wants to write a contract, and the developer says: "code is documentation enough."
+A good way to bring everybody on the same page is to describe the features of an application using the Gherkin language. It's a semi-structured language that is so simple a cucumber could understand.
 
 ## Who wants to achieve what and why?
 In the project folder we create a new file called \`bs-to-ad-conversion.feature\`. Here we want to describe the feature to convert the dates in one direction. The description of every feature of the app is supposed to go into a separate file.
@@ -2172,7 +2172,7 @@ Feature: convert dates from BS to AD using an API
 These lines are very important. They answer the question of WHO wants to achieve WHAT with that feature and WHY. If you don't know who will use that feature, why do you implement it? If there is nothing to achieve with that feature, you actually don't have a feature. And if there is no reason to use that feature, it doesn't have a business value. So if the stakeholders (developer, customer, manager, QA, etc.) cannot answer these 3 questions, nobody really should spend time and money to implement it.
 
 ## Scenarios
-Every feature has different scenarios. A "add item to shopping basket"-feature in an online-shop could have scenarios like:
+Every feature has different scenarios. An "add item to shopping basket"-feature in an online-shop could have scenarios like:
 - adding item to the basket while user is logged in
 - adding item to the basket while user is not logged in
 - adding item to the basket when the card is empty
@@ -2180,9 +2180,9 @@ Every feature has different scenarios. A "add item to shopping basket"-feature i
 - adding multiple items to the basket at once
 - etc.
 
-In every scenario your app might behave differently. If that specific behavior in that scenario matters for one or more stakeholders, better describe it.
+In every scenario, your app might behave differently. If that specific behavior in that scenario matters for one or more stakeholders, better describe it.
 
-In Gherkin we have to start the scenario description with the \`Scenario:\` keyword and a short free-text sentence:
+In Gherkin, we have to start the scenario description with the \`Scenario:\` keyword and a short free-text sentence:
 
 \`\`\`gherkin
   Scenario: converting a valid BS date
@@ -2191,7 +2191,7 @@ In Gherkin we have to start the scenario description with the \`Scenario:\` keyw
 \`\`\`
 
 ## Given, When, Then
-Now we want to describe the specific behavior of the app in that scenario. For that Gherkin provides 3 different keywords:
+Now we want to describe the specific behavior of the app in that scenario. For that, Gherkin provides 3 different keywords:
 - **Given** - prerequisites for the scenario
 - **When** - the action to be tested
 - **Then** - the desired observable outcome
@@ -2208,7 +2208,7 @@ but you can use \`And\` (it just sounds and reads nicer)
  And doing B
  \`\`\`
 
-For a complex application there will be most-likely some steps to bring the application into the state that you want to test (e.g. create users, navigate to a specific page, etc), for those prerequisites you should use the \`Given\` keyword.
+For a complex application there will be most-likely some steps to bring the application into the state that you want to test (e.g., create users, navigate to a specific page, etc.), for those prerequisites you should use the \`Given\` keyword.
 For our app, I cannot really think of anything. So I skip over to the \`When\` keyword.
 
 The \`When\` keyword is for the action (or multiple) you really want to test.
@@ -2235,21 +2235,21 @@ Now, what should happen in those specific scenarios? What is the observable outc
 \`\`\`
 
 So as pieces of our description we have:
-1. features - one feature per file
-2. scenarios - different ways that the feature should behave
-3. steps - detailed description of every scenario. Every step starts with \`Given\`, \`When\` or \`Then\`
+1. features \u2014 one feature per file
+2. scenarios \u2014 different ways that the feature should behave
+3. steps \u2014 detailed description of every scenario. Every step starts with \`Given\`, \`When\` or \`Then\`
 
-All these pieces have to be written in a natural language, that all stakeholders can understand. What that means in detail would be a whole own post. In our case the "customer", requested an API, so IMO using technical terms like "HTTP-response code" should be OK. If you describe a GUI, the descriptions should be probably even less technical. The bottom line is: use words that all understand. Remember: BDD is all about improving communication!
+All these pieces have to be written in a natural language that all stakeholders can understand. What that means in detail would be a whole own post. In our case, the "customer" requested an API, so IMO using technical terms like "HTTP-response code" should be OK. If you describe a GUI, the descriptions should be probably even less technical. The bottom line is: use words that all understand. Remember: BDD is all about improving communication!
 
 
-For more information about how to phrase the steps definitions see: https://cucumber.io/docs/gherkin/reference/
+For more information about how to phrase the step definitions see: https://cucumber.io/docs/gherkin/reference/
 
 After specifying one feature (or even one scenario) the developer could start developing. In SCRUM-terms: one feature is one user-story, so you do all your agile development cycle with it. Create one or multiple, put them in sprints, work on them, test them, etc. The description is not only the ToDo list for the developer, but also the test-procedure for QA and the documentation.
 
 ## Test it automatically
 We could stop there, but there is a great bonus-point: let's use these descriptions to run automatic tests.
 
-For that we need software that interprets the Gherkin language and runs code that executes the tests. For Go there is the [godog package](https://github.com/cucumber/godog).
+For that, we need software that interprets the Gherkin language and runs code that executes the tests. For Go there is the [godog package](https://github.com/cucumber/godog).
 
 To install godog we fist have to create a simple \`go.mod\` file with the content
 \`\`\`golang
@@ -2266,7 +2266,7 @@ go get github.com/cucumber/godog@v0.12.6
 
 (The version number \`@v0.12.6\` is optional, if it's not given the latest version will be installed. I set the version here to make sure this blog-post stays valid also when s.th. changes in godog)
 
-We also, need the godog cli command to run our tests. Run the following command to add the godog cli to \`$GOPATH/bin\`
+We also need the godog cli command to run our tests. Run the following command to add the godog cli to \`$GOPATH/bin\`
 
 \`\`\`shell
 go install github.com/cucumber/godog/cmd/godog@v0.12.6
@@ -2423,7 +2423,7 @@ Running godog now gives us this result
 ...
 \`\`\`
 
-It cannot connect to the server, because nothing is listening on that port. Let's change that. For a minimal implementation of a server waiting on the port put this code into \`main.go\` and run it with \`go run main.go\`
+It cannot connect to the server because nothing is listening on that port. Let's change that. For a minimal implementation of a server waiting on the port put this code into \`main.go\` and run it with \`go run main.go\`
 \`\`\`go
 package main
 
@@ -2513,7 +2513,7 @@ Let's do that:
  }
 \`\`\`
 
-Here we simply get the status code and the result body and compare it with the expectation. If it does not match, return an error. Make sure you show good error messages, the goal is to direct the developer as much as possible to the problem. The clearer the message is the quicker the developer will be able to fix the issue. Remember: these tests will not only be used during the initial development but also in the future to prevent regressions.
+Here we simply get the status code and the result body and compare it with the expectation. If it does not match, return an error. Make sure you show good error messages; the goal is to direct the developer as much as possible to the problem. The clearer the message is, the quicker the developer will be able to fix the issue. Remember: these tests will not only be used during the initial development but also in the future to prevent regressions.
 
 The regular-expression change in the \`FeatureContext\` just makes sure that we only accept decimal numbers in that step.
 
@@ -2575,7 +2575,7 @@ index ae01ed0..06299b0 100644
 
 Basically: split the incoming string, send it to the \`GoBikramSambat\` lib and return the formatted result.
 
-And with that the first scenario passes:
+And with that, the first scenario passes:
 \`\`\`gherkin
 ...
   Scenario: converting a valid BS date                                    # bs-to-ad-conversion.feature:6
@@ -2601,7 +2601,7 @@ And with that the first scenario passes:
 2.035601ms
 \`\`\`
 
-With a bit of error-handling we should be able to make the other one pass also.
+With a bit of error-handling, we should be able to make the other one pass also.
 
 \`\`\`diff
 index 06299b0..a62eaf6 100644
@@ -2661,7 +2661,7 @@ Feature: convert dates from BS to AD using an API
 \`\`\`
 
 ## Examples
-The scenarios we have written down are pretty limited, probably there are more requirements of the software. Specially there will be those that have not been spoken about. To reduce the size of the feature-file Gherkin has the \`Examples:\` keyword.
+The scenarios we have written down are pretty limited, probably there are more requirements of the software. Specially, there will be those that have not been spoken about. To reduce the size of the feature-file, Gherkin has the \`Examples:\` keyword.
 
 \`\`\`diff
 index 5a00814..18db1ed 100644
@@ -3335,30 +3335,30 @@ seriesTitle: Behaviour Driven Development
 episode: 3
 ---
 
-Imagine you have an application, it works great, but you need to rewrite it, maybe because the architecture is hitting some ceiling. There will be new features, but first, you need to make sure all the existing clients work with the new system. How do you make sure they do? It's simple: You need tests, tests that check the external behavior of the application. So if you have invested in a good UI and API test infrastructure in the first place it's a relatively easy task, and you can even do Behaviour Driven Development while writing the new system without having to write new tests.
+Imagine you have an application, it works great, but you need to rewrite it, maybe because the architecture is hitting some ceiling. There will be new features, but first, you need to make sure all the existing clients work with the new system. How do you make sure they do? It's simple: You need tests, tests that check the external behavior of the application. So if you have invested in a good UI and API test infrastructure in the first place, it's a relatively easy task. You can even do Behavior Driven Development while writing the new system without having to write new tests.
 
 Let me show how it works at ownCloud. They are exactly in that situation, they have a stable and great product (ownCloud X written in PHP) but want to rewrite it in Go - OCIS (you can read about the reasons and background [here](https://owncloud.com/infinite-scale/)).
 We as JankariTech have been working since 2017 for ownCloud to improve the test infrastructure, increase the coverage and reduce manual testing effort. As a result of this partnership, ownCloud has a huge API and UI test-suite that covers nearly all functionality of ownCloud X. How do you transfer that over to OCIS?
 
 ## Setup of the System under Test
 
-We haven't started to use the API & UI tests from the first day of development, but only after there has been a bare minimum of functionalities implemented in OCIS. To run the tests the first challenge was how to provision the system. The goal is to have feature parity, but of course OCIS did lack a lot of functionality at that stage of development, including APIs to create and delete users, set system relevant settings, etc. Additionally, to run tests in ownCloud X, we heavily rely on the command-line tool to bring the system into a testable state. There is no equivalent (yet) in OCIS. The solution to those challenges was to extend the test-code to do slightly different things on both systems. E.g. OCIS would get users from an LDAP server, in ownCloud X we would provision users and groups through the [provisioning api](https://doc.owncloud.com/server/developer_manual/core/apis/provisioning-api.html#instruction-set-for-users). Luckily we had the LDAP code already in the test-suite from testing the [ownCloud LDAP app](https://github.com/owncloud/user_ldap).
+We haven't started to use the API & UI tests from the first day of development, but only after there has been a bare minimum of functionalities implemented in OCIS. To run the tests, the first challenge was how to provision the system. The goal is to have feature parity, but of course OCIS did lack a lot of functionality at that stage of development, including APIs to create and delete users, set system relevant settings, etc. Additionally, to run tests in ownCloud X, we heavily rely on the command-line tool to bring the system into a testable state. There is no equivalent (yet) in OCIS. The solution to those challenges was to extend the test-code to do slightly different things on both systems. E.g. OCIS would get users from an LDAP server, in ownCloud X we would provision users and groups through the [provisioning api](https://doc.owncloud.com/server/developer_manual/core/apis/provisioning-api.html#instruction-set-for-users). Luckily, we had the LDAP code already in the test-suite from testing the [ownCloud LDAP app](https://github.com/owncloud/user_ldap).
 
 Those different code paths should be reduced to the setup of the SUT (System Under Test) - in Gherkin speak: Given - steps.
-All external behaviour that needs to be tested and examined should be the same on both systems, the goal is to reach feature parity at some point.
+All external behavior that needs to be tested and examined should be the same on both systems, the goal is to reach feature parity at some point.
 
 By now a lot of the provisioning API is also implemented in OCIS, so we could switch off the provisioning by LDAP.
 
 ## Failing tests
 
-Of course at the beginning most of the tests would fail on OCIS, the application is not ready and does not claim to be ready. We started with skipping the failing tests and running only the tests that we knew would pass on OCIS. That way we got green CI and still prevented regressions. It was never an option to have CI failing because "we know those tests are allowed to fail". In that case the developers would have to check manually which tests are allowed to fail and which not. People would forget to do that or make wrong decisions about what is an expected failure and what not. Most important: red CI looks ugly on a pull request or worse a merge and is an embarrassment \u{1F648}
+Of course, at the beginning, most of the tests would fail on OCIS, the application is not ready and does not claim to be ready. We started with skipping the failing tests and running only the tests that we knew would pass on OCIS. That way we got green CI and still prevented regressions. It was never an option to have CI failing because "we know those tests are allowed to fail." In that case, the developers would have to check manually which tests are allowed to fail and which not. People would forget to do that or make wrong decisions about what is an expected failure and what not. Most important: red CI looks ugly on a pull request or worse a merge and is an embarrassment. \u{1F648}
 
-Simply skipping failing tests also had big disadvantages. To make sure the test coverage is increased with every new feature added, the developer needs to know all the tests related to that feature and run them during or after the development. Or someone needs to run the skipped tests on a regular basis to see which of them started to pass and enable them. Both approaches are not practical because of 1. the laziness of human beings and 2. the amount of tests.
+Simply skipping failing tests also had big disadvantages. To make sure the test coverage is increased with every new feature added, the developer needs to know all the tests related to that feature and run them during or after the development. Or someone needs to run the skipped tests on a regular basis to see which of them started to pass and enable them. Both approaches are not practical because of 1. the laziness of human beings and 2. the number of tests.
 
 A lot of test frameworks have a feature that allows some specific tests to fail without failing the entire test-run. We took that idea further and implemented an "expected to fail" feature in CI. Tests listed in the expected-to-fail list **have** to fail, if they start to pass the CI run will fail.
 
-The advantage of that above just a simple "these tests are allowed to fail" is that, after adding a feature or fixing a bug, the developer is forced to look into the tests. If tests start to pass, the only job the developer has to do, is to remove them from the expected-to-fail list, [and what a joy is that](https://github.com/cs3org/reva/pull/1368#issuecomment-754179433) \u{1F389}.
-From that point on the test has to pass in all future runs, and we are sure not to introduce any regressions. If we would only have an allowed-to-fail list, there would be no pressure to remove tests from that list, humans are humans, so they would forget or miss some. Potentially a bug could get fixed, then see some regression again and none of that would be noticed by the test-suite. So let the computers do what they are good at - automate!
+The advantage of that above just a simple "these tests are allowed to fail" is that, after adding a feature or fixing a bug, the developer is forced to look into the tests. If tests start to pass, the only job the developer has to do is to remove them from the expected-to-fail list, [and what a joy is that](https://github.com/cs3org/reva/pull/1368#issuecomment-754179433) \u{1F389}.
+From that point on, the test has to pass in all future runs, and we are sure not to introduce any regressions. If we only had an allowed-to-fail list, there would be no pressure to remove tests from that list, humans are humans, so they would forget or miss some. Potentially, a bug could get fixed, then see some regression again and none of that would be noticed by the test-suite. So let the computers do what they are good at - automate!
 
 ## human-readable code
 
@@ -3367,12 +3367,12 @@ To improve the readability of the expected-to-fail list, it got converted from a
 ## BDD for rewrite
 
 With all that in place the developers
-1. can use the existing test-suites for Behaviour Driven Development while rewriting the whole system.
+1. can use the existing test-suites for Behavior Driven Development while rewriting the whole system.
 1. know what features are missing and how far they are on the way to feature parity
 1. don't need to rewrite all the tests for the new system
 1. are safe from regressions for already implemented features
 
-The only job left is to reduce the amount of expected-to-fail tests to 0, how hard can that be? \u{1F61C}
+The only job left is to reduce the number of expected-to-fail tests to 0, how hard can that be? \u{1F61C}
 `,"/src/assets/BDDWithFlutter/BDDWithFlutter.md":`---
 title: BDD (Behavior Driven Development) with Flutter
 authorName: Artur Neumann
@@ -3389,10 +3389,10 @@ This tutorial will first show how to test a flutter app using the Gherkin langua
 
 Flutter uses different types of tests [(unit, widget, integration)](https://flutter.dev/docs/testing). You should have all types of tests in your app, most of your tests should be unit tests, less widget and a few integration tests. The [test pyramid](https://martinfowler.com/bliki/TestPyramid.html) explains the principle well (using different words for the test-types).
 
-In this tutorial I want to help you to start with integration tests but go a step further than the description in the [flutter documentation](https://flutter.dev/docs/testing#integration-tests) and use the Gherkin language to describe the expected behavior.
-The basic idea behind Gherkin/Cucumber is to have a semi-structured language to be able to define the expected behaviour and requirements in a way that all stakeholders of the project (customer, management, developer, QA, etc.) understand them. Using Gherkin helps to reduce misunderstandings, wasted resources and conflicts by improving the communication. Additionally, you get a documentation of your project and finally you can use the Gherkin files to run automated tests.
+In this tutorial, I want to help you to start with integration tests but go a step further than the description in the [flutter documentation](https://flutter.dev/docs/testing#integration-tests) and use the Gherkin language to describe the expected behavior.
+The basic idea behind Gherkin/Cucumber is to have a semi-structured language to be able to define the expected behaviour and requirements in a way that all stakeholders of the project (customer, management, developer, QA, etc.) understand them. Using Gherkin helps to reduce misunderstandings, wasted resources and conflicts by improving communication. Additionally, you get a documentation of your project, and finally you can use the Gherkin files to run automated tests.
 
-If you write the Gherkin files, before you write the code, you have reached the final level, as this is called BDD (Behaviour Driven Development)!
+If you write the Gherkin files, before you write the code, you have reached the final level, as this is called BDD (Behavior Driven Development)!
 
 Here are some readings about BDD and Gherkin:
 - ["Introducing BDD", by Dan North (2006)](http://blog.dannorth.net/introducing-bdd)
@@ -3404,7 +3404,7 @@ But enough theory, lets get our hands dirty. (You can find all the code of this 
 
 ## The feature files
 
-For the start you should have installed the flutter-tools stack and create a flutter test-drive app as explained in the [get-started document](https://flutter.dev/docs/get-started/test-drive?tab=androidstudio)
+For the start, you should have installed the flutter-tools stack and create a flutter test-drive app as explained in the [get-started document](https://flutter.dev/docs/get-started/test-drive?tab=androidstudio)
 
 Inside the app folder create a folder called \`test_driver\` and inside another one called \`features\`. In \`features\` we will place all the Gherkin descriptions of the expected app behavior. So create here a file called: \`increment_counter.feature\`
 
@@ -3417,9 +3417,9 @@ Feature: Increment Counter
   So that I notice if one is missing
 \`\`\`
 
-The first line is just a title of the feature, the other three lines should answer the questions [Who, wants to achieve what and why with this particular feature](https://www.bibleserver.com/ESV/Luke15%3A4). If you cannot answer those questions for a particular feature of your app then you actually should not implement that feature, there is no use-case for it.
+The first line is just a title of the feature; the other three lines should answer the questions [Who wants to achieve what and why with this particular feature](https://www.bibleserver.com/ESV/Luke15%3A4). If you cannot answer those questions for a particular feature of your app, then you actually should not implement that feature; there is no use-case for it.
 
-Next we have to describe the specific behavior of the app. For that Gherkin provides 3 different keywords:
+Next, we have to describe the specific behavior of the app. For that, Gherkin provides 3 different keywords:
 - **Given** - prerequisites for the scenario
 - **When** - the action to be tested
 - **Then** - the desired observable outcome
@@ -3434,7 +3434,7 @@ Scenario: Counter increases when the button is pressed
 
 Later we will add more scenarios to the app, the feature might be the same, but in different scenarios it might have to react differently.
 
-Now we can start the app and use our behaviour description to check if it works as it should.
+Now we can start the app and use our behavior description to check if it works as it should.
 
 ## Test-automation
 
@@ -3489,8 +3489,8 @@ Future<void> main() {
 \`\`\`
 
 That was all we need to do for the installation, now we have to tell the test-software what actually to do with our Given, When and Then steps.
-The library gives us some built-in steps, that should work "out-of-the-box" but others we need to implement ourself.
-In our example the Then step is a built-in step but the Given and the When step have to be implemented. So let's do that. Inside \`test_driver\` create a folder called \`steps\` and in there create a file called \`tap_button_n_times_step.dart\` with the content:
+The library gives us some built-in steps that should work "out-of-the-box" but others we need to implement ourselves.
+In our example, the Then step is a built-in step but the Given and the When step have to be implemented. So let's do that. Inside \`test_driver\` create a folder called \`steps\` and in there create a file called \`tap_button_n_times_step.dart\` with the content:
 \`\`\`dart
 import 'package:flutter_driver/flutter_driver.dart';
 import 'package:flutter_gherkin/flutter_gherkin.dart';
@@ -3522,7 +3522,7 @@ class TapButtonNTimesStep extends When2WithWorld<String, int, FlutterWorld> {
 }
 \`\`\`
 
-In this file we have two classes, one for every step we want to implement. Every class extends an abstract class. The Given step extends a class which name starts with \`Given\` and analogously the When step extends a class which name starts with \`When\`. Then there is a number in the class name. That number tells how many parameters we can pass from the step to the implementation. In \`Given the counter is set to "0"\` there is one parameter (the \`0\`) and in \`When I tap the "increment" button 10 times\` two (the button name, and the amount of taps).
+In this file we have two classes, one for every step we want to implement. Every class extends an abstract class. The Given step extends a class which name starts with \`Given\` and analogously the When step extends a class which name starts with \`When\`. Then there is a number in the class name. That number tells how many parameters we can pass from the step to the implementation. In \`Given the counter is set to "0"\` there is one parameter (the \`0\`) and in \`When I tap the "increment" button 10 times\` there are two parameters (the button name, and the number of taps).
 
 The last part of the class to extend is \`WithWorld\` that gives us access to the Flutter context.
 
@@ -3541,7 +3541,7 @@ You could also use \`find.byTooltip\`, \`find.Type\` or \`find.bySemanticsLabel\
 Next the new .dart file with the step definitions need to be imported in \`app_test.dart\`:
 \`import 'steps/tap_button_n_times_step.dart';\`
 
-Additionally every class we add in the steps definitions we also have to register in the \`stepDefinitions\` array in \`app_test.dart\`, the line has to be:
+Additionally, every class we add in the step definitions we also have to register in the \`stepDefinitions\` array in \`app_test.dart\`, the line has to be:
 \`..stepDefinitions = [TapButtonNTimesStep(), GivenCounterIsSetTo()]\`
 
 Remember: The step \`Then I expect the "counter" to be "10"\` is a built-in-step. So we don't need to write any code for it, it will look for a text-widget with the key \`counter\` and assert its value.
@@ -3550,7 +3550,7 @@ Remember: The step \`Then I expect the "counter" to be "10"\` is a built-in-step
 1. connect your phone or start the emulator
 2. run \`dart test_driver/app_test.dart\`
 
-after a while you should see an output like:
+after a while, you should see output like:
 \`\`\`console
 Running scenario: Counter increases when the button is pressed # ./test_driver/features/increment_counter.feature:5
    \u221A Given the counter is set to "0" # ./test_driver/features/increment_counter.feature:6 took 146ms
@@ -3569,7 +3569,7 @@ and the app working on the phone screen.
 
 ## BDD (this time for real)
 
-We know now how to write feature files and how to run automated tests from them, but that hasn't been BDD yet. We have only written a test for an existing feature in the app. To do BDD we have first to write the expected behaviour and then start coding.
+We know now how to write feature files and how to run automated tests from them, but that hasn't been BDD yet. We have only written a test for an existing feature in the app. To do BDD, we have first to write the expected behavior and then start coding.
 
 ### 1. write down the expected behaviour
 
@@ -3587,16 +3587,16 @@ Feature: Decrement Counter
     Then I expect the "counter" to be "9"
 \`\`\`
 
-Trying to run this test we will have multiple issues:
+Trying to run this test, we will have multiple issues:
 1. the \`Given\` step only asserts the counter, but does not set it to a specific value
 2. the regex will not match the \`When\` step because it says \`time\` and not \`times\`
 3. there is no functionality and no button to decrement the counter
 
 ### 2. make the tests pass
 
-For the first issue we would need to pre-set the counter with a value, but as we are doing end-to-end tests and acting as a user, the only way for the user to get the counter up to a specific value is to press the (+) button. Our test-code will do the same. (Side note: that will take time during test-execution, the faster option would be to have a back-channel to pre-set the value e.g. \`Data Handlers\`, but I could not make it work).
+For the first issue, we would need to pre-set the counter with a value, but as we are doing end-to-end tests and acting as a user, the only way for the user to get the counter up to a specific value is to press the (+) button. Our test-code will do the same. (Side note: that will take time during test-execution, the faster option would be to have a back-channel to pre-set the value e.g. \`Data Handlers\`, but I could not make it work).
 
-So lets refactor our step definition, so that the Given step pre-sets the counter to the expected value:
+So let's refactor our step definition, so that the Given step pre-sets the counter to the expected value:
 \`\`\`diff
 index e4eea51..e2e1a38 100644
 --- a/myapp/test_driver/steps/tap_button_n_times_step.dart
@@ -3755,7 +3755,7 @@ PASSED: Scenario Counter decreases when the (-) button is pressed (Example 3) # 
 
 ### 4. repeat
 
-What about negative values? If a shepherd is using this app to count the sheep, there is no point to have a negative counter. To say it in Gherkin:
+What about negative values? If a shepherd is using this app to count the sheep, there is no point having a negative counter. To say it in Gherkin:
 \`\`\`gherkin
 Scenario: Counter should not be negative
   Given the counter is set to "0"
@@ -3763,7 +3763,7 @@ Scenario: Counter should not be negative
   Then I expect the "counter" to be "0"
 \`\`\`
 
-You also could add that to the previous table, but I would argue that it is another requirement and its easier to understand the feature file if its written out in a separate Scenario.
+You also could add that to the previous table, but I would argue that it is another requirement, and it's easier to understand the feature file if it's written out in a separate Scenario.
 
 Running this test fails with:
 
@@ -3812,7 +3812,7 @@ tags: browser automation, testing, playwright, selenium, webdriver, cypress, pro
 banner: https://blog.jankaritech.com/src/assets/BrowserAutomationProtocol/images/cover.jpg
 ---
 
-**TLDR**: _WebDriver_ and _Chrome DevTools Protocol_ are the two main protocols that are used to automate the browser and most of the browser automation tools are based on one of them. WebDriver BiDi is said to be the future of cross-browser automation.
+**TLDR**: _WebDriver_ and _Chrome DevTools Protocol_ are the two main protocols that are used to automate the browser, and most of the browser automation tools are based on one of them. WebDriver BiDi is said to be the future of cross-browser automation.
 
 > \u{1F4A1} Your browser is an automation tool in itself.
 
@@ -3833,7 +3833,7 @@ _Simply put, **Browser automation** is the process of automating the browser to 
 
 The simplest way to automate any browser is to use the available automation libraries such as selenium, playwright, cypress, and many more. However, today we are not going to learn about those automation tools. Instead, we are here to learn about the different approaches we can use to directly control the browser without the use of any automation libraries.
 
-In order to automate the browser, there are mainly three protocols or let's say approaches in practice.
+To automate the browser, there are mainly three protocols or let's say approaches in practice.
 
 1. WebDriver (Selenium WebDriver)
 2. Chrome DevTools Protocol
@@ -3851,9 +3851,9 @@ Learn more about the protocol at [W3C WebDriver](https://w3c.github.io/webdriver
 
 ### Chrome DevTools Protocol
 
-The Chrome DevTools Protocol (CDP) is a debugging protocol used by Chromium-based browsers such as Chrome, Edge, Opera, etc. Although it is not designed for testing purposes, it is a great tool for automating the browser and some automation tools such as puppeteer and playwright have proven that.
+The Chrome DevTools Protocol (CDP) is a debugging protocol used by Chromium-based browsers such as Chrome, Edge, Opera, etc. Although it is not designed for testing purposes, it is a great tool for automating the browser, and some automation tools such as puppeteer and playwright have proven that.
 
-There is no middleman like webdriver server (browser driver) between the client and the browser in this approach. Instead, the browser is directly controlled by the client using CDP. The communication with the browser is done through the socket connection and hence also enables bi-directional communication.
+There is no middleman like webdriver server (browser driver) between the client and the browser in this approach. Instead, the browser is directly controlled by the client using CDP. The communication with the browser is done through the socket connection and hence also enables bidirectional communication.
 
 ![Chrome DevTools Protocol](/src/assets/BrowserAutomationProtocol/images/cdp_ill.jpg)
 
@@ -3861,7 +3861,7 @@ Learn more about the protocol at [CDP](https://chromedevtools.github.io/devtools
 
 ### Native Scripting
 
-This approach is different from above two protocols. In the above two approaches, the automation script (client) and the browser are separated and run in different processes. In contrast, in this approach, the automation script is embedded in the browser itself and hence the browser is directly controlled by the injected script.
+This approach is different from the above two protocols. In the above two approaches, the automation script (client) and the browser are separated and run in different processes. In contrast, in this approach, the automation script is embedded in the browser itself and hence the browser is directly controlled by the injected script.
 
 This comes with some trade-offs such as being unable to support multiple browser tabs and more than one browser cannot be controlled at a time. But it has its own uniqueness and strengths.
 
@@ -3873,7 +3873,7 @@ Automation tools like Cypress and TestCafe use this pattern.
 
 ### WebDriver BiDi
 
-WebDriver is a unidirectional but a standard protocol to control the army of browsers. Whereas, CDP is a bidirectional but neither a testing nor a standard protocol which means the browser choices with CDP are limited and the protocol is likely to change rapidly. This is where WebDriver BiDi comes into the picture. The main concept of WebDriver BiDi is to combine the best of both worlds. It is a new standard protocol that is based on bi-directional communication over WebSocket or Pipes.
+WebDriver is a unidirectional but a standard protocol to control the army of browsers. Whereas, CDP is a bidirectional but neither a testing nor a standard protocol which means the browser choices with CDP are limited and the protocol is likely to change rapidly. This is where WebDriver BiDi comes into the picture. The main concept of WebDriver BiDi is to combine the best of both worlds. It is a new standard protocol based on bidirectional communication over WebSocket or Pipes.
 
 WebDriver BiDi is basically an extension to the WebDriver protocol which is still under development at the time of writing this blog post. And it is said to be the future of cross-browser automation because most of the key players such as Google, Apple, Mozilla, Microsoft, BrowserStack, etc. are involved in the development of this protocol.
 
@@ -3890,15 +3890,15 @@ createdAt: Aug 24, 2021
 tags: pactjs, testing, javascript
 banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/assets/ContractTestingWithPact/images/header.png
 ---
-Contract testing is a software testing technique which is used to test the integration points and interfaces between different software applications. The main goal of contract testing is to test each application in isolation and ensure that they are compatible with a shared contract.
+Contract testing is a software testing technique used to test the integration points and interfaces between different software applications. The main goal of contract testing is to test each application in isolation and ensure that they are compatible with a shared contract.
 
-Consumer driven contract testing is simply a contract testing approach in which a consumer sets the list of expectations as a contract and expects a provider to be compatible with that contract.
+Consumer-driven contract testing is simply a contract testing approach in which a consumer sets the list of expectations as a contract and expects a provider to be compatible with that contract.
 
 #### Pact
 
 > Pact is a code-first tool for testing HTTP and message integrations using contract tests.
 
-For more information see [docs.pact.io](https://docs.pact.io/)
+For more information, see [docs.pact.io](https://docs.pact.io/)
 
 In this blog post, I will focus on how to test HTTP integrations using Pact. The following diagram shows the overview of how Pact works:
 
@@ -3912,7 +3912,7 @@ Pact is available in more than 10 programming languages. See [here](https://docs
 
 ### Writing Tests with PactJs (Consumer Side)
 
-Let's assume that you have a web application that gets earth's total population from an API server and you want to test that application without having to actually communicate with the real server. This is where _Pact_ comes in.
+Let's assume that you have a web application that gets the earth's total population from an API server, and you want to test that application without having to actually communicate with the real server. This is where _Pact_ comes in.
 
 Before writing any tests, you need to have a working web application. Let's create one.
 
@@ -3957,7 +3957,7 @@ Create _client.spec.js_ file inside a _tests_ folder. This _spec_ file is our te
 
 The test looks like this:
 
-> Note: The following example may or may not work with the latest version of above packages
+> Note: The following example may or may not work with the latest version of the above packages
 
 \`\`\`js
 // tests/client.spec.js
@@ -4037,7 +4037,7 @@ And the mock server will respond with the expected response.
 })
 \`\`\`
 
-\`MatchersV3\` provides a set of matchers that can be used to check the response. For detailed information please read [Using the V3 matching rules](https://github.com/pact-foundation/pact-js/tree/feat/v3.0.0#using-the-v3-matching-rules)
+\`MatchersV3\` provides a set of matchers that can be used to check the response. For detailed information, please read [Using the V3 matching rules](https://github.com/pact-foundation/pact-js/tree/feat/v3.0.0#using-the-v3-matching-rules)
 
 It is important to note that the test function call and assertions should be done within the callback block of \`executeTest\`. Function \`executeTest\` is responsible for starting and, stopping the mock server and also for writing the pact file.
 
@@ -4054,7 +4054,7 @@ When a test run exits with success, it will generate a json file (i.e. pact or c
 
 ### Verifying the Provider (Provider Side)
 
-You have written tests for your web application. But now, you also need to verify that your API server returns the expected response as per the contract. As I have mentioned above, you need a pact file (contract) in order to verify the provider (API server).
+You have written tests for your web application. But now, you also need to verify that your API server returns the expected response as per the contract. As I have mentioned above, you need a pact file (contract) to verify the provider (API server).
 
 Let's create a simple API server using _express_ which will only respond to the \`/population\` endpoint.
 
@@ -4143,7 +4143,7 @@ npx jest tests/server.spec.js
 Result:
 ![Provider test result](/src/assets/ContractTestingWithPact/images/provider_test.png)
 
-Congratulations! You have successfully written your first consumer driven contract test and provider verification test using _Pact_.
+Congratulations! You have successfully written your first consumer-driven contract test and provider verification test using _Pact_.
 `,"/src/assets/JoplinWithOcis/JoplinWithOcis.md":`---
 title: Configure Joplin to work with ownCloud Infinite Scale (oCIS)
 authorName: Artur Neumann
@@ -4154,7 +4154,7 @@ tags: joplin, owncloud, cloudstorage
 banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/assets/JoplinWithOcis/joplin_with_ocis-header.png
 ---
 
-I love to use [Joplin](joplinapp.org) to organize my notes. To synchronize the notes between different devices I have so far used the WebDAV sync option together with [ownCloud 10](github.com/owncloud/core/). Now [oCIS (ownCloud Infinite Scale)](https://owncloud.com/infinite-scale/) is the new cool kid in the cloud storage space and I would like to use it for syncing of Joplin.
+I love to use [Joplin](joplinapp.org) to organize my notes. To synchronize the notes between different devices, I have so far used the WebDAV sync option together with [ownCloud 10](github.com/owncloud/core/). Now [oCIS (ownCloud Infinite Scale)](https://owncloud.com/infinite-scale/) is the new cool kid in the cloud storage space, and I would like to use it for syncing of Joplin.
 
 Similar to ownCloud 10, oCIS offers a WebDAV API, but it has [disabled basic-auth by default and the docs discourage using it in production](https://doc.owncloud.com/ocis/next/deployment/services/s-list/auth-basic.html#introduction). Instead, oCIS implements the OIDC workflow for authentication. I tried to get the OIDC authentication into Joplin, but sadly my [PR](https://github.com/laurent22/joplin/pull/7400) for that was refused.
 
@@ -4164,8 +4164,8 @@ The workaround is the "Share via link" function of oCIS. The generated links sup
 3. you should see the "Share via link" function
 4. create a new link
 5. change the permissions to "Anyone with the link can edit"
-6. additionally set a password ![password](/src/assets/JoplinWithOcis/password.png)
-7. to configure Joplin, open its synchronisation settings and:
+6. additionally, set a password ![password](/src/assets/JoplinWithOcis/password.png)
+7. to configure Joplin, open its synchronization settings and:
    1. select "WebDAV" as "Synchronisation target"
    2. copy the whole link URL into "WebDAV URL"
    3. take the last bit of the link URL (everything after the last \`/\`) as "WebDAV username"
@@ -4174,8 +4174,8 @@ The workaround is the "Share via link" function of oCIS. The generated links sup
 
 DONE!
 
-To access your notes, one would need to know the random link AND your self selected password - so it should be pretty safe.
-You could even have a different link, with a different password for every device you are using, so if you lose one device you would only have to delete that link to stop further syncing.
+To access your notes, one would need to know the random link AND your self-selected password \u2014 so it should be pretty safe.
+You could even have a different link, with a different password for every device you are using, so if you lose one device, you would only have to delete that link to stop further syncing.
 `,"/src/assets/JourneyWithGo-ABlogSeries/goBasics.md":`---
 title: Go Basics - The Starting Point
 authorName: Prarup Gurung (\u092A\u094D\u0930\u093E\u0930\u0941\u092A \u0917\u0941\u0930\u0941\u0919\u094D\u0917)
@@ -4193,8 +4193,8 @@ episode: 1
 ## Introduction
 - Designed and Developed at Google by Robert Griesemer, Rob Pike, and Ken Thompson
 - Go is an open-source programming language backed by Google
-- Go is statically typed i.e. you need to declare the type of a variable before using it
-- Go is compiled programming language i.e. you need to compile your code before running it
+- Go is statically typed i.e., you need to declare the type of a variable before using it
+- Go is compiled programming language i.e., you need to compile your code before running it
 
 ## Why Go?
 
@@ -4224,7 +4224,7 @@ tar -C /usr/local -xzf go1.19.4.linux-amd64.tar.gz
 
 ### Setting Environment Variables
 
-Go requires you to set two environment variables GOROOT and GOPATH. GOROOT points to the location of the Go installation directory whereas GOPATH points to the location of your workspace directory.
+Go requires you to set two environment variables GOROOT and GOPATH. GOROOT points to the location of the Go installation directory, whereas GOPATH points to the location of your workspace directory.
 
 1. Setting **GOROOT**
 \`\`\`bash
@@ -4338,7 +4338,7 @@ A similar code can be written as follows:
 \`\`\`go
 var number = 10
 \`\`\`
-In such type of declaration Go automatically infers the type of the variable from the value assigned to it.
+In such a type of declaration, Go automatically infers the type of the variable from the value assigned to it.
 
 The variable can be declared without the \`var\` keyword as follows:
 \`\`\`go
@@ -4419,7 +4419,7 @@ episode: 2
 
 **[\u0917\u094B](https://go.dev "Go in Nepali")** **"Journey With Go - A Blog Series"** about the basics of Go \`Go Basic\`, advanced concepts in Go \`Go Beyond Basics\`, testing with go \`Godog as Test Framework\` and many more.
 
-This is the second installment of the series. You are here which means you have already read the first blog of the series. If you haven't read the first blog, please read it first. It is available [here](https://blog.jankaritech.com/#/blog/Journey%20With%20Go%20-%20A%20Blog%20Series/Go%20Basics%20-%20The%20Starting%20Point "here"). In this blog, we will learn about the \`Control Flow Statements in Go\`. **So, let's get started.**
+This is the second installment of the series. You are here, which means you have already read the first blog of the series. If you haven't read the first blog, please read it first. It is available [here](https://blog.jankaritech.com/#/blog/Journey%20With%20Go%20-%20A%20Blog%20Series/Go%20Basics%20-%20The%20Starting%20Point "here"). In this blog, we will learn about the \`Control Flow Statements in Go\`. **So, let's get started.**
 
 ## **Control Flow Statements**
 
@@ -4434,7 +4434,7 @@ Branching statements divide the program into different branches on the basis of 
 
 #### 1. if-else
 
-If the condition is true, it executes the code inside the \`if\` block otherwise (i.e. the condition is false), it executes the code inside the \`else\` block. There are different forms of \`if-else\` pairs such as, \`if\`, \`if-else\`, \`nested if-else\`, and \`else-if ladder\`.
+If the condition is true, it executes the code inside the \`if\` block otherwise (i.e., the condition is false), it executes the code inside the \`else\` block. There are different forms of \`if-else\` pairs such as, \`if\`, \`if-else\`, \`nested if-else\`, and \`else-if ladder\`.
 
 ##### _a. if_
 
@@ -4460,7 +4460,7 @@ You are eligible to receive a Citizenship
 
 ##### _b. if-else_
 
-When you want to execute codes either for true or false cases then \`if-else\` can be used. \`if-else\` executes the code inside of the \`if\` block if the condition is true otherwise, it executes the code inside of the \`else\` block. The syntax of \`if-else\` is as follows.
+When you want to execute codes either for true or false cases then \`if-else\` can be used. \`if-else\` executes the code inside the \`if\` block if the condition is true otherwise, it executes the code inside the \`else\` block. The syntax of \`if-else\` is as follows.
 
 \`\`\`go
 if condition {
@@ -4518,7 +4518,7 @@ The greatest number is: 566
 
 ##### _d. else-if ladder_
 
-Else-if ladder is a series of if-else statements. It is used when we have multiple conditions to check, when the previous condition is not met. The syntax of \`else-if ladder\` is as follows.
+An else-if ladder is a series of if-else statements. It is used when we have multiple conditions to check, when the previous condition is not met. The syntax of \`else-if ladder\` is as follows.
 
 \`\`\`go
 if condition {
@@ -4546,7 +4546,7 @@ It is Negative number
 
 ### 2. Switch
 
-\`switch\` allows us to execute one block of code among several cases based on the value of a given expression. It can be used as an alternative to the \`else-if ladder\` statement, when you have lots of conditions to be checked. If none of the cases match with the expression, the code inside of the \`default\` block gets executed. The syntax of \`switch\` is as follows.
+\`switch\` allows us to execute one block of code among several cases based on the value of a given expression. It can be used as an alternative to the \`else-if ladder\` statement, when you have lots of conditions to be checked. If none of the cases match with the expression, the code inside the \`default\` block gets executed. The syntax of \`switch\` is as follows.
 
 \`\`\`go
 switch expression {
@@ -4579,7 +4579,7 @@ Tuesday
 
 The \`break\` keyword is not required, as the \`switch\` statement automatically breaks the execution of the code as soon as the first case is matched.
 
-But, we can use \`fallthrough\` keyword to execute the code inside of the next case. The syntax of \`fallthrough\` is as follows.
+But, we can use \`fallthrough\` keyword to execute the code inside the next case. The syntax of \`fallthrough\` is as follows.
 
 \`\`\`go
 switch expression {
@@ -4684,7 +4684,7 @@ Fruit at index 4 is Strawberry
 \`\`\`
 ### **C. Other Statements**
 
-Beside, if, switch, for, and range, Go language also provides some other statements. They are \`break\`, \`continue\`, \`defer\`, and \`panic\`.
+Besides, if, switch, for, and range, Go language also provides some other statements. They are \`break\`, \`continue\`, \`defer\`, and \`panic\`.
 #### 1. Break Statement
 
 \`break\` statement terminates the loop or switch statement and transfers execution to the code immediately after the loop or switch. The keyword \`break\` is used.
@@ -4733,7 +4733,7 @@ Done
 
 #### 3. Defer Statement
 
-\`defer\` statement invokes the function after the surrounding function returns. This delays the execution of the function. If there are multiple \`defer\` statements, they are executed in the last-in-first-out order. This statement might be useful for cleanup task after the function has been executed. The syntax of \`defer\` is as follows.
+\`defer\` statement invokes the function after the surrounding function returns. This delays the execution of the function. If there are multiple \`defer\` statements, they are executed in the last-in-first-out order. This statement might be useful for a cleanup task after the function has been executed. The syntax of \`defer\` is as follows.
 
 \`\`\`go
 func functionToDoSomething() {
@@ -4820,7 +4820,7 @@ Something went wrong
 
 ## Conclusion
 
-In this blog, we have learned about the control flow in Go language. We have learned about the branching statements, and looping statements. We have also learned about the \`break\`, \`continue\`, \`defer\`, \`panic\`, and \`recover\` statements. In the next blog, we will learn about the functions, Arrays, Strings, Structures in Go language. *Keep learning and keep practicing*. **Stay tuned!!!**.
+In this blog, we have learned about the control flow in Go language. We have learned about the branching statements and looping statements. We have also learned about the \`break\`, \`continue\`, \`defer\`, \`panic\`, and \`recover\` statements. In the next blog, we will learn about the functions, Arrays, Strings, and Structures in the Go language. *Keep learning and keep practicing*. **Stay tuned!!!**.
 
 ## References
 
@@ -4844,7 +4844,7 @@ episode: 3
 **[\u0917\u094B](https://go.dev "Go in Nepali")** **"Journey With Go - A Blog Series"** about the basics of Go \`Go Basic\`,
 advanced concepts in Go \`Go Beyond Basics\`, testing with go \`Godog as Test Framework\`, and many more.
 
-This is the third installment of the series. You are here which means you have most likely read the first and second blogs of
+This is the third installment of the series. You are here, which means you have most likely read the first and second blogs of
 the series. If you haven't, please read them
 first [Go Basics](https://blog.jankaritech.com/#/blog/Journey%20With%20Go%20-%20A%20Blog%20Series/Go%20Basics%20-%20The%20Starting%20Point "Go Basics"), [Control Statements](https://blog.jankaritech.com/#/blog/Journey%20With%20Go%20-%20A%20Blog%20Series/Control%20Statements%20-%20Control%20Your%20Go "Control Statements").
 
@@ -5042,7 +5042,7 @@ However, for the Nepali language, the value returned by the \`len\` function is 
 
 ## **3. Array**
 
-In Go, an array is a fixed-length sequence of elements of the same type but the content of the array is mutable (i.e. can be changed). Arrays are useful when you know the number of elements that you want to store in advance.
+In Go, an array is a fixed-length sequence of elements of the same type, but the content of the array is mutable (i.e., can be changed). Arrays are useful when you know the number of elements that you want to store in advance.
 
 ### **3.1. Declaration of Array**
 
@@ -5610,7 +5610,7 @@ Area of triangle is 25.00
 
 ### **6.3. Function Vs Method**
 
-A function is a block of code that performs a specific task whereas a method is a function that is associated with a type. We can create multiple methods of the same name associated with different types but the function name must be different (see example of [7.2](https://blog.jankaritech.com/#/blog/Journey%20With%20Go%20-%20A%20Blog%20Series/Fundamentals%20of%20Go%20-%20FARMISS:~:text=than%20one%20interface.-,Examples%3A,-package%20main%0A%0Aimport)).
+A function is a block of code that performs a specific task, whereas a method is a function that is associated with a type. We can create multiple methods of the same name associated with different types, but the function name must be different (see example of [7.2](https://blog.jankaritech.com/#/blog/Journey%20With%20Go%20-%20A%20Blog%20Series/Fundamentals%20of%20Go%20-%20FARMISS:~:text=than%20one%20interface.-,Examples%3A,-package%20main%0A%0Aimport)).
 
 Let's see the difference between a function and a method with the help of an example.
 
@@ -5812,7 +5812,7 @@ banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallb
 seriesTitle: Performance Testing with k6
 episode: 1
 ---
-Let's suppose your website/web-app/blog gets popular overnight ( Imagine Elon Musk tweeting about your web app ) and there's a massive spike in the number of visitors/users
+Let's suppose your website/web-app/blog gets popular overnight. Imagine Elon Musk tweeting about your web app, and there's a massive spike in the number of visitors/users
  accessing your web app. This swelling traffic can overwhelm the web server causing an unintentional distributed denial of service (DDOS) attack. This is a nightmare scenario as people cannot access your web-app.
 
 Now, how do we determine how many users your backend infrastructure can handle?
@@ -5824,9 +5824,9 @@ k6 is a free and open-source load testing tool written in Go programming languag
 If you are familiar with the basics of ES2015/ES6, you won't have any headache writing k6 tests.
 
 ### Installation
-To install k6 in your local machine follow the instructions provided here https://k6.io/docs/getting-started/installation/
+To install k6 on your local machine, follow the instructions provided here https://k6.io/docs/getting-started/installation/
 
-I am using ubuntu \`18.04\` but even if you are using another operating system you can follow along.
+I am using ubuntu \`18.04\` but even if you are using another operating system, you can follow along.
 
 ### Your first test
 
@@ -5852,7 +5852,7 @@ export default function() {
 };
 \`\`\`
 
-Unlike many other JavaScript runtimes, most of the operations in k6 are synchronous i.e. no need to use callbacks and promises.
+Unlike many other JavaScript runtimes, most of the operations in k6 are synchronous, i.e., no need to use callbacks and promises.
 For example;
 \`\`\`
 http.get(...).then(res =>....)
@@ -5861,7 +5861,7 @@ OR
 \`\`\`
 let response = await http.get(....)
 \`\`\`
-is not needed and we can use synchronous code mentioned in \`test.js\` of our example.
+is not needed, and we can use synchronous code mentioned in \`test.js\` of our example.
 
 ### Running tests
 Then run the k6 script using this command:
@@ -5884,7 +5884,7 @@ Now we'll run a k6 test with more than 10 virtual users and for a duration of 5 
 From the above screenshot:
 - \`checks = 100%\`: all of the test run passed
 - \`vus = 10\`: 10 virtual users (as provided in the run command)
-- \`iterations = 126\`: total number of iterations the test ran. This may vary with each run as we didn't specify the iterations ourself
+- \`iterations = 126\`: total number of iterations the test ran. This may vary with each run as we didn't specify the iterations ourselves
 
 
 Now, instead of doing \`--vus ... --durations .... --iterations....\` we can also \`export\` an \`options\` object to set any options that we want. For example:
@@ -5910,17 +5910,17 @@ banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallb
 seriesTitle: Performance Testing with k6
 episode: 2
 ---
-In the first part of this series we learnt about creating a very basic k6 test. In this tutorial we will create some more realistic and interesting tests.
- For that we better have a real App to test. For simplicity and because I'm familiar with it I've chosen [ownCloud](https://owncloud.com/), a file hosting and sharing
+In the first part of this series, we learnt about creating a very basic k6 test. In this tutorial, we will create some more realistic and interesting tests.
+ For that, we better have a real App to test. For simplicity and because I'm familiar with it, I've chosen [ownCloud](https://owncloud.com/), a file hosting and sharing
  solution similar to Dropbox.
 
 The easiest way to get a test ownCloud instance up and running is to use docker.
 
-Just run: \`docker run -p 8080:8080 --name owncloud owncloud/server\`.
+Run: \`docker run -p 8080:8080 --name owncloud owncloud/server\`.
 
 This magic \`docker run\` command should give you a fresh ownCloud installation that can be reached at http://localhost:8080.
 
-There is one user pre-setup called \`admin\` with the super-secure password \`admin\`. You can login into the UI and upload files, create new users, share files and folders, etc.
+There is one user pre-setup called \`admin\` with the super-secure password \`admin\`. You can log in to the UI and upload files, create new users, share files and folders, etc.
 After having played a bit with ownCloud itself, let's get back to k6.
 
 ### Test Creating file
@@ -6004,7 +6004,7 @@ export default function() {
 Here, we are adding code to delete a file. Also, I have separated the logic for file creation and deletion into two separate functions \`createFile\` and \`deleteFile\`.
 
 ### Settings Stages
-We can ramp up/down the VU level during the test using \`stages\`  The \`options.stages\` property allows you to configure ramping behaviour.
+We can ramp up/down the VU level during the test using \`stages\`  The \`options.stages\` property allows you to configure ramping behavior.
 
 \`\`\`
 ...
@@ -6040,7 +6040,7 @@ episode: 1
 ---
 
 You have created your shiny-new webapp and deployed it, great! But how many customers can you serve with your infrastructure? How many users can your backend handle?
-To answer those questions there are a couple of great performance-testing tools out there. One of them is [Locust](https://locust.io/)
+To answer those questions, there are a couple of great performance-testing tools out there. One of them is [Locust](https://locust.io/)
 The cool thing about locust is that you write your tests in plain python, so you can:
  - track your changes in git
  - test whatever you can code
@@ -6072,30 +6072,30 @@ class User(HttpLocust):
 
 The class \`User\` represents users of your app. The class \`UserBehaviour\` is a collection of the actions these users do.
 Every user will rerun the tasks every 1s till 10s \`wait_time = between(1, 10)\` The exact time between the requests will be chosen randomly.
-Inside of the \`UserBehaviour\` class you define tasks, currently we have only one task, to send a \`GET\` request.
+Inside the \`UserBehaviour\` class you define tasks; currently we have only one task, to send a \`GET\` request.
 
 ## run the tests
 
-so lets start the beast:
+so let's start the beast:
 \`/home/<your user>/.local/bin/locust --host=http://<host-to-test>\`
 or
 \`locust --host=http://<host-to-test>\`
 if you have installed locust system-wide
 
-Just make sure there is some HTTP server running under the given host
+Make sure there is some HTTP server running under the given host
 
 Now open http://localhost:8089/ in your browser
-You will see two input fields, one to set the amount of users you want to simulate and one to tell locust how fast you want to ramp up the users
+You will see two input fields, one to set the number of users you want to simulate and one to tell locust how fast you want to ramp up the users
 
 ![Start new Locust swarm](/src/assets/Locust/images/locust-01-images/StartNewLocustSwarm.png)
 
-Choose e.g. 20 users to simulate and 2 users/s as hatch rate and click "Start Swarming"
+Choose e.g., 20 users to simulate and 2 users/s as hatch rate and click "Start Swarming"
 
-In the main screen you will now see some statistics about the amount of requests, and how long they took. In the "Charts" tab you will find the same data over time in a nice graph. "Failures" and "Exceptions" should be empty, because all of the requests should have succeeded. And last under "Download Data", you get the data as nice CSV files.
+In the main screen, you will now see some statistics about the number of requests, and how long they took. In the "Charts" tab, you will find the same data over time in a nice graph. "Failures" and "Exceptions" should be empty, because all the requests should have succeeded. And lastly, under "Download Data", you get the data as nice CSV files.
 
 ## what's next?
 
-That all was nice and easy, but not very realistic. Does not matter if you want to test a web frontend or an API, just sending \`GET\` requests to \`/\` does not simulate what your users or clients will do. But we want to test what we fly and fly what we test. So in the next parts of this series we will extend the script to test an API in a more realistic way.
+That all was nice and easy, but not very realistic. Does not matter if you want to test a web frontend or an API, just sending \`GET\` requests to \`/\` does not simulate what your users or clients will do. But we want to test what we fly and fly what we test. So in the next parts of this series, we will extend the script to test an API in a more realistic way.
 `,"/src/assets/Locust/locust-02.md":`---
 title: Locust - 02 - Multiple Tasks
 authorName: Artur Neumann
@@ -6110,16 +6110,16 @@ episode: 2
 
 ## Preparations
 
-In [the first part of this series](https://dev.to/jankaritech/performance-testing-with-locust-01-get-started-pkk) we talked about creating a very basic locust performance test. Now we want to create some more realistic and interesting tests. For that we better have a real App to test. We could test any App that has an HTTP API. For simplicity and because I'm familiar with it I've chosen [ownCloud](https://owncloud.org/), a file hosting and sharing solution similar to Dropbox.
+In [the first part of this series](https://dev.to/jankaritech/performance-testing-with-locust-01-get-started-pkk) we talked about creating a very basic locust performance test. Now we want to create some more realistic and interesting tests. For that we better have a real App to test. We could test any App that has an HTTP API. For simplicity and because I'm familiar with it, I've chosen [ownCloud](https://owncloud.org/), a file hosting and sharing solution similar to Dropbox.
 
-The easiest way to get a test ownCloud instance up and running is to use docker. Just run: \`docker run -p 8080:8080 --name owncloud owncloud/server\`. That magic command should give you a fresh ownCloud installation reachable under http://localhost:8080. There is one user pre-setup called \`admin\` with the super-secure password \`admin\`. You can login into the UI and upload files, create new users, share files and folders, etc.
+The easiest way to get a test ownCloud instance up and running is to use docker. Run: \`docker run -p 8080:8080 --name owncloud owncloud/server\`. That magic command should give you a fresh ownCloud installation reachable under http://localhost:8080. There is one user pre-setup called \`admin\` with the super-secure password \`admin\`. You can log in to the UI and upload files, create new users, share files and folders, etc.
 OK, after having played a bit with ownCloud itself, let's get back to the performance tests, we actually want to learn about locust.
 
-You should now be able to run the locust test from the first part via \`locust --host=http://localhost:8080\`, but as we said there, that is not a very realistic test. What would a user do with ownCloud? A main action would be download and upload files. Let's tests the performance of that.
+You should now be able to run the locust test from the first part via \`locust --host=http://localhost:8080\`, but as we said there, that is not a very realistic test. What would a user do with ownCloud? A main action would be to download and upload files. Let's test the performance of that.
 
 ## Test downloading a file
 
-For file-operations ownCloud uses the [WebDAV](https://en.wikipedia.org/wiki/WebDAV) API. Starting from the locustfile we already have, we create a test for a file download.
+For file-operations, ownCloud uses the [WebDAV](https://en.wikipedia.org/wiki/WebDAV) API. Starting from the locustfile we already have, we create a test for a file download.
 
 \`\`\`
 from locust import HttpLocust, TaskSet, task, constant
@@ -6178,11 +6178,11 @@ class User(HttpLocust):
 Here we have a second task \`uploadFile\`, it's simply does a \`PUT\` request with a specific file-name and some data.
 (To be more [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself), I've placed \`davEndpoint\` in a variable)
 
-Locust will now run every task the same amount of times. But if you run that with enough locust-users (e.g. try 100) you will see the numbers in the \`# Fails\` column increase
+Locust will now run every task the same number of times. But if you run that with enough locust-users (e.g., try 100) you will see the numbers in the \`# Fails\` column increase
 
 ![increased upload failures](/src/assets/Locust/images/locust-02-images/failureCountIncrease.png)
 
-To see what happens, lets look into the "Failures Tab"
+To see what happens, let's look into the "Failures Tab"
 There we see the Failure "Type" \`HTTPError('423 Client Error: Locked for url: http://localhost:8080/remote.php/dav/files/admin/locust-perfomance-test-file.txt',)\`
 
 We have been using one single ownCloud-user \`admin\` and 100 locust-users. During the write operation ownCloud locks a file, but every second \`wait_time = constant(1)\` a locust-user tries to over-write that single file. So there will be collisions and that is what the error says.
@@ -6228,8 +6228,8 @@ In the locust UI you should now see one \`PUT\` request per locust-user and hope
 ## Weight of a task
 
 Now we run every task equally often. But do users upload files as often as they download them?
-Maybe, but maybe not - it depends on your situation and on what you want to test. Luckily locust gives your the freedom to choose.
-e.g. if you want to simulate the situation that the downloads/read operation occurs 3 times more often that a upload/write operation just add a weight argument to the task
+Maybe, but maybe not - it depends on your situation and on what you want to test. Luckily, locust gives you the freedom to choose.
+E.g., if you want to simulate the situation that the download/read operation occurs 3 times more often than an upload/write operation, just add a weight argument to the task
 
 \`\`\`
 ...
@@ -6255,11 +6255,11 @@ def uploadFile(self):
 
 Now most of your requests should be \`GET\`s.
 
-Remember: when testing we try to be as close to reality as possible. [If your test is significantly different to reality, bad things might happen.](https://people.cs.clemson.edu/~steve/Spiro/arianesiam.htm)
+Remember: when testing, we try to be as close to reality as possible. [If your test is significantly different to reality, bad things might happen.](https://people.cs.clemson.edu/~steve/Spiro/arianesiam.htm)
 
 ## whats next?
 
-We are still only using a single ownCloud user. The application might perform differently when using multiple users. We should create specific test-users before we run the test and ideally delete them at the end of the test run.
+We are still only using a single ownCloud user. The application might perform differently when using multiple users. We should create specific test users before we run the test and ideally delete them at the end of the test run.
 `,"/src/assets/Locust/locust-03.md":`---
 title: Locust - 03 - Setup Your System
 authorName: Artur Neumann
@@ -6276,7 +6276,7 @@ In the [last part of this series](https://dev.to/jankaritech/performance-testing
 
 Now we want to go the next step and use multiple ownCloud users.
 
-I will use the term "ownCloud user" for users that are set-up in the ownCloud system, have a username and password and can be used to login into the system. When I'm using the term "locust user" I'm talking about simulated users that hammer the server with requests. So far we used only one ownCloud user "admin" and multiple locust users. All locust users used that one ownCloud user to access the ownCloud server.
+I will use the term "ownCloud user" for users that are set up in the ownCloud system, have a username and password and can be used to log in into the system. When I'm using the term "locust user" I'm talking about simulated users that hammer the server with requests. So far, we used only one ownCloud user "admin" and multiple locust users. All locust users used that one ownCloud user to access the ownCloud server.
 
 In this part of the series we want to have one ownCloud user for every locust user, so every \`TaskSet\` will be connecting with an own ownCloud user to the ownCloud server.
 
@@ -6317,7 +6317,7 @@ class User(HttpLocust):
 
 We have two tasks and a \`setup\` and a \`teardown\`, one in the \`User\` class and one in the \`UserBehavior\` class
 
-Now lets see what happens.
+Now let's see what happens.
 
 1. Starting locust from the CLI:
 
@@ -6381,7 +6381,7 @@ Now lets see what happens.
     \`\`\`
 
 Did you expect that? \`teardown\` only runs after locust is completely stopped, not when the test is stopped.
-Makes sense, but does not help us with our issue, we want to create users before running the actual test and delete them afterwards. We might start and stop the test, without stopping locust and we can increase the locust users during the test and in that case we want to create more ownCloud users on the fly.
+Makes sense, but does not help us with our issue, we want to create users before running the actual test and delete them afterward. We might start and stop the test without stopping locust, and we can increase the locust users during the test, and in that case, we want to create more ownCloud users on the fly.
 
 Luckily we have also \`on_start\` and \`on_stop\` methods
 
@@ -6437,30 +6437,30 @@ class User(HttpLocust):
 
 So what is new here?
 
-The \`on_start\` method first constructs a ownCloud username out of "locust" & a number. The \`userNo\` variable has to be defined globally, so that it survives when locust initialize the next instance of the \`User\` class. Remember: the \`Locust\` class (\`HttpLocust\` inherits from \`Locust\`) represents one simulated user that accesses your application.
+The \`on_start\` method first constructs a ownCloud username out of "locust" & a number. The \`userNo\` variable has to be defined globally, so that it survives when locust initializes the next instance of the \`User\` class. Remember: the \`Locust\` class (\`HttpLocust\` inherits from \`Locust\`) represents one simulated user that accesses your application.
 
-Next a \`POST\` request is send with the username as userid and password. That requests needs to be authenticated as the admin-user. ([Check the ownCloud docu if you are interested to learn more about those requests.](https://doc.owncloud.com/server/10.0/admin_manual/configuration/user/user_provisioning_api.html))
+Next a \`POST\` request is sent with the username as userid and password. That request needs to be authenticated as the admin-user. ([Check the ownCloud docu if you are interested to learn more about those requests.](https://doc.owncloud.com/server/10.0/admin_manual/configuration/user/user_provisioning_api.html))
 
 At last there is the \`davEndpoint\`, now it needs the specific username, so that information has been moved into the specific \`GET\` and \`PUT\` method.
 
-If you run that script now with locust and start a test with, lets say 3 users, you should see something like that:
+If you run that script now with locust and start a test with, let's say 3 users; you should see something like that:
 ![users created in locust](/src/assets/Locust/images/locust-03-images/createUsersLocust.png)
 
 The first line tells us that 3 \`POST\` requests have been sent to \`/ocs/v2.php/cloud/users\`, that looks promising.
 And in the \`PUT\` ans \`GET\` requests, the usernames "locust0" till "locust2" are mentioned, very good!
 
-Now lets look into the users list of ownCloud. For that login with "admin" / "admin" to http://localhost:8080/ and in the top right corner click on "admin" and then on "Users".
+Now let's look into the users list of ownCloud. For that login with "admin" / "admin" to http://localhost:8080/ and in the top right corner, click on "admin" and then on "Users".
 
 ![owncloud users list](/src/assets/Locust/images/locust-03-images/owncloudListUsers.png)
 
-Those three users were created and used. If you want to double check use them to login to ownCloud, you should see the uploaded file.
+Those three users were created and used. If you want to double-check use them to log in to ownCloud, you should see the uploaded file.
 
 ## delete users with on_stop
-The only thing left is to clean up after us. Obviously we can simply kill the docker container, delete it and start it fresh with no users, but wouldn't it be nice to delete the users after stopping the test?
+The only thing left is to clean up after us. We can simply kill the docker container, delete it and start it fresh with no users, but wouldn't it be nice to delete the users after stopping the test?
 
 Let's use \`on_stop\` to clean up! It is run when the TaskSet is stopped.
 
-Just add a simple small method to the \`UserBehaviour\` class:
+Add a simple small method to the \`UserBehaviour\` class:
 
 \`\`\`
 def on_stop(self):
@@ -6475,7 +6475,7 @@ Remember to delete the users from ownCloud before rerunning the script (or just 
 Now when you start the test and stop it again, you will see \`DELETE\` requests in the list, one per hatched locust user.
 But what's that? The \`DELETE\` requests fail with \`HTTPError('401 Client Error: Unauthorized for url: http://localhost:8080/ocs/v2.php/cloud/users/locust0',)\`
 
-Digging deeper (e.g. with WireShark) shows that the requests not only had the correct Authorization header sent, but also some cookies.
+Digging deeper (e.g., with WireShark) shows that the requests not only had the correct Authorization header sent, but also some cookies.
 \`\`\`
 DELETE /ocs/v2.php/cloud/users/locust0 HTTP/1.1
 Host: localhost:8080
@@ -6488,7 +6488,7 @@ Content-Length: 0
 Authorization: Basic YWRtaW46YWRtaW4=
 \`\`\`
 
-locust got those cookies from the first \`GET\` request we have sent as the specific ownCloud user, and it has kept them for all future requests. Generally that is a good thing, but ownCloud now ignores the Authorization header and uses the cookies to authenticate. So we effectively authenticate as the specific ownCloud user e.g. \`locust0\` and that user has no privilege to delete itself.
+locust got those cookies from the first \`GET\` request we have sent as the specific ownCloud user, and it has kept them for all future requests. Generally, that is a good thing, but ownCloud now ignores the Authorization header and uses the cookies to authenticate. So we effectively authenticate as the specific ownCloud user e.g. \`locust0\` and that user has no privilege to delete itself.
 
 I could not find a way to clear the session, so we need a new one.
 For that change the \`on_stop\` function to:
@@ -6510,7 +6510,7 @@ And here we go, when starting and stopping the tests we have successful \`DELETE
 ![successfull user deletion](/src/assets/Locust/images/locust-03-images/deleteSuccess.png)
 
 ## what's next?
-We have now some basic tests, now it's time to look closer into the metrics and try to understand the meaning of all the numbers locust throws at us.
+We now have some basic tests, now it's time to look closer into the metrics and try to understand the meaning of all the numbers locust throws at us.
 `,"/src/assets/Locust/locust-04.md":`---
 title: Locust - 04 - Interpret the Result
 authorName: Artur Neumann
@@ -6523,7 +6523,7 @@ seriesTitle: Performance Testing with Locust
 episode: 4
 ---
 
-In the last posts of this series we setup locust and made some basic performance tests to test the ownCloud WebDAV-API. This time we will try to make some sense of the locust output.
+In the last post of this series, we set up locust and made some basic performance tests to test the ownCloud WebDAV-API. This time we will try to make some sense of the locust output.
 
 Here is the locust file we are using:
 \`\`\`py
@@ -6579,66 +6579,66 @@ class User(HttpLocust):
     wait_time = constant(1)
 \`\`\`
 
-To start ownCloud we have used docker: \`docker run -p 8080:8080 --name owncloud owncloud/server\`
+To start ownCloud, we have used docker: \`docker run -p 8080:8080 --name owncloud owncloud/server\`
 
 and then started locust with: \`locust --host=http://localhost:8080\`
 
 ## Test the right thing
 
-When I now run both ownCloud and locust on my workstation (i5-7500 CPU @ 3.40GHz; 8GB RAM) and hatch 100 locust-users I get this graph:
+When I now run both ownCloud and locust on my workstation (i5-7500 CPU @ 3.40GHz; 8GB RAM) and hatch 100 locust users, I get this graph:
 
 ![locust output when running app and locust on same computer](/src/assets/Locust/images/locust-04-images/locust-running-on-same-computer.png)
 
 But now have a look at the CPU usage (on Linux the easiest way to see it is to use the \`top\` command)
 ![CPU usage when running app and locust on same computer](/src/assets/Locust/images/locust-04-images/top-locust-uses-resources.png)
 
-WOW, 61.7% CPU is used by locust itself. I'm not really testing the performance of ownCloud (or not alone). Beside locust gnome, X and Firefox are eating up a significant amount of resources, so the results will never be accurate. Better get some dedicated hardware to run ownCloud on.
+WOW, 61.7% CPU is used by locust itself. I'm not really testing the performance of ownCloud (or not alone). Besides locust gnome, X and Firefox are eating up a significant amount of resources, so the results will never be accurate. Better get some dedicated hardware to run ownCloud on.
 
-I have here an old Lenovo X201 Laptop (i5 M 540 CPU @ 2.53GHz; 4GB RAM). Not really fast, but should be OK for this example. I will run ownCloud on that Laptop and locust on my workstation. That way hatching 100 users still eats up the same amount of resources on the workstation, but because its fast enough that should not be the limiting factor. We really don't want the test-runner computer to limit our performance tests. If you don't have a computer that is fast enough to fully load your SUT (System Under Test), you can run [locus distributed](https://docs.locust.io/en/stable/running-locust-distributed.html) and that way utilize multiple computers to fully load your SUT.
+I have here an old Lenovo X201 Laptop (i5 M 540 CPU @ 2.53GHz; 4GB RAM). Not really fast, but should be OK for this example. I will run ownCloud on that Laptop and locust on my workstation. That way, hatching 100 users still eats up the same amount of resources on the workstation, but because its fast enough that should not be the limiting factor. We really don't want the test-runner computer to limit our performance tests. If you don't have a computer that is fast enough to fully load your SUT (System Under Test), you can run [locus distributed](https://docs.locust.io/en/stable/running-locust-distributed.html) and that way utilize multiple computers to fully load your SUT.
 
 ## Interpret the results
 
-Lets start the tests and increase the amount of users.
+Let's start the tests and increase the number of users.
 I started the test with 20 users and 1 user/s hatch rate, then increased the users to 50 with 2 users/s hatch rate and finally to 100 users with 4 users/s hatch rate.
 
-In the response-time graph the green line shows the median response time and the yellow one the 95th percentile (95% of the requests finish before that time).
+In the response-time graph, the green line shows the median response time and the yellow one the 95th percentile (95% of the requests finish before that time).
 
-To calculate the *current* response time a sliding window of (approximately) the last 10 seconds is used see: [get_current_response_time_percentile function](https://github.com/locustio/locust/blob/6ba31c83acae6d26297a23de0eaaef34b3838330/locust/stats.py#L504).
+To calculate the *current* response time, a sliding window of (approximately) the last 10 seconds is used, see: [get_current_response_time_percentile function](https://github.com/locustio/locust/blob/6ba31c83acae6d26297a23de0eaaef34b3838330/locust/stats.py#L504).
 
 As you can see, the median response time goes up as we add more users. And there is a "bump" in the 95th percentile line every time new users are created. So it looks like user creation is "expensive". (The "bump" is also visible in the median-line, but not that obvious).
 ![response time vs users](/src/assets/Locust/images/locust-04-images/increasing-users-increased-response-time.png)
 
 Rerunning the tests shows a similar result.
 
-BTW: Because there is always other stuff happening on the server its always good to run performance tests multiple times and see if you get similar results.
+BTW: Because there is always other stuff happening on the server, it is always good to run performance tests multiple times and see if you get similar results.
 
-So from that information, how many users can our system handle? Maybe the better question is how long do you want your user to wait? In our test-scenario the user sends one request every second, either a download or an upload request. The download request appears 3 times more often than the upload (see "Weight of a task" in the [multiple tasks](https://dev.to/jankaritech/performance-testing-with-locust-02-multiple-tasks-4ckn) part).
-If our server tries to serve 20 such users, 95% of the time it will be able to respond within 400-450ms or less (not taking the user-creation into account, in normal life we would not create new users all the time). When trying to serve 50 concurrent users, 95% of the time it will be able to respond within 1600-1800ms or less. And half of the time (median response time) users will have to wait for around 1000ms or more for a response. For 100 users that obviously looks even worse, 95th percentile is around 6000ms and median response time around 3200ms.
+So from that information, how many users can our system handle? Maybe the better question is how long do you want your user to wait? In our test scenario, the user sends one request every second, either a download or an upload request. The download request appears 3 times more often than the upload (see "Weight of a task" in the [multiple tasks](https://dev.to/jankaritech/performance-testing-with-locust-02-multiple-tasks-4ckn) part).
+If our server tries to serve 20 such users, 95% of the time it will be able to respond within 400-450ms or less (not taking the user-creation into account, in normal life we would not create new users all the time). When trying to serve 50 concurrent users, 95% of the time it will be able to respond within 1600-1800ms or less. And half of the time (median response time) users will have to wait for around 1000ms or more for a response. For 100 users that obviously looks even worse, the 95th percentile is around 6000ms and the median response time is around 3200ms.
 
 Would it be acceptable for your application to let the user wait for 3sec or more for half of the requests? If not, you need to optimize the software or buy more hardware.
 
-To see more details and maybe make more analysis download the CSV data and open in a spreadsheets app.
-These files have one line per request type & URL, because we have the username in the URL, there will be a lot of lines.
+To see more details and maybe make more analysis, download the CSV data and open in a spreadsheet app.
+These files have one line per request-type & URL, because we have the username in the URL, there will be a lot of lines.
 
-In the request statistics CSV file we have the median/average/min/max response time for all uploads user0 has done, and all uploads user1 has done and so on. We can e.g. calculate the average response time of all uploads with the formula \`=AVERAGEIF(A2:A301;"PUT";F2:F301)\` (tested with [LibreOffice](https://www.libreoffice.org)). Column A holds the method name, column F is the average response time and in my table there are 301 lines.
+In the request statistics CSV file we have the median/average/min/max response time for all uploads user0 has done, and all uploads user1 has done and so on. We can e.g. calculate the average response time of all uploads with the formula \`=AVERAGEIF(A2:A301;"PUT";F2:F301)\` (tested with [LibreOffice](https://www.libreoffice.org)). Column A holds the method name, column F is the average response time, and in my table there are 301 lines.
 
 Be aware that this list will now hold ALL the results, from the time when we had 20 users, 50 users and 100 users, so if we want to know the average response time of uploads with a particular amount of users, we would have to rerun the test with a fixed amount of users and not change it in between.
 
 ## Optimization
 
-When we have started the ownCloud docker container, it created an database and for that it used SQlite database, that is good for quick testing and evaluation, but its soooo slow. Have a look at the [documentation](https://doc.owncloud.com/server/10.3/admin_manual/installation/system_requirements.html#server), ownCloud says SQLite is not for production and recommends to use MySQL or MariaDB.
-The simplest way to start ownCloud with MariaDB is to use [docker-compose](https://docs.docker.com/compose/) as described [here](https://doc.owncloud.com/server/admin_manual/installation/docker/). In addition you also receive a Redis server, to do some caching.
+When we started the ownCloud docker container, it created a database, and for that it used the SQlite database, that is good for quick testing and evaluation, but it's soooo slow. Have a look at the [documentation](https://doc.owncloud.com/server/10.3/admin_manual/installation/system_requirements.html#server), ownCloud says SQLite is not for production and recommends to use MySQL or MariaDB.
+The simplest way to start ownCloud with MariaDB is to use [docker-compose](https://docs.docker.com/compose/) as described [here](https://doc.owncloud.com/server/admin_manual/installation/docker/). In addition, you also receive a Redis server to do some caching.
 
 Running that proposed setup on my system shows that it improves the response time a lot when running with 20 users, the 95th percentile goes down to 220-250ms (vs 400-450 before), there is also some improvement when running with 50 users, but when running with 100 users, it actually gets worse (median 5200-6000ms and 95th percentile is often over 7000ms).
 
-More tests showed that with 15 concurrent users there is still 20-30% CPU time left most of the time, but with 20+ users the CPU is basically flat out.
-Another interesting finding is, that in the area around 15 users the CPU is still not fully utilized, but the hard-drive works already pretty hard (see \`iotop\`). My guess is that when running with <= 15 users a faster hard-drive, e.g. a SSD would improve the performance, but with more than 20 users an SSD would be a waste of money, because even if the data would arrive faster at the CPU, it struggles to do its calculation.
+More tests showed that with 15 concurrent users, there is still 20-30% CPU time left most of the time, but with 20+ users the CPU is basically flat out.
+Another interesting finding is that in the area around 15 users the CPU is still not fully utilized, but the hard-drive works already pretty hard (see \`iotop\`). My guess is that when running with <= 15 users a faster hard-drive, e.g. a SSD would improve the performance, but with more than 20 users an SSD would be a waste of money, because even if the data would arrive faster at the CPU, it struggles to do its calculation.
 
 ## Cross-check
 
-Let's see if we can prove our assumption that ~15 users should be the max for our system. I'm simmulating 30 users, but with a hatch-rate of 0.025 users/sec (I want to give the system enough time to create the user and to refresh the sliding window for the chart after user-creation).
+Let's see if we can prove our assumption that ~15 users should be the max for our system. I'm simulating 30 users, but with a hatch-rate of 0.025 users/sec (I want to give the system enough time to create the user and to refresh the sliding window for the chart after user-creation).
 
-Looking at the graph I see that up to ~10 users the median time does not change much (160-180ms), looking at the output of \`top\` at the same time I see that there is still a lot of CPU time unused and even with 14-15 users, the median time goes down to 190ms. After that pretty flat area in the graph, it goes up pretty steep, the CPU is totally flat out.
+Looking at the graph I see that up to ~10 users the median time does not change much (160-180ms), looking at the output of \`top\` at the same time I see that there is still a lot of CPU time unused and even with 14-15 users, the median time goes down to 190ms. After that pretty flat area in the graph, it goes up pretty steeply; the CPU is totally flat out.
 
 Also have a look at the "Total Requests per Second" graph. Up to 15 users it steadily climbs up, but then there are valleys and hills, but the system struggles to serve more requests/s.
 
@@ -6646,8 +6646,8 @@ Also have a look at the "Total Requests per Second" graph. Up to 15 users it ste
 
 ## Conclusion
 
-1. The system scales well up to 15 users, meaning the single user would not experience any performance issues up to 15 concurrent users. Also the user would not experience any faster system if she is the only user on the system.
-2. Up to 15 users the system can be optimized by using a better DB, caching, faster HDD and memory
+1. The system scales well up to 15 users, meaning the single user would not experience any performance issues up to 15 concurrent users. Also, the user would not experience any faster system if she is the only user on the system.
+2. Up to 15 users, the system can be optimized by using a better DB, caching, faster HDD and memory
 3. Above 15 users, the CPU is the bottleneck and working on the suggestions in point 2, would not help.
 `,"/src/assets/Playwright/Playwright-debugging.md":`---
 title: Debugging and Error Tracing in Playwright
@@ -6660,52 +6660,52 @@ banner: https://blog.jankaritech.com/src/assets/Playwright/images/banner.png
 seriesTitle: E2E Testing using BDD with Playwright
 episode: 2
 ---
-How many times has it happened that you wrote blocks of code thinking they work but the reality was otherwise? I think it's safe to assume that this has happened quite often. Sometimes it might be easy to find the mistake but it's not always the case, so in this blog, I'm going to try to explain some of the debugging methods in Playwright that we can incorporate into our project to make our life a little bit easier. This might be the right time to mention that you might want to read [part one of the series](https://blog.jankaritech.com/#/blog/Behavior%20Driven%20Development%20(BDD)%20using%20Playwright) as we are going to use the same code here.
- 
+How many times has it happened that you wrote blocks of code thinking they work but the reality was otherwise? I think it's safe to assume that this has happened quite often. Sometimes it might be easy to find the mistake, but it's not always the case. So in this blog, I'm going to try to explain some of the debugging methods in Playwright that we can incorporate into our project to make our life a little bit easier. This might be the right time to mention that you might want to read [part one of the series](https://blog.jankaritech.com/#/blog/Behavior%20Driven%20Development%20(BDD)%20using%20Playwright) as we are going to use the same code here.
+
 
 ## Headed mode
 The first method would be to run the tests in headed mode. Playwright by default runs in headless mode. Use \`headless:false\` while launching the browser. Additionally, you can also use the \`slowMo\` option to slow down the test execution process.
- 
+
 \`\`\`js
 await chromium.launch({ headless: false, slowMo: 100 });
 \`\`\`
- 
- 
+
+
 ## Playwright Inspector
-Playwright comes with a default GUI tool that we can use to inspect our scripts. Through this tool, you'll be able to step-over each script and evaluate them in real-time. There are a few ways through which we can open Playwright inspector.
- 
+Playwright comes with a default GUI tool that we can use to inspect our scripts. Through this tool, you'll be able to step over each script and evaluate them in real-time. There are a few ways through which we can open Playwright inspector.
+
 ### 1. PWDEBUG
 Playwright provides us with an environment variable that'll configure it in debugging mode and opens the inspector. Set the \`PWDEBUG\` variable to \`1\` or \`console\`.
- 
+
 In my case, I'm running the e2e test in debug mode by setting \`PWDEBUG=1\` .
 \`\`\`bash
 PWDEBUG=1 npm run test:e2e tests/acceptance/features/todo.feature
 \`\`\`
- 
+
 This will open up an inspector like so
- 
+
 ![Playwright Inspector](/src/assets/Playwright/images/playwright-inspector.png "Playwright Inspector")
- 
+
 As you can see this gives me the test scripts, now I can either step over each script or run everything at once
- 
- 
+
+
 **step over each script**
 ![Playwright Inspector](/src/assets/Playwright/images/step-over.png "Step over script")
- 
+
 **run all at once**
- 
+
 ![Playwright Inspector](/src/assets/Playwright/images/run-all.png "run-all script")
- 
+
 With each step-over, the inspector will step through each line of the test highlighting the selector as you go. You can also see the logs that display each action that the tests perform.
- 
+
 ![Playwright Inspector](/src/assets/Playwright/images/trace_viewer2.png "highlight selector and logs")
- 
+
 Additionally, you'll also be able to access the browser developers' tools.
- 
- 
+
+
 ### 2. page.pause()
 The next method to launch the inspector is to use \`page.pause()\` in the script.
- 
+
 \`\`\`js
 When('the user adds {string} to the todo list using the webUI',async function (item) {
    // fill the item that was input from the feature file, to the inputText field in the UI
@@ -6715,21 +6715,21 @@ When('the user adds {string} to the todo list using the webUI',async function (i
    // click the button
    await page.click(todoButton)
 })
- 
+
 \`\`\`
- 
+
 This will pause the execution of the test and launch Playwright inspector right before clicking the button.
- 
+
 ![Playwright Inspector](/src/assets/Playwright/images/pause.png "page.pause")
- 
+
 Now, we can perform similar operations as explained above.
- 
- 
+
+
 ## Trace Viewer
 Trace viewer is another GUI tool to explore the recorded Playwright traces of the tests after the tests have been executed. This is especially essential while running the tests in the Continuous Integration (CI) environment.
- 
+
 Let's see how we can set it up in our end-to-end tests. In the \`cucumber.conf.js\` file inside \`before hook\` we can add the following configuration
- 
+
 \`\`\`js
 Before(async function () {
    global.context = await global.browser.newContext();
@@ -6738,11 +6738,11 @@ Before(async function () {
    global.page = await global.context.newPage();
 });
 \`\`\`
- 
+
 This will start the tracing of the tests, to know about more options that can be configured while starting the trace you can go through this [documentation](https://playwright.dev/docs/api/class-tracing#tracing-start)
- 
+
 Now, in the \`after hook\` we can add the following code to stop tracing and store it in a certain specified path.
- 
+
 \`\`\`js
 After(async function () {
    await global.page.close();
@@ -6750,33 +6750,33 @@ After(async function () {
    await global.context.tracing.stop({ path: 'tests/acceptance/report/trace.zip' });
    await global.context.close();
 });
- 
+
 \`\`\`
- 
-Now, if we run the tests we should get a trace.
- 
+
+Now, if we run the tests, we should get a trace.
+
 \`\`\`bash
 npm run test:e2e tests/acceptance/features/todo.feature
 \`\`\`
- 
+
 This should create the folder \`report\` inside of \`tests/acceptance\` and you should see a file called \`trace.zip\`.
- 
+
 If you extract the file then inside \`trace/resources\` you should be able to see the screenshots of the UI through various steps in test execution.
- 
+
 But the fun part is to view the trace which we can do by running the following command from the root of the project.
- 
+
 \`\`\`bash
 npx playwright show-trace tests/acceptance/report/trace.zip
 \`\`\`
- 
+
 This should open up the Playwright trace viewer GUI for you like this
- 
+
 ![Playwright Trace Viewer](/src/assets/Playwright/images/traceviewerGui.png "Playwright Trace Viewer")
- 
-As you can see in the picture we can access a lot of functionalities through the trace viewer like Actions, Metadata, Console, Network, and so on. These will come in handy if we need to figure out or debug the test failure. If you want to know in detail about each of these functionalities you can go through this [documentation](https://playwright.dev/docs/trace-viewer)
- 
- 
-These were the few ways in which we can debug and trace tests with tools provided by Playwright. I hope you found this helpful. In the next part of the series, we'll run the tests on CI and get traces for test failures.
+
+As you can see in the picture, we can access a lot of functionalities through the trace viewer like Actions, Metadata, Console, Network, and so on. These will come in handy if we need to figure out or debug the test failure. If you want to know in detail about each of these functionalities, you can go through this [documentation](https://playwright.dev/docs/trace-viewer)
+
+
+These were the few ways in which we can debug and trace tests with tools provided by Playwright. I hope you found this helpful. In the next part of the series, we'll run the tests on CI and get traces of test failures.
 
 `,"/src/assets/Playwright/Playwright-intro.md":`---
 title: Behavior Driven Development (BDD) using Playwright
@@ -6791,15 +6791,15 @@ episode: 1
 ---
 Playwright is an open-source NodeJS framework for browser automation. It is developed by Microsoft and the development team has members that were involved in developing [Puppeteer](https://github.com/puppeteer/puppeteer) for Google.
 
-One of the main features of Playwright is that it can automate Chromium, Webkit, and Firefox browsers with a single API. Along with being cross-browser, it is cross-platform and cross-language, supporting the major OS like Windows, Linux, Mac and languages like TypeScript, JavaScript, Python, .NET, Java. Playwright also comes with tools like codgen - which lets you generate automatic code by recording your actions, you can find out more about Playwright on their [official website](https://playwright.dev/).
+One of the main features of Playwright is that it can automate Chromium, Webkit, and Firefox browsers with a single API. Along with being cross-browser, it is cross-platform and cross-language, supporting the major OS like Windows, Linux, Mac and languages like TypeScript, JavaScript, Python, .NET, Java. Playwright also comes with tools like codgen \u2014 which let you generate automatic code by recording your actions. You can find out more about Playwright on their [official website](https://playwright.dev/).
 
-For this blog, we will be implementing BDD in Playwright. I have a small to-do web app and I'm going to be setting up Playwright in the same. If you want to follow through you can fork and clone the project from [here](https://github.com/SwikritiT/todo). If you have your web application you can set up Playwright there as well. Let's get started!
+For this blog, we will be implementing BDD in Playwright. I have a small to-do web app, and I'm going to be setting up Playwright in the same. If you want to follow through, you can fork and clone the project from [here](https://github.com/SwikritiT/todo). If you have your web application, you can set up Playwright there as well. Let's get started!
 
 *Note: the whole setup is done in Ubuntu 20.04.3 LTS, so some setup steps might differ depending on your platform*
 
 ## Prerequisites
 
-- Node.js version 12 or above. If you don't already have node installed in your system you can use this [blog as a guide](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04)
+- Node.js version 12 or above. If you don't already have node installed in your system, you can use this [blog as a guide](https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04)
 
 *Note Only Ubuntu 18.04 and Ubuntu 20.04 are officially supported.*
 
@@ -6812,7 +6812,7 @@ npm i -D @playwright/test
 npm i -D playwright
 npx playwright install
 \`\`\`
-Playwright doesn't come with the built-in support for BDD so we are going to use the help of another tool [Cucumber](https://cucumber.io/)
+Playwright doesn't come with the built-in support for BDD, so we are going to use the help of another tool [Cucumber](https://cucumber.io/)
 
 \`\`\`bash
 npm i -D @cucumber/cucumber@7.3.1 @cucumber/pretty-formatter
@@ -6832,7 +6832,7 @@ After this, \`devDependencies\` in your \`package.json\` should look something l
 \`\`\`
 
 ## Configuration
-We are going to use \`Cucumber\` to run our tests so we need to have a configuration file for it. At the root level of your project create a file \`cucumber.conf.js\`
+We are going to use \`Cucumber\` to run our tests, so we need to have a configuration file for it. At the root level of your project create a file \`cucumber.conf.js\`
 
 First of all, we are going to require the following:
 
@@ -6867,7 +6867,7 @@ AfterAll(async function () {
   await global.browser.close();
 });
 \`\`\`
-In the above snippet of code, we launch a \`chrome\` browser where our tests will be automated. You can launch a different one as per your requirement, just make sure you import the correct browser. We run the browser in the headed mode which can be done by setting \`headless:false\`, this means that when the test is running we can see it being automated in the browser. You can set it to \`true\` if you don't want to see the test running but where is the fun in that? Another option is \`slowMo\` which slows down Playwright operations by the specified amount of milliseconds and can be helpful to watch the test run. There are various options that can be set while launching the browser, you can go through all of them [here](https://playwright.dev/docs/api/class-browsertype#browser-type-launch). After we've finished our operations we will close the browser. This configuration is for before/after all of the tests are run. Now we need to configure what happens when each test scenario is run. For this look at the snippet below:
+In the above snippet of code, we launch a \`chrome\` browser where our tests will be automated. You can launch a different one as per your requirement, just make sure you import the correct browser. We run the browser in the headed mode which can be done by setting \`headless:false\`, this means that when the test is running we can see it being automated in the browser. You can set it to \`true\` if you don't want to see the test running but where is the fun in that? Another option is \`slowMo\` which slows down Playwright operations by the specified number of milliseconds and can be helpful to watch the test run. There are various options that can be set while launching the browser, you can go through all of them [here](https://playwright.dev/docs/api/class-browsertype#browser-type-launch). After we've finished our operations, we will close the browser. This configuration is for before/after all the tests are run. Now we need to configure what happens when each test scenario is run. For this look at the snippet below:
 
 \`\`\`js
 // cucumber.conf.js file
@@ -6885,7 +6885,7 @@ After(async function () {
 });
 
 \`\`\`
-After we've launched our browser we need to create a new browser context. Playwright allows creating \`incognito\` browser contexts with \`browser.newContext([options])\` method. Each browser context has its page that provides methods to interact with a single tab in a browser. We can create a page with \`context.newPage()\` method. Similar to launching a browser we can set a lot of options while creating a \`browser context\` as well like screenshots, record video,  geolocation, and more, you can go through all of them [here](https://playwright.dev/docs/api/class-browser#browser-new-context). After we've finished with our operations we close the \`page\` and \`context\`.
+After we've launched our browser, we need to create a new browser context. Playwright allows creating \`incognito\` browser contexts with \`browser.newContext([options])\` method. Each browser context has its page that provides methods to interact with a single tab in a browser. We can create a page with \`context.newPage()\` method. Similar to launching a browser we can set a lot of options while creating a \`browser context\` as well as screenshots, record video, geolocation, and more. You can go through all of them [here](https://playwright.dev/docs/api/class-browser#browser-new-context). After we've finished with our operations, we close the \`page\` and \`context\`.
 
 *Voila*, we're done with the configuration part. The whole \`cucumber.conf.js\` file looks like this :
 
@@ -6939,7 +6939,7 @@ Our file structure will look like this
 
 \`\`\`
 
-Following the above tree create file \`tests/acceptance/features/todo.feature\`. As we are using BDD, we are going to start by writing a feature file and we are going to be using \`Gherkin\` language to do so. If you don't know how to write a feature file or what \`Gherkin\` is you can take the help of the following blogs as it's out of the scope of this blog and won't be explained in detail.
+Following the above tree create file \`tests/acceptance/features/todo.feature\`. As we are using BDD, we are going to start by writing a feature file, and we are going to be using \`Gherkin\` language to do so. If you don't know how to write a feature file or what \`Gherkin\` is you can take the help of the following blogs as it's out of the scope of this blog and won't be explained in detail.
 
 - [cucumber BDD](https://cucumber.io/docs/gherkin/reference/)
 - [BDD \u2013 An introduction to feature files](https://www.modernanalyst.com/Resources/Articles/tabid/115/ID/3871/BDD-An-introduction-to-feature-files.aspx)
@@ -6957,7 +6957,7 @@ When [Event or action]
 Then [Expected output]
 \`\`\`
 
-Now assuming you've got some knowledge of feature files and how to write them we proceed further.
+Now, assuming you've got some knowledge of feature files and how to write them, we proceed further.
 
 The application that I'm going to be testing is a todo app and the UI looks like this.
 
@@ -6991,7 +6991,7 @@ We will be using the \`test:e2e\` script for running the test. Now go to your te
 npm run test:e2e tests/acceptance/features/todo.feature
 \`\`\`
 
-This will run your feature file. As the steps aren't implemented yet you will get something like this on your screen.
+This will run your feature file. As the steps aren't implemented, yet you will get something like this on your screen.
 
 \`\`\`console
 ? Given a user has navigated to the homepage
@@ -7031,7 +7031,7 @@ const {Given, When, Then} = require('@cucumber/cucumber')
 const { expect } = require("@playwright/test");
 \`\`\`
 
-Define your launch url and selectors for different UI elements as per need, these are project specific. Playwright supports CSS and Xpath selectors. You can find the detailed information about them [here](https://playwright.dev/docs/selectors)
+Define your launch url and selectors for different UI elements as per need, these are project-specific. Playwright supports CSS and Xpath selectors. You can find the detailed information about them [here](https://playwright.dev/docs/selectors)
 
 \`\`\`js
 // todoContext.js file
@@ -7075,7 +7075,7 @@ Then('card {string} should be displayed on the webUI',async function (item) {
 })
 
 \`\`\`
-You can find different methods available to interact with UI elements like click, fill and so on in [Playwright's official documentation](https://playwright.dev/docs/api/class-playwright), it's very nicely explained how the function works along with the example code.
+You can find different methods available to interact with UI elements like click, fill, and so on in [Playwright's official documentation](https://playwright.dev/docs/api/class-playwright), it's very nicely explained how the function works along with the example code.
 
 We use the \`page\` that we created in the \`before\` hook to interact with various web elements. Playwright performs [autowait](https://playwright.dev/docs/actionability) and performs a range of actionability checks on elements and ensures that elements are ready to perform the expected operation. This is one of its plus points.
 
@@ -7152,8 +7152,8 @@ Scenario: Add item to the todo list # tests/acceptance/features/todo.feature:6
 0m04.266s (executing steps: 0m04.010s)
 \`\`\`
 
-Hopefully, your test also passed like mine and you got to learn about a new library.
-You can extend the feature file to add more scenarios or add multiple feature files, implement the Page Object Model as per your requirement and it should all work the same.
+Hopefully, your test also passed like mine, and you got to learn about a new library.
+You can extend the feature file to add more scenarios or add multiple feature files, implement the Page Object Model as per your requirement, and it should all work the same.
 
 You can find the source code of this implementation [here](https://github.com/SwikritiT/todo/tree/playwright-blog)
 
@@ -7181,7 +7181,7 @@ Cypress provides a complete end-to-end testing experience. Until now, end-to-end
 
 \`Cypress\` users are typically developers or QA engineers building web applications using modern JavaScript frameworks.
 
-Cypress enables you to write all type of tests:
+Cypress enables you to write all types of tests:
 
 - End-to-end tests
 - Integration tests
@@ -7189,13 +7189,13 @@ Cypress enables you to write all type of tests:
 
 Cypress can test anything that runs in a browser.
 
-####  How Cypress is different ?
+####  How Cypress is different
 
 ![Cypress Architecture]
 
 - ###### Cypress does not use Selenium
 
-  The architecture is completely different. Most end-to-end testing tools operate by running outside of the browser and executing remote commands across the network. Cypress is the exact opposite. Cypress is executed in the same run loop as your application. Behind Cypress is a \`Node.js\` server process. Cypress and the Node.js process constantly communicate, synchronize and perform tasks on behalf of each other. Having access to both parts (front and back) gives us the ability to respond to your application\u2019s events in real time, while at the same time, work outside of the browser for tasks that require a higher privilege.
+  The architecture is completely different. Most end-to-end testing tools operate by running outside the browser and executing remote commands across the network. Cypress is the exact opposite. Cypress is executed in the same run loop as your application. Behind Cypress is a \`Node.js\` server process. Cypress and the Node.js process constantly communicate, synchronize and perform tasks on behalf of each other. Having access to both parts (front and back) allows us to respond to your application\u2019s events in real time, while at the same time, work outside the browser for tasks that require a higher privilege.
 
 - ###### Cypress tests are only written in JavaScript
 
@@ -7239,7 +7239,7 @@ Cypress can test anything that runs in a browser.
 
   View \`screenshots\` taken automatically on failure, or \`videos\` of your entire test suite when run from the \`CLI\`.
 
-- **Cross Browser Testing:**
+- **Cross-Browser Testing:**
 
   ![Cross Browser Testing Platforms for Cypress][cypressCrossBrowserPlatforms]
 
@@ -7874,7 +7874,7 @@ Cypress gives you the option to dynamically alter configuration values. This is 
 
 ### Command Line
 
-When running Cypress from the Command Line you can pass a \`--config\` flag.
+When running Cypress from the Command Line, you can pass a \`--config\` flag.
 
 Examples:
 
@@ -7892,7 +7892,7 @@ cypress run --browser firefox --config viewportWidth=1280,viewportHeight=720
 
 ### Environment Variables
 
-You can also use environment variables to override configuration values. This is especially useful in Continuous Integration or when working locally. This gives you the ability to change configuration options without modifying any code or build scripts.
+You can also use environment variables to override configuration values. This is especially useful in Continuous Integration or when working locally. This allows you to change configuration options without modifying any code or build scripts.
 
 By default, any environment variable that matches a corresponding configuration key will override the configuration file (\`cypress.json\` ) by default value.
 
@@ -7947,7 +7947,7 @@ The Cypress Slack application provides real-time results for your Cypress tests,
 
 ![Cypress Slack Integration]
 
-## Github Integration
+## GitHub Integration
 
 Cypress Dashboard tightly integrates your Cypress test runs with your \`GitHub\` work flow via commit status checks and pull-request comments.
 
@@ -7957,7 +7957,7 @@ Cypress Dashboard will report status of test runs as \`GitHub\` commit status ch
 
 > Test Results in Your Work flow via Pull-Request Comments
 
-Detailed test run information conveniently posted as PR comments that include tests run statistics, specific test failures, related screenshots and deep links to the Cypress Dashboard to help you quickly resolve problems.
+Detailed test run information conveniently posted as PR comments that include test run statistics, specific test failures, related screenshots and deep links to the Cypress Dashboard to help you quickly resolve problems.
 
 ![GitHub Integration]
 
@@ -8047,7 +8047,7 @@ You can easily integrate \`Background\`, \`Scenario Outlines\`, \`DataTables\` w
 
 ### Bundled feature files
 
-When running Cypress tests in the headless mode, the execution time can get pretty bloated, this happens because by default Cypress will relaunch the browser between every feature file. The cypress-cucumber-preprocessor gives you the option to bundle all feature files before running the tests, therefore reducing the execution time.
+When running Cypress tests in the headless mode, the execution time can get pretty bloated, this happens because by default, Cypress will relaunch the browser between every feature file. The cypress-cucumber-preprocessor gives you the option to bundle all feature files before running the tests, therefore reducing the execution time.
 
 You can take advantage of this by creating \`.features\` files. You choose to have only one in the root of the directory \`cypress/integrations\` or per directory.
 
@@ -8178,7 +8178,7 @@ Then click on a \`.feature\` file on the list of specs, and see the magic happen
   }
   \`\`\`
 
-Cool! \u{1F60E}  I\u2019m sure this will get you started with cypress running your test in Gherkin theme.
+Cool! \u{1F60E} I\u2019m sure this will get you started with cypress running your test in Gherkin theme.
 
 [cosmiconfig]: https://github.com/davidtheclark/cosmiconfig "Cosmiconfig GitHub Homepage"
 `,"/src/assets/TestingWithCypress/cypress_blog_5.md":`---
@@ -8204,7 +8204,7 @@ episode: 5
 
 These architectural improvements unlock the ability to do TDD with full e2e tests. You can develop faster while driving the entire dev process with tests because: you can see your application; you still have access to the developer tools, and changes are reflected in real-time. The end result is that you will have developed more, your code will be better, and it will be completely tested. If you opt for parallelization and automated load balancing will further supercharge your test speeds.
 
-But, there are some serious downsides to these architectural changes.
+But there are some serious downsides to these architectural changes.
 
 > The following permanent and temporary trade-offs are well discussed in Cypress documentation. Please follow the official documentation for more information. I've just listed out the main point just for an overview.
 
@@ -8240,15 +8240,15 @@ IMO, Cypress has a pretty responsive issues section on GitHub. Many issues that 
 
 
 ### Problems I faced with my project's tests
-- Cypress says, the browser XHRs are properly tracked, and we can wait for them too. But it is not true for me. The test-runner does not log about the XHR requests triggered by the browser interaction, and I cannot wait dynamically for some time-consuming requests.
+- Cypress says the browser XHRs are properly tracked, and we can wait for them too. But it is not true for me. The test-runner does not log about the XHR requests triggered by the browser interaction, and I cannot wait dynamically for some time-consuming requests.
 
     ![NoXHRRecorded]
 
-    At this point i.e clicking the \`Sign In\` button should start a XHR request. But alas, no luck here.
+    At this point clicking the \`Sign In\` button should start a XHR request. But alas, no luck here.
 
-- Testing inside iframes? Well, it's gonna bother you. I am working on a project which uses iframes with large contents and takes some time to load properly. Following the documentation and [cypress blogs] were also not quite helpful. For now, I'm using static wait before diving inside any iframes. If somebody has a better idea, well, please share!
+- Testing inside iframes? Well, it's going to bother you. I am working on a project which uses iframes with large contents and takes some time to load properly. Following the documentation and [cypress blogs] were also not quite helpful. For now, I'm using static wait before diving inside any iframes. If somebody has a better idea, well, please share!
 
-- I feel like why we choose Cypress while testing dropdown fields \u{1F602}. I find most of the official tips for dropdown testing is with \`<select>...</select>\`. But the recent web is mostly based on frameworks like \`VueJs\`, \`ReactJs\`, etc. which uses a different mechanism to render dropdowns (using classes rather than using \`select\` tag). Options are extracted from some API requests and may also have abilities like autocompletion. With these features included the browser elements keeps on changing (some get in, and some are removed out completely). Running tests with such form fields interactions, you'll surely encounter the \`Element is detached from the DOM\` error [ref] blog to handle this type of errors.
+- I feel like why we choose Cypress while testing dropdown fields \u{1F602}. I find most of the official tips for dropdown testing is with \`<select>...</select>\`. But the recent web is mostly based on frameworks like \`VueJs\`, \`ReactJs\`, etc. which uses a different mechanism to render dropdowns (using classes rather than using \`select\` tag). Options are extracted from some API requests and may also have abilities like autocompletion. With these features included, the browser elements keep on changing (some get in, and some are removed out completely). Running tests with such form fields interactions, you'll surely encounter the \`Element is detached from the DOM\` error [ref] blog to handle this type of error.
 
 - Test just terminates when it likes: Only half of the test runs and that particular test is marked as passed (sometimes, but can litter test result accuracy).
 
@@ -8272,11 +8272,11 @@ seriesTitle: E2E Testing with Cypress
 episode: 6
 ---
 
-In the previous part of the series we have disused how Cypress is so flexible with multiple CI providers, how it manages balanced strategies on parallel runs, and an example of a CircleCi configuration file. As long as tests are written in Cypress file/folder structure, the configuration of parallel tests run is simple as documented. But if you use feature files in your e2e tests, then your a bit unlucky using Cypress.
+In the previous part of the series, we have disused how Cypress is so flexible with multiple CI providers, how it manages balanced strategies on parallel runs, and an example of a CircleCi configuration file. As long as tests are written in Cypress file/folder structure, the configuration of parallel tests run is simple as documented. But if you use feature files in your e2e tests, then you're a bit unlucky using Cypress.
 
 As I've mentioned in the earlier part of the series, Cypress does not have a cucumber preprocessor by default, and we have to add some tweaks to get tests containing features files running. It's perfectly fine while running our tests on our own machine. We can properly tag, run, and debug our scenarios with different required hooks if necessary. But in CI/CD we do not want to run our tests as we run in our local machine.
 
-According to some cypress users, using Cypress Dashboard along with cucumber preprocessors, they can run over 200 scenarios in 13 minutes. Parallelization is so effective with dashboard service but, it is a \`PAID\` service. But do not worry we can achieve it for free.
+According to some cypress users, using Cypress Dashboard along with cucumber preprocessors, they can run over 200 scenarios in 13 minutes. Parallelization is so effective with dashboard service but, it is a \`PAID\` service. But do not worry, we can achieve it for free.
 
 ## Parallelization with cucumber-preprocessor and Cypress
 \`\`\`
@@ -8285,7 +8285,7 @@ cypress/integration/features/
   |- Login/login.feature
   |- Register/register.feature
 \`\`\`
-Let us assume, we have two features as shown above. Our goal is to run these two features in parallel in our CI/CD. With Cypress Dashboard service our test files are automatically separated into different suites according to their previous run lengths to maintain minimum test run time. Since we're not using any dashboard, so we've to do this by ourselves. Simple!
+Let us assume, we have two features as shown above. Our goal is to run these two features in parallel in our CI/CD. With the Cypress Dashboard service, our test files are automatically separated into different suites according to their previous run lengths to maintain minimum test run time. Since we're not using any dashboard, so we've to do this by ourselves. Simple!
 
 So the first thing needed is we've to create suites. Where to create? Inside your \`features\` directory. Each folder you create can be used as a separate suite for your CI/CD.
 
@@ -8351,7 +8351,7 @@ Developers and designers can select different arrangements and architecture for 
 </figure>
 
 ## A common language
-To conduct communication between a client and a server a common language is necessary. We can develop and use any language we desire to make these computers communicate with each other. But to make it usable, compatible, and widely accessible we need a standardized language (aka protocol). This is where the HTTP protocol comes in.
+To conduct communication between a client and a server, a common language is necessary. We can develop and use any language we desire to make these computers communicate with each other. But to make it usable, compatible, and widely accessible, we need a standardized language (aka protocol). This is where the HTTP protocol comes in.
 
 - HTTP protocol defines the structure for request and response messages. It is like sending a parcel to your friend with an address structured as street name, city name, state name, zip code, and country code.
 - HTTP defines operations that can be performed on a given resource. These are called HTTP request methods. They are also referred to as HTTP verbs. Some examples are:
@@ -8359,7 +8359,7 @@ To conduct communication between a client and a server a common language is nece
     - The POST method submits an entity to the specified resource, often causing a change in the server.
 - HTTP protocol also defines different sets of status codes to indicate different states that may occur during communication like successful responses (200-299), client error responses (400-499), server error responses (500-599), etc.
 - HTTP requests and responses share a similar structure and are composed of:
-    - A single start-line describing the requests/response to be implemented, or it's status of whether successful or a failure.
+    - A single start-line describing the requests/response to be implemented, or its status of whether successful or a failure.
     - An optional set of HTTP headers specifying the request/response or describing the body included in the message.
     - A blank line indicating all meta-information for the request has been sent.
     - An optional body containing data associated with the request (like the content of an HTML form) or the document associated with a response. The presence of the body and its size is specified by the start-line and HTTP headers.
@@ -8370,15 +8370,15 @@ To conduct communication between a client and a server a common language is nece
 </figure>
 
 ## Soft layers
-The software model of the Internet can be defined by two types of layered models: **OSI model** (for reference only) and **Internet Protocol Suite** (practically implemented and used by the Internet). Without going into much depth the main points are:
+The software model of the Internet can be defined by two types of layered models: **OSI model** (for reference only) and **Internet Protocol Suite** (practically implemented and used by the Internet). Without going into much depth, the main points are:
 - Every computer (client or server), and network device that supports the Internet implements the IP suite model.
-- These models are structured as layers so we say the model has a layered structure
+- These models are structured as layers, so we say the model has a layered structure
 - Each layer has its responsibility and hides its implementation (inner working) from other layers
-- Each layer provides an interface to layers immediately above or below itself
+- Each layer provides an interface to the layers immediately above or below itself
 
 > Note:
-In the IP suite model, the *Application* layer combines all three layers from the OSI model i.e *Application* + *Presentation* + *Session*
-In the IP suite model, the *Link* layer combines the lower two layers from the OSI model i.e *Physical* + *Datalink*
+In the IP suite model, the *Application* layer combines all three layers from the OSI model i.e. *Application* + *Presentation* + *Session*
+In the IP suite model, the *Link* layer combines the lower two layers from the OSI model i.e. *Physical* + *Datalink*
 The lowermost layer from each model connects with physical network devices like routers, switches, etc.
 
 <figure align="center">
@@ -8402,7 +8402,7 @@ This figure shows the socket functions implemented in the C language. In this ar
 ## Coding
 ### Basic files and project structure
 > Note:
-> Please first install \`java JDK\` for this project, setup your environment variables, and check everything is working well.
+> Please first install \`java JDK\` for this project, set up your environment variables, and check everything is working well.
 
 1. Main project folder will contain a \`public\` and a \`resources\` folder. In the \`public\` folder, we will store all our \`.html\` pages, and in the \`resources\` folder, we will store our resources like images, videos, etc.
 2. Our main server program \`WebServer.java\` will be in the project's root directory.
@@ -8658,7 +8658,7 @@ The above code does the following things:
 - In the \`network\` tab, we can notice that, after clicking the link, our client sends two requests to the server: one for the \`cats.html\` page and one for the video file.
 
 ### Conclusion
-What we have learned in this article is just a speck of technology used on the Internet. We should be thankful for all those brilliant minds and engineering that make the Internet possible. Most importantly stay curious, and learn.
+What we have learned in this article is just a speck of technology used on the Internet. We should be thankful for all those brilliant minds and engineering that make the Internet possible. Most importantly, stay curious, and learn.
 `,"/src/assets/UnitTestingVueComponents/UnitTestingVueComponents.md":`---
 title: Unit Testing with VueJS
 authorName: Kiran Parajuli
@@ -8689,7 +8689,7 @@ The [VTU](https://github.com/vuejs/vue-test-utils/ "VTU") is a set of utilities 
 #### Installation
 There are various options for the installation of VTU. Please refer to the [official VTU docs](https://vue-test-utils.vuejs.org/installation/#installation "official VTU docs") for detailed information on how to install and configure VTU.
 
-VueJS projects will already have a bundler set up for the development. So one thing I would suggest for the installation is please do not set up a different compiler or transformer system for the tests and the source code. This will only increase the project complexity and packages dependency. For example: if you're using \`babel\` for the source code, use the same for the tests too.
+VueJS projects will already have a bundler set up for the development. So one thing I would suggest for the installation is please do not set up a different compiler or transformer system for the tests and the source code. This will only increase the project complexity and packages dependency. For example, if you're using \`babel\` for the source code, use the same for the tests too.
 
 #### Writing Tests
 With VTU, we can write our tests using \`describe\`, \`it\`, \`test\`. Similarly, hooks can be implemented under \`before\`, \`beforeEach\`, \`after\` and \`afterEach\`. And, for assertions, \`expect\` is also already bundled. Great!
@@ -8725,7 +8725,7 @@ describe("Fab button component", () => {
 ##### Knowing what to test
 There can be multiple logic involved in our test files. However, not everything needs to be tested during unit testing.
 
-Don't forget we're only writing tests for a specific component. So we should only test the features provided by that specific unit.
+Remember that we're only writing tests for a specific component. So we should only test the features provided by that specific unit.
 
 So, is it necessary to test every feature in the component?
 
@@ -8942,7 +8942,7 @@ This will save the response object as a snapshot, and our test will look neater.
 #### Final Thoughts
 In a nutshell, unit testing with Vue components with Jest and vue-test-utils is fun. Do not try to get 100% coverage, rather try to test the actual features of the component. The Vue community has good documentation and guides on how to test Vue components. Thus, you're likely to have fewer problems testing your components and securing your path forward.
 `,"/src/assets/VisualRegressionTesting/nightwatch-vrt.md":`---
-title: Visual Regression Test with Nigthwatch VRT
+title: Visual Regression Test with Nightwatch VRT
 authorName: Talank Baral
 authorAvatar: https://avatars.githubusercontent.com/u/27364813?v=4
 authorLink: https://github.com/Talank
@@ -8953,14 +8953,14 @@ seriesTitle: Visual Regression Testing (VRT)
 episode: 2
 ---
 
-Firstly, if you don't have any idea about what Visual Regression Test (VRT) is then I would recommend that you read my previous blog [Insight to Visual Regression Testing](https://dev.to/jankaritech/insight-to-visual-regression-testing-25mh). If you have already read that one or you already have some idea about "What is VRT?", then you are now ready to read this blog. The figure below (By Galaxy Weblinks) also gives a basic idea about VRT and the various tools that can be used for automated VRT.
+Firstly, if you don't have any idea about what Visual Regression Test (VRT) is, then I would recommend that you read my previous blog [Insight to Visual Regression Testing](https://dev.to/jankaritech/insight-to-visual-regression-testing-25mh). If you have already read that one or you already have some idea about "What is VRT?", then you are now ready to read this blog. The figure below (By Galaxy Weblinks) also gives a basic idea about VRT and the various tools that can be used for automated VRT.
 
 ![image](/src/assets/VisualRegressionTesting/images/VRT_Galaxy_Weblinks.png)
 
-The definition of \`nightwatch-vrt\` is quite clear from its name. It is a VRT tool that works as an extension to [nightwatch.js](https://nightwatchjs.org/). Using \`nightwatch-vrt\` is pretty straightforward. You only need to invoke the \`screenshotIdenticalToBaseline\` function to make a comparison of the current screenshot with the respective baseline image. And if you look at the internal [logic](https://github.com/Talank/nightwatch-vrt/blob/master/assertions/screenshotIdenticalToBaseline.js) of this function then you will find that all it does is wait for an element to be present, then capture the screenshot of that element, compare it with the baseline, and finally return the comparison result. And if you look further into the image comparison logic then you will notice that \`nightwatch-vrt\` actually uses [JIMP](https://www.npmjs.com/package/jimp) (JavaScript Image Manipulation Program) which is built with Javascript with no native dependencies.
+The definition of \`nightwatch-vrt\` is quite clear from its name. It is a VRT tool that works as an extension to [nightwatch.js](https://nightwatchjs.org/). Using \`nightwatch-vrt\` is pretty straightforward. You only need to invoke the \`screenshotIdenticalToBaseline\` function to make a comparison of the current screenshot with the respective baseline image. And if you look at the internal [logic](https://github.com/Talank/nightwatch-vrt/blob/master/assertions/screenshotIdenticalToBaseline.js) of this function, then you will find that all it does is wait for an element to be present, then capture the screenshot of that element, compare it with the baseline, and finally return the comparison result. And if you look further into the image comparison logic then you will notice that \`nightwatch-vrt\` actually uses [JIMP](https://www.npmjs.com/package/jimp) (JavaScript Image Manipulation Program) which is built with Javascript with no native dependencies.
 
 ## Configuration
-As I already said that \`nightwatch-vrt\` is an extension to the \`nightwatch.js\`, you first need to setup nightwatch.js. And if you don't know how to setup \`nightwatch.js\` then you can refer to one of my previous blogs [Setup Nightwatch and run your first test
+As I already said that \`nightwatch-vrt\` is an extension to the \`nightwatch.js\`, you first need to set up nightwatch.js. And if you don't know how to set up \`nightwatch.js\` then you can refer to one of my previous blogs [Setup Nightwatch and run your first test
 ](https://dev.to/jankaritech/setup-nightwatch-and-run-your-first-test-o7o). Next, add nightwatch-vrt in the devDependencies of your project. You can do it using the following command using yarn.
 \`\`\`
 yarn add --dev nightwatch-vrt
@@ -8995,15 +8995,15 @@ function generateScreenshotFilePath(nightwatchClient, basePath, imagePath) {
     return path.join(process.cwd(), basePath, imagePath)
 }
 \`\`\`
-We pass a function to \`generate_screenshot_path\` because the VRT screenshot path generator option accepts a function that returns a string containing the full path based on the test properties. We can not provide a constant string instead of the path generator function because not all tests use the same screenshot.
+We pass a function to \`generate_screenshot_path\` because the VRT screenshot path generator option accepts a function that returns a string containing the full path based on the test properties. We cannot provide a constant string instead of the path generator function because not all tests use the same screenshot.
 
-So the above configuration stores the baseline, latest, and diff images in the subfolders \`tests/vrt/baseline\`, \`tests/vrt/latest\`, and \`tests/vrt/diff\` respectively. If we provide a common path for baseline, diff and latest images then we should provide some optional configurations such as suffix to distinguish the images. These optional configurations are \`baseline_suffix\`, \`diff_suffix\`, and \`latest_suffix\`.
+So the above configuration stores the baseline, latest, and diff images in the subfolders \`tests/vrt/baseline\`, \`tests/vrt/latest\`, and \`tests/vrt/diff\` respectively. If we provide a common path for baseline, diff and the latest images, then we should provide some optional configurations such as suffix to distinguish the images. These optional configurations are \`baseline_suffix\`, \`diff_suffix\`, and \`latest_suffix\`.
 
-The \`threshold\` option in the \`visual_regression_settings\` specifies how sensitive the image comparison will be. To understand what all other options mean, you can check out the README file of [nightwatch-vrt github repository](https://github.com/Crunch-io/nightwatch-vrt)
+The \`threshold\` option in the \`visual_regression_settings\` specifies how sensitive the image comparison will be. To understand what all other options mean, you can check out the README file of the [nightwatch-vrt github repository](https://github.com/Crunch-io/nightwatch-vrt)
 
 ## Write Tests
 
-As usual, we start writing our test by making the feature file at first, and the visual check can be done in the step definitions. For the demonstration, I am referencing [this project](https://github.com/Talank/vrt-demo) which is a simple to-do app in react.
+As usual, we start writing our test by making the feature file at first, and the visual check can be done in the step definitions. For the demonstration, I am referencing [this project](https://github.com/Talank/vrt-demo) which is a simple to-do app in React.
 
 One of the test scenarios in this app could be as follows:
 
@@ -9040,18 +9040,18 @@ Then(/^the toDo form should match the default baseline$/, function () {
 \`\`\`
 
 The \`assertScreenShot\` function uses the command \`screenshotIdenticalToBaseline()\` that is defined in the \`nightwatch-vrt\` library. \`screenshotIdenticalToBaseline\` could take up to 4 parameters where only the first parameter is mandatory:
-- The first one is a String which is the selector of the element that should be tested visually.
-- The second one is also a String which is the name of the image that is used for the name of the baseline, diff, or latest image. The default name is the name of the selector provided as the first parameter.
+- The first one is a String that is the selector of the element that should be tested visually.
+- The second one is also a String that is the name of the image that is used for the name of the baseline, diff, or latest image. The default name is the name of the selector provided as the first parameter.
 - The third one is NightwatchVRToptions settings that override the defaults and \`visual_regression_settings\` of the nightwatch configuration file.
-- And the fourth parameter is a String which is the message that is displayed in the console upon the successful completion of the test.
+- And the fourth parameter is a String that is the message that is displayed in the console upon the successful completion of the test.
 
 When the VRT is executed for the first time, the baseline images do not exist and so they are created. When the test finds the baseline image with the appropriate name, it will compare the screenshot of the element with the respective image in the baseline. So, if you are running the test for the first time, it will execute twice, once to create the baseline images and again to compare the current state with the baseline. Next time when you run the test, it will be executed only once as the baseline is created only once. However, if there are some changes in the UI and the test fails, then you need to change the baseline image as well.
 
-There are mainly 2 ways to update your baseline image. The easiest way to do this is to set the configuration \`always_save_diff_screenshot:\` to \`true\` in the nightwatch configuration file's \`globals\` section. This will update all the failing screenshots at once. If you need to update only one screenshot then the appropriate method to update it is to delete the baseline screenshot and run the tests again which will take the updated screenshot and save it as the new baseline.
+There are mainly 2 ways to update your baseline image. The easiest way to do this is to set the configuration \`always_save_diff_screenshot:\` to \`true\` in the nightwatch configuration file's \`globals\` section. This will update all the failing screenshots at once. If you need to update only one screenshot, then the appropriate method to update it is to delete the baseline screenshot and run the tests again which will take the updated screenshot and save it as the new baseline.
 
 ## Execute the test
 
-You do not need any special commands to execute the VRT. You can execute the scenario containing the feature file like a normal nightwatch test and that's it. If you need help with setting up nightwatch and running the tests, you can read [this blog](https://dev.to/jankaritech/setup-nightwatch-and-run-your-first-test-o7o) of mine.
+You do not need any special commands to execute the VRT. You can execute the scenario containing the feature file like a normal nightwatch test, and that's it. If you need help with setting up nightwatch and running the tests, you can read [this blog](https://dev.to/jankaritech/setup-nightwatch-and-run-your-first-test-o7o) of mine.
 `,"/src/assets/VisualRegressionTesting/vrt-introduction.md":`---
 title: Insight to Visual Regression Testing
 authorName: Talank Baral
@@ -9115,17 +9115,17 @@ banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/assets/are
 ---
 
 Company values are great, but if they are only saved away in a document they are useless. The values need to be saved in peoples heads and hearts. To achieve that, we discuss them on a regular basis.
-Today we had a special guest to lead the discussion: Paurakh Sharma Humagain. He is the first programmer JankariTech ever employed, and even though he left the company a while ago, we stay in a good contact.
+Today we had a special guest to lead the discussion: Paurakh Sharma Humagain. He is the first programmer JankariTech ever employed, and even though he left the company a while ago, we stay in good contact.
 
 For the discussion today he picked the value of \u201CTEAMWORK\u201D and explained how important it is to feel psychologically safe to perform well in a team.
 
-Only a member who feels safe in the team will leave the comfort zone to take on risks. E.g. Tackle a task with the possibility of failure. Taking those risks, helping each other through issues and failures without embarrassing others will take the team to new shores.
+Only a member who feels safe in the team will leave the comfort zone to take on risks. E.g., Tackle a task with the possibility of failure. Taking those risks, helping each other through issues and failures without embarrassing others will take the team to new shores.
 
 A big "THANK YOU" to Paurakh for this new view on teamwork!
 
 ## JankariTech Values
 ### 1. Honesty
-To maintain long term relationships and reach our long term goals, we speak the truth while respecting other people's feelings. We act in accordance with our words.
+To maintain long-term relationships and reach our long-term goals, we speak the truth while respecting other people's feelings. We act in accordance with our words.
 ### 2. Trust
 Trust is the basis of good relationships, but trust is hard to build and easily destroyed. That\u2019s why we work hard to earn and maintain the trust of our colleagues, customers and suppliers. We trust that every team-member works towards the benefit of the whole team and the company.
 ### 3. Forgiveness
@@ -9135,7 +9135,7 @@ All staff are given the opportunity to reach their full potential.
 ### 5. Teamwork
 We need each other to be successful, so we work together using and respecting everybody's uniqueness.
 ### 6. Quality
-We are committed to deliver only high quality work to our customers.
+We are committed to deliver only high-quality work to our customers.
 ### 7. Transparency
 Relevant information is shared between staff and management in a timely manner.
 ### 8. Joy
@@ -9147,15 +9147,15 @@ authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800
 authorLink: https://www.linkedin.com/in/artur-neumann/
 createdAt: May 22, 2023
 tags: go, API, testing, microservice
-banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/assets/ocisWrapper/banner.png 
+banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/assets/ocisWrapper/banner.png
 ---
-oCIS is the new generation open source file-sync and sharing platform, built by [ownCloud GmbH](https://www.owncloud.com), who also created the ownCloud 10 server based on the LAMP stack. The team of [JankariTech](https://www.jankaritech.com) is part of that development and mainly writes and maintains the automated tests.
+oCIS is the new generation open-source file-sync and sharing platform, built by [ownCloud GmbH](https://www.owncloud.com), who also created the ownCloud 10 server based on the LAMP stack. The team of [JankariTech](https://www.jankaritech.com) is part of that development and mainly writes and maintains the automated tests.
 
 ## The Challenge \u{1F680}
 
 Because a lot of APIs of oCIS still have to be compatible with ownCloud 10, we have used the existing API tests and (after some adjustments) ran them on oCIS to ensure backward compatibility. I have written about that process in [BDD on Software Rewrite](https://blog.jankaritech.com/#/blog/Behaviour%20Driven%20Development/BDD%20on%20Software%20Rewrite).
 
-This worked well for a lot of test cases, and we could quickly reach good coverage. But there were some cases where the old tests could not be reused. One of those cases is specific system-wide settings. In ownCloud 10 those settings are often set by the UI, an API call, or the designated CLI tool. Also, the changes can be done during runtime and are immediately effective. This is great for an API test: change the setting => check the expected behaviour! Easy!
+This worked well for a lot of test cases, and we could quickly reach good coverage. But there were some cases where the old tests could not be reused. One of those cases is specific system-wide settings. In ownCloud 10, those settings are often set by the UI, an API call, or the designated CLI tool. Also, the changes can be done during runtime and are immediately effective. This is great for an API test: change the setting => check the expected behavior! Easy!
 
 Because of the different architecture of oCIS, system-wide settings are set through YML files or [environment variables](https://doc.owncloud.com/ocis/next/deployment/services/env-var-note.html). This is great if you run the service in a container environment, but it makes automated testing harder. Logically, the settings are only read once during the start of the service and for any change to take effect, the service needs to be restarted. How to do that as an external black-box API test?
 Not to test those settings or to rely only on manual tests was never an option.
@@ -9171,7 +9171,7 @@ The next iteration was to write a small wrapper for the server (of course, it's 
 ![Whiteboard](/src/assets/ocisWrapper/whiteboard.jpg)
 
 This wrapper starts the oCIS server, monitors its state, and provides its own API that accepts lists of settings.
-Whenever a test wants to change a system-wide setting of oCIS it sends the wrapper the desired environment variables. The wrapper then exposes those to oCIS, restarts oCIS and reports back the success of the reconfiguration. The test can then go on and contact oCIS through its APIs and check if the new behavior is as expected.
+Whenever a test wants to change a system-wide setting of oCIS, it sends the wrapper the desired environment variables. The wrapper then exposes those to oCIS, restarts oCIS and reports back the success of the reconfiguration. The test can then go on and contact oCIS through its APIs and check if the new behavior is as expected.
 
 ![Diagram](/src/assets/ocisWrapper/diagram.png)
 
@@ -9181,11 +9181,11 @@ All the kudos for this work goes to [Sajan Gurung](https://github.com/saw-jan)!
 
 ## Future Challenges \u{1F9D1}\u200D\u{1F4BB}
 
-As we move forward with extending the test-coverage to new APIs and various different use-cases of oCIS we face further challenges. For example, oCIS can be connected with different storage providers (POSIX filesystem, EOS, S3, ownCloud 10). We are currently exploring what would be the best way and layer to test the functionality of the storage drivers. Unit tests, Contract tests, E2E API tests, something else?
+As we move forward with extending the test-coverage to new APIs and various different use-cases of oCIS, we face further challenges. For example, oCIS can be connected with different storage providers (POSIX filesystem, EOS, S3, ownCloud 10). We are currently exploring what would be the best way and layer to test the functionality of the storage drivers. Unit tests, Contract tests, E2E API tests, something else?
 
 I will keep posting about interesting developments in this test automation area.
 `}}),WM=e=>{const t=[];return Object.keys(e).forEach(n=>{const a=e[n];t.push({raw:a,sourcePath:n,meta:qM(n,e)})}),t},VM=e=>{const t=e.slice(1,2)[0].text,n=YM.load(t),a=n.createdAt;return n.createdAt=a?new Date(a):"-",n.tags=n.tags?n.tags.split(", "):[],n},qM=(e,t)=>{const n=ie.lexer(t[e],{sanitize:!0}),a=VM(n),r=t[e].length;return{...a,contentLength:r,sourcePath:e}},dP=()=>{const e=[],{modules:t}=Lu();return t.value.forEach(n=>{e.push(n.meta)}),e},uP=e=>{const t=ie.lexer(e,null),n=ie.parser([t[2]]),a=new DOMParser().parseFromString(n,"text/xml");return[ie.parser(t.slice(2),null),{text:a.firstChild.textContent}]},_P=e=>{const n=ie.lexer(e).slice(2).filter(a=>a.type==="heading"&&a.depth<=4);return n.forEach(a=>{const r=ie.parser([a]),i=new DOMParser().parseFromString(r,"text/xml");a.id=i.firstChild.id,a.text=i.firstChild.textContent}),n};/*!
   * vue-router v4.1.6
   * (c) 2022 Eduardo San Martin Morote
   * @license MIT
-  */const la=typeof window!="undefined";function zM(e){return e.__esModule||e[Symbol.toStringTag]==="Module"}const Ae=Object.assign;function ss(e,t){const n={};for(const a in t){const r=t[a];n[a]=Lt(r)?r.map(e):e(r)}return n}const Ha=()=>{},Lt=Array.isArray,$M=/\/$/,KM=e=>e.replace($M,"");function os(e,t,n="/"){let a,r={},i="",s="";const o=t.indexOf("#");let l=t.indexOf("?");return o<l&&o>=0&&(l=-1),l>-1&&(a=t.slice(0,l),i=t.slice(l+1,o>-1?o:t.length),r=e(i)),o>-1&&(a=a||t.slice(0,o),s=t.slice(o,t.length)),a=ZM(a!=null?a:t,n),{fullPath:a+(i&&"?")+i+s,path:a,query:r,hash:s}}function QM(e,t){const n=t.query?e(t.query):"";return t.path+(n&&"?")+n+(t.hash||"")}function hc(e,t){return!t||!e.toLowerCase().startsWith(t.toLowerCase())?e:e.slice(t.length)||"/"}function jM(e,t,n){const a=t.matched.length-1,r=n.matched.length-1;return a>-1&&a===r&&ya(t.matched[a],n.matched[r])&&rp(t.params,n.params)&&e(t.query)===e(n.query)&&t.hash===n.hash}function ya(e,t){return(e.aliasOf||e)===(t.aliasOf||t)}function rp(e,t){if(Object.keys(e).length!==Object.keys(t).length)return!1;for(const n in e)if(!XM(e[n],t[n]))return!1;return!0}function XM(e,t){return Lt(e)?fc(e,t):Lt(t)?fc(t,e):e===t}function fc(e,t){return Lt(t)?e.length===t.length&&e.every((n,a)=>n===t[a]):e.length===1&&e[0]===t}function ZM(e,t){if(e.startsWith("/"))return e;if(!e)return t;const n=t.split("/"),a=e.split("/");let r=n.length-1,i,s;for(i=0;i<a.length;i++)if(s=a[i],s!==".")if(s==="..")r>1&&r--;else break;return n.slice(0,r).join("/")+"/"+a.slice(i-(i===a.length?1:0)).join("/")}var sr;(function(e){e.pop="pop",e.push="push"})(sr||(sr={}));var Wa;(function(e){e.back="back",e.forward="forward",e.unknown=""})(Wa||(Wa={}));function JM(e){if(!e)if(la){const t=document.querySelector("base");e=t&&t.getAttribute("href")||"/",e=e.replace(/^\w+:\/\/[^\/]+/,"")}else e="/";return e[0]!=="/"&&e[0]!=="#"&&(e="/"+e),KM(e)}const eL=/^[^#]+#/;function tL(e,t){return e.replace(eL,"#")+t}function nL(e,t){const n=document.documentElement.getBoundingClientRect(),a=e.getBoundingClientRect();return{behavior:t.behavior,left:a.left-n.left-(t.left||0),top:a.top-n.top-(t.top||0)}}const Fi=()=>({left:window.pageXOffset,top:window.pageYOffset});function aL(e){let t;if("el"in e){const n=e.el,a=typeof n=="string"&&n.startsWith("#"),r=typeof n=="string"?a?document.getElementById(n.slice(1)):document.querySelector(n):n;if(!r)return;t=nL(r,e)}else t=e;"scrollBehavior"in document.documentElement.style?window.scrollTo(t):window.scrollTo(t.left!=null?t.left:window.pageXOffset,t.top!=null?t.top:window.pageYOffset)}function Ec(e,t){return(history.state?history.state.position-t:-1)+e}const Us=new Map;function rL(e,t){Us.set(e,t)}function iL(e){const t=Us.get(e);return Us.delete(e),t}let sL=()=>location.protocol+"//"+location.host;function ip(e,t){const{pathname:n,search:a,hash:r}=t,i=e.indexOf("#");if(i>-1){let o=r.includes(e.slice(i))?e.slice(i).length:1,l=r.slice(o);return l[0]!=="/"&&(l="/"+l),hc(l,"")}return hc(n,e)+a+r}function oL(e,t,n,a){let r=[],i=[],s=null;const o=({state:_})=>{const p=ip(e,location),g=n.value,h=t.value;let b=0;if(_){if(n.value=p,t.value=_,s&&s===g){s=null;return}b=h?_.position-h.position:0}else a(p);r.forEach(S=>{S(n.value,g,{delta:b,type:sr.pop,direction:b?b>0?Wa.forward:Wa.back:Wa.unknown})})};function l(){s=n.value}function c(_){r.push(_);const p=()=>{const g=r.indexOf(_);g>-1&&r.splice(g,1)};return i.push(p),p}function d(){const{history:_}=window;!_.state||_.replaceState(Ae({},_.state,{scroll:Fi()}),"")}function u(){for(const _ of i)_();i=[],window.removeEventListener("popstate",o),window.removeEventListener("beforeunload",d)}return window.addEventListener("popstate",o),window.addEventListener("beforeunload",d),{pauseListeners:l,listen:c,destroy:u}}function Sc(e,t,n,a=!1,r=!1){return{back:e,current:t,forward:n,replaced:a,position:window.history.length,scroll:r?Fi():null}}function lL(e){const{history:t,location:n}=window,a={value:ip(e,n)},r={value:t.state};r.value||i(a.value,{back:null,current:a.value,forward:null,position:t.length-1,replaced:!0,scroll:null},!0);function i(l,c,d){const u=e.indexOf("#"),_=u>-1?(n.host&&document.querySelector("base")?e:e.slice(u))+l:sL()+e+l;try{t[d?"replaceState":"pushState"](c,"",_),r.value=c}catch(p){console.error(p),n[d?"replace":"assign"](_)}}function s(l,c){const d=Ae({},t.state,Sc(r.value.back,l,r.value.forward,!0),c,{position:r.value.position});i(l,d,!0),a.value=l}function o(l,c){const d=Ae({},r.value,t.state,{forward:l,scroll:Fi()});i(d.current,d,!0);const u=Ae({},Sc(a.value,l,null),{position:d.position+1},c);i(l,u,!1),a.value=l}return{location:a,state:r,push:o,replace:s}}function cL(e){e=JM(e);const t=lL(e),n=oL(e,t.state,t.location,t.replace);function a(i,s=!0){s||n.pauseListeners(),history.go(i)}const r=Ae({location:"",base:e,go:a,createHref:tL.bind(null,e)},t,n);return Object.defineProperty(r,"location",{enumerable:!0,get:()=>t.location.value}),Object.defineProperty(r,"state",{enumerable:!0,get:()=>t.state.value}),r}function dL(e){return e=location.host?e||location.pathname+location.search:"",e.includes("#")||(e+="#"),cL(e)}function uL(e){return typeof e=="string"||e&&typeof e=="object"}function sp(e){return typeof e=="string"||typeof e=="symbol"}const pn={path:"/",name:void 0,params:{},query:{},hash:"",fullPath:"/",matched:[],meta:{},redirectedFrom:void 0},op=Symbol("");var bc;(function(e){e[e.aborted=4]="aborted",e[e.cancelled=8]="cancelled",e[e.duplicated=16]="duplicated"})(bc||(bc={}));function va(e,t){return Ae(new Error,{type:e,[op]:!0},t)}function jt(e,t){return e instanceof Error&&op in e&&(t==null||!!(e.type&t))}const Tc="[^/]+?",_L={sensitive:!1,strict:!1,start:!0,end:!0},pL=/[.+*?^${}()[\]/\\]/g;function mL(e,t){const n=Ae({},_L,t),a=[];let r=n.start?"^":"";const i=[];for(const c of e){const d=c.length?[]:[90];n.strict&&!c.length&&(r+="/");for(let u=0;u<c.length;u++){const _=c[u];let p=40+(n.sensitive?.25:0);if(_.type===0)u||(r+="/"),r+=_.value.replace(pL,"\\$&"),p+=40;else if(_.type===1){const{value:g,repeatable:h,optional:b,regexp:S}=_;i.push({name:g,repeatable:h,optional:b});const T=S||Tc;if(T!==Tc){p+=10;try{new RegExp(`(${T})`)}catch(R){throw new Error(`Invalid custom RegExp for param "${g}" (${T}): `+R.message)}}let y=h?`((?:${T})(?:/(?:${T}))*)`:`(${T})`;u||(y=b&&c.length<2?`(?:/${y})`:"/"+y),b&&(y+="?"),r+=y,p+=20,b&&(p+=-8),h&&(p+=-20),T===".*"&&(p+=-50)}d.push(p)}a.push(d)}if(n.strict&&n.end){const c=a.length-1;a[c][a[c].length-1]+=.7000000000000001}n.strict||(r+="/?"),n.end?r+="$":n.strict&&(r+="(?:/|$)");const s=new RegExp(r,n.sensitive?"":"i");function o(c){const d=c.match(s),u={};if(!d)return null;for(let _=1;_<d.length;_++){const p=d[_]||"",g=i[_-1];u[g.name]=p&&g.repeatable?p.split("/"):p}return u}function l(c){let d="",u=!1;for(const _ of e){(!u||!d.endsWith("/"))&&(d+="/"),u=!1;for(const p of _)if(p.type===0)d+=p.value;else if(p.type===1){const{value:g,repeatable:h,optional:b}=p,S=g in c?c[g]:"";if(Lt(S)&&!h)throw new Error(`Provided param "${g}" is an array but it is not repeatable (* or + modifiers)`);const T=Lt(S)?S.join("/"):S;if(!T)if(b)_.length<2&&(d.endsWith("/")?d=d.slice(0,-1):u=!0);else throw new Error(`Missing required param "${g}"`);d+=T}}return d||"/"}return{re:s,score:a,keys:i,parse:o,stringify:l}}function gL(e,t){let n=0;for(;n<e.length&&n<t.length;){const a=t[n]-e[n];if(a)return a;n++}return e.length<t.length?e.length===1&&e[0]===40+40?-1:1:e.length>t.length?t.length===1&&t[0]===40+40?1:-1:0}function hL(e,t){let n=0;const a=e.score,r=t.score;for(;n<a.length&&n<r.length;){const i=gL(a[n],r[n]);if(i)return i;n++}if(Math.abs(r.length-a.length)===1){if(yc(a))return 1;if(yc(r))return-1}return r.length-a.length}function yc(e){const t=e[e.length-1];return e.length>0&&t[t.length-1]<0}const fL={type:0,value:""},EL=/[a-zA-Z0-9_]/;function SL(e){if(!e)return[[]];if(e==="/")return[[fL]];if(!e.startsWith("/"))throw new Error(`Invalid path "${e}"`);function t(p){throw new Error(`ERR (${n})/"${c}": ${p}`)}let n=0,a=n;const r=[];let i;function s(){i&&r.push(i),i=[]}let o=0,l,c="",d="";function u(){!c||(n===0?i.push({type:0,value:c}):n===1||n===2||n===3?(i.length>1&&(l==="*"||l==="+")&&t(`A repeatable param (${c}) must be alone in its segment. eg: '/:ids+.`),i.push({type:1,value:c,regexp:d,repeatable:l==="*"||l==="+",optional:l==="*"||l==="?"})):t("Invalid state to consume buffer"),c="")}function _(){c+=l}for(;o<e.length;){if(l=e[o++],l==="\\"&&n!==2){a=n,n=4;continue}switch(n){case 0:l==="/"?(c&&u(),s()):l===":"?(u(),n=1):_();break;case 4:_(),n=a;break;case 1:l==="("?n=2:EL.test(l)?_():(u(),n=0,l!=="*"&&l!=="?"&&l!=="+"&&o--);break;case 2:l===")"?d[d.length-1]=="\\"?d=d.slice(0,-1)+l:n=3:d+=l;break;case 3:u(),n=0,l!=="*"&&l!=="?"&&l!=="+"&&o--,d="";break;default:t("Unknown state");break}}return n===2&&t(`Unfinished custom RegExp for param "${c}"`),u(),s(),r}function bL(e,t,n){const a=mL(SL(e.path),n),r=Ae(a,{record:e,parent:t,children:[],alias:[]});return t&&!r.record.aliasOf==!t.record.aliasOf&&t.children.push(r),r}function TL(e,t){const n=[],a=new Map;t=Rc({strict:!1,end:!0,sensitive:!1},t);function r(d){return a.get(d)}function i(d,u,_){const p=!_,g=yL(d);g.aliasOf=_&&_.record;const h=Rc(t,d),b=[g];if("alias"in d){const y=typeof d.alias=="string"?[d.alias]:d.alias;for(const R of y)b.push(Ae({},g,{components:_?_.record.components:g.components,path:R,aliasOf:_?_.record:g}))}let S,T;for(const y of b){const{path:R}=y;if(u&&R[0]!=="/"){const I=u.record.path,H=I[I.length-1]==="/"?"":"/";y.path=u.record.path+(R&&H+R)}if(S=bL(y,u,h),_?_.alias.push(S):(T=T||S,T!==S&&T.alias.push(S),p&&d.name&&!Cc(S)&&s(d.name)),g.children){const I=g.children;for(let H=0;H<I.length;H++)i(I[H],S,_&&_.children[H])}_=_||S,(S.record.components&&Object.keys(S.record.components).length||S.record.name||S.record.redirect)&&l(S)}return T?()=>{s(T)}:Ha}function s(d){if(sp(d)){const u=a.get(d);u&&(a.delete(d),n.splice(n.indexOf(u),1),u.children.forEach(s),u.alias.forEach(s))}else{const u=n.indexOf(d);u>-1&&(n.splice(u,1),d.record.name&&a.delete(d.record.name),d.children.forEach(s),d.alias.forEach(s))}}function o(){return n}function l(d){let u=0;for(;u<n.length&&hL(d,n[u])>=0&&(d.record.path!==n[u].record.path||!lp(d,n[u]));)u++;n.splice(u,0,d),d.record.name&&!Cc(d)&&a.set(d.record.name,d)}function c(d,u){let _,p={},g,h;if("name"in d&&d.name){if(_=a.get(d.name),!_)throw va(1,{location:d});h=_.record.name,p=Ae(vc(u.params,_.keys.filter(T=>!T.optional).map(T=>T.name)),d.params&&vc(d.params,_.keys.map(T=>T.name))),g=_.stringify(p)}else if("path"in d)g=d.path,_=n.find(T=>T.re.test(g)),_&&(p=_.parse(g),h=_.record.name);else{if(_=u.name?a.get(u.name):n.find(T=>T.re.test(u.path)),!_)throw va(1,{location:d,currentLocation:u});h=_.record.name,p=Ae({},u.params,d.params),g=_.stringify(p)}const b=[];let S=_;for(;S;)b.unshift(S.record),S=S.parent;return{name:h,path:g,params:p,matched:b,meta:CL(b)}}return e.forEach(d=>i(d)),{addRoute:i,resolve:c,removeRoute:s,getRoutes:o,getRecordMatcher:r}}function vc(e,t){const n={};for(const a of t)a in e&&(n[a]=e[a]);return n}function yL(e){return{path:e.path,redirect:e.redirect,name:e.name,meta:e.meta||{},aliasOf:void 0,beforeEnter:e.beforeEnter,props:vL(e),children:e.children||[],instances:{},leaveGuards:new Set,updateGuards:new Set,enterCallbacks:{},components:"components"in e?e.components||null:e.component&&{default:e.component}}}function vL(e){const t={},n=e.props||!1;if("component"in e)t.default=n;else for(const a in e.components)t[a]=typeof n=="boolean"?n:n[a];return t}function Cc(e){for(;e;){if(e.record.aliasOf)return!0;e=e.parent}return!1}function CL(e){return e.reduce((t,n)=>Ae(t,n.meta),{})}function Rc(e,t){const n={};for(const a in e)n[a]=a in t?t[a]:e[a];return n}function lp(e,t){return t.children.some(n=>n===e||lp(e,n))}const cp=/#/g,RL=/&/g,wL=/\//g,NL=/=/g,OL=/\?/g,dp=/\+/g,IL=/%5B/g,AL=/%5D/g,up=/%5E/g,DL=/%60/g,_p=/%7B/g,xL=/%7C/g,pp=/%7D/g,kL=/%20/g;function Vo(e){return encodeURI(""+e).replace(xL,"|").replace(IL,"[").replace(AL,"]")}function ML(e){return Vo(e).replace(_p,"{").replace(pp,"}").replace(up,"^")}function Bs(e){return Vo(e).replace(dp,"%2B").replace(kL,"+").replace(cp,"%23").replace(RL,"%26").replace(DL,"`").replace(_p,"{").replace(pp,"}").replace(up,"^")}function LL(e){return Bs(e).replace(NL,"%3D")}function PL(e){return Vo(e).replace(cp,"%23").replace(OL,"%3F")}function FL(e){return e==null?"":PL(e).replace(wL,"%2F")}function si(e){try{return decodeURIComponent(""+e)}catch{}return""+e}function UL(e){const t={};if(e===""||e==="?")return t;const a=(e[0]==="?"?e.slice(1):e).split("&");for(let r=0;r<a.length;++r){const i=a[r].replace(dp," "),s=i.indexOf("="),o=si(s<0?i:i.slice(0,s)),l=s<0?null:si(i.slice(s+1));if(o in t){let c=t[o];Lt(c)||(c=t[o]=[c]),c.push(l)}else t[o]=l}return t}function wc(e){let t="";for(let n in e){const a=e[n];if(n=LL(n),a==null){a!==void 0&&(t+=(t.length?"&":"")+n);continue}(Lt(a)?a.map(i=>i&&Bs(i)):[a&&Bs(a)]).forEach(i=>{i!==void 0&&(t+=(t.length?"&":"")+n,i!=null&&(t+="="+i))})}return t}function BL(e){const t={};for(const n in e){const a=e[n];a!==void 0&&(t[n]=Lt(a)?a.map(r=>r==null?null:""+r):a==null?a:""+a)}return t}const GL=Symbol(""),Nc=Symbol(""),Ui=Symbol(""),mp=Symbol(""),Gs=Symbol("");function ka(){let e=[];function t(a){return e.push(a),()=>{const r=e.indexOf(a);r>-1&&e.splice(r,1)}}function n(){e=[]}return{add:t,list:()=>e,reset:n}}function hn(e,t,n,a,r){const i=a&&(a.enterCallbacks[r]=a.enterCallbacks[r]||[]);return()=>new Promise((s,o)=>{const l=u=>{u===!1?o(va(4,{from:n,to:t})):u instanceof Error?o(u):uL(u)?o(va(2,{from:t,to:u})):(i&&a.enterCallbacks[r]===i&&typeof u=="function"&&i.push(u),s())},c=e.call(a&&a.instances[r],t,n,l);let d=Promise.resolve(c);e.length<3&&(d=d.then(l)),d.catch(u=>o(u))})}function ls(e,t,n,a){const r=[];for(const i of e)for(const s in i.components){let o=i.components[s];if(!(t!=="beforeRouteEnter"&&!i.instances[s]))if(YL(o)){const c=(o.__vccOpts||o)[t];c&&r.push(hn(c,n,a,i,s))}else{let l=o();r.push(()=>l.then(c=>{if(!c)return Promise.reject(new Error(`Couldn't resolve component "${s}" at "${i.path}"`));const d=zM(c)?c.default:c;i.components[s]=d;const _=(d.__vccOpts||d)[t];return _&&hn(_,n,a,i,s)()}))}}return r}function YL(e){return typeof e=="object"||"displayName"in e||"props"in e||"__vccOpts"in e}function Oc(e){const t=xt(Ui),n=xt(mp),a=pt(()=>t.resolve(lt(e.to))),r=pt(()=>{const{matched:l}=a.value,{length:c}=l,d=l[c-1],u=n.matched;if(!d||!u.length)return-1;const _=u.findIndex(ya.bind(null,d));if(_>-1)return _;const p=Ic(l[c-2]);return c>1&&Ic(d)===p&&u[u.length-1].path!==p?u.findIndex(ya.bind(null,l[c-2])):_}),i=pt(()=>r.value>-1&&qL(n.params,a.value.params)),s=pt(()=>r.value>-1&&r.value===n.matched.length-1&&rp(n.params,a.value.params));function o(l={}){return VL(l)?t[lt(e.replace)?"replace":"push"](lt(e.to)).catch(Ha):Promise.resolve()}return{route:a,href:pt(()=>a.value.href),isActive:i,isExactActive:s,navigate:o}}const HL=iu({name:"RouterLink",compatConfig:{MODE:3},props:{to:{type:[String,Object],required:!0},replace:Boolean,activeClass:String,exactActiveClass:String,custom:Boolean,ariaCurrentValue:{type:String,default:"page"}},useLink:Oc,setup(e,{slots:t}){const n=Oa(Oc(e)),{options:a}=xt(Ui),r=pt(()=>({[Ac(e.activeClass,a.linkActiveClass,"router-link-active")]:n.isActive,[Ac(e.exactActiveClass,a.linkExactActiveClass,"router-link-exact-active")]:n.isExactActive}));return()=>{const i=t.default&&t.default(n);return e.custom?i:wu("a",{"aria-current":n.isExactActive?e.ariaCurrentValue:null,href:n.href,onClick:n.navigate,class:r.value},i)}}}),WL=HL;function VL(e){if(!(e.metaKey||e.altKey||e.ctrlKey||e.shiftKey)&&!e.defaultPrevented&&!(e.button!==void 0&&e.button!==0)){if(e.currentTarget&&e.currentTarget.getAttribute){const t=e.currentTarget.getAttribute("target");if(/\b_blank\b/i.test(t))return}return e.preventDefault&&e.preventDefault(),!0}}function qL(e,t){for(const n in t){const a=t[n],r=e[n];if(typeof a=="string"){if(a!==r)return!1}else if(!Lt(r)||r.length!==a.length||a.some((i,s)=>i!==r[s]))return!1}return!0}function Ic(e){return e?e.aliasOf?e.aliasOf.path:e.path:""}const Ac=(e,t,n)=>e!=null?e:t!=null?t:n,zL=iu({name:"RouterView",inheritAttrs:!1,props:{name:{type:String,default:"default"},route:Object},compatConfig:{MODE:3},setup(e,{attrs:t,slots:n}){const a=xt(Gs),r=pt(()=>e.route||a.value),i=xt(Nc,0),s=pt(()=>{let c=lt(i);const{matched:d}=r.value;let u;for(;(u=d[c])&&!u.components;)c++;return c}),o=pt(()=>r.value.matched[s.value]);Lr(Nc,pt(()=>s.value+1)),Lr(GL,o),Lr(Gs,r);const l=Ci();return Hn(()=>[l.value,o.value,e.name],([c,d,u],[_,p,g])=>{d&&(d.instances[u]=c,p&&p!==d&&c&&c===_&&(d.leaveGuards.size||(d.leaveGuards=p.leaveGuards),d.updateGuards.size||(d.updateGuards=p.updateGuards))),c&&d&&(!p||!ya(d,p)||!_)&&(d.enterCallbacks[u]||[]).forEach(h=>h(c))},{flush:"post"}),()=>{const c=r.value,d=e.name,u=o.value,_=u&&u.components[d];if(!_)return Dc(n.default,{Component:_,route:c});const p=u.props[d],g=p?p===!0?c.params:typeof p=="function"?p(c):p:null,b=wu(_,Ae({},g,t,{onVnodeUnmounted:S=>{S.component.isUnmounted&&(u.instances[d]=null)},ref:l}));return Dc(n.default,{Component:b,route:c})||b}}});function Dc(e,t){if(!e)return null;const n=e(t);return n.length===1?n[0]:n}const $L=zL;function KL(e){const t=TL(e.routes,e),n=e.parseQuery||UL,a=e.stringifyQuery||wc,r=e.history,i=ka(),s=ka(),o=ka(),l=gS(pn);let c=pn;la&&e.scrollBehavior&&"scrollRestoration"in history&&(history.scrollRestoration="manual");const d=ss.bind(null,w=>""+w),u=ss.bind(null,FL),_=ss.bind(null,si);function p(w,V){let Y,te;return sp(w)?(Y=t.getRecordMatcher(w),te=V):te=w,t.addRoute(te,Y)}function g(w){const V=t.getRecordMatcher(w);V&&t.removeRoute(V)}function h(){return t.getRoutes().map(w=>w.record)}function b(w){return!!t.getRecordMatcher(w)}function S(w,V){if(V=Ae({},V||l.value),typeof w=="string"){const m=os(n,w,V.path),f=t.resolve({path:m.path},V),v=r.createHref(m.fullPath);return Ae(m,f,{params:_(f.params),hash:si(m.hash),redirectedFrom:void 0,href:v})}let Y;if("path"in w)Y=Ae({},w,{path:os(n,w.path,V.path).path});else{const m=Ae({},w.params);for(const f in m)m[f]==null&&delete m[f];Y=Ae({},w,{params:u(w.params)}),V.params=u(V.params)}const te=t.resolve(Y,V),Z=w.hash||"";te.params=d(_(te.params));const we=QM(a,Ae({},w,{hash:ML(Z),path:te.path})),ce=r.createHref(we);return Ae({fullPath:we,hash:Z,query:a===wc?BL(w.query):w.query||{}},te,{redirectedFrom:void 0,href:ce})}function T(w){return typeof w=="string"?os(n,w,l.value.path):Ae({},w)}function y(w,V){if(c!==w)return va(8,{from:V,to:w})}function R(w){return G(w)}function I(w){return R(Ae(T(w),{replace:!0}))}function H(w){const V=w.matched[w.matched.length-1];if(V&&V.redirect){const{redirect:Y}=V;let te=typeof Y=="function"?Y(w):Y;return typeof te=="string"&&(te=te.includes("?")||te.includes("#")?te=T(te):{path:te},te.params={}),Ae({query:w.query,hash:w.hash,params:"path"in te?{}:w.params},te)}}function G(w,V){const Y=c=S(w),te=l.value,Z=w.state,we=w.force,ce=w.replace===!0,m=H(Y);if(m)return G(Ae(T(m),{state:typeof m=="object"?Ae({},Z,m.state):Z,force:we,replace:ce}),V||Y);const f=Y;f.redirectedFrom=V;let v;return!we&&jM(a,te,Y)&&(v=va(16,{to:f,from:te}),ue(te,te,!0,!1)),(v?Promise.resolve(v):K(f,te)).catch(N=>jt(N)?jt(N,2)?N:ee(N):D(N,f,te)).then(N=>{if(N){if(jt(N,2))return G(Ae({replace:ce},T(N.to),{state:typeof N.to=="object"?Ae({},Z,N.to.state):Z,force:we}),V||f)}else N=le(f,te,!0,ce,Z);return W(f,te,N),N})}function L(w,V){const Y=y(w,V);return Y?Promise.reject(Y):Promise.resolve()}function K(w,V){let Y;const[te,Z,we]=QL(w,V);Y=ls(te.reverse(),"beforeRouteLeave",w,V);for(const m of te)m.leaveGuards.forEach(f=>{Y.push(hn(f,w,V))});const ce=L.bind(null,w,V);return Y.push(ce),na(Y).then(()=>{Y=[];for(const m of i.list())Y.push(hn(m,w,V));return Y.push(ce),na(Y)}).then(()=>{Y=ls(Z,"beforeRouteUpdate",w,V);for(const m of Z)m.updateGuards.forEach(f=>{Y.push(hn(f,w,V))});return Y.push(ce),na(Y)}).then(()=>{Y=[];for(const m of w.matched)if(m.beforeEnter&&!V.matched.includes(m))if(Lt(m.beforeEnter))for(const f of m.beforeEnter)Y.push(hn(f,w,V));else Y.push(hn(m.beforeEnter,w,V));return Y.push(ce),na(Y)}).then(()=>(w.matched.forEach(m=>m.enterCallbacks={}),Y=ls(we,"beforeRouteEnter",w,V),Y.push(ce),na(Y))).then(()=>{Y=[];for(const m of s.list())Y.push(hn(m,w,V));return Y.push(ce),na(Y)}).catch(m=>jt(m,8)?m:Promise.reject(m))}function W(w,V,Y){for(const te of o.list())te(w,V,Y)}function le(w,V,Y,te,Z){const we=y(w,V);if(we)return we;const ce=V===pn,m=la?history.state:{};Y&&(te||ce?r.replace(w.fullPath,Ae({scroll:ce&&m&&m.scroll},Z)):r.push(w.fullPath,Z)),l.value=w,ue(w,V,Y,ce),ee()}let fe;function Te(){fe||(fe=r.listen((w,V,Y)=>{if(!De.listening)return;const te=S(w),Z=H(te);if(Z){G(Ae(Z,{replace:!0}),te).catch(Ha);return}c=te;const we=l.value;la&&rL(Ec(we.fullPath,Y.delta),Fi()),K(te,we).catch(ce=>jt(ce,12)?ce:jt(ce,2)?(G(ce.to,te).then(m=>{jt(m,20)&&!Y.delta&&Y.type===sr.pop&&r.go(-1,!1)}).catch(Ha),Promise.reject()):(Y.delta&&r.go(-Y.delta,!1),D(ce,te,we))).then(ce=>{ce=ce||le(te,we,!1),ce&&(Y.delta&&!jt(ce,8)?r.go(-Y.delta,!1):Y.type===sr.pop&&jt(ce,20)&&r.go(-1,!1)),W(te,we,ce)}).catch(Ha)}))}let Ee=ka(),ye=ka(),A;function D(w,V,Y){ee(w);const te=ye.list();return te.length?te.forEach(Z=>Z(w,V,Y)):console.error(w),Promise.reject(w)}function F(){return A&&l.value!==pn?Promise.resolve():new Promise((w,V)=>{Ee.add([w,V])})}function ee(w){return A||(A=!w,Te(),Ee.list().forEach(([V,Y])=>w?Y(w):V()),Ee.reset()),w}function ue(w,V,Y,te){const{scrollBehavior:Z}=e;if(!la||!Z)return Promise.resolve();const we=!Y&&iL(Ec(w.fullPath,0))||(te||!Y)&&history.state&&history.state.scroll||null;return yo().then(()=>Z(w,V,we)).then(ce=>ce&&aL(ce)).catch(ce=>D(ce,w,V))}const ge=w=>r.go(w);let he;const qe=new Set,De={currentRoute:l,listening:!0,addRoute:p,removeRoute:g,hasRoute:b,getRoutes:h,resolve:S,options:e,push:R,replace:I,go:ge,back:()=>ge(-1),forward:()=>ge(1),beforeEach:i.add,beforeResolve:s.add,afterEach:o.add,onError:ye.add,isReady:F,install(w){const V=this;w.component("RouterLink",WL),w.component("RouterView",$L),w.config.globalProperties.$router=V,Object.defineProperty(w.config.globalProperties,"$route",{enumerable:!0,get:()=>lt(l)}),la&&!he&&l.value===pn&&(he=!0,R(r.location).catch(Z=>{}));const Y={};for(const Z in pn)Y[Z]=pt(()=>l.value[Z]);w.provide(Ui,V),w.provide(mp,Oa(Y)),w.provide(Gs,l);const te=w.unmount;qe.add(w),w.unmount=function(){qe.delete(w),qe.size<1&&(c=pn,fe&&fe(),fe=null,l.value=pn,he=!1,A=!1),te()}}};return De}function na(e){return e.reduce((t,n)=>t.then(()=>n()),Promise.resolve())}function QL(e,t){const n=[],a=[],r=[],i=Math.max(t.matched.length,e.matched.length);for(let s=0;s<i;s++){const o=t.matched[s];o&&(e.matched.find(c=>ya(c,o))?a.push(o):n.push(o));const l=e.matched[s];l&&(t.matched.find(c=>ya(c,l))||r.push(l))}return[n,a,r]}function jL(){return xt(Ui)}const XL={class:"content sharp-border"},ZL={key:0,class:"app-bar-space"},JL={__name:"App",setup(e){const{dark:t,setFont:n,setDark:a,font:r}=ku(),{setModules:i}=Lu(),{currentRoute:s}=jL();Hn(t,()=>{document.body.toggleAttribute("theme-dark")});const o=Ci(!1);Co(()=>{window.addEventListener("scroll",c)}),ou(()=>{const{fileModules:_}=HM();l(),i(WM(_))});const l=()=>{var g;const _=vn.getFont(),p=((g=Vn.find(h=>h.name===_))==null?void 0:g.class)||Vn[0].class;n(p),a(vn.getTheme()==="dark"),document.body.classList.add(r.value)},c=_=>{if(typeof window=="undefined")return;const p=window.pageYOffset||_.target.scrollTop;o.value=p>150},d=()=>{window.scroll({top:0,behavior:"smooth"})},u=pt(()=>["Home","Filter","Sort"].includes(s==null?void 0:s.value.name));return(_,p)=>{const g=QS("router-view"),h=uT;return Be(),We("div",null,[Ie(lt(KT)),_e("div",XL,[lt(u)?(Be(),We("div",ZL)):Is("",!0),Ie(g),o.value?(Be(),We("button",{key:1,class:"scroll-to-top circle small-shadow",onClick:d},[Ie(h)])):Is("",!0)]),Ie(lt(rv))])}}},eP=[{name:"Home",path:"/",component:()=>Jn(()=>import("./HomeView.7d4327e6.js"),["assets/HomeView.7d4327e6.js","assets/HomeView.669ed221.css","assets/tracker.d5d900f2.js"])},{name:"Filter",path:"/filter/:filterBy/:filterValue?",component:()=>Jn(()=>import("./HomeView.7d4327e6.js"),["assets/HomeView.7d4327e6.js","assets/HomeView.669ed221.css","assets/tracker.d5d900f2.js"])},{name:"Sort",path:"/sort/:sortBy",component:()=>Jn(()=>import("./HomeView.7d4327e6.js"),["assets/HomeView.7d4327e6.js","assets/HomeView.669ed221.css","assets/tracker.d5d900f2.js"])},{name:"Blog",path:"/blog/:name",component:()=>Jn(()=>import("./PostView.6c27c25f.js"),["assets/PostView.6c27c25f.js","assets/PostView.cdc27dd0.css","assets/tracker.d5d900f2.js"])},{name:"Series",path:"/blog/:series/:name",component:()=>Jn(()=>import("./PostView.6c27c25f.js"),["assets/PostView.6c27c25f.js","assets/PostView.cdc27dd0.css","assets/tracker.d5d900f2.js"])},{name:"404",path:"/:pathMatch(.*)*",component:()=>Jn(()=>import("./404View.27d11cc9.js"),["assets/404View.27d11cc9.js","assets/404View.7c5e5cbc.css"])}],tP=KL({history:dL(),routes:eP,scrollBehavior(e,t,n){return{top:(n==null?void 0:n.top)||0}}}),nP=nT(),ur=Jb(JL);ur.config.globalProperties.window=window;ur.config.globalProperties.$moment=z;ur.use(nP);ur.use(tP);ur.mount("#app");export{My as A,Iy as B,Fr as C,GT as D,Lu as E,ft as F,uP as G,_P as H,OS as I,IS as J,vn as S,Oo as _,_e as a,pt as b,We as c,lt as d,Is as e,Ie as f,Ll as g,z as h,jL as i,Ci as j,Co as k,dP as l,iP as m,Gn as n,Be as o,oP as p,Ts as q,ZS as r,Tu as s,Cd as t,ku as u,sP as v,Hn as w,cP as x,lP as y,lo as z};
+  */const la=typeof window!="undefined";function zM(e){return e.__esModule||e[Symbol.toStringTag]==="Module"}const Ae=Object.assign;function ss(e,t){const n={};for(const a in t){const r=t[a];n[a]=Lt(r)?r.map(e):e(r)}return n}const Ha=()=>{},Lt=Array.isArray,$M=/\/$/,KM=e=>e.replace($M,"");function os(e,t,n="/"){let a,r={},i="",s="";const o=t.indexOf("#");let l=t.indexOf("?");return o<l&&o>=0&&(l=-1),l>-1&&(a=t.slice(0,l),i=t.slice(l+1,o>-1?o:t.length),r=e(i)),o>-1&&(a=a||t.slice(0,o),s=t.slice(o,t.length)),a=ZM(a!=null?a:t,n),{fullPath:a+(i&&"?")+i+s,path:a,query:r,hash:s}}function QM(e,t){const n=t.query?e(t.query):"";return t.path+(n&&"?")+n+(t.hash||"")}function hc(e,t){return!t||!e.toLowerCase().startsWith(t.toLowerCase())?e:e.slice(t.length)||"/"}function jM(e,t,n){const a=t.matched.length-1,r=n.matched.length-1;return a>-1&&a===r&&ya(t.matched[a],n.matched[r])&&rp(t.params,n.params)&&e(t.query)===e(n.query)&&t.hash===n.hash}function ya(e,t){return(e.aliasOf||e)===(t.aliasOf||t)}function rp(e,t){if(Object.keys(e).length!==Object.keys(t).length)return!1;for(const n in e)if(!XM(e[n],t[n]))return!1;return!0}function XM(e,t){return Lt(e)?fc(e,t):Lt(t)?fc(t,e):e===t}function fc(e,t){return Lt(t)?e.length===t.length&&e.every((n,a)=>n===t[a]):e.length===1&&e[0]===t}function ZM(e,t){if(e.startsWith("/"))return e;if(!e)return t;const n=t.split("/"),a=e.split("/");let r=n.length-1,i,s;for(i=0;i<a.length;i++)if(s=a[i],s!==".")if(s==="..")r>1&&r--;else break;return n.slice(0,r).join("/")+"/"+a.slice(i-(i===a.length?1:0)).join("/")}var sr;(function(e){e.pop="pop",e.push="push"})(sr||(sr={}));var Wa;(function(e){e.back="back",e.forward="forward",e.unknown=""})(Wa||(Wa={}));function JM(e){if(!e)if(la){const t=document.querySelector("base");e=t&&t.getAttribute("href")||"/",e=e.replace(/^\w+:\/\/[^\/]+/,"")}else e="/";return e[0]!=="/"&&e[0]!=="#"&&(e="/"+e),KM(e)}const eL=/^[^#]+#/;function tL(e,t){return e.replace(eL,"#")+t}function nL(e,t){const n=document.documentElement.getBoundingClientRect(),a=e.getBoundingClientRect();return{behavior:t.behavior,left:a.left-n.left-(t.left||0),top:a.top-n.top-(t.top||0)}}const Fi=()=>({left:window.pageXOffset,top:window.pageYOffset});function aL(e){let t;if("el"in e){const n=e.el,a=typeof n=="string"&&n.startsWith("#"),r=typeof n=="string"?a?document.getElementById(n.slice(1)):document.querySelector(n):n;if(!r)return;t=nL(r,e)}else t=e;"scrollBehavior"in document.documentElement.style?window.scrollTo(t):window.scrollTo(t.left!=null?t.left:window.pageXOffset,t.top!=null?t.top:window.pageYOffset)}function Ec(e,t){return(history.state?history.state.position-t:-1)+e}const Us=new Map;function rL(e,t){Us.set(e,t)}function iL(e){const t=Us.get(e);return Us.delete(e),t}let sL=()=>location.protocol+"//"+location.host;function ip(e,t){const{pathname:n,search:a,hash:r}=t,i=e.indexOf("#");if(i>-1){let o=r.includes(e.slice(i))?e.slice(i).length:1,l=r.slice(o);return l[0]!=="/"&&(l="/"+l),hc(l,"")}return hc(n,e)+a+r}function oL(e,t,n,a){let r=[],i=[],s=null;const o=({state:_})=>{const p=ip(e,location),g=n.value,h=t.value;let b=0;if(_){if(n.value=p,t.value=_,s&&s===g){s=null;return}b=h?_.position-h.position:0}else a(p);r.forEach(S=>{S(n.value,g,{delta:b,type:sr.pop,direction:b?b>0?Wa.forward:Wa.back:Wa.unknown})})};function l(){s=n.value}function c(_){r.push(_);const p=()=>{const g=r.indexOf(_);g>-1&&r.splice(g,1)};return i.push(p),p}function d(){const{history:_}=window;!_.state||_.replaceState(Ae({},_.state,{scroll:Fi()}),"")}function u(){for(const _ of i)_();i=[],window.removeEventListener("popstate",o),window.removeEventListener("beforeunload",d)}return window.addEventListener("popstate",o),window.addEventListener("beforeunload",d),{pauseListeners:l,listen:c,destroy:u}}function Sc(e,t,n,a=!1,r=!1){return{back:e,current:t,forward:n,replaced:a,position:window.history.length,scroll:r?Fi():null}}function lL(e){const{history:t,location:n}=window,a={value:ip(e,n)},r={value:t.state};r.value||i(a.value,{back:null,current:a.value,forward:null,position:t.length-1,replaced:!0,scroll:null},!0);function i(l,c,d){const u=e.indexOf("#"),_=u>-1?(n.host&&document.querySelector("base")?e:e.slice(u))+l:sL()+e+l;try{t[d?"replaceState":"pushState"](c,"",_),r.value=c}catch(p){console.error(p),n[d?"replace":"assign"](_)}}function s(l,c){const d=Ae({},t.state,Sc(r.value.back,l,r.value.forward,!0),c,{position:r.value.position});i(l,d,!0),a.value=l}function o(l,c){const d=Ae({},r.value,t.state,{forward:l,scroll:Fi()});i(d.current,d,!0);const u=Ae({},Sc(a.value,l,null),{position:d.position+1},c);i(l,u,!1),a.value=l}return{location:a,state:r,push:o,replace:s}}function cL(e){e=JM(e);const t=lL(e),n=oL(e,t.state,t.location,t.replace);function a(i,s=!0){s||n.pauseListeners(),history.go(i)}const r=Ae({location:"",base:e,go:a,createHref:tL.bind(null,e)},t,n);return Object.defineProperty(r,"location",{enumerable:!0,get:()=>t.location.value}),Object.defineProperty(r,"state",{enumerable:!0,get:()=>t.state.value}),r}function dL(e){return e=location.host?e||location.pathname+location.search:"",e.includes("#")||(e+="#"),cL(e)}function uL(e){return typeof e=="string"||e&&typeof e=="object"}function sp(e){return typeof e=="string"||typeof e=="symbol"}const pn={path:"/",name:void 0,params:{},query:{},hash:"",fullPath:"/",matched:[],meta:{},redirectedFrom:void 0},op=Symbol("");var bc;(function(e){e[e.aborted=4]="aborted",e[e.cancelled=8]="cancelled",e[e.duplicated=16]="duplicated"})(bc||(bc={}));function va(e,t){return Ae(new Error,{type:e,[op]:!0},t)}function jt(e,t){return e instanceof Error&&op in e&&(t==null||!!(e.type&t))}const Tc="[^/]+?",_L={sensitive:!1,strict:!1,start:!0,end:!0},pL=/[.+*?^${}()[\]/\\]/g;function mL(e,t){const n=Ae({},_L,t),a=[];let r=n.start?"^":"";const i=[];for(const c of e){const d=c.length?[]:[90];n.strict&&!c.length&&(r+="/");for(let u=0;u<c.length;u++){const _=c[u];let p=40+(n.sensitive?.25:0);if(_.type===0)u||(r+="/"),r+=_.value.replace(pL,"\\$&"),p+=40;else if(_.type===1){const{value:g,repeatable:h,optional:b,regexp:S}=_;i.push({name:g,repeatable:h,optional:b});const T=S||Tc;if(T!==Tc){p+=10;try{new RegExp(`(${T})`)}catch(R){throw new Error(`Invalid custom RegExp for param "${g}" (${T}): `+R.message)}}let y=h?`((?:${T})(?:/(?:${T}))*)`:`(${T})`;u||(y=b&&c.length<2?`(?:/${y})`:"/"+y),b&&(y+="?"),r+=y,p+=20,b&&(p+=-8),h&&(p+=-20),T===".*"&&(p+=-50)}d.push(p)}a.push(d)}if(n.strict&&n.end){const c=a.length-1;a[c][a[c].length-1]+=.7000000000000001}n.strict||(r+="/?"),n.end?r+="$":n.strict&&(r+="(?:/|$)");const s=new RegExp(r,n.sensitive?"":"i");function o(c){const d=c.match(s),u={};if(!d)return null;for(let _=1;_<d.length;_++){const p=d[_]||"",g=i[_-1];u[g.name]=p&&g.repeatable?p.split("/"):p}return u}function l(c){let d="",u=!1;for(const _ of e){(!u||!d.endsWith("/"))&&(d+="/"),u=!1;for(const p of _)if(p.type===0)d+=p.value;else if(p.type===1){const{value:g,repeatable:h,optional:b}=p,S=g in c?c[g]:"";if(Lt(S)&&!h)throw new Error(`Provided param "${g}" is an array but it is not repeatable (* or + modifiers)`);const T=Lt(S)?S.join("/"):S;if(!T)if(b)_.length<2&&(d.endsWith("/")?d=d.slice(0,-1):u=!0);else throw new Error(`Missing required param "${g}"`);d+=T}}return d||"/"}return{re:s,score:a,keys:i,parse:o,stringify:l}}function gL(e,t){let n=0;for(;n<e.length&&n<t.length;){const a=t[n]-e[n];if(a)return a;n++}return e.length<t.length?e.length===1&&e[0]===40+40?-1:1:e.length>t.length?t.length===1&&t[0]===40+40?1:-1:0}function hL(e,t){let n=0;const a=e.score,r=t.score;for(;n<a.length&&n<r.length;){const i=gL(a[n],r[n]);if(i)return i;n++}if(Math.abs(r.length-a.length)===1){if(yc(a))return 1;if(yc(r))return-1}return r.length-a.length}function yc(e){const t=e[e.length-1];return e.length>0&&t[t.length-1]<0}const fL={type:0,value:""},EL=/[a-zA-Z0-9_]/;function SL(e){if(!e)return[[]];if(e==="/")return[[fL]];if(!e.startsWith("/"))throw new Error(`Invalid path "${e}"`);function t(p){throw new Error(`ERR (${n})/"${c}": ${p}`)}let n=0,a=n;const r=[];let i;function s(){i&&r.push(i),i=[]}let o=0,l,c="",d="";function u(){!c||(n===0?i.push({type:0,value:c}):n===1||n===2||n===3?(i.length>1&&(l==="*"||l==="+")&&t(`A repeatable param (${c}) must be alone in its segment. eg: '/:ids+.`),i.push({type:1,value:c,regexp:d,repeatable:l==="*"||l==="+",optional:l==="*"||l==="?"})):t("Invalid state to consume buffer"),c="")}function _(){c+=l}for(;o<e.length;){if(l=e[o++],l==="\\"&&n!==2){a=n,n=4;continue}switch(n){case 0:l==="/"?(c&&u(),s()):l===":"?(u(),n=1):_();break;case 4:_(),n=a;break;case 1:l==="("?n=2:EL.test(l)?_():(u(),n=0,l!=="*"&&l!=="?"&&l!=="+"&&o--);break;case 2:l===")"?d[d.length-1]=="\\"?d=d.slice(0,-1)+l:n=3:d+=l;break;case 3:u(),n=0,l!=="*"&&l!=="?"&&l!=="+"&&o--,d="";break;default:t("Unknown state");break}}return n===2&&t(`Unfinished custom RegExp for param "${c}"`),u(),s(),r}function bL(e,t,n){const a=mL(SL(e.path),n),r=Ae(a,{record:e,parent:t,children:[],alias:[]});return t&&!r.record.aliasOf==!t.record.aliasOf&&t.children.push(r),r}function TL(e,t){const n=[],a=new Map;t=Rc({strict:!1,end:!0,sensitive:!1},t);function r(d){return a.get(d)}function i(d,u,_){const p=!_,g=yL(d);g.aliasOf=_&&_.record;const h=Rc(t,d),b=[g];if("alias"in d){const y=typeof d.alias=="string"?[d.alias]:d.alias;for(const R of y)b.push(Ae({},g,{components:_?_.record.components:g.components,path:R,aliasOf:_?_.record:g}))}let S,T;for(const y of b){const{path:R}=y;if(u&&R[0]!=="/"){const I=u.record.path,H=I[I.length-1]==="/"?"":"/";y.path=u.record.path+(R&&H+R)}if(S=bL(y,u,h),_?_.alias.push(S):(T=T||S,T!==S&&T.alias.push(S),p&&d.name&&!Cc(S)&&s(d.name)),g.children){const I=g.children;for(let H=0;H<I.length;H++)i(I[H],S,_&&_.children[H])}_=_||S,(S.record.components&&Object.keys(S.record.components).length||S.record.name||S.record.redirect)&&l(S)}return T?()=>{s(T)}:Ha}function s(d){if(sp(d)){const u=a.get(d);u&&(a.delete(d),n.splice(n.indexOf(u),1),u.children.forEach(s),u.alias.forEach(s))}else{const u=n.indexOf(d);u>-1&&(n.splice(u,1),d.record.name&&a.delete(d.record.name),d.children.forEach(s),d.alias.forEach(s))}}function o(){return n}function l(d){let u=0;for(;u<n.length&&hL(d,n[u])>=0&&(d.record.path!==n[u].record.path||!lp(d,n[u]));)u++;n.splice(u,0,d),d.record.name&&!Cc(d)&&a.set(d.record.name,d)}function c(d,u){let _,p={},g,h;if("name"in d&&d.name){if(_=a.get(d.name),!_)throw va(1,{location:d});h=_.record.name,p=Ae(vc(u.params,_.keys.filter(T=>!T.optional).map(T=>T.name)),d.params&&vc(d.params,_.keys.map(T=>T.name))),g=_.stringify(p)}else if("path"in d)g=d.path,_=n.find(T=>T.re.test(g)),_&&(p=_.parse(g),h=_.record.name);else{if(_=u.name?a.get(u.name):n.find(T=>T.re.test(u.path)),!_)throw va(1,{location:d,currentLocation:u});h=_.record.name,p=Ae({},u.params,d.params),g=_.stringify(p)}const b=[];let S=_;for(;S;)b.unshift(S.record),S=S.parent;return{name:h,path:g,params:p,matched:b,meta:CL(b)}}return e.forEach(d=>i(d)),{addRoute:i,resolve:c,removeRoute:s,getRoutes:o,getRecordMatcher:r}}function vc(e,t){const n={};for(const a of t)a in e&&(n[a]=e[a]);return n}function yL(e){return{path:e.path,redirect:e.redirect,name:e.name,meta:e.meta||{},aliasOf:void 0,beforeEnter:e.beforeEnter,props:vL(e),children:e.children||[],instances:{},leaveGuards:new Set,updateGuards:new Set,enterCallbacks:{},components:"components"in e?e.components||null:e.component&&{default:e.component}}}function vL(e){const t={},n=e.props||!1;if("component"in e)t.default=n;else for(const a in e.components)t[a]=typeof n=="boolean"?n:n[a];return t}function Cc(e){for(;e;){if(e.record.aliasOf)return!0;e=e.parent}return!1}function CL(e){return e.reduce((t,n)=>Ae(t,n.meta),{})}function Rc(e,t){const n={};for(const a in e)n[a]=a in t?t[a]:e[a];return n}function lp(e,t){return t.children.some(n=>n===e||lp(e,n))}const cp=/#/g,RL=/&/g,wL=/\//g,NL=/=/g,OL=/\?/g,dp=/\+/g,IL=/%5B/g,AL=/%5D/g,up=/%5E/g,DL=/%60/g,_p=/%7B/g,xL=/%7C/g,pp=/%7D/g,kL=/%20/g;function Vo(e){return encodeURI(""+e).replace(xL,"|").replace(IL,"[").replace(AL,"]")}function ML(e){return Vo(e).replace(_p,"{").replace(pp,"}").replace(up,"^")}function Bs(e){return Vo(e).replace(dp,"%2B").replace(kL,"+").replace(cp,"%23").replace(RL,"%26").replace(DL,"`").replace(_p,"{").replace(pp,"}").replace(up,"^")}function LL(e){return Bs(e).replace(NL,"%3D")}function PL(e){return Vo(e).replace(cp,"%23").replace(OL,"%3F")}function FL(e){return e==null?"":PL(e).replace(wL,"%2F")}function si(e){try{return decodeURIComponent(""+e)}catch{}return""+e}function UL(e){const t={};if(e===""||e==="?")return t;const a=(e[0]==="?"?e.slice(1):e).split("&");for(let r=0;r<a.length;++r){const i=a[r].replace(dp," "),s=i.indexOf("="),o=si(s<0?i:i.slice(0,s)),l=s<0?null:si(i.slice(s+1));if(o in t){let c=t[o];Lt(c)||(c=t[o]=[c]),c.push(l)}else t[o]=l}return t}function wc(e){let t="";for(let n in e){const a=e[n];if(n=LL(n),a==null){a!==void 0&&(t+=(t.length?"&":"")+n);continue}(Lt(a)?a.map(i=>i&&Bs(i)):[a&&Bs(a)]).forEach(i=>{i!==void 0&&(t+=(t.length?"&":"")+n,i!=null&&(t+="="+i))})}return t}function BL(e){const t={};for(const n in e){const a=e[n];a!==void 0&&(t[n]=Lt(a)?a.map(r=>r==null?null:""+r):a==null?a:""+a)}return t}const GL=Symbol(""),Nc=Symbol(""),Ui=Symbol(""),mp=Symbol(""),Gs=Symbol("");function ka(){let e=[];function t(a){return e.push(a),()=>{const r=e.indexOf(a);r>-1&&e.splice(r,1)}}function n(){e=[]}return{add:t,list:()=>e,reset:n}}function hn(e,t,n,a,r){const i=a&&(a.enterCallbacks[r]=a.enterCallbacks[r]||[]);return()=>new Promise((s,o)=>{const l=u=>{u===!1?o(va(4,{from:n,to:t})):u instanceof Error?o(u):uL(u)?o(va(2,{from:t,to:u})):(i&&a.enterCallbacks[r]===i&&typeof u=="function"&&i.push(u),s())},c=e.call(a&&a.instances[r],t,n,l);let d=Promise.resolve(c);e.length<3&&(d=d.then(l)),d.catch(u=>o(u))})}function ls(e,t,n,a){const r=[];for(const i of e)for(const s in i.components){let o=i.components[s];if(!(t!=="beforeRouteEnter"&&!i.instances[s]))if(YL(o)){const c=(o.__vccOpts||o)[t];c&&r.push(hn(c,n,a,i,s))}else{let l=o();r.push(()=>l.then(c=>{if(!c)return Promise.reject(new Error(`Couldn't resolve component "${s}" at "${i.path}"`));const d=zM(c)?c.default:c;i.components[s]=d;const _=(d.__vccOpts||d)[t];return _&&hn(_,n,a,i,s)()}))}}return r}function YL(e){return typeof e=="object"||"displayName"in e||"props"in e||"__vccOpts"in e}function Oc(e){const t=xt(Ui),n=xt(mp),a=pt(()=>t.resolve(lt(e.to))),r=pt(()=>{const{matched:l}=a.value,{length:c}=l,d=l[c-1],u=n.matched;if(!d||!u.length)return-1;const _=u.findIndex(ya.bind(null,d));if(_>-1)return _;const p=Ic(l[c-2]);return c>1&&Ic(d)===p&&u[u.length-1].path!==p?u.findIndex(ya.bind(null,l[c-2])):_}),i=pt(()=>r.value>-1&&qL(n.params,a.value.params)),s=pt(()=>r.value>-1&&r.value===n.matched.length-1&&rp(n.params,a.value.params));function o(l={}){return VL(l)?t[lt(e.replace)?"replace":"push"](lt(e.to)).catch(Ha):Promise.resolve()}return{route:a,href:pt(()=>a.value.href),isActive:i,isExactActive:s,navigate:o}}const HL=iu({name:"RouterLink",compatConfig:{MODE:3},props:{to:{type:[String,Object],required:!0},replace:Boolean,activeClass:String,exactActiveClass:String,custom:Boolean,ariaCurrentValue:{type:String,default:"page"}},useLink:Oc,setup(e,{slots:t}){const n=Oa(Oc(e)),{options:a}=xt(Ui),r=pt(()=>({[Ac(e.activeClass,a.linkActiveClass,"router-link-active")]:n.isActive,[Ac(e.exactActiveClass,a.linkExactActiveClass,"router-link-exact-active")]:n.isExactActive}));return()=>{const i=t.default&&t.default(n);return e.custom?i:wu("a",{"aria-current":n.isExactActive?e.ariaCurrentValue:null,href:n.href,onClick:n.navigate,class:r.value},i)}}}),WL=HL;function VL(e){if(!(e.metaKey||e.altKey||e.ctrlKey||e.shiftKey)&&!e.defaultPrevented&&!(e.button!==void 0&&e.button!==0)){if(e.currentTarget&&e.currentTarget.getAttribute){const t=e.currentTarget.getAttribute("target");if(/\b_blank\b/i.test(t))return}return e.preventDefault&&e.preventDefault(),!0}}function qL(e,t){for(const n in t){const a=t[n],r=e[n];if(typeof a=="string"){if(a!==r)return!1}else if(!Lt(r)||r.length!==a.length||a.some((i,s)=>i!==r[s]))return!1}return!0}function Ic(e){return e?e.aliasOf?e.aliasOf.path:e.path:""}const Ac=(e,t,n)=>e!=null?e:t!=null?t:n,zL=iu({name:"RouterView",inheritAttrs:!1,props:{name:{type:String,default:"default"},route:Object},compatConfig:{MODE:3},setup(e,{attrs:t,slots:n}){const a=xt(Gs),r=pt(()=>e.route||a.value),i=xt(Nc,0),s=pt(()=>{let c=lt(i);const{matched:d}=r.value;let u;for(;(u=d[c])&&!u.components;)c++;return c}),o=pt(()=>r.value.matched[s.value]);Lr(Nc,pt(()=>s.value+1)),Lr(GL,o),Lr(Gs,r);const l=Ci();return Hn(()=>[l.value,o.value,e.name],([c,d,u],[_,p,g])=>{d&&(d.instances[u]=c,p&&p!==d&&c&&c===_&&(d.leaveGuards.size||(d.leaveGuards=p.leaveGuards),d.updateGuards.size||(d.updateGuards=p.updateGuards))),c&&d&&(!p||!ya(d,p)||!_)&&(d.enterCallbacks[u]||[]).forEach(h=>h(c))},{flush:"post"}),()=>{const c=r.value,d=e.name,u=o.value,_=u&&u.components[d];if(!_)return Dc(n.default,{Component:_,route:c});const p=u.props[d],g=p?p===!0?c.params:typeof p=="function"?p(c):p:null,b=wu(_,Ae({},g,t,{onVnodeUnmounted:S=>{S.component.isUnmounted&&(u.instances[d]=null)},ref:l}));return Dc(n.default,{Component:b,route:c})||b}}});function Dc(e,t){if(!e)return null;const n=e(t);return n.length===1?n[0]:n}const $L=zL;function KL(e){const t=TL(e.routes,e),n=e.parseQuery||UL,a=e.stringifyQuery||wc,r=e.history,i=ka(),s=ka(),o=ka(),l=gS(pn);let c=pn;la&&e.scrollBehavior&&"scrollRestoration"in history&&(history.scrollRestoration="manual");const d=ss.bind(null,w=>""+w),u=ss.bind(null,FL),_=ss.bind(null,si);function p(w,V){let Y,te;return sp(w)?(Y=t.getRecordMatcher(w),te=V):te=w,t.addRoute(te,Y)}function g(w){const V=t.getRecordMatcher(w);V&&t.removeRoute(V)}function h(){return t.getRoutes().map(w=>w.record)}function b(w){return!!t.getRecordMatcher(w)}function S(w,V){if(V=Ae({},V||l.value),typeof w=="string"){const m=os(n,w,V.path),f=t.resolve({path:m.path},V),v=r.createHref(m.fullPath);return Ae(m,f,{params:_(f.params),hash:si(m.hash),redirectedFrom:void 0,href:v})}let Y;if("path"in w)Y=Ae({},w,{path:os(n,w.path,V.path).path});else{const m=Ae({},w.params);for(const f in m)m[f]==null&&delete m[f];Y=Ae({},w,{params:u(w.params)}),V.params=u(V.params)}const te=t.resolve(Y,V),Z=w.hash||"";te.params=d(_(te.params));const we=QM(a,Ae({},w,{hash:ML(Z),path:te.path})),ce=r.createHref(we);return Ae({fullPath:we,hash:Z,query:a===wc?BL(w.query):w.query||{}},te,{redirectedFrom:void 0,href:ce})}function T(w){return typeof w=="string"?os(n,w,l.value.path):Ae({},w)}function y(w,V){if(c!==w)return va(8,{from:V,to:w})}function R(w){return G(w)}function I(w){return R(Ae(T(w),{replace:!0}))}function H(w){const V=w.matched[w.matched.length-1];if(V&&V.redirect){const{redirect:Y}=V;let te=typeof Y=="function"?Y(w):Y;return typeof te=="string"&&(te=te.includes("?")||te.includes("#")?te=T(te):{path:te},te.params={}),Ae({query:w.query,hash:w.hash,params:"path"in te?{}:w.params},te)}}function G(w,V){const Y=c=S(w),te=l.value,Z=w.state,we=w.force,ce=w.replace===!0,m=H(Y);if(m)return G(Ae(T(m),{state:typeof m=="object"?Ae({},Z,m.state):Z,force:we,replace:ce}),V||Y);const f=Y;f.redirectedFrom=V;let v;return!we&&jM(a,te,Y)&&(v=va(16,{to:f,from:te}),ue(te,te,!0,!1)),(v?Promise.resolve(v):K(f,te)).catch(N=>jt(N)?jt(N,2)?N:ee(N):D(N,f,te)).then(N=>{if(N){if(jt(N,2))return G(Ae({replace:ce},T(N.to),{state:typeof N.to=="object"?Ae({},Z,N.to.state):Z,force:we}),V||f)}else N=le(f,te,!0,ce,Z);return W(f,te,N),N})}function L(w,V){const Y=y(w,V);return Y?Promise.reject(Y):Promise.resolve()}function K(w,V){let Y;const[te,Z,we]=QL(w,V);Y=ls(te.reverse(),"beforeRouteLeave",w,V);for(const m of te)m.leaveGuards.forEach(f=>{Y.push(hn(f,w,V))});const ce=L.bind(null,w,V);return Y.push(ce),na(Y).then(()=>{Y=[];for(const m of i.list())Y.push(hn(m,w,V));return Y.push(ce),na(Y)}).then(()=>{Y=ls(Z,"beforeRouteUpdate",w,V);for(const m of Z)m.updateGuards.forEach(f=>{Y.push(hn(f,w,V))});return Y.push(ce),na(Y)}).then(()=>{Y=[];for(const m of w.matched)if(m.beforeEnter&&!V.matched.includes(m))if(Lt(m.beforeEnter))for(const f of m.beforeEnter)Y.push(hn(f,w,V));else Y.push(hn(m.beforeEnter,w,V));return Y.push(ce),na(Y)}).then(()=>(w.matched.forEach(m=>m.enterCallbacks={}),Y=ls(we,"beforeRouteEnter",w,V),Y.push(ce),na(Y))).then(()=>{Y=[];for(const m of s.list())Y.push(hn(m,w,V));return Y.push(ce),na(Y)}).catch(m=>jt(m,8)?m:Promise.reject(m))}function W(w,V,Y){for(const te of o.list())te(w,V,Y)}function le(w,V,Y,te,Z){const we=y(w,V);if(we)return we;const ce=V===pn,m=la?history.state:{};Y&&(te||ce?r.replace(w.fullPath,Ae({scroll:ce&&m&&m.scroll},Z)):r.push(w.fullPath,Z)),l.value=w,ue(w,V,Y,ce),ee()}let fe;function Te(){fe||(fe=r.listen((w,V,Y)=>{if(!De.listening)return;const te=S(w),Z=H(te);if(Z){G(Ae(Z,{replace:!0}),te).catch(Ha);return}c=te;const we=l.value;la&&rL(Ec(we.fullPath,Y.delta),Fi()),K(te,we).catch(ce=>jt(ce,12)?ce:jt(ce,2)?(G(ce.to,te).then(m=>{jt(m,20)&&!Y.delta&&Y.type===sr.pop&&r.go(-1,!1)}).catch(Ha),Promise.reject()):(Y.delta&&r.go(-Y.delta,!1),D(ce,te,we))).then(ce=>{ce=ce||le(te,we,!1),ce&&(Y.delta&&!jt(ce,8)?r.go(-Y.delta,!1):Y.type===sr.pop&&jt(ce,20)&&r.go(-1,!1)),W(te,we,ce)}).catch(Ha)}))}let Ee=ka(),ye=ka(),A;function D(w,V,Y){ee(w);const te=ye.list();return te.length?te.forEach(Z=>Z(w,V,Y)):console.error(w),Promise.reject(w)}function F(){return A&&l.value!==pn?Promise.resolve():new Promise((w,V)=>{Ee.add([w,V])})}function ee(w){return A||(A=!w,Te(),Ee.list().forEach(([V,Y])=>w?Y(w):V()),Ee.reset()),w}function ue(w,V,Y,te){const{scrollBehavior:Z}=e;if(!la||!Z)return Promise.resolve();const we=!Y&&iL(Ec(w.fullPath,0))||(te||!Y)&&history.state&&history.state.scroll||null;return yo().then(()=>Z(w,V,we)).then(ce=>ce&&aL(ce)).catch(ce=>D(ce,w,V))}const ge=w=>r.go(w);let he;const qe=new Set,De={currentRoute:l,listening:!0,addRoute:p,removeRoute:g,hasRoute:b,getRoutes:h,resolve:S,options:e,push:R,replace:I,go:ge,back:()=>ge(-1),forward:()=>ge(1),beforeEach:i.add,beforeResolve:s.add,afterEach:o.add,onError:ye.add,isReady:F,install(w){const V=this;w.component("RouterLink",WL),w.component("RouterView",$L),w.config.globalProperties.$router=V,Object.defineProperty(w.config.globalProperties,"$route",{enumerable:!0,get:()=>lt(l)}),la&&!he&&l.value===pn&&(he=!0,R(r.location).catch(Z=>{}));const Y={};for(const Z in pn)Y[Z]=pt(()=>l.value[Z]);w.provide(Ui,V),w.provide(mp,Oa(Y)),w.provide(Gs,l);const te=w.unmount;qe.add(w),w.unmount=function(){qe.delete(w),qe.size<1&&(c=pn,fe&&fe(),fe=null,l.value=pn,he=!1,A=!1),te()}}};return De}function na(e){return e.reduce((t,n)=>t.then(()=>n()),Promise.resolve())}function QL(e,t){const n=[],a=[],r=[],i=Math.max(t.matched.length,e.matched.length);for(let s=0;s<i;s++){const o=t.matched[s];o&&(e.matched.find(c=>ya(c,o))?a.push(o):n.push(o));const l=e.matched[s];l&&(t.matched.find(c=>ya(c,l))||r.push(l))}return[n,a,r]}function jL(){return xt(Ui)}const XL={class:"content sharp-border"},ZL={key:0,class:"app-bar-space"},JL={__name:"App",setup(e){const{dark:t,setFont:n,setDark:a,font:r}=ku(),{setModules:i}=Lu(),{currentRoute:s}=jL();Hn(t,()=>{document.body.toggleAttribute("theme-dark")});const o=Ci(!1);Co(()=>{window.addEventListener("scroll",c)}),ou(()=>{const{fileModules:_}=HM();l(),i(WM(_))});const l=()=>{var g;const _=vn.getFont(),p=((g=Vn.find(h=>h.name===_))==null?void 0:g.class)||Vn[0].class;n(p),a(vn.getTheme()==="dark"),document.body.classList.add(r.value)},c=_=>{if(typeof window=="undefined")return;const p=window.pageYOffset||_.target.scrollTop;o.value=p>150},d=()=>{window.scroll({top:0,behavior:"smooth"})},u=pt(()=>["Home","Filter","Sort"].includes(s==null?void 0:s.value.name));return(_,p)=>{const g=QS("router-view"),h=uT;return Be(),We("div",null,[Ie(lt(KT)),_e("div",XL,[lt(u)?(Be(),We("div",ZL)):Is("",!0),Ie(g),o.value?(Be(),We("button",{key:1,class:"scroll-to-top circle small-shadow",onClick:d},[Ie(h)])):Is("",!0)]),Ie(lt(rv))])}}},eP=[{name:"Home",path:"/",component:()=>Jn(()=>import("./HomeView.265d6b5a.js"),["assets/HomeView.265d6b5a.js","assets/HomeView.669ed221.css","assets/tracker.d5d900f2.js"])},{name:"Filter",path:"/filter/:filterBy/:filterValue?",component:()=>Jn(()=>import("./HomeView.265d6b5a.js"),["assets/HomeView.265d6b5a.js","assets/HomeView.669ed221.css","assets/tracker.d5d900f2.js"])},{name:"Sort",path:"/sort/:sortBy",component:()=>Jn(()=>import("./HomeView.265d6b5a.js"),["assets/HomeView.265d6b5a.js","assets/HomeView.669ed221.css","assets/tracker.d5d900f2.js"])},{name:"Blog",path:"/blog/:name",component:()=>Jn(()=>import("./PostView.b5e3dbb4.js"),["assets/PostView.b5e3dbb4.js","assets/PostView.cdc27dd0.css","assets/tracker.d5d900f2.js"])},{name:"Series",path:"/blog/:series/:name",component:()=>Jn(()=>import("./PostView.b5e3dbb4.js"),["assets/PostView.b5e3dbb4.js","assets/PostView.cdc27dd0.css","assets/tracker.d5d900f2.js"])},{name:"404",path:"/:pathMatch(.*)*",component:()=>Jn(()=>import("./404View.55757b99.js"),["assets/404View.55757b99.js","assets/404View.7c5e5cbc.css"])}],tP=KL({history:dL(),routes:eP,scrollBehavior(e,t,n){return{top:(n==null?void 0:n.top)||0}}}),nP=nT(),ur=Jb(JL);ur.config.globalProperties.window=window;ur.config.globalProperties.$moment=z;ur.use(nP);ur.use(tP);ur.mount("#app");export{My as A,Iy as B,Fr as C,GT as D,Lu as E,ft as F,uP as G,_P as H,OS as I,IS as J,vn as S,Oo as _,_e as a,pt as b,We as c,lt as d,Is as e,Ie as f,Ll as g,z as h,jL as i,Ci as j,Co as k,dP as l,iP as m,Gn as n,Be as o,oP as p,Ts as q,ZS as r,Tu as s,Cd as t,ku as u,sP as v,Hn as w,cP as x,lP as y,lo as z};

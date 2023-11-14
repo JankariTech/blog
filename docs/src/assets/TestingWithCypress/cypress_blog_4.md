@@ -77,7 +77,7 @@ You can easily integrate `Background`, `Scenario Outlines`, `DataTables` within 
 
 ### Bundled feature files
 
-When running Cypress tests in the headless mode, the execution time can get pretty bloated, this happens because by default Cypress will relaunch the browser between every feature file. The cypress-cucumber-preprocessor gives you the option to bundle all feature files before running the tests, therefore reducing the execution time.
+When running Cypress tests in the headless mode, the execution time can get pretty bloated, this happens because by default, Cypress will relaunch the browser between every feature file. The cypress-cucumber-preprocessor gives you the option to bundle all feature files before running the tests, therefore reducing the execution time.
 
 You can take advantage of this by creating `.features` files. You choose to have only one in the root of the directory `cypress/integrations` or per directory.
 
@@ -208,6 +208,6 @@ Then click on a `.feature` file on the list of specs, and see the magic happenin
   }
   ```
 
-Cool! 😎  I’m sure this will get you started with cypress running your test in Gherkin theme.
+Cool! 😎 I’m sure this will get you started with cypress running your test in Gherkin theme.
 
 [cosmiconfig]: https://github.com/davidtheclark/cosmiconfig "Cosmiconfig GitHub Homepage"

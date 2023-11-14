@@ -50,22 +50,22 @@ In this case too, docker comes to the rescue.
 
 Selenium provides Docker images out of the box to test with one or several browsers. The images spawn a Selenium server and a browser underneath. It can work with different browsers.
 
-Now to run selenium using docker we just need to run [selenium/standalone-chrome](https://hub.docker.com/r/selenium/standalone-chrome) or [selenium/standalone-firefox](https://hub.docker.com/r/selenium/standalone-firefox) as:
+Now, to run selenium using docker, we just need to run [selenium/standalone-chrome](https://hub.docker.com/r/selenium/standalone-chrome) or [selenium/standalone-firefox](https://hub.docker.com/r/selenium/standalone-firefox) as:
 
 `docker run -d -v /dev/shm:/dev/shm selenium/standalone-chrome-debug`
 
 Here
 - `-d` runs the container in the background (detached)
-- `-v /dev/shm:/dev/shm` adds a volume mount to use the host’s shared memory. There is no requirement for a volume mount but it is recommended.
+- `-v /dev/shm:/dev/shm` adds a volume mount to use the host’s shared memory. There is no requirement for a volume mount, but it is recommended.
 
 Once you run the command, Docker will download the selenium image and run the container straight away (port: `4444`).
 
 ## Networking using the host network
-When the docker container is running it has its own `localhost` which is relative to its container and it has no awareness of `localhost` running on the host OS. Because of this, we cannot access the selenium container at `localhost:4444`. Also, the selenium container won't be able to access the apps running on `localhost` of the host OS.
+When the docker container is running, it has its own `localhost` which is relative to its container and it has no awareness of `localhost` running on the host OS. Because of this, we cannot access the selenium container at `localhost:4444`. Also, the selenium container won't be able to access the apps running on `localhost` of the host OS.
 
 How do we solve this problem?
 
-The answer is simple - we use docker option `--network="host"` in `docker run` command. If we use the `host` network mode for a container, that container’s network stack is not isolated from the docker host, and the container does not get its own IP-address allocated. Now, the selenium container will be available on port 4444 on the `localhost`.
+The answer is simple — we use docker option `--network="host"` in `docker run` command. If we use the `host` network mode for a container, that container’s network stack is not isolated from the docker host, and the container does not get its own IP-address allocated. Now, the selenium container will be available on port 4444 on the `localhost`.
 
 Now, the `docker run` command should basically look like:
 

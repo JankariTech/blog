@@ -8,7 +8,7 @@ tags: testing, cucumber, gherkin, bdd
 banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
 ---
 
-As we are familiar with the basic gherkin syntax such as `feature`, `scenario`, `Scenario Outline`, `background`, `given`, `when` and `then` steps already, let us discuss about the `table` or `tablenodes` used in the steps of a gherkin feature file.
+As we are familiar with the basic gherkin syntax such as `feature`, `scenario`, `Scenario Outline`, `background`, `given`, `when` and `then` steps already, let us discuss the `table` or `tablenodes` used in the steps of a gherkin feature file.
 
 ## Tables
 
@@ -46,7 +46,7 @@ Please do not confuse data tables with the example table used in a scenario outl
 
 ### *Data tables*
 
-Unlike the examples table, a table node provides all of the data in the data table at once, in the specific step where the table is provided.
+Unlike the examples table, a table node provides all the data in the data table at once, in the specific step where the table is provided.
 
 Let us look at another example of a data table. To be more clear about its significance, let us first write a scenario without using a data table as below.
 
@@ -67,7 +67,7 @@ Scenario: view and delete files
   And file "presentation" should be listed
 ```
 
-When observed closely, we can see that the listing of several files, continuous deletion of several files, non-listing of deleted files and listing of non-deleted files has been written using several repetitive steps. The steps seem to be difficult to maintain this way. Moreover, more effort is required to understand the scenario when reading it. To improve this, we can use the data tables. The example below illustrates the use of data tables in the steps where multiple data are to be passed at once. For example, multiple files are to be listed, multiple files are to be deleted, and again multiple files are expected not to be listed and to be listed respectively.
+When observed closely, we can see that the listing of several files, continuous deletion of several files, non-listing of deleted files and listing of non-deleted files has been written using several repetitive steps. The steps seem difficult to maintain this way. Moreover, more effort is required to understand the scenario when reading it. To improve this, we can use the data tables. The example below illustrates the use of data tables in the steps where multiple data are to be passed at once. For example, multiple files are to be listed, multiple files are to be deleted, and again multiple files are expected not to be listed and to be listed respectively.
 ```gherkin
  Scenario: view and delete files
    Given user "testuser" has been created
@@ -146,7 +146,7 @@ When('the user sets the price for the following items', (dataTable) => {
 })
 ```
 
-However, if we provide data in the steps as follows, then `hashes` can be used. for example:
+However, if we provide data in the steps as follows, then `hashes` can be used. For example:
 ```gherkin
 When the user sets the price for the following items
    | item      | price |
@@ -197,7 +197,7 @@ When the user tries to signup entering the following details
 Then an error message "This password is entirely numeric" should be shown above the "password" field
 ```
 
-For the step definition of when step, the data table is parsed as follows:
+For the step definition of a when step, the data table is parsed as follows:
 
 ```js
 When('the user tries to signup entering the following details', (dataTable) => {
