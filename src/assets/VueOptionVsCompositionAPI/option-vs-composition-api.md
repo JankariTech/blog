@@ -9,17 +9,18 @@ banner: https://blog.jankaritech.com/src/assets/DockerCompose/images/OptionVsCom
 ---
 
 ## Background
-When it comes to defining or creating a component in the `Vue.js`, we have heard about the `Option` API. We can create specific aspects or behaviors of a component and how we want to build through it.
+When it comes to defining or creating a component in the `Vue.js`, we have heard about the `Option API`. We can create specific aspects or behaviors of a component and how we want to build through it.
 It provides different properties or options such as `data`, `methods`, `computed`, and `watch` through which we can organize the behavior of a component systematically. But since `Vue 3`, we have
 another API called `Composition API` through which we can achieve the same thing. The `Composition API` is a new highlight for many vue developers but both approaches to define a component have their
 unique pros and cons. So debating which is best among these two would be a difficult one.
 
-In this blog, we will discuss how we can convert a component defined in `Option API` to `Composition API`. We will be discussing how we can define the component with `Composition API`.
+In this blog, we will discuss how we can convert a component defined in `Option API` to `Composition API`. Also at the end, we will know how we can define the component with `Composition API`.
 I have already created a simple application [Voting Details](https://github.com/SagarGi/OptionsVsCompositionVue). We will simply be examining it for the blog.
 
 ## Play around with `Voting Details`
 I have put this section in this blog since it's better to know some information about what we are building. This demo application simply stores the user's details and checks whether a user is eligible to vote are not.
->Note: To get the application up and running, make sure [Node JS](https://nodejs.org/en/download) is installed into your system.
+I have implemented two separate components but the functionality is the same for both i.e. one with Option API and another with Composition API, and we will go through a bit in brief how we can change the functionality of a component same as in Option API with Composition API.
+>Note: To get the application up and running, make sure [Node.js](https://nodejs.org/en/download) is installed into your system.
 ```console
 git clone https://github.com/SagarGi/OptionsVsCompositionVue
 cd OptionsVsCompositionVue
@@ -167,7 +168,7 @@ export default {
   }
 }
 ```
-In the overall code, we have imported `reactive`, `toRefs`, `computed`, and `watch` needed for building components with Composition API. Here, `toRefs` is used to convert the data created with `reactive` to plain objects. Also, In Composition API we need to define all those `data`, `computed`, `watch`, and `methods` inside of it as done above.
+In the overall code, we have imported `reactive`, `toRefs`, `computed`, and `watch` needed for building components with Composition API. The `toRefs` is used to convert the data created with `reactive` to plain objects. Also, In Composition API we need to define all those `data`, `computed`, `watch`, and `methods` inside of it as done above.
 And at last, all the thing that has been defined `data`, `computed`, and `methods` needs to be returned to be exposed to the template.
 
 In this way, we can simply convert a component defined with `Option API` to `Composition API`. But This is just a basic example. There are lots of things that we can perform using composition API.
