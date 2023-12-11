@@ -1,11 +1,11 @@
 ---
-title: Option Vs Composition API
+title: Option Vs Composition API in Vue JS
 authorName: Sagar Gurung
 authorAvatar: https://avatars.githubusercontent.com/u/46086950?v=4
 authorLink: https://github.com/SagarGi
 createdAt: Dec 13, 2023
 tags: vue, option API, composition API, framework, frontend
-banner: https://blog.jankaritech.com/src/assets/DockerCompose/images/OptionVsCompositionAPI.png
+banner: https://blog.jankaritech.com/src/assets/VueOptionVsCompositionAPI/images/OptionVsCompositionAPI.png
 ---
 
 ## Background
@@ -18,7 +18,7 @@ In this blog, we will discuss how we can convert a component defined in `Option 
 I have already created a simple application [Voting Details](https://github.com/SagarGi/OptionsVsCompositionVue). We will simply be examining it for the blog.
 
 ## Play around with `Voting Details`
-I have put this section in this blog since it's better to know some information about what we are building. This demo application simply stores the user's details and checks whether a user is eligible to vote are not.
+I have put this section in this blog since it's better to know some information about what we are building. This demo application simply stores the user's details and checks whether a user is eligible to vote or not.
 I have implemented two separate components but the functionality is the same for both i.e. one with Option API and another with Composition API, and we will go through a bit in brief how we can change the functionality of a component same as in Option API with Composition API.
 >Note: To get the application up and running, make sure [Node.js](https://nodejs.org/en/download) is installed into your system.
 ```console
@@ -29,7 +29,7 @@ npm run dev
 ```
 We can access it through URL http://localhost:8000 and the application looks something like this.
 
-![Application In Browser](/src/assets/VueOptionVsCompositionAPI/images/optionVsComposition.png)
+![Application In Browser](/src/assets/VueOptionVsCompositionAPI/images/OptionVsCompositionAPIWebUI.png)
 
 
 ### What's in Option API?
@@ -40,8 +40,8 @@ For the demo application, In `Voting Details` I have defined a component using o
   export default {
     data() {
       return {
-        name: 'Sagar Gurung',
-        age: 26,
+        name: 'Jhon Doe',
+        age: 18,
         bornYear: 1997,
         votingStatus: 'Eligible!'
       }
@@ -71,7 +71,7 @@ For the demo application, In `Voting Details` I have defined a component using o
   }
 </script>
 ```
-Properties `data`, `methods`, 'computed', and `watch` has been defined for it. I would rather explain all the things in the `Composition API` section rather than here since we are converting the same thing using `Composition API`.
+Properties `data`, `methods`, `computed`, and `watch` has been defined for it. I would rather explain all the things in the `Composition API` section than here since we are converting the same thing using `Composition API`.
 
 ### Converting to Composition API
 
@@ -168,19 +168,19 @@ export default {
   }
 }
 ```
-In the overall code, we have imported `reactive`, `toRefs`, `computed`, and `watch` needed for building components with Composition API. The `toRefs` is used to convert the data created with `reactive` to plain objects. Also, In Composition API we need to define all those `data`, `computed`, `watch`, and `methods` inside of it as done above.
-And at last, all the thing that has been defined `data`, `computed`, and `methods` needs to be returned to be exposed to the template.
+In the overall code, we have imported `reactive`, `toRefs`, `computed`, and `watch` needed for building components with Composition API. The `toRefs` is used to convert the data created with `reactive` to plain objects. Also, in Composition API we need to define all those `data`, `computed`, `watch`, and `methods` inside of it as done above.
+At last, all the things that have been defined `data`, `computed`, and `methods` needs to be returned to be exposed to the template.
 
-In this way, we can simply convert a component defined with `Option API` to `Composition API`. But This is just a basic example. There are lots of things that we can perform using composition API.
-I hope this blog at least gave you some insight on `Composition API` and also how you can replace your component defined in `Option API` with it. But before finishing the blog I would like to highlight some
+In this way, we can simply convert a component defined with `Option API` to `Composition API`. But this is just a basic example. There are lots of things that we can perform using composition API.
+I hope this blog gave you some insights on `Composition API` and also how you can replace your component defined in `Option API` with it. But before finishing the blog I would like to highlight some.
 points regarding both `Option API` and `Composition API` so that you can relate which one to prefer before building up your projects.
 
 ## Option API and Composition API
 
-You can find lots of points regarding the comparison among these two APIs. Still, I would only like to highlight some of it as both approaches for building up components have their benefits and drawbacks.
+You can find a lot of points regarding the comparison between these two APIs. Still, I would only like to highlight some of it as both approaches for building up components have their benefits and drawbacks.
 
 1. Composition API is new to Vue which can be called a modern way to define components whereas on the other hand Option API is an old or traditional way to build up components in Vue.
-2. Also, the structure and syntax for the Options API seem a bit simpler and easier to understand than that of the Composition API. It's a good choice for small projects and also for beginners. But for large and complex projects a better choice would be Composition API since it is a more flexible and modular structure that enhances better code maintainability.
-3. In addition to this since Composition API is fully based on functional, reactive programming it can be difficult for learners who are not familiar with such approach. In this case, Option API is a more captivating choice.
-4. Moreover `Typescript` support is better in Composition API.
-5. Composition API supports better code reuse as it has functions and modular composition preventing more complex code and leading to more intuitive code.
+2. Also, the structure and syntax for the Options API seems a bit simpler and easier to understand than that of the Composition API. It's a good choice for small projects and also for beginners. But for large and complex projects a better choice would be Composition API since it has a more flexible and modular structure that enhances better code maintainability.
+3. In addition to this, since Composition API is fully based on functional, reactive programming it can be difficult for learners who are not familiar with such approach. In this case, Option API is a more captivating choice.
+4. Moreover, `Typescript` support is better in Composition API.
+5. Composition API supports better code reusability as it has functions and modular composition preventing complex code, which ultimately leads to intuitive code.
