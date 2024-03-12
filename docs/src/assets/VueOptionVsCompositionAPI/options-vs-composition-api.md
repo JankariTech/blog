@@ -76,8 +76,8 @@ In this demo app the properties `data`, `methods`, `computed`, and `watch` have 
 ## Converting to ****Composition API****
 
 ### 1. Defining ****data****
-    When defining the data necessary for a component, in `Composition API`, we have to make it reactive to mutate or change values with `ref` or `reactive` provided by Vue.js.
-    So data property can be defined as:
+When defining the data necessary for a component, in `Composition API`, we have to make it reactive to mutate or change values with `ref` or `reactive` provided by Vue.js.
+So data property can be defined as:
   ```js
    // data
     const data = reactive({
@@ -89,7 +89,7 @@ In this demo app the properties `data`, `methods`, `computed`, and `watch` have 
    ```
 
 ### 2. Defining ****methods****
-    Defining the methods is very simple. It is just as easy as defining functions in JavaScript.
+Defining the methods is very simple. It is just as easy as defining functions in JavaScript.
   ```js
     // methods
     function increaseAge() {
@@ -103,7 +103,7 @@ In this demo app the properties `data`, `methods`, `computed`, and `watch` have 
    The above function changes the `age` property of the data defined in `data` which is reactive.
 
 ### 3. Defining ****computed****
-   To define the computed property Vue provides the method called `computed` through which we can explicitly define the computed function.
+To define the computed property Vue provides the method called `computed` through which we can explicitly define the computed function.
    ```js
    //computed
     const getVotingStatus = computed(() => {
@@ -113,7 +113,7 @@ In this demo app the properties `data`, `methods`, `computed`, and `watch` have 
    Here the operation `getVotingStatus` returns the voting status based on value of age.
 
 ### 4. Defining ****watch****
-    Similarly, Vue has provided a `watch` function to watch the change in any data properties defined.
+Similarly, Vue has provided a `watch` function to watch the change in any data properties defined.
   ```js
    //watcher
     watch(mainData.age, (oldAge, newAge) => {
