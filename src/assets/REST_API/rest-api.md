@@ -1,0 +1,230 @@
+---
+title: Understanding REST API
+authorName: Prajwol Amatya
+authorAvatar: https://1.gravatar.com/avatar/de64e53c0e2cb393dd0d14ffdd53058ee9c607b35e366dd392425bd1b95a034c?size=256
+authorLink: https://github.com/prajwolamatya
+createdAt: May 5, 2024
+tags: rest, api, rest api, python, flask
+banner: 
+---
+
+Within the field of web development, APIs, or application programming interfaces, are essential for facilitating communication across various software components. Because of its simplicity, scalability, and statelessness, REST (Representational State Transfer) APIs stand out among the other types of APIs. In this blog, we will dive into basics of building a REST API.
+
+## What is a REST API?
+REST, or Representational State Transfer, serves as an architectural approach for creating networked apps. It operates via a stateless client-server communication system. In this model, clients and servers exchange representations of resources identified by URLs. Access is facilitated through standard HTTP methods such as GET, POST, PUT, DELETE, and others.
+
+### Key Principles of REST
+1. **Stateless**: Every client request to the server must include all necessary information for comprehension and processing. The server should not retain any data about the client's latest HTTP request.
+
+2. **Client-Server Architecture**: The client handles the user interface and experience, while the server manages request processing and resource management.
+
+3. **Cacheable**: Responses from the server can be cached by the client. This can improve performance by reducing the load on the server and decreasing client-server interactions.
+
+4. **Uniform Interface**: Clients can cache responses from the server, enhancing performance by reducing the server load and minimizing client-server interactions.
+
+## REST API Architecture
+REST APIs utilize a client-server architecture, communicating over HTTP. The client sends requests to the server, which processes them and sends back responses. Communication is stateless, requiring each client request to contain all necessary information for processing.
+
+![REST API](/src/assets/REST_API/images/rest_api.png)
+
+### Components of REST API Architecture
+- **Resources**: In REST, resources are identified by URLs, representing anything that can be named and addressed, such as documents, images, temporal services, collections of other resources, non-virtual objects, and more.
+
+- **HTTP Methods**: REST APIs utilize standard HTTP methods for operations on resources. Common methods include GET (to retrieve a resource), POST (to create a new resource), PUT (to update a resource), and DELETE (to remove a resource).
+
+- **Representations**: Resources are represented in a format easily understood by both client and server, commonly JSON (JavaScript Object Notation) or XML (eXtensible Markup Language).
+
+Now, lets start to build a REST API. Before we start, make sure you have Python installed on your system. You can download Python from [python.org](https://www.python.org/). We will also need Flask, which you can install using pip:
+```bash
+pip install Flask
+```
+
+### Implementing REST API
+We will build a REST API for managing a list of tasks. Each task will have a title and a status indicating whether it's completed or not.
+
+1. Create a new Python file: `app.py`
+
+2. Import Flask and initialize the app:
+```python
+from flask import Flask, jsonify, request
+
+app = Flask(__name__)
+```
+
+3. Define the data structure for our tasks. For simplicity, we'll use a list of dictionaries:
+```python
+tasks = [
+    {"id": 1, "title": "Buy groceries", "completed": False},
+    {"id": 2, "title": "Clean the house", "completed": True}
+]
+```
+
+### GET Request
+To retrieve all tasks, implement a route that handles GET requests:
+```python
+@app.route("/tasks", methods=["GET"])
+def get_tasks():
+    return jsonify({"tasks": tasks})
+```
+
+To retrieve a specific task:
+```python
+@app.route("/tasks/<int:task_id>", methods=["GET"])
+def get_task(task_id):
+    task = next((item for item in tasks if item["id"] == task_id), None)
+    if task is None:
+        return jsonify({"error": "Task not found"}), 404
+    return jsonify({"task": task})
+```
+
+### POST Request
+To add a new task, implement a route that handles POST requests:
+```python
+@app.route("/tasks", methods=["POST"])
+def create_task():
+    new_task = request.get_json()
+    tasks.append(new_task)
+    return jsonify({"task": new_task}), 201
+```
+
+### PUT Request
+To update a task, implement a route that handles PUT requests:
+```python
+@app.route("/tasks/<int:task_id>", methods=["PUT"])
+def update_task(task_id):
+    task = next((item for item in tasks if item["id"] == task_id), None)
+    if task is None:
+        return jsonify({"error": "Task not found"}), 404
+    task.update(request.get_json())
+    return jsonify({"task": task})
+```
+
+### DELETE Request
+To delete a task, implement a route that handles DELETE requests:
+```python
+@app.route("/tasks/<int:task_id>", methods=["DELETE"])
+def delete_tasks(task_id):
+    task = next((item for item in tasks if item["id"] == task_id), None)
+    if task is None:
+        return jsonify({"error": "Task not found"}), 404
+    tasks.remove(task)
+    return jsonify({"result": "Task deleted"})
+```
+
+### Running the Application
+To run your application, add the following line:
+```python
+if __name__ == "__main__":
+    app.run(debug=True)
+```
+
+Then open your terminal and run the following command form your project directory:
+```bash
+python3 app.py
+```
+Your REST API is now up and running on `http://127.0.0.1:5000`
+
+## Testing your API
+You can test your API using tools like Postman or cURL.
+
+### List all tasks
+You can use the following curl command to list all the avaliable tasks:
+```bash
+curl http://127.0.0.1:5000/tasks
+```
+Expected Result:
+```json
+{
+  "tasks": [
+    {
+      "completed": false,
+      "id": 1,
+      "title": "Buy groceries"
+    },
+    {
+      "completed": true,
+      "id": 2,
+      "title": "Clean the house"
+    }
+  ]
+}
+```
+
+### List a specific task
+To retrieve a specific task by its ID, you can use the following curl command, replacing `<task_id>` with the id of the task you want to retrieve:
+```bash
+curl http://127.0.0.1:5000/tasks/<task_id>
+```
+Example:
+```bash
+curl http://127.0.0.1:5000/tasks/1
+```
+Expected Result:
+```json
+{
+  "task": {
+    "completed": false,
+    "id": 1,
+    "title": "Buy groceries"
+  }
+}
+```
+
+### Create a New Task
+To create a new task, you can use following curl command, replacing `<task_data>` with the JSON data for the new task:
+```bash
+curl -X POST -H "Content-Type: application/json" -d '<json_data>' http://127.0.0.1:5000/tasks
+```
+Example:
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{"id":3,"task":"Finish the report","completed":false}' http://127.0.0.1:5000/tasks
+```
+Expected Result:
+```json
+{
+  "task": {
+    "completed": false,
+    "id": 3,
+    "task": "Finish the report"
+  }
+}
+```
+
+### Update a task
+To update an existing task, use the following curl command, replacing `<task_id>` with the id of the task, and `<updated_data>` with the JSON data you want to update:
+```bash
+curl -X PUT -H "Content-Type: application/json" -d '<updated_data>' http://127.0.0.1:5000/tasks/<task_id>
+```
+Example:
+```bash
+curl -X PUT -H "Content-Type: application/json" -d '{"completed":true}' http://127.0.0.1:5000/tasks/3
+```
+Expected Result:
+```json
+{
+  "task": {
+    "completed": true,
+    "id": 3,
+    "task": "Finish the report"
+  }
+}
+```
+
+### Delete a task
+To delete a task, use the following curl command, replacing `<task_id>` with the id of the task you want to delete:
+```bash
+curl -X DELETE http://127.0.0.1:5000/tasks/<task_id>
+```
+Example:
+```bash
+curl -X DELETE http://127.0.0.1:5000/tasks/3
+```
+Expected Result:
+```json
+{
+  "result": "Task deleted"
+}
+```
+
+## Conclusion
+In this blog, we've explored the basics of REST APIs and how to implement them using Python Flask. This simple example demonstrates the power and flexibility of REST APIs in building scalable and maintainable web applications.
