@@ -231,5 +231,38 @@ Expected Result:
 }
 ```
 
+Let's try to retrieve a task which doesn't exist in the list of task. For instance, we just deleted task with id = 3. Now, let's try to retrieve the task with id = 3 and see the result.
+```bash
+curl http://127.0.0.1:5000/tasks/3
+```
+Expected result:
+```json
+{
+  "error": "Task not found"
+}
+```
+We see that the JSON response returns the error `Task not found`, which indicates that the task doesn't exist in the list of tasks.
+
+Now, let's look into the cases with invalid requests:
+1. **Invalid endpoint**:
+Try to get all the tasks with following curl command:
+```bash
+curl http://127.0.0.1:5000/task
+```
+Here, we have used `task` instead of `tasks` in our endpoint, which makes our endpoint invalid. With this request we get the following error with `404` status code:
+```console
+The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.
+```
+
+2. **Invalid JSON data**:
+Try to add a new task with invalid JSON data:
+```bash
+curl -X POST -H "Content-Type: application/json" -d '{"id":3,task:"Finish the report","completed":false}' http://127.0.0.1:5000/tasks
+```
+Here, the JSON data in request body is invalid as the key `task` is not enclosed in double quotes. With this request we get the following error with status code `400`.
+```console
+Failed to decode JSON object: Expecting property name enclosed in double quotes: line 1 column 9 (char 8)
+```
+
 ## Conclusion
 In this blog, we've explored the basics of REST APIs and how to implement them using Python Flask. This simple example demonstrates the power and flexibility of REST APIs in building scalable and maintainable web applications.
