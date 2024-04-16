@@ -1,11 +1,11 @@
 ---
-title: Understanding REST API
+title: Basics of REST API with Examples
 authorName: Prajwol Amatya
 authorAvatar: https://1.gravatar.com/avatar/de64e53c0e2cb393dd0d14ffdd53058ee9c607b35e366dd392425bd1b95a034c?size=256
 authorLink: https://github.com/prajwolamatya
-createdAt: May 5, 2024
+createdAt: April 16, 2024
 tags: rest, api, rest api, python, flask
-banner: 
+banner: https://blog.jankaritech.com/src/assets/RestApi/images/rest-api-banner.png
 ---
 
 Within the field of web development, APIs, or application programming interfaces, are essential for facilitating communication across various software components. Because of its simplicity, scalability, and statelessness, REST (Representational State Transfer) APIs stand out among the other types of APIs. In this blog, we will dive into basics of building a REST API.
@@ -25,7 +25,7 @@ REST, or Representational State Transfer, serves as an architectural approach fo
 ## REST API Architecture
 REST APIs utilize a client-server architecture, communicating over HTTP. The client sends requests to the server, which processes them and sends back responses. Communication is stateless, requiring each client request to contain all necessary information for processing.
 
-![REST API](/src/assets/REST_API/images/rest_api.png)
+![REST API](/src/assets/RestApi/images/rest_api.png)
 
 ### Components of REST API Architecture
 - **Resources**: In REST, resources are identified by URLs, representing anything that can be named and addressed, such as documents, images, temporal services, collections of other resources, non-virtual objects, and more.
@@ -34,12 +34,12 @@ REST APIs utilize a client-server architecture, communicating over HTTP. The cli
 
 - **Representations**: Resources are represented in a format easily understood by both client and server, commonly JSON (JavaScript Object Notation) or XML (eXtensible Markup Language).
 
+### Implementing REST API
 Now, lets start to build a REST API. Before we start, make sure you have Python installed on your system. You can download Python from [python.org](https://www.python.org/). We will also need Flask, which you can install using pip:
 ```bash
 pip install Flask
 ```
 
-### Implementing REST API
 We will build a REST API for managing a list of tasks. Each task will have a title and a status indicating whether it's completed or not.
 
 1. Create a new Python file: `app.py`
