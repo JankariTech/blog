@@ -11,16 +11,16 @@ banner: https://blog.jankaritech.com/src/assets/RestApi/images/rest-api-banner.p
 Within the field of web development, APIs, or application programming interfaces, are essential for facilitating communication across various software components. Because of its simplicity, scalability, and statelessness, REST (Representational State Transfer) APIs stand out among the other types of APIs. In this blog, we will dive into basics of building a REST API.
 
 ## What is a REST API?
-REST, or Representational State Transfer, serves as an architectural approach for creating networked apps. It operates via a stateless client-server communication system. In this model, clients and servers exchange representations of resources identified by URLs. Access is facilitated through standard HTTP methods such as GET, POST, PUT, DELETE, and others.
+REST (Representational State Transfer), serves as an architectural approach for creating networked apps. It operates via a stateless client-server communication system. In this model, clients and servers exchange representations of resources identified by URLs. Access is facilitated through standard HTTP methods such as GET, POST, PUT, DELETE, and others.
 
 ### Key Principles of REST
 1. **Stateless**: Every client request to the server must include all necessary information for comprehension and processing. The server should not retain any data about the client's latest HTTP request.
 
 2. **Client-Server Architecture**: The client handles the user interface and experience, while the server manages request processing and resource management.
 
-3. **Cacheable**: Responses from the server can be cached by the client. This can improve performance by reducing the load on the server and decreasing client-server interactions.
+3. **Cacheable**: Clients can cache responses from the server, enhancing performance by reducing the server load and minimizing client-server interactions.
 
-4. **Uniform Interface**: Clients can cache responses from the server, enhancing performance by reducing the server load and minimizing client-server interactions.
+4. **Uniform Interface**: The API has a consistent interface, which simplifies the architecture and enhances visibility of interactions.
 
 ## REST API Architecture
 REST APIs utilize a client-server architecture, communicating over HTTP. The client sends requests to the server, which processes them and sends back responses. Communication is stateless, requiring each client request to contain all necessary information for processing.
@@ -59,13 +59,14 @@ tasks = [
 ]
 ```
 
-### GET Request
+### GET Requests
 To retrieve all tasks, implement a route that handles GET requests:
 ```python
 @app.route("/tasks", methods=["GET"])
 def get_tasks():
     return jsonify({"tasks": tasks})
 ```
+This method will return all the tasks in JSON format.
 
 To retrieve a specific task:
 ```python
@@ -76,6 +77,7 @@ def get_task(task_id):
         return jsonify({"error": "Task not found"}), 404
     return jsonify({"task": task})
 ```
+We use the id of the tasks to identify a specific task since id is unique for every tasks. This method will look for the task with provided id and return the task with the matching id. If the task with the provided id is not found, it will return the error in JSON response indicating the task was not found, with status code `404`.
 
 ### POST Request
 To add a new task, implement a route that handles POST requests:
@@ -86,6 +88,7 @@ def create_task():
     tasks.append(new_task)
     return jsonify({"task": new_task}), 201
 ```
+`request.get_json()` retrieves the JSON data from the request body and adds the new task to the list of tasks. After the new task has been added to the list of tasks it will return the newly created task as a JSON response with `201` status code, indicating that the task was successfully created.
 
 ### PUT Request
 To update a task, implement a route that handles PUT requests:
@@ -98,6 +101,7 @@ def update_task(task_id):
     task.update(request.get_json())
     return jsonify({"task": task})
 ```
+We use the id of the task that we want to update. First, it will look whether the task with provided id exists or not. If the task doesn't exist then it will return the error in JSON response indicating the task was not found, with status code `404`. If the task exists then `task.update(request.get_json())` will update the task with the new data from the request body and returns the updated task as a JSON response.
 
 ### DELETE Request
 To delete a task, implement a route that handles DELETE requests:
@@ -110,6 +114,7 @@ def delete_tasks(task_id):
     tasks.remove(task)
     return jsonify({"result": "Task deleted"})
 ```
+We use the id of the task that we want to delete. First, it will look whether the task with provided id exists or not. If the task doesn't exist then it will return the error in JSON response indicating the task was not found, with status code `404`. If the task exists then it will remove that specific task from the list of task and returns a JSON repsonse indicating task was deleted successfully.
 
 ### Running the Application
 To run your application, add the following line:
