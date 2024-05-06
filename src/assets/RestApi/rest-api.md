@@ -3,15 +3,15 @@ title: Understanding REST APIs - A Comprehensive Guide with Practical Example
 authorName: Prajwol Amatya
 authorAvatar: https://1.gravatar.com/avatar/de64e53c0e2cb393dd0d14ffdd53058ee9c607b35e366dd392425bd1b95a034c?size=256
 authorLink: https://github.com/prajwolamatya
-createdAt: April 16, 2024
+createdAt: May 9, 2024
 tags: rest, api, rest api, python, flask
 banner: https://blog.jankaritech.com/src/assets/RestApi/images/rest-api-banner.png
 ---
 
-Within the field of web development, APIs (Application Programming Interface) are essential for facilitating communication across various software components. Because of its simplicity, scalability, and statelessness, REST (Representational State Transfer) APIs stand out among the other types of APIs. In this blog, we will dive into basics of building a REST API.
+Within the field of web development, APIs (Application Programming Interfaces) are essential for facilitating communication across various software components. Because of its simplicity, scalability, and statelessness, REST (Representational State Transfer) APIs stand out among the other types of APIs. In this blog, we will dive into basics of building a REST API.
 
 ## What is a REST API?
-REST is a framework that outlines a collection of guidelines for building web services. A REST API offers a straightforward and adaptable method to interact with web services without the need for any processing. REST is often favored for its lower bandwidth usage, simplicity, and flexibility, making it better suited for internet applications. REST is utilized to retrieve or transmit data from a web service with all interactions through a REST API occurring via HTTP requests.
+REST is an architectural style that outlines a collection of guidelines for building web services. A REST API offers a straightforward and adaptable method to interact with web services without the need for any processing. REST is often favored for its lower bandwidth usage, simplicity, and flexibility, making it better suited for internet applications. REST is utilized to retrieve or transmit data from a web service with all interactions through a REST API occurring via HTTP requests.
 
 ### Key Principles of REST
 The four key principles of REST API design, derived from the broader principles of REST architecture, are:
@@ -37,7 +37,7 @@ REST APIs utilize a client-server architecture, communicating over HTTP. The cli
 - **Representations**: Resources are represented in a format easily understood by both client and server, commonly JSON (JavaScript Object Notation) or XML (eXtensible Markup Language).
 
 ## Understanding Endpoints in REST API
-Endpoints are the points of interaction between the client and the server in a RESTful API. Each endpoint is associated with a specific URI where an API can be accessed, and it defines a specific URI at which the resource can be accessed or manipulated. Endpoints are crucial for REST APIs as they provide a structured and standardized way for clients to interact with the API's resources.
+Endpoints are the points of interaction between the client and the server in a RESTful API. Each endpoint is associated with a specific URI through which an API is accessed, and it defines a specific URI at which the resource can be accessed or manipulated. Endpoints are crucial for REST APIs as they provide a structured and standardized way for clients to interact with the API's resources.
 
 ### Characteristics of Endpoints
 **- URI Structure:** Endpoints are defined by their URI structure, which typically includes the base URI of the API and the path to the resource.
@@ -45,7 +45,7 @@ Endpoints are the points of interaction between the client and the server in a R
 **- Resource Representation:** The data returned by an endpoint is typically in a structured format, such as JSON or XML, which represents the resource or resources associated with the endpoint.
 
 ## Implementing a REST API
-Now, let's start to build a REST API. Before we start, make sure you have Python installed on your system. You can download Python from [python.org](https://www.python.org/downloads). We will also need Flask, which you can install using pip:
+Now, let's start to build a REST API. Before we start, make sure you have Python installed on your system. You will need a minimum Python version of 3.6. You can download Python from [python.org](https://www.python.org/downloads). We will also need Flask, which you can install using pip:
 ```bash
 pip install Flask
 ```
@@ -70,7 +70,7 @@ tasks = [
 ```
 
 ### GET Requests
-A GET request is used to retrieve data from a server. We can get all the avaliable data or a specific data using a GET request.
+A GET request is used to retrieve data from a server. We can get all the available data or specific data using a GET request.
 - To retrieve all tasks:
 ```python
 @app.route("/tasks", methods=["GET"])
@@ -94,7 +94,7 @@ def get_task(task_id):
 - `@app.route` binds a URL pattern `/tasks/<int:task_id>` to the function that follows it.
 - `<int:task_id>` is a variable part of the URL that will be captured and passed to the function as an argument.
 - `methods=["GET"]` specifies that this route should respond to the HTTP GET requests. This means that when a client sends a GET request to the `tasks/<int:task_id>` URL, Flask will call the associated function.
-- `get_task()` function will take `task_id` as argument that is extracted from `/tasks/<int:task_id>` URL. The function will then search for a task with that ID in the `tasks` list. If a task is found, it will return the task in JSON format. If no task is found, it will return a `404` status code with an error message.
+- `get_task()` function will take `task_id` as the argument that is extracted from `/tasks/<int:task_id>` URL. The function will then search for a task with that ID in the `tasks` list. If a task is found, it will return the task in JSON format. If no task is found, it will return a `404` status code with an error message.
 - `return jsonify({"task": task})` returns a JSON response containing the task. 
 
 ### POST Request
@@ -110,8 +110,8 @@ def create_task():
 - `methods=["POST"]` specifies that this route should respond to the HTTP POST requests. This means when a client sends a POST request to the `/tasks` URL, Flask will call the associated function.
 - `request.get_json()` is a Flask function that parses the incoming request data as JSON. This function is used to extract the JSON payload sent by the client in the POST request.
 - `create_task()` function will parse the JSON payload, add the new task to the `tasks` list, and return a JSON response containing the newly created task. The status code `201` indicates that the task was successfully created.
-- `tasks.append(new_task)` appends the new_task dictionary to the tasks list.
-- `jsonify({"task": new_task})` is a Flask function that converts the new_task dictionary into a JSON response. This response includes the newly created task.
+- `tasks.append(new_task)` appends the `new_task` dictionary to the tasks list.
+- `jsonify({"task": new_task})` is a Flask function that converts the `new_task` dictionary into a JSON response. This response includes the newly created task.
 
 ### PUT Request
 A PUT request is used to update an existing resource on a server. To update a task, implement a route that handles PUT requests:
@@ -127,7 +127,7 @@ def update_task(task_id):
 - `@app.route` binds a URL pattern `/tasks/<int:task_id>` to the function that follows it.
 - `<int:task_id>` is a variable part of the URL that will be captured and passed to the function as an argument.
 - `methods=["PUT"]` specifies that this route should respond to the HTTP PUT requests. This means that when a client sends a PUT request to the `/tasks/<int:task_id>` URL, Flask will call the associated function.
-- `update_task()` function will take `task_id` as argument that is extracted from `/tasks/<int:task_id>` URL. The function will then search for a task with that ID in the tasks list. If a task is found, it will update the task with the new data provided in the request and return the updated task in JSON format. If no task is found, it will return a 404 status code with an error message.
+- `update_task()` function will take `task_id` as the argument that is extracted from `/tasks/<int:task_id>` URL. The function will then search for a task with that ID in the tasks list. If a task is found, it will update the task with the new data provided in the request and return the updated task in JSON format. If no task is found, it will return a `404` status code with an error message.
 - `task.update(request.get_json())` updates the task with the JSON data sent by the client in the PUT request. The `request.get_json()` function parses the incoming request data as JSON, and the `update()` method merges this data into the `task` dictionary.
 - `return jsonify({"task": task})` returns a JSON response containing the updated task.
 
@@ -145,7 +145,7 @@ def delete_tasks(task_id):
 - `@app.route` binds a URL pattern `/tasks/<int:task_id>` to the function that follows it.
 - `<int:task_id>` is a variable part of the URL that will be captured and passed to the function as an argument.
 - `methods=["DELETE"]` specifies that this route should respond to the HTTP DELETE requests. This means that when a client sends a DELETE request to the `/tasks/<int:task_id>` URL, Flask will call the associated function.
-- `delete_task()` function will take `task_id` as argument that is extracted from `/tasks/<int:task_id>` URL. The function will then search for a task with that ID in the `tasks` list. If a task is found, it will remove the task from the list and return a JSON response indicating that the task was deleted. If no task is found, it will return a `404` status code with an error message.
+- `delete_task()` function will take `task_id` as the argument that is extracted from `/tasks/<int:task_id>` URL. The function will then search for a task with that ID in the `tasks` list. If a task is found, it will remove the task from the list and return a JSON response indicating that the task was deleted. If no task is found, it will return a `404` status code with an error message.
 - `tasks.remove(task)` removes the task from the `tasks` list.
 - `return jsonify({"result": "Task deleted"})` returns a JSON response indicating that the task was successfully deleted.
 
@@ -156,7 +156,55 @@ if __name__ == "__main__":
     app.run(debug=True)
 ```
 
-Then open your terminal and run the following command form your project directory:
+The entire `app.py` will look like this:
+```python
+from flask import Flask, jsonify, request
+
+app = Flask(__name__)
+
+tasks = [
+    {"id": 1, "title": "Buy groceries", "completed": False},
+    {"id": 2, "title": "Clean the house", "completed": True}
+]
+
+@app.route("/tasks", methods=["GET"])
+def get_tasks():
+    return jsonify({"tasks": tasks}), 200
+
+@app.route("/tasks/<int:task_id>", methods=["GET"])
+def get_task(task_id):
+    task = next((item for item in tasks if item["id"] == task_id), None)
+    if task is None:
+        return jsonify({"error": "Task not found"}), 404
+    return jsonify({"task": task}), 200
+
+@app.route("/tasks", methods=["POST"])
+def create_task():
+    new_task = request.get_json()
+    tasks.append(new_task)
+    return jsonify({"task": new_task}), 201
+
+@app.route("/tasks/<int:task_id>", methods=["PUT"])
+def update_task(task_id):
+    task = next((item for item in tasks if item["id"] == task_id), None)
+    if task is None:
+        return jsonify({"error": "Task not found"}), 404
+    task.update(request.get_json())
+    return jsonify({"task": task}), 201
+
+@app.route("/tasks/<int:task_id>", methods=["DELETE"])
+def delete_tasks(task_id):
+    task = next((item for item in tasks if item["id"] == task_id), None)
+    if task is None:
+        return jsonify({"error": "Task not found"}), 404
+    tasks.remove(task)
+    return jsonify({"result": "Task deleted"}), 200
+
+if __name__ == "__main__":
+    app.run(debug=True)
+```
+
+Then open your terminal and run the following command from your project directory:
 ```bash
 python3 app.py
 ```
@@ -165,8 +213,8 @@ Your REST API is now up and running on `http://127.0.0.1:5000`
 ## Testing Your API
 You can test your API using tools like Postman or cURL.
 
-### List All Tasks
-You can use the following cURL command to list all the avaliable tasks:
+### 1. List All Tasks
+You can use the following cURL command to list all the available tasks:
 ```bash
 curl http://127.0.0.1:5000/tasks
 ```
@@ -188,8 +236,8 @@ Expected Result:
 }
 ```
 
-### List a Specific Task
-To retrieve a specific task by its ID, you can use the following cURL command, replacing `<task_id>` with the id of the task you want to retrieve:
+### 2. List a Specific Task
+To retrieve a specific task by its ID, you can use the following cURL command, replacing `<task_id>` with the ID of the task you want to retrieve:
 ```bash
 curl http://127.0.0.1:5000/tasks/<task_id>
 ```
@@ -210,7 +258,7 @@ Expected Result:
 }
 ```
 
-### Create a New Task
+### 3. Create a New Task
 To create a new task, you can use following cURL command, replacing `<task_data>` with the JSON data for the new task:
 ```bash
 curl -X POST -H "Content-Type: application/json" -d '<json_data>' http://127.0.0.1:5000/tasks
@@ -232,7 +280,7 @@ Expected Result:
 }
 ```
 
-### Update a Task
+### 4. Update a Task
 To update an existing task, use the following cURL command, replacing `<task_id>` with the id of the task, and `<updated_data>` with the JSON data you want to update:
 ```bash
 curl -X PUT -H "Content-Type: application/json" -d '<updated_data>' http://127.0.0.1:5000/tasks/<task_id>
@@ -254,7 +302,7 @@ Expected Result:
 }
 ```
 
-### Delete a Task
+### 5. Delete a Task
 To delete a task, use the following cURL command, replacing `<task_id>` with the id of the task you want to delete:
 ```bash
 curl -X DELETE http://127.0.0.1:5000/tasks/<task_id>
@@ -272,7 +320,7 @@ Expected Result:
 }
 ```
 
-Let's try to retrieve a task that doesn't exist in the list of tasks. For instance, we just deleted a task with id = 3. Now, let's try to retrieve the task with id = 3 and see the result.
+Let's try to retrieve a task that doesn't exist in the list of tasks. For instance, we just deleted a task with ID `3`. Now, let's try to retrieve the task with ID `3` and see the result.
 ```bash
 curl http://127.0.0.1:5000/tasks/3
 ```
@@ -285,7 +333,7 @@ Expected result:
 We see that the JSON response returns the error `Task not found`, which indicates that the task doesn't exist in the list of tasks.
 
 ## Common Causes of API Request Failures
-Now, let's explore scenarios where API requests might fail. API requests can fail due to various reasons, including sending invalid requests. This could happen if an incorrect endpoint is used, the JSON data is invalid, or if the request is made with an unsupported HTTP method. Let's examine some instances where API requests might fail.
+Now, let's explore scenarios where API requests might fail. API requests can fail for various reasons, including sending invalid requests. This could happen if an incorrect endpoint is used, if the JSON data is invalid, or if the request is made with an unsupported HTTP method. Let's examine some instances where API requests might fail.
 
 **1. Invalid Endpoint**:
 With the REST API that we built, we have the following valid API endpoints:
@@ -299,7 +347,7 @@ If we send an API request to any endpoint that is not listed above, the request 
 ```bash
 curl http://127.0.0.1:5000/task
 ```
-Here, we have used `task` instead of `tasks` in our endpoint, which makes our endpoint invalid. With this request we get the following error with `404` status code.
+Here, we have used `task` instead of `tasks` in our endpoint, which makes our endpoint invalid. With this request, we get the following error with `404` status code.
 
 Expected Result:
 ```console
@@ -358,7 +406,7 @@ Valid:
 }
 ```
 - **Incorrect Data Types:** JSON supports several data types, including strings, numbers, objects, arrays, booleans, and null. Using an incorrect data type or a value that does not match the expected type can lead to invalid JSON.
-Invlaid:
+Invalid:
 ```json
 {
   "key": "value",
@@ -373,7 +421,7 @@ Valid:
 }
 ```
 
-Let's add a new task with invalid JSON data with missing quote around one of the keys:
+Let's add a new task with invalid JSON data with a missing quote around one of the keys:
 ```bash
 curl -X POST -H "Content-Type: application/json" -d '{"id":3,task:"Finish the report","completed":false}' http://127.0.0.1:5000/tasks
 ```
