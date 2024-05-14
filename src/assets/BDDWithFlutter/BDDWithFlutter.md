@@ -20,7 +20,7 @@ The basic idea behind Gherkin/Cucumber is to have a semi-structured language to 
 If you write the Gherkin files, before you write the code, you have reached the final level, as this is called BDD (Behavior Driven Development)!
 
 Here are some readings about BDD and Gherkin:
-- ["Introducing BDD", by Dan North (2006)](http://blog.dannorth.net/introducing-bdd)
+- ["Introducing BDD", by Dan North (2006)](https://dannorth.net/introducing-bdd/)
 - [Wikipedia](https://en.wikipedia.org/wiki/Behavior-driven_development)
 - ["The beginner's guide to BDD (behaviour-driven development)", By Konstantin Kudryashov, Alistair Stead, Dan North](https://inviqa.com/blog/bdd-guide)
 - [Behaviour-Driven Development](https://cucumber.io/docs/bdd/)
