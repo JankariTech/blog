@@ -108,7 +108,6 @@ Future<void> main() {
     ..customStepParameterDefinitions = []
     ..restartAppBetweenScenarios = true
     ..targetAppPath = "test_driver/app.dart";
-    // ..exitAfterTestRun = true; // set to false if debugging to exit cleanly [removed from gherkin 2.0.0]
   return GherkinRunner().execute(config);
 }
 ```
@@ -128,7 +127,7 @@ class GivenCounterIsSetTo extends Given1WithWorld<String, FlutterWorld> {
   @override
   Future<void> executeStep(String expectedCounter) async {
     final locator = find.byValueKey("counter");
-    final actualCount = await FlutterDriverUtils.getText(world.driver, locator);
+    final actualCount = await FlutterDriverUtils.getText(world.driver!, locator);
     expectMatch(actualCount, expectedCounter);
   }
 }
