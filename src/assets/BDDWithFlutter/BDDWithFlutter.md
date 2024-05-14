@@ -107,8 +107,8 @@ Future<void> main() {
     ..stepDefinitions = []
     ..customStepParameterDefinitions = []
     ..restartAppBetweenScenarios = true
-    ..targetAppPath = "test_driver/app.dart"
-    ..exitAfterTestRun = true; // set to false if debugging to exit cleanly
+    ..targetAppPath = "test_driver/app.dart";
+    // ..exitAfterTestRun = true; // set to false if debugging to exit cleanly [removed from gherkin 2.0.0]
   return GherkinRunner().execute(config);
 }
 ```
