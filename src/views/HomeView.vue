@@ -244,11 +244,11 @@ const setFilterKey = (key) => {
 
 const sortPeekData = (key) => {
   if (key === "alpha") {
-    peekData.value.sort((a, b) => {
+    searchResultBlog.value.sort((a, b) => {
       return a["title"].localeCompare(b["title"])
     })
   } else {
-    peekData.value.sort((a, b) => {
+    searchResultBlog.value.sort((a, b) => {
       return b["createdAt"] - a["createdAt"]
     })
   }
