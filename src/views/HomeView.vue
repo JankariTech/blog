@@ -85,7 +85,7 @@
       }"
     >
       <blog-peek
-        v-for="(item, index) in peekData"
+        v-for="(item, index) in searchResultBlog"
         :key="index"
         :title="item.title"
         :created-at="item.createdAt"
@@ -97,7 +97,7 @@
         :banner="item.banner"
         @click="goToBlogDetail(item)"
       />
-      <div v-if="peekData.length === 0"
+      <div v-if="searchResultBlog.length === 0"
         class="home-view--no-results"
       >
         <div class="message">Sorry, no results found for "{{ search }}"</div>
@@ -121,6 +121,7 @@ const { currentRoute, push } = useRouter()
 
 const peekData = ref([])
 const search = ref("")
+const searchResultBlog = ref([])
 const loading = ref(false)
 const filterBy = ref(null)
 const sortBy = ref(null)
@@ -136,6 +137,7 @@ const init = () => {
   filterBy.value = currentRoute.value.params.filterBy
   sortBy.value = currentRoute.value.params?.sortBy
   peekData.value = getPeekData()
+  searchResultBlog.value = getPeekData()
   sortPeekData(sortBy.value)
   loading.value = false
   homeViewMode.value = Storage.getHomeViewMode()
@@ -146,6 +148,7 @@ const loadingImage = getImageUrl("loading")
 watch(search, () => {
   if (!search.value) {
     peekData.value = getPeekData()
+    searchResultBlog.value = peekData.value
   }
 })
 
@@ -164,34 +167,33 @@ const goToBlogDetail = (item) => {
 
 const makeSearch = () => {
   loading.value = true
-  const searchResult = []
   const searchVal = search.value.toLowerCase()
+  searchResultBlog.value = []
   if (filterBy.value) {
     peekData.value.forEach(item => {
       if (filterBy.value === "tag") {
         if (item.tags && item.tags.join(" ").toLowerCase().includes(searchVal)) {
-          searchResult.push(item)
+          searchResultBlog.value.push(item)
         }
       } else {
         if (item.authorName.toLowerCase().includes(searchVal)) {
-          searchResult.push(item)
+          searchResultBlog.value.push(item)
         }
       }
     })
   } else if (sortBy.value) {
     peekData.value.forEach(item => {
       if (item.title.toLowerCase().includes(searchVal)) {
-        searchResult.push(item)
+        searchResultBlog.value.push(item)
       }
     })
   } else {
     peekData.value.forEach(item => {
       if (item.title.toLowerCase().includes(searchVal)) {
-        searchResult.push(item)
+        searchResultBlog.value.push(item)
       }
     })
   }
-  peekData.value = searchResult
   loading.value = false
 }
 
