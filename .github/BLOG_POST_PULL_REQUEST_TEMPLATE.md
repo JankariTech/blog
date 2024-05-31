@@ -7,7 +7,7 @@ but also making a meaningful contribution to the global developers community!
 To simplify the review process, please fill in the information below.
 -->
 
-## Motivation and Context
+## Motivation And Context
 ### Key Message
 <!---
 Describe the aim of your blog post in one or two sentences.
@@ -15,13 +15,13 @@ Knowing your goal of writing makes it easier for reviewing your blog post,
 in particular if feedback is asked for at an earlier stage of writing.
 -->
 
-### Target audience
+### Target Audience
 <!---
 Briefly describe for whom you are writing this blog post (beginners, experience software developers,
 general audience, etc.). This information too is very helpful for the reviewers of your blog post.
 -->
 
-## Current status
+## Current Status
 <!-- We encourage you to ask the team for feedback in an early stage of writing a blog post.
 Specifying the steps that have already been completed and what aspects are are still in process
 helps your friends who are reviewing your blog post -->
@@ -35,6 +35,6 @@ helps your friends who are reviewing your blog post -->
 - [ ] Keywords added
 - [ ] Blog post is ready for final review
 
-## Declaration of Sources
+## Declaration Of Sources
 - [ ] I have given adequate reference to all external sources I've used
       (e.g. images, illustrations, quotations from other blogs and publications, etc.)
