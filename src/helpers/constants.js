@@ -22,6 +22,7 @@ export const SORT_OPTIONS = [
 ]
 
 export const FILTER_OPTIONS = [
+  { key: "title", label: "Title" },
   { key: "author", label: "Author" },
   { key: "tag", label: "Tags" }
 ]
