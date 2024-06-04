@@ -14,7 +14,7 @@
         id="search"
         class="home-view--search--input"
         v-model="search"
-        placeholder="Search..."
+        :placeholder="getSearchPlaceHolder"
         @keyup.enter="makeSearch"
       >
       <div class="home-view--search--actions">
@@ -107,7 +107,7 @@
   </div>
 </template>
 <script setup>
-import { ref, watch, onMounted } from "vue"
+import { ref, watch, onMounted, computed } from "vue"
 import { useRouter } from "vue-router"
 import BlogPeek from "../components/BlogPeek"
 import DropMenu from "../components/DropMenu"
@@ -126,10 +126,18 @@ const loading = ref(false)
 const filterBy = ref(null)
 const sortBy = ref(null)
 const homeViewMode = ref(null)
+const searchPlaceHolder = ref("")
 
 onMounted(async () => {
   init()
   tracker.trackPageView()
+})
+
+const getSearchPlaceHolder = computed(() => {
+  if (currentRoute.value.params.filterBy) {
+    return "search by " + searchPlaceHolder.value
+  }
+  return "search"
 })
 
 const init = () => {
@@ -171,14 +179,22 @@ const makeSearch = () => {
   searchResultBlog.value = []
   if (filterBy.value) {
     peekData.value.forEach(item => {
-      if (filterBy.value === "tag") {
+      switch (filterBy.value) {
+      case "tag" :
         if (item.tags && item.tags.join(" ").toLowerCase().includes(searchVal)) {
           searchResultBlog.value.push(item)
         }
-      } else {
-        if (item.authorName.toLowerCase().includes(searchVal)) {
+        break
+      case "author" :
+        if (item.tags && item.tags.join(" ").toLowerCase().includes(searchVal)) {
           searchResultBlog.value.push(item)
         }
+        break
+      case "title":
+        if (item.title.toLowerCase().includes(searchVal)) {
+          searchResultBlog.value.push(item)
+        }
+        break
       }
     })
   } else if (sortBy.value) {
@@ -188,8 +204,9 @@ const makeSearch = () => {
       }
     })
   } else {
+    // by default user can search with any of the options (author, title, tags)
     peekData.value.forEach(item => {
-      if (item.title.toLowerCase().includes(searchVal)) {
+      if ((item.tags && item.tags.join(" ").toLowerCase().includes(searchVal)) || (item.authorName.toLowerCase().includes(searchVal)) || (item.title.toLowerCase().includes(searchVal))) {
         searchResultBlog.value.push(item)
       }
     })
@@ -206,7 +223,7 @@ const toHome = () => {
     .then(() => {
       peekData.value = getPeekData()
       sortPeekData(sortBy.value)
-      search.value = ""
+      clearSearch()
     })
 }
 
@@ -231,6 +248,7 @@ const setFilterKey = (key) => {
   if (currentRoute.value.params.filterBy === key) {
     toHome()
   } else {
+    searchPlaceHolder.value = key
     push({
       name: "Filter",
       params: {
