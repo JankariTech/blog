@@ -149,6 +149,9 @@ const init = () => {
   sortPeekData(sortBy.value)
   loading.value = false
   homeViewMode.value = Storage.getHomeViewMode()
+  if (filterBy.value) {
+    searchPlaceHolder.value = filterBy.value
+  }
 }
 
 const loadingImage = getImageUrl("loading")
@@ -186,7 +189,7 @@ const makeSearch = () => {
         }
         break
       case "author" :
-        if (item.tags && item.tags.join(" ").toLowerCase().includes(searchVal)) {
+        if (item.authorName.toLowerCase().includes(searchVal)) {
           searchResultBlog.value.push(item)
         }
         break
