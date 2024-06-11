@@ -12,7 +12,7 @@ banner: https://blog.jankaritech.com/src/assets/Keycloak/images/Keycloak/Keycloa
 Additionally, it enables users to authenticate through various identity providers and use fine-grained permissions for regulating access to Software as a Service (SaaS) applications.
 
 It facilitates the creation of a user database with customizable roles and groups, offering functionalities such as user management, registration, and password policy enforcement.
-This makes it a comprehensive Identity and Access Management solution for contemporary applications. Keycloak API enables the integration of all these features into your application
+This makes it a comprehensive Identity and Access Management solution for contemporary applications. The Keycloak API enables the integration of all these features into your application
 without the need for additional coding.
 
 ## Keycloak Features
@@ -124,10 +124,10 @@ There is another way to set up Keycloak using the Keycloak distribution file.
 By default, the Keycloak server is on port 8080 for http and 8084 for https. They are only served from the localhost loopback address 127.0.0.1:
 Keycloak serves on `http://localhost:<port>`.
 
-## Why Keycloak Matters?
+## Why Keycloak Matters
 1. Keycloak is open source.
 2. Keycloak supports three different authentication protocols which gives you the possibility to cover many applications with different security demands with a single tool.
-3. Keycloak provides a web-based GUI which makes any configurations changes easy.
+3. Keycloak provides a web-based GUI which makes any configuration changes easy.
 4. Keycloak has huge [community support](https://www.keycloak.org/community).
 
 ## Keycloak Drawbacks
@@ -139,7 +139,7 @@ Additionally, the following are some of the drawbacks associated with Keycloak:
 2. Lack of Comprehensive Support Documentation:
    Despite its robust functionalities, Keycloak could benefit from more efficient and extensive support documentation. This would make it easier for users to find suitable solutions to their problems.
 
-## When It May Not Be the Best Choice?
+## When It May Not Be the Best Choice
 1. Enterprises seeking robust guarantees or support may find Keycloak lacking in this regard. As an open-source project, there are no assurances provided by its producer regarding its functionality or roadmap.
    Support is community-driven, typically through platforms like Stack Overflow, with no guaranteed response times.
 2. If your application consists of a single application with just one client in the Keycloak realm, you won't benefit from Single Sign-On (SSO) capabilities.

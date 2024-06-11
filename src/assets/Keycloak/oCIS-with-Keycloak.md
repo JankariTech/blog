@@ -10,7 +10,7 @@ banner: https://blog.jankaritech.com/src/assets/Keycloak/images/oCIS-Keycloak/oC
 
 [In the previous blog](/src/assets/Keycloak/Keycloak.md), we explored the general functionality of Keycloak.
 In this blog, I demonstrate how we can integrate [oCIS](https://owncloud.dev/ocis/)(file-sync and share platform) with Keycloak using the Keycloak WebUI.
-Anyone interested in getting hands-on experience with Keycloak can read this blog.
+This benefits anyone who is interested in getting hands-on experience with Keycloak.
 
 ## Run Services
 Make sure you've installed [Docker Engine](https://docs.docker.com/engine/install/) and [Docker Compose](https://docs.docker.com/compose/install/).
@@ -25,7 +25,7 @@ directives:
     - '''self'''
   connect-src:
     - '''self'''
-    # In contrary to bash and docker the default is given after the | character
+    # In contrast to bash and docker the default is given after the | character
     - 'https://${KEYCLOAK_DOMAIN|host.docker.internal:8443}'
   default-src:
     - '''none'''
@@ -201,7 +201,7 @@ Docker compose serves three services:
 
 ![add realm role](/src/assets/Keycloak/images/oCIS-Keycloak/create-realm-role.png)
 
-> Note: oCIS has defined roles name that has been documented under [Automatic Quota Assignments](https://owncloud.dev/services/proxy/#automatic-role-assignments). So, we can't create the role with a random name.
+> Note: oCIS has defined role names that have been documented under [Automatic Quota Assignments](https://owncloud.dev/services/proxy/#automatic-role-assignments). So, we can't create the role with a random name.
 
 6. Create a new user:
 
