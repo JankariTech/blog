@@ -20,7 +20,7 @@ The basic idea behind Gherkin/Cucumber is to have a semi-structured language to 
 If you write the Gherkin files, before you write the code, you have reached the final level, as this is called BDD (Behavior Driven Development)!
 
 Here are some readings about BDD and Gherkin:
-- ["Introducing BDD", by Dan North (2006)](http://blog.dannorth.net/introducing-bdd)
+- ["Introducing BDD", by Dan North (2006)](https://dannorth.net/introducing-bdd/)
 - [Wikipedia](https://en.wikipedia.org/wiki/Behavior-driven_development)
 - ["The beginner's guide to BDD (behaviour-driven development)", By Konstantin Kudryashov, Alistair Stead, Dan North](https://inviqa.com/blog/bdd-guide)
 - [Behaviour-Driven Development](https://cucumber.io/docs/bdd/)
@@ -107,8 +107,7 @@ Future<void> main() {
     ..stepDefinitions = []
     ..customStepParameterDefinitions = []
     ..restartAppBetweenScenarios = true
-    ..targetAppPath = "test_driver/app.dart"
-    ..exitAfterTestRun = true; // set to false if debugging to exit cleanly
+    ..targetAppPath = "test_driver/app.dart";
   return GherkinRunner().execute(config);
 }
 ```
@@ -128,7 +127,7 @@ class GivenCounterIsSetTo extends Given1WithWorld<String, FlutterWorld> {
   @override
   Future<void> executeStep(String expectedCounter) async {
     final locator = find.byValueKey("counter");
-    final actualCount = await FlutterDriverUtils.getText(world.driver, locator);
+    final actualCount = await FlutterDriverUtils.getText(world.driver!, locator);
     expectMatch(actualCount, expectedCounter);
   }
 }
