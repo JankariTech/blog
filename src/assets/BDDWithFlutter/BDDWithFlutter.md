@@ -10,26 +10,26 @@ seriesTitle: Behaviour Driven Development
 episode: 2
 ---
 
-This tutorial will first show how to test a flutter app using the Gherkin language and in the second part walk through an example of BDD (Behavior Driven Development) in the same App.
+This tutorial will first show how to test a Flutter app using the [Gherkin](https://cucumber.io/docs/gherkin/reference/) language and in the second part walk through an example of BDD (Behavior Driven Development) in the same app.
 
-Flutter uses different types of tests [(unit, widget, integration)](https://flutter.dev/docs/testing). You should have all types of tests in your app, most of your tests should be unit tests, less widget and a few integration tests. The [test pyramid](https://martinfowler.com/bliki/TestPyramid.html) explains the principle well (using different words for the test-types).
+Flutter uses different types of tests [(unit, widget, integration)](https://flutter.dev/docs/testing/overview). You should have all types of tests in your app, most of your tests should be unit tests, less widget and a few integration tests. The [test pyramid](https://martinfowler.com/bliki/TestPyramid.html) explains the principle well (using different words for the test-types).
 
-In this tutorial, I want to help you to start with integration tests but go a step further than the description in the [flutter documentation](https://flutter.dev/docs/testing#integration-tests) and use the Gherkin language to describe the expected behavior.
-The basic idea behind Gherkin/Cucumber is to have a semi-structured language to be able to define the expected behaviour and requirements in a way that all stakeholders of the project (customer, management, developer, QA, etc.) understand them. Using Gherkin helps to reduce misunderstandings, wasted resources and conflicts by improving communication. Additionally, you get a documentation of your project, and finally you can use the Gherkin files to run automated tests.
+In this tutorial, I want to help you to start with integration tests but go a step further than the description in the [Flutter documentation](https://flutter.dev/docs/testing#integration-tests) and use the Gherkin language to describe the expected behavior.
+The basic idea behind Gherkin is to have a semi-structured language to be able to define the expected behaviour and requirements in a way that all stakeholders of the project (customer, management, developer, QA, etc.) understand them. Using Gherkin helps to reduce misunderstandings, wasted resources and conflicts by improving communication. Additionally, you get a documentation of your project, and finally you can use the Gherkin files to run automated tests.
 
-If you write the Gherkin files, before you write the code, you have reached the final level, as this is called BDD (Behavior Driven Development)!
+If you write the Gherkin files before you write the code, you have reached the final level. This is called BDD!
 
 Here are some readings about BDD and Gherkin:
-- ["Introducing BDD", by Dan North (2006)](https://dannorth.net/introducing-bdd/)
-- [Wikipedia](https://en.wikipedia.org/wiki/Behavior-driven_development)
-- ["The beginner's guide to BDD (behaviour-driven development)", By Konstantin Kudryashov, Alistair Stead, Dan North](https://inviqa.com/blog/bdd-guide)
+- [Introducing BDD](https://dannorth.net/introducing-bdd/), by Dan North (2006)
+- [Wikipedia article on BDD](https://en.wikipedia.org/wiki/Behavior-driven_development)
+- [The beginner's guide to BDD (behaviour-driven development)](https://inviqa.com/blog/bdd-guide), by Konstantin Kudryashov, Alistair Stead, Dan North (2015)
 - [Behaviour-Driven Development](https://cucumber.io/docs/bdd/)
 
-But enough theory, lets get our hands dirty. (You can find all the code of this tutorial here: https://github.com/JankariTech/flutterBDDexample)
+But enough theory, lets get our hands dirty. You can find all the code of this tutorial [here](https://github.com/JankariTech/flutterBDDexample).
 
-## The feature files
+## Feature Files
 
-For the start, you should have installed the flutter-tools stack and create a flutter test-drive app as explained in the [get-started document](https://flutter.dev/docs/get-started/test-drive?tab=androidstudio)
+To start, you should install the Flutter tools stack and create a Flutter test-drive app as explained in the [get-started document](https://flutter.dev/docs/get-started/test-drive?tab=androidstudio).
 
 Inside the app folder create a folder called `test_driver` and inside another one called `features`. In `features` we will place all the Gherkin descriptions of the expected app behavior. So create here a file called: `increment_counter.feature`
 
@@ -42,7 +42,7 @@ Feature: Increment Counter
   So that I notice if one is missing
 ```
 
-The first line is just a title of the feature; the other three lines should answer the questions [Who wants to achieve what and why with this particular feature](https://www.bibleserver.com/ESV/Luke15%3A4). If you cannot answer those questions for a particular feature of your app, then you actually should not implement that feature; there is no use-case for it.
+The first line is just a title of the feature; the other three lines should answer the questions [Who wants to achieve what and why with this particular feature](https://www.bibleserver.com/ESV/Luke15%3A4). If you cannot answer those questions for a particular feature of your app, then you should not implement that feature; there is no use case for it.
 
 Next, we have to describe the specific behavior of the app. For that, Gherkin provides 3 different keywords:
 - **Given** - prerequisites for the scenario
@@ -65,7 +65,7 @@ Now we can start the app and use our behavior description to check if it works a
 
 Running manual tests from a description is nice, but not enough for us, we want to save time and reduce possible mistakes by running the tests automatically.
 
-To interpret the Gherkin file and interact with the app we are using the `flutter_gherkin` package. Install it by placing `flutter_gherkin:` in the `pubspec.yaml` inside the `dev_depencencies` section.
+To interpret the Gherkin file and interact with the app we are using the `flutter_gherkin` package. Install it by placing `flutter_gherkin:` in the `pubspec.yaml` inside the `dev_depencencies` section as shown below:
 ```yaml
 dev_dependencies:
   flutter_test:
@@ -174,7 +174,7 @@ Remember: The step `Then I expect the "counter" to be "10"` is a built-in-step. 
 1. connect your phone or start the emulator
 2. run `dart test_driver/app_test.dart`
 
-after a while, you should see output like:
+After a while, you should see output like:
 ```console
 Running scenario: Counter increases when the button is pressed # ./test_driver/features/increment_counter.feature:5
    √ Given the counter is set to "0" # ./test_driver/features/increment_counter.feature:6 took 146ms
@@ -422,7 +422,7 @@ index 068f558..5e0d8d0 100644
 
 ## Conclusion
 
-You have seen how to write Gherkin files and how to run them as automated tests for a flutter application.
+You have seen how to write Gherkin files and how to run them as automated tests for a Flutter application.
 I personally find flutter_gherkin a bit more complicated than other BDD frameworks, but it's possible, and I believe using BDD will improve the quality of your project greatly.
 
 If you need any help with the test-coverage of your app, BDD or other test-related topics, please contact us [@JankariTech](https://www.jankaritech.com)
