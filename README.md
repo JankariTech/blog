@@ -29,7 +29,8 @@ A beautiful blogging platform for the JankariTech peoples.
     authorName: John Doe
     authorAvatar: https://some.link.jpg (must be an image URL, **required**)
     authorLink: https://github.com/John
-    createdAt: Oct 30, 2019 (must be in the format `MM dd, yyyy`, **required**)
+    createdAt: Oct 30, 2019 (can be in the format `MMM dd, yyyy` or `MMMM dd, yyyy`, **required**)
+    updatedAt: October 30, 2023 (can be in the format `MMM dd, yyyy` or `MMMM dd, yyyy`, **optional**)
     tags: vue, jest, unit, testing (separate multiple items with a comma `,` character, **required**)
     banner: https://some.link.jpg (must be an image URL, **required**)
     seriesTitle: Unit Testing is Fun (if only this post belongs to a series, **optional**)
