@@ -20,9 +20,15 @@
         >
           {{ peek.authorName }}
         </a>
+        <div class="vl">|</div>
         <div class="created-at">
-          <mdi-clock />
-          <span>{{ $moment(peek.createdAt).format("LLLL") }}</span>
+          Published:
+          <span>{{ $moment(peek.createdAt).format("MMMM DD, YYYY") }}</span>
+        </div>
+        <div v-if="peek.updatedAt" class="vl">|</div>
+        <div v-if="peek.updatedAt" class="updated-at">
+          Last Updated:
+          <span>{{ $moment(peek.updatedAt).format("MMMM DD, YYYY") }}</span>
         </div>
       </div>
     </div>
@@ -96,17 +102,16 @@ const fallbackBanner = computed(() => {
           padding-inline: 0.5rem;
         }
 
-        .created-at {
+        .created-at, .updated-at, .vl {
           display: flex;
           align-items: center;
           color: grey;
           font-size: 0.875rem;
           line-height: 1.2rem;
-          padding-inline: 0.5rem;
+          padding-inline: 0.2rem;
 
           span {
             margin-left: 0.2rem;
-            margin-top: 0.1rem;
           }
         }
       }

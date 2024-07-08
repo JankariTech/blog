@@ -35,8 +35,14 @@
         </a>
         <div v-else class="author-name">{{ authorName }}</div>
         <div class="created-at" title="Created Timestamp">
-          {{ moment(createdAt).format("MMM DD, YYYY") }}
+          Published:
+          {{ moment(createdAt).format("MMMM DD, YYYY") }}
           ({{ moment(createdAt).fromNow() }})
+        </div>
+        <div v-if="updatedAt" class="updated-at" title="Updated Timestamp">
+          Last Updated:
+          {{ moment(updatedAt).format("MMMM DD, YYYY") }}
+          ({{ moment(updatedAt).fromNow() }})
         </div>
       </div>
     </div>
@@ -98,6 +104,10 @@ defineProps({
     default: null
   },
   createdAt: {
+    type: [Date, String],
+    required: true
+  },
+  updatedAt: {
     type: [Date, String],
     required: true
   },

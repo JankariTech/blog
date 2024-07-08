@@ -9,24 +9,21 @@ name: CI
 jobs:
   lint:
     runs-on: ubuntu-latest
+    concurrency:
+      group: ${{ github.ref }}
+      cancel-in-progress: true
     steps:
-      - name: Cancel previous runs
-        uses: styfle/cancel-workflow-action@0.9.1
-        with:
-          all_but_latest: true
-          access_token: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - uses: pnpm/action-setup@v2.2.2
+      - uses: pnpm/action-setup@v4
         with:
-          version: 7.x.x
+          version: 9.x.x
 
       - name: Setup NodeJS
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '16'
+          node-version: '20'
           cache: 'pnpm'
 
       - name: Install dependencies

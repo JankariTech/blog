@@ -42,6 +42,7 @@ const requiredMeta = [
 ]
 
 const optionalMeta = [
+  "updatedAt",
   "seriesTitle",
   "episode"
 ]
@@ -91,11 +92,28 @@ function lintMeta (key) {
   })
 
   // check if the createdAt is set with proper format
+  let createdAt
   if (peekData.createdAt) {
-    const regex = /[A-Za-z]+\s\d{1,2},\s\d{4}/g
+    createdAt = new Date(peekData.createdAt)
+    if (isNaN(createdAt.getTime())) {
+      log.error(`Invalid createdAt date format in ${key}`)
+      success = false
+    }
+  }
 
-    if (!regex.test(peekData.createdAt)) {
-      log.error(`Invalid date format in ${key}`)
+  if (peekData.updatedAt) {
+    const updatedAt = new Date(peekData.updatedAt)
+    // check if the updatedAt is set with proper format
+    if (isNaN(updatedAt.getTime())) {
+      log.error(`Invalid updatedAt date format in ${key}`)
+      success = false
+    }
+    // check if the updatedAt is later than createdAt
+    if (createdAt.getTime() === updatedAt.getTime()) {
+      log.error(`Updated date is same as created date in ${key}`)
+      success = false
+    } else if (createdAt.getTime() > updatedAt.getTime()) {
+      log.error(`Updated date is earlier than created date in ${key}`)
       success = false
     }
   }

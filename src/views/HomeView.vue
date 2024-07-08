@@ -89,6 +89,7 @@
         :key="index"
         :title="item.title"
         :created-at="item.createdAt"
+        :updated-at="item.updatedAt"
         :author-name="item.authorName"
         :author-link="item.authorLink"
         :author-avatar="item.authorAvatar"
