@@ -12,9 +12,9 @@ episode: 2
 
 This tutorial will first show how to test a Flutter app using the [Gherkin](https://cucumber.io/docs/gherkin/reference/) language and in the second part walk through an example of BDD (Behavior Driven Development) in the same app.
 
-Flutter uses different types of tests [(unit, widget, integration)](https://flutter.dev/docs/testing/overview). You should have all types of tests in your app, most of your tests should be unit tests, less widget and a few integration tests. The [test pyramid](https://martinfowler.com/bliki/TestPyramid.html) explains the principle well (using different words for the test-types).
+Flutter uses different types of tests [(unit, widget, integration)](https://flutter.dev/docs/testing/overview). You should have all types of tests in your app. Most of your tests should be unit tests, less widget tests and a few integration tests. The [test pyramid](https://martinfowler.com/bliki/TestPyramid.html) explains the principle well (though using different names for the test types).
 
-In this tutorial, I want to help you to start with integration tests but go a step further than the description in the [Flutter documentation](https://flutter.dev/docs/testing#integration-tests) and use the Gherkin language to describe the expected behavior.
+In this tutorial, I want to help you to start with integration tests. However, we will go a step further than the description in the [Flutter documentation](https://flutter.dev/docs/testing#integration-tests) and use the Gherkin language to describe the expected behavior.
 The basic idea behind Gherkin is to have a semi-structured language to be able to define the expected behaviour and requirements in a way that all stakeholders of the project (customer, management, developer, QA, etc.) understand them. Using Gherkin helps to reduce misunderstandings, wasted resources and conflicts by improving communication. Additionally, you get a documentation of your project, and finally you can use the Gherkin files to run automated tests.
 
 If you write the Gherkin files before you write the code, you have reached the final level. This is called BDD!
@@ -31,7 +31,7 @@ But enough theory, lets get our hands dirty. You can find all the code of this t
 
 To start, you should install the Flutter tools stack and create a Flutter test-drive app as explained in the [get-started document](https://flutter.dev/docs/get-started/test-drive?tab=androidstudio).
 
-Inside the app folder create a folder called `test_driver` and inside another one called `features`. In `features` we will place all the Gherkin descriptions of the expected app behavior. So create here a file called: `increment_counter.feature`
+Inside the app folder create a folder called `test_driver`. And inside your new folder create another one called `features`. In `features` we will place all the Gherkin descriptions of the expected app behavior. Create here a file called `increment_counter.feature` for this.
 
 We start the feature file with a very general description of the feature:
 ```gherkin
@@ -42,8 +42,7 @@ Feature: Increment Counter
   So that I notice if one is missing
 ```
 
-The first line is just a title of the feature; the other three lines should answer the questions [Who wants to achieve what and why with this particular feature](https://www.bibleserver.com/ESV/Luke15%3A4). If you cannot answer those questions for a particular feature of your app, then you should not implement that feature; there is no use case for it.
-
+The first line is just a title of the feature. The following three lines should answer the questions ["Who want to achieve what and why with this particular feature?"](https://www.bibleserver.com/ESV/Luke15%3A4). If you cannot answer those questions for a particular feature of your app, then you should not implement that feature; there is no use case for it.
 Next, we have to describe the specific behavior of the app. For that, Gherkin provides 3 different keywords:
 - **Given** - prerequisites for the scenario
 - **When** - the action to be tested
@@ -57,13 +56,13 @@ Scenario: Counter increases when the button is pressed
   Then I expect the "counter" to be "10"
 ```
 
-Later we will add more scenarios to the app, the feature might be the same, but in different scenarios it might have to react differently.
+Later we will add more scenarios to the app. The feature might be the same, but in different scenarios it might have to react differently.
 
 Now we can start the app and use our behavior description to check if it works as it should.
 
-## Test-automation
+## Test Automation
 
-Running manual tests from a description is nice, but not enough for us, we want to save time and reduce possible mistakes by running the tests automatically.
+Running manual tests from a description is nice, but not enough for us. We want to save time and reduce possible mistakes by running the tests automatically.
 
 To interpret the Gherkin file and interact with the app we are using the `flutter_gherkin` package. Install it by placing `flutter_gherkin:` in the `pubspec.yaml` inside the `dev_depencencies` section as shown below:
 ```yaml
@@ -112,9 +111,9 @@ Future<void> main() {
 }
 ```
 
-That was all we need to do for the installation, now we have to tell the test-software what actually to do with our Given, When and Then steps.
+That was all we needed to do for the installation. Now we have to tell the test-software what to do with our Given, When, and Then steps.
 The library gives us some built-in steps that should work "out-of-the-box" but others we need to implement ourselves.
-In our example, the Then step is a built-in step but the Given and the When step have to be implemented. So let's do that. Inside `test_driver` create a folder called `steps` and in there create a file called `tap_button_n_times_step.dart` with the content:
+In our example, the Then step is a built-in step, but the Given and When steps have to be implemented. So let's do that. Inside `test_driver`, create a folder called `steps`, and in there, create a file called `tap_button_n_times_step.dart` with the following content:
 ```dart
 import 'package:flutter_driver/flutter_driver.dart';
 import 'package:flutter_gherkin/flutter_gherkin.dart';
@@ -155,12 +154,12 @@ Next there is a variable called `pattern` with a regular expression, that is use
 Last there is a function `executeStep`. This function receives the parameters from the feature file and finally does all the hard work.
 In both cases it finds the element on the screen we want to interact with by using the `find.byValueKey()` method and then in the case of the Given step, gets the text of the element and checks if its as expected or, in the case of the When step, taps the button.
 
-Similarly, our Then step (remember it's a built-in step) will use the same `find.byValueKey()` method to get the value and assert the content. If you are interested in the implementation, the step is defined in `flutter_gherkin-<version>/lib/src/flutter/steps/then_expect_element_to_have_value_step.dart`.
+Similarly, our Then step (remember, it's a built-in step) will use the same `find.byValueKey()` method to get the value and assert the content. If you are interested in the implementation, the step is defined in `flutter_gherkin-<version>/lib/src/flutter/steps/then_expect_element_to_have_value_step.dart`.
 
-The issue now is that the example code does not have any keys defined in the widgets. The test-code would not be able to locate the elements.
+The issue now is that the example code does not have any keys defined in the widgets. The test code would not be able to locate the elements.
 So edit the `main.dart` file and add `key: Key('counter'),` to the counter widget and `key: Key('increment'),` to the button widget.
 
-You could also use `find.byTooltip`, `find.Type` or `find.bySemanticsLabel`.
+As an alternative to `find.byValueKey`, you could also use `find.byTooltip`, `find.Type`, or `find.bySemanticsLabel`.
 
 Next the new .dart file with the step definitions need to be imported in `app_test.dart`:
 `import 'steps/tap_button_n_times_step.dart';`
@@ -170,11 +169,11 @@ Additionally, every class we add in the step definitions we also have to registe
 
 Remember: The step `Then I expect the "counter" to be "10"` is a built-in-step. So we don't need to write any code for it, it will look for a text-widget with the key `counter` and assert its value.
 
-## run the tests
+## Run Tests
 1. connect your phone or start the emulator
 2. run `dart test_driver/app_test.dart`
 
-After a while, you should see output like:
+After a while, you should see an output like in your console:
 ```console
 Running scenario: Counter increases when the button is pressed # ./test_driver/features/increment_counter.feature:5
    √ Given the counter is set to "0" # ./test_driver/features/increment_counter.feature:6 took 146ms
