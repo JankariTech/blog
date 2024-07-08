@@ -18,24 +18,24 @@ numerous [options available](https://www.google.com/search?q=test+automation+fra
 
 ![frameworks-list.png](/src/assets/MobileTestAutomation/images/frameworks-list.png "Frameworks List")
 
-##### **_How do you choose the right one?_**
+**_How do you choose the right one?_**
 
-Among the available frameworks, I've picked these five for comparison: **_Appium_**, **_Calabash_**, **_XCUITest_**, **_Espresso_**, and **_Selendroid_**. Let's break them down in straightforward.
+Among the available frameworks, I've picked these five for comparison: **_Appium_**, **_Calabash_**, **_XCUITest_**, *
+*_Espresso_**, and **_Selendroid_**. Let's break them down in a straightforward manner.
 
 ## [**Selendroid**](http://selendroid.io/)
 
-Selendroid, is a test automation framework for native or hybrid Android applications and the mobile web. It is an open
-source tool with 433 GitHub forks and 880 GitHub stars and [here](https://github.com/selendroid/selendroid) is the
-GitHub link.
+Selendroid is a test automation framework for native or hybrid Android applications and the mobile web. It is an open
+source tool with 433 forks and 880 stars on [GitHub](https://github.com/selendroid/selendroid).
 
 ### Pros and Cons:
 
 | **Pros 👍**                                                                                               | **Cons 👎**                                                                                                                  |
 |-----------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------|
 | **Environment:** Can be installed and run on various OS such as Windows, Linux, and macOS                 | **No Regular Updates:** Development has slowed down, which may limit its ability to support new Android features and devices |
-| **Open-Source:** Free to use but very less community for support                                          | **No Cross-Platform:** Limited to Android apps                                                                               |
+| **Open-Source:** Free to use                                                                              | **No Cross-Platform:** Limited to Android apps                                                                               |
 | **Hot Plugging** Selendroid supports hot plugging of hardware devices                                     | **Limited Language Support:** Primarily supports Java for writing tests                                                      |
-| **No App Modifications:** You don't need to recompile or modify your app                                  |                                                                                                                              |
+| **No App Modifications:** You don't need to recompile or modify your app                                  | **Low Community Support:** Very little community support                                                                     |
 | **Inspector Tools:** Selendroid includes its own [UI inspector](http://selendroid.io/inspector.html) tool |                                                                                                                              |
 
 ### When to use?
@@ -51,24 +51,24 @@ GitHub link.
 
 ## [**Espresso**](https://developer.android.com/training/testing/espresso)
 
-Espresso is an open source Android applications test automation framework developed by Google
-and [here](https://github.com/android/android-test/tree/main/espresso) is the GitHub link. It's known for its simplicity and integration with Android Studio.
+Espresso is an [open source](https://github.com/android/android-test/tree/main/espresso) Android applications test
+automation framework developed by Google. It's known for its simplicity and integration with Android Studio.
 
 ### Pros and Cons:
 
-| **Pros 👍**                                                                                   | **Cons 👎**                                                                        |
-|-----------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|
-| **Test Execution:** Enables quicker test execution by automatically synchronizing with the UI | **No Cross-Platform:** Limited to Android apps                                     |
-| **Easy to Setup:** Setting up Espresso is simple as works well within the Android Studio IDE  | **Limited Language Support:** Primarily supports Java and Kotlin for writing tests |
-| **Regular Updates:** The tool is up-to-date with the latest Android OS features               | **IDE Dependent:** Android Studio IDE needs to be installed                        |
-| **Community Support:** Owned by Google with large community                                   |                                                                                    |
+| **Pros 👍**                                                                                           | **Cons 👎**                                                                        |
+|-------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|
+| **Test Execution:** Enables quicker test execution by automatically synchronizing with the UI         | **No Cross-Platform:** Limited to Android apps                                     |
+| **Easy to Setup:** Setting up Espresso is simple, as it integrates well within the Android Studio IDE | **Limited Language Support:** Primarily supports Java and Kotlin for writing tests |
+| **Regular Updates:** The tool is up-to-date with the latest Android OS features                       | **IDE Dependent:** Android Studio IDE needs to be installed                        |
+| **Community Support:** Owned by Google with large community                                           |                                                                                    |
 
 ### When to use?
 
 - To validate each build after code changes
 - To streamline processes by avoiding dependencies on remote servers and other workstations for testing
 - To ensure unit and functional tests are easily executable from both IDEs and continuous integration setups
-- To test apps using the latest Android OS APIs to utilize new platform features and support new OS versions
+- To test apps using the latest Android OS APIs that support new platform features and OS versions
 - To conduct testing on both emulators and real devices for comprehensive coverage
 
 ## [**XCUITest**](https://developer.apple.com/documentation/xctest)
@@ -78,12 +78,12 @@ write and run tests for iOS apps.
 
 ### Pros and Cons:
 
-| **Pros 👍**                                                                       | **Cons 👎**                                                                      |
-|-----------------------------------------------------------------------------------|----------------------------------------------------------------------------------|
-| **Test Execution:** Tests are stable, highly reliable, and performed faster       | **No Cross-Platform:** Limited to iOS apps                                       |
-| **Easy to Setup:** Setting up XCUITest is straightforward as works well XCode IDE | **Limited Language Support:** It supports Swift or Objective-C for writing tests |
-| **Community Support:** Built by Apple with large community                        | **Environment:** Only for macOS                                                  |
-|                                                                                   | **IDE Dependent:** XCode IDE needs to be installed                               |
+| **Pros 👍**                                                                                    | **Cons 👎**                                                                       |
+|------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------|
+| **Test Execution:** Tests are stable, highly reliable, and performed faster                    | **No Cross-Platform:** Limited to iOS apps                                        |
+| **Easy to Setup:** Setting up XCUITest is straightforward as it integrates well with XCode IDE | **Limited Language Support:** It supports Swift and Objective-C for writing tests |
+| **Community Support:** Built by Apple with large community                                     | **Environment:** Only for macOS                                                   |
+|                                                                                                | **IDE Dependent:** XCode IDE needs to be installed                                |
 
 ### When to use?
 
@@ -93,17 +93,18 @@ write and run tests for iOS apps.
 
 ## [**Calabash**](https://github.com/calabash)
 
-Calabash is an open source framework that allows you to write and execute tests for Android and iOS apps. [Here](https://github.com/calabash) is the GitHub link. It uses
+Calabash is an [open source](https://github.com/calabash) framework that allows you to write and execute tests for
+Android and iOS apps. It uses
 Cucumber, a tool that lets you write tests in plain language.
 
 ### Pros and Cons:
 
-| **Pros 👍**                                                                               | **Cons 👎**                                                                                                                                                                                   |
-|-------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Environment:** Can be installed and run on various OS such as Windows, Linux, and macOS | **Lack of documentation:** Its documentation is quite minimal, making it challenging to set up the automation framework. To complete the setup, one often needs to rely on external resources |
-| **Cross-Platform:** It supports writing tests for both iOS and Android                    | **Limited Language Support:** It supports only Ruby                                                                                                                                           |                                                                                                                                    |
-| **User-Friendly:** Write tests in plain English, making it accessible for non-programmers | **No Regular Updates:** Active development has ceased, which might affect future compatibility                                                                                                |
-| **Open-Source:** Free to use                                                              | **Low Community Support:** Very low community support as it is not used by many                                                                                                               |
+| **Pros 👍**                                                                               | **Cons 👎**                                                                                                                                                                                |
+|-------------------------------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Environment:** Can be installed and run on various OS such as Windows, Linux, and macOS | **Poor documentation:** Its documentation is quite minimal, making it challenging to set up the automation framework. To complete the setup, one often needs to rely on external resources |
+| **Cross-Platform:** It supports writing tests for both iOS and Android                    | **Limited Language Support:** It supports only Ruby                                                                                                                                        |                                                                                                                                    |
+| **User-Friendly:** Write tests in plain English, making it accessible for non-programmers | **No Regular Updates:** Active development has ceased, which might affect future compatibility                                                                                             |
+| **Open-Source:** Free to use                                                              | **Low Community Support:** Very low community support as it is not used by many                                                                                                            |
 
 ### When to use?
 
@@ -113,9 +114,9 @@ Cucumber, a tool that lets you write tests in plain language.
 ## [**Appium**](https://appium.io/docs/en/latest/)
 
 Appium is a widely-used mobile test automation framework that supports UI automation of multiple platforms, including
-mobile (Android, iOS, Tizen), web, desktop, TV. both iOS and Android platforms. The popularity of this tool may stem
-from its support for multiple programming languages for writing tests. Also, it is an open-source tool with 18.2k GitHub
-stars and 6k forks and [here](https://github.com/appium/appium) is the GitHub link.
+mobile (Android, iOS, Tizen), web, desktop, TV. The popularity of this tool may stem
+from its support for multiple programming languages for writing tests. Also, it is an open-source tool with 18.2k stars
+and 6k forks on [GitHub](https://github.com/appium/appium).
 
 ### Pros and Cons:
 
