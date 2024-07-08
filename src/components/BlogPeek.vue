@@ -40,7 +40,7 @@
           ({{ moment(createdAt).fromNow() }})
         </div>
         <div v-if="updatedAt" class="updated-at" title="Updated Timestamp">
-          Updated:
+          Last Updated:
           {{ moment(updatedAt).format("MMMM DD, YYYY") }}
           ({{ moment(updatedAt).fromNow() }})
         </div>

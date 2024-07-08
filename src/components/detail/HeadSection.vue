@@ -27,7 +27,7 @@
         </div>
         <div v-if="peek.updatedAt" class="vl">|</div>
         <div v-if="peek.updatedAt" class="updated-at">
-          Updated:
+          Last Updated:
           <span>{{ $moment(peek.updatedAt).format("MMMM DD, YYYY") }}</span>
         </div>
       </div>
