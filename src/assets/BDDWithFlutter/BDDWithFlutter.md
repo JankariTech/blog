@@ -4,6 +4,7 @@ authorName: Artur Neumann
 authorAvatar: https://www.jankaritech.com/images/2019/06/11/p1070364-c-light-800.jpg
 authorLink: https://github.com/individual-it
 createdAt: June 3, 2020
+updatedAt: July 8, 2024
 tags: bdd, testing, flutter, dart
 banner: https://raw.githubusercontent.com/JankariTech/blog/master/src/imgs/fallback_banner.png
 seriesTitle: Behaviour Driven Development
