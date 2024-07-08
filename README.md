@@ -5,8 +5,8 @@ A beautiful blogging platform for the JankariTech peoples.
 ## Installation
 
 1. Requirements
-   - [NodeJS (>16.0.0)](https://nodejs.org/en/download/)
-   - [pnpm (>7.0.0)](https://pnpm.io/installation)
+   - [NodeJS (>20.0.0)](https://nodejs.org/en/download/)
+   - [pnpm (>9.0.0)](https://pnpm.io/installation)
 
 2. Install Dependencies
     ```bash
