@@ -3,7 +3,7 @@ title: Which Mobile Test Automation Framework Fits You?
 authorName: Prarup Gurung (प्रारुप गुरुङ्ग)
 authorAvatar: https://avatars.githubusercontent.com/u/8559121?v=4
 authorLink: https://github.com/grgprarup
-createdAt: June 27, 2024
+createdAt: July 09, 2024
 tags: test automation, mobile testing, Android testing, iOS testing, testing frameworks
 banner: https://blog.jankaritech.com/src/assets/MobileTestAutomation/images/banner.png
 ---
@@ -20,8 +20,7 @@ numerous [options available](https://www.google.com/search?q=test+automation+fra
 
 **_How do you choose the right one?_**
 
-Among the available frameworks, I've picked these five for comparison: **_Appium_**, **_Calabash_**, **_XCUITest_**, *
-*_Espresso_**, and **_Selendroid_**. Let's break them down in a straightforward manner.
+Among the available frameworks, I've picked these five for comparison: **_Appium_**, **_Calabash_**, **_XCUITest_**, **_Espresso_**, and **_Selendroid_**. Let's break them down in a straightforward manner.
 
 ## [**Selendroid**](http://selendroid.io/)
 
