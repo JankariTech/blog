@@ -32,7 +32,7 @@ But enough theory, lets get our hands dirty. You can find all the code of this t
 
 To start, you should install the Flutter tools stack and create a Flutter test-drive app as explained in the [get-started document](https://flutter.dev/docs/get-started/test-drive?tab=androidstudio).
 
-Inside the app folder create a folder called `test_driver`. And inside your new folder create another one called `features`. In `features` we will place all the Gherkin descriptions of the expected app behavior. Create here a file called `increment_counter.feature` for this.
+Inside the app folder create a folder called `test_driver`. And inside your new folder create another one called `features`. In `features` we will place all the Gherkin descriptions of the expected app behavior. Create a file in `features` called `increment_counter.feature` for this.
 
 We start the feature file with a very general description of the feature:
 ```gherkin
@@ -43,7 +43,7 @@ Feature: Increment Counter
   So that I notice if one is missing
 ```
 
-The first line is just a title of the feature. The following three lines should answer the questions ["Who want to achieve what and why with this particular feature?"](https://www.bibleserver.com/ESV/Luke15%3A4). If you cannot answer those questions for a particular feature of your app, then you should not implement that feature; there is no use case for it.
+The first line is just a title of the feature. The following three lines should answer the questions ["Who wants to achieve what and why with this particular feature?"](https://www.bibleserver.com/ESV/Luke15%3A4). If you cannot answer those questions for a particular feature of your app, then you should not implement that feature; there is no use case for it.
 Next, we have to describe the specific behavior of the app. For that, Gherkin provides 3 different keywords:
 - **Given** - prerequisites for the scenario
 - **When** - the action to be tested
@@ -65,7 +65,7 @@ Now we can start the app and use our behavior description to check if it works a
 
 Running manual tests from a description is nice, but not enough for us. We want to save time and reduce possible mistakes by running the tests automatically.
 
-To interpret the Gherkin file and interact with the app we are using the `flutter_gherkin` package. Install it by placing `flutter_gherkin:` in the `pubspec.yaml` inside the `dev_depencencies` section as shown below:
+To interpret the Gherkin file and interact with the app we are using the `flutter_gherkin` package. Install it by placing `flutter_gherkin:` in the `pubspec.yaml` inside the `dev_dependencies` section as shown below:
 ```yaml
 dev_dependencies:
   flutter_test:
@@ -174,7 +174,7 @@ Remember: The step `Then I expect the "counter" to be "10"` is a built-in-step. 
 1. connect your phone or start the emulator
 2. run `dart test_driver/app_test.dart`
 
-After a while, you should see an output like in your console:
+After a while, you should see output in your console like:
 ```console
 Running scenario: Counter increases when the button is pressed # ./test_driver/features/increment_counter.feature:5
    √ Given the counter is set to "0" # ./test_driver/features/increment_counter.feature:6 took 146ms
