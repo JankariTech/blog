@@ -37,19 +37,6 @@ defineProps({
     line-height: 1.5rem;
   }
 
-  & > p:first-child {
-    &::first-letter {
-      padding: 0.7rem 0.5rem;
-      font-size: 2rem;
-      line-height: 4rem;
-      color: var(--jankaritech);
-      border: 4px double var(--jankaritech);
-      margin-right: 0.6rem;
-      margin-top: 0.3rem;
-      float: left;
-    }
-  }
-
   li {
     margin-bottom: 0.4rem;
     margin-left: 1rem;
