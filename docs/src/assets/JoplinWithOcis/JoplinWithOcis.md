@@ -20,11 +20,13 @@ The workaround is the "Share via link" function of oCIS. The generated links sup
 5. change the permissions to "Anyone with the link can edit"
 6. additionally, set a password ![password](/src/assets/JoplinWithOcis/password.png)
 7. to configure Joplin, open its synchronization settings and:
-   1. select "WebDAV" as "Synchronisation target"
-   2. copy the whole link URL into "WebDAV URL"
-   3. take the last bit of the link URL (everything after the last `/`) as "WebDAV username"
-      ![joplin settings](/src/assets/JoplinWithOcis/joplinSettings.png)
-   4. add your password into the "WebDAV password" field
+  1. select "WebDAV" as "Synchronisation target"
+  2. copy the last bit of the link URL (everything after the last `/`), this is your "public-link-token"
+     ![public-link-token](/src/assets/JoplinWithOcis/public-link-token.png)
+  3. compose the "WebDAV URL" like `<ocis-base-URL>/remote.php/dav/public-files/<public-link-token>`
+     ![joplin settings](/src/assets/JoplinWithOcis/joplinSettings.png)
+  4. use the "public-link-token" as "WebDAV username"
+  5. add your password into the "WebDAV password" field
 
 DONE!
 
