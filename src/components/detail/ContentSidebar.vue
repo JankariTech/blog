@@ -2,14 +2,7 @@
   <div class="blog-content-sidebar">
     <div class="toc">
       <div class="title sharp-border">Table of content</div>
-      <div v-for="(item, index) in toc"
-        :key="index"
-        class="toc--item"
-        @click="scrollToHeading(item.id)"
-      >
-        <mdi-menu-right class="mdi-circle" />
-        {{ item.text }}
-      </div>
+      <TOC :toc='toc' :hidden="false"/>
     </div>
     <br>
     <div class="title sharp-border">Tags</div>
@@ -28,6 +21,7 @@
 </template>
 <script setup>
 import { defineProps } from "vue"
+import TOC from "./TOC.vue"
 
 defineProps({
   toc: {
@@ -42,25 +36,6 @@ defineProps({
   }
 })
 
-const scrollToHeading = (headingId) => {
-  const xpath = `//*[@id="${headingId}"]`
-  const heading = document.evaluate(
-    xpath,
-    document,
-    null,
-    XPathResult.FIRST_ORDERED_NODE_TYPE,
-    null
-  ).singleNodeValue
-  if (heading) {
-    const position = heading.getBoundingClientRect()
-    // scrolls to 100px above element
-    window.scrollTo({
-      left: position.left,
-      top: position.top + window.scrollY - 100,
-      behavior: "smooth"
-    })
-  }
-}
 </script>
 <style lang="scss">
 .blog-content-sidebar {
