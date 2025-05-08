@@ -4306,6 +4306,384 @@ Result:
 ![Provider test result](/src/assets/ContractTestingWithPact/images/provider_test.png)
 
 Congratulations! You have successfully written your first consumer-driven contract test and provider verification test using _Pact_.
+`,"/src/assets/Debugging/debugging.md":`---
+title: Advanced Docker Container Debugging - A Comprehensive Guide
+authorName: Prajwol Amatya
+authorAvatar: https://1.gravatar.com/avatar/de64e53c0e2cb393dd0d14ffdd53058ee9c607b35e366dd392425bd1b95a034c?size=256
+authorLink: https://github.com/prajwolamatya
+createdAt: May 07, 2025
+tags: debugging, docker, docker container
+banner: https://blog.jankaritech.com/src/assets/Debugging/images/Debugging.png
+---
+
+Docker has revolutionized modern software development by enabling lightweight, portable, and scalable containerized applications. However, as deployments grow in complexity, so do the challenges in debugging and optimizing containers. In this blog, we'll explore powerful debugging techniques using a sample project with Node.js, Nginx, and Redis. You can get the sample project [here](https://github.com/prajwolamatya/debug-docker).
+
+Our setup consists of:
+- A Node.js application (port 3000)
+- Nginx as a reverse proxy (port 80)
+- Redis for caching (port 6379)
+
+## 1. Container Inspection
+### Viewing Running Containers
+First, let's check whether our containers are actually running:
+
+\`\`\`bash
+docker compose ps
+\`\`\`
+
+**Example Output:**
+\`\`\`console
+Name                       Command                         State    Ports
+debug-docker_nginx_1       /docker-entrypoint.sh ngin ...  Up       0.0.0.0:80->80/tcp
+debug-docker_nodejs-app_1  docker-entrypoint.sh node ...   Up       0.0.0.0:3000->3000/tcp
+debug-docker_redis_1       docker-entrypoint.sh redis ...  Up       0.0.0.0:6379->6379/tcp
+\`\`\`
+
+- **State:** Shows if container is running/stopped
+- **Ports:** Reveals port mappings (host:container)
+
+### Inspecting Container Details
+For deeper inspection of a specific container:
+
+\`\`\`bash
+docker inspect debug-docker_nodejs-app_1
+\`\`\`
+
+This returns a JSON with all container details including:
+- Network settings
+- Mounts
+- Environment variables
+- IP addresses
+
+**Filter specific information:**
+
+\`\`\`bash
+docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' debug-docker_nodejs-app_1
+\`\`\`
+
+Let's breakdown the command:
+- \`-f\` or \`--format\` activates Go template formatting
+- \`{{range .NetworkSettings.Networks}}\` iterates through networks
+- \`{{.IPAddress}}\` extracts the IP for each network
+- \`{{end}}\` closes the loop
+
+**Example Output:**
+
+(*The container's internal IP in Docker's network*)
+\`\`\`console
+172.19.0.3
+\`\`\`
+
+Docker uses **Go Templates** for the \`--format\` filtering in \`docker inspect\`. You can get more details on how to construct the filter in Go's [text/template](https://pkg.go.dev/text/template) package.
+Also, you can learn more on formatting output in [Format command and log output](https://docs.docker.com/engine/cli/formatting/) section.
+
+## 2. Log Analysis
+### Viewing Container Logs
+
+\`\`\`bash
+docker compose logs
+\`\`\`
+
+This will return the logs of containers that are part of the docker compose setup. You can also get the container specific logs using the following command.
+
+\`\`\`bash
+docker compose logs nodejs-app
+\`\`\`
+
+**Example Output (when accessing the service):**
+
+\`\`\`console
+debug-docker_nodejs-app_1  | Node.js server running on port 3000
+\`\`\`
+
+This confirms your Node.js application launched successfully.
+
+### Generating Request Logs
+Make a test request to generate logs:
+
+\`\`\`bash
+curl -v http://localhost:3000
+\`\`\`
+
+After the request, check the logs again to see:
+
+\`\`\`console
+debug-docker_nodejs-app_1  | Node.js server running on port 3000
+debug-docker_nodejs-app_1  | GET / 200 7.001 ms - 19
+\`\`\`
+
+To view only GET requests from the last 5 minutes
+\`\`\`bash
+docker compose logs --since 5m nodejs-app | grep "GET"
+\`\`\`
+
+**Example Output:**
+
+\`\`\`console
+GET / 200 7.001 ms - 19
+\`\`\`
+
+## 3. Network Troubleshooting
+### Checking Container Connectivity
+
+Test if Nginx can reach Node.js:
+
+\`\`\`bash
+docker exec debug-docker_nginx_1 ping nodejs-app
+\`\`\`
+
+- \`docker exec\`: Executes a command inside a running container (\`debug-docker_nginx_1\`)
+- \`ping nodejs-app\`: Calls the Linux \`ping\` utility to test network reachability to the hostname \`nodejs-app\`
+
+**Example Output:**
+
+\`\`\`console
+PING nodejs-app (172.19.0.3): 56 data bytes
+64 bytes from 172.19.0.3: seq=0 ttl=64 time=0.060 ms
+\`\`\`
+
+- **Success:** <1ms response confirms network connectivity
+- **Failure:** Would show "unknown host" or timeout
+
+Docker Compose automatically assigns hostnames to containers based on the service names defined in \`docker-compose.yml\`.
+
+Example:
+
+\`\`\`yaml
+services:
+  nodejs-app: # This becomes the hostname
+    image: node:alpine
+\`\`\`
+
+Run \`docker compose ps\` to see the exact service/container names:
+
+\`\`\`bash
+docker compose ps --format "table {{.Name}}\\t{{.Service}}"
+\`\`\`
+Output:
+
+\`\`\`console
+NAME                        SERVICE
+debug-docker_nginx_1        nginx
+debug-docker_nodejs-app_1   nodejs-app
+\`\`\`
+
+Alternatively, you can use service names directly from \`docker-compose.yml\` instead of full container name.
+
+\`\`\`bash
+docker compose exec nginx ping nodejs-app
+\`\`\`
+
+**Example Output:**
+
+\`\`\`console
+PING nodejs-app (172.19.0.3): 56 data bytes
+64 bytes from 172.19.0.3: seq=0 ttl=64 time=0.042 ms
+\`\`\`
+
+### Examining Post Accessibility
+Check if Node.js is listening on port 3000 inside its container:
+
+\`\`\`bash
+docker exec nodejs-app netstat -tuln
+\`\`\`
+
+- \`docker exec\`: Runs a command inside a specific container (\`nodejs-app\`).
+- \`netstat -tuln\`: A Linux utility to list all listening network ports with the flags:
+  - \`-t\`: Show TCP ports
+  - \`-u\`: Show UDP ports
+  - \`-l\`: Display only listening ports (services accepting connections)
+  - \`-n\`: Show numeric addresses/ports
+
+**Example Output:**
+\`\`\`console
+Active Internet connections (only servers)
+Proto Recv-Q Send-Q Local Address           Foreign Address         State
+tcp        0      0 :::3000                 :::*                    LISTEN
+\`\`\`
+
+- Shows Node.js listening on port 3000
+- No output means the service isn't running properly
+
+## 4. Interactive Debugging
+### Executing into Containers
+
+For Node.js application debugging:
+\`\`\`bash
+docker exec -it nodejs-app sh
+\`\`\`
+
+This gives you full shell access inside the container where you can run any Linux command (as long as the tool exists in the container). Following are few things that you can do.
+
+1. Check running processes: \`ps aux\`
+\`\`\`bash
+ps aux
+\`\`\`
+
+**Output:**
+
+\`\`\`console
+PID   USER     TIME  COMMAND
+    1 root      0:00 {MainThread} node app.js
+   28 root      0:00 sh
+   45 root      0:00 ps aux
+\`\`\`
+- Shows all running processes in the container
+- \`PID1\`: Your Node.js application (node app.js)
+- \`PID28\`: The shell session you just started
+- \`PID 45\`: The \`ps aux\` command itself
+- Confirms your application is running as the main process
+
+2. Examine environment variables: \`printenv\`
+\`\`\`bash
+printenv
+\`\`\`
+
+**Output:**
+\`\`\`console
+NODE_VERSION=23.11.0
+HOSTNAME=ada88201c429
+YARN_VERSION=1.22.22
+SHLVL=1
+HOME=/root
+TERM=xterm
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+PWD=/app
+\`\`\`
+- Displays all environment variables to your Node.js app
+
+3. Test Redis connectivity: \`redis-cli -h redis ping\`
+\`\`\`bash
+redis-cli -h redis ping
+\`\`\`
+
+**Output:**
+\`\`\`console
+PONG
+\`\`\`
+
+- Tests connectivity to your Redis container
+- \`PONG\` response confirms network connectivity
+
+### Debugging Nginx Configuration
+\`\`\`bash
+docker exec -it debug-docker_nginx_1 nginx -t
+\`\`\`
+
+**Example Output:**
+\`\`\`console
+nginx: the configuration file /etc/nginx/nginx.conf syntax is ok
+nginx: configuration file /etc/nginx/nginx.conf test is successful
+\`\`\`
+
+## 5. Health Checks and Readiness Probes
+Docker health checks are automated tests that periodically verify if a container is functioning properly. Health checks transform your containers from static processes into self aware services that can catch issues like application crashes, frozen processes, dependency failures, etc.
+Let's enhance our \`docker-compose.yml\` with health checks:
+
+\`\`\`yaml
+services:
+  nodejs-app:
+    # ... existing config ...
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  redis:
+    # ... existing config ...
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+\`\`\`
+
+- Docker runs the \`test\` command at your specified \`interval\` (e.g., every 30s)
+- The service is marked \`healthy\` only if the command succeeds (exit code 0)
+- After \`retries\` consecutive failures, it's marked \`unhealthy\`
+
+Now check the container health:
+\`\`\`bash
+docker ps --format "table {{.Names}}\\t{{.Status}}"
+\`\`\`
+
+**Example Output:**
+\`\`\`console
+NAMES                     STATUS
+debug-docker_nginx_1      Up 5 minutes
+debug-docker_nodejs-app_1 Up 5 minutes (healthy)
+debug-docker_redis_1      Up 5 minutes (healthy)
+\`\`\`
+
+## 6. Temporary Debug Containers
+Sometimes you need additional tools that are not part of the containers you are using, for that create a temporary debug container with the needed tools in the same network:
+\`\`\`bash
+docker run -it --rm --network debug-docker_default alpine sh
+\`\`\`
+
+Now from this container you can:
+1. Test DNS resolution:
+\`\`\`bash
+nslookup nodejs-app
+\`\`\`
+
+**Example Output:**
+\`\`\`console
+Server:		127.0.0.11
+Address:	127.0.0.11:53
+
+Non-authoritative answer:
+Name:	nodejs-app
+Address: 172.19.0.3
+\`\`\`
+
+- Confirms Docker's internal DNS is working
+- Shows the service name resolves to the correct container IP (172.19.03)
+
+2. Check connectivity:
+\`\`\`bash
+wget -qO- http://nodejs-app:3000
+\`\`\`
+
+**Example Output:**
+\`\`\`console
+Hello from Node.js!
+\`\`\`
+
+- Shows successful TCP connection to port 3000
+- Returns the actual HTTP response from your Node.js app
+
+## 7. Docker System Diagnostics
+When facing resource issues:
+\`\`\`bash
+docker system df
+\`\`\`
+
+**Example Output:**
+\`\`\`console
+TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE
+Images          17        3         2.374GB   2.295GB (96%)
+Containers      3         3         2B        0B (0%)
+Local Volumes   2         1         88B       88B (100%)
+Build Cache     108       0         37.82MB   37.82MB
+\`\`\`
+
+Check detailed resource usage:
+\`\`\`bash
+docker stats
+\`\`\`
+
+**Example Output:**
+\`\`\`console
+CONTAINER ID  NAME                      CPU %  MEM USAGE/LIMIT   MEM %  NET I/O       BLOCK I/O PIDS
+5111f46d640b  debug-docker_nginx_1      0.00%  9.633MiB/31.06GiB 0.03%  41.9kB/126B   0B/4.1kB  13
+e701e4d02bb0  debug-docker_nodejs-app_1 0.00%  13.31MiB/31.06GiB 0.04%  45.3kB/3.49kB 0B/0B     7
+3e0399cc7510  debug-docker_redis_1      0.93%  4.691MiB/31.06GiB 0.01%  42.3kB/126B   1.43MB/0B 6
+\`\`\`
+
+## Conclusion
+Effective Docker debugging requires a systematic approach. By mastering these techniques, you'll be able to diagnose and resolve even the most complex Docker issues in production environments.
 `,"/src/assets/DockerCompose/docker_compose.md":`---
 title: Containerize a Web Application using docker compose
 authorName: Sagar Gurung
@@ -11269,4 +11647,4 @@ For more information and updates, please visit the [official RFC page](https://w
   * vue-router v4.1.6
   * (c) 2022 Eduardo San Martin Morote
   * @license MIT
-  */const la=typeof window!="undefined";function zM(e){return e.__esModule||e[Symbol.toStringTag]==="Module"}const Ae=Object.assign;function ss(e,t){const n={};for(const a in t){const i=t[a];n[a]=Lt(i)?i.map(e):e(i)}return n}const Ha=()=>{},Lt=Array.isArray,$M=/\/$/,KM=e=>e.replace($M,"");function os(e,t,n="/"){let a,i={},r="",s="";const o=t.indexOf("#");let l=t.indexOf("?");return o<l&&o>=0&&(l=-1),l>-1&&(a=t.slice(0,l),r=t.slice(l+1,o>-1?o:t.length),i=e(r)),o>-1&&(a=a||t.slice(0,o),s=t.slice(o,t.length)),a=JM(a!=null?a:t,n),{fullPath:a+(r&&"?")+r+s,path:a,query:i,hash:s}}function QM(e,t){const n=t.query?e(t.query):"";return t.path+(n&&"?")+n+(t.hash||"")}function gc(e,t){return!t||!e.toLowerCase().startsWith(t.toLowerCase())?e:e.slice(t.length)||"/"}function jM(e,t,n){const a=t.matched.length-1,i=n.matched.length-1;return a>-1&&a===i&&ya(t.matched[a],n.matched[i])&&im(t.params,n.params)&&e(t.query)===e(n.query)&&t.hash===n.hash}function ya(e,t){return(e.aliasOf||e)===(t.aliasOf||t)}function im(e,t){if(Object.keys(e).length!==Object.keys(t).length)return!1;for(const n in e)if(!XM(e[n],t[n]))return!1;return!0}function XM(e,t){return Lt(e)?fc(e,t):Lt(t)?fc(t,e):e===t}function fc(e,t){return Lt(t)?e.length===t.length&&e.every((n,a)=>n===t[a]):e.length===1&&e[0]===t}function JM(e,t){if(e.startsWith("/"))return e;if(!e)return t;const n=t.split("/"),a=e.split("/");let i=n.length-1,r,s;for(r=0;r<a.length;r++)if(s=a[r],s!==".")if(s==="..")i>1&&i--;else break;return n.slice(0,i).join("/")+"/"+a.slice(r-(r===a.length?1:0)).join("/")}var si;(function(e){e.pop="pop",e.push="push"})(si||(si={}));var Wa;(function(e){e.back="back",e.forward="forward",e.unknown=""})(Wa||(Wa={}));function ZM(e){if(!e)if(la){const t=document.querySelector("base");e=t&&t.getAttribute("href")||"/",e=e.replace(/^\w+:\/\/[^\/]+/,"")}else e="/";return e[0]!=="/"&&e[0]!=="#"&&(e="/"+e),KM(e)}const eL=/^[^#]+#/;function tL(e,t){return e.replace(eL,"#")+t}function nL(e,t){const n=document.documentElement.getBoundingClientRect(),a=e.getBoundingClientRect();return{behavior:t.behavior,left:a.left-n.left-(t.left||0),top:a.top-n.top-(t.top||0)}}const Fr=()=>({left:window.pageXOffset,top:window.pageYOffset});function aL(e){let t;if("el"in e){const n=e.el,a=typeof n=="string"&&n.startsWith("#"),i=typeof n=="string"?a?document.getElementById(n.slice(1)):document.querySelector(n):n;if(!i)return;t=nL(i,e)}else t=e;"scrollBehavior"in document.documentElement.style?window.scrollTo(t):window.scrollTo(t.left!=null?t.left:window.pageXOffset,t.top!=null?t.top:window.pageYOffset)}function Ec(e,t){return(history.state?history.state.position-t:-1)+e}const Us=new Map;function iL(e,t){Us.set(e,t)}function rL(e){const t=Us.get(e);return Us.delete(e),t}let sL=()=>location.protocol+"//"+location.host;function rm(e,t){const{pathname:n,search:a,hash:i}=t,r=e.indexOf("#");if(r>-1){let o=i.includes(e.slice(r))?e.slice(r).length:1,l=i.slice(o);return l[0]!=="/"&&(l="/"+l),gc(l,"")}return gc(n,e)+a+i}function oL(e,t,n,a){let i=[],r=[],s=null;const o=({state:p})=>{const m=rm(e,location),h=n.value,g=t.value;let b=0;if(p){if(n.value=m,t.value=p,s&&s===h){s=null;return}b=g?p.position-g.position:0}else a(m);i.forEach(S=>{S(n.value,h,{delta:b,type:si.pop,direction:b?b>0?Wa.forward:Wa.back:Wa.unknown})})};function l(){s=n.value}function c(p){i.push(p);const m=()=>{const h=i.indexOf(p);h>-1&&i.splice(h,1)};return r.push(m),m}function d(){const{history:p}=window;!p.state||p.replaceState(Ae({},p.state,{scroll:Fr()}),"")}function u(){for(const p of r)p();r=[],window.removeEventListener("popstate",o),window.removeEventListener("beforeunload",d)}return window.addEventListener("popstate",o),window.addEventListener("beforeunload",d),{pauseListeners:l,listen:c,destroy:u}}function Sc(e,t,n,a=!1,i=!1){return{back:e,current:t,forward:n,replaced:a,position:window.history.length,scroll:i?Fr():null}}function lL(e){const{history:t,location:n}=window,a={value:rm(e,n)},i={value:t.state};i.value||r(a.value,{back:null,current:a.value,forward:null,position:t.length-1,replaced:!0,scroll:null},!0);function r(l,c,d){const u=e.indexOf("#"),p=u>-1?(n.host&&document.querySelector("base")?e:e.slice(u))+l:sL()+e+l;try{t[d?"replaceState":"pushState"](c,"",p),i.value=c}catch(m){console.error(m),n[d?"replace":"assign"](p)}}function s(l,c){const d=Ae({},t.state,Sc(i.value.back,l,i.value.forward,!0),c,{position:i.value.position});r(l,d,!0),a.value=l}function o(l,c){const d=Ae({},i.value,t.state,{forward:l,scroll:Fr()});r(d.current,d,!0);const u=Ae({},Sc(a.value,l,null),{position:d.position+1},c);r(l,u,!1),a.value=l}return{location:a,state:i,push:o,replace:s}}function cL(e){e=ZM(e);const t=lL(e),n=oL(e,t.state,t.location,t.replace);function a(r,s=!0){s||n.pauseListeners(),history.go(r)}const i=Ae({location:"",base:e,go:a,createHref:tL.bind(null,e)},t,n);return Object.defineProperty(i,"location",{enumerable:!0,get:()=>t.location.value}),Object.defineProperty(i,"state",{enumerable:!0,get:()=>t.state.value}),i}function dL(e){return e=location.host?e||location.pathname+location.search:"",e.includes("#")||(e+="#"),cL(e)}function uL(e){return typeof e=="string"||e&&typeof e=="object"}function sm(e){return typeof e=="string"||typeof e=="symbol"}const mn={path:"/",name:void 0,params:{},query:{},hash:"",fullPath:"/",matched:[],meta:{},redirectedFrom:void 0},om=Symbol("");var bc;(function(e){e[e.aborted=4]="aborted",e[e.cancelled=8]="cancelled",e[e.duplicated=16]="duplicated"})(bc||(bc={}));function va(e,t){return Ae(new Error,{type:e,[om]:!0},t)}function jt(e,t){return e instanceof Error&&om in e&&(t==null||!!(e.type&t))}const Tc="[^/]+?",pL={sensitive:!1,strict:!1,start:!0,end:!0},mL=/[.+*?^${}()[\]/\\]/g;function _L(e,t){const n=Ae({},pL,t),a=[];let i=n.start?"^":"";const r=[];for(const c of e){const d=c.length?[]:[90];n.strict&&!c.length&&(i+="/");for(let u=0;u<c.length;u++){const p=c[u];let m=40+(n.sensitive?.25:0);if(p.type===0)u||(i+="/"),i+=p.value.replace(mL,"\\$&"),m+=40;else if(p.type===1){const{value:h,repeatable:g,optional:b,regexp:S}=p;r.push({name:h,repeatable:g,optional:b});const T=S||Tc;if(T!==Tc){m+=10;try{new RegExp(`(${T})`)}catch(C){throw new Error(`Invalid custom RegExp for param "${h}" (${T}): `+C.message)}}let y=g?`((?:${T})(?:/(?:${T}))*)`:`(${T})`;u||(y=b&&c.length<2?`(?:/${y})`:"/"+y),b&&(y+="?"),i+=y,m+=20,b&&(m+=-8),g&&(m+=-20),T===".*"&&(m+=-50)}d.push(m)}a.push(d)}if(n.strict&&n.end){const c=a.length-1;a[c][a[c].length-1]+=.7000000000000001}n.strict||(i+="/?"),n.end?i+="$":n.strict&&(i+="(?:/|$)");const s=new RegExp(i,n.sensitive?"":"i");function o(c){const d=c.match(s),u={};if(!d)return null;for(let p=1;p<d.length;p++){const m=d[p]||"",h=r[p-1];u[h.name]=m&&h.repeatable?m.split("/"):m}return u}function l(c){let d="",u=!1;for(const p of e){(!u||!d.endsWith("/"))&&(d+="/"),u=!1;for(const m of p)if(m.type===0)d+=m.value;else if(m.type===1){const{value:h,repeatable:g,optional:b}=m,S=h in c?c[h]:"";if(Lt(S)&&!g)throw new Error(`Provided param "${h}" is an array but it is not repeatable (* or + modifiers)`);const T=Lt(S)?S.join("/"):S;if(!T)if(b)p.length<2&&(d.endsWith("/")?d=d.slice(0,-1):u=!0);else throw new Error(`Missing required param "${h}"`);d+=T}}return d||"/"}return{re:s,score:a,keys:r,parse:o,stringify:l}}function hL(e,t){let n=0;for(;n<e.length&&n<t.length;){const a=t[n]-e[n];if(a)return a;n++}return e.length<t.length?e.length===1&&e[0]===40+40?-1:1:e.length>t.length?t.length===1&&t[0]===40+40?1:-1:0}function gL(e,t){let n=0;const a=e.score,i=t.score;for(;n<a.length&&n<i.length;){const r=hL(a[n],i[n]);if(r)return r;n++}if(Math.abs(i.length-a.length)===1){if(yc(a))return 1;if(yc(i))return-1}return i.length-a.length}function yc(e){const t=e[e.length-1];return e.length>0&&t[t.length-1]<0}const fL={type:0,value:""},EL=/[a-zA-Z0-9_]/;function SL(e){if(!e)return[[]];if(e==="/")return[[fL]];if(!e.startsWith("/"))throw new Error(`Invalid path "${e}"`);function t(m){throw new Error(`ERR (${n})/"${c}": ${m}`)}let n=0,a=n;const i=[];let r;function s(){r&&i.push(r),r=[]}let o=0,l,c="",d="";function u(){!c||(n===0?r.push({type:0,value:c}):n===1||n===2||n===3?(r.length>1&&(l==="*"||l==="+")&&t(`A repeatable param (${c}) must be alone in its segment. eg: '/:ids+.`),r.push({type:1,value:c,regexp:d,repeatable:l==="*"||l==="+",optional:l==="*"||l==="?"})):t("Invalid state to consume buffer"),c="")}function p(){c+=l}for(;o<e.length;){if(l=e[o++],l==="\\"&&n!==2){a=n,n=4;continue}switch(n){case 0:l==="/"?(c&&u(),s()):l===":"?(u(),n=1):p();break;case 4:p(),n=a;break;case 1:l==="("?n=2:EL.test(l)?p():(u(),n=0,l!=="*"&&l!=="?"&&l!=="+"&&o--);break;case 2:l===")"?d[d.length-1]=="\\"?d=d.slice(0,-1)+l:n=3:d+=l;break;case 3:u(),n=0,l!=="*"&&l!=="?"&&l!=="+"&&o--,d="";break;default:t("Unknown state");break}}return n===2&&t(`Unfinished custom RegExp for param "${c}"`),u(),s(),i}function bL(e,t,n){const a=_L(SL(e.path),n),i=Ae(a,{record:e,parent:t,children:[],alias:[]});return t&&!i.record.aliasOf==!t.record.aliasOf&&t.children.push(i),i}function TL(e,t){const n=[],a=new Map;t=Cc({strict:!1,end:!0,sensitive:!1},t);function i(d){return a.get(d)}function r(d,u,p){const m=!p,h=yL(d);h.aliasOf=p&&p.record;const g=Cc(t,d),b=[h];if("alias"in d){const y=typeof d.alias=="string"?[d.alias]:d.alias;for(const C of y)b.push(Ae({},h,{components:p?p.record.components:h.components,path:C,aliasOf:p?p.record:h}))}let S,T;for(const y of b){const{path:C}=y;if(u&&C[0]!=="/"){const O=u.record.path,H=O[O.length-1]==="/"?"":"/";y.path=u.record.path+(C&&H+C)}if(S=bL(y,u,g),p?p.alias.push(S):(T=T||S,T!==S&&T.alias.push(S),m&&d.name&&!wc(S)&&s(d.name)),h.children){const O=h.children;for(let H=0;H<O.length;H++)r(O[H],S,p&&p.children[H])}p=p||S,(S.record.components&&Object.keys(S.record.components).length||S.record.name||S.record.redirect)&&l(S)}return T?()=>{s(T)}:Ha}function s(d){if(sm(d)){const u=a.get(d);u&&(a.delete(d),n.splice(n.indexOf(u),1),u.children.forEach(s),u.alias.forEach(s))}else{const u=n.indexOf(d);u>-1&&(n.splice(u,1),d.record.name&&a.delete(d.record.name),d.children.forEach(s),d.alias.forEach(s))}}function o(){return n}function l(d){let u=0;for(;u<n.length&&gL(d,n[u])>=0&&(d.record.path!==n[u].record.path||!lm(d,n[u]));)u++;n.splice(u,0,d),d.record.name&&!wc(d)&&a.set(d.record.name,d)}function c(d,u){let p,m={},h,g;if("name"in d&&d.name){if(p=a.get(d.name),!p)throw va(1,{location:d});g=p.record.name,m=Ae(vc(u.params,p.keys.filter(T=>!T.optional).map(T=>T.name)),d.params&&vc(d.params,p.keys.map(T=>T.name))),h=p.stringify(m)}else if("path"in d)h=d.path,p=n.find(T=>T.re.test(h)),p&&(m=p.parse(h),g=p.record.name);else{if(p=u.name?a.get(u.name):n.find(T=>T.re.test(u.path)),!p)throw va(1,{location:d,currentLocation:u});g=p.record.name,m=Ae({},u.params,d.params),h=p.stringify(m)}const b=[];let S=p;for(;S;)b.unshift(S.record),S=S.parent;return{name:g,path:h,params:m,matched:b,meta:wL(b)}}return e.forEach(d=>r(d)),{addRoute:r,resolve:c,removeRoute:s,getRoutes:o,getRecordMatcher:i}}function vc(e,t){const n={};for(const a of t)a in e&&(n[a]=e[a]);return n}function yL(e){return{path:e.path,redirect:e.redirect,name:e.name,meta:e.meta||{},aliasOf:void 0,beforeEnter:e.beforeEnter,props:vL(e),children:e.children||[],instances:{},leaveGuards:new Set,updateGuards:new Set,enterCallbacks:{},components:"components"in e?e.components||null:e.component&&{default:e.component}}}function vL(e){const t={},n=e.props||!1;if("component"in e)t.default=n;else for(const a in e.components)t[a]=typeof n=="boolean"?n:n[a];return t}function wc(e){for(;e;){if(e.record.aliasOf)return!0;e=e.parent}return!1}function wL(e){return e.reduce((t,n)=>Ae(t,n.meta),{})}function Cc(e,t){const n={};for(const a in e)n[a]=a in t?t[a]:e[a];return n}function lm(e,t){return t.children.some(n=>n===e||lm(e,n))}const cm=/#/g,CL=/&/g,RL=/\//g,NL=/=/g,IL=/\?/g,dm=/\+/g,OL=/%5B/g,AL=/%5D/g,um=/%5E/g,DL=/%60/g,pm=/%7B/g,kL=/%7C/g,mm=/%7D/g,xL=/%20/g;function qo(e){return encodeURI(""+e).replace(kL,"|").replace(OL,"[").replace(AL,"]")}function ML(e){return qo(e).replace(pm,"{").replace(mm,"}").replace(um,"^")}function Bs(e){return qo(e).replace(dm,"%2B").replace(xL,"+").replace(cm,"%23").replace(CL,"%26").replace(DL,"`").replace(pm,"{").replace(mm,"}").replace(um,"^")}function LL(e){return Bs(e).replace(NL,"%3D")}function PL(e){return qo(e).replace(cm,"%23").replace(IL,"%3F")}function FL(e){return e==null?"":PL(e).replace(RL,"%2F")}function sr(e){try{return decodeURIComponent(""+e)}catch{}return""+e}function UL(e){const t={};if(e===""||e==="?")return t;const a=(e[0]==="?"?e.slice(1):e).split("&");for(let i=0;i<a.length;++i){const r=a[i].replace(dm," "),s=r.indexOf("="),o=sr(s<0?r:r.slice(0,s)),l=s<0?null:sr(r.slice(s+1));if(o in t){let c=t[o];Lt(c)||(c=t[o]=[c]),c.push(l)}else t[o]=l}return t}function Rc(e){let t="";for(let n in e){const a=e[n];if(n=LL(n),a==null){a!==void 0&&(t+=(t.length?"&":"")+n);continue}(Lt(a)?a.map(r=>r&&Bs(r)):[a&&Bs(a)]).forEach(r=>{r!==void 0&&(t+=(t.length?"&":"")+n,r!=null&&(t+="="+r))})}return t}function BL(e){const t={};for(const n in e){const a=e[n];a!==void 0&&(t[n]=Lt(a)?a.map(i=>i==null?null:""+i):a==null?a:""+a)}return t}const GL=Symbol(""),Nc=Symbol(""),Ur=Symbol(""),_m=Symbol(""),Gs=Symbol("");function xa(){let e=[];function t(a){return e.push(a),()=>{const i=e.indexOf(a);i>-1&&e.splice(i,1)}}function n(){e=[]}return{add:t,list:()=>e,reset:n}}function gn(e,t,n,a,i){const r=a&&(a.enterCallbacks[i]=a.enterCallbacks[i]||[]);return()=>new Promise((s,o)=>{const l=u=>{u===!1?o(va(4,{from:n,to:t})):u instanceof Error?o(u):uL(u)?o(va(2,{from:t,to:u})):(r&&a.enterCallbacks[i]===r&&typeof u=="function"&&r.push(u),s())},c=e.call(a&&a.instances[i],t,n,l);let d=Promise.resolve(c);e.length<3&&(d=d.then(l)),d.catch(u=>o(u))})}function ls(e,t,n,a){const i=[];for(const r of e)for(const s in r.components){let o=r.components[s];if(!(t!=="beforeRouteEnter"&&!r.instances[s]))if(YL(o)){const c=(o.__vccOpts||o)[t];c&&i.push(gn(c,n,a,r,s))}else{let l=o();i.push(()=>l.then(c=>{if(!c)return Promise.reject(new Error(`Couldn't resolve component "${s}" at "${r.path}"`));const d=zM(c)?c.default:c;r.components[s]=d;const p=(d.__vccOpts||d)[t];return p&&gn(p,n,a,r,s)()}))}}return i}function YL(e){return typeof e=="object"||"displayName"in e||"props"in e||"__vccOpts"in e}function Ic(e){const t=kt(Ur),n=kt(_m),a=mt(()=>t.resolve(lt(e.to))),i=mt(()=>{const{matched:l}=a.value,{length:c}=l,d=l[c-1],u=n.matched;if(!d||!u.length)return-1;const p=u.findIndex(ya.bind(null,d));if(p>-1)return p;const m=Oc(l[c-2]);return c>1&&Oc(d)===m&&u[u.length-1].path!==m?u.findIndex(ya.bind(null,l[c-2])):p}),r=mt(()=>i.value>-1&&VL(n.params,a.value.params)),s=mt(()=>i.value>-1&&i.value===n.matched.length-1&&im(n.params,a.value.params));function o(l={}){return qL(l)?t[lt(e.replace)?"replace":"push"](lt(e.to)).catch(Ha):Promise.resolve()}return{route:a,href:mt(()=>a.value.href),isActive:r,isExactActive:s,navigate:o}}const HL=ru({name:"RouterLink",compatConfig:{MODE:3},props:{to:{type:[String,Object],required:!0},replace:Boolean,activeClass:String,exactActiveClass:String,custom:Boolean,ariaCurrentValue:{type:String,default:"page"}},useLink:Ic,setup(e,{slots:t}){const n=Ia(Ic(e)),{options:a}=kt(Ur),i=mt(()=>({[Ac(e.activeClass,a.linkActiveClass,"router-link-active")]:n.isActive,[Ac(e.exactActiveClass,a.linkExactActiveClass,"router-link-exact-active")]:n.isExactActive}));return()=>{const r=t.default&&t.default(n);return e.custom?r:Ru("a",{"aria-current":n.isExactActive?e.ariaCurrentValue:null,href:n.href,onClick:n.navigate,class:i.value},r)}}}),WL=HL;function qL(e){if(!(e.metaKey||e.altKey||e.ctrlKey||e.shiftKey)&&!e.defaultPrevented&&!(e.button!==void 0&&e.button!==0)){if(e.currentTarget&&e.currentTarget.getAttribute){const t=e.currentTarget.getAttribute("target");if(/\b_blank\b/i.test(t))return}return e.preventDefault&&e.preventDefault(),!0}}function VL(e,t){for(const n in t){const a=t[n],i=e[n];if(typeof a=="string"){if(a!==i)return!1}else if(!Lt(i)||i.length!==a.length||a.some((r,s)=>r!==i[s]))return!1}return!0}function Oc(e){return e?e.aliasOf?e.aliasOf.path:e.path:""}const Ac=(e,t,n)=>e!=null?e:t!=null?t:n,zL=ru({name:"RouterView",inheritAttrs:!1,props:{name:{type:String,default:"default"},route:Object},compatConfig:{MODE:3},setup(e,{attrs:t,slots:n}){const a=kt(Gs),i=mt(()=>e.route||a.value),r=kt(Nc,0),s=mt(()=>{let c=lt(r);const{matched:d}=i.value;let u;for(;(u=d[c])&&!u.components;)c++;return c}),o=mt(()=>i.value.matched[s.value]);Li(Nc,mt(()=>s.value+1)),Li(GL,o),Li(Gs,i);const l=wr();return Hn(()=>[l.value,o.value,e.name],([c,d,u],[p,m,h])=>{d&&(d.instances[u]=c,m&&m!==d&&c&&c===p&&(d.leaveGuards.size||(d.leaveGuards=m.leaveGuards),d.updateGuards.size||(d.updateGuards=m.updateGuards))),c&&d&&(!m||!ya(d,m)||!p)&&(d.enterCallbacks[u]||[]).forEach(g=>g(c))},{flush:"post"}),()=>{const c=i.value,d=e.name,u=o.value,p=u&&u.components[d];if(!p)return Dc(n.default,{Component:p,route:c});const m=u.props[d],h=m?m===!0?c.params:typeof m=="function"?m(c):m:null,b=Ru(p,Ae({},h,t,{onVnodeUnmounted:S=>{S.component.isUnmounted&&(u.instances[d]=null)},ref:l}));return Dc(n.default,{Component:b,route:c})||b}}});function Dc(e,t){if(!e)return null;const n=e(t);return n.length===1?n[0]:n}const $L=zL;function KL(e){const t=TL(e.routes,e),n=e.parseQuery||UL,a=e.stringifyQuery||Rc,i=e.history,r=xa(),s=xa(),o=xa(),l=hS(mn);let c=mn;la&&e.scrollBehavior&&"scrollRestoration"in history&&(history.scrollRestoration="manual");const d=ss.bind(null,R=>""+R),u=ss.bind(null,FL),p=ss.bind(null,sr);function m(R,q){let Y,te;return sm(R)?(Y=t.getRecordMatcher(R),te=q):te=R,t.addRoute(te,Y)}function h(R){const q=t.getRecordMatcher(R);q&&t.removeRoute(q)}function g(){return t.getRoutes().map(R=>R.record)}function b(R){return!!t.getRecordMatcher(R)}function S(R,q){if(q=Ae({},q||l.value),typeof R=="string"){const _=os(n,R,q.path),f=t.resolve({path:_.path},q),v=i.createHref(_.fullPath);return Ae(_,f,{params:p(f.params),hash:sr(_.hash),redirectedFrom:void 0,href:v})}let Y;if("path"in R)Y=Ae({},R,{path:os(n,R.path,q.path).path});else{const _=Ae({},R.params);for(const f in _)_[f]==null&&delete _[f];Y=Ae({},R,{params:u(R.params)}),q.params=u(q.params)}const te=t.resolve(Y,q),J=R.hash||"";te.params=d(p(te.params));const Re=QM(a,Ae({},R,{hash:ML(J),path:te.path})),ce=i.createHref(Re);return Ae({fullPath:Re,hash:J,query:a===Rc?BL(R.query):R.query||{}},te,{redirectedFrom:void 0,href:ce})}function T(R){return typeof R=="string"?os(n,R,l.value.path):Ae({},R)}function y(R,q){if(c!==R)return va(8,{from:q,to:R})}function C(R){return G(R)}function O(R){return C(Ae(T(R),{replace:!0}))}function H(R){const q=R.matched[R.matched.length-1];if(q&&q.redirect){const{redirect:Y}=q;let te=typeof Y=="function"?Y(R):Y;return typeof te=="string"&&(te=te.includes("?")||te.includes("#")?te=T(te):{path:te},te.params={}),Ae({query:R.query,hash:R.hash,params:"path"in te?{}:R.params},te)}}function G(R,q){const Y=c=S(R),te=l.value,J=R.state,Re=R.force,ce=R.replace===!0,_=H(Y);if(_)return G(Ae(T(_),{state:typeof _=="object"?Ae({},J,_.state):J,force:Re,replace:ce}),q||Y);const f=Y;f.redirectedFrom=q;let v;return!Re&&jM(a,te,Y)&&(v=va(16,{to:f,from:te}),ue(te,te,!0,!1)),(v?Promise.resolve(v):K(f,te)).catch(N=>jt(N)?jt(N,2)?N:ee(N):D(N,f,te)).then(N=>{if(N){if(jt(N,2))return G(Ae({replace:ce},T(N.to),{state:typeof N.to=="object"?Ae({},J,N.to.state):J,force:Re}),q||f)}else N=le(f,te,!0,ce,J);return W(f,te,N),N})}function L(R,q){const Y=y(R,q);return Y?Promise.reject(Y):Promise.resolve()}function K(R,q){let Y;const[te,J,Re]=QL(R,q);Y=ls(te.reverse(),"beforeRouteLeave",R,q);for(const _ of te)_.leaveGuards.forEach(f=>{Y.push(gn(f,R,q))});const ce=L.bind(null,R,q);return Y.push(ce),na(Y).then(()=>{Y=[];for(const _ of r.list())Y.push(gn(_,R,q));return Y.push(ce),na(Y)}).then(()=>{Y=ls(J,"beforeRouteUpdate",R,q);for(const _ of J)_.updateGuards.forEach(f=>{Y.push(gn(f,R,q))});return Y.push(ce),na(Y)}).then(()=>{Y=[];for(const _ of R.matched)if(_.beforeEnter&&!q.matched.includes(_))if(Lt(_.beforeEnter))for(const f of _.beforeEnter)Y.push(gn(f,R,q));else Y.push(gn(_.beforeEnter,R,q));return Y.push(ce),na(Y)}).then(()=>(R.matched.forEach(_=>_.enterCallbacks={}),Y=ls(Re,"beforeRouteEnter",R,q),Y.push(ce),na(Y))).then(()=>{Y=[];for(const _ of s.list())Y.push(gn(_,R,q));return Y.push(ce),na(Y)}).catch(_=>jt(_,8)?_:Promise.reject(_))}function W(R,q,Y){for(const te of o.list())te(R,q,Y)}function le(R,q,Y,te,J){const Re=y(R,q);if(Re)return Re;const ce=q===mn,_=la?history.state:{};Y&&(te||ce?i.replace(R.fullPath,Ae({scroll:ce&&_&&_.scroll},J)):i.push(R.fullPath,J)),l.value=R,ue(R,q,Y,ce),ee()}let fe;function Te(){fe||(fe=i.listen((R,q,Y)=>{if(!De.listening)return;const te=S(R),J=H(te);if(J){G(Ae(J,{replace:!0}),te).catch(Ha);return}c=te;const Re=l.value;la&&iL(Ec(Re.fullPath,Y.delta),Fr()),K(te,Re).catch(ce=>jt(ce,12)?ce:jt(ce,2)?(G(ce.to,te).then(_=>{jt(_,20)&&!Y.delta&&Y.type===si.pop&&i.go(-1,!1)}).catch(Ha),Promise.reject()):(Y.delta&&i.go(-Y.delta,!1),D(ce,te,Re))).then(ce=>{ce=ce||le(te,Re,!1),ce&&(Y.delta&&!jt(ce,8)?i.go(-Y.delta,!1):Y.type===si.pop&&jt(ce,20)&&i.go(-1,!1)),W(te,Re,ce)}).catch(Ha)}))}let Ee=xa(),ye=xa(),A;function D(R,q,Y){ee(R);const te=ye.list();return te.length?te.forEach(J=>J(R,q,Y)):console.error(R),Promise.reject(R)}function F(){return A&&l.value!==mn?Promise.resolve():new Promise((R,q)=>{Ee.add([R,q])})}function ee(R){return A||(A=!R,Te(),Ee.list().forEach(([q,Y])=>R?Y(R):q()),Ee.reset()),R}function ue(R,q,Y,te){const{scrollBehavior:J}=e;if(!la||!J)return Promise.resolve();const Re=!Y&&rL(Ec(R.fullPath,0))||(te||!Y)&&history.state&&history.state.scroll||null;return yo().then(()=>J(R,q,Re)).then(ce=>ce&&aL(ce)).catch(ce=>D(ce,R,q))}const he=R=>i.go(R);let ge;const Ve=new Set,De={currentRoute:l,listening:!0,addRoute:m,removeRoute:h,hasRoute:b,getRoutes:g,resolve:S,options:e,push:C,replace:O,go:he,back:()=>he(-1),forward:()=>he(1),beforeEach:r.add,beforeResolve:s.add,afterEach:o.add,onError:ye.add,isReady:F,install(R){const q=this;R.component("RouterLink",WL),R.component("RouterView",$L),R.config.globalProperties.$router=q,Object.defineProperty(R.config.globalProperties,"$route",{enumerable:!0,get:()=>lt(l)}),la&&!ge&&l.value===mn&&(ge=!0,C(i.location).catch(J=>{}));const Y={};for(const J in mn)Y[J]=mt(()=>l.value[J]);R.provide(Ur,q),R.provide(_m,Ia(Y)),R.provide(Gs,l);const te=R.unmount;Ve.add(R),R.unmount=function(){Ve.delete(R),Ve.size<1&&(c=mn,fe&&fe(),fe=null,l.value=mn,ge=!1,A=!1),te()}}};return De}function na(e){return e.reduce((t,n)=>t.then(()=>n()),Promise.resolve())}function QL(e,t){const n=[],a=[],i=[],r=Math.max(t.matched.length,e.matched.length);for(let s=0;s<r;s++){const o=t.matched[s];o&&(e.matched.find(c=>ya(c,o))?a.push(o):n.push(o));const l=e.matched[s];l&&(t.matched.find(c=>ya(c,l))||i.push(l))}return[n,a,i]}function jL(){return kt(Ur)}const XL={class:"content sharp-border"},JL={key:0,class:"app-bar-space"},ZL={__name:"App",setup(e){const{dark:t,setFont:n,setDark:a,font:i}=xu(),{setModules:r}=Lu(),{currentRoute:s}=jL();Hn(t,()=>{document.body.toggleAttribute("theme-dark")});const o=wr(!1);wo(()=>{window.addEventListener("scroll",c)}),ou(()=>{const{fileModules:p}=HM();l(),r(WM(p))});const l=()=>{var h;const p=vn.getFont(),m=((h=qn.find(g=>g.name===p))==null?void 0:h.class)||qn[0].class;n(m),a(vn.getTheme()==="dark"),document.body.classList.add(i.value)},c=p=>{if(typeof window=="undefined")return;const m=window.pageYOffset||p.target.scrollTop;o.value=m>150},d=()=>{window.scroll({top:0,behavior:"smooth"})},u=mt(()=>["Home","Filter","Sort"].includes(s==null?void 0:s.value.name));return(p,m)=>{const h=QS("router-view"),g=uT;return Be(),We("div",null,[Oe(lt(KT)),pe("div",XL,[lt(u)?(Be(),We("div",JL)):Os("",!0),Oe(h),o.value?(Be(),We("button",{key:1,class:"scroll-to-top circle small-shadow",onClick:d},[Oe(g)])):Os("",!0)]),Oe(lt(iv))])}}},eP=[{name:"Home",path:"/",component:()=>Zn(()=>import("./HomeView.8e38a520.js"),["assets/HomeView.8e38a520.js","assets/HomeView.6885831e.css","assets/tracker.d5d900f2.js"])},{name:"Filter",path:"/filter/:filterBy/:filterValue?",component:()=>Zn(()=>import("./HomeView.8e38a520.js"),["assets/HomeView.8e38a520.js","assets/HomeView.6885831e.css","assets/tracker.d5d900f2.js"])},{name:"Sort",path:"/sort/:sortBy",component:()=>Zn(()=>import("./HomeView.8e38a520.js"),["assets/HomeView.8e38a520.js","assets/HomeView.6885831e.css","assets/tracker.d5d900f2.js"])},{name:"Blog",path:"/blog/:name",component:()=>Zn(()=>import("./PostView.fc354800.js"),["assets/PostView.fc354800.js","assets/PostView.e40b828c.css","assets/tracker.d5d900f2.js"])},{name:"Series",path:"/blog/:series/:name",component:()=>Zn(()=>import("./PostView.fc354800.js"),["assets/PostView.fc354800.js","assets/PostView.e40b828c.css","assets/tracker.d5d900f2.js"])},{name:"404",path:"/:pathMatch(.*)*",component:()=>Zn(()=>import("./404View.f57869d7.js"),["assets/404View.f57869d7.js","assets/404View.7c5e5cbc.css"])}],tP=KL({history:dL(),routes:eP,scrollBehavior(e,t,n){return{top:(n==null?void 0:n.top)||0}}}),nP=nT(),ui=Zb(ZL);ui.config.globalProperties.window=window;ui.config.globalProperties.$moment=z;ui.use(nP);ui.use(tP);ui.mount("#app");export{Fi as A,My as B,Oy as C,GT as D,Lu as E,ft as F,uP as G,pP as H,IS as I,OS as J,vn as S,Io as _,pe as a,mt as b,We as c,lt as d,Os as e,Oe as f,Ll as g,z as h,jL as i,wr as j,wo as k,dP as l,rP as m,Gn as n,Be as o,oP as p,Ts as q,JS as r,Tu as s,wd as t,xu as u,sP as v,Hn as w,cP as x,lP as y,lo as z};
+  */const la=typeof window!="undefined";function zM(e){return e.__esModule||e[Symbol.toStringTag]==="Module"}const Ae=Object.assign;function ss(e,t){const n={};for(const a in t){const i=t[a];n[a]=Lt(i)?i.map(e):e(i)}return n}const Ha=()=>{},Lt=Array.isArray,$M=/\/$/,KM=e=>e.replace($M,"");function os(e,t,n="/"){let a,i={},r="",s="";const o=t.indexOf("#");let l=t.indexOf("?");return o<l&&o>=0&&(l=-1),l>-1&&(a=t.slice(0,l),r=t.slice(l+1,o>-1?o:t.length),i=e(r)),o>-1&&(a=a||t.slice(0,o),s=t.slice(o,t.length)),a=JM(a!=null?a:t,n),{fullPath:a+(r&&"?")+r+s,path:a,query:i,hash:s}}function QM(e,t){const n=t.query?e(t.query):"";return t.path+(n&&"?")+n+(t.hash||"")}function gc(e,t){return!t||!e.toLowerCase().startsWith(t.toLowerCase())?e:e.slice(t.length)||"/"}function jM(e,t,n){const a=t.matched.length-1,i=n.matched.length-1;return a>-1&&a===i&&ya(t.matched[a],n.matched[i])&&im(t.params,n.params)&&e(t.query)===e(n.query)&&t.hash===n.hash}function ya(e,t){return(e.aliasOf||e)===(t.aliasOf||t)}function im(e,t){if(Object.keys(e).length!==Object.keys(t).length)return!1;for(const n in e)if(!XM(e[n],t[n]))return!1;return!0}function XM(e,t){return Lt(e)?fc(e,t):Lt(t)?fc(t,e):e===t}function fc(e,t){return Lt(t)?e.length===t.length&&e.every((n,a)=>n===t[a]):e.length===1&&e[0]===t}function JM(e,t){if(e.startsWith("/"))return e;if(!e)return t;const n=t.split("/"),a=e.split("/");let i=n.length-1,r,s;for(r=0;r<a.length;r++)if(s=a[r],s!==".")if(s==="..")i>1&&i--;else break;return n.slice(0,i).join("/")+"/"+a.slice(r-(r===a.length?1:0)).join("/")}var si;(function(e){e.pop="pop",e.push="push"})(si||(si={}));var Wa;(function(e){e.back="back",e.forward="forward",e.unknown=""})(Wa||(Wa={}));function ZM(e){if(!e)if(la){const t=document.querySelector("base");e=t&&t.getAttribute("href")||"/",e=e.replace(/^\w+:\/\/[^\/]+/,"")}else e="/";return e[0]!=="/"&&e[0]!=="#"&&(e="/"+e),KM(e)}const eL=/^[^#]+#/;function tL(e,t){return e.replace(eL,"#")+t}function nL(e,t){const n=document.documentElement.getBoundingClientRect(),a=e.getBoundingClientRect();return{behavior:t.behavior,left:a.left-n.left-(t.left||0),top:a.top-n.top-(t.top||0)}}const Fr=()=>({left:window.pageXOffset,top:window.pageYOffset});function aL(e){let t;if("el"in e){const n=e.el,a=typeof n=="string"&&n.startsWith("#"),i=typeof n=="string"?a?document.getElementById(n.slice(1)):document.querySelector(n):n;if(!i)return;t=nL(i,e)}else t=e;"scrollBehavior"in document.documentElement.style?window.scrollTo(t):window.scrollTo(t.left!=null?t.left:window.pageXOffset,t.top!=null?t.top:window.pageYOffset)}function Ec(e,t){return(history.state?history.state.position-t:-1)+e}const Us=new Map;function iL(e,t){Us.set(e,t)}function rL(e){const t=Us.get(e);return Us.delete(e),t}let sL=()=>location.protocol+"//"+location.host;function rm(e,t){const{pathname:n,search:a,hash:i}=t,r=e.indexOf("#");if(r>-1){let o=i.includes(e.slice(r))?e.slice(r).length:1,l=i.slice(o);return l[0]!=="/"&&(l="/"+l),gc(l,"")}return gc(n,e)+a+i}function oL(e,t,n,a){let i=[],r=[],s=null;const o=({state:p})=>{const m=rm(e,location),h=n.value,g=t.value;let b=0;if(p){if(n.value=m,t.value=p,s&&s===h){s=null;return}b=g?p.position-g.position:0}else a(m);i.forEach(S=>{S(n.value,h,{delta:b,type:si.pop,direction:b?b>0?Wa.forward:Wa.back:Wa.unknown})})};function l(){s=n.value}function c(p){i.push(p);const m=()=>{const h=i.indexOf(p);h>-1&&i.splice(h,1)};return r.push(m),m}function d(){const{history:p}=window;!p.state||p.replaceState(Ae({},p.state,{scroll:Fr()}),"")}function u(){for(const p of r)p();r=[],window.removeEventListener("popstate",o),window.removeEventListener("beforeunload",d)}return window.addEventListener("popstate",o),window.addEventListener("beforeunload",d),{pauseListeners:l,listen:c,destroy:u}}function Sc(e,t,n,a=!1,i=!1){return{back:e,current:t,forward:n,replaced:a,position:window.history.length,scroll:i?Fr():null}}function lL(e){const{history:t,location:n}=window,a={value:rm(e,n)},i={value:t.state};i.value||r(a.value,{back:null,current:a.value,forward:null,position:t.length-1,replaced:!0,scroll:null},!0);function r(l,c,d){const u=e.indexOf("#"),p=u>-1?(n.host&&document.querySelector("base")?e:e.slice(u))+l:sL()+e+l;try{t[d?"replaceState":"pushState"](c,"",p),i.value=c}catch(m){console.error(m),n[d?"replace":"assign"](p)}}function s(l,c){const d=Ae({},t.state,Sc(i.value.back,l,i.value.forward,!0),c,{position:i.value.position});r(l,d,!0),a.value=l}function o(l,c){const d=Ae({},i.value,t.state,{forward:l,scroll:Fr()});r(d.current,d,!0);const u=Ae({},Sc(a.value,l,null),{position:d.position+1},c);r(l,u,!1),a.value=l}return{location:a,state:i,push:o,replace:s}}function cL(e){e=ZM(e);const t=lL(e),n=oL(e,t.state,t.location,t.replace);function a(r,s=!0){s||n.pauseListeners(),history.go(r)}const i=Ae({location:"",base:e,go:a,createHref:tL.bind(null,e)},t,n);return Object.defineProperty(i,"location",{enumerable:!0,get:()=>t.location.value}),Object.defineProperty(i,"state",{enumerable:!0,get:()=>t.state.value}),i}function dL(e){return e=location.host?e||location.pathname+location.search:"",e.includes("#")||(e+="#"),cL(e)}function uL(e){return typeof e=="string"||e&&typeof e=="object"}function sm(e){return typeof e=="string"||typeof e=="symbol"}const mn={path:"/",name:void 0,params:{},query:{},hash:"",fullPath:"/",matched:[],meta:{},redirectedFrom:void 0},om=Symbol("");var bc;(function(e){e[e.aborted=4]="aborted",e[e.cancelled=8]="cancelled",e[e.duplicated=16]="duplicated"})(bc||(bc={}));function va(e,t){return Ae(new Error,{type:e,[om]:!0},t)}function jt(e,t){return e instanceof Error&&om in e&&(t==null||!!(e.type&t))}const Tc="[^/]+?",pL={sensitive:!1,strict:!1,start:!0,end:!0},mL=/[.+*?^${}()[\]/\\]/g;function _L(e,t){const n=Ae({},pL,t),a=[];let i=n.start?"^":"";const r=[];for(const c of e){const d=c.length?[]:[90];n.strict&&!c.length&&(i+="/");for(let u=0;u<c.length;u++){const p=c[u];let m=40+(n.sensitive?.25:0);if(p.type===0)u||(i+="/"),i+=p.value.replace(mL,"\\$&"),m+=40;else if(p.type===1){const{value:h,repeatable:g,optional:b,regexp:S}=p;r.push({name:h,repeatable:g,optional:b});const T=S||Tc;if(T!==Tc){m+=10;try{new RegExp(`(${T})`)}catch(C){throw new Error(`Invalid custom RegExp for param "${h}" (${T}): `+C.message)}}let y=g?`((?:${T})(?:/(?:${T}))*)`:`(${T})`;u||(y=b&&c.length<2?`(?:/${y})`:"/"+y),b&&(y+="?"),i+=y,m+=20,b&&(m+=-8),g&&(m+=-20),T===".*"&&(m+=-50)}d.push(m)}a.push(d)}if(n.strict&&n.end){const c=a.length-1;a[c][a[c].length-1]+=.7000000000000001}n.strict||(i+="/?"),n.end?i+="$":n.strict&&(i+="(?:/|$)");const s=new RegExp(i,n.sensitive?"":"i");function o(c){const d=c.match(s),u={};if(!d)return null;for(let p=1;p<d.length;p++){const m=d[p]||"",h=r[p-1];u[h.name]=m&&h.repeatable?m.split("/"):m}return u}function l(c){let d="",u=!1;for(const p of e){(!u||!d.endsWith("/"))&&(d+="/"),u=!1;for(const m of p)if(m.type===0)d+=m.value;else if(m.type===1){const{value:h,repeatable:g,optional:b}=m,S=h in c?c[h]:"";if(Lt(S)&&!g)throw new Error(`Provided param "${h}" is an array but it is not repeatable (* or + modifiers)`);const T=Lt(S)?S.join("/"):S;if(!T)if(b)p.length<2&&(d.endsWith("/")?d=d.slice(0,-1):u=!0);else throw new Error(`Missing required param "${h}"`);d+=T}}return d||"/"}return{re:s,score:a,keys:r,parse:o,stringify:l}}function hL(e,t){let n=0;for(;n<e.length&&n<t.length;){const a=t[n]-e[n];if(a)return a;n++}return e.length<t.length?e.length===1&&e[0]===40+40?-1:1:e.length>t.length?t.length===1&&t[0]===40+40?1:-1:0}function gL(e,t){let n=0;const a=e.score,i=t.score;for(;n<a.length&&n<i.length;){const r=hL(a[n],i[n]);if(r)return r;n++}if(Math.abs(i.length-a.length)===1){if(yc(a))return 1;if(yc(i))return-1}return i.length-a.length}function yc(e){const t=e[e.length-1];return e.length>0&&t[t.length-1]<0}const fL={type:0,value:""},EL=/[a-zA-Z0-9_]/;function SL(e){if(!e)return[[]];if(e==="/")return[[fL]];if(!e.startsWith("/"))throw new Error(`Invalid path "${e}"`);function t(m){throw new Error(`ERR (${n})/"${c}": ${m}`)}let n=0,a=n;const i=[];let r;function s(){r&&i.push(r),r=[]}let o=0,l,c="",d="";function u(){!c||(n===0?r.push({type:0,value:c}):n===1||n===2||n===3?(r.length>1&&(l==="*"||l==="+")&&t(`A repeatable param (${c}) must be alone in its segment. eg: '/:ids+.`),r.push({type:1,value:c,regexp:d,repeatable:l==="*"||l==="+",optional:l==="*"||l==="?"})):t("Invalid state to consume buffer"),c="")}function p(){c+=l}for(;o<e.length;){if(l=e[o++],l==="\\"&&n!==2){a=n,n=4;continue}switch(n){case 0:l==="/"?(c&&u(),s()):l===":"?(u(),n=1):p();break;case 4:p(),n=a;break;case 1:l==="("?n=2:EL.test(l)?p():(u(),n=0,l!=="*"&&l!=="?"&&l!=="+"&&o--);break;case 2:l===")"?d[d.length-1]=="\\"?d=d.slice(0,-1)+l:n=3:d+=l;break;case 3:u(),n=0,l!=="*"&&l!=="?"&&l!=="+"&&o--,d="";break;default:t("Unknown state");break}}return n===2&&t(`Unfinished custom RegExp for param "${c}"`),u(),s(),i}function bL(e,t,n){const a=_L(SL(e.path),n),i=Ae(a,{record:e,parent:t,children:[],alias:[]});return t&&!i.record.aliasOf==!t.record.aliasOf&&t.children.push(i),i}function TL(e,t){const n=[],a=new Map;t=Cc({strict:!1,end:!0,sensitive:!1},t);function i(d){return a.get(d)}function r(d,u,p){const m=!p,h=yL(d);h.aliasOf=p&&p.record;const g=Cc(t,d),b=[h];if("alias"in d){const y=typeof d.alias=="string"?[d.alias]:d.alias;for(const C of y)b.push(Ae({},h,{components:p?p.record.components:h.components,path:C,aliasOf:p?p.record:h}))}let S,T;for(const y of b){const{path:C}=y;if(u&&C[0]!=="/"){const O=u.record.path,H=O[O.length-1]==="/"?"":"/";y.path=u.record.path+(C&&H+C)}if(S=bL(y,u,g),p?p.alias.push(S):(T=T||S,T!==S&&T.alias.push(S),m&&d.name&&!wc(S)&&s(d.name)),h.children){const O=h.children;for(let H=0;H<O.length;H++)r(O[H],S,p&&p.children[H])}p=p||S,(S.record.components&&Object.keys(S.record.components).length||S.record.name||S.record.redirect)&&l(S)}return T?()=>{s(T)}:Ha}function s(d){if(sm(d)){const u=a.get(d);u&&(a.delete(d),n.splice(n.indexOf(u),1),u.children.forEach(s),u.alias.forEach(s))}else{const u=n.indexOf(d);u>-1&&(n.splice(u,1),d.record.name&&a.delete(d.record.name),d.children.forEach(s),d.alias.forEach(s))}}function o(){return n}function l(d){let u=0;for(;u<n.length&&gL(d,n[u])>=0&&(d.record.path!==n[u].record.path||!lm(d,n[u]));)u++;n.splice(u,0,d),d.record.name&&!wc(d)&&a.set(d.record.name,d)}function c(d,u){let p,m={},h,g;if("name"in d&&d.name){if(p=a.get(d.name),!p)throw va(1,{location:d});g=p.record.name,m=Ae(vc(u.params,p.keys.filter(T=>!T.optional).map(T=>T.name)),d.params&&vc(d.params,p.keys.map(T=>T.name))),h=p.stringify(m)}else if("path"in d)h=d.path,p=n.find(T=>T.re.test(h)),p&&(m=p.parse(h),g=p.record.name);else{if(p=u.name?a.get(u.name):n.find(T=>T.re.test(u.path)),!p)throw va(1,{location:d,currentLocation:u});g=p.record.name,m=Ae({},u.params,d.params),h=p.stringify(m)}const b=[];let S=p;for(;S;)b.unshift(S.record),S=S.parent;return{name:g,path:h,params:m,matched:b,meta:wL(b)}}return e.forEach(d=>r(d)),{addRoute:r,resolve:c,removeRoute:s,getRoutes:o,getRecordMatcher:i}}function vc(e,t){const n={};for(const a of t)a in e&&(n[a]=e[a]);return n}function yL(e){return{path:e.path,redirect:e.redirect,name:e.name,meta:e.meta||{},aliasOf:void 0,beforeEnter:e.beforeEnter,props:vL(e),children:e.children||[],instances:{},leaveGuards:new Set,updateGuards:new Set,enterCallbacks:{},components:"components"in e?e.components||null:e.component&&{default:e.component}}}function vL(e){const t={},n=e.props||!1;if("component"in e)t.default=n;else for(const a in e.components)t[a]=typeof n=="boolean"?n:n[a];return t}function wc(e){for(;e;){if(e.record.aliasOf)return!0;e=e.parent}return!1}function wL(e){return e.reduce((t,n)=>Ae(t,n.meta),{})}function Cc(e,t){const n={};for(const a in e)n[a]=a in t?t[a]:e[a];return n}function lm(e,t){return t.children.some(n=>n===e||lm(e,n))}const cm=/#/g,CL=/&/g,RL=/\//g,NL=/=/g,IL=/\?/g,dm=/\+/g,OL=/%5B/g,AL=/%5D/g,um=/%5E/g,DL=/%60/g,pm=/%7B/g,kL=/%7C/g,mm=/%7D/g,xL=/%20/g;function qo(e){return encodeURI(""+e).replace(kL,"|").replace(OL,"[").replace(AL,"]")}function ML(e){return qo(e).replace(pm,"{").replace(mm,"}").replace(um,"^")}function Bs(e){return qo(e).replace(dm,"%2B").replace(xL,"+").replace(cm,"%23").replace(CL,"%26").replace(DL,"`").replace(pm,"{").replace(mm,"}").replace(um,"^")}function LL(e){return Bs(e).replace(NL,"%3D")}function PL(e){return qo(e).replace(cm,"%23").replace(IL,"%3F")}function FL(e){return e==null?"":PL(e).replace(RL,"%2F")}function sr(e){try{return decodeURIComponent(""+e)}catch{}return""+e}function UL(e){const t={};if(e===""||e==="?")return t;const a=(e[0]==="?"?e.slice(1):e).split("&");for(let i=0;i<a.length;++i){const r=a[i].replace(dm," "),s=r.indexOf("="),o=sr(s<0?r:r.slice(0,s)),l=s<0?null:sr(r.slice(s+1));if(o in t){let c=t[o];Lt(c)||(c=t[o]=[c]),c.push(l)}else t[o]=l}return t}function Rc(e){let t="";for(let n in e){const a=e[n];if(n=LL(n),a==null){a!==void 0&&(t+=(t.length?"&":"")+n);continue}(Lt(a)?a.map(r=>r&&Bs(r)):[a&&Bs(a)]).forEach(r=>{r!==void 0&&(t+=(t.length?"&":"")+n,r!=null&&(t+="="+r))})}return t}function BL(e){const t={};for(const n in e){const a=e[n];a!==void 0&&(t[n]=Lt(a)?a.map(i=>i==null?null:""+i):a==null?a:""+a)}return t}const GL=Symbol(""),Nc=Symbol(""),Ur=Symbol(""),_m=Symbol(""),Gs=Symbol("");function xa(){let e=[];function t(a){return e.push(a),()=>{const i=e.indexOf(a);i>-1&&e.splice(i,1)}}function n(){e=[]}return{add:t,list:()=>e,reset:n}}function gn(e,t,n,a,i){const r=a&&(a.enterCallbacks[i]=a.enterCallbacks[i]||[]);return()=>new Promise((s,o)=>{const l=u=>{u===!1?o(va(4,{from:n,to:t})):u instanceof Error?o(u):uL(u)?o(va(2,{from:t,to:u})):(r&&a.enterCallbacks[i]===r&&typeof u=="function"&&r.push(u),s())},c=e.call(a&&a.instances[i],t,n,l);let d=Promise.resolve(c);e.length<3&&(d=d.then(l)),d.catch(u=>o(u))})}function ls(e,t,n,a){const i=[];for(const r of e)for(const s in r.components){let o=r.components[s];if(!(t!=="beforeRouteEnter"&&!r.instances[s]))if(YL(o)){const c=(o.__vccOpts||o)[t];c&&i.push(gn(c,n,a,r,s))}else{let l=o();i.push(()=>l.then(c=>{if(!c)return Promise.reject(new Error(`Couldn't resolve component "${s}" at "${r.path}"`));const d=zM(c)?c.default:c;r.components[s]=d;const p=(d.__vccOpts||d)[t];return p&&gn(p,n,a,r,s)()}))}}return i}function YL(e){return typeof e=="object"||"displayName"in e||"props"in e||"__vccOpts"in e}function Ic(e){const t=kt(Ur),n=kt(_m),a=mt(()=>t.resolve(lt(e.to))),i=mt(()=>{const{matched:l}=a.value,{length:c}=l,d=l[c-1],u=n.matched;if(!d||!u.length)return-1;const p=u.findIndex(ya.bind(null,d));if(p>-1)return p;const m=Oc(l[c-2]);return c>1&&Oc(d)===m&&u[u.length-1].path!==m?u.findIndex(ya.bind(null,l[c-2])):p}),r=mt(()=>i.value>-1&&VL(n.params,a.value.params)),s=mt(()=>i.value>-1&&i.value===n.matched.length-1&&im(n.params,a.value.params));function o(l={}){return qL(l)?t[lt(e.replace)?"replace":"push"](lt(e.to)).catch(Ha):Promise.resolve()}return{route:a,href:mt(()=>a.value.href),isActive:r,isExactActive:s,navigate:o}}const HL=ru({name:"RouterLink",compatConfig:{MODE:3},props:{to:{type:[String,Object],required:!0},replace:Boolean,activeClass:String,exactActiveClass:String,custom:Boolean,ariaCurrentValue:{type:String,default:"page"}},useLink:Ic,setup(e,{slots:t}){const n=Ia(Ic(e)),{options:a}=kt(Ur),i=mt(()=>({[Ac(e.activeClass,a.linkActiveClass,"router-link-active")]:n.isActive,[Ac(e.exactActiveClass,a.linkExactActiveClass,"router-link-exact-active")]:n.isExactActive}));return()=>{const r=t.default&&t.default(n);return e.custom?r:Ru("a",{"aria-current":n.isExactActive?e.ariaCurrentValue:null,href:n.href,onClick:n.navigate,class:i.value},r)}}}),WL=HL;function qL(e){if(!(e.metaKey||e.altKey||e.ctrlKey||e.shiftKey)&&!e.defaultPrevented&&!(e.button!==void 0&&e.button!==0)){if(e.currentTarget&&e.currentTarget.getAttribute){const t=e.currentTarget.getAttribute("target");if(/\b_blank\b/i.test(t))return}return e.preventDefault&&e.preventDefault(),!0}}function VL(e,t){for(const n in t){const a=t[n],i=e[n];if(typeof a=="string"){if(a!==i)return!1}else if(!Lt(i)||i.length!==a.length||a.some((r,s)=>r!==i[s]))return!1}return!0}function Oc(e){return e?e.aliasOf?e.aliasOf.path:e.path:""}const Ac=(e,t,n)=>e!=null?e:t!=null?t:n,zL=ru({name:"RouterView",inheritAttrs:!1,props:{name:{type:String,default:"default"},route:Object},compatConfig:{MODE:3},setup(e,{attrs:t,slots:n}){const a=kt(Gs),i=mt(()=>e.route||a.value),r=kt(Nc,0),s=mt(()=>{let c=lt(r);const{matched:d}=i.value;let u;for(;(u=d[c])&&!u.components;)c++;return c}),o=mt(()=>i.value.matched[s.value]);Li(Nc,mt(()=>s.value+1)),Li(GL,o),Li(Gs,i);const l=wr();return Hn(()=>[l.value,o.value,e.name],([c,d,u],[p,m,h])=>{d&&(d.instances[u]=c,m&&m!==d&&c&&c===p&&(d.leaveGuards.size||(d.leaveGuards=m.leaveGuards),d.updateGuards.size||(d.updateGuards=m.updateGuards))),c&&d&&(!m||!ya(d,m)||!p)&&(d.enterCallbacks[u]||[]).forEach(g=>g(c))},{flush:"post"}),()=>{const c=i.value,d=e.name,u=o.value,p=u&&u.components[d];if(!p)return Dc(n.default,{Component:p,route:c});const m=u.props[d],h=m?m===!0?c.params:typeof m=="function"?m(c):m:null,b=Ru(p,Ae({},h,t,{onVnodeUnmounted:S=>{S.component.isUnmounted&&(u.instances[d]=null)},ref:l}));return Dc(n.default,{Component:b,route:c})||b}}});function Dc(e,t){if(!e)return null;const n=e(t);return n.length===1?n[0]:n}const $L=zL;function KL(e){const t=TL(e.routes,e),n=e.parseQuery||UL,a=e.stringifyQuery||Rc,i=e.history,r=xa(),s=xa(),o=xa(),l=hS(mn);let c=mn;la&&e.scrollBehavior&&"scrollRestoration"in history&&(history.scrollRestoration="manual");const d=ss.bind(null,R=>""+R),u=ss.bind(null,FL),p=ss.bind(null,sr);function m(R,q){let Y,te;return sm(R)?(Y=t.getRecordMatcher(R),te=q):te=R,t.addRoute(te,Y)}function h(R){const q=t.getRecordMatcher(R);q&&t.removeRoute(q)}function g(){return t.getRoutes().map(R=>R.record)}function b(R){return!!t.getRecordMatcher(R)}function S(R,q){if(q=Ae({},q||l.value),typeof R=="string"){const _=os(n,R,q.path),f=t.resolve({path:_.path},q),v=i.createHref(_.fullPath);return Ae(_,f,{params:p(f.params),hash:sr(_.hash),redirectedFrom:void 0,href:v})}let Y;if("path"in R)Y=Ae({},R,{path:os(n,R.path,q.path).path});else{const _=Ae({},R.params);for(const f in _)_[f]==null&&delete _[f];Y=Ae({},R,{params:u(R.params)}),q.params=u(q.params)}const te=t.resolve(Y,q),J=R.hash||"";te.params=d(p(te.params));const Re=QM(a,Ae({},R,{hash:ML(J),path:te.path})),ce=i.createHref(Re);return Ae({fullPath:Re,hash:J,query:a===Rc?BL(R.query):R.query||{}},te,{redirectedFrom:void 0,href:ce})}function T(R){return typeof R=="string"?os(n,R,l.value.path):Ae({},R)}function y(R,q){if(c!==R)return va(8,{from:q,to:R})}function C(R){return G(R)}function O(R){return C(Ae(T(R),{replace:!0}))}function H(R){const q=R.matched[R.matched.length-1];if(q&&q.redirect){const{redirect:Y}=q;let te=typeof Y=="function"?Y(R):Y;return typeof te=="string"&&(te=te.includes("?")||te.includes("#")?te=T(te):{path:te},te.params={}),Ae({query:R.query,hash:R.hash,params:"path"in te?{}:R.params},te)}}function G(R,q){const Y=c=S(R),te=l.value,J=R.state,Re=R.force,ce=R.replace===!0,_=H(Y);if(_)return G(Ae(T(_),{state:typeof _=="object"?Ae({},J,_.state):J,force:Re,replace:ce}),q||Y);const f=Y;f.redirectedFrom=q;let v;return!Re&&jM(a,te,Y)&&(v=va(16,{to:f,from:te}),ue(te,te,!0,!1)),(v?Promise.resolve(v):K(f,te)).catch(N=>jt(N)?jt(N,2)?N:ee(N):D(N,f,te)).then(N=>{if(N){if(jt(N,2))return G(Ae({replace:ce},T(N.to),{state:typeof N.to=="object"?Ae({},J,N.to.state):J,force:Re}),q||f)}else N=le(f,te,!0,ce,J);return W(f,te,N),N})}function L(R,q){const Y=y(R,q);return Y?Promise.reject(Y):Promise.resolve()}function K(R,q){let Y;const[te,J,Re]=QL(R,q);Y=ls(te.reverse(),"beforeRouteLeave",R,q);for(const _ of te)_.leaveGuards.forEach(f=>{Y.push(gn(f,R,q))});const ce=L.bind(null,R,q);return Y.push(ce),na(Y).then(()=>{Y=[];for(const _ of r.list())Y.push(gn(_,R,q));return Y.push(ce),na(Y)}).then(()=>{Y=ls(J,"beforeRouteUpdate",R,q);for(const _ of J)_.updateGuards.forEach(f=>{Y.push(gn(f,R,q))});return Y.push(ce),na(Y)}).then(()=>{Y=[];for(const _ of R.matched)if(_.beforeEnter&&!q.matched.includes(_))if(Lt(_.beforeEnter))for(const f of _.beforeEnter)Y.push(gn(f,R,q));else Y.push(gn(_.beforeEnter,R,q));return Y.push(ce),na(Y)}).then(()=>(R.matched.forEach(_=>_.enterCallbacks={}),Y=ls(Re,"beforeRouteEnter",R,q),Y.push(ce),na(Y))).then(()=>{Y=[];for(const _ of s.list())Y.push(gn(_,R,q));return Y.push(ce),na(Y)}).catch(_=>jt(_,8)?_:Promise.reject(_))}function W(R,q,Y){for(const te of o.list())te(R,q,Y)}function le(R,q,Y,te,J){const Re=y(R,q);if(Re)return Re;const ce=q===mn,_=la?history.state:{};Y&&(te||ce?i.replace(R.fullPath,Ae({scroll:ce&&_&&_.scroll},J)):i.push(R.fullPath,J)),l.value=R,ue(R,q,Y,ce),ee()}let fe;function Te(){fe||(fe=i.listen((R,q,Y)=>{if(!De.listening)return;const te=S(R),J=H(te);if(J){G(Ae(J,{replace:!0}),te).catch(Ha);return}c=te;const Re=l.value;la&&iL(Ec(Re.fullPath,Y.delta),Fr()),K(te,Re).catch(ce=>jt(ce,12)?ce:jt(ce,2)?(G(ce.to,te).then(_=>{jt(_,20)&&!Y.delta&&Y.type===si.pop&&i.go(-1,!1)}).catch(Ha),Promise.reject()):(Y.delta&&i.go(-Y.delta,!1),D(ce,te,Re))).then(ce=>{ce=ce||le(te,Re,!1),ce&&(Y.delta&&!jt(ce,8)?i.go(-Y.delta,!1):Y.type===si.pop&&jt(ce,20)&&i.go(-1,!1)),W(te,Re,ce)}).catch(Ha)}))}let Ee=xa(),ye=xa(),A;function D(R,q,Y){ee(R);const te=ye.list();return te.length?te.forEach(J=>J(R,q,Y)):console.error(R),Promise.reject(R)}function F(){return A&&l.value!==mn?Promise.resolve():new Promise((R,q)=>{Ee.add([R,q])})}function ee(R){return A||(A=!R,Te(),Ee.list().forEach(([q,Y])=>R?Y(R):q()),Ee.reset()),R}function ue(R,q,Y,te){const{scrollBehavior:J}=e;if(!la||!J)return Promise.resolve();const Re=!Y&&rL(Ec(R.fullPath,0))||(te||!Y)&&history.state&&history.state.scroll||null;return yo().then(()=>J(R,q,Re)).then(ce=>ce&&aL(ce)).catch(ce=>D(ce,R,q))}const he=R=>i.go(R);let ge;const Ve=new Set,De={currentRoute:l,listening:!0,addRoute:m,removeRoute:h,hasRoute:b,getRoutes:g,resolve:S,options:e,push:C,replace:O,go:he,back:()=>he(-1),forward:()=>he(1),beforeEach:r.add,beforeResolve:s.add,afterEach:o.add,onError:ye.add,isReady:F,install(R){const q=this;R.component("RouterLink",WL),R.component("RouterView",$L),R.config.globalProperties.$router=q,Object.defineProperty(R.config.globalProperties,"$route",{enumerable:!0,get:()=>lt(l)}),la&&!ge&&l.value===mn&&(ge=!0,C(i.location).catch(J=>{}));const Y={};for(const J in mn)Y[J]=mt(()=>l.value[J]);R.provide(Ur,q),R.provide(_m,Ia(Y)),R.provide(Gs,l);const te=R.unmount;Ve.add(R),R.unmount=function(){Ve.delete(R),Ve.size<1&&(c=mn,fe&&fe(),fe=null,l.value=mn,ge=!1,A=!1),te()}}};return De}function na(e){return e.reduce((t,n)=>t.then(()=>n()),Promise.resolve())}function QL(e,t){const n=[],a=[],i=[],r=Math.max(t.matched.length,e.matched.length);for(let s=0;s<r;s++){const o=t.matched[s];o&&(e.matched.find(c=>ya(c,o))?a.push(o):n.push(o));const l=e.matched[s];l&&(t.matched.find(c=>ya(c,l))||i.push(l))}return[n,a,i]}function jL(){return kt(Ur)}const XL={class:"content sharp-border"},JL={key:0,class:"app-bar-space"},ZL={__name:"App",setup(e){const{dark:t,setFont:n,setDark:a,font:i}=xu(),{setModules:r}=Lu(),{currentRoute:s}=jL();Hn(t,()=>{document.body.toggleAttribute("theme-dark")});const o=wr(!1);wo(()=>{window.addEventListener("scroll",c)}),ou(()=>{const{fileModules:p}=HM();l(),r(WM(p))});const l=()=>{var h;const p=vn.getFont(),m=((h=qn.find(g=>g.name===p))==null?void 0:h.class)||qn[0].class;n(m),a(vn.getTheme()==="dark"),document.body.classList.add(i.value)},c=p=>{if(typeof window=="undefined")return;const m=window.pageYOffset||p.target.scrollTop;o.value=m>150},d=()=>{window.scroll({top:0,behavior:"smooth"})},u=mt(()=>["Home","Filter","Sort"].includes(s==null?void 0:s.value.name));return(p,m)=>{const h=QS("router-view"),g=uT;return Be(),We("div",null,[Oe(lt(KT)),pe("div",XL,[lt(u)?(Be(),We("div",JL)):Os("",!0),Oe(h),o.value?(Be(),We("button",{key:1,class:"scroll-to-top circle small-shadow",onClick:d},[Oe(g)])):Os("",!0)]),Oe(lt(iv))])}}},eP=[{name:"Home",path:"/",component:()=>Zn(()=>import("./HomeView.93ab052e.js"),["assets/HomeView.93ab052e.js","assets/HomeView.6885831e.css","assets/tracker.d5d900f2.js"])},{name:"Filter",path:"/filter/:filterBy/:filterValue?",component:()=>Zn(()=>import("./HomeView.93ab052e.js"),["assets/HomeView.93ab052e.js","assets/HomeView.6885831e.css","assets/tracker.d5d900f2.js"])},{name:"Sort",path:"/sort/:sortBy",component:()=>Zn(()=>import("./HomeView.93ab052e.js"),["assets/HomeView.93ab052e.js","assets/HomeView.6885831e.css","assets/tracker.d5d900f2.js"])},{name:"Blog",path:"/blog/:name",component:()=>Zn(()=>import("./PostView.535c7286.js"),["assets/PostView.535c7286.js","assets/PostView.e40b828c.css","assets/tracker.d5d900f2.js"])},{name:"Series",path:"/blog/:series/:name",component:()=>Zn(()=>import("./PostView.535c7286.js"),["assets/PostView.535c7286.js","assets/PostView.e40b828c.css","assets/tracker.d5d900f2.js"])},{name:"404",path:"/:pathMatch(.*)*",component:()=>Zn(()=>import("./404View.ac0577ee.js"),["assets/404View.ac0577ee.js","assets/404View.7c5e5cbc.css"])}],tP=KL({history:dL(),routes:eP,scrollBehavior(e,t,n){return{top:(n==null?void 0:n.top)||0}}}),nP=nT(),ui=Zb(ZL);ui.config.globalProperties.window=window;ui.config.globalProperties.$moment=z;ui.use(nP);ui.use(tP);ui.mount("#app");export{Fi as A,My as B,Oy as C,GT as D,Lu as E,ft as F,uP as G,pP as H,IS as I,OS as J,vn as S,Io as _,pe as a,mt as b,We as c,lt as d,Os as e,Oe as f,Ll as g,z as h,jL as i,wr as j,wo as k,dP as l,rP as m,Gn as n,Be as o,oP as p,Ts as q,JS as r,Tu as s,wd as t,xu as u,sP as v,Hn as w,cP as x,lP as y,lo as z};
