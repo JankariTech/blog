@@ -84,12 +84,50 @@ export const getTableOfContent = (source) => {
   const tokens = marked.lexer(source)
   // remove the first 2 tokens to avoid meta information
   // and then return every tokens that is of header type
-  const headers = tokens.slice(2).filter(token => token.type === "heading" && token.depth <= 4)
-  headers.forEach(header => {
+  const hg = []
+  const headers = tokens
+    .slice(2)
+    .filter((token) => token.type === "heading")// && token.depth <= 4)
+  headers.forEach((header) => {
     const html = marked.parser([header])
     const doc = new DOMParser().parseFromString(html, "text/xml")
     header.id = doc.firstChild.id
     header.text = doc.firstChild.textContent
+    hg.push(new Graph(header.depth, header.text, header.id, null))
   })
-  return headers
+  const stack = [hg[0]]
+  const ans = []
+  hg.forEach((h) => {
+    if (h.val === stack[0].val) {
+      ans.push(h)
+      stack.push(h)
+    } else if (h.val > stack[stack.length - 1].val) {
+      stack[stack.length - 1].addNode(h)
+      stack.push(h)
+    } else if (h.val < stack[stack.length - 1].val) {
+      while (!(h.val > stack[stack.length - 1].val)) {
+        stack.splice(stack.length - 1, 1)
+      }
+      stack[stack.length - 1].addNode(h)
+      stack.push(h)
+    } else {
+      stack.splice(stack.length - 1, 1)
+      stack[stack.length - 1].addNode(h)
+      stack.push(h)
+    }
+  })
+  return ans
+}
+
+class Graph {
+  constructor (val, title, id) {
+    this.val = val
+    this.title = title
+    this.id = id
+    this.node = []
+  }
+
+  addNode (node) {
+    this.node.push(node)
+  }
 }
