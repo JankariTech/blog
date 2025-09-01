@@ -3,15 +3,15 @@ title: Starlark-Powered Pipelines in Woodpecker CI
 authorName: Prashant Gurung
 authorAvatar: https://avatars.githubusercontent.com/u/53248463?v=4
 authorLink: https://github.com/prashant-gurung899
-createdAt: July 3, 2025
-tags: CI/CD
+createdAt: September 11, 2025
+tags: CI/CD, Woodpecker, starlark, docker-compose, Traefik, WCCS
 banner: https://raw.githubusercontent.com/JankariTech/blog/woodpecker-ci-starlark/src/assets/woodpeckerCI/images/cover.png
 ---
 
 ## Background
-Continuous Integration (CI) tools are vital for automating the testing and deployment of modern software. One such open-source tool is Woodpecker CI, a lightweight CI/CD system. Woodpecker CI is an open-source continuous integration and delivery platform that helps developers automate building, testing, and deploying their code. It is a community-driven fork and successor of the popular Drone CI project, sharing many design principles and compatibility with Drone pipelines. Traditionally, Woodpecker pipelines are written in YAML. But with the rise of programmable pipelines, we now have the flexibility to define our CI configuration using Starlark — a Python-like configuration language.
+Continuous Integration tools are essential to build and test modern software automatically and regularly. Woodpecker CI is one such open-source tool, a lightweight CI/CD system. [Woodpecker CI](https://woodpecker-ci.org/) is an open-source continuous integration and delivery system that help developers in automating deployment, builds, and testing of code. It's an open-source fork and alternative to the popular Drone CI project with numerous design similarities and Drone pipeline compatibility. Traditionally, Woodpecker pipelines are YAML, but now that programmable pipelines are in vogue, we can finally have the liberty of defining our CI configuration through Starlark — a Python-ish config language.
 
-In this blog, I’ll walk you through setting up Woodpecker CI with Traefik as a reverse proxy and integrating it with WCCS (Woodpecker CI Config Service) to convert Starlark configurations into YAML files, enabling us to write pipelines in .woodpecker.star files. Here's a high-level view of what we'll cover:
+In this article, I will walk you through setting up Woodpecker CI with Traefik as a reverse proxy and [WCCS](https://github.com/opencloud-eu/woodpecker-ci-config-service/) (Woodpecker CI Config Service) to convert Starlark configurations into YAML files so that we can write pipelines in `.star` files. Here is a high-level overview of what we are going through:
 
 - Spinning up a Woodpecker server with Traefik
 
@@ -23,31 +23,59 @@ In this blog, I’ll walk you through setting up Woodpecker CI with Traefik as a
 
 By the end, you’ll be able to write CI pipelines in Starlark and dynamically convert them to YAML during runtime.
 
-## Prepare Woodpecker secrets via .env
-```console
-#Your woodpecker host
-WOODPECKER_HOST=https://<your-ci-server>
-
-
-# GitHub OAuth Secrets
-WOODPECKER_GITHUB_CLIENT=XXXXXXXXXXXXXXXX
-WOODPECKER_GITHUB_SECRET=XXXXXXXXXXXXXXXXXXXXXXXX
-
-
-# Shared secret used by server<->agent - you can generate it using openSSL
-WOODPECKER_AGENT_SECRET=<generated-secret>
-
-
-# Let’s Encrypt contact email (Traefik will use this)
-ACME_EMAIL=admin@example.com
-```
-
-## Traefik Configuration
-Traefik plays a crucial role in this architecture by handling all the networking complexities - SSL termination, routing, and load balancing
+## Setting Up Woodpecker Server and Agent
+Let's start by setting up the Woodpecker server and agent services in the `docker-compose.yml` file as show below:
 
 ```yml
-version: "3.9"
+services:
+  woodpecker-server:
+    image: woodpeckerci/woodpecker-server:v3
+    environment:
+      - WOODPECKER_LOG_LEVEL=debug
+      - WOODPECKER_OPEN=false
+      - WOODPECKER_HOST=http://<your-ci-server>
+      - WOODPECKER_GITHUB=true
+      - WOODPECKER_GITHUB_CLIENT=xxxxxxx   # GitHub OAuth client ID
+      - WOODPECKER_GITHUB_SECRET=xxxxxxx   # GitHub OAuth secret
+      - WOODPECKER_AGENT_SECRET=xxxxxxx    # shared secret between server and agents
+      - WOODPECKER_ADMIN=your-github-username
+      # The following variable is where we set our Woodpecker CI Config Service (Starlark Conversion Service) later
+      - WOODPECKER_CONFIG_SERVICE_ENDPOINT=http://<your-config-service-server>
+    volumes:
+      - woodpecker-server-data:/var/lib/woodpecker/
+    networks:
+      - woodpecker-net
 
+  woodpecker-agent:
+    image: woodpeckerci/woodpecker-agent:v3
+    restart: always
+    depends_on:
+      - woodpecker-server
+    volumes:
+      - woodpecker-agent-config:/etc/woodpecker
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - WOODPECKER_LOG_LEVEL=debug
+      - WOODPECKER_SERVER=woodpecker-server:9000
+      - WOODPECKER_AGENT_SECRET=${WOODPECKER_AGENT_SECRET}
+    networks:
+      - woodpecker-net
+
+volumes:
+  woodpecker-server-data:
+  woodpecker-agent-config:
+
+networks:
+  woodpecker-net:
+    driver: bridge
+```
+
+## Traefik Configuration for HTTPS
+So far our woodpecker server runs on HTTP, so to serve it on HTTPS we are going to configure Traefik.
+Traefik plays a crucial role in this architecture by handling all the networking complexities - SSL termination, routing, and load balancing.
+Add the following Traefik service right above the `woodpecker-server` service in the same `docker-compose.yml` file:
+
+```yml
 services:
   traefik:
     image: traefik:v3.1
@@ -60,7 +88,7 @@ services:
       - "--entrypoints.websecure.address=:443"
       - "--certificatesresolvers.letsencrypt.acme.httpchallenge=true"
       - "--certificatesresolvers.letsencrypt.acme.httpchallenge.entrypoint=web"
-      - "--certificatesresolvers.letsencrypt.acme.email=${ACME_EMAIL}"
+      - "--certificatesresolvers.letsencrypt.acme.email=example@example.com" #letsEncrypt contact email
       - "--certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json"
     ports:
       - "80:80"
@@ -70,34 +98,32 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
     networks:
       - woodpecker-net
+
+  woodpecker-server:
+    image: woodpeckerci/woodpecker-server:v3
+    ...
+    ...
+    ...
+  woodpecker-agent:
+    image: woodpeckerci/woodpecker-agent:v3
+    ...
+    ...
+    ...
 ```
 
 This configuration:
 
 - Sets up Traefik to listen on ports 80 and 443
-- Configures Let's Encrypt for automatic SSL certificate management
+- Configures automatic SSL certificate management via [letsEncrypt](https://letsencrypt.org/)
 - Enables Docker provider to automatically detect new services
 - Mounts necessary volumes for certificate storage and Docker socket access
 
-## Setting Up Woodpecker Server and Agent
-Now that we have Traefik running, let's set up the Woodpecker server and agent services. Here's the essential setup:
+Now that we have Traefik configured, update the Woodpecker server service by adding following labels:
 
 ```yml
   woodpecker-server:
-    image: woodpeckerci/woodpecker-server:v3
-    environment:
-      - WOODPECKER_LOG_LEVEL=debug
-      - WOODPECKER_OPEN=false
-      - WOODPECKER_HOST=${WOODPECKER_HOST}
-      - WOODPECKER_GITHUB=true
-      - WOODPECKER_GITHUB_CLIENT=${WOODPECKER_GITHUB_CLIENT}
-      - WOODPECKER_GITHUB_SECRET=${WOODPECKER_GITHUB_SECRET}
-      - WOODPECKER_AGENT_SECRET=${WOODPECKER_AGENT_SECRET}
-      - WOODPECKER_ADMIN=prashant-gurung899
-      # The following variable is where we set our Woodpecker CI Config Service (Starlark Conversion Service) later
-      - WOODPECKER_CONFIG_SERVICE_ENDPOINT=http://<your-config-service-server>
-    volumes:
-      - woodpecker-server-data:/var/lib/woodpecker/
+    ...
+    ...
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.woodpecker-secure.rule=Host(`your-ci-server`)"
@@ -113,31 +139,19 @@ Now that we have Traefik running, let's set up the Woodpecker server and agent s
       - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
     networks:
       - woodpecker-net
-
-  woodpecker-agent:
-    image: woodpeckerci/woodpecker-agent:v3
-    command: agent
-    restart: always
-    depends_on:
-      - woodpecker-server
-    volumes:
-      - woodpecker-agent-config:/etc/woodpecker
-      - /var/run/docker.sock:/var/run/docker.sock
-    environment:
-      - WOODPECKER_LOG_LEVEL=debug
-      - WOODPECKER_SERVER=woodpecker-server:9000
-      - WOODPECKER_AGENT_SECRET=${WOODPECKER_AGENT_SECRET}
-    networks:
-      - woodpecker-net
 ```
 
 ## Authenticating with GitHub
 
+Woodpecker cannot do anything by itself, it needs a forge (the service where the repositories are hosted). Woodpecker supports [various forges](https://woodpecker-ci.org/docs/administration/configuration/forges/overview), for this blog we will focus on GitHub.
+
 To connect GitHub with Woodpecker:
 
-1. Register a new OAuth application in your GitHub developer settings.
+1. Register a new OAuth application in your GitHub developer [settings](https://github.com/settings/applications/new).
 
-2. Set the callback URL to `https://<your-ci-server>/authorize`
+2. In your GitHub OAuth App, set the authorization callback URL to `https://<your-ci-server>/authorize`
+
+![Callback URL](https://raw.githubusercontent.com/JankariTech/blog/woodpecker-ci-starlark/src/assets/woodpeckerCI/images/oauth.png)
 
 3. Copy the generated Client ID and Secret.
 
@@ -148,47 +162,61 @@ After that, you can log into the Woodpecker web UI using your GitHub account.
 ![GitHub Login](https://raw.githubusercontent.com/JankariTech/blog/woodpecker-ci-starlark/src/assets/woodpeckerCI/images/github.png)
 
 ## Enabling a Repository
+Before enabling a repo in the Woodpecker CI server, make sure to have a GitHub repository ready. You can use an existing repo of your own or create a new empty one. We will be making a pull request to the repo to trigger CI later.
+
 From the Woodpecker UI:
 
 - Click on Add Repository.
 
 ![Add Repo](https://raw.githubusercontent.com/JankariTech/blog/woodpecker-ci-starlark/src/assets/woodpeckerCI/images/add.png)
 
-- Enable it.
+- Enable it. For this blog, I am using an existing repo called `Drum-KIT` which has already been enabled (as you can see in the last row of the image below).
 
 ![Enable Repo](https://raw.githubusercontent.com/JankariTech/blog/woodpecker-ci-starlark/src/assets/woodpeckerCI/images/enable.png)
 
 Woodpecker will automatically add the necessary webhooks to the repo.
 
+## Triggering Your First CI Run 
+While we are trying to integrate a starlark conversion service, woodpecker CI supports the default `.yml` pipelines.
+So. now we can trigger our first CI using a traditional YAML configuration as show below.
+Create a new branch <your-branch-name> and add the following configuration in the root of your enabled github repo with name `.woodpecker.yml`.
 
-After enabling your desired repository, there's one more thing that you need to do i.e. to set pipeline config path.
 
-- From the settings of your Woodpecker Server, go to repositories and click on the enabled repo's settings icon as shown below:
-
-![Settings](https://raw.githubusercontent.com/JankariTech/blog/woodpecker-ci-starlark/src/assets/woodpeckerCI/images/settings.png)
-
-- Then, add `.woodpecker.star` as pipeline config path and save it:
-
-![Pipeline Config](https://raw.githubusercontent.com/JankariTech/blog/woodpecker-ci-starlark/src/assets/woodpeckerCI/images/path.png)
-
-## Generating the Public Key
-Every request sent by Woodpecker is signed using a http-signature by a private key (ed25519) generated on the first start of the Woodpecker server. You can get the public key for the verification of the http-signature from:
-```console
-http(s)://your-ci-server/api/signature/public-key
+```yaml
+steps:
+  - name: hello
+    image: alpine
+    commands:
+      - echo "Hello from CI"
+      - echo "--------------------"
+      - echo "This is my first CI BUILD"
+      - echo "--------------------"
+    when:
+      event: pull_request
+      branch: master  # configure it as your repo's base branch.(in my case, it's `master`)
 ```
-Store that public key into `keys/public.pem` in the same directory level as your docker compose, it will be needed for signature verification.
+
+Now that you have your `.woodpecker.yaml` file ready, you can commit and push it to your enabled GitHub repository and then, open a Pull Request from your branch <your-branch-name> to `master/main` according to you repo. GitHub's default branch is set to `main`.
+Once the PR is created, Woodpecker will automatically fetch the pipeline configuration, and start your first CI run. You can then head over to the Woodpecker UI to watch the build logs in real time.
+
+![Yaml Pipleine](https://raw.githubusercontent.com/JankariTech/blog/woodpecker-ci-starlark/src/assets/woodpeckerCI/images/yaml.png)
+
+Now that we have already set up the woodpecker server and triggered pipelines using the traditional `.yaml` configuration, let's now integrate WCCS to unlock flexibility and define our pipelines in Starlark.
 
 ## Setting Up WCCS-Woodpecker CI Config Service (Starlark Conversion Service)
 The Woodpecker Config Conversion Service (WCCS) is a lightweight web service created and maintained by [Opencloud-eu](https://opencloud.eu/en). It enables Woodpecker CI to convert pipeline definitions written in Starlark into standard YAML on the fly by receiving a signed POST request from Woodpecker.
 You can easily deploy WCCS using their official Docker image available on Docker Hub: [opencloudeu/wccs](https://hub.docker.com/r/opencloudeu/wccs).
+Update your `docker-compose.yml` to include the WCCS service:
 ```yml
+...
+
   wccs:
     image: opencloudeu/wccs:latest
     container_name: wccs
     command: server
     environment:
       - WCCS_LOG_LEVEL=debug
-      - WCCS_SERVER_PUBLIC_KEY=/keys/public.pem
+      - WCCS_SERVER_PUBLIC_KEY=/keys/public.pem # path to public key(generated in the section below)
     volumes:
       - /opt/woodpecker/keys:/keys
       - /etc/ssl/certs:/etc/ssl/certs:ro
@@ -201,6 +229,8 @@ You can easily deploy WCCS using their official Docker image available on Docker
     networks:
       - woodpecker-net
 
+...
+
 volumes:
   woodpecker-server-data:
   woodpecker-agent-config:
@@ -210,15 +240,38 @@ networks:
     driver: bridge
 ```
 
+## Generating the Public Key
+Before running any pipeline, woodpecker server sends a POST request to an external config service (in our case WCCS) with all current config file and build information of the current repository. The external service takes the information and sends back the pipeline configurations. In our case, this is how a starlark file is being converted into yaml configurations.
+
+And before WCCS can accept and process those requests, it needs to verify that the requests are trusted and coming from the woodpecker server.
+
+Every request sent by Woodpecker is signed using a http-signature by a private key (ed25519) generated on the first start of the Woodpecker server. You can get the public key for the verification of the http-signature from:
+```console
+https://<your-ci-server>/api/signature/public-key
+```
+Store that public key into `keys/public.pem` in the same directory level as your docker compose. The `public.pem` file is then mounted to the WCCS container as shown in the snippet above and used in env variable `WCCS_SERVER_PUBLIC_KEY`
+
 ## Connecting WCCS with Woodpecker
 To allow Woodpecker to fetch pipeline configs from WCCS, we added this to the server env:
 ```console
 WOODPECKER_CONFIG_SERVICE_ENDPOINT=http://wccs:8080/ciconfig
 ```
-Woodpecker now sends a signed JSON payload to WCCS whenever a build is triggered. WCCS verifies the signature using the public key and responds with a YAML pipeline based on your .woodpecker.star file.
+Woodpecker now sends a signed JSON payload to WCCS whenever a build is triggered. WCCS verifies the signature using the public key and responds with a YAML pipeline based on your `.woodpecker.star` file.
+
+After conneting WCCS with the woodpecker server, there's one more thing that you need to do i.e. to set pipeline config path, because by default Woodpecker will take `.woodpecker.yaml` as it's pipeline configuration.
+
+- From the settings of your Woodpecker server, go to `Repositories` and click on the enabled repo's settings icon as shown below:
+
+![Settings](https://raw.githubusercontent.com/JankariTech/blog/woodpecker-ci-starlark/src/assets/woodpeckerCI/images/settings.png)
+
+- Then, add `.woodpecker.star` as pipeline config path and save it:
+
+![Pipeline Config](https://raw.githubusercontent.com/JankariTech/blog/woodpecker-ci-starlark/src/assets/woodpeckerCI/images/path.png)
 
 ## Add a Simple Starlark Pipeline
-Here's a simple `.woodpecker.star` example that you can add in your project's root and you're all set:
+Here's a simple starlark pipeline configuration example that you can add in your project.
+Create a new branch by checking out from your `master/main` branch.
+Add the following configration in the `.woodpecker.star` file in your repo's root
 ```console
 def main(ctx):
     return [{
@@ -232,16 +285,16 @@ def main(ctx):
                 ],
                 "when": {
                     "event": ["push", "pull_request"],
-                    "branch": ["master"],
+                    "branch": ["master"], # configure it as your repo's base branch.(in my case, it's `master`)
                 },
             }
         ]
     }]
 ```
 
-## Triggering Your First CI Run
-Now that you have your `.woodpecker.star` file ready, commit and push it to your GitHub repository and then, open a Pull Request from your branch <your-branch-name> to master.
-Once the PR is created, Woodpecker will automatically send the build request to WCCS, fetch the pipeline config, and start your first CI run. You can head over to the Woodpecker UI to watch the build logs in real time.
+## Triggering CI with starlark-powered pipeline
+Now that you have your `.woodpecker.star` file ready, commit and push it to your GitHub repository and then, open a new Pull Request from your branch <your-branch-name> to master/main.
+Once the PR is created, Woodpecker will automatically send a build request to WCCS, fetch the pipeline configuration, and start your first CI run. You can then head over to the Woodpecker UI to watch the build logs in real time.
 
 ![Converted Yaml](https://raw.githubusercontent.com/JankariTech/blog/woodpecker-ci-starlark/src/assets/woodpeckerCI/images/converted.png)
 
