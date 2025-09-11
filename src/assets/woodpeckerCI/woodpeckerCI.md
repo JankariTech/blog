@@ -5,7 +5,7 @@ authorAvatar: https://avatars.githubusercontent.com/u/53248463?v=4
 authorLink: https://github.com/prashant-gurung899
 createdAt: September 11, 2025
 tags: CI/CD, Woodpecker, starlark, docker-compose, Traefik, WCCS
-banner: https://raw.githubusercontent.com/JankariTech/blog/woodpecker-ci-starlark/src/assets/woodpeckerCI/images/cover.png
+banner: https://blog.jankaritech.com/src/assets/woodpeckerCI/images/cover.png
 ---
 
 ## Background
@@ -151,7 +151,7 @@ To connect GitHub with Woodpecker:
 
 2. In your GitHub OAuth App, set the authorization callback URL to `https://<your-ci-server>/authorize`
 
-![Callback URL](https://raw.githubusercontent.com/JankariTech/blog/woodpecker-ci-starlark/src/assets/woodpeckerCI/images/oauth.png)
+![Callback URL](/src/assets/woodpeckerCI/images/oauth.png)
 
 3. Copy the generated Client ID and Secret.
 
@@ -159,7 +159,7 @@ To connect GitHub with Woodpecker:
 
 After that, you can log into the Woodpecker web UI using your GitHub account.
 
-![GitHub Login](https://raw.githubusercontent.com/JankariTech/blog/woodpecker-ci-starlark/src/assets/woodpeckerCI/images/github.png)
+![GitHub Login](/src/assets/woodpeckerCI/images/github.png)
 
 ## Enabling a Repository
 Before enabling a repo in the Woodpecker CI server, make sure to have a GitHub repository ready. You can use an existing repo of your own or create a new empty one. We will be making a pull request to the repo to trigger CI later.
@@ -168,11 +168,11 @@ From the Woodpecker UI:
 
 - Click on Add Repository.
 
-![Add Repo](https://raw.githubusercontent.com/JankariTech/blog/woodpecker-ci-starlark/src/assets/woodpeckerCI/images/add.png)
+![Add Repo](/src/assets/woodpeckerCI/images/add.png)
 
 - Enable it. For this blog, I am using an existing repo called `Drum-KIT` which has already been enabled (as you can see in the last row of the image below).
 
-![Enable Repo](https://raw.githubusercontent.com/JankariTech/blog/woodpecker-ci-starlark/src/assets/woodpeckerCI/images/enable.png)
+![Enable Repo](/src/assets/woodpeckerCI/images/enable.png)
 
 Woodpecker will automatically add the necessary webhooks to the repo.
 
@@ -199,7 +199,7 @@ steps:
 Now that you have your `.woodpecker.yaml` file ready, you can commit and push it to your enabled GitHub repository and then, open a Pull Request from your branch <your-branch-name> to `master/main` according to you repo. GitHub's default branch is set to `main`.
 Once the PR is created, Woodpecker will automatically fetch the pipeline configuration, and start your first CI run. You can then head over to the Woodpecker UI to watch the build logs in real time.
 
-![Yaml Pipleine](https://raw.githubusercontent.com/JankariTech/blog/woodpecker-ci-starlark/src/assets/woodpeckerCI/images/yaml.png)
+![Yaml Pipleine](/src/assets/woodpeckerCI/images/yaml.png)
 
 Now that we have already set up the woodpecker server and triggered pipelines using the traditional `.yaml` configuration, let's now integrate WCCS to unlock flexibility and define our pipelines in Starlark.
 
@@ -262,11 +262,11 @@ After conneting WCCS with the woodpecker server, there's one more thing that you
 
 - From the settings of your Woodpecker server, go to `Repositories` and click on the enabled repo's settings icon as shown below:
 
-![Settings](https://raw.githubusercontent.com/JankariTech/blog/woodpecker-ci-starlark/src/assets/woodpeckerCI/images/settings.png)
+![Settings](/src/assets/woodpeckerCI/images/settings.png)
 
 - Then, add `.woodpecker.star` as pipeline config path and save it:
 
-![Pipeline Config](https://raw.githubusercontent.com/JankariTech/blog/woodpecker-ci-starlark/src/assets/woodpeckerCI/images/path.png)
+![Pipeline Config](/src/assets/woodpeckerCI/images/path.png)
 
 ## Add a Simple Starlark Pipeline
 Here's a simple starlark pipeline configuration example that you can add in your project.
@@ -296,9 +296,9 @@ def main(ctx):
 Now that you have your `.woodpecker.star` file ready, commit and push it to your GitHub repository and then, open a new Pull Request from your branch <your-branch-name> to master/main.
 Once the PR is created, Woodpecker will automatically send a build request to WCCS, fetch the pipeline configuration, and start your first CI run. You can then head over to the Woodpecker UI to watch the build logs in real time.
 
-![Converted Yaml](https://raw.githubusercontent.com/JankariTech/blog/woodpecker-ci-starlark/src/assets/woodpeckerCI/images/converted.png)
+![Converted Yaml](/src/assets/woodpeckerCI/images/converted.png)
 
-![CI build](https://raw.githubusercontent.com/JankariTech/blog/woodpecker-ci-starlark/src/assets/woodpeckerCI/images/CI.png)
+![CI build](/src/assets/woodpeckerCI/images/CI.png)
 
 
 ## Conclusion
