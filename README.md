@@ -11,6 +11,7 @@ A beautiful blogging platform for the JankariTech peoples.
 2. Install Dependencies
     ```bash
     pnpm install
+    Test templates
     ```
 
 3. Serve
