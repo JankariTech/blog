@@ -13,7 +13,7 @@
       <div class="share-items">
         <mdi-twitter class="share-icon twitter" @click="shareOnTwitter"/>
         <mdi-facebook class="share-icon facebook" @click="shareOnFb" />
-        <mdi-linkedin class="share-icon linkedin" />
+        <mdi-linkedin class="share-icon linkedin" @click="shareOnLinkedIn" />
       </div>
     </div>
   </div>
@@ -49,6 +49,16 @@ const shareOnTwitter = () => {
       `https://twitter.com/intent/tweet?text=${encodeURIComponent(
         `"${props.title.title}" by ${props.title.authorName}`
       )}&url=${encodeURIComponent(window.location.href)}&hashtags=JankariTech`,
+      "_blank"
+    )
+    .focus()
+}
+const shareOnLinkedIn = () => {
+  window
+    .open(
+      `https://www.linkedin.com/feed/?shareActive=true&text=${encodeURIComponent(
+        `"${props.title.title}" by ${props.title.authorName} ${window.location.href} #JankariTech`
+      )}`,
       "_blank"
     )
     .focus()
