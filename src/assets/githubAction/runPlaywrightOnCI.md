@@ -5,7 +5,7 @@ authorAvatar : https://avatars.githubusercontent.com/u/61624650?v=4
 authorLink: https://github.com/nabim777
 createdAt: Mar 16, 2026
 tags: continuous integration, continuous delivery, continuous deployment, GitHub Actions, CI, CD, Playwright
-banner: https://blog.jankaritech.com/src/assets/RunPlaywrightOnCI/images/githubaction_with_playwright_banner
+banner: https://blog.jankaritech.com/src/assets/githubAction/images/githubaction_with_playwright_banner.png
 ---
 
 This blog post explains how to run Playwright UI tests in CI (Continuous Integration) using GitHub Actions.
