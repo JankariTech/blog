@@ -3,7 +3,7 @@ title: Kubernetes - A Beginner's Guide to Container Orchestration
 authorName: Ashim Shrestha
 authorAvatar: https://avatars.githubusercontent.com/u/97830124?v=4
 authorLink: https://github.com/Ashim-Stha
-createdAt: February 13, 2026
+createdAt: March 31, 2026
 tags: Kubernetes, DevOps, Containers
 banner: https://blog.jankaritech.com/src/assets/Kubernetes/images/kubernetes-logo.webp
 ---
