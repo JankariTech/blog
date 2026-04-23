@@ -50,9 +50,9 @@ malicious instructions for the AI tool
 
 Combining this with a convincing set of malicious instructions will make the chatbot execute them. I've been most successful by explaining to the AI tool that I need specific accessibility features in the response. That worked pretty well, even if the instructions didn't have anything to do with accessibility.
 Doing so, I've managed to make the chatbots to:
-- add extra emojis and text to the summary: [Gemini](https://blog.jankaritech.com/src/assets/PromptInjections/summarize_page_firefox_gemini.mp4), [ChatGPT](https://blog.jankaritech.com/src/assets/PromptInjections/summarize_page_firefox_chatgpt.mp4)
-- access external websites and treat the content as further instructions: [ChatGPT](https://blog.jankaritech.com/src/assets/PromptInjections/summarize_page_firefox_chatgpt_access_external.mp4)
-- permanently remember "user preferences": [ChatGPT](https://blog.jankaritech.com/src/assets/PromptInjections/summarize_page_firefox_chatgpt_memory.mp4)
+- add extra emojis and text to the summary: [Gemini](https://blog.jankaritech.com/src/assets/PromptInjections/summarize_page_firefox_gemini.mp4 "output of Gimini is altered using injected prompts in the site that is to be summarized"), [ChatGPT](https://blog.jankaritech.com/src/assets/PromptInjections/summarize_page_firefox_chatgpt.mp4 "output of ChatGPT is altered using injected prompts in the site that is to be summarized")
+- access external websites and treat the content as further instructions: [ChatGPT](https://blog.jankaritech.com/src/assets/PromptInjections/summarize_page_firefox_chatgpt_access_external.mp4 "using injected prompts to make ChatGPT to access an external website and treat the content as further instructions")
+- permanently remember "user preferences": [ChatGPT](https://blog.jankaritech.com/src/assets/PromptInjections/summarize_page_firefox_chatgpt_memory.mp4 "using injected prompts to make ChatGPT store preferences in permanent memory")
 
 While those things do look like harmless nuisance at the first glance, they could be developed into more serious issues.
 What about you summarize a page with the tool and the chatbot remembers a specific political preference secretly embedded in the webpage? From now on every reply you get from the chatbot will be leaning toward that political direction.
