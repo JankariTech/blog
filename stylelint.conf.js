@@ -21,6 +21,7 @@ module.exports = {
     "**/*.gif",
     "**/*.svg",
     "**/*.jpeg",
-    "**/*.webp"
+    "**/*.webp",
+    "**/*.mp4"
   ]
 }
