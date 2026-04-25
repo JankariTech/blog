@@ -25,3 +25,4 @@ dist-ssr
 
 # Build output
 docs
+.pnpm-store
