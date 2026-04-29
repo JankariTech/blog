@@ -53,24 +53,24 @@ One event can trigger many workflows, a workflow can contain many jobs, and a jo
 
 Before we dive into an example, make sure you have a repository where you want to set up your CI/CD workflow. If you don't have one, create a new repository, for example, named `action-hero`.
 
-Step 1: Clone your repository into your system
+**Step 1:** Clone your repository into your system
 ```bash
 git clone <your_github_repo_url>
 ```
 
-Step 2: Go to path `action-hero` and create a folder named `.github`
+**Step 2:** Go to path `action-hero` and create a folder named `.github`
 ```bash
 cd action-hero
 mkdir .github
 ```
 
-Step 3: Go to path `.github` and create a folder named `workflows`
+**Step 3:** Go to path `.github` and create a folder named `workflows`
 ```bash
 cd .github
 mkdir workflows
 ```
 
-Step 4: Inside the folder `workflows`, create a file named `hello_world.yml`
+**Step 4:** Inside the folder `workflows`, create a file named `hello_world.yml`
 ```bash
 cd workflows
 touch hello_world.yml
@@ -84,7 +84,7 @@ Our file structure should look like this:
 ┃ ┃ ┗ 📜hello_world.yml
 ```
 
-Step 5: Add the following code snippet to your `hello_world.yml` file:
+**Step 5:** Add the following code snippet to your `hello_world.yml` file:
 
 ```yml
 name: Hello world workflow
@@ -93,6 +93,7 @@ on:
   push:
     branches:
       - main
+  pull_request:
 
 jobs:
   build:
@@ -107,10 +108,12 @@ jobs:
 ```
 
 In this example:
-- The workflow is triggered by a push event on the main branch.
+- The workflow is triggered by a push event on the `main` branch and on pull requests.
 - The job named "build" runs on the latest version of Ubuntu.
 - The first step checks out the repository using the `actions/checkout` action.
 - The second step simply prints a message using the `echo` command.
+
+**Step 6:** Create a branch, push your changes, and open a pull request to the `main` branch.
 
 ## GitHub Actions activity:
 
