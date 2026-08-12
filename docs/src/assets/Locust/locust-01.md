@@ -20,7 +20,7 @@ The cool thing about locust is that you write your tests in plain python, so you
 Read [here](https://docs.locust.io/en/stable/what-is-locust.html#background) why locust was created in the first place
 
 ## Installation
- as simple as `pip install locustio` or `pip3 install locustio`
+ as simple as `pip install locust` or `pip3 install locust`
 
  (The rest of the blog I will assume you are using Python3)
 
@@ -29,20 +29,20 @@ Read [here](https://docs.locust.io/en/stable/what-is-locust.html#background) why
 create a file called `locustfile.py` with the content
 
 ```
-from locust import HttpLocust, TaskSet, task, between
+from locust import HttpUser, TaskSet, task, between
 
 class UserBehaviour(TaskSet):
     @task
     def getFrontPage(self):
         self.client.get("/")
 
-class User(HttpLocust):
-    task_set = UserBehaviour
+class User(HttpUser):
+    tasks = [UserBehaviour]
     wait_time = between(1, 10)
 ```
 
 The class `User` represents users of your app. The class `UserBehaviour` is a collection of the actions these users do.
-Every user will rerun the tasks every 1s till 10s `wait_time = between(1, 10)` The exact time between the requests will be chosen randomly.
+Every user will repeat the tasks, waiting between 1s and 10s between each task. The exact wait time is chosen randomly by `wait_time = between(1, 10)`.
 Inside the `UserBehaviour` class you define tasks; currently we have only one task, to send a `GET` request.
 
 ## run the tests
@@ -56,13 +56,19 @@ if you have installed locust system-wide
 Make sure there is some HTTP server running under the given host
 
 Now open http://localhost:8089/ in your browser
-You will see two input fields, one to set the number of users you want to simulate and one to tell locust how fast you want to ramp up the users
+You will see a **Start new load test** form with several options:
 
-![Start new Locust swarm](/src/assets/Locust/images/locust-01-images/StartNewLocustSwarm.png)
+- **Number of users (peak concurrency)**: The maximum number of users you want to simulate at the same time.
+- **Ramp up (users started/second)**: The rate at which Locust starts new users.
+- **Host**: The URL of the application you are testing. If it's already populated, you are good to go!
+- **Run time**: This lets you set a specific duration for the test so it stops automatically.
+- **Profile**: An optional load-test profile if you have configured profiles for your test.
 
-Choose e.g., 20 users to simulate and 2 users/s as hatch rate and click "Start Swarming"
+![Start new Locust swarm](/src/assets/Locust/images/locust-01-images/StartNewLocust.png)
 
-In the main screen, you will now see some statistics about the number of requests, and how long they took. In the "Charts" tab, you will find the same data over time in a nice graph. "Failures" and "Exceptions" should be empty, because all the requests should have succeeded. And lastly, under "Download Data", you get the data as nice CSV files.
+Choose e.g., 20 users to simulate, 2 users/s for ramp up and 2m for run time. Then start the load test.
+
+On the main screen, you will now see some statistics about the number of requests, and how long they took. On the "Charts" tab, you will find the same data over time in a nice graph. "Failures" and "Exceptions" should be empty, because all the requests should have succeeded. The "Current Ratio" tab shows the current distribution of requests across tasks. Under "Download Data", you get the data as nice CSV files while the "Logs" tabs shows Locust's runtime logs.
 
 ## what's next?
 
