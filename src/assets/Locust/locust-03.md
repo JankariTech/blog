@@ -25,7 +25,7 @@ Basically all test frameworks will have some kind of `setup` and `teardown` meth
 consider this simple locust script
 
  ````
-from locust import HttpLocust, TaskSet, task, constant
+from locust import HttpUser, TaskSet, task, constant
 
 class UserBehaviour(TaskSet):
     def setup(self):
@@ -42,14 +42,14 @@ class UserBehaviour(TaskSet):
     def an_other_task(self):
         print ("running another task")
 
-class User(HttpLocust):
+class User(HttpUser):
     def setup(self):
         print ("setup of Locust class")
 
     def teardown(self):
         print ("teardown of Locust class")
 
-    task_set = UserBehaviour
+    tasks = [UserBehaviour]
     wait_time = constant(1)
  ````
 
@@ -177,7 +177,7 @@ So what is new here?
 
 The `on_start` method first constructs a ownCloud username out of "locust" & a number. The `userNo` variable has to be defined globally, so that it survives when locust initializes the next instance of the `User` class. Remember: the `Locust` class (`HttpLocust` inherits from `Locust`) represents one simulated user that accesses your application.
 
-Next a `POST` request is sent with the username as userid and password. That request needs to be authenticated as the admin-user. ([Check the ownCloud docu if you are interested to learn more about those requests.](https://doc.owncloud.com/server/10.0/admin_manual/configuration/user/user_provisioning_api.html))
+Next, a `POST` request is sent with the username as userid and the password. That request needs to be authenticated as the admin-user. ([Check the ownCloud documentation if you are interested to learn more about those requests.](https://doc.owncloud.com/server/10.0/admin_manual/configuration/user/user_provisioning_api.html))
 
 At last there is the `davEndpoint`, now it needs the specific username, so that information has been moved into the specific `GET` and `PUT` method.
 
