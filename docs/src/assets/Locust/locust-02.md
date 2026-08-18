@@ -24,7 +24,7 @@ You should now be able to run the locust test from the first part via `locust --
 For file-operations, ownCloud uses the [WebDAV](https://en.wikipedia.org/wiki/WebDAV) API. Starting from the locustfile we already have, we create a test for a file download.
 
 ```
-from locust import HttpLocust, TaskSet, task, constant
+from locust import HttpUser, TaskSet, task, constant
 
 class UserBehaviour(TaskSet):
     userName = "admin"
@@ -36,8 +36,8 @@ class UserBehaviour(TaskSet):
             auth=(self.userName, self.userName)
         )
 
-class User(HttpLocust):
-    task_set = UserBehaviour
+class User(HttpUser):
+    tasks = [UserBehaviour]
     wait_time = constant(1)
   ```
 
@@ -51,7 +51,7 @@ Remember: when you change the locustfile, you have to stop and start locust to m
 Every TestSet can have multiple tasks, so adding an upload task should be easy:
 
 ```
-from locust import HttpLocust, TaskSet, task, constant
+from locust import HttpUser, TaskSet, task, constant
 
 class UserBehaviour(TaskSet):
     userName = "admin"
@@ -72,12 +72,12 @@ class UserBehaviour(TaskSet):
             auth=(self.userName, self.userName)
         )
 
-class User(HttpLocust):
-    task_set = UserBehaviour
+class User(HttpUser):
+    tasks = [UserBehaviour]
     wait_time = constant(1)
 ```
 
-Here we have a second task `uploadFile`, it's simply does a `PUT` request with a specific file-name and some data.
+Here we have a second task `uploadFile`, it simply does a `PUT` request with a specific file-name and some data.
 (To be more [DRY](https://en.wikipedia.org/wiki/Don%27t_repeat_yourself), I've placed `davEndpoint` in a variable)
 
 Locust will now run every task the same number of times. But if you run that with enough locust-users (e.g., try 100) you will see the numbers in the `# Fails` column increase
@@ -92,7 +92,7 @@ We have been using one single ownCloud-user `admin` and 100 locust-users. During
 What about not overwriting the same file again and again, but uploading a new one every time?
 
 ```
-from locust import HttpLocust, TaskSet, task, constant
+from locust import HttpUser, TaskSet, task, constant
 import uuid
 
 class UserBehaviour(TaskSet):
@@ -117,8 +117,8 @@ class UserBehaviour(TaskSet):
             auth=(self.userName, self.userName)
         )
 
-class User(HttpLocust):
-    task_set = UserBehaviour
+class User(HttpUser):
+    tasks = [UserBehaviour]
     wait_time = constant(1)
 ```
 
@@ -131,7 +131,7 @@ In the locust UI you should now see one `PUT` request per locust-user and hopefu
 
 Now we run every task equally often. But do users upload files as often as they download them?
 Maybe, but maybe not - it depends on your situation and on what you want to test. Luckily, locust gives you the freedom to choose.
-E.g., if you want to simulate the situation that the download/read operation occurs 3 times more often than an upload/write operation, just add a weight argument to the task
+E.g., if you want to simulate the situation that the download/read operation occurs 3 times more often than an upload/write operation, just add a weight argument to the task.
 
 ```
 ...
